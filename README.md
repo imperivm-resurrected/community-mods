@@ -13,7 +13,14 @@ y publicarlos en [GameBanana](https://gamebanana.com/games/26069) con el crédit
 
 1. **Permiso.** Pídeselo al autor (foro o Discord) y guarda la captura. Si la licencia lo permite (p. ej. CC BY-SA), no hace falta pedirlo, pero hay que citar al autor.
 2. **Descargar** a `originals/<id>/`.
-3. **Reducir** (mods con `.pak`) o **copiar** (mapas: el `.bfhp` va en `scenarios/`, las aventuras en `adventures/`). Desde `imperivm-resurrected/sdk/es`:
+3. **Mapas y aventuras de Discord** (Tipo *envolver*): crea `ported/<id>/` con el `.bfhp`, `mod.json` y `CREDITOS.txt`:
+   ```
+   BSDTAR=$(nix build --no-link --print-out-paths nixpkgs#libarchive)/bin/bsdtar \
+     node tools/wrap-map.js [canal/]<slug> --porter "<tu nombre>" --jugadores "4 players"
+   ```
+   El slug sale de `raw/discord-entries.json`. El número de jugadores se comprueba en la sala del juego.
+
+   **Mods con `.pak`** (Tipo *reducir*): desde `imperivm-resurrected/sdk/es`:
    ```
    node herramientas/reducir-mod.js <original> "<juego>" ../../../imperivm-mods-port/ported/<id> --id <id> --nombre "<Nombre>" --version 1.0 --categoria "Maps"
    ```
