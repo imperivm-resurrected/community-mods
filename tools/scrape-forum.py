@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """Crawl the download/modding subforums of imperivmgbr.foroactivo.com -> raw/forum.json.
-Links are hidden from guests: export the browser's forum cookies as FORO_COOKIE.
+Links are hidden from guests: export the browser's forum cookies as FORUM_COOKIE.
 Every external link of every post is kept with its poster, so later updates by the author are not lost."""
 import html
 import os
@@ -26,7 +26,7 @@ def get(path):
     for _ in range(3):
         try:
             # BASE is a fixed https:// origin, so no file:/custom schemes can reach urlopen
-            req = urllib.request.Request(BASE + path, headers={"User-Agent": "Mozilla/5.0", "Cookie": os.environ.get("FORO_COOKIE", "")})  # noqa: S310
+            req = urllib.request.Request(BASE + path, headers={"User-Agent": "Mozilla/5.0", "Cookie": os.environ.get("FORUM_COOKIE", "")})  # noqa: S310
             time.sleep(1)
             return urllib.request.urlopen(req, timeout=30).read().decode("utf-8", "ignore")  # noqa: S310
         except Exception as e:  # noqa: BLE001 - retry any network error

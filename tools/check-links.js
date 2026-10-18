@@ -37,8 +37,8 @@ async function http(url) {
 }
 
 async function check(url) {
-  if (DEAD_HOSTS.test(url)) return { ok: false, status: "host muerto" };
-  if (/cdn\.discordapp|discordapp\.com\/attachments/.test(url)) return { ok: null, status: "discord cdn (caduca)" };
+  if (DEAD_HOSTS.test(url)) return { ok: false, status: "dead host" };
+  if (/cdn\.discordapp|discordapp\.com\/attachments/.test(url)) return { ok: null, status: "discord cdn (expires)" };
   try { return /mega(\.co)?\.nz/.test(url) ? await mega(url) : await http(url); }
   catch (e) { return { ok: null, status: "error " + (e.cause?.code || e.name) }; }
 }

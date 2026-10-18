@@ -34,5 +34,5 @@ for (const [chan, id] of Object.entries(CH)) {
 }
 fs.writeFileSync(__dirname + "/../raw/discord-entries.json", JSON.stringify(entries, null, 1));
 const by = {}; entries.forEach(e => (by[e.channel] = (by[e.channel] || 0) + 1));
-console.log(entries.length, by, "sin archivo:", entries.filter(e => !e.files.length).length,
+console.log(entries.length, by, "no file:", entries.filter(e => !e.files.length).length,
   "MB:", (entries.flatMap(e => e.files).reduce((s, f) => s + f.size, 0) / 1e6).toFixed(0));
