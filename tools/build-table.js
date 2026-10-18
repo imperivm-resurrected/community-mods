@@ -1,4 +1,4 @@
-// raw/*.json -> MODS.md (first draft). After you start editing MODS.md by hand, don't re-run without --force.
+// raw/*.json -> MODS.md + MISSING.md (first draft). After you start editing them by hand, don't re-run without --force.
 const fs = require("fs"), path = require("path");
 const ROOT = path.join(__dirname, "..");
 const OUT = path.join(ROOT, "MODS.md");
@@ -77,5 +77,7 @@ for (const [key, title] of Object.entries(SECT)) {
 }
 
 fs.writeFileSync(OUT, out.join("\n"));
+fs.rmSync(path.join(ROOT, "MISSING.md"), { force: true }); // regenerated from scratch, not merged
+require("./split-missing")();
 const s = Object.values(links);
-console.log(`MODS.md: ${n} rows · links alive ${s.filter(x => x.ok).length}, dead ${s.filter(x => x.ok === false).length}, doubtful ${s.filter(x => x.ok === null).length}`);
+console.log(`${n} rows · links alive ${s.filter(x => x.ok).length}, dead ${s.filter(x => x.ok === false).length}, doubtful ${s.filter(x => x.ok === null).length}`);

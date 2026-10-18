@@ -3,7 +3,8 @@
 Port the community's mods, maps and adventures to [Imperivm Resurrected](https://github.com/imperivm-resurrected/imperivm-resurrected)
 and publish them on [GameBanana](https://gamebanana.com/games/26069), crediting each author.
 
-- `MODS.md`: the table. It is the source of truth and is edited by hand.
+- `MODS.md`: the table of what can be ported. It is the source of truth and is edited by hand.
+- `MISSING.md`: the rows with no working download (dead links or none). `node tools/split-missing.js` moves rows between both files after editing a download.
 - `originals/`: downloads, untouched (not in git).
 - `ported/<id>/`: each ported mod, with its `mod.json`.
 - `raw/`: the mod entries pulled from Discord and the forum, and the link checks. The full crawls (`forum.json`, `discord.json`) stay local: they hold unrelated messages.
@@ -33,7 +34,7 @@ Every mod is published with full credit to its original author. Many of these mo
 5. **Validate** (from `imperivm-resurrected/sdk/en`): `node tools/validate-mod.js <folder> --game "<game>"`.
 6. **Test** in the game (`mods\`, Additional content) and check `Logs\imperivm\imperivm-mod.log`.
 7. **Publish**: zip the folder, *Add → Mod* on GameBanana, same category, tags and version. Under **Credits**, the author as *Original Creator*; you as *Porter* only for *reduce*/*rewrite* mods (for *wrap*, being the submitter is enough). Link the original thread.
-8. Update the row in `MODS.md` (status and GameBanana link).
+8. Update the row in `MODS.md` (status and GameBanana link). If its download turns out dead, run `node tools/split-missing.js`.
 
 ## Regenerating the data
 
@@ -43,7 +44,7 @@ node tools/parse-forum.js          # raw/forum.json -> raw/forum-entries.json (t
 node tools/parse-discord.js        # raw/discord.json (local) -> raw/discord-entries.json
 node tools/download-discord.js     # Discord attachments -> originals/discord/ (URLs expire after ~24 h)
 node tools/check-links.js [--all]  # checks the downloads -> raw/links.json
-node tools/build-table.js --force  # draft of MODS.md (overwrites manual edits)
+node tools/build-table.js --force  # draft of MODS.md + MISSING.md (overwrites manual edits)
 ```
 
 The data was gathered from the *Imperivm III Editores* Discord server and the [imperivmgbr.foroactivo.com](https://imperivmgbr.foroactivo.com) forum.
