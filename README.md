@@ -1,4 +1,4 @@
-# imperivm-mods-port
+# community-mods
 
 Port the community's mods, maps and adventures to [Imperivm Resurrected](https://github.com/THIONG/imperivm-resurrected)
 and publish them on [GameBanana](https://gamebanana.com/games/26069), crediting each author.
@@ -27,7 +27,7 @@ Every mod is published with full credit to its original author. Many of these mo
 
    **Mods with `.pak`** (Type *reduce*): from `imperivm-resurrected/sdk/en`:
    ```bash
-   node tools/shrink-mod.js <original> "<game>" ../../../imperivm-mods-port/ported/<id> --id <id> --name "<Name>" --version 1.0 --category "Maps"
+   node tools/shrink-mod.js <original> "<game>" <community-mods>/ported/<id> --id <id> --name "<Name>" --version 1.0 --category "Maps"
    ```
 4. **`mod.json`** with `"authors": ["<Original author>"]` (add `"<your name> (port)"` only for real adaptation work: Type *reduce* or *rewrite*), `category`, `tags` (players or language) and `"redistributable": true` (the room host can send it; `--no-redistributable` if the author asks not to).
 5. **Validate** (from `imperivm-resurrected/sdk/en`): `node tools/validate-mod.js <folder> --game "<game>"`.
