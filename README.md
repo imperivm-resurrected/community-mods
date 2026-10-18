@@ -1,43 +1,43 @@
 # imperivm-mods-port
 
-Portear los mods, mapas y aventuras de la comunidad a [Imperivm Resurrected](https://github.com/THIONG/imperivm-resurrected)
-y publicarlos en [GameBanana](https://gamebanana.com/games/26069) con el crédito de cada autor.
+Port the community's mods, maps and adventures to [Imperivm Resurrected](https://github.com/THIONG/imperivm-resurrected)
+and publish them on [GameBanana](https://gamebanana.com/games/26069), crediting each author.
 
-- `MODS.md`: la tabla. Es la fuente de verdad; se edita a mano.
-- `originals/`: lo descargado, sin tocar (no se sube a git).
-- `ported/<id>/`: cada mod adaptado, con su `mod.json`.
-- `raw/`: datos en bruto de Discord y del foro.
-- `tools/`: scripts para regenerar `raw/` (ver abajo).
+- `MODS.md`: the table. It is the source of truth and is edited by hand.
+- `originals/`: downloads, untouched (not in git).
+- `ported/<id>/`: each ported mod, with its `mod.json`.
+- `raw/`: raw data from Discord and the forum.
+- `tools/`: scripts to regenerate `raw/` (see below).
 
-## Por cada mod
+## For each mod
 
-1. **Permiso.** Pídeselo al autor (foro o Discord) y guarda la captura. Si la licencia lo permite (p. ej. CC BY-SA), no hace falta pedirlo, pero hay que citar al autor.
-2. **Descargar** a `originals/<id>/`.
-3. **Mapas y aventuras de Discord** (Tipo *envolver*): crea `ported/<id>/` con el `.bfhp` y `mod.json`:
+1. **Permission.** Ask the author (forum or Discord) and keep a screenshot. If the license allows it (e.g. CC BY-SA), there is no need to ask, but the author must be credited.
+2. **Download** to `originals/<id>/`.
+3. **Discord maps and adventures** (Type *wrap*): creates `ported/<id>/` with the `.bfhp` and `mod.json`:
    ```bash
    BSDTAR=$(nix build --no-link --print-out-paths nixpkgs#libarchive)/bin/bsdtar \
-     node tools/wrap-map.js [canal/]<slug> --porter "Villoh"
+     node tools/wrap-map.js [channel/]<slug> --porter "Villoh"
    ```
-   El slug sale de `raw/discord-entries.json`. Los jugadores se leen del `.bfhp` (huecos con `control="Both"`/`"Human"`); `--jugadores` lo fuerza.
+   The slug comes from `raw/discord-entries.json`. Players are read from the `.bfhp` (slots with `control="Both"`/`"Human"`); `--players` overrides it.
 
-   **Mods con `.pak`** (Tipo *reducir*): desde `imperivm-resurrected/sdk/es`:
+   **Mods with `.pak`** (Type *reduce*): from `imperivm-resurrected/sdk/es`:
    ```bash
-   node herramientas/reducir-mod.js <original> "<juego>" ../../../imperivm-mods-port/ported/<id> --id <id> --nombre "<Nombre>" --version 1.0 --categoria "Maps"
+   node herramientas/reducir-mod.js <original> "<game>" ../../../imperivm-mods-port/ported/<id> --id <id> --nombre "<Name>" --version 1.0 --categoria "Maps"
    ```
-4. **`mod.json`** con `"authors": ["<Autor original>", "<tu nombre> (port)"]`, `category`, `tags` (jugadores o idioma) y `"redistributable": true` (el anfitrión puede enviarlo en la sala; `--no-redistribuible` si el autor pide que no).
-5. **Validar**: `node herramientas/validar-mod.js <carpeta>`.
-6. **Probar** en el juego (`mods\`, Contenido adicional) y mirar `Logs\imperivm\imperivm-mod.log`.
-7. **Publicar**: zip de la carpeta, *Add → Mod* en GameBanana, misma categoría, etiquetas y versión. En **Credits**, el autor como *Original Creator* y tú como *Porter*. Enlaza el hilo original.
-8. Actualiza la fila en `MODS.md` (estado y enlace de GameBanana).
+4. **`mod.json`** with `"authors": ["<Original author>", "<your name> (port)"]`, `category`, `tags` (players or language) and `"redistributable": true` (the room host can send it; `--no-redistributable` if the author asks not to).
+5. **Validate**: `node herramientas/validar-mod.js <folder>`.
+6. **Test** in the game (`mods\`, Additional content) and check `Logs\imperivm\imperivm-mod.log`.
+7. **Publish**: zip the folder, *Add → Mod* on GameBanana, same category, tags and version. Under **Credits**, the author as *Original Creator* and you as *Porter*. Link the original thread.
+8. Update the row in `MODS.md` (status and GameBanana link).
 
-## Regenerar los datos
+## Regenerating the data
 
 ```bash
-python3 tools/scrape-forum.py      # foro -> raw/forum.json (reanuda si se corta)
+python3 tools/scrape-forum.py      # forum -> raw/forum.json (resumes if interrupted)
 node tools/parse-discord.js        # raw/discord.json -> raw/discord-entries.json
-node tools/download-discord.js     # adjuntos de Discord -> originals/discord/ (las URLs caducan en ~24 h)
-node tools/check-links.js [--all]  # comprueba las descargas -> raw/links.json
-node tools/build-table.js --force  # borrador de MODS.md (machaca las ediciones a mano)
+node tools/download-discord.js     # Discord attachments -> originals/discord/ (URLs expire after ~24 h)
+node tools/check-links.js [--all]  # checks the downloads -> raw/links.json
+node tools/build-table.js --force  # draft of MODS.md (overwrites manual edits)
 ```
 
-Los datos se recopilaron del Discord *Imperivm III Editores* y del foro [imperivmgbr.foroactivo.com](https://imperivmgbr.foroactivo.com).
+The data was gathered from the *Imperivm III Editores* Discord server and the [imperivmgbr.foroactivo.com](https://imperivmgbr.foroactivo.com) forum.
