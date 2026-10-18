@@ -20,9 +20,9 @@ Every mod is published with full credit to its original author. Many of these mo
 2. **Download** to `originals/<id>/`.
 3. **Discord maps and adventures** (Type *wrap*): creates `ported/<id>/` with the `.bfhp` and `mod.json`:
    ```bash
-   BSDTAR=$(nix build --no-link --print-out-paths nixpkgs#libarchive)/bin/bsdtar \
-     node tools/wrap-map.js [channel/]<slug>
+   node tools/wrap-map.js [channel/]<slug>
    ```
+   `.rar`/`.zip` are unpacked with bsdtar: it is the system `tar` on Windows 10+ and macOS; on Linux install `libarchive-tools` (Debian/Ubuntu) or `libarchive` (Arch, Fedora, Nix). `BSDTAR=<path>` points to another binary.
    Nothing in the map changes, so the original author is the only author (no porter credit). The slug comes from `raw/discord-entries.json`. Players are read from the `.bfhp` (slots with `control="Both"`/`"Human"`); `--players` overrides it.
 
    **Mods with `.pak`** (Type *reduce*): from `imperivm-resurrected/sdk/en`:

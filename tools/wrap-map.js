@@ -1,7 +1,8 @@
 // Wrap a Discord map/adventure (raw/discord-entries.json) as an Imperivm Resurrected mod in ported/<slug>/
 //   node tools/wrap-map.js [channel/]<slug> [--players "2-4 players"] [--no-redistributable]
 // Nothing in the map changes, so the original author is the only author (no porter credit).
-// .rar/.zip are unpacked with bsdtar (NixOS: nix shell nixpkgs#libarchive).
+// .rar/.zip are unpacked with bsdtar: it is the system `tar` on Windows 10+ and macOS; on Linux install it
+// (libarchive-tools / libarchive). BSDTAR=<path> overrides it.
 const fs = require("fs"), path = require("path"), { execFileSync } = require("child_process");
 const ROOT = path.join(__dirname, "..");
 const args = process.argv.slice(2), opt = {};
@@ -42,7 +43,7 @@ fs.rmSync(out, { recursive: true, force: true });
 fs.mkdirSync(dest, { recursive: true });
 for (const f of e.files) {
   const src = path.join(ROOT, f.local);
-  if (/\.(rar|zip|7z)$/i.test(f.name)) execFileSync(process.env.BSDTAR || "bsdtar", ["-xf", src, "-C", dest]);
+  if (/\.(rar|zip|7z)$/i.test(f.name)) execFileSync(process.env.BSDTAR || (process.platform === "linux" ? "bsdtar" : "tar"), ["-xf", src, "-C", dest]);
   else fs.copyFileSync(src, path.join(dest, f.name));
 }
 // flatten folders inside archives, keep only what the game reads next to a map
