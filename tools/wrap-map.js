@@ -17,15 +17,9 @@ const SMALL = new Set(["de", "del", "la", "las", "el", "los", "en", "y", "a", "p
 const titleCase = s => s.toLowerCase().split(/(\s+)/).map((w, i) => i && SMALL.has(w) ? w : w.charAt(0).toUpperCase() + w.slice(1))
   .join("").replace(/\b(i{1,3}|iv|vi{0,3}|ix|x{1,3})\b/gi, m => m.toUpperCase()).replace(/(\d)v(\d)/gi, "$1v$2");
 
-// Players: from --jugadores, else guessed from the description ("tres jugadores", "2vs2", "1v1v1")
-const NUM = { dos: 2, tres: 3, cuatro: 4, cinco: 5, seis: 6, siete: 7, ocho: 8 };
-function guessPlayers(t) {
-  const vs = t.match(/\b(\d)\s*(?:v|vs)\s*(\d)(?:\s*(?:v|vs)\s*(\d))?(?:\s*(?:v|vs)\s*(\d))?\b/i);
-  if (vs) return vs.slice(1).filter(Boolean).reduce((a, b) => a + +b, 0);
-  const w = t.toLowerCase().match(/\b(\d|dos|tres|cuatro|cinco|seis|siete|ocho)\s+jugadores\b/);
-  return w ? (NUM[w[1]] || +w[1]) : null;
-}
-const players = opt.jugadores || (n => n && n >= 2 && n <= 8 ? `${n} players` : null)(guessPlayers(`${e.title} ${e.desc}`));
+// Lobby slots = playerdata entries a human can take (control="Both"/"Human"); the XML is stored uncompressed in the .bfhp.
+// Checked against the lobby: El muro -> 6 ("Map for 6").
+const slots = f => (fs.readFileSync(f, "latin1").match(/control="(Both|Human)"/g) || []).length;
 
 const out = path.join(ROOT, "ported", id), dest = path.join(out, isAdv ? "adventures" : "scenarios");
 fs.rmSync(out, { recursive: true, force: true });
@@ -47,6 +41,9 @@ for (const f of fs.readdirSync(dest)) if (fs.statSync(path.join(dest, f)).isDire
 for (const f of fs.readdirSync(dest)) if (f.includes("..")) fs.renameSync(path.join(dest, f), path.join(dest, f.replace(/\.{2,}/g, ".")));
 const maps = fs.readdirSync(dest).filter(f => /\.bfhp$/i.test(f));
 if (!maps.length) { console.error("sin .bfhp en", e.files.map(f => f.name)); process.exit(1); }
+const counts = maps.map(f => slots(path.join(dest, f))).filter(Boolean);
+const lo = Math.min(...counts), hi = Math.max(...counts);
+const players = opt.jugadores || (counts.length ? (lo === hi ? `${lo} players` : `${lo}-${hi} players`) : null);
 
 const author = e.author || "?";
 const meta = [e.year, e.base].filter(Boolean).join(", ");
@@ -65,5 +62,5 @@ const mod = {
   redistributable: !!opt.redistribuible,
 };
 fs.writeFileSync(path.join(out, "mod.json"), JSON.stringify(mod, null, 2) + "\n");
-fs.writeFileSync(path.join(out, "CREDITOS.txt"), `${mod.name}\nAutor original: ${author}\nPort: ${opt.porter}\nOriginal: ${e.discord}\n${e.links.map(l => "         " + l).join("\n")}\n`);
-console.log(`${out}\n  ${maps.join(", ")} -> ${path.basename(dest)}/\n  categoría ${mod.category}, etiquetas ${JSON.stringify(mod.tags)}${players && !opt.jugadores ? "  ⚠️ jugadores adivinado, compruébalo" : ""}${!isAdv && !players ? "  ⚠️ falta --jugadores" : ""}`);
+fs.writeFileSync(path.join(out, ".creditos.txt") /* dot: the game ignores it, so mods do not "share" it */, `${mod.name}\nAutor original: ${author}\nPort: ${opt.porter}\nOriginal: ${e.discord}\n${e.links.map(l => "         " + l).join("\n")}\n`);
+console.log(`${out}\n  ${maps.join(", ")} -> ${path.basename(dest)}/\n  categoría ${mod.category}, etiquetas ${JSON.stringify(mod.tags)}${counts.length < maps.length ? "  ⚠️ algún mapa sin jugadores legibles" : ""}${!isAdv && !players ? "  ⚠️ falta --jugadores" : ""}`);
