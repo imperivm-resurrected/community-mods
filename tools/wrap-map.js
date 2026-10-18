@@ -62,5 +62,4 @@ const mod = {
   redistributable: !!opt.redistribuible,
 };
 fs.writeFileSync(path.join(out, "mod.json"), JSON.stringify(mod, null, 2) + "\n");
-fs.writeFileSync(path.join(out, ".creditos.txt") /* dot: the game ignores it, so mods do not "share" it */, `${mod.name}\nAutor original: ${author}\nPort: ${opt.porter}\nOriginal: ${e.discord}\n${e.links.map(l => "         " + l).join("\n")}\n`);
 console.log(`${out}\n  ${maps.join(", ")} -> ${path.basename(dest)}/\n  categoría ${mod.category}, etiquetas ${JSON.stringify(mod.tags)}${counts.length < maps.length ? "  ⚠️ algún mapa sin jugadores legibles" : ""}${!isAdv && !players ? "  ⚠️ falta --jugadores" : ""}`);
