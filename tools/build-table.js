@@ -33,15 +33,17 @@ Edited by hand from here on.
 const v12 = "https://mega.nz/file/bB1UUYYB#m1swkkwZ5SUsU4WWIl4yBZ1OjBM-CZ2DJMkN5dYReYE";
 const ch = id => `https://discord.com/channels/479629904657514526/${id}`;
 const topicLinks = id => forum[id]?.links || [];
+// Foroactivo needs the slug (/t123-title), and old slugs redirect: use the topic's current path when known
+const topicUrl = id => FORUM + (forum[id]?.path || `/t${id}`);
 out.push("## Mods\n", HEAD,
   row("Community Mod v12", "Ferónidas and community", "HD vRelease 1.0", `[Discord](${ch("915050595713429534")})`, dl([v12])),
   row("Caesar Mod 1.1.0", "Paulus Ludorum (Paolo Lamberto) + Greek Mod creators", "HD", `[Discord](${ch("1416185549873610823")})`,
     dl(["https://www.moddb.com/mods/caesar-mod/downloads/caesar-mod-110"]), "✅ CC BY-SA 4.0"),
   row("Imperivm Legacy 2.4.1", "Nicoghiro31", "HD 1.0", `[Discord](${ch("1142861080880763060")})`, dl(["https://www.moddb.com/mods/imperivm-legacy/downloads"])),
-  row("Greek Civilization Mod v1.8", "Rattlesmake", "1.40 and 1.5+ (Steam)", `[forum](${FORUM}/t1207)`, dl(topicLinks("1207"))),
-  row("CGWAR Greek Civilization Mod v6", "Camarada and the CGWAR team", "1.40 only", `[forum](${FORUM}/t1354)`, dl(topicLinks("1354"))),
-  row("AsvrMod VI: Wrath of the Gods", "Asvr", "1.40", `[forum](${FORUM}/t731)`, dl(topicLinks("731"))),
-  row("Mod Comunidad Imperivm (MCI) 2010-2013", "forum community", "1.40", `[forum](${FORUM}/t262)`, dl(topicLinks("262"))),
+  row("Greek Civilization Mod v1.8", "Rattlesmake", "1.40 and 1.5+ (Steam)", `[forum](${topicUrl("1207")})`, dl(topicLinks("1207"))),
+  row("CGWAR Greek Civilization Mod v6", "Camarada and the CGWAR team", "1.40 only", `[forum](${topicUrl("1354")})`, dl(topicLinks("1354"))),
+  row("AsvrMod VI: Wrath of the Gods", "Asvr", "1.40", `[forum](${topicUrl("731")})`, dl(topicLinks("731"))),
+  row("Mod Comunidad Imperivm (MCI) 2010-2013", "forum community", "1.40", `[forum](${topicUrl("262")})`, dl(topicLinks("262"))),
   row("La Reconquista 2010", "JVLIVS CAESAR", "1.40", `[forum](${FORUM}/f44-descarga-e-informacion)`,
     dl(Object.values(forum).filter(t => t.subforum.startsWith("f44")).flatMap(t => topicLinks(String(t.id))))),
   "");
@@ -57,7 +59,7 @@ for (const [chan, title] of groups) {
     const other = e.links.filter(u => !forumId(u));
     const files = e.files.map(x => `💾 \`${x.name}\``);
     const name = (chan === "saga-imperivm" ? `[${e.section.replace(/ IMPERIVM /, " ")}] ` : "") + e.title + (e.count > 1 ? ` (${e.count} maps)` : "") + (e.year ? ` (${e.year})` : "");
-    const src = [`[Discord](${e.discord})`, ...f.map(u => `[forum](${u})`)].join(" · ");
+    const src = [`[Discord](${e.discord})`, ...f.map(u => `[forum](${forum[forumId(u)] ? topicUrl(forumId(u)) : u})`)].join(" · ");
     out.push(row(name, e.author || "? (saga original)", e.base?.replace("Imperivm ", "") || "?", src, [...files, dl(other).replace(/^—$/, "")].filter(Boolean).join("<br>") || "—"));
   }
   out.push("");
