@@ -96,7 +96,7 @@ Built from the authors in `MODS.md` and a member search of the *Imperivm III Edi
 | Garrancha | 1 | ? | [garrancha.](https://discord.com/users/1047176130064560209) | Celtic Kings III: Adventures | 2026-10-18 (#chat-mapas) | 🕐 |
 | zeloslaw C | 1 | 2009 | — (ModDB: [zelu](https://www.moddb.com/members/zelu)) | GBR Tactics 2.4 | | |
 | MAFR-MODS | 1 | 2019–2023 | — (ModDB: [mafr-mods](https://www.moddb.com/members/mafr-mods)) | Imperivm GBR Plus v1.3.1 | | |
-| GreekModTeam | 1 | 2022 | [_gabbo.](https://discord.com/users/417724592480845824) (Gabbo, Greek Mod 4.2) · ModDB [mediterranevmteam](https://www.moddb.com/members/mediterranevmteam) | Imperivm III: Mediterranevm (alpha) | 2026-10-18 (Discord) | ✅ aware of the project |
+| GreekModTeam | 1 | 2022 | [_gabbo.](https://discord.com/users/417724592480845824) (Gabbo, Greek Mod 4.2) · ModDB [mediterranevmteam](https://www.moddb.com/members/mediterranevmteam) | Imperivm III: Mediterranevm (alpha) | 2026-10-18 (Discord) | ✅ yes (2026-10-18) |
 | LucezarColombo | 1 | 2017 | — (ModDB: [lucezarcolombo](https://www.moddb.com/members/lucezarcolombo)) | Imperivm III Epic Battle Music Mod | | |
 | Luken_SOD | 1 | 2019–2026 | [luken8](https://discord.com/users/428292824534876213) ❓ (ModDB: [luken-sod](https://www.moddb.com/members/luken-sod)) | Celtic Kings Adventure (Larax, from Imperivm I) | | |
 | OlvidoGX | 1 | 2024 | — (ModDB: [olvidogx](https://www.moddb.com/company/olvidogx)) ❓ same as OlvidoGames? | Imperivm 3 (adapted adventures) | | |
