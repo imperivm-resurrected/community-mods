@@ -24,7 +24,7 @@ out.push(`# Mods to port to Imperivm Resurrected
 Generated on ${new Date().toISOString().slice(0, 10)} from the Discord server *Imperivm III Editores* and [${FORUM.replace("https://", "")}](${FORUM}).
 Edited by hand from here on.
 
-**Download**: ✅ alive · ❌ dead · ⚠️ doubtful (check by hand) · ❔ not checked · 💾 local copy in \`originals/\` · 📷 N screenshots in \`originals/discord/<channel>/<slug>/screenshots/\`.
+**Download**: ✅ alive · ❌ dead · ⚠️ doubtful (check by hand) · ❔ not checked · 💾 local copy in \`originals/\` · 📷 N screenshots in \`originals/discord/<channel>/<slug>/screenshots/\` or \`originals/forum/t<id>/screenshots/\`.
 **Permission**: ✅ granted or free license · ❌ denied · ❔ not asked · 🕐 asked, waiting.
 **Status**: 📋 to port · 🔧 ported (not uploaded) · ✅ on GameBanana · 🚫 cannot be ported.
 `);
@@ -35,15 +35,16 @@ const ch = id => `https://discord.com/channels/479629904657514526/${id}`;
 const topicLinks = id => forum[id]?.links || [];
 // Foroactivo needs the slug (/t123-title), and old slugs redirect: use the topic's current path when known
 const topicUrl = id => FORUM + (forum[id]?.path || `/t${id}`);
+const shotsOf = id => { const n = (forum[id]?.shots || []).filter(x => x.local).length; return n ? `<br>📷 ${n}` : ""; };
 out.push("## Mods\n", HEAD,
   row("Community Mod v12", "Ferónidas and community", "HD vRelease 1.0", `[Discord](${ch("915050595713429534")})`, dl([v12])),
   row("Caesar Mod 1.1.0", "Paulus Ludorum (Paolo Lamberto) + Greek Mod creators", "HD", `[Discord](${ch("1416185549873610823")})`,
     dl(["https://www.moddb.com/mods/caesar-mod/downloads/caesar-mod-110"]), "✅ CC BY-SA 4.0"),
   row("Imperivm Legacy 2.4.1", "Nicoghiro31", "HD 1.0", `[Discord](${ch("1142861080880763060")})`, dl(["https://www.moddb.com/mods/imperivm-legacy/downloads"])),
-  row("Greek Civilization Mod v1.8", "Rattlesmake", "1.40 and 1.5+ (Steam)", `[forum](${topicUrl("1207")})`, dl(topicLinks("1207"))),
-  row("CGWAR Greek Civilization Mod v6", "Camarada and the CGWAR team", "1.40 only", `[forum](${topicUrl("1354")})`, dl(topicLinks("1354"))),
-  row("AsvrMod VI: Wrath of the Gods", "Asvr", "1.40", `[forum](${topicUrl("731")})`, dl(topicLinks("731"))),
-  row("Mod Comunidad Imperivm (MCI) 2010-2013", "forum community", "1.40", `[forum](${topicUrl("262")})`, dl(topicLinks("262"))),
+  row("Greek Civilization Mod v1.8", "Rattlesmake", "1.40 and 1.5+ (Steam)", `[forum](${topicUrl("1207")})`, dl(topicLinks("1207")) + shotsOf("1207")),
+  row("CGWAR Greek Civilization Mod v6", "Camarada and the CGWAR team", "1.40 only", `[forum](${topicUrl("1354")})`, dl(topicLinks("1354")) + shotsOf("1354")),
+  row("AsvrMod VI: Wrath of the Gods", "Asvr", "1.40", `[forum](${topicUrl("731")})`, dl(topicLinks("731")) + shotsOf("731")),
+  row("Mod Comunidad Imperivm (MCI) 2010-2013", "forum community", "1.40", `[forum](${topicUrl("262")})`, dl(topicLinks("262")) + shotsOf("262")),
   row("La Reconquista 2010", "JVLIVS CAESAR", "1.40", `[forum](${FORUM}/f44-descarga-e-informacion)`,
     dl(Object.values(forum).filter(t => t.subforum.startsWith("f44")).flatMap(t => topicLinks(String(t.id))))),
   "");
@@ -74,7 +75,9 @@ for (const [key, title] of Object.entries(SECT)) {
     && !t.subforum.match(/^f4[47]-|^f[56]-|^f41-/))
     .map(t => ({ t, us: topicLinks(String(t.id)) })).filter(x => x.us.length).sort((a, b) => a.t.id - b.t.id);
   out.push(`## ${title}\n`, HEAD);
-  for (const { t, us } of ts) out.push(row(t.title, t.author, "?", `[forum](${FORUM}${t.path})`, dl(us)));
+  for (const { t, us } of ts) {
+    out.push(row(t.title, t.author, "?", `[forum](${FORUM}${t.path})`, dl(us) + shotsOf(String(t.id)))); // shots: tools/download-forum-shots.js
+  }
   out.push("");
 }
 
