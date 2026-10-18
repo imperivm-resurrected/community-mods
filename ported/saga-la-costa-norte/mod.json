@@ -1,0 +1,18 @@
+{
+  "id": "saga-la-costa-norte",
+  "name": "Imperivm I: La Costa Norte",
+  "version": "1.0",
+  "authors": [
+    "Haemimont Games",
+    "FX Interactive"
+  ],
+  "description": {
+    "spanish": "Un mapa costero con una orografía difícil. Mejor para cuatro jugadores independientes. Mapa de Haemimont Games (Imperivm I, recopilado por Ferónidas).",
+    "english": "Map by Haemimont Games (Imperivm I, collected by Ferónidas)."
+  },
+  "category": "Maps",
+  "tags": [
+    "4 players"
+  ],
+  "redistributable": true
+}

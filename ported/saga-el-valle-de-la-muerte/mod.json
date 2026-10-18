@@ -1,0 +1,18 @@
+{
+  "id": "saga-el-valle-de-la-muerte",
+  "name": "Imperivm I: El Valle de la Muerte",
+  "version": "1.0",
+  "authors": [
+    "Haemimont Games",
+    "FX Interactive"
+  ],
+  "description": {
+    "spanish": "Este mapa continental, dará a los jugadores la oportunidad de medir sus fuerzas en un gran valle situado en su centro. Mapa de Haemimont Games (Imperivm I, recopilado por Ferónidas).",
+    "english": "Map by Haemimont Games (Imperivm I, collected by Ferónidas)."
+  },
+  "category": "Maps",
+  "tags": [
+    "4 players"
+  ],
+  "redistributable": true
+}

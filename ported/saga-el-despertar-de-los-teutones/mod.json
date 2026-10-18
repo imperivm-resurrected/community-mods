@@ -1,0 +1,18 @@
+{
+  "id": "saga-el-despertar-de-los-teutones",
+  "name": "Imperivm I: El Despertar de los Teutones",
+  "version": "1.0",
+  "authors": [
+    "Haemimont Games",
+    "FX Interactive"
+  ],
+  "description": {
+    "spanish": "Lleno de lagos, el movimiento por este mapa no resulta fácil. El jugador que se atreva a conquistar la fortaleza romana custodiada por teutones que se encuentra en el centro, será el más poderoso. Mapa de Haemimont Games (Imperivm I, recopilado por Ferónidas).",
+    "english": "Map by Haemimont Games (Imperivm I, collected by Ferónidas)."
+  },
+  "category": "Maps",
+  "tags": [
+    "8 players"
+  ],
+  "redistributable": true
+}

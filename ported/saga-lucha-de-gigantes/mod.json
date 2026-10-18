@@ -1,0 +1,21 @@
+{
+  "id": "saga-lucha-de-gigantes",
+  "name": "Imperivm I: Lucha de Gigantes",
+  "version": "1.0",
+  "authors": [
+    "Haemimont Games",
+    "FX Interactive"
+  ],
+  "description": {
+    "spanish": "Al comienzo de la partida se dispone de un sólo héroe que hay que conservar durante toda la partida puesto que no está permitido contratar a más. Mapa de Haemimont Games (Imperivm I, recopilado por Ferónidas).",
+    "english": "Map by Haemimont Games (Imperivm I, collected by Ferónidas)."
+  },
+  "category": "Maps",
+  "tags": [
+    "4 players"
+  ],
+  "incompatibleWith": [
+    "caesar-mod"
+  ],
+  "redistributable": true
+}

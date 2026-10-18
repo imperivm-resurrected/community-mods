@@ -1,0 +1,18 @@
+{
+  "id": "saga-volcano",
+  "name": "Imperivm I: Volcano",
+  "version": "1.0",
+  "authors": [
+    "Haemimont Games",
+    "FX Interactive"
+  ],
+  "description": {
+    "spanish": "Un mapa montañoso en el que las fortalezas están situadas cerca de un enorme volcán. Mapa de Haemimont Games (Imperivm I, recopilado por Ferónidas).",
+    "english": "Map by Haemimont Games (Imperivm I, collected by Ferónidas)."
+  },
+  "category": "Maps",
+  "tags": [
+    "4 players"
+  ],
+  "redistributable": true
+}

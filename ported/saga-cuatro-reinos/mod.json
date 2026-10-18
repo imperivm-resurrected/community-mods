@@ -1,0 +1,18 @@
+{
+  "id": "saga-cuatro-reinos",
+  "name": "Imperivm I: Cuatro Reinos",
+  "version": "1.0",
+  "authors": [
+    "Haemimont Games",
+    "FX Interactive"
+  ],
+  "description": {
+    "spanish": "Lleno de estrechos pasadizos, este mapa montañoso tiene una fortaleza romana en el centro que dará gran ventaja a quien la conquiste. Mapa de Haemimont Games (Imperivm I, recopilado por Ferónidas).",
+    "english": "Map by Haemimont Games (Imperivm I, collected by Ferónidas)."
+  },
+  "category": "Maps",
+  "tags": [
+    "4 players"
+  ],
+  "redistributable": true
+}

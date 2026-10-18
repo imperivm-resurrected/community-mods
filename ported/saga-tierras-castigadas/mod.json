@@ -1,0 +1,18 @@
+{
+  "id": "saga-tierras-castigadas",
+  "name": "Imperivm I: Tierras Castigadas",
+  "version": "1.0",
+  "authors": [
+    "Haemimont Games",
+    "FX Interactive"
+  ],
+  "description": {
+    "spanish": "Un mapa costero con dos grandes penínsulas, una romana y la segunda gala. La configuración del mapa favorece que se produzcan batallas navales en él. Para dos equipos de cuatro jugadores cada uno. Mapa de Haemimont Games (Imperivm I, recopilado por Ferónidas).",
+    "english": "Map by Haemimont Games (Imperivm I, collected by Ferónidas)."
+  },
+  "category": "Maps",
+  "tags": [
+    "8 players"
+  ],
+  "redistributable": true
+}

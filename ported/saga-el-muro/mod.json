@@ -1,0 +1,18 @@
+{
+  "id": "saga-el-muro",
+  "name": "Imperivm I: El Muro",
+  "version": "1.0",
+  "authors": [
+    "Haemimont Games",
+    "FX Interactive"
+  ],
+  "description": {
+    "spanish": "Una gran cadena montañosa separa dos zonas de este mapa. En cada una de las zonas se establecen tres jugadores. Mapa de Haemimont Games (Imperivm I, recopilado por Ferónidas).",
+    "english": "Map by Haemimont Games (Imperivm I, collected by Ferónidas)."
+  },
+  "category": "Maps",
+  "tags": [
+    "6 players"
+  ],
+  "redistributable": true
+}

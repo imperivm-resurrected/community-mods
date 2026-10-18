@@ -1,0 +1,18 @@
+{
+  "id": "saga-ascendencia",
+  "name": "Imperivm I: Ascendencia",
+  "version": "1.0",
+  "authors": [
+    "Haemimont Games",
+    "FX Interactive"
+  ],
+  "description": {
+    "spanish": "La región cuenta con cuatro áreas y con un gran número de puestos avanzados. Una vez capturado, un puesto avanzado puede entrenar unidades. ¿Conseguirás vencer y hacerte con el control total? Mapa de Haemimont Games (Imperivm I, recopilado por Ferónidas).",
+    "english": "Map by Haemimont Games (Imperivm I, collected by Ferónidas)."
+  },
+  "category": "Maps",
+  "tags": [
+    "4 players"
+  ],
+  "redistributable": true
+}

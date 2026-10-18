@@ -1,0 +1,18 @@
+{
+  "id": "saga-la-ribera",
+  "name": "Imperivm I: La Ribera",
+  "version": "1.0",
+  "authors": [
+    "Haemimont Games",
+    "FX Interactive"
+  ],
+  "description": {
+    "spanish": "Un río divide este pequeño mapa en dos zonas, la primera bajo control romano y la segunda controlada por los galos. Para dos jugadores. Mapa de Haemimont Games (Imperivm I, recopilado por Ferónidas).",
+    "english": "Map by Haemimont Games (Imperivm I, collected by Ferónidas)."
+  },
+  "category": "Maps",
+  "tags": [
+    "2 players"
+  ],
+  "redistributable": true
+}

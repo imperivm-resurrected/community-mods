@@ -1,0 +1,18 @@
+{
+  "id": "saga-rio-utopia",
+  "name": "Imperivm II: Río Utopía",
+  "version": "1.0",
+  "authors": [
+    "Haemimont Games",
+    "FX Interactive"
+  ],
+  "description": {
+    "spanish": "La paz de la región está a punto de llegar a su fin. Los señores de la guerra han planeado la conquista de estas tierras y se preparan para desembarcar sus ejércitos. Mapa de Haemimont Games (Imperivm II, recopilado por Ferónidas).",
+    "english": "Map by Haemimont Games (Imperivm II, collected by Ferónidas)."
+  },
+  "category": "Maps",
+  "tags": [
+    "8 players"
+  ],
+  "redistributable": true
+}

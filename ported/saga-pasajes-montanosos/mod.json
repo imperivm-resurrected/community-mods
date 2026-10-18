@@ -1,0 +1,18 @@
+{
+  "id": "saga-pasajes-montanosos",
+  "name": "Imperivm II: Pasajes Montañosos",
+  "version": "1.0",
+  "authors": [
+    "Haemimont Games",
+    "FX Interactive"
+  ],
+  "description": {
+    "spanish": "Las fortalezas de los dos jugadores están separadas por pasajes montañosos... Mapa de Haemimont Games (Imperivm II, recopilado por Ferónidas).",
+    "english": "Map by Haemimont Games (Imperivm II, collected by Ferónidas)."
+  },
+  "category": "Maps",
+  "tags": [
+    "2 players"
+  ],
+  "redistributable": true
+}

@@ -30,6 +30,13 @@ const [want, chan] = opt._.split("/").reverse();
 const found = chan === "forum" ? [forumEntry(want.replace(/^t/, ""))] : discord.filter(x => x.slug === want && (!chan || x.channel === chan));
 if (found.length !== 1) { console.error(found.length ? `ambiguous, use channel/slug: ${found.map(x => x.channel + "/" + x.slug).join(" ")}` : `not found: ${opt._}`); process.exit(1); }
 const e = found[0];
+// a Discord entry with links instead of attachments: use what tools/download-forum.js got for its row
+if (!e.files.length && e.channel !== "forum") {
+  const pre = slugify(`${e.section.replace(/ IMPERIVM /, " ")} ${e.title}`); // row "[AVENTURAS II] TITLE (5 maps)"
+  const hit = fs.existsSync(path.join(ROOT, "originals", "forum")) && fs.readdirSync(path.join(ROOT, "originals", "forum")).find(d => d === pre || d.startsWith(pre + "-"));
+  const dir = hit && path.join("originals", "forum", hit);
+  if (dir && fs.existsSync(path.join(ROOT, dir, "files"))) e.files = fs.readdirSync(path.join(ROOT, dir, "files")).map(n => ({ name: n, local: path.join(dir, "files", n) }));
+}
 if (!e.files.length) { console.error("nothing downloaded for", opt._); process.exit(1); }
 const id = (e.channel === "saga-imperivm" ? "saga-" : "") + e.slug;
 // forum topics: decided after unpacking, from the title or game.xml game_type (0 = skirmish map, 1/2 = adventure)
@@ -109,6 +116,7 @@ for (const f of fs.readdirSync(dest, { recursive: true })) {
   const p = path.join(dest, f);
   if (fs.statSync(p).isDirectory()) continue;
   if (/\.(bfhp|bmp)$/i.test(f)) { if (path.dirname(f) !== ".") fs.renameSync(p, path.join(dest, path.basename(f))); }
+  else if (/\.avi$/i.test(f)) { fs.mkdirSync(path.join(out, "movies"), { recursive: true }); fs.renameSync(p, path.join(out, "movies", path.basename(f))); } // intro/outro videos the adventure plays from Movies\\
   else fs.rmSync(p);
 }
 for (const f of fs.readdirSync(dest)) if (fs.statSync(path.join(dest, f)).isDirectory()) fs.rmSync(path.join(dest, f), { recursive: true });
@@ -116,6 +124,25 @@ for (const f of fs.readdirSync(dest)) if (fs.statSync(path.join(dest, f)).isDire
 for (const f of fs.readdirSync(dest)) if (f.includes("..")) fs.renameSync(path.join(dest, f), path.join(dest, f.replace(/\.{2,}/g, ".")));
 let maps = fs.readdirSync(dest).filter(f => /\.bfhp$/i.test(f));
 if (!maps.length) { console.error("no .bfhp in", e.files.map(f => f.name)); process.exit(1); }
+// a map the HD game already ships (same bytes; copy Scenarios/ and Adventures/ of the game to originals/game-data/):
+// nothing to port
+const md5 = f => require("crypto").createHash("md5").update(fs.readFileSync(f)).digest("hex");
+const HD = path.join(ROOT, "originals", "game-data");
+const shipped = maps.filter(f => ["Scenarios", "Adventures"].some(d => fs.existsSync(path.join(HD, d)) && fs.readdirSync(path.join(HD, d))
+  .some(g => g.toLowerCase() === f.toLowerCase() && md5(path.join(HD, d, g)) === md5(path.join(dest, f)))));
+if (shipped.length === maps.length) { fs.rmSync(out, { recursive: true, force: true }); console.error(`already in the HD game: ${shipped.join(", ")}`); process.exit(3); }
+// same file name as in another ported mod: with both enabled one would hide the other, so rename ours
+const taken = new Set(fs.readdirSync(path.join(ROOT, "ported")).filter(m => m !== id)
+  .flatMap(m => ["scenarios", "adventures"].flatMap(d => fs.existsSync(path.join(ROOT, "ported", m, d)) ? fs.readdirSync(path.join(ROOT, "ported", m, d)) : []))
+  .map(f => f.toLowerCase()));
+for (const f of maps.filter(f => taken.has(f.toLowerCase()))) {
+  const to = f.replace(/(\.bfhp)$/i, ` (${id})$1`);
+  fs.renameSync(path.join(dest, f), path.join(dest, to));
+  for (const b of fs.readdirSync(dest).filter(b => b.toLowerCase() === f.replace(/\.bfhp$/i, ".bmp").toLowerCase()))
+    fs.renameSync(path.join(dest, b), path.join(dest, to.replace(/\.bfhp$/i, path.extname(b))));
+  console.log(`  renamed ${f} -> ${to} (another ported mod has that file name)`);
+}
+maps = fs.readdirSync(dest).filter(f => /\.bfhp$/i.test(f));
 if (e.channel === "forum" && !isAdv && maps.some(f => /<properties[^>]*?\sgame_type="[12]"/.test(fs.readFileSync(path.join(dest, f), "latin1")))) {
   isAdv = true;
   fs.renameSync(dest, path.join(out, "adventures"));
@@ -132,30 +159,48 @@ if (!waits.length) needs.splice(0, needs.length, ...needs.filter(m => bigMods.fi
 // incompatible = big mods that hide (hidden.txt) a class of the HD game the map uses
 const breaks = used ? bigMods.filter(m => !needs.includes(m.mod))
   .map(m => ({ mod: m.mod, lost: used.filter(c => hdClasses.has(c.toLowerCase()) && !m.classes.has(c.toLowerCase())) })).filter(x => x.lost.length) : [];
+const PREFER = ["community-mod", "greek-civilization-mod", "caesar-mod"];
 const lo = Math.min(...counts), hi = Math.max(...counts);
 const players = opt.players || (counts.length ? (lo === hi ? `${lo} players` : `${lo}-${hi} players`) : null);
 
-const author = e.author || "?";
+// the saga: the maps and adventures of Imperivm I and II that came with the games, collected by Ferónidas on Discord
+const saga = e.channel === "saga-imperivm";
+const author = saga ? "Haemimont Games" : e.author || "?";
+const sagaGame = saga && (/ II$/.test(e.section) ? "Imperivm II" : "Imperivm I");
 const desc = e.desc || (maps.length === 1 ? mapDesc(path.join(dest, maps[0])) : "");
-const meta = [e.year, e.base].filter(Boolean).join(", ");
+const meta = saga ? `${sagaGame}, recopilado por Ferónidas` : [e.year, e.base].filter(Boolean).join(", ");
+const metaEn = saga ? `${sagaGame}, collected by Ferónidas` : meta;
 const what = isAdv ? "Aventura" : maps.length > 1 ? `${maps.length} mapas` : "Mapa";
 const mod = {
   id,
-  name: titleCase(e.title),
+  name: (saga ? `${sagaGame}: ` : "") + titleCase(e.title),
   version: "1.0",
-  authors: [author],
+  authors: saga ? ["Haemimont Games", "FX Interactive"] : [author],
   description: {
-    spanish: `${desc ? desc.replace(/([^.!?])$/, "$1.") + " " : ""}${what} de ${author}${meta ? ` (${meta})` : ""}.`,
-    english: `${what === "Aventura" ? "Adventure" : what === "Mapa" ? "Map" : maps.length + " maps"} by ${author}${meta ? ` (${meta})` : ""}.`,
+    spanish: `${desc ? desc.replace(/([^.!?…])$/, "$1.") + " " : ""}${what} de ${author}${meta ? ` (${meta})` : ""}.`,
+    english: `${what === "Aventura" ? "Adventure" : what === "Mapa" ? "Map" : maps.length + " maps"} by ${author}${metaEn ? ` (${metaEn})` : ""}.`,
   },
   category: isAdv ? "Campaigns" : "Maps",
   tags: isAdv ? ["Spanish"] : players ? [players] : [],
-  ...(needs.length === 1 ? { requires: needs } : {}),
+  // requires means "all of these": with several candidates, take one (the most used first)
+  ...(needs.length ? { requires: [[...PREFER, ...needs].find(m => needs.includes(m))] } : {}),
   ...(breaks.length ? { incompatibleWith: breaks.map(b => b.mod) } : {}),
   redistributable: !opt["no-redistributable"], // publishing on GameBanana already redistributes it; false only if the author asks
 };
 fs.writeFileSync(path.join(out, "mod.json"), JSON.stringify(mod, null, 2) + "\n");
+// raw/ported.json: which entry each ported mod comes from (tools/sync-table.js uses it to update MODS.md)
+const SRC = path.join(ROOT, "raw", "ported.json");
+const src = (() => { try { return JSON.parse(fs.readFileSync(SRC, "utf8")); } catch { return {}; } })();
+src[id] = opt._;
+fs.writeFileSync(SRC, JSON.stringify(Object.fromEntries(Object.entries(src).sort()), null, 1) + "\n");
 console.log(`${out}\n  ${maps.join(", ")} -> ${path.basename(dest)}/\n  category ${mod.category}, tags ${JSON.stringify(mod.tags)}${counts.length < maps.length ? "  ⚠️ some map has no readable players" : ""}${!isAdv && !players ? "  ⚠️ missing --players" : ""}`
   + (used === null ? "\n  ⚠️ compatibility not checked (no originals/game-data)" : unknown.length ? `\n  ❌ not in the HD game nor in a known mod: ${unknown.join(", ")}` : "")
-  + (waits.length ? `\n  ⏳ blocked: needs ${waits.join(" or ")}, not ported to Resurrected yet (${missing.join(", ")})` : needs.length ? `\n  🧩 needs ${needs.join(" or ")} (${missing.join(", ")})` : "")
+  + (waits.length ? `\n  ⏳ blocked: needs ${waits.join(" or ")}, not ported to Resurrected yet (${missing.join(", ")})` : needs.length ? `\n  🧩 needs ${needs.join(" or ")} (${missing.join(", ")})${needs.length > 1 ? " -> requires " + mod.requires[0] : ""}` : "")
   + breaks.map(b => `\n  🚫 incompatible with ${b.mod} (hides ${b.lost.join(", ")})`).join(""));
+// blocked (needs a mod not ported yet) or uses classes nobody has: report it, but leave nothing in ported/
+if (waits.length || unknown.length) {
+  fs.rmSync(out, { recursive: true, force: true }); process.exitCode = 2;
+  const SRC = path.join(ROOT, "raw", "ported.json"), src = JSON.parse(fs.readFileSync(SRC, "utf8"));
+  delete src[id];
+  fs.writeFileSync(SRC, JSON.stringify(src, null, 1) + "\n");
+}

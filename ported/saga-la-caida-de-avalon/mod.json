@@ -1,0 +1,21 @@
+{
+  "id": "saga-la-caida-de-avalon",
+  "name": "Imperivm I: La Caída de Ávalon",
+  "version": "1.0",
+  "authors": [
+    "Haemimont Games",
+    "FX Interactive"
+  ],
+  "description": {
+    "spanish": "Tras la muerte del rey de Avalon, la que fuera gran ciudad ha sido dividida y ha sufrido el acoso de numerosos enemigos. ¿Podrán unirse los herederos de Avalon para salvar su hogar de la destrucción total? . Mapa de Haemimont Games (Imperivm I, recopilado por Ferónidas).",
+    "english": "Map by Haemimont Games (Imperivm I, collected by Ferónidas)."
+  },
+  "category": "Maps",
+  "tags": [
+    "8 players"
+  ],
+  "incompatibleWith": [
+    "caesar-mod"
+  ],
+  "redistributable": true
+}

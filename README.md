@@ -29,7 +29,9 @@ Every mod is published with full credit to its original author. Many of these mo
    ```bash
    node tools/extract-data.js "<game>" <community-mods>/originals/game-data
    ```
-   Big mods change that set too: copy each one's `mod.json`, `hidden.txt` and `DATA/**/*.sc.xml` to `originals/mods/<mod id>/` (the Community Mod and the Caesar Mod hide game files, e.g. the wild horse). Then each map gets `requires` if only that mod has a class it uses, and `incompatibleWith` if that mod hides one; `MODS.md` shows both in *Type*. A map using classes nobody has prints ❌: it needs a mod we do not have (*requires ? mod*). Parts of the `.bfhp` are compressed and mangle some names, so an unknown name only counts if placed at least twice.
+   Also copy the game's `Scenarios/` and `Adventures/` folders there: a map the HD game already ships (same bytes) is not wrapped.
+   Big mods change that set too: copy each one's `mod.json`, `hidden.txt` and `DATA/**/*.sc.xml` to `originals/mods/<mod id>/` (the Community Mod and the Caesar Mod hide game files, e.g. the wild horse). A GameBanana mod with no `mod.json` gets the id `gamebanana-<id>` in the game; a mod still to port goes in as `forum-t<topic>`. Then each map gets `requires` if a mod has every class it lacks (with several, the first of Community Mod, Greek Mod, Caesar Mod), and `incompatibleWith` for each mod that hides an HD class it uses; `MODS.md` shows both in *Type*. A map that needs a mod not ported yet (⏳), or classes nobody has (❌, *requires ? mod*), is reported and left out of `ported/`. Parts of the `.bfhp` are compressed and mangle some names, so an unknown name only counts if placed at least twice.
+   A `.bfhp` with the same file name as one in another ported mod is renamed `<name> (<id>).bfhp`, or one would hide the other. Videos (`.avi`) go to `movies/`. Saga entries are credited to Haemimont Games and FX Interactive.
 
    Nothing in the map changes, so the original author is the only author (no porter credit). The slug comes from `raw/discord-entries.json`. Players are read from the `.bfhp` (slots with `control="Both"`/`"Human"`); `--players` overrides it.
 
@@ -41,7 +43,7 @@ Every mod is published with full credit to its original author. Many of these mo
 5. **Validate** (from `imperivm-resurrected/sdk/en`): `node tools/validate-mod.js <folder> --game "<game>"`.
 6. **Test** in the game (`mods\`, Additional content) and check `Logs\imperivm\imperivm-mod.log`.
 7. **Publish**: zip the folder, *Add → Mod* on GameBanana, same category, tags and version. Under **Credits**, the author as *Original Creator*; you as *Porter* only for *reduce*/*rewrite* mods (for *wrap*, being the submitter is enough). Link the original thread.
-8. Update the row in `MODS.md` (status and GameBanana link). If its download turns out dead, run `node tools/split-missing.js`.
+8. `node tools/sync-table.js` sets *Type* and *Status* of every wrapped row from its `mod.json` (`raw/ported.json` says which row each mod comes from). Add the GameBanana link by hand. If a download turns out dead, run `node tools/split-missing.js`.
 
 ## Regenerating the data
 

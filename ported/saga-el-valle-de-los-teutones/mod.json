@@ -1,0 +1,18 @@
+{
+  "id": "saga-el-valle-de-los-teutones",
+  "name": "Imperivm I: El Valle de los Teutones",
+  "version": "1.0",
+  "authors": [
+    "Haemimont Games",
+    "FX Interactive"
+  ],
+  "description": {
+    "spanish": "Un mapa para dos equipos de tres jugadores cada uno, en el que los jugadores estarán constantemente hostigados por el ataque de tribus teutonas. Mapa de Haemimont Games (Imperivm I, recopilado por Ferónidas).",
+    "english": "Map by Haemimont Games (Imperivm I, collected by Ferónidas)."
+  },
+  "category": "Maps",
+  "tags": [
+    "6 players"
+  ],
+  "redistributable": true
+}

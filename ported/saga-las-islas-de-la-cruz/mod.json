@@ -1,0 +1,18 @@
+{
+  "id": "saga-las-islas-de-la-cruz",
+  "name": "Imperivm I: Las Islas de la Cruz",
+  "version": "1.0",
+  "authors": [
+    "Haemimont Games",
+    "FX Interactive"
+  ],
+  "description": {
+    "spanish": "Lleno de islas de diferentes tamaños, este mapa dificulta el acceso al territorio de los demás jugadores. Mapa de Haemimont Games (Imperivm I, recopilado por Ferónidas).",
+    "english": "Map by Haemimont Games (Imperivm I, collected by Ferónidas)."
+  },
+  "category": "Maps",
+  "tags": [
+    "4 players"
+  ],
+  "redistributable": true
+}

@@ -1,0 +1,18 @@
+{
+  "id": "saga-guerra-en-el-mar",
+  "name": "Imperivm I: Guerra en el Mar",
+  "version": "1.0",
+  "authors": [
+    "Haemimont Games",
+    "FX Interactive"
+  ],
+  "description": {
+    "spanish": "Un mar lleno de islas: las orientales ocupadas por romanos y las occidentales por galos. El resto, pobladas por teutones, que darán ventaja al jugador que las ocupe. Especial para dos equipos de tres jugadores. Mapa de Haemimont Games (Imperivm I, recopilado por Ferónidas).",
+    "english": "Map by Haemimont Games (Imperivm I, collected by Ferónidas)."
+  },
+  "category": "Maps",
+  "tags": [
+    "6 players"
+  ],
+  "redistributable": true
+}

@@ -1,0 +1,18 @@
+{
+  "id": "saga-fiebre-del-oro",
+  "name": "Imperivm II: Fiebre del Oro",
+  "version": "1.0",
+  "authors": [
+    "Haemimont Games",
+    "FX Interactive"
+  ],
+  "description": {
+    "spanish": "Aldeas y fortines repletos de oro. Quien consiga capturarlos podrá crear el mayor de los ejércitos. Mapa de Haemimont Games (Imperivm II, recopilado por Ferónidas).",
+    "english": "Map by Haemimont Games (Imperivm II, collected by Ferónidas)."
+  },
+  "category": "Maps",
+  "tags": [
+    "4 players"
+  ],
+  "redistributable": true
+}

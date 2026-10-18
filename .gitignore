@@ -3,6 +3,7 @@ originals/
 ported/**/*.[bB][fF][hH][pP]
 ported/**/*.bmp
 ported/**/*.pak
+ported/**/*.[aA][vV][iI]
 ported/*.zip
 OUTREACH.md
 raw/forum.json

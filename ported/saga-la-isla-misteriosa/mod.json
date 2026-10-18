@@ -1,0 +1,18 @@
+{
+  "id": "saga-la-isla-misteriosa",
+  "name": "Imperivm I: La Isla Misteriosa",
+  "version": "1.0",
+  "authors": [
+    "Haemimont Games",
+    "FX Interactive"
+  ],
+  "description": {
+    "spanish": "En este mapa, cuatro de los jugadores comienzan cada uno en una pequeña isla, y el resto juntos, en una gran isla central. Mapa de Haemimont Games (Imperivm I, recopilado por Ferónidas).",
+    "english": "Map by Haemimont Games (Imperivm I, collected by Ferónidas)."
+  },
+  "category": "Maps",
+  "tags": [
+    "8 players"
+  ],
+  "redistributable": true
+}

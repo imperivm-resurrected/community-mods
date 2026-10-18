@@ -1,0 +1,21 @@
+{
+  "id": "saga-batalla-por-la-supervivencia",
+  "name": "Imperivm I: Batalla por la Supervivencia",
+  "version": "1.0",
+  "authors": [
+    "Haemimont Games",
+    "FX Interactive"
+  ],
+  "description": {
+    "spanish": "Un mapa en el que lo primero que han de hacer los jugadores es escapar de una isla en la que están prisioneros. No puede ser jugado por enemigos controlados por el ordenador. Mapa de Haemimont Games (Imperivm I, recopilado por Ferónidas).",
+    "english": "Map by Haemimont Games (Imperivm I, collected by Ferónidas)."
+  },
+  "category": "Maps",
+  "tags": [
+    "5 players"
+  ],
+  "incompatibleWith": [
+    "caesar-mod"
+  ],
+  "redistributable": true
+}

@@ -1,0 +1,18 @@
+{
+  "id": "saga-una-x-marca-el-lugar",
+  "name": "Imperivm I: Una X Marca el Lugar",
+  "version": "1.0",
+  "authors": [
+    "Haemimont Games",
+    "FX Interactive"
+  ],
+  "description": {
+    "spanish": "Una gran isla en el centro rodeada de varias pequeñas que pueden -y deben- ser exploradas. Mapa de Haemimont Games (Imperivm I, recopilado por Ferónidas).",
+    "english": "Map by Haemimont Games (Imperivm I, collected by Ferónidas)."
+  },
+  "category": "Maps",
+  "tags": [
+    "4 players"
+  ],
+  "redistributable": true
+}

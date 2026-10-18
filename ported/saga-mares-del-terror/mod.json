@@ -1,0 +1,18 @@
+{
+  "id": "saga-mares-del-terror",
+  "name": "Imperivm I: Mares del Terror",
+  "version": "1.0",
+  "authors": [
+    "Haemimont Games",
+    "FX Interactive"
+  ],
+  "description": {
+    "spanish": "Una isla grande poblada de fuerzas neutrales, rodeada de otras más pequeñas. Especial para dos equipos con dos jugadores cada uno. Mapa de Haemimont Games (Imperivm I, recopilado por Ferónidas).",
+    "english": "Map by Haemimont Games (Imperivm I, collected by Ferónidas)."
+  },
+  "category": "Maps",
+  "tags": [
+    "4 players"
+  ],
+  "redistributable": true
+}

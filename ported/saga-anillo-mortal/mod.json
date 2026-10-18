@@ -1,0 +1,18 @@
+{
+  "id": "saga-anillo-mortal",
+  "name": "Imperivm I: Anillo Mortal",
+  "version": "1.0",
+  "authors": [
+    "Haemimont Games",
+    "FX Interactive"
+  ],
+  "description": {
+    "spanish": "Mapa para tres jugadores en el que existen pequeñas islas que darán ventaja al jugador que se atreva a explorarlas. Mapa de Haemimont Games (Imperivm I, recopilado por Ferónidas).",
+    "english": "Map by Haemimont Games (Imperivm I, collected by Ferónidas)."
+  },
+  "category": "Maps",
+  "tags": [
+    "3 players"
+  ],
+  "redistributable": true
+}

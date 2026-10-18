@@ -1,0 +1,21 @@
+{
+  "id": "saga-el-trono-de-dacia",
+  "name": "Imperivm I: El Trono de Dacia",
+  "version": "1.0",
+  "authors": [
+    "Haemimont Games",
+    "FX Interactive"
+  ],
+  "description": {
+    "spanish": "Siglo III d.C. Roma asiste al esplendor de Dacia, una de las provincias más prósperas del Imperio. Un enclave demasiado tentador para hombres ávidos de poder. Un laberinto de conspiraciones que culmina con el asesinato del gobernador Cayo Agrippa. Su hijo Fabio es condenado a galeras. En la soledad de su confinamiento, jura venganza... Aventura de Haemimont Games (Imperivm I, recopilado por Ferónidas).",
+    "english": "Adventure by Haemimont Games (Imperivm I, collected by Ferónidas)."
+  },
+  "category": "Campaigns",
+  "tags": [
+    "Spanish"
+  ],
+  "incompatibleWith": [
+    "caesar-mod"
+  ],
+  "redistributable": true
+}

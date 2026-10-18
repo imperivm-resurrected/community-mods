@@ -1,0 +1,24 @@
+{
+  "id": "saga-la-batalla-de-stonehenge",
+  "name": "Imperivm I: La Batalla de Stonehenge",
+  "version": "1.0",
+  "authors": [
+    "Haemimont Games",
+    "FX Interactive"
+  ],
+  "description": {
+    "spanish": "Un poderoso romano manejado por el ordenador domina este mapa montañoso. El objetivo es eliminarlo. Se recomienda que el resto de jugadores jueguen en equipo. Mapa de Haemimont Games (Imperivm I, recopilado por Ferónidas).",
+    "english": "Map by Haemimont Games (Imperivm I, collected by Ferónidas)."
+  },
+  "category": "Maps",
+  "tags": [
+    "5 players"
+  ],
+  "requires": [
+    "community-mod"
+  ],
+  "incompatibleWith": [
+    "caesar-mod"
+  ],
+  "redistributable": true
+}

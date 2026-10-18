@@ -1,0 +1,18 @@
+{
+  "id": "saga-multi-defensa",
+  "name": "Imperivm II: Multi-defensa",
+  "version": "1.0",
+  "authors": [
+    "Haemimont Games",
+    "FX Interactive"
+  ],
+  "description": {
+    "spanish": "Los bárbaros del norte están desatados. Tres asentamientos se interponen en su camino. Tu tarea es elegir qué tipo de guerreros deben entrenar los asentamientos para salir victoriosos del campo de batalla. Mapa de Haemimont Games (Imperivm II, recopilado por Ferónidas).",
+    "english": "Map by Haemimont Games (Imperivm II, collected by Ferónidas)."
+  },
+  "category": "Maps",
+  "tags": [
+    "3 players"
+  ],
+  "redistributable": true
+}

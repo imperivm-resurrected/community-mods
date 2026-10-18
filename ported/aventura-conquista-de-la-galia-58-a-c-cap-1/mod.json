@@ -1,0 +1,20 @@
+{
+  "id": "aventura-conquista-de-la-galia-58-a-c-cap-1",
+  "name": "Aventura - Conquista de la Galia (58 A.c.)- Cap.1",
+  "version": "1.0",
+  "authors": [
+    "Mietitore"
+  ],
+  "description": {
+    "spanish": "Algunos problemas en la frontera requieren la presencia de Julio César en la Provincia.Un choque banal de tribus será el pretexto para una de las mayores operaciones militares en la historia romana:la conquista de la Galia. Aventura de Mietitore (2020).",
+    "english": "Adventure by Mietitore (2020)."
+  },
+  "category": "Campaigns",
+  "tags": [
+    "Spanish"
+  ],
+  "requires": [
+    "greek-civilization-mod"
+  ],
+  "redistributable": true
+}
