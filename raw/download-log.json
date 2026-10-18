@@ -630,5 +630,26 @@
   "files": [
    "originals/forum/random-real-world/files/random_real_world_v3.1.zip"
   ]
+ },
+ "https://www.moddb.com/games/imperivm-great-battles-of-rome/addons/la-difesa-di-roma-spanish": {
+  "key": "t1297",
+  "name": "LA DEFENSA DE ROMA (2020)",
+  "files": [
+   "originals/forum/t1297/files/La_Difesa_di_Roma_-_Spanish.1.zip"
+  ]
+ },
+ "https://www.moddb.com/games/imperivm-great-battles-of-rome/addons/scipione-alle-porte-di-cartagine-147-ac-spanish": {
+  "key": "t1298",
+  "name": "ESCIPIÓN A LAS PUERTAS DE CARTAGO (2020)",
+  "files": [
+   "originals/forum/t1298/files/Scipione_alle_porte_di_Cartagine_-_Spanish.zip"
+  ]
+ },
+ "https://www.moddb.com/games/imperivm-great-battles-of-rome/addons/aventura-ribellione-di-spartaco-73-ac-spanish": {
+  "key": "t1299",
+  "name": "REBELIÓN DE ESPARTACO (2020)",
+  "files": [
+   "originals/forum/t1299/files/Ribellione_di_Spartaco_73_a.C._-_Spanish.2.zip"
+  ]
  }
 }

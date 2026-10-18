@@ -34,7 +34,9 @@ const e = found[0];
 if (!e.files.length && e.channel !== "forum") {
   const pre = slugify(`${e.section.replace(/ IMPERIVM /, " ")} ${e.title}`); // row "[AVENTURAS II] TITLE (5 maps)"
   const hit = fs.existsSync(path.join(ROOT, "originals", "forum")) && fs.readdirSync(path.join(ROOT, "originals", "forum")).find(d => d === pre || d.startsWith(pre + "-"));
-  const dir = hit && path.join("originals", "forum", hit);
+  // or the forum topic the post links to (downloaded as originals/forum/t<id>/)
+  const topic = e.links.map(u => (u.match(/foroactivo\.com\/t(\d+)-/) || [])[1]).find(Boolean);
+  const dir = hit ? path.join("originals", "forum", hit) : topic && path.join("originals", "forum", "t" + topic);
   if (dir && fs.existsSync(path.join(ROOT, dir, "files"))) e.files = fs.readdirSync(path.join(ROOT, dir, "files")).map(n => ({ name: n, local: path.join(dir, "files", n) }));
 }
 if (!e.files.length) { console.error("nothing downloaded for", opt._); process.exit(1); }
@@ -165,17 +167,18 @@ const players = opt.players || (counts.length ? (lo === hi ? `${lo} players` : `
 
 // the saga: the maps and adventures of Imperivm I and II that came with the games, collected by Ferónidas on Discord
 const saga = e.channel === "saga-imperivm";
-const author = saga ? "Haemimont Games" : e.author || "?";
+// a saga entry with an author is a community remake of the original (e.g. OskaOtzuna's Imperivm II adventures)
+const author = saga ? e.author || "Haemimont Games" : e.author || "?";
 const sagaGame = saga && (/ II$/.test(e.section) ? "Imperivm II" : "Imperivm I");
 const desc = e.desc || (maps.length === 1 ? mapDesc(path.join(dest, maps[0])) : "");
-const meta = saga ? `${sagaGame}, recopilado por Ferónidas` : [e.year, e.base].filter(Boolean).join(", ");
-const metaEn = saga ? `${sagaGame}, collected by Ferónidas` : meta;
+const meta = saga ? (e.author ? `versión mejorada de la aventura de ${sagaGame} de Haemimont Games, recopilada por Ferónidas` : `${sagaGame}, recopilado por Ferónidas`) : [e.year, e.base].filter(Boolean).join(", ");
+const metaEn = saga ? (e.author ? `improved version of the ${sagaGame} adventure by Haemimont Games, collected by Ferónidas` : `${sagaGame}, collected by Ferónidas`) : meta;
 const what = isAdv ? "Aventura" : maps.length > 1 ? `${maps.length} mapas` : "Mapa";
 const mod = {
   id,
   name: (saga ? `${sagaGame}: ` : "") + titleCase(e.title),
   version: "1.0",
-  authors: saga ? ["Haemimont Games", "FX Interactive"] : [author],
+  authors: saga ? [...(e.author ? [e.author] : []), "Haemimont Games", "FX Interactive"] : [author],
   description: {
     spanish: `${desc ? desc.replace(/([^.!?…])$/, "$1.") + " " : ""}${what} de ${author}${meta ? ` (${meta})` : ""}.`,
     english: `${what === "Aventura" ? "Adventure" : what === "Mapa" ? "Map" : maps.length + " maps"} by ${author}${metaEn ? ` (${metaEn})` : ""}.`,

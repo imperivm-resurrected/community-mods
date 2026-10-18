@@ -1398,13 +1398,13 @@
   "checked": "2026-10-18"
  },
  "https://www.moddb.com/games/imperivm-great-battles-of-rome/addons/aventura-la-rivolta-dei-messeni-464-ac-spanish": {
-  "ok": null,
-  "status": "moddb (blocks bots)",
+  "ok": true,
+  "status": "moddb: downloaded with tools/download-forum.js",
   "checked": "2026-10-18"
  },
  "https://www.moddb.com/games/imperivm-great-battles-of-rome/addons/avventura-conquista-della-gallia-58-ac-esp-cap1": {
-  "ok": null,
-  "status": "moddb (blocks bots)",
+  "ok": true,
+  "status": "moddb: downloaded with tools/download-forum.js",
   "checked": "2026-10-18"
  },
  "https://mega.nz/file/bQ8wgbaD#XIgQuViUZoCJAj5qFQnquFs5KWSkoBo58l2ctWASw-A": {
@@ -1836,8 +1836,8 @@
   "checked": "2026-10-18"
  },
  "https://www.moddb.com/mods/imperivm-legacy/downloads": {
-  "ok": null,
-  "status": "moddb (blocks bots)",
+  "ok": true,
+  "status": "moddb: downloaded with tools/download-forum.js",
   "checked": "2026-10-18"
  },
  "https://www.moddb.com/mods/caesar-mod/downloads/caesar-mod-110": {
@@ -2191,8 +2191,8 @@
   "checked": "2026-10-18"
  },
  "http://www.moddb.com/mods/asurmod/downloads": {
-  "ok": null,
-  "status": "moddb (blocks bots)",
+  "ok": true,
+  "status": "moddb: downloaded with tools/download-forum.js",
   "checked": "2026-10-18"
  },
  "https://mega.nz/#!mlxVGIpR!v1L2BmLeWRqnfLUrvqMPdN6T1RzocL_C7LDJADv11DM": {
@@ -2742,6 +2742,41 @@
  "https://chatgpt.com/share/6a8f1281-7618-83eb-a40c-37268610953c": {
   "ok": true,
   "status": "http 200",
+  "checked": "2026-10-18"
+ },
+ "https://www.moddb.com/mods/gbr-tactics2/downloads/gbr-tactics-download": {
+  "ok": true,
+  "status": "moddb: downloaded with tools/download-forum.js",
+  "checked": "2026-10-18"
+ },
+ "https://www.moddb.com/mods/imperivm-gbr-plus/downloads/imperivm-gbr-plus-v131": {
+  "ok": true,
+  "status": "moddb: downloaded with tools/download-forum.js",
+  "checked": "2026-10-18"
+ },
+ "https://www.moddb.com/games/imperivm-great-battles-of-rome/downloads/mediterranevm-mod-alpha": {
+  "ok": true,
+  "status": "moddb: downloaded with tools/download-forum.js",
+  "checked": "2026-10-18"
+ },
+ "https://www.moddb.com/games/imperivm-great-battles-of-rome/downloads/imperivm-iii-epic-battle-music-mod": {
+  "ok": true,
+  "status": "moddb: downloaded with tools/download-forum.js",
+  "checked": "2026-10-18"
+ },
+ "https://www.moddb.com/mods/larax-adventure/downloads": {
+  "ok": true,
+  "status": "moddb: downloaded with tools/download-forum.js",
+  "checked": "2026-10-18"
+ },
+ "https://www.moddb.com/games/imperivm-great-battles-of-rome/addons/scenarios": {
+  "ok": true,
+  "status": "moddb: downloaded with tools/download-forum.js",
+  "checked": "2026-10-18"
+ },
+ "https://www.moddb.com/games/imperivm-great-battles-of-rome/addons/random-real-world": {
+  "ok": true,
+  "status": "moddb: downloaded with tools/download-forum.js",
   "checked": "2026-10-18"
  }
 }

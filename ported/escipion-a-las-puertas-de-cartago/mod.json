@@ -1,0 +1,17 @@
+{
+  "id": "escipion-a-las-puertas-de-cartago",
+  "name": "Escipión a las Puertas de Cartago",
+  "version": "1.0",
+  "authors": [
+    "Mietitore"
+  ],
+  "description": {
+    "spanish": "Después de la Segunda Guerra Púnica, Cartago continuó preocupando al Senado de Roma por el comercio. Como el tratado de paz firmado al final de la Segunda Guerra Púnica evitó que Cartago declarara la guerra sin el consentimiento de los romanos, cuando los cartagineses se cansaron de las provocaciones de Massinissa, rey de los Numidos, empuñaban armas, el Senado declaró la guerra en 149 a.C. Luego Roma envió al cónsul Escipión el Emiliano en 147 a.C. para poner fin al conflicto y finalmente destruir Cartago. Aventura de Mietitore (2020, Imperivm III v1.56).",
+    "english": "Adventure by Mietitore (2020, Imperivm III v1.56)."
+  },
+  "category": "Campaigns",
+  "tags": [
+    "Spanish"
+  ],
+  "redistributable": true
+}

@@ -3,12 +3,13 @@
   "name": "Imperivm II: Las Campañas de Aníbal",
   "version": "1.0",
   "authors": [
+    "OskaOtzuna",
     "Haemimont Games",
     "FX Interactive"
   ],
   "description": {
-    "spanish": "Año 238 a.C. Cartago emprende la conquista de la península Ibérica como primer paso para recuperar su hegemonía. Un plan que ni Roma ni los pueblos iberos están dispuestos a aceptar… Aventura de Haemimont Games (Imperivm II, recopilado por Ferónidas).",
-    "english": "Adventure by Haemimont Games (Imperivm II, collected by Ferónidas)."
+    "spanish": "Año 238 a.C. Cartago emprende la conquista de la península Ibérica como primer paso para recuperar su hegemonía. Un plan que ni Roma ni los pueblos iberos están dispuestos a aceptar… Aventura de OskaOtzuna (versión mejorada de la aventura de Imperivm II de Haemimont Games, recopilada por Ferónidas).",
+    "english": "Adventure by OskaOtzuna (improved version of the Imperivm II adventure by Haemimont Games, collected by Ferónidas)."
   },
   "category": "Campaigns",
   "tags": [
