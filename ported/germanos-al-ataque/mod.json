@@ -1,0 +1,17 @@
+{
+  "id": "germanos-al-ataque",
+  "name": "Germanos al Ataque",
+  "version": "1.0",
+  "authors": [
+    "IMPERYUS"
+  ],
+  "description": {
+    "spanish": "Germar debe acabar con los galos e imponer el dominio germano sobre ellos. Aventura de IMPERYUS (2019, Imperivm III v1.40).",
+    "english": "Adventure by IMPERYUS (2019, Imperivm III v1.40)."
+  },
+  "category": "Campaigns",
+  "tags": [
+    "Spanish"
+  ],
+  "redistributable": true
+}

@@ -1,0 +1,17 @@
+{
+  "id": "1v1-pequeno",
+  "name": "1v1 Pequeño",
+  "version": "1.0",
+  "authors": [
+    "Halcón"
+  ],
+  "description": {
+    "spanish": "Mapa de Halcón (2023, Imperivm HD vRelease 1.0).",
+    "english": "Map by Halcón (2023, Imperivm HD vRelease 1.0)."
+  },
+  "category": "Maps",
+  "tags": [
+    "2 players"
+  ],
+  "redistributable": true
+}

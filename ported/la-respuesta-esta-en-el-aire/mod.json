@@ -1,0 +1,17 @@
+{
+  "id": "la-respuesta-esta-en-el-aire",
+  "name": "La Respuesta Está en el Aire",
+  "version": "1.0",
+  "authors": [
+    "Guigoras"
+  ],
+  "description": {
+    "spanish": "Keltill regresa a su ciudad con intención de unirse a la lucha contra Roma, pero es demasiado tarde. Ha sido reducida a cenizas. La única resistencia ahora son los celtas de Castro, sus territorios y tal vez exista el Templo de Lucil y una resistencia íbera. ¿Podrás cambiar la historia? Aventura de Guigoras (2020, Imperivm III v1.40).",
+    "english": "Adventure by Guigoras (2020, Imperivm III v1.40)."
+  },
+  "category": "Campaigns",
+  "tags": [
+    "Spanish"
+  ],
+  "redistributable": true
+}

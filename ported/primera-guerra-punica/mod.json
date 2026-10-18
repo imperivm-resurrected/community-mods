@@ -1,0 +1,17 @@
+{
+  "id": "primera-guerra-punica",
+  "name": "Primera Guerra Púnica",
+  "version": "1.0",
+  "authors": [
+    "jclempire"
+  ],
+  "description": {
+    "spanish": "264 a.C. La isla de Sicilia es un hervidero de conflictos. El último de estos, es es la lucha de Hierón II deSiracusa contra un grupo de mercenarios mamertinos que tomaron a traición la ciudad de Mesina y asesinaron a sus ciudadanos. Hieron logra derrotarlos contundentemente, por lo que los mercenarios piden ayuda a Cartago y Roma. Mapa de jclempire (2021, Imperivm III v1.40).",
+    "english": "Map by jclempire (2021, Imperivm III v1.40)."
+  },
+  "category": "Maps",
+  "tags": [
+    "3 players"
+  ],
+  "redistributable": true
+}

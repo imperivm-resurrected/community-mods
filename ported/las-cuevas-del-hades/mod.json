@@ -1,0 +1,17 @@
+{
+  "id": "las-cuevas-del-hades",
+  "name": "Las Cuevas del Hades",
+  "version": "1.0",
+  "authors": [
+    "Guigoras"
+  ],
+  "description": {
+    "spanish": "Incluso un superhéroe tiene un resbalón... Lárax no iba a ser menos. Y entonces hay que estar preparado. ¿Tú lo estás? ¡Cuántos más muertos tengas en el armario más tendrás que saltar! Aventura de Guigoras (2015, Imperivm III v1.40).",
+    "english": "Adventure by Guigoras (2015, Imperivm III v1.40)."
+  },
+  "category": "Campaigns",
+  "tags": [
+    "Spanish"
+  ],
+  "redistributable": true
+}

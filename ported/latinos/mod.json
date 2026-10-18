@@ -1,0 +1,17 @@
+{
+  "id": "latinos",
+  "name": "Latinos",
+  "version": "1.0",
+  "authors": [
+    "Guigoras"
+  ],
+  "description": {
+    "spanish": "En el medio de la península itálica un pueblo esta siendo explotado por sus vecinos. Dos hermanos lo cambiarán todo. Ésta es su historia. Aventura de Guigoras (2013, Imperivm III v1.40).",
+    "english": "Adventure by Guigoras (2013, Imperivm III v1.40)."
+  },
+  "category": "Campaigns",
+  "tags": [
+    "Spanish"
+  ],
+  "redistributable": true
+}

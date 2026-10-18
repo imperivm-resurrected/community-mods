@@ -1,0 +1,17 @@
+{
+  "id": "minitorneo",
+  "name": "Minitorneo",
+  "version": "1.0",
+  "authors": [
+    "Inu El Heredero"
+  ],
+  "description": {
+    "spanish": "Mapa Pequeño Competitivo. Mapa de Inu El Heredero (2026, Imperivm HD vRelease 1.0).",
+    "english": "Map by Inu El Heredero (2026, Imperivm HD vRelease 1.0)."
+  },
+  "category": "Maps",
+  "tags": [
+    "2 players"
+  ],
+  "redistributable": true
+}

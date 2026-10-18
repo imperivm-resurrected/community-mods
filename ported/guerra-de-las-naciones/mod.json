@@ -1,0 +1,17 @@
+{
+  "id": "guerra-de-las-naciones",
+  "name": "Guerra de las Naciones",
+  "version": "1.0",
+  "authors": [
+    "lusitano"
+  ],
+  "description": {
+    "spanish": "JUGADOR 1 IBERO JUGADOR 2 BRITANO JUGADOR3 GERMANO JUGADOR4 EGIPCIO JUGADOR 5 ROMA IMPERIAL JUGADOR6 GERMANO JUGADOR7 EGIPCIO JUGADOR8 BRITANO. Mapa de lusitano (2015, Imperivm III v1.40).",
+    "english": "Map by lusitano (2015, Imperivm III v1.40)."
+  },
+  "category": "Maps",
+  "tags": [
+    "8 players"
+  ],
+  "redistributable": true
+}

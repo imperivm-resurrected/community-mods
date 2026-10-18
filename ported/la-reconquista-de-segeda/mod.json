@@ -1,0 +1,17 @@
+{
+  "id": "la-reconquista-de-segeda",
+  "name": "La Reconquista de Segeda",
+  "version": "1.0",
+  "authors": [
+    "Kalyga"
+  ],
+  "description": {
+    "spanish": "Aventura de Kalyga (2022, Imperivm HD vRelease 1.0).",
+    "english": "Adventure by Kalyga (2022, Imperivm HD vRelease 1.0)."
+  },
+  "category": "Campaigns",
+  "tags": [
+    "Spanish"
+  ],
+  "redistributable": true
+}

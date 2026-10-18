@@ -1,0 +1,17 @@
+{
+  "id": "desembarco-en-hispania",
+  "name": "Desembarco en Hispania",
+  "version": "1.0",
+  "authors": [
+    "Jorgra2000"
+  ],
+  "description": {
+    "spanish": "Cartago pone la vista en Hispania, una tierra rica la cual servirá para compensar las pérdidas tras su derrota contra Roma en la Primera Guerra Púnica, sin embargo algunas tribus iberas no le facilitarán la expansión. En el año 236 a.C. el general Amílcar Barca desembarca en Hispania. Aventura de Jorgra2000 (2022, Imperivm HD vRelease 1.0).",
+    "english": "Adventure by Jorgra2000 (2022, Imperivm HD vRelease 1.0)."
+  },
+  "category": "Campaigns",
+  "tags": [
+    "Spanish"
+  ],
+  "redistributable": true
+}

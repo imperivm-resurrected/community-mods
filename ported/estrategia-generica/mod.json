@@ -1,0 +1,17 @@
+{
+  "id": "estrategia-generica",
+  "name": "Estrategia Genérica",
+  "version": "1.0",
+  "authors": [
+    "molerotoni"
+  ],
+  "description": {
+    "spanish": "Tal cual una de las aleatorias, a no ser... Va, doy un par de pistas: 1-No seas mierdas y no juegues con mapa ya explorado y sin niebla. 2-Asegúrate de explorar bien y tal. 3-Si tienes a un payo que da pistas, joder pistas gratis. Mapa de molerotoni (2015, Imperivm III v1.40).",
+    "english": "Map by molerotoni (2015, Imperivm III v1.40)."
+  },
+  "category": "Maps",
+  "tags": [
+    "1 players"
+  ],
+  "redistributable": true
+}

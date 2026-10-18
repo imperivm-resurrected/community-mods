@@ -1,0 +1,17 @@
+{
+  "id": "mapas-simetricos-imperivm-world-cup",
+  "name": "Mapas Simétricos Imperivm World Cup",
+  "version": "1.0",
+  "authors": [
+    "Ferónidas"
+  ],
+  "description": {
+    "spanish": "36 mapas de Ferónidas (2021, Imperivm HD vRelease 1.0).",
+    "english": "36 maps by Ferónidas (2021, Imperivm HD vRelease 1.0)."
+  },
+  "category": "Maps",
+  "tags": [
+    "8 players"
+  ],
+  "redistributable": true
+}

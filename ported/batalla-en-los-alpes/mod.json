@@ -1,0 +1,17 @@
+{
+  "id": "batalla-en-los-alpes",
+  "name": "Batalla en los Alpes",
+  "version": "1.0",
+  "authors": [
+    "Soundless Flow"
+  ],
+  "description": {
+    "spanish": "Mapa equilibrado 3v3 para torneo con 2 foros de espectador. Mapa de Soundless Flow (2021, Imperivm HD vRelease 1.0).",
+    "english": "Map by Soundless Flow (2021, Imperivm HD vRelease 1.0)."
+  },
+  "category": "Maps",
+  "tags": [
+    "8 players"
+  ],
+  "redistributable": true
+}

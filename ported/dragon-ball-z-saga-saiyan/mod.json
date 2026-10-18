@@ -1,0 +1,17 @@
+{
+  "id": "dragon-ball-z-saga-saiyan",
+  "name": "Dragon Ball Z (saga Saiyan)",
+  "version": "1.0",
+  "authors": [
+    "IMPERYUS"
+  ],
+  "description": {
+    "spanish": "Revive las aventuras de Goku y sus amigos en esta aventura basada en el famoso anime japonés \"Dragon Ball Z\". Aventura de IMPERYUS (2018, Imperivm III v1.40).",
+    "english": "Adventure by IMPERYUS (2018, Imperivm III v1.40)."
+  },
+  "category": "Campaigns",
+  "tags": [
+    "Spanish"
+  ],
+  "redistributable": true
+}

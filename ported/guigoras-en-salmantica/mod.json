@@ -1,0 +1,17 @@
+{
+  "id": "guigoras-en-salmantica",
+  "name": "Guigoras en Salmantica",
+  "version": "1.0",
+  "authors": [
+    "Guigoras"
+  ],
+  "description": {
+    "spanish": "Salmantica esta gobernada por cartagineses que para conservarla han pactado con Roma. La ocupacion romana es evidente. Hará falta mucha ayuda de la Orden de Lucil y de Salmantica. Aventura de Guigoras (2015, Imperivm III v1.40).",
+    "english": "Adventure by Guigoras (2015, Imperivm III v1.40)."
+  },
+  "category": "Campaigns",
+  "tags": [
+    "Spanish"
+  ],
+  "redistributable": true
+}

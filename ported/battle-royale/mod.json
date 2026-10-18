@@ -1,0 +1,17 @@
+{
+  "id": "battle-royale",
+  "name": "Battle Royale",
+  "version": "1.0",
+  "authors": [
+    "sgtsebastian"
+  ],
+  "description": {
+    "spanish": "Battle royale al estilo imperium. --No elegir ninguna bonificación al inicio--. Mapa de sgtsebastian (2021, Imperivm III v1.56).",
+    "english": "Map by sgtsebastian (2021, Imperivm III v1.56)."
+  },
+  "category": "Maps",
+  "tags": [
+    "8 players"
+  ],
+  "redistributable": true
+}

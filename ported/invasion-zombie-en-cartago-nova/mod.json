@@ -1,0 +1,17 @@
+{
+  "id": "invasion-zombie-en-cartago-nova",
+  "name": "Invasión Zombie en Cartago Nova",
+  "version": "1.0",
+  "authors": [
+    "manuel.torrente"
+  ],
+  "description": {
+    "spanish": "Partida de aventura en donde tendrás que ayudar a Falbalá a buscar asilo en una tierra desconocida para ella. Aventura de manuel.torrente (2022, Imperivm III v1.40).",
+    "english": "Adventure by manuel.torrente (2022, Imperivm III v1.40)."
+  },
+  "category": "Campaigns",
+  "tags": [
+    "Spanish"
+  ],
+  "redistributable": true
+}

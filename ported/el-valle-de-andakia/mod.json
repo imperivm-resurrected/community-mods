@@ -1,0 +1,17 @@
+{
+  "id": "el-valle-de-andakia",
+  "name": "El Valle de Andakia",
+  "version": "1.0",
+  "authors": [
+    "Elektro"
+  ],
+  "description": {
+    "spanish": "Elektro es el hijo de el jefe de una pequeña tribu que vive en las montañas del hermoso y rico en minerales y fauna valle de Andakia. Elektro vivía una pacifica vida con su pueblo hasta que un día... Aventura de Elektro (2018, Imperivm III v1.40).",
+    "english": "Adventure by Elektro (2018, Imperivm III v1.40)."
+  },
+  "category": "Campaigns",
+  "tags": [
+    "Spanish"
+  ],
+  "redistributable": true
+}

@@ -1,0 +1,17 @@
+{
+  "id": "el-rio-del-silencio-4v4",
+  "name": "El Río del Silencio 4v4",
+  "version": "1.0",
+  "authors": [
+    "Terminator888"
+  ],
+  "description": {
+    "spanish": "Autor: Terminator888  Mapa 4vs4 simétrico. Mapa de Terminator888 (2021, Imperivm HD vRelease 1.0).",
+    "english": "Map by Terminator888 (2021, Imperivm HD vRelease 1.0)."
+  },
+  "category": "Maps",
+  "tags": [
+    "8 players"
+  ],
+  "redistributable": true
+}

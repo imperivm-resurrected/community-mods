@@ -1,0 +1,17 @@
+{
+  "id": "desierto",
+  "name": "Desierto",
+  "version": "1.0",
+  "authors": [
+    "Jochi"
+  ],
+  "description": {
+    "spanish": "Aventura de Jochi (2012, Imperivm III v1.40).",
+    "english": "Adventure by Jochi (2012, Imperivm III v1.40)."
+  },
+  "category": "Campaigns",
+  "tags": [
+    "Spanish"
+  ],
+  "redistributable": true
+}

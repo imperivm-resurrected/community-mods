@@ -1,0 +1,17 @@
+{
+  "id": "la-gran-muralla",
+  "name": "La Gran Muralla",
+  "version": "1.0",
+  "authors": [
+    "arkano57"
+  ],
+  "description": {
+    "spanish": "Mapa para jugar un entretenido 2 contra 2, con 2 britanos y dos galos... quien conquiste la parte central del mapa, y mantenga a ralla, a sus contrincantes conseguirá una gran ventaja frente a sus aliados, los barbaros, controlan las murallas, al mano del gran general Apeiron, de origen nordico... Mapa de arkano57 (2009, Imperivm III v1.40).",
+    "english": "Map by arkano57 (2009, Imperivm III v1.40)."
+  },
+  "category": "Maps",
+  "tags": [
+    "4 players"
+  ],
+  "redistributable": true
+}

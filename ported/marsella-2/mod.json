@@ -1,0 +1,17 @@
+{
+  "id": "marsella-2",
+  "name": "Marsella 2",
+  "version": "1.0",
+  "authors": [
+    "Guigoras"
+  ],
+  "description": {
+    "spanish": "Marsella está romanizada. Julio César está terminando su gloriosa campaña en la Galia y su futuro y el gobierno de Roma están en juego. Aventura de Guigoras (2013, Imperivm III v1.40).",
+    "english": "Adventure by Guigoras (2013, Imperivm III v1.40)."
+  },
+  "category": "Campaigns",
+  "tags": [
+    "Spanish"
+  ],
+  "redistributable": true
+}

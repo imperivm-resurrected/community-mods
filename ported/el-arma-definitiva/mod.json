@@ -1,0 +1,17 @@
+{
+  "id": "el-arma-definitiva",
+  "name": "El Arma Definitiva",
+  "version": "1.0",
+  "authors": [
+    "Rubeneitor"
+  ],
+  "description": {
+    "spanish": "Mapa para 1v1 o 1v1v1 donde hay un nuevo objeto extremadamente poderoso en algún rincón. Mapa de Rubeneitor (2023, Imperivm HD vRelease 1.0).",
+    "english": "Map by Rubeneitor (2023, Imperivm HD vRelease 1.0)."
+  },
+  "category": "Maps",
+  "tags": [
+    "3 players"
+  ],
+  "redistributable": true
+}

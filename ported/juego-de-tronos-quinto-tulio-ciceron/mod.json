@@ -1,0 +1,15 @@
+{
+  "id": "juego-de-tronos-quinto-tulio-ciceron",
+  "name": "Juego de Tronos",
+  "version": "1.0",
+  "authors": [
+    "Quinto Tulio Cicerón"
+  ],
+  "description": {
+    "spanish": "Mapa de Quinto Tulio Cicerón (2019, Imperivm III v1.40).",
+    "english": "Map by Quinto Tulio Cicerón (2019, Imperivm III v1.40)."
+  },
+  "category": "Maps",
+  "tags": [],
+  "redistributable": true
+}

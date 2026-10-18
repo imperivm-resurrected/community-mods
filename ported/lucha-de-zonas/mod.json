@@ -1,0 +1,17 @@
+{
+  "id": "lucha-de-zonas",
+  "name": "Lucha de Zonas",
+  "version": "1.0",
+  "authors": [
+    "frank9999"
+  ],
+  "description": {
+    "spanish": "2 Jugadores luchan por el control de las bases distribuidas por el mapa,cada jugador dispone de 5 zonas que debe proteger,y que si pierde servirán de puestos avanzados al enemigo,asimismo cada jugador puede recibir pequeños refuerzos cada 3 o 30 minutos de tropas de distinta clase,una forma de recomponer las tropas perdidas,recogiendo las cartas dispersas por el nivel y metiendolas en los tron&. Mapa de frank9999 (2020, Imperivm III v1.40).",
+    "english": "Map by frank9999 (2020, Imperivm III v1.40)."
+  },
+  "category": "Maps",
+  "tags": [
+    "4 players"
+  ],
+  "redistributable": true
+}

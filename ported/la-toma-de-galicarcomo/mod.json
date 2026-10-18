@@ -1,0 +1,17 @@
+{
+  "id": "la-toma-de-galicarcomo",
+  "name": "La Toma de Galicarcomo",
+  "version": "1.0",
+  "authors": [
+    "IMPERYUS"
+  ],
+  "description": {
+    "spanish": "Marco \"el patán\" es destinado a tomar una fortaleza gala que está causando graves problemas a Roma. De su victoria depende que siga siendo llamado \"el patán\" o no. Aventura de IMPERYUS (2019, Imperivm III v1.40).",
+    "english": "Adventure by IMPERYUS (2019, Imperivm III v1.40)."
+  },
+  "category": "Campaigns",
+  "tags": [
+    "Spanish"
+  ],
+  "redistributable": true
+}

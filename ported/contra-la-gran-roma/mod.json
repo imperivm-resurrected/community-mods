@@ -1,0 +1,17 @@
+{
+  "id": "contra-la-gran-roma",
+  "name": "Contra la Gran Roma",
+  "version": "1.0",
+  "authors": [
+    "Avian98"
+  ],
+  "description": {
+    "spanish": "Mapa de Avian98 (2019, Imperivm III v1.56).",
+    "english": "Map by Avian98 (2019, Imperivm III v1.56)."
+  },
+  "category": "Maps",
+  "tags": [
+    "5 players"
+  ],
+  "redistributable": true
+}

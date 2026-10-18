@@ -1,0 +1,17 @@
+{
+  "id": "defenders-nightmare",
+  "name": "Defenders Nightmare",
+  "version": "1.0",
+  "authors": [
+    "Rubeneitor, Hareld y Haemimont Games"
+  ],
+  "description": {
+    "spanish": "Your group has been chosen by the gods to defend the sacred hill from the barbarian attack. Your mission is to resist as many days as possible. At the end of each day the gods will grant you a wish.  (Harder version from first part). Aventura de Rubeneitor, Hareld y Haemimont Games (2022, Imperivm HD vRelease 1.0).",
+    "english": "Adventure by Rubeneitor, Hareld y Haemimont Games (2022, Imperivm HD vRelease 1.0)."
+  },
+  "category": "Campaigns",
+  "tags": [
+    "Spanish"
+  ],
+  "redistributable": true
+}

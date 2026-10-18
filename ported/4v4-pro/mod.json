@@ -1,0 +1,17 @@
+{
+  "id": "4v4-pro",
+  "name": "4v4 Pro",
+  "version": "1.0",
+  "authors": [
+    "Halcón"
+  ],
+  "description": {
+    "spanish": "Mapa de Halcón (2023, Imperivm HD vRelease 1.0).",
+    "english": "Map by Halcón (2023, Imperivm HD vRelease 1.0)."
+  },
+  "category": "Maps",
+  "tags": [
+    "8 players"
+  ],
+  "redistributable": true
+}

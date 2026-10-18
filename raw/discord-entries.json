@@ -1786,7 +1786,7 @@
     "name": "Juego_de_Tronos_Grande.rar",
     "size": 581556,
     "url": "https://cdn.discordapp.com/attachments/1413782299786608682/1414914372689461389/Juego_de_Tronos_Grande.rar?ex=6ad54272&is=6ad3f0f2&hm=04896e34d9f9c836ed411b55ec7666d1b608cc244db09a280af7b7d6cc5266da&",
-    "local": "originals/discord/mapas/juego-de-tronos/Juego_de_Tronos_Grande.rar"
+    "local": "originals/discord/mapas/juego-de-tronos-quinto-tulio-ciceron/Juego_de_Tronos_Grande.rar"
    }
   ],
   "shots": [
@@ -1794,12 +1794,12 @@
     "name": "Captura_de_pantalla_1389.png",
     "size": 1587930,
     "url": "https://cdn.discordapp.com/attachments/1413782299786608682/1414914414129451018/Captura_de_pantalla_1389.png?ex=6ad5427c&is=6ad3f0fc&hm=10f729ad4e71ed29dcb7d5530275cf2e7b52f4b519c10fca434cbf2e536fa2a1&",
-    "local": "originals/discord/mapas/juego-de-tronos/screenshots/Captura_de_pantalla_1389.png"
+    "local": "originals/discord/mapas/juego-de-tronos-quinto-tulio-ciceron/screenshots/Captura_de_pantalla_1389.png"
    }
   ],
   "desc": "",
   "count": 1,
-  "slug": "juego-de-tronos"
+  "slug": "juego-de-tronos-quinto-tulio-ciceron"
  },
  {
   "channel": "mapas",
@@ -2262,7 +2262,7 @@
     "name": "MAPA_4V4_BY_AULO.BFHP",
     "size": 1039222,
     "url": "https://cdn.discordapp.com/attachments/1413782299786608682/1414920681279328326/MAPA_4V4_BY_AULO.BFHP?ex=6ad54852&is=6ad3f6d2&hm=00e081ea9a39d89ebaba13dfe3af07325be1af0b9e19473d9132759c579ee58b&",
-    "local": "originals/discord/mapas/mapa-4v4/MAPA_4V4_BY_AULO.BFHP"
+    "local": "originals/discord/mapas/mapa-4v4-aulo/MAPA_4V4_BY_AULO.BFHP"
    }
   ],
   "shots": [
@@ -2270,12 +2270,12 @@
     "name": "Captura_de_pantalla_1452.png",
     "size": 1672334,
     "url": "https://cdn.discordapp.com/attachments/1413782299786608682/1414920721347510324/Captura_de_pantalla_1452.png?ex=6ad5485b&is=6ad3f6db&hm=270ee5a26b0c445cfdfcab49c8e5ed570b7cc865fb7755b88c55f79d9e378300&",
-    "local": "originals/discord/mapas/mapa-4v4/screenshots/Captura_de_pantalla_1452.png"
+    "local": "originals/discord/mapas/mapa-4v4-aulo/screenshots/Captura_de_pantalla_1452.png"
    }
   ],
   "desc": "",
   "count": 1,
-  "slug": "mapa-4v4"
+  "slug": "mapa-4v4-aulo"
  },
  {
   "channel": "mapas",
@@ -2494,7 +2494,7 @@
     "name": "4_v_4__mapagrande_isla.BFHP",
     "size": 3695969,
     "url": "https://cdn.discordapp.com/attachments/1413782299786608682/1414924116074692668/4_v_4__mapagrande_isla.BFHP?ex=6ad54b85&is=6ad3fa05&hm=388905ef29a75b9b55178d964b4e8f58da9be0d28be2a495af9f3485d08e75a0&",
-    "local": "originals/discord/mapas/mapa-4v4/4_v_4__mapagrande_isla.BFHP"
+    "local": "originals/discord/mapas/mapa-4v4-halcon/4_v_4__mapagrande_isla.BFHP"
    }
   ],
   "shots": [
@@ -2502,12 +2502,12 @@
     "name": "Captura_de_pantalla_1438.png",
     "size": 1282774,
     "url": "https://cdn.discordapp.com/attachments/1413782299786608682/1414924153378832446/Captura_de_pantalla_1438.png?ex=6ad54b8e&is=6ad3fa0e&hm=86c9ba0fe0133e65c90f82bf1d08ccda9741c91f019544f08d1b676f79ea08b4&",
-    "local": "originals/discord/mapas/mapa-4v4/screenshots/Captura_de_pantalla_1438.png"
+    "local": "originals/discord/mapas/mapa-4v4-halcon/screenshots/Captura_de_pantalla_1438.png"
    }
   ],
   "desc": "",
   "count": 1,
-  "slug": "mapa-4v4"
+  "slug": "mapa-4v4-halcon"
  },
  {
   "channel": "mapas",
@@ -2523,7 +2523,7 @@
     "name": "mapa_invierno_1v1v1_armadefinitiva.BFHP",
     "size": 1002004,
     "url": "https://cdn.discordapp.com/attachments/1413782299786608682/1414924195887972416/mapa_invierno_1v1v1_armadefinitiva.BFHP?ex=6ad54b98&is=6ad3fa18&hm=7c4b9bd4ae6982c29f704e4ef6717355dade726124791e0bab748be68d07a926&",
-    "local": "originals/discord/mapas/arma-definitiva-1v1v1/mapa_invierno_1v1v1_armadefinitiva.BFHP"
+    "local": "originals/discord/mapas/arma-definitiva-1v1v1-halcon/mapa_invierno_1v1v1_armadefinitiva.BFHP"
    }
   ],
   "shots": [
@@ -2531,12 +2531,12 @@
     "name": "Captura_de_pantalla_1440.png",
     "size": 1602748,
     "url": "https://cdn.discordapp.com/attachments/1413782299786608682/1414924234488283227/Captura_de_pantalla_1440.png?ex=6ad54ba1&is=6ad3fa21&hm=304857c62a9aeb789a283d70bc7e80e514a7a7d97c60f2465a9067dc8dd763f7&",
-    "local": "originals/discord/mapas/arma-definitiva-1v1v1/screenshots/Captura_de_pantalla_1440.png"
+    "local": "originals/discord/mapas/arma-definitiva-1v1v1-halcon/screenshots/Captura_de_pantalla_1440.png"
    }
   ],
   "desc": "",
   "count": 1,
-  "slug": "arma-definitiva-1v1v1"
+  "slug": "arma-definitiva-1v1v1-halcon"
  },
  {
   "channel": "mapas",
@@ -2552,7 +2552,7 @@
     "name": "1_1_1_armadefintiva_v2.BFHP",
     "size": 1113300,
     "url": "https://cdn.discordapp.com/attachments/1413782299786608682/1414924274694623292/1_1_1_armadefintiva_v2.BFHP?ex=6ad54bab&is=6ad3fa2b&hm=03ae2c10afe801744ceb9295efcf309fffb43edd9c52c4dc1d937938f95077a7&",
-    "local": "originals/discord/mapas/arma-definitiva-1v1v1/1_1_1_armadefintiva_v2.BFHP"
+    "local": "originals/discord/mapas/arma-definitiva-1v1v1-halcon-2/1_1_1_armadefintiva_v2.BFHP"
    }
   ],
   "shots": [
@@ -2560,12 +2560,12 @@
     "name": "Captura_de_pantalla_1439.png",
     "size": 1474698,
     "url": "https://cdn.discordapp.com/attachments/1413782299786608682/1414924312699469874/Captura_de_pantalla_1439.png?ex=6ad54bb4&is=6ad3fa34&hm=72b01f71ca7ff3457a0dfff317b7a41b2becbe7c7c7b3426972e927de8c5dc96&",
-    "local": "originals/discord/mapas/arma-definitiva-1v1v1/screenshots/Captura_de_pantalla_1439.png"
+    "local": "originals/discord/mapas/arma-definitiva-1v1v1-halcon-2/screenshots/Captura_de_pantalla_1439.png"
    }
   ],
   "desc": "",
   "count": 1,
-  "slug": "arma-definitiva-1v1v1"
+  "slug": "arma-definitiva-1v1v1-halcon-2"
  },
  {
   "channel": "mapas",
@@ -3214,7 +3214,7 @@
     "name": "Iberia.BFHP",
     "size": 1377280,
     "url": "https://cdn.discordapp.com/attachments/1413800335213985836/1414564039690027058/Iberia.BFHP?ex=6ad54dac&is=6ad3fc2c&hm=df9121fdf2c5e6cfc7b10c7634071deb1141363e1db14c4b8c1f82180aeb4f13&",
-    "local": "originals/discord/aventuras/iberia/Iberia.BFHP"
+    "local": "originals/discord/aventuras/iberia-guigoras/Iberia.BFHP"
    }
   ],
   "shots": [
@@ -3222,12 +3222,12 @@
     "name": "Captura_de_pantalla_1413.png",
     "size": 1650944,
     "url": "https://cdn.discordapp.com/attachments/1413800335213985836/1414564091309068288/SPOILER_Captura_de_pantalla_1413.png?ex=6ad54db8&is=6ad3fc38&hm=663d1aab369fc454dadb021ffa52f1bf9dd45f36e04b233611590fb1b6503393&",
-    "local": "originals/discord/aventuras/iberia/screenshots/Captura_de_pantalla_1413.png"
+    "local": "originals/discord/aventuras/iberia-guigoras/screenshots/Captura_de_pantalla_1413.png"
    }
   ],
   "desc": "Mecenas llega a Iberia.",
   "count": 1,
-  "slug": "iberia"
+  "slug": "iberia-guigoras"
  },
  {
   "channel": "aventuras",
@@ -4569,7 +4569,7 @@
     "name": "Game_of_thrones_version_2.0.BFHP",
     "size": 4339200,
     "url": "https://cdn.discordapp.com/attachments/1413800335213985836/1414576086662119494/Game_of_thrones_version_2.0.BFHP?ex=6ad4b024&is=6ad35ea4&hm=9d924d88578c631e46961f83b02ab225bcdaa9de3170abbe371074c332fd50ee&",
-    "local": "originals/discord/aventuras/juego-de-tronos/Game_of_thrones_version_2.0.BFHP"
+    "local": "originals/discord/aventuras/juego-de-tronos-imperyus/Game_of_thrones_version_2.0.BFHP"
    }
   ],
   "shots": [
@@ -4577,12 +4577,12 @@
     "name": "Captura_de_pantalla_1342.png",
     "size": 1847192,
     "url": "https://cdn.discordapp.com/attachments/1413800335213985836/1414576117481734194/Captura_de_pantalla_1342.png?ex=6ad4b02b&is=6ad35eab&hm=b655dcf0b4e895ab08b7afad62ee69c2a1e5cf66fbd93dd87c2a868bb04c7132&",
-    "local": "originals/discord/aventuras/juego-de-tronos/screenshots/Captura_de_pantalla_1342.png"
+    "local": "originals/discord/aventuras/juego-de-tronos-imperyus/screenshots/Captura_de_pantalla_1342.png"
    }
   ],
   "desc": "Revive las aventuras de Jon Nieve y de Khaleesi para pacificar los 7 reinos.",
   "count": 1,
-  "slug": "juego-de-tronos"
+  "slug": "juego-de-tronos-imperyus"
  },
  {
   "channel": "aventuras",
@@ -4941,7 +4941,7 @@
     "name": "iberia_2.0.BFHP",
     "size": 1268593,
     "url": "https://cdn.discordapp.com/attachments/1413800335213985836/1414616547724492982/iberia_2.0.BFHP?ex=6ad4d5d3&is=6ad38453&hm=90cd5e208fa7148f5acdef5d098aa47c0fc1545724b6b91eae2b73abcc25a930&",
-    "local": "originals/discord/aventuras/iberia/iberia_2.0.BFHP"
+    "local": "originals/discord/aventuras/iberia-yito79/iberia_2.0.BFHP"
    }
   ],
   "shots": [
@@ -4949,12 +4949,12 @@
     "name": "Captura_de_pantalla_1355.png",
     "size": 1744176,
     "url": "https://cdn.discordapp.com/attachments/1413800335213985836/1414616588358783068/SPOILER_Captura_de_pantalla_1355.png?ex=6ad4d5dc&is=6ad3845c&hm=a58bf6ebd8fdc29208a6ce55508cf94bfdb38983a52e5fe12fca807762bb49fc&",
-    "local": "originals/discord/aventuras/iberia/screenshots/Captura_de_pantalla_1355.png"
+    "local": "originals/discord/aventuras/iberia-yito79/screenshots/Captura_de_pantalla_1355.png"
    }
   ],
   "desc": "",
   "count": 1,
-  "slug": "iberia"
+  "slug": "iberia-yito79"
  },
  {
   "channel": "aventuras",

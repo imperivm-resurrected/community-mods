@@ -1,0 +1,17 @@
+{
+  "id": "defensores-del-tumulo",
+  "name": "Defensores del Túmulo",
+  "version": "1.0",
+  "authors": [
+    "Hareld y Haemimont Games"
+  ],
+  "description": {
+    "spanish": "Tu grupo ha sido elegido por los dioses para defender la colina sagrada del ataque de los bárbaros. Tu misión es resistir el mayor número posible de días. Al final de cada día los dioses te otorgarán un deseo. Aventura de Hareld y Haemimont Games (2016, Imperivm III v1.40).",
+    "english": "Adventure by Hareld y Haemimont Games (2016, Imperivm III v1.40)."
+  },
+  "category": "Campaigns",
+  "tags": [
+    "Spanish"
+  ],
+  "redistributable": true
+}

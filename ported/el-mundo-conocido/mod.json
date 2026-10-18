@@ -1,0 +1,17 @@
+{
+  "id": "el-mundo-conocido",
+  "name": "El Mundo Conocido",
+  "version": "1.0",
+  "authors": [
+    "Aulo"
+  ],
+  "description": {
+    "spanish": "partida interesantisima con todaslas civilizaciones 1 IBERO 2 CARTAGO 3GALO 4 GERMANO 5 EGIPTO 6 BRITANO 7 REPU 8 IMPERIAL. Mapa de Aulo (2021, Imperivm HD vRelease 1.0).",
+    "english": "Map by Aulo (2021, Imperivm HD vRelease 1.0)."
+  },
+  "category": "Maps",
+  "tags": [
+    "8 players"
+  ],
+  "redistributable": true
+}

@@ -1,0 +1,17 @@
+{
+  "id": "la-conquista-de-britania-harder",
+  "name": "La Conquista de Britania (harder)",
+  "version": "1.0",
+  "authors": [
+    "Rubeneitor"
+  ],
+  "description": {
+    "spanish": "For a long time Rome has tried to conquer the island of Britain. The task is now given to Agricola, who must use all his resources to achieve this difficult victory. Aventura de Rubeneitor (2025, Imperivm HD vRelease 1.0).",
+    "english": "Adventure by Rubeneitor (2025, Imperivm HD vRelease 1.0)."
+  },
+  "category": "Campaigns",
+  "tags": [
+    "Spanish"
+  ],
+  "redistributable": true
+}

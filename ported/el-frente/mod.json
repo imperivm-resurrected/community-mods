@@ -1,0 +1,17 @@
+{
+  "id": "el-frente",
+  "name": "El Frente",
+  "version": "1.0",
+  "authors": [
+    "arkano57"
+  ],
+  "description": {
+    "spanish": "Los romanos aislan a los galos en su isla, pero no cuentan con que los galos, cuentan con una aliado estrella... seran capaces de derrotar a los romanos, o roma los sometera?... Mapa de arkano57 (2009, Imperivm III v1.40).",
+    "english": "Map by arkano57 (2009, Imperivm III v1.40)."
+  },
+  "category": "Maps",
+  "tags": [
+    "4 players"
+  ],
+  "redistributable": true
+}

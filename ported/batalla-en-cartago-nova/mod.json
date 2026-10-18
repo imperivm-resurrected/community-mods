@@ -1,0 +1,17 @@
+{
+  "id": "batalla-en-cartago-nova",
+  "name": "Batalla en Cartago Nova",
+  "version": "1.0",
+  "authors": [
+    "manuel.torrente"
+  ],
+  "description": {
+    "spanish": "Aventura de manuel.torrente (2022, Imperivm III v1.40).",
+    "english": "Adventure by manuel.torrente (2022, Imperivm III v1.40)."
+  },
+  "category": "Campaigns",
+  "tags": [
+    "Spanish"
+  ],
+  "redistributable": true
+}

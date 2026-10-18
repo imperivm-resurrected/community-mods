@@ -37,6 +37,25 @@ const mapDesc = f => {
     .replace(/\\n|\s+/g, " ").replace(/ +([,.!?])/g, "$1").trim()
     .replace(/^(Partida de estrategia|Partida de aventura|Scenario Game)$/i, ""); // editor defaults, not the author's
 };
+// Compatibility: Resurrected runs on the HD game, so a 1.40/1.56 map (or one made for a mod) breaks if it places a class
+// the HD data doesn't define. Needs originals/game-data (sdk/en: node tools/extract-data.js "<game>" originals/game-data).
+// Mods we have (originals/mods/<mod id>/data, extracted the same way from the mod's data.pak) tell which mod a map needs:
+// the folder name is the mod's id, written to "requires" so the game loads it first.
+const classesIn = dir => new Set(fs.readdirSync(dir, { recursive: true }).filter(f => /\.xml$/i.test(f))
+  .flatMap(f => [...fs.readFileSync(path.join(dir, f), "latin1").matchAll(/<class\b[^>]*?\bid\s*=\s*"([^"]+)"/g)].map(m => m[1].toLowerCase())));
+const DATA = path.join(ROOT, "originals", "game-data", "DATA"), MODS = path.join(ROOT, "originals", "mods");
+const hdClasses = fs.existsSync(DATA) ? classesIn(DATA) : null;
+const modClasses = !fs.existsSync(MODS) ? [] : fs.readdirSync(MODS).filter(m => fs.existsSync(path.join(MODS, m, "data")))
+  .map(m => ({ mod: m, classes: classesIn(path.join(MODS, m, "data")) }));
+const unknownClasses = f => {
+  const s = fs.readFileSync(f, "latin1");
+  const own = new Set([...s.matchAll(/<class\b[^>]*?\bid\s*=\s*"([^"]+)"/g)].map(m => m[1].toLowerCase())); // classes the map defines itself
+  // Parts of the .bfhp are LZ-compressed, which mangles some names ("GAxema718"): those show up once, while a real unit
+  // is placed several times. So only names seen at least twice count.
+  const seen = {};
+  for (const m of s.matchAll(/\bclass="([A-Za-z_][\w.-]{0,60})"/g)) seen[m[1]] = (seen[m[1]] || 0) + 1;
+  return Object.keys(seen).filter(c => seen[c] >= 2 && !hdClasses.has(c.toLowerCase()) && !own.has(c.toLowerCase()));
+};
 
 const out = path.join(ROOT, "ported", id), dest = path.join(out, isAdv ? "adventures" : "scenarios");
 fs.rmSync(out, { recursive: true, force: true });
@@ -59,6 +78,9 @@ for (const f of fs.readdirSync(dest)) if (f.includes("..")) fs.renameSync(path.j
 const maps = fs.readdirSync(dest).filter(f => /\.bfhp$/i.test(f));
 if (!maps.length) { console.error("no .bfhp in", e.files.map(f => f.name)); process.exit(1); }
 const counts = maps.map(f => slots(path.join(dest, f))).filter(Boolean);
+const unknown = hdClasses ? [...new Set(maps.flatMap(f => unknownClasses(path.join(dest, f))))] : null;
+// needs = mods that define every missing class; if none covers them all, the map needs a mod we don't have
+const needs = unknown?.length ? modClasses.filter(m => unknown.every(c => m.classes.has(c.toLowerCase()))).map(m => m.mod) : [];
 const lo = Math.min(...counts), hi = Math.max(...counts);
 const players = opt.players || (counts.length ? (lo === hi ? `${lo} players` : `${lo}-${hi} players`) : null);
 
@@ -77,7 +99,9 @@ const mod = {
   },
   category: isAdv ? "Campaigns" : "Maps",
   tags: isAdv ? ["Spanish"] : players ? [players] : [],
+  ...(needs.length === 1 ? { requires: needs } : {}),
   redistributable: !opt["no-redistributable"], // publishing on GameBanana already redistributes it; false only if the author asks
 };
 fs.writeFileSync(path.join(out, "mod.json"), JSON.stringify(mod, null, 2) + "\n");
-console.log(`${out}\n  ${maps.join(", ")} -> ${path.basename(dest)}/\n  category ${mod.category}, tags ${JSON.stringify(mod.tags)}${counts.length < maps.length ? "  ⚠️ some map has no readable players" : ""}${!isAdv && !players ? "  ⚠️ missing --players" : ""}`);
+console.log(`${out}\n  ${maps.join(", ")} -> ${path.basename(dest)}/\n  category ${mod.category}, tags ${JSON.stringify(mod.tags)}${counts.length < maps.length ? "  ⚠️ some map has no readable players" : ""}${!isAdv && !players ? "  ⚠️ missing --players" : ""}`
+  + (unknown === null ? "\n  ⚠️ compatibility not checked (no originals/game-data)" : !unknown.length ? "" : needs.length ? `\n  🧩 needs ${needs.join(" or ")} (${unknown.join(", ")})` : `\n  ❌ not in the HD game nor in a known mod: ${unknown.join(", ")}`));

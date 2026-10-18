@@ -1,0 +1,17 @@
+{
+  "id": "la-venganza-gala-ii",
+  "name": "La Venganza Gala II",
+  "version": "1.0",
+  "authors": [
+    "IMPERYUS"
+  ],
+  "description": {
+    "spanish": "20 años despues de la muerte de Gended su hijo Gounde es general del ejército galo. Aventura de IMPERYUS (2017, Imperivm III v1.40).",
+    "english": "Adventure by IMPERYUS (2017, Imperivm III v1.40)."
+  },
+  "category": "Campaigns",
+  "tags": [
+    "Spanish"
+  ],
+  "redistributable": true
+}

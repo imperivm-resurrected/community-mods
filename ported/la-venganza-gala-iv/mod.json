@@ -1,0 +1,17 @@
+{
+  "id": "la-venganza-gala-iv",
+  "name": "La Venganza Gala IV",
+  "version": "1.0",
+  "authors": [
+    "IMPERYUS"
+  ],
+  "description": {
+    "spanish": "El barco de Gounde naufraga en Egipto debido a las corrientes del mar cuando se disponían a ir a las Galias. Aventura de IMPERYUS (2017, Imperivm III v1.40).",
+    "english": "Adventure by IMPERYUS (2017, Imperivm III v1.40)."
+  },
+  "category": "Campaigns",
+  "tags": [
+    "Spanish"
+  ],
+  "redistributable": true
+}

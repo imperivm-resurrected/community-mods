@@ -1,0 +1,17 @@
+{
+  "id": "espartaco",
+  "name": "Espartaco",
+  "version": "1.0",
+  "authors": [
+    "IMPERYUS"
+  ],
+  "description": {
+    "spanish": "Año 71 A.C. Los esclavos se han revelado contra Roma y amenazan con volverse cada vez más poderosos. El general Cneo Pompeyo Magno ha sido llamado, junto a los generales Marco Terencio Varron Luculo y Marco Licinio Craso, para derrotarles, en la que pasará a ser conocida como la tercera guerra servil. Aventura de IMPERYUS.",
+    "english": "Adventure by IMPERYUS."
+  },
+  "category": "Campaigns",
+  "tags": [
+    "Spanish"
+  ],
+  "redistributable": true
+}

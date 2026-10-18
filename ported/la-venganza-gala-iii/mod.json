@@ -1,0 +1,17 @@
+{
+  "id": "la-venganza-gala-iii",
+  "name": "La Venganza Gala III",
+  "version": "1.0",
+  "authors": [
+    "IMPERYUS"
+  ],
+  "description": {
+    "spanish": "A Gounde le espera un juicio por el consejo de ancianos. Aventura de IMPERYUS (2017, Imperivm III v1.40).",
+    "english": "Adventure by IMPERYUS (2017, Imperivm III v1.40)."
+  },
+  "category": "Campaigns",
+  "tags": [
+    "Spanish"
+  ],
+  "redistributable": true
+}

@@ -1,0 +1,17 @@
+{
+  "id": "colosseum-2v2",
+  "name": "Colosseum 2v2",
+  "version": "1.0",
+  "authors": [
+    "Ferónidas"
+  ],
+  "description": {
+    "spanish": "Tournament Scenario 2vs2 Spectators: P5, P6, P7, P8. Mapa de Ferónidas (2020, Imperivm III v1.56).",
+    "english": "Map by Ferónidas (2020, Imperivm III v1.56)."
+  },
+  "category": "Maps",
+  "tags": [
+    "8 players"
+  ],
+  "redistributable": true
+}

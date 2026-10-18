@@ -1,0 +1,17 @@
+{
+  "id": "el-rio-del-silencio-3v3",
+  "name": "El Río del Silencio 3v3",
+  "version": "1.0",
+  "authors": [
+    "Terminator888"
+  ],
+  "description": {
+    "spanish": "Autor: Terminator888  Mapa 3vs3. Mapa de Terminator888 (2021, Imperivm HD vRelease 1.0).",
+    "english": "Map by Terminator888 (2021, Imperivm HD vRelease 1.0)."
+  },
+  "category": "Maps",
+  "tags": [
+    "7 players"
+  ],
+  "redistributable": true
+}

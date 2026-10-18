@@ -1,0 +1,17 @@
+{
+  "id": "germanico",
+  "name": "Germánico",
+  "version": "1.0",
+  "authors": [
+    "Georgius"
+  ],
+  "description": {
+    "spanish": "Germánico, Consul de Roma, se ve envuelto en una serie de campañas militares en la frontera con Germania junto a su tio Tiberio. Notícias llegas de Roma, las cuales cambiaran el destino de nuestro Heroe. Aventura de Georgius (2024, Imperivm HD vRelease 1.0).",
+    "english": "Adventure by Georgius (2024, Imperivm HD vRelease 1.0)."
+  },
+  "category": "Campaigns",
+  "tags": [
+    "Spanish"
+  ],
+  "redistributable": true
+}

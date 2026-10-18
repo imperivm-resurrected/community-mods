@@ -1,0 +1,17 @@
+{
+  "id": "los-naufragos",
+  "name": "Los Náufragos",
+  "version": "1.0",
+  "authors": [
+    "IMPERYUS"
+  ],
+  "description": {
+    "spanish": "Formas parte del ejército romano y tu grupo ha naufragado tras una exitosa campaña en Britania. Ahora te encuentras en una isla britana y deberás sobrevivir hasta que los esclavos sean capaces de construir un nuevo barco que os permita salir de la isla y volver a Roma. Aventura de IMPERYUS (2018, Imperivm III v1.40).",
+    "english": "Adventure by IMPERYUS (2018, Imperivm III v1.40)."
+  },
+  "category": "Campaigns",
+  "tags": [
+    "Spanish"
+  ],
+  "redistributable": true
+}

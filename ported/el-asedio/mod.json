@@ -1,0 +1,17 @@
+{
+  "id": "el-asedio",
+  "name": "El Asedio",
+  "version": "1.0",
+  "authors": [
+    "moonson"
+  ],
+  "description": {
+    "spanish": "Los íberos tratan de defenderse de los infinitos ejércitos cartagineses, cosa que es prácticamente imposible, pero no tanto para Pavald... Aventura de moonson (2010, Imperivm III v1.40).",
+    "english": "Adventure by moonson (2010, Imperivm III v1.40)."
+  },
+  "category": "Campaigns",
+  "tags": [
+    "Spanish"
+  ],
+  "redistributable": true
+}

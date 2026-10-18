@@ -1,0 +1,17 @@
+{
+  "id": "la-venganza-gala-v",
+  "name": "La Venganza Gala V",
+  "version": "1.0",
+  "authors": [
+    "IMPERYUS"
+  ],
+  "description": {
+    "spanish": "Gounde, Gongetet y Hospinget parten hacia los países nórdicos para salvar a Hospongotet que va a ser ejecutado por los romanos. Aventura de IMPERYUS (2017, Imperivm III v1.40).",
+    "english": "Adventure by IMPERYUS (2017, Imperivm III v1.40)."
+  },
+  "category": "Campaigns",
+  "tags": [
+    "Spanish"
+  ],
+  "redistributable": true
+}

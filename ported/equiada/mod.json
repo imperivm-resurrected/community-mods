@@ -1,0 +1,17 @@
+{
+  "id": "equiada",
+  "name": "Equiada",
+  "version": "1.0",
+  "authors": [
+    "Guigoras"
+  ],
+  "description": {
+    "spanish": "La situación de los galos es insostenible. Tributar a los romanos al oeste o a los germanos al este. Si fueras capaz de unirlos la ocupación terminaría. Aventura de Guigoras (2014, Imperivm III v1.40).",
+    "english": "Adventure by Guigoras (2014, Imperivm III v1.40)."
+  },
+  "category": "Campaigns",
+  "tags": [
+    "Spanish"
+  ],
+  "redistributable": true
+}

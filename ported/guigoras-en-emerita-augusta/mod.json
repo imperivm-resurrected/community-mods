@@ -1,0 +1,17 @@
+{
+  "id": "guigoras-en-emerita-augusta",
+  "name": "Guigoras en Emerita Augusta",
+  "version": "1.0",
+  "authors": [
+    "Guigoras"
+  ],
+  "description": {
+    "spanish": "Las sacerdotisas íberas han conseguido la \"Alianza\" de sus caudillos en su lucha contra Roma, hecho el reparto del \"botín\" y os han elegido para ser \"los capitanes\" de esta titánica empresa... ¿Estarás a la altura de tu pueblo? Aventura de Guigoras (2015, Imperivm III v1.40).",
+    "english": "Adventure by Guigoras (2015, Imperivm III v1.40)."
+  },
+  "category": "Campaigns",
+  "tags": [
+    "Spanish"
+  ],
+  "redistributable": true
+}

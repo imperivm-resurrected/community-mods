@@ -1,0 +1,17 @@
+{
+  "id": "la-rebelion-germana",
+  "name": "La Rebelión Germana",
+  "version": "1.0",
+  "authors": [
+    "IMPERYUS"
+  ],
+  "description": {
+    "spanish": "Los germanos estaban sometidos a los romanos, pero la muerte de Garro Fogo, el mejor amigo de Boemo Matego, a manos de Brutus Máximo ha iniciado una rebelión. Aventura de IMPERYUS (2019, Imperivm III v1.40).",
+    "english": "Adventure by IMPERYUS (2019, Imperivm III v1.40)."
+  },
+  "category": "Campaigns",
+  "tags": [
+    "Spanish"
+  ],
+  "redistributable": true
+}

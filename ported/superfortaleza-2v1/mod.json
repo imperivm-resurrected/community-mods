@@ -1,0 +1,17 @@
+{
+  "id": "superfortaleza-2v1",
+  "name": "Superfortaleza 2v1",
+  "version": "1.0",
+  "authors": [
+    "Rubeneitor"
+  ],
+  "description": {
+    "spanish": "Recuerdas mi mapa de la super fortaleza pues en este caso dos jugadores tendran que ir contra otro jugador que controlara el foro central. Mapa de Rubeneitor (2025, Imperivm HD vRelease 1.0).",
+    "english": "Map by Rubeneitor (2025, Imperivm HD vRelease 1.0)."
+  },
+  "category": "Maps",
+  "tags": [
+    "3 players"
+  ],
+  "redistributable": true
+}

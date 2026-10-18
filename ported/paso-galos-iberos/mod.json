@@ -1,0 +1,17 @@
+{
+  "id": "paso-galos-iberos",
+  "name": "Paso Galos-íberos",
+  "version": "1.0",
+  "authors": [
+    "adri55555"
+  ],
+  "description": {
+    "spanish": "Mapa de adri55555 (2015, Imperivm III v1.40).",
+    "english": "Map by adri55555 (2015, Imperivm III v1.40)."
+  },
+  "category": "Maps",
+  "tags": [
+    "1 players"
+  ],
+  "redistributable": true
+}

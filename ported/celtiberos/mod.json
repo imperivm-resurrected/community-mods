@@ -1,0 +1,17 @@
+{
+  "id": "celtiberos",
+  "name": "Celtíberos",
+  "version": "1.0",
+  "authors": [
+    "Guigoras"
+  ],
+  "description": {
+    "spanish": "Conquista esta tierra celtíbera con la ayuda de Master. Aventura de Guigoras (2014, Imperivm III v1.40).",
+    "english": "Adventure by Guigoras (2014, Imperivm III v1.40)."
+  },
+  "category": "Campaigns",
+  "tags": [
+    "Spanish"
+  ],
+  "redistributable": true
+}

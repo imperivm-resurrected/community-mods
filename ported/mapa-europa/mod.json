@@ -1,0 +1,17 @@
+{
+  "id": "mapa-europa",
+  "name": "Mapa Europa",
+  "version": "1.0",
+  "authors": [
+    "Halcón"
+  ],
+  "description": {
+    "spanish": "Mapa de Halcón (2025, Imperivm HD vRelease 1.0).",
+    "english": "Map by Halcón (2025, Imperivm HD vRelease 1.0)."
+  },
+  "category": "Maps",
+  "tags": [
+    "8 players"
+  ],
+  "redistributable": true
+}

@@ -1,0 +1,17 @@
+{
+  "id": "resistencia-britana",
+  "name": "Resistencia Britana",
+  "version": "1.0",
+  "authors": [
+    "arkano57 y Marwan"
+  ],
+  "description": {
+    "spanish": "Tras haber perdido gran parte de sus territorios, los Britanos construyen una ultima resistencia para evitar que los Romanos lleguen a la capital Britana, Londinium.... Mapa de arkano57 y Marwan (2010, Imperivm III v1.40).",
+    "english": "Map by arkano57 y Marwan (2010, Imperivm III v1.40)."
+  },
+  "category": "Maps",
+  "tags": [
+    "6 players"
+  ],
+  "redistributable": true
+}

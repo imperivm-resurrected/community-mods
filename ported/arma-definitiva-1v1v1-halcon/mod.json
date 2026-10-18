@@ -1,0 +1,17 @@
+{
+  "id": "arma-definitiva-1v1v1-halcon",
+  "name": "Arma Definitiva 1v1v1",
+  "version": "1.0",
+  "authors": [
+    "Halcón"
+  ],
+  "description": {
+    "spanish": "Mapa de Halcón (2023, Imperivm HD vRelease 1.0).",
+    "english": "Map by Halcón (2023, Imperivm HD vRelease 1.0)."
+  },
+  "category": "Maps",
+  "tags": [
+    "3 players"
+  ],
+  "redistributable": true
+}

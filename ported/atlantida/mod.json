@@ -1,0 +1,17 @@
+{
+  "id": "atlantida",
+  "name": "Atlántida",
+  "version": "1.0",
+  "authors": [
+    "Zardof"
+  ],
+  "description": {
+    "spanish": "Pugna por el control de la resurgida Atlántida, si la conquista Og, comprará más mercenarios. Sobrevive a las oleadas de los 7 Reyes. Aventura de Zardof (2017, Imperivm III v1.40).",
+    "english": "Adventure by Zardof (2017, Imperivm III v1.40)."
+  },
+  "category": "Campaigns",
+  "tags": [
+    "Spanish"
+  ],
+  "redistributable": true
+}

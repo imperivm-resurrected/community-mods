@@ -1,0 +1,17 @@
+{
+  "id": "sefia-el-inicio-de-una-leyenda",
+  "name": "Sefia, el Inicio de una Leyenda",
+  "version": "1.0",
+  "authors": [
+    "Allwars"
+  ],
+  "description": {
+    "spanish": "Aventura de Allwars (2020, Imperivm III v1.40).",
+    "english": "Adventure by Allwars (2020, Imperivm III v1.40)."
+  },
+  "category": "Campaigns",
+  "tags": [
+    "Spanish"
+  ],
+  "redistributable": true
+}

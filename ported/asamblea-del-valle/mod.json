@@ -1,0 +1,17 @@
+{
+  "id": "asamblea-del-valle",
+  "name": "Asamblea del Valle",
+  "version": "1.0",
+  "authors": [
+    "Ferónidas"
+  ],
+  "description": {
+    "spanish": "Tournament Spectators: P3, P4, P5, P6. Mapa de Ferónidas (2020, Imperivm III v1.56).",
+    "english": "Map by Ferónidas (2020, Imperivm III v1.56)."
+  },
+  "category": "Maps",
+  "tags": [
+    "6 players"
+  ],
+  "redistributable": true
+}

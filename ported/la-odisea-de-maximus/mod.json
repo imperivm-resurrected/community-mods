@@ -1,0 +1,17 @@
+{
+  "id": "la-odisea-de-maximus",
+  "name": "La Odisea de Maximus",
+  "version": "1.0",
+  "authors": [
+    "Elektro"
+  ],
+  "description": {
+    "spanish": "Maximus, con la esperanza de sacar a su familia de la pobreza y conseguir la ciudadanía romana, se alista en las legiones y es destinado con la Séptima Legión a Iberia, donde su destino le aguarda... Aventura de Elektro (2019, Imperivm III v1.40).",
+    "english": "Adventure by Elektro (2019, Imperivm III v1.40)."
+  },
+  "category": "Campaigns",
+  "tags": [
+    "Spanish"
+  ],
+  "redistributable": true
+}

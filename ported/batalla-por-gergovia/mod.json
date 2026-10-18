@@ -1,0 +1,17 @@
+{
+  "id": "batalla-por-gergovia",
+  "name": "Batalla por Gergovia",
+  "version": "1.0",
+  "authors": [
+    "ruben.rdrgz"
+  ],
+  "description": {
+    "spanish": "Mapa de ruben.rdrgz (2024, Imperivm HD vRelease 1.0).",
+    "english": "Map by ruben.rdrgz (2024, Imperivm HD vRelease 1.0)."
+  },
+  "category": "Maps",
+  "tags": [
+    "5 players"
+  ],
+  "redistributable": true
+}

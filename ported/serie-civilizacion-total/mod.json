@@ -1,0 +1,17 @@
+{
+  "id": "serie-civilizacion-total",
+  "name": "Serie Civilización Total",
+  "version": "1.0",
+  "authors": [
+    "Guigoras"
+  ],
+  "description": {
+    "spanish": "8 mapas de Guigoras (2016, Imperivm III v1.40).",
+    "english": "8 maps by Guigoras (2016, Imperivm III v1.40)."
+  },
+  "category": "Maps",
+  "tags": [
+    "4 players"
+  ],
+  "redistributable": true
+}

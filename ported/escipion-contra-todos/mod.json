@@ -1,0 +1,17 @@
+{
+  "id": "escipion-contra-todos",
+  "name": "Escipión Contra Todos",
+  "version": "1.0",
+  "authors": [
+    "OskaOtzuna"
+  ],
+  "description": {
+    "spanish": "Publio Cornelio Escipión desembarca en Iberia para retomar la guerra contra los cartagineses en suelo hispano. Los cartagineses, con Asdrúbal Barca a la cabeza, les saldrán al paso, pero esta vez un héroe íbero se interpondrá entre los dos imperios más poderosos de la época para cambiar el destino del mundo. Aventura de OskaOtzuna (2017, Imperivm III v1.40).",
+    "english": "Adventure by OskaOtzuna (2017, Imperivm III v1.40)."
+  },
+  "category": "Campaigns",
+  "tags": [
+    "Spanish"
+  ],
+  "redistributable": true
+}

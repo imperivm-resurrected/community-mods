@@ -1,0 +1,20 @@
+{
+  "id": "la-tierra-media",
+  "name": "La Tierra Media",
+  "version": "1.0",
+  "authors": [
+    "Ferónidas"
+  ],
+  "description": {
+    "spanish": "4 vs 1 P1 · Hobbiton P2 · Rivendell P3 · Edoras P4 · Iron Hills P5 · Sauron. Mapa de Ferónidas (2025, Imperivm HD vRelease 1.0).",
+    "english": "Map by Ferónidas (2025, Imperivm HD vRelease 1.0)."
+  },
+  "category": "Maps",
+  "tags": [
+    "5 players"
+  ],
+  "requires": [
+    "community-mod"
+  ],
+  "redistributable": true
+}

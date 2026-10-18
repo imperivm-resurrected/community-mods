@@ -1,0 +1,17 @@
+{
+  "id": "aventura-en-alesia",
+  "name": "Aventura en Alesia",
+  "version": "1.0",
+  "authors": [
+    "Martín"
+  ],
+  "description": {
+    "spanish": "Aventura de Martín (2016, Imperivm III v1.40).",
+    "english": "Adventure by Martín (2016, Imperivm III v1.40)."
+  },
+  "category": "Campaigns",
+  "tags": [
+    "Spanish"
+  ],
+  "redistributable": true
+}

@@ -1,0 +1,17 @@
+{
+  "id": "mapa-4v4-aulo",
+  "name": "Mapa 4v4",
+  "version": "1.0",
+  "authors": [
+    "Aulo"
+  ],
+  "description": {
+    "spanish": "Partida de estrategia 4V4  1ºEQUIPO 1234 2º EQUIPO 5678. Mapa de Aulo (2024, Imperivm HD vRelease 1.0).",
+    "english": "Map by Aulo (2024, Imperivm HD vRelease 1.0)."
+  },
+  "category": "Maps",
+  "tags": [
+    "8 players"
+  ],
+  "redistributable": true
+}

@@ -24,6 +24,12 @@ Every mod is published with full credit to its original author. Many of these mo
    node tools/wrap-map.js [channel/]<slug>
    ```
    `.rar`/`.zip` are unpacked with bsdtar: it is the system `tar` on Windows 10+ and macOS; on Linux install `libarchive-tools` (Debian/Ubuntu) or `libarchive` (Arch, Fedora, Nix). `BSDTAR=<path>` points to another binary.
+   **Compatibility (1.40, 1.56 and HD).** Resurrected runs on the HD game, so a map made for 1.40/1.56 or for a mod breaks if it places a unit or object the HD game does not have. `wrap-map.js` checks every class the map places against the game data, if extracted once (from `imperivm-resurrected/sdk/en`):
+   ```bash
+   node tools/extract-data.js "<game>" <community-mods>/originals/game-data
+   ```
+   Classes missing from the game are looked up in the mods under `originals/mods/<mod id>/data` (same tool, pointed at the mod folder); if one mod has them all, it goes to `requires` in `mod.json`. Otherwise it prints ❌ with the missing classes: the map needs a mod we do not have (Type *requires ? mod* in `MODS.md`). Some names look truncated because parts of the `.bfhp` are compressed; only names placed at least twice count.
+
    Nothing in the map changes, so the original author is the only author (no porter credit). The slug comes from `raw/discord-entries.json`. Players are read from the `.bfhp` (slots with `control="Both"`/`"Human"`); `--players` overrides it.
 
    **Mods with `.pak`** (Type *reduce*): from `imperivm-resurrected/sdk/en`:

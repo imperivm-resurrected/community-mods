@@ -1,0 +1,17 @@
+{
+  "id": "la-aventura-gala",
+  "name": "La Aventura Gala",
+  "version": "1.0",
+  "authors": [
+    "Guigoras"
+  ],
+  "description": {
+    "spanish": "A la muerte del rey de Ausques y Tarballes, el reino queda repartido: Ausques para Julio y Tarbelles para Santra, pero ahora Julio es un mercenario de César para recuperar lo que es suyo. Aventura de Guigoras (2015, Imperivm III v1.40).",
+    "english": "Adventure by Guigoras (2015, Imperivm III v1.40)."
+  },
+  "category": "Campaigns",
+  "tags": [
+    "Spanish"
+  ],
+  "redistributable": true
+}

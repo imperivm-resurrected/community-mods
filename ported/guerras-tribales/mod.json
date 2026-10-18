@@ -1,0 +1,17 @@
+{
+  "id": "guerras-tribales",
+  "name": "Guerras Tribales",
+  "version": "1.0",
+  "authors": [
+    "IMPERYUS"
+  ],
+  "description": {
+    "spanish": "Las diferentes tribus galas se encuentran en guerra, mientras que los pérfidos romanos aprovechan la oportunidad para imponer su dominio ¿Conseguirá Radogasto imponerse sobre las demás tribus y expulsar a los romanos de las tierras galas? Aventura de IMPERYUS (2018, Imperivm III v1.40).",
+    "english": "Adventure by IMPERYUS (2018, Imperivm III v1.40)."
+  },
+  "category": "Campaigns",
+  "tags": [
+    "Spanish"
+  ],
+  "redistributable": true
+}

@@ -1,0 +1,15 @@
+{
+  "id": "laberinto",
+  "name": "Laberinto",
+  "version": "1.0",
+  "authors": [
+    "Jochi"
+  ],
+  "description": {
+    "spanish": "Mapa de Jochi (2012, Imperivm III v1.40).",
+    "english": "Map by Jochi (2012, Imperivm III v1.40)."
+  },
+  "category": "Maps",
+  "tags": [],
+  "redistributable": true
+}

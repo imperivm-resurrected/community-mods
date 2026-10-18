@@ -1,0 +1,17 @@
+{
+  "id": "2v2-montanoso",
+  "name": "2v2 Montañoso",
+  "version": "1.0",
+  "authors": [
+    "Halcón"
+  ],
+  "description": {
+    "spanish": "Mapa de Halcón (2023, Imperivm HD vRelease 1.0).",
+    "english": "Map by Halcón (2023, Imperivm HD vRelease 1.0)."
+  },
+  "category": "Maps",
+  "tags": [
+    "4 players"
+  ],
+  "redistributable": true
+}

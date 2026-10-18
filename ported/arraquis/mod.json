@@ -1,0 +1,17 @@
+{
+  "id": "arraquis",
+  "name": "Arraquis",
+  "version": "1.0",
+  "authors": [
+    "Guigoras"
+  ],
+  "description": {
+    "spanish": "¿Serás capaz de conquistar Cartago? Te espera una dura lucha en el desierto contra el mayor enemigo de Roma. Aventura de Guigoras (2014, Imperivm III v1.40).",
+    "english": "Adventure by Guigoras (2014, Imperivm III v1.40)."
+  },
+  "category": "Campaigns",
+  "tags": [
+    "Spanish"
+  ],
+  "redistributable": true
+}

@@ -1,0 +1,17 @@
+{
+  "id": "roma-contra-los-barbaros",
+  "name": "Roma Contra los Bárbaros",
+  "version": "1.0",
+  "authors": [
+    "lusitano"
+  ],
+  "description": {
+    "spanish": "jugador1 roma imperial jugador2 roma republicana jugador3 roma imperial jugador4 roma imperial jugador5 germania jugador6 galia jugador7 britania jugador8 iberia. Mapa de lusitano (2015, Imperivm III v1.40).",
+    "english": "Map by lusitano (2015, Imperivm III v1.40)."
+  },
+  "category": "Maps",
+  "tags": [
+    "8 players"
+  ],
+  "redistributable": true
+}

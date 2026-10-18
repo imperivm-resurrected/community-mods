@@ -1,0 +1,17 @@
+{
+  "id": "la-venganza-gala-i",
+  "name": "La Venganza Gala I",
+  "version": "1.0",
+  "authors": [
+    "IMPERYUS"
+  ],
+  "description": {
+    "spanish": "El pueblo de Gended, un simple campesino, ha sido conquistado por los romanos y han matado a todos sus habitantes. Ahora, Gended busca venganza. Aventura de IMPERYUS (2019, Imperivm III v1.40).",
+    "english": "Adventure by IMPERYUS (2019, Imperivm III v1.40)."
+  },
+  "category": "Campaigns",
+  "tags": [
+    "Spanish"
+  ],
+  "redistributable": true
+}

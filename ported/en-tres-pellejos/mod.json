@@ -1,0 +1,17 @@
+{
+  "id": "en-tres-pellejos",
+  "name": "En Tres Pellejos",
+  "version": "1.0",
+  "authors": [
+    "IMPERYUS"
+  ],
+  "description": {
+    "spanish": "Tres vidas, general romano, prisionero y salvaje, pero solo una correcta. Aventura de IMPERYUS (2019, Imperivm III v1.40).",
+    "english": "Adventure by IMPERYUS (2019, Imperivm III v1.40)."
+  },
+  "category": "Campaigns",
+  "tags": [
+    "Spanish"
+  ],
+  "redistributable": true
+}

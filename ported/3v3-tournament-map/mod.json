@@ -1,0 +1,17 @@
+{
+  "id": "3v3-tournament-map",
+  "name": "3v3 Tournament Map",
+  "version": "1.0",
+  "authors": [
+    "Desconocido"
+  ],
+  "description": {
+    "spanish": "Mapa de Desconocido (2020, Imperivm III v1.56).",
+    "english": "Map by Desconocido (2020, Imperivm III v1.56)."
+  },
+  "category": "Maps",
+  "tags": [
+    "6 players"
+  ],
+  "redistributable": true
+}

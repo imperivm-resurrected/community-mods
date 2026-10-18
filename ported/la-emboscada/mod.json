@@ -1,0 +1,17 @@
+{
+  "id": "la-emboscada",
+  "name": "La Emboscada",
+  "version": "1.0",
+  "authors": [
+    "Elektro"
+  ],
+  "description": {
+    "spanish": "El general Cayus es emboscado por los bárbaros en medio de un bosque, le superan en número y tendrá que actuar rápidamente para salvar la mayor parte de su legión... Aventura de Elektro (2018, Imperivm III v1.40).",
+    "english": "Adventure by Elektro (2018, Imperivm III v1.40)."
+  },
+  "category": "Campaigns",
+  "tags": [
+    "Spanish"
+  ],
+  "redistributable": true
+}

@@ -1,0 +1,17 @@
+{
+  "id": "mediterraneo",
+  "name": "Mediterráneo",
+  "version": "1.0",
+  "authors": [
+    "Numida"
+  ],
+  "description": {
+    "spanish": "Hispania, la Galia, Roma y Cartago compiten por el dominio de un Mediterráneo infestado de Piratas y Riquezas.  Jugador 1: Galos jugador 2: Galos jugador 3: Iberos jugador 4: R.Imperial jugador 5: Iberos jugador 6: R.Republicana jugador 7: Cartago jugador 8: Cartago. Mapa de Numida (2026, Imperivm HD vRelease 1.0).",
+    "english": "Map by Numida (2026, Imperivm HD vRelease 1.0)."
+  },
+  "category": "Maps",
+  "tags": [
+    "8 players"
+  ],
+  "redistributable": true
+}

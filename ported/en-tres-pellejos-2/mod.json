@@ -1,0 +1,17 @@
+{
+  "id": "en-tres-pellejos-2",
+  "name": "En Tres Pellejos 2",
+  "version": "1.0",
+  "authors": [
+    "IMPERYUS"
+  ],
+  "description": {
+    "spanish": "Cayo Bannanicus Fressisuis ha sido capturado por los germanos. Ahora aguarda su destino en una pequeña y maloliente prisión. Aventura de IMPERYUS (2019, Imperivm III v1.40).",
+    "english": "Adventure by IMPERYUS (2019, Imperivm III v1.40)."
+  },
+  "category": "Campaigns",
+  "tags": [
+    "Spanish"
+  ],
+  "redistributable": true
+}
