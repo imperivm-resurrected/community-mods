@@ -24,7 +24,7 @@ y publicarlos en [GameBanana](https://gamebanana.com/games/26069) con el crédit
    ```bash
    node herramientas/reducir-mod.js <original> "<juego>" ../../../imperivm-mods-port/ported/<id> --id <id> --nombre "<Nombre>" --version 1.0 --categoria "Maps"
    ```
-4. **`mod.json`** con `"authors": ["<Autor original>", "<tu nombre> (port)"]`, `category`, `tags` (jugadores o idioma) y `"redistributable": true` si el autor lo permite.
+4. **`mod.json`** con `"authors": ["<Autor original>", "<tu nombre> (port)"]`, `category`, `tags` (jugadores o idioma) y `"redistributable": true` (el anfitrión puede enviarlo en la sala; `--no-redistribuible` si el autor pide que no).
 5. **Validar**: `node herramientas/validar-mod.js <carpeta>`.
 6. **Probar** en el juego (`mods\`, Contenido adicional) y mirar `Logs\imperivm\imperivm-mod.log`.
 7. **Publicar**: zip de la carpeta, *Add → Mod* en GameBanana, misma categoría, etiquetas y versión. En **Credits**, el autor como *Original Creator* y tú como *Porter*. Enlaza el hilo original.

@@ -1,11 +1,11 @@
 // Wrap a Discord map/adventure (raw/discord-entries.json) as an Imperivm Resurrected mod in ported/<slug>/
-//   node tools/wrap-map.js [canal/]<slug> --porter "<tu nombre>" [--jugadores "2-4 players"] [--redistribuible]
+//   node tools/wrap-map.js [canal/]<slug> --porter "<tu nombre>" [--jugadores "2-4 players"] [--no-redistribuible]
 // .rar/.zip are unpacked with bsdtar (NixOS: nix shell nixpkgs#libarchive).
 const fs = require("fs"), path = require("path"), { execFileSync } = require("child_process");
 const ROOT = path.join(__dirname, "..");
 const args = process.argv.slice(2), opt = {};
 for (let i = 0; i < args.length; i++) if (args[i].startsWith("--")) opt[args[i].slice(2)] = args[i + 1]?.startsWith("--") || i + 1 >= args.length ? true : args[++i]; else opt._ = args[i];
-if (!opt._ || !opt.porter) { console.error('uso: node tools/wrap-map.js <slug> --porter "<nombre>" [--jugadores "4 players"] [--redistribuible]'); process.exit(1); }
+if (!opt._ || !opt.porter) { console.error('uso: node tools/wrap-map.js <slug> --porter "<nombre>" [--jugadores "4 players"] [--no-redistribuible]'); process.exit(1); }
 
 const [want, chan] = opt._.split("/").reverse();
 const found = require("../raw/discord-entries.json").filter(x => x.slug === want && (!chan || x.channel === chan));
@@ -59,7 +59,7 @@ const mod = {
   },
   category: isAdv ? "Campaigns" : "Maps",
   tags: isAdv ? ["Spanish"] : players ? [players] : [],
-  redistributable: !!opt.redistribuible,
+  redistributable: !opt["no-redistribuible"], // publishing on GameBanana already redistributes it; false only if the author asks
 };
 fs.writeFileSync(path.join(out, "mod.json"), JSON.stringify(mod, null, 2) + "\n");
 console.log(`${out}\n  ${maps.join(", ")} -> ${path.basename(dest)}/\n  categoría ${mod.category}, etiquetas ${JSON.stringify(mod.tags)}${counts.length < maps.length ? "  ⚠️ algún mapa sin jugadores legibles" : ""}${!isAdv && !players ? "  ⚠️ falta --jugadores" : ""}`);
