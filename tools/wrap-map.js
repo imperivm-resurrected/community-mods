@@ -1,15 +1,15 @@
 // Wrap a Discord map/adventure (raw/discord-entries.json) as an Imperivm Resurrected mod in ported/<slug>/
-//   node tools/wrap-map.js [canal/]<slug> --porter "<tu nombre>" [--jugadores "2-4 players"] [--no-redistribuible]
+//   node tools/wrap-map.js [channel/]<slug> --porter "<your name>" [--players "2-4 players"] [--no-redistributable]
 // .rar/.zip are unpacked with bsdtar (NixOS: nix shell nixpkgs#libarchive).
 const fs = require("fs"), path = require("path"), { execFileSync } = require("child_process");
 const ROOT = path.join(__dirname, "..");
 const args = process.argv.slice(2), opt = {};
 for (let i = 0; i < args.length; i++) if (args[i].startsWith("--")) opt[args[i].slice(2)] = args[i + 1]?.startsWith("--") || i + 1 >= args.length ? true : args[++i]; else opt._ = args[i];
-if (!opt._ || !opt.porter) { console.error('uso: node tools/wrap-map.js <slug> --porter "<nombre>" [--jugadores "4 players"] [--no-redistribuible]'); process.exit(1); }
+if (!opt._ || !opt.porter) { console.error('usage: node tools/wrap-map.js [channel/]<slug> --porter "<name>" [--players "4 players"] [--no-redistributable]'); process.exit(1); }
 
 const [want, chan] = opt._.split("/").reverse();
 const found = require("../raw/discord-entries.json").filter(x => x.slug === want && (!chan || x.channel === chan));
-if (found.length !== 1) { console.error(found.length ? `ambiguo, usa canal/slug: ${found.map(x => x.channel + "/" + x.slug).join(" ")}` : `no existe ${opt._}`); process.exit(1); }
+if (found.length !== 1) { console.error(found.length ? `ambiguous, use channel/slug: ${found.map(x => x.channel + "/" + x.slug).join(" ")}` : `not found: ${opt._}`); process.exit(1); }
 const e = found[0];
 const id = (e.channel === "saga-imperivm" ? "saga-" : "") + e.slug;
 const isAdv = e.channel === "aventuras" || /AVENTURAS/.test(e.section);
@@ -40,10 +40,10 @@ for (const f of fs.readdirSync(dest)) if (fs.statSync(path.join(dest, f)).isDire
 // "Mapa..BFHP" (common typo) -> "Mapa.BFHP": the SDK rejects ".." in paths
 for (const f of fs.readdirSync(dest)) if (f.includes("..")) fs.renameSync(path.join(dest, f), path.join(dest, f.replace(/\.{2,}/g, ".")));
 const maps = fs.readdirSync(dest).filter(f => /\.bfhp$/i.test(f));
-if (!maps.length) { console.error("sin .bfhp en", e.files.map(f => f.name)); process.exit(1); }
+if (!maps.length) { console.error("no .bfhp in", e.files.map(f => f.name)); process.exit(1); }
 const counts = maps.map(f => slots(path.join(dest, f))).filter(Boolean);
 const lo = Math.min(...counts), hi = Math.max(...counts);
-const players = opt.jugadores || (counts.length ? (lo === hi ? `${lo} players` : `${lo}-${hi} players`) : null);
+const players = opt.players || (counts.length ? (lo === hi ? `${lo} players` : `${lo}-${hi} players`) : null);
 
 const author = e.author || "?";
 const meta = [e.year, e.base].filter(Boolean).join(", ");
@@ -59,7 +59,7 @@ const mod = {
   },
   category: isAdv ? "Campaigns" : "Maps",
   tags: isAdv ? ["Spanish"] : players ? [players] : [],
-  redistributable: !opt["no-redistribuible"], // publishing on GameBanana already redistributes it; false only if the author asks
+  redistributable: !opt["no-redistributable"], // publishing on GameBanana already redistributes it; false only if the author asks
 };
 fs.writeFileSync(path.join(out, "mod.json"), JSON.stringify(mod, null, 2) + "\n");
-console.log(`${out}\n  ${maps.join(", ")} -> ${path.basename(dest)}/\n  categoría ${mod.category}, etiquetas ${JSON.stringify(mod.tags)}${counts.length < maps.length ? "  ⚠️ algún mapa sin jugadores legibles" : ""}${!isAdv && !players ? "  ⚠️ falta --jugadores" : ""}`);
+console.log(`${out}\n  ${maps.join(", ")} -> ${path.basename(dest)}/\n  category ${mod.category}, tags ${JSON.stringify(mod.tags)}${counts.length < maps.length ? "  ⚠️ some map has no readable players" : ""}${!isAdv && !players ? "  ⚠️ missing --players" : ""}`);
