@@ -1,0 +1,17 @@
+{
+  "id": "inicios-de-haenor",
+  "name": "Inicios de Haenor",
+  "version": "1.0",
+  "authors": [
+    "adri55555"
+  ],
+  "description": {
+    "spanish": "Aventura de adri55555 (2015, Imperivm III v1.40).",
+    "english": "Adventure by adri55555 (2015, Imperivm III v1.40)."
+  },
+  "category": "Campaigns",
+  "tags": [
+    "Spanish"
+  ],
+  "redistributable": true
+}

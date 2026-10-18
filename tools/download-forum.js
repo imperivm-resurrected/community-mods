@@ -1,12 +1,14 @@
 // Download the files behind the live links of the MODS.md rows with no local copy (💾) into originals/forum/<key>/files/,
 // where <key> is t<forum topic id>, or the slugged row name for rows with no forum topic. Resumable: what is already on disk is skipped.
-//   node tools/download-forum.js [--only mega,mediafire,dropbox,drive,moddb,terabox]
+//   node tools/download-forum.js [--only=mega,mediafire,dropbox,drive,moddb,terabox] [--force=t797,<key>...]
+// --force: those keys even if the row has a local copy (e.g. a Discord row whose forum topic has other versions)
 // Needs: megadl (megatools) for Mega. ModDB sits behind a Cloudflare challenge: a browser on CDP port 9333 with
 // agent-browser (`agent-browser connect 9333`) solves it, then curl downloads with the browser's cookies.
 const fs = require("fs"), path = require("path"), { execFileSync, spawnSync } = require("child_process");
 const ROOT = path.join(__dirname, ".."), OUT = path.join(ROOT, "raw", "download-log.json");
 const links = require("../raw/links.json");
-const only = (process.argv.find(a => a.startsWith("--only=")) || "").slice(7).split(",").filter(Boolean);
+const arg = k => (process.argv.find(a => a.startsWith(`--${k}=`)) || "").slice(k.length + 3).split(",").filter(Boolean);
+const only = arg("only"), force = arg("force");
 const UA = "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/124.0 Safari/537.36";
 const HOSTS = { mega: /mega(\.co)?\.nz/, mediafire: /mediafire\.com/, dropbox: /dropbox\.com/, drive: /drive\.google\.com/, moddb: /moddb\.com/, terabox: /terabox/ };
 const hostOf = u => Object.keys(HOSTS).find(k => HOSTS[k].test(u));
@@ -26,9 +28,10 @@ const slug = s => s.normalize("NFD").replace(/[\u0300-\u036f]/g, "").toLowerCase
 const targets = [], seenIds = new Set();
 for (const l of fs.readFileSync(path.join(ROOT, "MODS.md"), "utf8").split("\n")) {
   const c = l.split("|");
-  if (c.length < 11 || !/^\s*\d+\s*$/.test(c[1]) || l.includes("💾") || /✅/.test(c[9])) continue; // local copy, or already on GameBanana
+  if (c.length < 11 || !/^\s*\d+\s*$/.test(c[1]) || /✅/.test(c[9])) continue; // already on GameBanana
   const topic = (c[6].match(/foroactivo\.com\/t(\d+)-/) || [])[1];
   const key = topic ? `t${topic}` : slug(c[2]); // row numbers change, names do not
+  if (l.includes("💾") && !force.includes(key)) continue; // local copy
   // links in the table may carry forum BBCode leftovers ("...#key[/descarga")
   for (const u of [...c[7].matchAll(/\]\((https?:[^)]+)\)/g)].map(m => m[1].replace(/\[\/?\w*$/, "")))
     if (hostOf(u) && links[u]?.ok !== false && !/mega\.nz\/?$/.test(u) && (!only.length || only.includes(hostOf(u))) && !seenIds.has(fileId(u)) && seenIds.add(fileId(u)))

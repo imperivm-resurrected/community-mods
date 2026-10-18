@@ -11,7 +11,7 @@ const discord = require("../raw/discord-entries.json");
 // row source -> wrap-map argument: the Discord post link, or the forum topic
 const byDiscord = Object.fromEntries(discord.map(e => [e.discord, `${e.channel}/${e.slug}`]));
 const bySource = {};
-for (const [id, arg] of Object.entries(ported)) bySource[arg] = id;
+for (const [id, arg] of Object.entries(ported)) bySource[arg.split(" --")[0]] = id; // "<entry> --file x" -> <entry>
 const stale = [];
 let changed = 0;
 for (const file of ["MODS.md", "MISSING.md"]) {

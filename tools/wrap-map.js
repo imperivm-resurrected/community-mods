@@ -39,6 +39,8 @@ if (!e.files.length && e.channel !== "forum") {
   const dir = hit ? path.join("originals", "forum", hit) : topic && path.join("originals", "forum", "t" + topic);
   if (dir && fs.existsSync(path.join(ROOT, dir, "files"))) e.files = fs.readdirSync(path.join(ROOT, dir, "files")).map(n => ({ name: n, local: path.join(dir, "files", n) }));
 }
+// --file <text>: only the downloads whose name has it (a forum topic often has several maps or versions)
+if (opt.file) e.files = e.files.filter(f => f.name.toLowerCase().includes(String(opt.file).toLowerCase()));
 if (!e.files.length) { console.error("nothing downloaded for", opt._); process.exit(1); }
 const id = (e.channel === "saga-imperivm" ? "saga-" : "") + e.slug;
 // forum topics: decided after unpacking, from the title or game.xml game_type (0 = skirmish map, 1/2 = adventure)
@@ -194,7 +196,7 @@ fs.writeFileSync(path.join(out, "mod.json"), JSON.stringify(mod, null, 2) + "\n"
 // raw/ported.json: which entry each ported mod comes from (tools/sync-table.js uses it to update MODS.md)
 const SRC = path.join(ROOT, "raw", "ported.json");
 const src = (() => { try { return JSON.parse(fs.readFileSync(SRC, "utf8")); } catch { return {}; } })();
-src[id] = opt._;
+src[id] = opt._ + (opt.file ? ` --file ${opt.file}` : ""); // what to run to wrap it again
 fs.writeFileSync(SRC, JSON.stringify(Object.fromEntries(Object.entries(src).sort()), null, 1) + "\n");
 console.log(`${out}\n  ${maps.join(", ")} -> ${path.basename(dest)}/\n  category ${mod.category}, tags ${JSON.stringify(mod.tags)}${counts.length < maps.length ? "  ⚠️ some map has no readable players" : ""}${!isAdv && !players ? "  ⚠️ missing --players" : ""}`
   + (used === null ? "\n  ⚠️ compatibility not checked (no originals/game-data)" : unknown.length ? `\n  ❌ not in the HD game nor in a known mod: ${unknown.join(", ")}` : "")
