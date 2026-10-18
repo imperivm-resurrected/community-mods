@@ -21,6 +21,21 @@ const titleCase = s => s.toLowerCase().split(/(\s+)/).map((w, i) => i && SMALL.h
 // Lobby slots = playerdata entries a human can take (control="Both"/"Human"); the XML is stored uncompressed in the .bfhp.
 // Checked against the lobby: El muro -> 6 ("Map for 6").
 const slots = f => (fs.readFileSync(f, "latin1").match(/control="(Both|Human)"/g) || []).length;
+// The map's own description (game.xml <properties description="...">), used when the Discord post has none.
+// Long texts are split across container blocks, so binary junk can follow: cut at the first control byte or
+// run of spaces and, if cut, back off to the last full sentence. Editors saved UTF-8 or Latin-1: try UTF-8 first.
+const XML = { amp: "&", quot: '"', apos: "'", lt: "<", gt: ">" };
+const mapDesc = f => {
+  const m = fs.readFileSync(f, "latin1").match(/<properties[^>]*?\sdescription="([^"]*)"/);
+  if (!m) return "";
+  let raw = m[1];
+  const cut = raw.search(/[\x00-\x09\x0b-\x1f]| {4,}/);
+  if (cut >= 0) { raw = raw.slice(0, cut); const end = Math.max(...[".", "!", "?"].map(c => raw.lastIndexOf(c))); raw = end > 0 ? raw.slice(0, end + 1) : raw.trim() + "…"; }
+  const u = Buffer.from(raw, "latin1").toString("utf8");
+  return (u.includes("\ufffd") ? raw : u).replace(/&(#\d+|\w+);/g, (x, k) => k[0] === "#" ? String.fromCharCode(+k.slice(1)) : XML[k] ?? x)
+    .replace(/\\n|\s+/g, " ").replace(/ +([,.!?])/g, "$1").trim()
+    .replace(/^(Partida de estrategia|Partida de aventura|Scenario Game)$/i, ""); // editor defaults, not the author's
+};
 
 const out = path.join(ROOT, "ported", id), dest = path.join(out, isAdv ? "adventures" : "scenarios");
 fs.rmSync(out, { recursive: true, force: true });
@@ -47,6 +62,7 @@ const lo = Math.min(...counts), hi = Math.max(...counts);
 const players = opt.players || (counts.length ? (lo === hi ? `${lo} players` : `${lo}-${hi} players`) : null);
 
 const author = e.author || "?";
+const desc = e.desc || (maps.length === 1 ? mapDesc(path.join(dest, maps[0])) : "");
 const meta = [e.year, e.base].filter(Boolean).join(", ");
 const what = isAdv ? "Aventura" : maps.length > 1 ? `${maps.length} mapas` : "Mapa";
 const mod = {
@@ -55,7 +71,7 @@ const mod = {
   version: "1.0",
   authors: [author],
   description: {
-    spanish: `${e.desc ? e.desc + " " : ""}${what} de ${author}${meta ? ` (${meta})` : ""}.`,
+    spanish: `${desc ? desc.replace(/([^.!?])$/, "$1.") + " " : ""}${what} de ${author}${meta ? ` (${meta})` : ""}.`,
     english: `${what === "Aventura" ? "Adventure" : what === "Mapa" ? "Map" : maps.length + " maps"} by ${author}${meta ? ` (${meta})` : ""}.`,
   },
   category: isAdv ? "Campaigns" : "Maps",
