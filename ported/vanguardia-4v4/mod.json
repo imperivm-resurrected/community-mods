@@ -4,15 +4,15 @@
   "version": "1.0",
   "authors": [
     "Ferónidas",
-    "Jörmungandr (port)"
+    "Villoh (port)"
   ],
   "description": {
-    "spanish": "Mapa de Ferónidas (2024, Imperivm HD vRelease 1.0). Porteado a Imperivm Resurrected por Jörmungandr.",
-    "english": "Map by Ferónidas (2024, Imperivm HD vRelease 1.0). Ported to Imperivm Resurrected by Jörmungandr."
+    "spanish": "Mapa de Ferónidas (2024, Imperivm HD vRelease 1.0). Porteado a Imperivm Resurrected por Villoh.",
+    "english": "Map by Ferónidas (2024, Imperivm HD vRelease 1.0). Ported to Imperivm Resurrected by Villoh."
   },
   "category": "Maps",
   "tags": [
     "8 players"
   ],
-  "redistributable": false
+  "redistributable": true
 }

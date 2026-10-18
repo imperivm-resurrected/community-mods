@@ -4,13 +4,15 @@
   "version": "1.0",
   "authors": [
     "arkano57",
-    "Jörmungandr (port)"
+    "Villoh (port)"
   ],
   "description": {
-    "spanish": "Mapa de arkano57 (2009, Imperivm III v1.40). Porteado a Imperivm Resurrected por Jörmungandr.",
-    "english": "Map by arkano57 (2009, Imperivm III v1.40). Ported to Imperivm Resurrected by Jörmungandr."
+    "spanish": "Mapa de arkano57 (2009, Imperivm III v1.40). Porteado a Imperivm Resurrected por Villoh.",
+    "english": "Map by arkano57 (2009, Imperivm III v1.40). Ported to Imperivm Resurrected by Villoh."
   },
   "category": "Maps",
-  "tags": [],
-  "redistributable": false
+  "tags": [
+    "6 players"
+  ],
+  "redistributable": true
 }
