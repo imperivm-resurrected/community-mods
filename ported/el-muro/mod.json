@@ -1,0 +1,16 @@
+{
+  "id": "el-muro",
+  "name": "El Muro",
+  "version": "1.0",
+  "authors": [
+    "arkano57",
+    "Jörmungandr (port)"
+  ],
+  "description": {
+    "spanish": "Mapa de arkano57 (2009, Imperivm III v1.40). Porteado a Imperivm Resurrected por Jörmungandr.",
+    "english": "Map by arkano57 (2009, Imperivm III v1.40). Ported to Imperivm Resurrected by Jörmungandr."
+  },
+  "category": "Maps",
+  "tags": [],
+  "redistributable": false
+}

@@ -5,8 +5,8 @@ const slug = s => s.normalize("NFD").replace(/[\u0300-\u036f]/g, "").toLowerCase
 (async () => {
   for (const e of entries) {
     e.slug = slug(e.title);
-    for (const f of e.files) {
-      const dir = path.join(__dirname, "../originals/discord", e.channel, e.slug), out = path.join(dir, f.name);
+    for (const f of [...e.files, ...(e.shots || [])]) {
+      const dir = path.join(__dirname, "../originals/discord", e.channel, e.slug, e.shots?.includes(f) ? "screenshots" : ""), out = path.join(dir, f.name);
       f.local = path.relative(path.join(__dirname, ".."), out);
       if (fs.existsSync(out) && fs.statSync(out).size === f.size) continue;
       fs.mkdirSync(dir, { recursive: true });
@@ -17,5 +17,5 @@ const slug = s => s.normalize("NFD").replace(/[\u0300-\u036f]/g, "").toLowerCase
     }
   }
   fs.writeFileSync(path.join(__dirname, "../raw/discord-entries.json"), JSON.stringify(entries, null, 1));
-  console.log("ok", entries.flatMap(e => e.files).filter(f => f.local).length, "files");
+  console.log("ok", entries.flatMap(e => [...e.files, ...(e.shots || [])]).filter(f => f.local).length, "files");
 })();

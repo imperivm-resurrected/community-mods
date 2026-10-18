@@ -1,0 +1,18 @@
+{
+  "id": "vanguardia-4v4",
+  "name": "Vanguardia 4v4",
+  "version": "1.0",
+  "authors": [
+    "Ferónidas",
+    "Jörmungandr (port)"
+  ],
+  "description": {
+    "spanish": "Mapa de Ferónidas (2024, Imperivm HD vRelease 1.0). Porteado a Imperivm Resurrected por Jörmungandr.",
+    "english": "Map by Ferónidas (2024, Imperivm HD vRelease 1.0). Ported to Imperivm Resurrected by Jörmungandr."
+  },
+  "category": "Maps",
+  "tags": [
+    "8 players"
+  ],
+  "redistributable": false
+}

@@ -1,0 +1,69 @@
+// Wrap a Discord map/adventure (raw/discord-entries.json) as an Imperivm Resurrected mod in ported/<slug>/
+//   node tools/wrap-map.js [canal/]<slug> --porter "<tu nombre>" [--jugadores "2-4 players"] [--redistribuible]
+// .rar/.zip are unpacked with bsdtar (NixOS: nix shell nixpkgs#libarchive).
+const fs = require("fs"), path = require("path"), { execFileSync } = require("child_process");
+const ROOT = path.join(__dirname, "..");
+const args = process.argv.slice(2), opt = {};
+for (let i = 0; i < args.length; i++) if (args[i].startsWith("--")) opt[args[i].slice(2)] = args[i + 1]?.startsWith("--") || i + 1 >= args.length ? true : args[++i]; else opt._ = args[i];
+if (!opt._ || !opt.porter) { console.error('uso: node tools/wrap-map.js <slug> --porter "<nombre>" [--jugadores "4 players"] [--redistribuible]'); process.exit(1); }
+
+const [want, chan] = opt._.split("/").reverse();
+const found = require("../raw/discord-entries.json").filter(x => x.slug === want && (!chan || x.channel === chan));
+if (found.length !== 1) { console.error(found.length ? `ambiguo, usa canal/slug: ${found.map(x => x.channel + "/" + x.slug).join(" ")}` : `no existe ${opt._}`); process.exit(1); }
+const e = found[0];
+const id = (e.channel === "saga-imperivm" ? "saga-" : "") + e.slug;
+const isAdv = e.channel === "aventuras" || /AVENTURAS/.test(e.section);
+const SMALL = new Set(["de", "del", "la", "las", "el", "los", "en", "y", "a", "por", "al", "un", "una", "con", "of", "the"]);
+const titleCase = s => s.toLowerCase().split(/(\s+)/).map((w, i) => i && SMALL.has(w) ? w : w.charAt(0).toUpperCase() + w.slice(1))
+  .join("").replace(/\b(i{1,3}|iv|vi{0,3}|ix|x{1,3})\b/gi, m => m.toUpperCase()).replace(/(\d)v(\d)/gi, "$1v$2");
+
+// Players: from --jugadores, else guessed from the description ("tres jugadores", "2vs2", "1v1v1")
+const NUM = { dos: 2, tres: 3, cuatro: 4, cinco: 5, seis: 6, siete: 7, ocho: 8 };
+function guessPlayers(t) {
+  const vs = t.match(/\b(\d)\s*(?:v|vs)\s*(\d)(?:\s*(?:v|vs)\s*(\d))?(?:\s*(?:v|vs)\s*(\d))?\b/i);
+  if (vs) return vs.slice(1).filter(Boolean).reduce((a, b) => a + +b, 0);
+  const w = t.toLowerCase().match(/\b(\d|dos|tres|cuatro|cinco|seis|siete|ocho)\s+jugadores\b/);
+  return w ? (NUM[w[1]] || +w[1]) : null;
+}
+const players = opt.jugadores || (n => n && n >= 2 && n <= 8 ? `${n} players` : null)(guessPlayers(`${e.title} ${e.desc}`));
+
+const out = path.join(ROOT, "ported", id), dest = path.join(out, isAdv ? "adventures" : "scenarios");
+fs.rmSync(out, { recursive: true, force: true });
+fs.mkdirSync(dest, { recursive: true });
+for (const f of e.files) {
+  const src = path.join(ROOT, f.local);
+  if (/\.(rar|zip|7z)$/i.test(f.name)) execFileSync(process.env.BSDTAR || "bsdtar", ["-xf", src, "-C", dest]);
+  else fs.copyFileSync(src, path.join(dest, f.name));
+}
+// flatten folders inside archives, keep only what the game reads next to a map
+for (const f of fs.readdirSync(dest, { recursive: true })) {
+  const p = path.join(dest, f);
+  if (fs.statSync(p).isDirectory()) continue;
+  if (/\.(bfhp|bmp)$/i.test(f)) { if (path.dirname(f) !== ".") fs.renameSync(p, path.join(dest, path.basename(f))); }
+  else fs.rmSync(p);
+}
+for (const f of fs.readdirSync(dest)) if (fs.statSync(path.join(dest, f)).isDirectory()) fs.rmSync(path.join(dest, f), { recursive: true });
+// "Mapa..BFHP" (common typo) -> "Mapa.BFHP": the SDK rejects ".." in paths
+for (const f of fs.readdirSync(dest)) if (f.includes("..")) fs.renameSync(path.join(dest, f), path.join(dest, f.replace(/\.{2,}/g, ".")));
+const maps = fs.readdirSync(dest).filter(f => /\.bfhp$/i.test(f));
+if (!maps.length) { console.error("sin .bfhp en", e.files.map(f => f.name)); process.exit(1); }
+
+const author = e.author || "?";
+const meta = [e.year, e.base].filter(Boolean).join(", ");
+const what = isAdv ? "Aventura" : maps.length > 1 ? `${maps.length} mapas` : "Mapa";
+const mod = {
+  id,
+  name: titleCase(e.title),
+  version: "1.0",
+  authors: [author, `${opt.porter} (port)`],
+  description: {
+    spanish: `${e.desc ? e.desc + " " : ""}${what} de ${author}${meta ? ` (${meta})` : ""}. Porteado a Imperivm Resurrected por ${opt.porter}.`,
+    english: `${what === "Aventura" ? "Adventure" : what === "Mapa" ? "Map" : maps.length + " maps"} by ${author}${meta ? ` (${meta})` : ""}. Ported to Imperivm Resurrected by ${opt.porter}.`,
+  },
+  category: isAdv ? "Campaigns" : "Maps",
+  tags: isAdv ? ["Spanish"] : players ? [players] : [],
+  redistributable: !!opt.redistribuible,
+};
+fs.writeFileSync(path.join(out, "mod.json"), JSON.stringify(mod, null, 2) + "\n");
+fs.writeFileSync(path.join(out, "CREDITOS.txt"), `${mod.name}\nAutor original: ${author}\nPort: ${opt.porter}\nOriginal: ${e.discord}\n${e.links.map(l => "         " + l).join("\n")}\n`);
+console.log(`${out}\n  ${maps.join(", ")} -> ${path.basename(dest)}/\n  categoría ${mod.category}, etiquetas ${JSON.stringify(mod.tags)}${players && !opt.jugadores ? "  ⚠️ jugadores adivinado, compruébalo" : ""}${!isAdv && !players ? "  ⚠️ falta --jugadores" : ""}`);

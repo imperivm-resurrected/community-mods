@@ -15,7 +15,7 @@ for (const [chan, id] of Object.entries(CH)) {
     const count = head?.input.match(/\((\d+) mapas\)/)?.[1];
     if (head) {
       cur = { channel: chan, section, title: head[1].trim(), author: head[2]?.replace(/_/g, "").trim() || "",
-        discord: `https://discord.com/channels/${GUILD}/${id}/${m.id}`, year: "", base: "", links: [], files: [], desc: "", count: count ? +count : 1 };
+        discord: `https://discord.com/channels/${GUILD}/${id}/${m.id}`, year: "", base: "", links: [], files: [], shots: [], desc: "", count: count ? +count : 1 };
       const desc = m.content.split("\n").find(l => /^_.+_$/.test(l.trim()));
       if (desc) cur.desc = desc.trim().replace(/^_|_$/g, "");
       entries.push(cur);
@@ -29,6 +29,7 @@ for (const [chan, id] of Object.entries(CH)) {
     if (yv && !cur.year) { cur.year = yv[1]; cur.base = yv[2]; }
     cur.links.push(...urls(m.content));
     cur.files.push(...m.attachments.filter(isFile).map(a => ({ name: a.name, size: a.size, url: a.url })));
+    cur.shots.push(...m.attachments.filter(a => !isFile(a)).map(a => ({ name: a.name.replace(/^SPOILER_/, ""), size: a.size, url: a.url })));
   }
 }
 fs.writeFileSync(__dirname + "/../raw/discord-entries.json", JSON.stringify(entries, null, 1));

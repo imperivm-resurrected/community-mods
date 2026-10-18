@@ -16,6 +16,14 @@
     "local": "originals/discord/saga-imperivm/anillo-mortal/Anillo_mortal.BFHP"
    }
   ],
+  "shots": [
+   {
+    "name": "Captura_de_pantalla_1490.png",
+    "size": 1608504,
+    "url": "https://cdn.discordapp.com/attachments/1414409056830885920/1416221941504938115/Captura_de_pantalla_1490.png?ex=6ad4be36&is=6ad36cb6&hm=b3295bc0d31a728ddd4c9335d207ad409c353489b551d7ea79e5947cf898ea15&",
+    "local": "originals/discord/saga-imperivm/anillo-mortal/screenshots/Captura_de_pantalla_1490.png"
+   }
+  ],
   "desc": "Mapa para tres jugadores en el que existen pequeñas islas que darán ventaja al jugador que se atreva a explorarlas.",
   "count": 1,
   "slug": "anillo-mortal"
@@ -35,6 +43,14 @@
     "size": 1051667,
     "url": "https://cdn.discordapp.com/attachments/1414409056830885920/1416222012183150694/Batalla_por_la_supervivencia.bfhp?ex=6ad4be47&is=6ad36cc7&hm=fd795397b461c72342cf8c52c34f08212b02f9ec5b8281b1862924231a4fdabb&",
     "local": "originals/discord/saga-imperivm/batalla-por-la-supervivencia/Batalla_por_la_supervivencia.bfhp"
+   }
+  ],
+  "shots": [
+   {
+    "name": "Captura_de_pantalla_1492.png",
+    "size": 1647508,
+    "url": "https://cdn.discordapp.com/attachments/1414409056830885920/1416222041761251429/Captura_de_pantalla_1492.png?ex=6ad4be4e&is=6ad36cce&hm=4e1a6e97a2ff5e87f126d6abdff3d1577820032ee8f541c1f5490c34770f89e3&",
+    "local": "originals/discord/saga-imperivm/batalla-por-la-supervivencia/screenshots/Captura_de_pantalla_1492.png"
    }
   ],
   "desc": "Un mapa en el que lo primero que han de hacer los jugadores es escapar de una isla en la que están prisioneros. No puede ser jugado por enemigos controlados por el ordenador.",
@@ -58,6 +74,14 @@
     "local": "originals/discord/saga-imperivm/caos-en-las-islas/Caos_en_las_islas.bfhp"
    }
   ],
+  "shots": [
+   {
+    "name": "Captura_de_pantalla_1493.png",
+    "size": 1581364,
+    "url": "https://cdn.discordapp.com/attachments/1414409056830885920/1416222118076612669/Captura_de_pantalla_1493.png?ex=6ad4be61&is=6ad36ce1&hm=cc28cd496e5d8394348e1022bec6c845dc7795cfce8905eab867ae0ca6beffda&",
+    "local": "originals/discord/saga-imperivm/caos-en-las-islas/screenshots/Captura_de_pantalla_1493.png"
+   }
+  ],
   "desc": "Tres grandes islas con dos fortalezas cada una. Hay sorpresas en las pequeñas islas que las rodean. Recomendado para tres equipos de dos jugadores cada uno.",
   "count": 1,
   "slug": "caos-en-las-islas"
@@ -77,6 +101,14 @@
     "size": 1057299,
     "url": "https://cdn.discordapp.com/attachments/1414409056830885920/1416222147642134640/Cuatro_reinos.bfhp?ex=6ad4be68&is=6ad36ce8&hm=c7ca0ec6669930216942f3a9ee91726038d893985b3b685ccb612741b270475c&",
     "local": "originals/discord/saga-imperivm/cuatro-reinos/Cuatro_reinos.bfhp"
+   }
+  ],
+  "shots": [
+   {
+    "name": "Captura_de_pantalla_1494.png",
+    "size": 1790002,
+    "url": "https://cdn.discordapp.com/attachments/1414409056830885920/1416222165589823619/Captura_de_pantalla_1494.png?ex=6ad4be6c&is=6ad36cec&hm=aa91728c7f9b7628f328d6bcd31997d28634c0a4808fa0273a00bf49e90b4d8c&",
+    "local": "originals/discord/saga-imperivm/cuatro-reinos/screenshots/Captura_de_pantalla_1494.png"
    }
   ],
   "desc": "Lleno de estrechos pasadizos, este mapa montañoso tiene una fortaleza romana en el centro que dará gran ventaja a quien la conquiste.",
@@ -100,6 +132,14 @@
     "local": "originals/discord/saga-imperivm/el-despertar-de-los-teutones/El_despertar_de_los_teutones.bfhp"
    }
   ],
+  "shots": [
+   {
+    "name": "Captura_de_pantalla_1495.png",
+    "size": 1850612,
+    "url": "https://cdn.discordapp.com/attachments/1414409056830885920/1416222214138626180/Captura_de_pantalla_1495.png?ex=6ad4be77&is=6ad36cf7&hm=e8c9648bb17263800fbdda14bcb70a0c249628b089c4aff0969f55ad06856d47&",
+    "local": "originals/discord/saga-imperivm/el-despertar-de-los-teutones/screenshots/Captura_de_pantalla_1495.png"
+   }
+  ],
   "desc": "Lleno de lagos, el movimiento por este mapa no resulta fácil. El jugador que se atreva a conquistar la fortaleza romana custodiada por teutones que se encuentra en el centro, será el más poderoso.",
   "count": 1,
   "slug": "el-despertar-de-los-teutones"
@@ -119,6 +159,14 @@
     "size": 1048595,
     "url": "https://cdn.discordapp.com/attachments/1414409056830885920/1416222243481980928/El_muro.bfhp?ex=6ad4be7e&is=6ad36cfe&hm=317d99a56d89e666d91457145cdd5f068a2769b6b9e72025a4ecddfc675f4b5b&",
     "local": "originals/discord/saga-imperivm/el-muro/El_muro.bfhp"
+   }
+  ],
+  "shots": [
+   {
+    "name": "Captura_de_pantalla_1496.png",
+    "size": 1805276,
+    "url": "https://cdn.discordapp.com/attachments/1414409056830885920/1416222269729931355/Captura_de_pantalla_1496.png?ex=6ad4be85&is=6ad36d05&hm=0ae37fde7c82b2ca0ccfa9d223a3b0445dff384c2114d05dc5edaad1947c5cae&",
+    "local": "originals/discord/saga-imperivm/el-muro/screenshots/Captura_de_pantalla_1496.png"
    }
   ],
   "desc": "Una gran cadena montañosa separa dos zonas de este mapa. En cada una de las zonas se establecen tres jugadores.",
@@ -142,6 +190,14 @@
     "local": "originals/discord/saga-imperivm/el-valle-de-la-muerte/El_valle_de_la_muerte.bfhp"
    }
   ],
+  "shots": [
+   {
+    "name": "Captura_de_pantalla_1497.png",
+    "size": 1767590,
+    "url": "https://cdn.discordapp.com/attachments/1414409056830885920/1416222315397517433/Captura_de_pantalla_1497.png?ex=6ad4be90&is=6ad36d10&hm=220626c6a2523da733c4f76638dd2feeeb7135f4886db95d03019ac14ae3b54c&",
+    "local": "originals/discord/saga-imperivm/el-valle-de-la-muerte/screenshots/Captura_de_pantalla_1497.png"
+   }
+  ],
   "desc": "Este mapa continental, dará a los jugadores la oportunidad de medir sus fuerzas en un gran valle situado en su centro.",
   "count": 1,
   "slug": "el-valle-de-la-muerte"
@@ -161,6 +217,14 @@
     "size": 1027603,
     "url": "https://cdn.discordapp.com/attachments/1414409056830885920/1416222346032844800/El_valle_de_los_teutones.bfhp?ex=6ad4be97&is=6ad36d17&hm=c7335310fc7ae9defe2e8a1c627c1b99952ad31cfc41a7fa0e4f656a13c20971&",
     "local": "originals/discord/saga-imperivm/el-valle-de-los-teutones/El_valle_de_los_teutones.bfhp"
+   }
+  ],
+  "shots": [
+   {
+    "name": "Captura_de_pantalla_1498.png",
+    "size": 1823900,
+    "url": "https://cdn.discordapp.com/attachments/1414409056830885920/1416222362315264072/Captura_de_pantalla_1498.png?ex=6ad4be9b&is=6ad36d1b&hm=c32edfc8a612074854c2c931706dd4d5b1c82d6e98c64fe65808edc97ae729a7&",
+    "local": "originals/discord/saga-imperivm/el-valle-de-los-teutones/screenshots/Captura_de_pantalla_1498.png"
    }
   ],
   "desc": "Un mapa para dos equipos de tres jugadores cada uno, en el que los jugadores estarán constantemente hostigados por el ataque de tribus teutonas.",
@@ -184,6 +248,14 @@
     "local": "originals/discord/saga-imperivm/guerra-en-el-mar/Guerra_en_el_mar.bfhp"
    }
   ],
+  "shots": [
+   {
+    "name": "Captura_de_pantalla_1499.png",
+    "size": 1559556,
+    "url": "https://cdn.discordapp.com/attachments/1414409056830885920/1416222412781129870/Captura_de_pantalla_1499.png?ex=6ad4bea7&is=6ad36d27&hm=7afb286a884f58a758a7cd0259f4dfca004463d331cd98d857dc03300915e105&",
+    "local": "originals/discord/saga-imperivm/guerra-en-el-mar/screenshots/Captura_de_pantalla_1499.png"
+   }
+  ],
   "desc": "Un mar lleno de islas: las orientales ocupadas por romanos y las occidentales por galos. El resto, pobladas por teutones, que darán ventaja al jugador que las ocupe. Especial para dos equipos de tres jugadores.",
   "count": 1,
   "slug": "guerra-en-el-mar"
@@ -203,6 +275,14 @@
     "size": 1178643,
     "url": "https://cdn.discordapp.com/attachments/1414409056830885920/1416222442900291694/La_batalla_de_Stonehenge.bfhp?ex=6ad4beae&is=6ad36d2e&hm=8cf156884324f7b97503d3b8fddbdd884681e6ceb35f15e751c4ba6c753cd40f&",
     "local": "originals/discord/saga-imperivm/la-batalla-de-stonehenge/La_batalla_de_Stonehenge.bfhp"
+   }
+  ],
+  "shots": [
+   {
+    "name": "Captura_de_pantalla_1500.png",
+    "size": 1804928,
+    "url": "https://cdn.discordapp.com/attachments/1414409056830885920/1416222461661282374/Captura_de_pantalla_1500.png?ex=6ad4beb3&is=6ad36d33&hm=5bdc5c897daf7133b7556a84e624167aa69b588dc8aaa6ec05125f4f7e02c426&",
+    "local": "originals/discord/saga-imperivm/la-batalla-de-stonehenge/screenshots/Captura_de_pantalla_1500.png"
    }
   ],
   "desc": "Un poderoso romano manejado por el ordenador domina este mapa montañoso. El objetivo es eliminarlo. Se recomienda que el resto de jugadores jueguen en equipo.",
@@ -226,6 +306,14 @@
     "local": "originals/discord/saga-imperivm/la-costa-norte/La_costa_norte.bfhp"
    }
   ],
+  "shots": [
+   {
+    "name": "Captura_de_pantalla_1502.png",
+    "size": 1548642,
+    "url": "https://cdn.discordapp.com/attachments/1414409056830885920/1416222523254767676/Captura_de_pantalla_1502.png?ex=6ad4bec1&is=6ad36d41&hm=61f2a1a3956823afbe21289c7b229db8ff48232ff2789af912afea198e2f7918&",
+    "local": "originals/discord/saga-imperivm/la-costa-norte/screenshots/Captura_de_pantalla_1502.png"
+   }
+  ],
   "desc": "Un mapa costero con una orografía difícil. Mejor para cuatro jugadores independientes.",
   "count": 1,
   "slug": "la-costa-norte"
@@ -245,6 +333,14 @@
     "size": 3863059,
     "url": "https://cdn.discordapp.com/attachments/1414409056830885920/1416222576950251660/La_Isla_misteriosa.bfhp?ex=6ad4bece&is=6ad36d4e&hm=bb209a6add2d2eeb938aa406746b298a35c72e0dc0032268d30969281cffe985&",
     "local": "originals/discord/saga-imperivm/la-isla-misteriosa/La_Isla_misteriosa.bfhp"
+   }
+  ],
+  "shots": [
+   {
+    "name": "Captura_de_pantalla_1503.png",
+    "size": 1587930,
+    "url": "https://cdn.discordapp.com/attachments/1414409056830885920/1416222598127288350/Captura_de_pantalla_1503.png?ex=6ad4bed3&is=6ad36d53&hm=27dce48a932d2a1081f629d7eb04c819c0f83ad7cf9a2bf3cc73468023b238aa&",
+    "local": "originals/discord/saga-imperivm/la-isla-misteriosa/screenshots/Captura_de_pantalla_1503.png"
    }
   ],
   "desc": "En este mapa, cuatro de los jugadores comienzan cada uno en una pequeña isla, y el resto juntos, en una gran isla central.",
@@ -268,6 +364,14 @@
     "local": "originals/discord/saga-imperivm/la-ribera/La_ribera.bfhp"
    }
   ],
+  "shots": [
+   {
+    "name": "Captura_de_pantalla_1504.png",
+    "size": 1833788,
+    "url": "https://cdn.discordapp.com/attachments/1414409056830885920/1416222642666606642/Captura_de_pantalla_1504.png?ex=6ad4bede&is=6ad36d5e&hm=2402a2891525fe51b53635627beaf536c9f121b70118843e39e0b6536314c9df&",
+    "local": "originals/discord/saga-imperivm/la-ribera/screenshots/Captura_de_pantalla_1504.png"
+   }
+  ],
   "desc": "Un río divide este pequeño mapa en dos zonas, la primera bajo control romano y la segunda controlada por los galos. Para dos jugadores.",
   "count": 1,
   "slug": "la-ribera"
@@ -287,6 +391,14 @@
     "size": 1106451,
     "url": "https://cdn.discordapp.com/attachments/1414409056830885920/1416222688418070528/Las_islas_de_la_cruz.bfhp?ex=6ad4bee9&is=6ad36d69&hm=6d7026463a6af930e40cb3ca5254304ec0f62546911c45fd403abfbf82dea3ed&",
     "local": "originals/discord/saga-imperivm/las-islas-de-la-cruz/Las_islas_de_la_cruz.bfhp"
+   }
+  ],
+  "shots": [
+   {
+    "name": "Captura_de_pantalla_1505.png",
+    "size": 1566364,
+    "url": "https://cdn.discordapp.com/attachments/1414409056830885920/1416222704079470673/Captura_de_pantalla_1505.png?ex=6ad4beec&is=6ad36d6c&hm=7a3c2c5c0a599c8240abb335120426bf7cfe873fdb8190ab274d6642bcad8edb&",
+    "local": "originals/discord/saga-imperivm/las-islas-de-la-cruz/screenshots/Captura_de_pantalla_1505.png"
    }
   ],
   "desc": "Lleno de islas de diferentes tamaños, este mapa dificulta el acceso al territorio de los demás jugadores.",
@@ -310,6 +422,14 @@
     "local": "originals/discord/saga-imperivm/lucha-de-gigantes/Lucha_de_gigantes.bfhp"
    }
   ],
+  "shots": [
+   {
+    "name": "Captura_de_pantalla_1506.png",
+    "size": 1747430,
+    "url": "https://cdn.discordapp.com/attachments/1414409056830885920/1416222742566535268/Captura_de_pantalla_1506.png?ex=6ad4bef5&is=6ad36d75&hm=098b185ff036f5a8bb745dd5c2f4d11eb82c9a8bba6209cf513bc5d3957d2550&",
+    "local": "originals/discord/saga-imperivm/lucha-de-gigantes/screenshots/Captura_de_pantalla_1506.png"
+   }
+  ],
   "desc": "Al comienzo de la partida se dispone de un sólo héroe que hay que conservar durante toda la partida puesto que no está permitido contratar a más.",
   "count": 1,
   "slug": "lucha-de-gigantes"
@@ -329,6 +449,14 @@
     "size": 1080339,
     "url": "https://cdn.discordapp.com/attachments/1414409056830885920/1416222765647794196/Mares_del_terror.bfhp?ex=6ad4befb&is=6ad36d7b&hm=4768dcdc09830dd0dece8e48efa1e7e7745d5cbd20ad638d2438c15f1ce42870&",
     "local": "originals/discord/saga-imperivm/mares-del-terror/Mares_del_terror.bfhp"
+   }
+  ],
+  "shots": [
+   {
+    "name": "Captura_de_pantalla_1507.png",
+    "size": 1531058,
+    "url": "https://cdn.discordapp.com/attachments/1414409056830885920/1416222784044142671/Captura_de_pantalla_1507.png?ex=6ad4beff&is=6ad36d7f&hm=4bebe5ad093f8e0ed2d33ea915b41c573d57af715014724d459d1d998d816021&",
+    "local": "originals/discord/saga-imperivm/mares-del-terror/screenshots/Captura_de_pantalla_1507.png"
    }
   ],
   "desc": "Una isla grande poblada de fuerzas neutrales, rodeada de otras más pequeñas. Especial para dos equipos con dos jugadores cada uno.",
@@ -352,6 +480,14 @@
     "local": "originals/discord/saga-imperivm/norte-y-sur/Norte_y_Sur.bfhp"
    }
   ],
+  "shots": [
+   {
+    "name": "Captura_de_pantalla_1508.png",
+    "size": 1753096,
+    "url": "https://cdn.discordapp.com/attachments/1414409056830885920/1416222829216530443/Captura_de_pantalla_1508.png?ex=6ad4bf0a&is=6ad36d8a&hm=33ca5ff296be27e440c6221d72c4e57d53bdfa882b56825eea91819e4167b73b&",
+    "local": "originals/discord/saga-imperivm/norte-y-sur/screenshots/Captura_de_pantalla_1508.png"
+   }
+  ],
   "desc": "Una cadena montañosa divide de norte a sur este mapa continental, de manera que el paso entre ambas zonas es muy difícil. Especial para dos equipos de tres jugadores cada uno.",
   "count": 1,
   "slug": "norte-y-sur"
@@ -371,6 +507,14 @@
     "size": 1059347,
     "url": "https://cdn.discordapp.com/attachments/1414409056830885920/1416222859038031983/Tierras_castigadas.bfhp?ex=6ad4bf11&is=6ad36d91&hm=c86cf70d514f4353aeb57094377edac82b8eb5f7d46ad77a085eee4e77b2e336&",
     "local": "originals/discord/saga-imperivm/tierras-castigadas/Tierras_castigadas.bfhp"
+   }
+  ],
+  "shots": [
+   {
+    "name": "Captura_de_pantalla_1509.png",
+    "size": 1755486,
+    "url": "https://cdn.discordapp.com/attachments/1414409056830885920/1416222877039988786/Captura_de_pantalla_1509.png?ex=6ad4bf16&is=6ad36d96&hm=928b4c50c20e305344e73dcadbcfb7ea9579594d51dc3f4f16353cd32551da51&",
+    "local": "originals/discord/saga-imperivm/tierras-castigadas/screenshots/Captura_de_pantalla_1509.png"
    }
   ],
   "desc": "Un mapa costero con dos grandes penínsulas, una romana y la segunda gala. La configuración del mapa favorece que se produzcan batallas navales en él. Para dos equipos de cuatro jugadores cada uno.",
@@ -394,6 +538,14 @@
     "local": "originals/discord/saga-imperivm/una-x-marca-el-lugar/Una_X_marca_el_lugar.bfhp"
    }
   ],
+  "shots": [
+   {
+    "name": "Captura_de_pantalla_1510.png",
+    "size": 1520964,
+    "url": "https://cdn.discordapp.com/attachments/1414409056830885920/1416222915778707577/Captura_de_pantalla_1510.png?ex=6ad4bf1f&is=6ad36d9f&hm=1b462f38f7a23750bb98591e9c13e875b32f08371d9982951f8294ca12132d54&",
+    "local": "originals/discord/saga-imperivm/una-x-marca-el-lugar/screenshots/Captura_de_pantalla_1510.png"
+   }
+  ],
   "desc": "Una gran isla en el centro rodeada de varias pequeñas que pueden -y deben- ser exploradas.",
   "count": 1,
   "slug": "una-x-marca-el-lugar"
@@ -413,6 +565,14 @@
     "size": 294419,
     "url": "https://cdn.discordapp.com/attachments/1414409056830885920/1416222939619266690/Volcano.bfhp?ex=6ad4bf24&is=6ad36da4&hm=2914d1175d50e3fac10de19c29e78ea4f84a58891aa3cd75935c8d1af7892208&",
     "local": "originals/discord/saga-imperivm/volcano/Volcano.bfhp"
+   }
+  ],
+  "shots": [
+   {
+    "name": "Captura_de_pantalla_1511.png",
+    "size": 1893840,
+    "url": "https://cdn.discordapp.com/attachments/1414409056830885920/1416222956194889919/Captura_de_pantalla_1511.png?ex=6ad4bf28&is=6ad36da8&hm=78752a8bf07405f98ade7bd7237d8fbd1e3ef44adeb1b1ae46c035e9842e4a2c&",
+    "local": "originals/discord/saga-imperivm/volcano/screenshots/Captura_de_pantalla_1511.png"
    }
   ],
   "desc": "Un mapa montañoso en el que las fortalezas están situadas cerca de un enorme volcán.",
@@ -436,6 +596,14 @@
     "local": "originals/discord/saga-imperivm/ascendencia/Ascendencia.bfhp"
    }
   ],
+  "shots": [
+   {
+    "name": "Captura_de_pantalla_1491.png",
+    "size": 1838060,
+    "url": "https://cdn.discordapp.com/attachments/1414409056830885920/1416223014667816980/Captura_de_pantalla_1491.png?ex=6ad4bf36&is=6ad36db6&hm=4e477b3c5b4b5f468581e720641ff87882e5738c21e97d77a1bd1461042ac186&",
+    "local": "originals/discord/saga-imperivm/ascendencia/screenshots/Captura_de_pantalla_1491.png"
+   }
+  ],
   "desc": "La región cuenta con cuatro áreas y con un gran número de puestos avanzados. Una vez capturado, un puesto avanzado puede entrenar unidades. ¿Conseguirás vencer y hacerte con el control total?",
   "count": 1,
   "slug": "ascendencia"
@@ -457,6 +625,14 @@
     "local": "originals/discord/saga-imperivm/la-caida-de-avalon/La_caida_de_Avalon.bfhp"
    }
   ],
+  "shots": [
+   {
+    "name": "Captura_de_pantalla_1501.png",
+    "size": 1834258,
+    "url": "https://cdn.discordapp.com/attachments/1414409056830885920/1416223065406443540/Captura_de_pantalla_1501.png?ex=6ad4bf42&is=6ad36dc2&hm=ca5da5ddd9b6b4f3ac022a752a47b60d4c68b7209882185f32a625b6a554f15f&",
+    "local": "originals/discord/saga-imperivm/la-caida-de-avalon/screenshots/Captura_de_pantalla_1501.png"
+   }
+  ],
   "desc": "Tras la muerte del rey de Avalon, la que fuera gran ciudad ha sido dividida y ha sufrido el acoso de numerosos enemigos. ¿Podrán unirse los herederos de Avalon para salvar su hogar de la destrucción total? ",
   "count": 1,
   "slug": "la-caida-de-avalon"
@@ -471,6 +647,14 @@
   "base": "",
   "links": [],
   "files": [],
+  "shots": [
+   {
+    "name": "Captura_de_pantalla_1513.png",
+    "size": 1933318,
+    "url": "https://cdn.discordapp.com/attachments/1414409056830885920/1416223198613344287/Captura_de_pantalla_1513.png?ex=6ad4bf62&is=6ad36de2&hm=00a45bd9af9690c7739646b25afd4065dc2e3793ba4797778709d1a1505cd14e&",
+    "local": "originals/discord/saga-imperivm/larax/screenshots/Captura_de_pantalla_1513.png"
+   }
+  ],
   "desc": "Los teutones han invadido la Galia. Ávidos de sangre y destrucción, saquean Kormaris acabando con sus habitantes. Sólo Lárax ha sobrevivido y clama venganza.",
   "count": 1,
   "slug": "larax"
@@ -490,6 +674,14 @@
     "size": 2216589,
     "url": "https://cdn.discordapp.com/attachments/1414409056830885920/1416223245023182999/Return_to_the_Throne.BFHP?ex=6ad4bf6d&is=6ad36ded&hm=5d65c4e1c94fdd8570dd861314744afae4c6582cad0d03c4bae5c8b32f1fc957&",
     "local": "originals/discord/saga-imperivm/el-trono-de-dacia/Return_to_the_Throne.BFHP"
+   }
+  ],
+  "shots": [
+   {
+    "name": "Captura_de_pantalla_1514.png",
+    "size": 1749506,
+    "url": "https://cdn.discordapp.com/attachments/1414409056830885920/1416223266065879122/SPOILER_Captura_de_pantalla_1514.png?ex=6ad4bf72&is=6ad36df2&hm=f75653b17c168016696b2516444ff38d3fa601354fa172477c36a0e6e13e3e61&",
+    "local": "originals/discord/saga-imperivm/el-trono-de-dacia/screenshots/Captura_de_pantalla_1514.png"
    }
   ],
   "desc": "Siglo III d.C. Roma asiste al esplendor de Dacia, una de las provincias más prósperas del Imperio. Un enclave demasiado tentador para hombres ávidos de poder. Un laberinto de conspiraciones que culmina con el asesinato del gobernador Cayo Agrippa. Su hijo Fabio es condenado a galeras. En la soledad de su confinamiento, jura venganza...",
@@ -513,6 +705,14 @@
     "local": "originals/discord/saga-imperivm/defensores/Defenders.bfhp"
    }
   ],
+  "shots": [
+   {
+    "name": "Captura_de_pantalla_1516.png",
+    "size": 2286342,
+    "url": "https://cdn.discordapp.com/attachments/1414409056830885920/1416223332428415016/Captura_de_pantalla_1516.png?ex=6ad4bf82&is=6ad36e02&hm=f1ac50a18e671be6634744fb6c2bdc28f6703e03f9a3e885a19fa3bcd88ac079&",
+    "local": "originals/discord/saga-imperivm/defensores/screenshots/Captura_de_pantalla_1516.png"
+   }
+  ],
   "desc": "Tu grupo ha sido elegido por los dioses para defender la colina sagrada del ataque de los bárbaros. Tu misión es resistir el mayor número posible de días. Al final de cada día los dioses te otorgarán un deseo.",
   "count": 1,
   "slug": "defensores"
@@ -532,6 +732,14 @@
     "size": 3788317,
     "url": "https://cdn.discordapp.com/attachments/1414409056830885920/1416247266393718909/Ancient_world.BFHP?ex=6ad4d5cc&is=6ad3844c&hm=daaa1fb8d15e59570d67bfb51dca41103f1ebd2e55f78555932ae16364fd1743&",
     "local": "originals/discord/saga-imperivm/mediterraneo/Ancient_world.BFHP"
+   }
+  ],
+  "shots": [
+   {
+    "name": "Captura_de_pantalla_1518.png",
+    "size": 1631170,
+    "url": "https://cdn.discordapp.com/attachments/1414409056830885920/1416247284932284446/Captura_de_pantalla_1518.png?ex=6ad4d5d1&is=6ad38451&hm=626eb5a2ae5d9d4475721ae34ea1e879d19536e7672e8ea75c942a6fe8e35005&",
+    "local": "originals/discord/saga-imperivm/mediterraneo/screenshots/Captura_de_pantalla_1518.png"
    }
   ],
   "desc": "Hispania, la Galia, Roma y Cartago compiten por el dominio del Mediterráneo.",
@@ -555,6 +763,14 @@
     "local": "originals/discord/saga-imperivm/la-maldicion-del-altar/Arena_of_Sorrow.BFHP"
    }
   ],
+  "shots": [
+   {
+    "name": "Captura_de_pantalla_1519.png",
+    "size": 1753176,
+    "url": "https://cdn.discordapp.com/attachments/1414409056830885920/1416247333926207689/Captura_de_pantalla_1519.png?ex=6ad4d5dd&is=6ad3845d&hm=50a80034589f1701f7173941d6703dd235ab5110a76c2505fd7bf5eeb9ccc650&",
+    "local": "originals/discord/saga-imperivm/la-maldicion-del-altar/screenshots/Captura_de_pantalla_1519.png"
+   }
+  ],
   "desc": "Cuatro civilizaciones luchan por el control de la región. En el centro se erige un misterioso altar. Aquel que consiga entrar sufrirá la maldición, pero quizá consiga emplear los poderes del altar en su propio beneficio. ",
   "count": 1,
   "slug": "la-maldicion-del-altar"
@@ -574,6 +790,14 @@
     "size": 3812381,
     "url": "https://cdn.discordapp.com/attachments/1414409056830885920/1416247375445626880/Battle_for_Spain.BFHP?ex=6ad4d5e6&is=6ad38466&hm=56aec468ffb3998c72b7ab63e3bc4608e7227fae1976baad5c3278b7a1cecf17&",
     "local": "originals/discord/saga-imperivm/hispania/Battle_for_Spain.BFHP"
+   }
+  ],
+  "shots": [
+   {
+    "name": "Captura_de_pantalla_1520.png",
+    "size": 1553102,
+    "url": "https://cdn.discordapp.com/attachments/1414409056830885920/1416247391576915968/Captura_de_pantalla_1520.png?ex=6ad4d5ea&is=6ad3846a&hm=ed8935a0307e282193b5aaf2077b516c27a025263187a1226bc8c08a8d969894&",
+    "local": "originals/discord/saga-imperivm/hispania/screenshots/Captura_de_pantalla_1520.png"
    }
   ],
   "desc": "La península Ibérica es el perfecto campo de batalla para jugadores expertos. Recomendado para cuatro equipos de dos jugadores.",
@@ -597,6 +821,14 @@
     "local": "originals/discord/saga-imperivm/fiebre-del-oro/Golden_land.BFHP"
    }
   ],
+  "shots": [
+   {
+    "name": "Captura_de_pantalla_1521.png",
+    "size": 1605904,
+    "url": "https://cdn.discordapp.com/attachments/1414409056830885920/1416247439010300025/Captura_de_pantalla_1521.png?ex=6ad4d5f6&is=6ad38476&hm=0f4f8d3dfabe29c4799401674d5947affc97a3dad0ff74b4d51caba87cd22d0b&",
+    "local": "originals/discord/saga-imperivm/fiebre-del-oro/screenshots/Captura_de_pantalla_1521.png"
+   }
+  ],
   "desc": "Aldeas y fortines repletos de oro. Quien consiga capturarlos podrá crear el mayor de los ejércitos.",
   "count": 1,
   "slug": "fiebre-del-oro"
@@ -616,6 +848,14 @@
     "size": 3192342,
     "url": "https://cdn.discordapp.com/attachments/1414409056830885920/1416247469100236811/Land_of_gods.BFHP?ex=6ad4d5fd&is=6ad3847d&hm=ecd4e159cd2814fab1f16226e7e0b4d490346584cec8ba36add2b7d0b425c01e&",
     "local": "originals/discord/saga-imperivm/el-regalo-de-los-dioses/Land_of_gods.BFHP"
+   }
+  ],
+  "shots": [
+   {
+    "name": "Captura_de_pantalla_1522.png",
+    "size": 1791924,
+    "url": "https://cdn.discordapp.com/attachments/1414409056830885920/1416247488884772874/Captura_de_pantalla_1522.png?ex=6ad4d601&is=6ad38481&hm=1e2300c00f56cf2f73d3f95402f3f721ce9af3687bc88b8c48d07a88bdde2b5f&",
+    "local": "originals/discord/saga-imperivm/el-regalo-de-los-dioses/screenshots/Captura_de_pantalla_1522.png"
    }
   ],
   "desc": "El enfrentamiento de los dioses en estas tierras dejó huella en la orografía, generando un paisaje de extrañas y simbólicas montañas...",
@@ -639,6 +879,14 @@
     "local": "originals/discord/saga-imperivm/pasajes-montanosos/Mountain_Passages.BFHP"
    }
   ],
+  "shots": [
+   {
+    "name": "Captura_de_pantalla_1523.png",
+    "size": 1725386,
+    "url": "https://cdn.discordapp.com/attachments/1414409056830885920/1416247530831876197/Captura_de_pantalla_1523.png?ex=6ad4d60b&is=6ad3848b&hm=0ca139172dc96a317114973fcf41c37415e32766211c233d1f8b541a4c099f07&",
+    "local": "originals/discord/saga-imperivm/pasajes-montanosos/screenshots/Captura_de_pantalla_1523.png"
+   }
+  ],
   "desc": "Las fortalezas de los dos jugadores están separadas por pasajes montañosos...",
   "count": 1,
   "slug": "pasajes-montanosos"
@@ -658,6 +906,14 @@
     "size": 3662877,
     "url": "https://cdn.discordapp.com/attachments/1414409056830885920/1416247570350735370/River_Utopia.BFHP?ex=6ad4d615&is=6ad38495&hm=70a0b5a037f8d1efb055f01f1ebb63629aa110455834d2f79696afa22057e0a3&",
     "local": "originals/discord/saga-imperivm/rio-utopia/River_Utopia.BFHP"
+   }
+  ],
+  "shots": [
+   {
+    "name": "Captura_de_pantalla_1524.png",
+    "size": 1665666,
+    "url": "https://cdn.discordapp.com/attachments/1414409056830885920/1416247585584189450/Captura_de_pantalla_1524.png?ex=6ad4d619&is=6ad38499&hm=5d5432a36397b90feb1a876216b5e825b5d9320d3eddd65b7bcee9c0e61a798f&",
+    "local": "originals/discord/saga-imperivm/rio-utopia/screenshots/Captura_de_pantalla_1524.png"
    }
   ],
   "desc": "La paz de la región está a punto de llegar a su fin. Los señores de la guerra han planeado la conquista de estas tierras y se preparan para desembarcar sus ejércitos.",
@@ -681,6 +937,14 @@
     "local": "originals/discord/saga-imperivm/multi-defensa/MultiDefense.bfhp"
    }
   ],
+  "shots": [
+   {
+    "name": "Captura_de_pantalla_1525.png",
+    "size": 1663406,
+    "url": "https://cdn.discordapp.com/attachments/1414409056830885920/1416247630756970547/Captura_de_pantalla_1525.png?ex=6ad4d623&is=6ad384a3&hm=6fbdb5eef4a4f0d1160ae29be61d9a7ab19be40fb3ed05d198a6aa811d6a3554&",
+    "local": "originals/discord/saga-imperivm/multi-defensa/screenshots/Captura_de_pantalla_1525.png"
+   }
+  ],
   "desc": "Los bárbaros del norte están desatados. Tres asentamientos se interponen en su camino. Tu tarea es elegir qué tipo de guerreros deben entrenar los asentamientos para salir victoriosos del campo de batalla.",
   "count": 1,
   "slug": "multi-defensa"
@@ -697,6 +961,14 @@
    "https://mega.nz/file/aIEQHTwC#6kxU8SyWFCl93a468YVhw_YIOYalo-FYtvLrVU_jrlY"
   ],
   "files": [],
+  "shots": [
+   {
+    "name": "Captura_de_pantalla_1526.png",
+    "size": 1340676,
+    "url": "https://cdn.discordapp.com/attachments/1414409056830885920/1416247758485979197/SPOILER_Captura_de_pantalla_1526.png?ex=6ad4d642&is=6ad384c2&hm=bab5e9f683628bcc33fc4709e4136874332d19507573a664a214eb0d7de92935&",
+    "local": "originals/discord/saga-imperivm/las-campanas-de-anibal/screenshots/Captura_de_pantalla_1526.png"
+   }
+  ],
   "desc": "Año 238 a.C. Cartago emprende la conquista de la península Ibérica como primer paso para recuperar su hegemonía. Un plan que ni Roma ni los pueblos iberos están dispuestos a aceptar…",
   "count": 5,
   "slug": "las-campanas-de-anibal"
@@ -713,6 +985,14 @@
    "https://mega.nz/file/uQUkhQhA#h1wIwY60cD4tNvymcVgSiZs7zEhWSV5Dt1WzjmuS1Es"
   ],
   "files": [],
+  "shots": [
+   {
+    "name": "Captura_de_pantalla_1531.png",
+    "size": 1387266,
+    "url": "https://cdn.discordapp.com/attachments/1414409056830885920/1416247853084311713/SPOILER_Captura_de_pantalla_1531.png?ex=6ad4d658&is=6ad384d8&hm=c374914ccfbb00db94831a5942e2bb1d415c25c83d37cd08617f18bf7a2eaf55&",
+    "local": "originals/discord/saga-imperivm/las-guerras-punicas/screenshots/Captura_de_pantalla_1531.png"
+   }
+  ],
   "desc": "Roma y Cartago, las dos civilizaciones más poderosas de la Antigüedad, se enfrentan en tres épicas guerras por el dominio del Mediterráneo. El Senado romano ha puesto sus ejércitos a tus órdenes. No debes fallar…",
   "count": 6,
   "slug": "las-guerras-punicas"
@@ -732,6 +1012,14 @@
     "size": 1247668,
     "url": "https://cdn.discordapp.com/attachments/1414409056830885920/1416247909653151754/Numantia.BFHP?ex=6ad4d666&is=6ad384e6&hm=aa227c8e64e14a42a9e8f88072cf9663ef3758c97f161266552d55db1325748b&",
     "local": "originals/discord/saga-imperivm/el-sitio-de-numancia/Numantia.BFHP"
+   }
+  ],
+  "shots": [
+   {
+    "name": "Captura_de_pantalla_1532.png",
+    "size": 1555440,
+    "url": "https://cdn.discordapp.com/attachments/1414409056830885920/1416247925394247765/Captura_de_pantalla_1532.png?ex=6ad4d66a&is=6ad384ea&hm=cdd4001bfc91fd9593f48157f99335bcc0126d4f25bc75be8113ff57c408ce48&",
+    "local": "originals/discord/saga-imperivm/el-sitio-de-numancia/screenshots/Captura_de_pantalla_1532.png"
    }
   ],
   "desc": "Año 133 a.C. Roma se dispone al asalto del último bastión ibero en la meseta. ¿Podrás cambiar el curso de la historia y derrotar a las poderosas legiones que asedian Numancia.",
@@ -757,6 +1045,14 @@
     "local": "originals/discord/mapas/el-muro/El_muro.BFHP"
    }
   ],
+  "shots": [
+   {
+    "name": "Captura_de_pantalla_1294.png",
+    "size": 1791978,
+    "url": "https://cdn.discordapp.com/attachments/1413782299786608682/1414907866132779070/Captura_de_pantalla_1294.png?ex=6ad53c63&is=6ad3eae3&hm=da203b13d9920c9da55aa41c0824e2c733427454ca07bf8cee8d2b443715cfec&",
+    "local": "originals/discord/mapas/el-muro/screenshots/Captura_de_pantalla_1294.png"
+   }
+  ],
   "desc": "",
   "count": 1,
   "slug": "el-muro"
@@ -778,6 +1074,14 @@
     "size": 1121479,
     "url": "https://cdn.discordapp.com/attachments/1413782299786608682/1414907891705581578/El_frente.BFHP?ex=6ad53c69&is=6ad3eae9&hm=323df162aca6cd8df4183c9febb9ba57504626d7f95aa50ac8b59a2d8a20f659&",
     "local": "originals/discord/mapas/el-frente/El_frente.BFHP"
+   }
+  ],
+  "shots": [
+   {
+    "name": "Captura_de_pantalla_1295.png",
+    "size": 1420228,
+    "url": "https://cdn.discordapp.com/attachments/1413782299786608682/1414907926677553314/Captura_de_pantalla_1295.png?ex=6ad53c71&is=6ad3eaf1&hm=a0692f22e0bfb1d529bc9a5ff1f8ec8ee5443c4ca2e341e6881a221cbd9127e1&",
+    "local": "originals/discord/mapas/el-frente/screenshots/Captura_de_pantalla_1295.png"
    }
   ],
   "desc": "",
@@ -803,6 +1107,14 @@
     "local": "originals/discord/mapas/la-gran-muralla/La_gran_muralla.BFHP"
    }
   ],
+  "shots": [
+   {
+    "name": "Captura_de_pantalla_1297.png",
+    "size": 1783958,
+    "url": "https://cdn.discordapp.com/attachments/1413782299786608682/1414908009879965767/Captura_de_pantalla_1297.png?ex=6ad53c85&is=6ad3eb05&hm=43d1fe4ba0065df4386e56e9a81109cb0b6daf46a46d14e924e82ff48e5c113b&",
+    "local": "originals/discord/mapas/la-gran-muralla/screenshots/Captura_de_pantalla_1297.png"
+   }
+  ],
   "desc": "",
   "count": 1,
   "slug": "la-gran-muralla"
@@ -824,6 +1136,14 @@
     "size": 1130107,
     "url": "https://cdn.discordapp.com/attachments/1413782299786608682/1414908042297741423/ISLA_PROHIBIDA.BFHP?ex=6ad53c8d&is=6ad3eb0d&hm=9a587951dd1df2dfe64c0b51ce022adb5c9dc24ada2e961e0dcc14b132274e5b&",
     "local": "originals/discord/mapas/isla-prohibida/ISLA_PROHIBIDA.BFHP"
+   }
+  ],
+  "shots": [
+   {
+    "name": "Captura_de_pantalla_1296.png",
+    "size": 1828906,
+    "url": "https://cdn.discordapp.com/attachments/1413782299786608682/1414908078486327378/Captura_de_pantalla_1296.png?ex=6ad53c95&is=6ad3eb15&hm=be4353e0f900d1328c3f4dc7d98f865d85393826d737c6f0f72e07e919c24086&",
+    "local": "originals/discord/mapas/isla-prohibida/screenshots/Captura_de_pantalla_1296.png"
    }
   ],
   "desc": "",
@@ -849,6 +1169,14 @@
     "local": "originals/discord/mapas/resistencia-britana/Resistencia_Britana.BFHP"
    }
   ],
+  "shots": [
+   {
+    "name": "Captura_de_pantalla_1298.png",
+    "size": 2001296,
+    "url": "https://cdn.discordapp.com/attachments/1413782299786608682/1414908149365997678/Captura_de_pantalla_1298.png?ex=6ad53ca6&is=6ad3eb26&hm=c5ecdd26829cd9df7f32f54f7b377c68e6cbe1b041e6165ce939557793edf9b9&",
+    "local": "originals/discord/mapas/resistencia-britana/screenshots/Captura_de_pantalla_1298.png"
+   }
+  ],
   "desc": "",
   "count": 1,
   "slug": "resistencia-britana"
@@ -870,6 +1198,14 @@
     "size": 3886510,
     "url": "https://cdn.discordapp.com/attachments/1413782299786608682/1414908212397740032/Italia.BFHP?ex=6ad53cb5&is=6ad3eb35&hm=7b06014f13afa73aa461c98cf572888640b2aeca45bd32bef5dcf8c055582d83&",
     "local": "originals/discord/mapas/italia/Italia.BFHP"
+   }
+  ],
+  "shots": [
+   {
+    "name": "Captura_de_pantalla_1370.png",
+    "size": 1279954,
+    "url": "https://cdn.discordapp.com/attachments/1413782299786608682/1414908246233448448/Captura_de_pantalla_1370.png?ex=6ad53cbd&is=6ad3eb3d&hm=ddd1e504262c4b9ade779e3c949fe837f04e68cdbecb4aeecbb9bbe4a2bf2fbf&",
+    "local": "originals/discord/mapas/italia/screenshots/Captura_de_pantalla_1370.png"
    }
   ],
   "desc": "",
@@ -895,6 +1231,14 @@
     "local": "originals/discord/mapas/mapa-comunidad/Mapa_comundiad.bfhp"
    }
   ],
+  "shots": [
+   {
+    "name": "Captura_de_pantalla_1292.png",
+    "size": 1954636,
+    "url": "https://cdn.discordapp.com/attachments/1413782299786608682/1414908328726757440/Captura_de_pantalla_1292.png?ex=6ad53cd1&is=6ad3eb51&hm=705a533fc310d06e991cf7071500c9552abf3597c68f63cd5d280772b119624f&",
+    "local": "originals/discord/mapas/mapa-comunidad/screenshots/Captura_de_pantalla_1292.png"
+   }
+  ],
   "desc": "",
   "count": 1,
   "slug": "mapa-comunidad"
@@ -916,6 +1260,14 @@
     "size": 1282346,
     "url": "https://cdn.discordapp.com/attachments/1413782299786608682/1414908364663558194/Reforma.BFHP?ex=6ad53cd9&is=6ad3eb59&hm=aa8df7b4e324b5a9e23892168e35abd95b74b03f878327abbf63ba73ff078a1e&",
     "local": "originals/discord/mapas/reforma/Reforma.BFHP"
+   }
+  ],
+  "shots": [
+   {
+    "name": "Captura_de_pantalla_1302.png",
+    "size": 1772588,
+    "url": "https://cdn.discordapp.com/attachments/1413782299786608682/1414908400302817390/Captura_de_pantalla_1302.png?ex=6ad53ce2&is=6ad3eb62&hm=c027a7ded3bdd33ca72720fe4bc902f4b181f3da509447e2d01c3135424705c6&",
+    "local": "originals/discord/mapas/reforma/screenshots/Captura_de_pantalla_1302.png"
    }
   ],
   "desc": "",
@@ -941,6 +1293,14 @@
     "local": "originals/discord/mapas/laberinto/LABERINTO_1.BFHP"
    }
   ],
+  "shots": [
+   {
+    "name": "Captura_de_pantalla_1300.png",
+    "size": 1722758,
+    "url": "https://cdn.discordapp.com/attachments/1413782299786608682/1414908479239487588/Captura_de_pantalla_1300.png?ex=6ad53cf5&is=6ad3eb75&hm=b365e503031dacaa6156d4c085f905ccb1521c5c573b76ab6407a940a9c52a50&",
+    "local": "originals/discord/mapas/laberinto/screenshots/Captura_de_pantalla_1300.png"
+   }
+  ],
   "desc": "",
   "count": 1,
   "slug": "laberinto"
@@ -962,6 +1322,14 @@
     "size": 1166848,
     "url": "https://cdn.discordapp.com/attachments/1413782299786608682/1414910728074297455/mapa_seis.BFHP?ex=6ad53f0d&is=6ad3ed8d&hm=bd99a2ffd474d6a9c2e0e759b305ab30114f48212206406c95e3214dd9f6f9a0&",
     "local": "originals/discord/mapas/mapa-6/mapa_seis.BFHP"
+   }
+  ],
+  "shots": [
+   {
+    "name": "Captura_de_pantalla_1407.png",
+    "size": 1526116,
+    "url": "https://cdn.discordapp.com/attachments/1413782299786608682/1414910774610231316/Captura_de_pantalla_1407.png?ex=6ad53f18&is=6ad3ed98&hm=39ea45732c3ac7307be49f6ce08d57f33dd5d1a40052b4a1b5211fbeea0b4ef8&",
+    "local": "originals/discord/mapas/mapa-6/screenshots/Captura_de_pantalla_1407.png"
    }
   ],
   "desc": "Defiende tu fortaleza de los ataques de romanos y germanos.",
@@ -987,6 +1355,14 @@
     "local": "originals/discord/mapas/mapa-8/mapa_ocho.BFHP"
    }
   ],
+  "shots": [
+   {
+    "name": "Captura_de_pantalla_1408.png",
+    "size": 1686088,
+    "url": "https://cdn.discordapp.com/attachments/1413782299786608682/1414910861218156585/Captura_de_pantalla_1408.png?ex=6ad53f2d&is=6ad3edad&hm=bb3e06a7e05f92b16e57c46cbb0974f370a387b8f2f7f22041c2b077f8a8ae17&",
+    "local": "originals/discord/mapas/mapa-8/screenshots/Captura_de_pantalla_1408.png"
+   }
+  ],
   "desc": "El reino se ha dividido. Los germanos animados por los romanos se han rebelado y Roma ha capturado el fortín del paso para desde allí atacarte. Los galos no tardarán en abandonarte. ¿Podrás con todos ellos?",
   "count": 1,
   "slug": "mapa-8"
@@ -1008,6 +1384,14 @@
     "size": 1565696,
     "url": "https://cdn.discordapp.com/attachments/1413782299786608682/1414910900300943490/Etruria_Libre.BFHP?ex=6ad53f36&is=6ad3edb6&hm=c34d020884e484d9133d81ec9a86a21564910d3c070541c3dfeedc449633553b&",
     "local": "originals/discord/mapas/etruria-libre/Etruria_Libre.BFHP"
+   }
+  ],
+  "shots": [
+   {
+    "name": "Captura_de_pantalla_1415.png",
+    "size": 1713942,
+    "url": "https://cdn.discordapp.com/attachments/1413782299786608682/1414910946681425930/Captura_de_pantalla_1415.png?ex=6ad53f41&is=6ad3edc1&hm=cb958976de8f1e02567151951a08052cc57eb682c5fb7bcdcc70af76440569db&",
+    "local": "originals/discord/mapas/etruria-libre/screenshots/Captura_de_pantalla_1415.png"
    }
   ],
   "desc": "",
@@ -1033,6 +1417,14 @@
     "local": "originals/discord/mapas/serie-civilizacion-total/Civilizacion_total.rar"
    }
   ],
+  "shots": [
+   {
+    "name": "Captura_de_pantalla_1422.png",
+    "size": 1804084,
+    "url": "https://cdn.discordapp.com/attachments/1413782299786608682/1414911015224868915/Captura_de_pantalla_1422.png?ex=6ad53f51&is=6ad3edd1&hm=ef53f5b31585eb61c9657289781d01f714010c5dff90d16fcfbbc2fcd4055ab5&",
+    "local": "originals/discord/mapas/serie-civilizacion-total/screenshots/Captura_de_pantalla_1422.png"
+   }
+  ],
   "desc": "",
   "count": 8,
   "slug": "serie-civilizacion-total"
@@ -1054,6 +1446,14 @@
     "size": 1620076,
     "url": "https://cdn.discordapp.com/attachments/1413782299786608682/1414911041904836668/Piel_de_TORO.BFHP?ex=6ad53f58&is=6ad3edd8&hm=0555f6531a724cdf8dd160d327710495847a575b5d6bfe3dba14d0b2a314ec7a&",
     "local": "originals/discord/mapas/piel-de-toro/Piel_de_TORO.BFHP"
+   }
+  ],
+  "shots": [
+   {
+    "name": "Captura_de_pantalla_1423.png",
+    "size": 1688696,
+    "url": "https://cdn.discordapp.com/attachments/1413782299786608682/1414911082065035304/Captura_de_pantalla_1423.png?ex=6ad53f61&is=6ad3ede1&hm=c2955ba06ba259f5378ac1cefda8fc786c3b0ff0d6f55b7181f61b2199af831e&",
+    "local": "originals/discord/mapas/piel-de-toro/screenshots/Captura_de_pantalla_1423.png"
    }
   ],
   "desc": "",
@@ -1079,6 +1479,14 @@
     "local": "originals/discord/mapas/game-of-thrones/Game_Of_Thrones.BFHP"
    }
   ],
+  "shots": [
+   {
+    "name": "Captura_de_pantalla_1424.png",
+    "size": 1801310,
+    "url": "https://cdn.discordapp.com/attachments/1413782299786608682/1414911145420259430/Captura_de_pantalla_1424.png?ex=6ad53f70&is=6ad3edf0&hm=53ded96910a7815fc2d24ec3db4e76248db455aac09f7a89cbcdf9cae0ad9c3d&",
+    "local": "originals/discord/mapas/game-of-thrones/screenshots/Captura_de_pantalla_1424.png"
+   }
+  ],
   "desc": "",
   "count": 1,
   "slug": "game-of-thrones"
@@ -1100,6 +1508,14 @@
     "size": 1668162,
     "url": "https://cdn.discordapp.com/attachments/1413782299786608682/1414911175312936980/Tres_fortalezas.rar?ex=6ad53f77&is=6ad3edf7&hm=02bafebff868e49c7874c37ff9fa4749eebe5a2ee5f3afd7aa7b90023cf803be&",
     "local": "originals/discord/mapas/serie-tres-fortalezas/Tres_fortalezas.rar"
+   }
+  ],
+  "shots": [
+   {
+    "name": "Captura_de_pantalla_1425.png",
+    "size": 1873432,
+    "url": "https://cdn.discordapp.com/attachments/1413782299786608682/1414911215251226654/Captura_de_pantalla_1425.png?ex=6ad53f81&is=6ad3ee01&hm=2a4903f612cbb7c8ce15de30c03b284216d6d55cf68ac4b8d3f40fa366bf9e43&",
+    "local": "originals/discord/mapas/serie-tres-fortalezas/screenshots/Captura_de_pantalla_1425.png"
    }
   ],
   "desc": "",
@@ -1125,6 +1541,14 @@
     "local": "originals/discord/mapas/paso-galos-iberos/paso_galos-iberos_sin_mod.BFHP"
    }
   ],
+  "shots": [
+   {
+    "name": "Captura_de_pantalla_1309.png",
+    "size": 1480518,
+    "url": "https://cdn.discordapp.com/attachments/1413782299786608682/1414913662178557963/Captura_de_pantalla_1309.png?ex=6ad541c8&is=6ad3f048&hm=e87934a5609e9ee67f15f2faac865b565359670165abde478ce5fab7af61c26b&",
+    "local": "originals/discord/mapas/paso-galos-iberos/screenshots/Captura_de_pantalla_1309.png"
+   }
+  ],
   "desc": "",
   "count": 1,
   "slug": "paso-galos-iberos"
@@ -1146,6 +1570,14 @@
     "size": 1158379,
     "url": "https://cdn.discordapp.com/attachments/1413782299786608682/1414913697666564176/roma_v_egipto2.BFHP?ex=6ad541d1&is=6ad3f051&hm=3db03a99a3d52687372e1da7d2b9496bb148d3ee1ea387dfb8ad2bdb17d8b035&",
     "local": "originals/discord/mapas/roma-v-egipto/roma_v_egipto2.BFHP"
+   }
+  ],
+  "shots": [
+   {
+    "name": "Captura_de_pantalla_1314.png",
+    "size": 1763238,
+    "url": "https://cdn.discordapp.com/attachments/1413782299786608682/1414913742398947441/Captura_de_pantalla_1314.png?ex=6ad541dc&is=6ad3f05c&hm=c63453040ac4a1c45b4c4d961221eaadb7b44d71a9d045c452df84a5cdc5f9e6&",
+    "local": "originals/discord/mapas/roma-v-egipto/screenshots/Captura_de_pantalla_1314.png"
    }
   ],
   "desc": "",
@@ -1171,6 +1603,14 @@
     "local": "originals/discord/mapas/batalla-por-iberia/BATALLA_POR_IBERIA.BFHP"
    }
   ],
+  "shots": [
+   {
+    "name": "Captura_de_pantalla_1311.png",
+    "size": 1575588,
+    "url": "https://cdn.discordapp.com/attachments/1413782299786608682/1414913824619757709/Captura_de_pantalla_1311.png?ex=6ad541ef&is=6ad3f06f&hm=b467eab39fdd4f3011c9ed71ac563bb4aa9ae10561fbfc7639eaf507e0a9d92a&",
+    "local": "originals/discord/mapas/batalla-por-iberia/screenshots/Captura_de_pantalla_1311.png"
+   }
+  ],
   "desc": "",
   "count": 1,
   "slug": "batalla-por-iberia"
@@ -1192,6 +1632,14 @@
     "size": 1088543,
     "url": "https://cdn.discordapp.com/attachments/1413782299786608682/1414913865552105532/guerra_de_las_naciones.BFHP?ex=6ad541f9&is=6ad3f079&hm=3452b3b62a0b77a2877e43e15143f218266ecec9bf234c2f2dd579da888b9bd6&",
     "local": "originals/discord/mapas/guerra-de-las-naciones/guerra_de_las_naciones.BFHP"
+   }
+  ],
+  "shots": [
+   {
+    "name": "Captura_de_pantalla_1310.png",
+    "size": 1802754,
+    "url": "https://cdn.discordapp.com/attachments/1413782299786608682/1414913905129689258/Captura_de_pantalla_1310.png?ex=6ad54202&is=6ad3f082&hm=d198901c438f1b46b4cf7ec77e446b0dce55860879a08885fc237cddda5255b4&",
+    "local": "originals/discord/mapas/guerra-de-las-naciones/screenshots/Captura_de_pantalla_1310.png"
    }
   ],
   "desc": "",
@@ -1217,6 +1665,14 @@
     "local": "originals/discord/mapas/iberia-v-germania/iberia_v_germania.BFHP"
    }
   ],
+  "shots": [
+   {
+    "name": "Captura_de_pantalla_1312.png",
+    "size": 1882910,
+    "url": "https://cdn.discordapp.com/attachments/1413782299786608682/1414913982388506644/Captura_de_pantalla_1312.png?ex=6ad54215&is=6ad3f095&hm=17998e16cf5f6b55eb62d70e95d01dad56841f871acace5155610607a984f2ed&",
+    "local": "originals/discord/mapas/iberia-v-germania/screenshots/Captura_de_pantalla_1312.png"
+   }
+  ],
   "desc": "",
   "count": 1,
   "slug": "iberia-v-germania"
@@ -1238,6 +1694,14 @@
     "size": 1194173,
     "url": "https://cdn.discordapp.com/attachments/1413782299786608682/1414914020015607928/roma_contra_los_barbaros.BFHP?ex=6ad5421e&is=6ad3f09e&hm=a3d3e86c6e00d810b4cdf146515f54d2ed19d6ac6a3cb4653ac830318b2b0fe7&",
     "local": "originals/discord/mapas/roma-contra-los-barbaros/roma_contra_los_barbaros.BFHP"
+   }
+  ],
+  "shots": [
+   {
+    "name": "Captura_de_pantalla_1313.png",
+    "size": 1927486,
+    "url": "https://cdn.discordapp.com/attachments/1413782299786608682/1414914060318806016/Captura_de_pantalla_1313.png?ex=6ad54227&is=6ad3f0a7&hm=4cd0f708910bac812c9b409d70c75814b05761578ca4090fdd090808b18b2e81&",
+    "local": "originals/discord/mapas/roma-contra-los-barbaros/screenshots/Captura_de_pantalla_1313.png"
    }
   ],
   "desc": "",
@@ -1263,6 +1727,14 @@
     "local": "originals/discord/mapas/estrategia-generica/estrategia_generica.BFHP"
    }
   ],
+  "shots": [
+   {
+    "name": "Captura_de_pantalla_1349.png",
+    "size": 1867636,
+    "url": "https://cdn.discordapp.com/attachments/1413782299786608682/1414914155022123100/Captura_de_pantalla_1349.png?ex=6ad5423e&is=6ad3f0be&hm=1a5239a38945a66a225523e2b6c0e9e3f229a5c4ba71784047f0669b6bd5808a&",
+    "local": "originals/discord/mapas/estrategia-generica/screenshots/Captura_de_pantalla_1349.png"
+   }
+  ],
   "desc": "",
   "count": 1,
   "slug": "estrategia-generica"
@@ -1284,6 +1756,14 @@
     "size": 2277218,
     "url": "https://cdn.discordapp.com/attachments/1413782299786608682/1414914211556884490/contra_la_gran_roma2.BFHP?ex=6ad5424b&is=6ad3f0cb&hm=cafc3c25caf908c625f7bc6ffa5f03e4b151ae12cae15ff0da7c44dfb6e9fcd0&",
     "local": "originals/discord/mapas/contra-la-gran-roma/contra_la_gran_roma2.BFHP"
+   }
+  ],
+  "shots": [
+   {
+    "name": "Captura_de_pantalla_1362.png",
+    "size": 1808472,
+    "url": "https://cdn.discordapp.com/attachments/1413782299786608682/1414914250765238365/Captura_de_pantalla_1362.png?ex=6ad54255&is=6ad3f0d5&hm=af74a775e9f1b736e0018b21f41d61632ef7b284b52bb9bcd434d04ed99bde8f&",
+    "local": "originals/discord/mapas/contra-la-gran-roma/screenshots/Captura_de_pantalla_1362.png"
    }
   ],
   "desc": "",
@@ -1309,6 +1789,14 @@
     "local": "originals/discord/mapas/juego-de-tronos/Juego_de_Tronos_Grande.rar"
    }
   ],
+  "shots": [
+   {
+    "name": "Captura_de_pantalla_1389.png",
+    "size": 1587930,
+    "url": "https://cdn.discordapp.com/attachments/1413782299786608682/1414914414129451018/Captura_de_pantalla_1389.png?ex=6ad5427c&is=6ad3f0fc&hm=10f729ad4e71ed29dcb7d5530275cf2e7b52f4b519c10fca434cbf2e536fa2a1&",
+    "local": "originals/discord/mapas/juego-de-tronos/screenshots/Captura_de_pantalla_1389.png"
+   }
+  ],
   "desc": "",
   "count": 1,
   "slug": "juego-de-tronos"
@@ -1330,6 +1818,14 @@
     "size": 1614848,
     "url": "https://cdn.discordapp.com/attachments/1413782299786608682/1414917319590678548/T_2vs2_Colosseum.BFHP?ex=6ad54530&is=6ad3f3b0&hm=4468f271e1ed221882fc5120bc5b14e525c081d47a94780db633368bdb6ec8cb&",
     "local": "originals/discord/mapas/colosseum-2v2/T_2vs2_Colosseum.BFHP"
+   }
+  ],
+  "shots": [
+   {
+    "name": "Captura_de_pantalla_1374.png",
+    "size": 1663584,
+    "url": "https://cdn.discordapp.com/attachments/1413782299786608682/1414917357050269808/Captura_de_pantalla_1374.png?ex=6ad54539&is=6ad3f3b9&hm=294bf3c15ce537cefb99bd927f81a83af9db962034f228601d4a56de0940898b&",
+    "local": "originals/discord/mapas/colosseum-2v2/screenshots/Captura_de_pantalla_1374.png"
    }
   ],
   "desc": "",
@@ -1355,6 +1851,14 @@
     "local": "originals/discord/mapas/asamblea-del-valle/Asamblea_del_Valle.BFHP"
    }
   ],
+  "shots": [
+   {
+    "name": "Captura_de_pantalla_1375.png",
+    "size": 1771894,
+    "url": "https://cdn.discordapp.com/attachments/1413782299786608682/1414917442597163129/Captura_de_pantalla_1375.png?ex=6ad5454e&is=6ad3f3ce&hm=2048c51b2acac42979662f2f89029fa1005642193c0f30694382d845bd7a0c4a&",
+    "local": "originals/discord/mapas/asamblea-del-valle/screenshots/Captura_de_pantalla_1375.png"
+   }
+  ],
   "desc": "",
   "count": 1,
   "slug": "asamblea-del-valle"
@@ -1376,6 +1880,14 @@
     "local": "originals/discord/mapas/mapas-simetricos-imperivm-world-cup/ImperivmWorldCup.rar"
    }
   ],
+  "shots": [
+   {
+    "name": "Captura_de_pantalla_1376.png",
+    "size": 1751980,
+    "url": "https://cdn.discordapp.com/attachments/1413782299786608682/1414917512134393947/Captura_de_pantalla_1376.png?ex=6ad5455e&is=6ad3f3de&hm=d8aa562e135cf9d1b7da7fa933954ee27b320fbcf698357fc5526e8d508ad6d9&",
+    "local": "originals/discord/mapas/mapas-simetricos-imperivm-world-cup/screenshots/Captura_de_pantalla_1376.png"
+   }
+  ],
   "desc": "",
   "count": 36,
   "slug": "mapas-simetricos-imperivm-world-cup"
@@ -1395,6 +1907,14 @@
     "size": 295936,
     "url": "https://cdn.discordapp.com/attachments/1413782299786608682/1414917557386870805/Vanguardia4v4.BFHP?ex=6ad54569&is=6ad3f3e9&hm=3995ebbe9c6db7e48e307e5a9967982ab9298385c57be29ecfa85b3a06d3176e&",
     "local": "originals/discord/mapas/vanguardia-4v4/Vanguardia4v4.BFHP"
+   }
+  ],
+  "shots": [
+   {
+    "name": "Captura_de_pantalla_1457.png",
+    "size": 1641794,
+    "url": "https://cdn.discordapp.com/attachments/1413782299786608682/1414917594649198663/Captura_de_pantalla_1457.png?ex=6ad54572&is=6ad3f3f2&hm=c914547e6c7a7dd7bea30f24136a306fb4bdb68d76db323a857573e8ccf9a432&",
+    "local": "originals/discord/mapas/vanguardia-4v4/screenshots/Captura_de_pantalla_1457.png"
    }
   ],
   "desc": "",
@@ -1420,6 +1940,14 @@
     "local": "originals/discord/mapas/lucha-de-zonas/LAS_BASES_DE_UN_TRIUNFO.BFHP"
    }
   ],
+  "shots": [
+   {
+    "name": "Captura_de_pantalla_1365.png",
+    "size": 1579310,
+    "url": "https://cdn.discordapp.com/attachments/1413782299786608682/1414917685908865034/Captura_de_pantalla_1365.png?ex=6ad54588&is=6ad3f408&hm=b65f322610e227fa6220219410d8fca89162270f5acbd29ff5536c5f799e1cec&",
+    "local": "originals/discord/mapas/lucha-de-zonas/screenshots/Captura_de_pantalla_1365.png"
+   }
+  ],
   "desc": "",
   "count": 1,
   "slug": "lucha-de-zonas"
@@ -1439,6 +1967,14 @@
     "size": 1068032,
     "url": "https://cdn.discordapp.com/attachments/1413782299786608682/1414917723758137476/ASINOTENEMOSPROBLEMASXD.BFHP?ex=6ad54591&is=6ad3f411&hm=082ef7fde73d653e4895ebe5fbca0abea49addf443c75a40b23de49645a3f1ef&",
     "local": "originals/discord/mapas/3v3-tournament-map/ASINOTENEMOSPROBLEMASXD.BFHP"
+   }
+  ],
+  "shots": [
+   {
+    "name": "Captura_de_pantalla_1459.png",
+    "size": 1644560,
+    "url": "https://cdn.discordapp.com/attachments/1413782299786608682/1414917762693726250/Captura_de_pantalla_1459.png?ex=6ad5459a&is=6ad3f41a&hm=91e4c7f1e86d580a1676e3eb3a4d2ef4d61a09380c416691f2f031948539b5e7&",
+    "local": "originals/discord/mapas/3v3-tournament-map/screenshots/Captura_de_pantalla_1459.png"
    }
   ],
   "desc": "",
@@ -1464,6 +2000,14 @@
     "local": "originals/discord/mapas/la-guerra-de-los-heroes/La_guerra_de_los_heroes_v2.BFHP"
    }
   ],
+  "shots": [
+   {
+    "name": "Captura_de_pantalla_1360.png",
+    "size": 1655808,
+    "url": "https://cdn.discordapp.com/attachments/1413782299786608682/1414917861234835508/Captura_de_pantalla_1360.png?ex=6ad545b2&is=6ad3f432&hm=50a49812a15f6d456714399c9d69d8c39f3a18ee3a64e5430798b7df21cbcea0&",
+    "local": "originals/discord/mapas/la-guerra-de-los-heroes/screenshots/Captura_de_pantalla_1360.png"
+   }
+  ],
   "desc": "",
   "count": 1,
   "slug": "la-guerra-de-los-heroes"
@@ -1483,6 +2027,14 @@
     "size": 1595913,
     "url": "https://cdn.discordapp.com/attachments/1413782299786608682/1414917901013487626/BattleRoyalePRUEBA2.BFHP?ex=6ad545bb&is=6ad3f43b&hm=1b814c209130528496526fb0105114339855d03141ea0a7f7b64ea7f971860e2&",
     "local": "originals/discord/mapas/battle-royale/BattleRoyalePRUEBA2.BFHP"
+   }
+  ],
+  "shots": [
+   {
+    "name": "Captura_de_pantalla_1460.png",
+    "size": 1738562,
+    "url": "https://cdn.discordapp.com/attachments/1413782299786608682/1414917940318310411/Captura_de_pantalla_1460.png?ex=6ad545c4&is=6ad3f444&hm=62e6a46f8e2a01857a276ed2c4cfc9c08f48d2d66abc30c645b4bd3ad94255ae&",
+    "local": "originals/discord/mapas/battle-royale/screenshots/Captura_de_pantalla_1460.png"
    }
   ],
   "desc": "",
@@ -1508,6 +2060,14 @@
     "local": "originals/discord/mapas/tramorea/TRAMOREA_V2.1.BFHP"
    }
   ],
+  "shots": [
+   {
+    "name": "Captura_de_pantalla_1369.png",
+    "size": 1851770,
+    "url": "https://cdn.discordapp.com/attachments/1413782299786608682/1414918019658027028/Captura_de_pantalla_1369.png?ex=6ad545d7&is=6ad3f457&hm=564ea33b17bc4154ad1454b4c2a424c557c42b88a6874e672ea888ded89b6e8c&",
+    "local": "originals/discord/mapas/tramorea/screenshots/Captura_de_pantalla_1369.png"
+   }
+  ],
   "desc": "Cuatro Jugadores. Un mundo enorme dividido en zonas fácilmente defendibles. Dos ciudades separan el norte del sur, y cuatro misterios se ocultan en las zonas más peligrosas del mapa y mucho más.  ¿Quién se atreve a adentrarse en el peligroso y maravilloso mundo de Tramórea?",
   "count": 1,
   "slug": "tramorea"
@@ -1531,6 +2091,14 @@
     "local": "originals/discord/mapas/primera-guerra-punica/PrimeraGuerraPunica2y3-jclempire.BFHP"
    }
   ],
+  "shots": [
+   {
+    "name": "Captura_de_pantalla_1361.png",
+    "size": 1208664,
+    "url": "https://cdn.discordapp.com/attachments/1413782299786608682/1414918099672633395/Captura_de_pantalla_1361.png?ex=6ad545ea&is=6ad3f46a&hm=7014d0f2bc1254ed279dd6a95a1470919eeb080c9ca27ec30f91060b33e124f7&",
+    "local": "originals/discord/mapas/primera-guerra-punica/screenshots/Captura_de_pantalla_1361.png"
+   }
+  ],
   "desc": "",
   "count": 1,
   "slug": "primera-guerra-punica"
@@ -1550,6 +2118,14 @@
     "size": 963595,
     "url": "https://cdn.discordapp.com/attachments/1413782299786608682/1414920289233666139/el_rio_del_silencio3vs3.BFHP?ex=6ad547f4&is=6ad3f674&hm=58031184f47835724c6254796f83342ef0579f90d2f85949fcd1b1fb29304e9f&",
     "local": "originals/discord/mapas/el-rio-del-silencio-3v3/el_rio_del_silencio3vs3.BFHP"
+   }
+  ],
+  "shots": [
+   {
+    "name": "Captura_de_pantalla_1448.png",
+    "size": 1436546,
+    "url": "https://cdn.discordapp.com/attachments/1413782299786608682/1414920332539596800/Captura_de_pantalla_1448.png?ex=6ad547ff&is=6ad3f67f&hm=05dd85d811fdba2a7d065fb9abcd4ced997773a0ced7dc0da7378459db9744e7&",
+    "local": "originals/discord/mapas/el-rio-del-silencio-3v3/screenshots/Captura_de_pantalla_1448.png"
    }
   ],
   "desc": "",
@@ -1573,6 +2149,14 @@
     "local": "originals/discord/mapas/el-rio-del-silencio-4v4/el_rio_del_silencio4vs4_1.BFHP"
    }
   ],
+  "shots": [
+   {
+    "name": "Captura_de_pantalla_1449.png",
+    "size": 1317116,
+    "url": "https://cdn.discordapp.com/attachments/1413782299786608682/1414920405612892240/Captura_de_pantalla_1449.png?ex=6ad54810&is=6ad3f690&hm=317c3cb2f9f376a390a19b7d539e39891431999a48065cbadc841804a90d9b80&",
+    "local": "originals/discord/mapas/el-rio-del-silencio-4v4/screenshots/Captura_de_pantalla_1449.png"
+   }
+  ],
   "desc": "",
   "count": 1,
   "slug": "el-rio-del-silencio-4v4"
@@ -1592,6 +2176,14 @@
     "size": 1098764,
     "url": "https://cdn.discordapp.com/attachments/1413782299786608682/1414920438240378891/la_muralla_de_sko_1.BFHP?ex=6ad54818&is=6ad3f698&hm=9f893161543f7eca73bfc3ec38979da1dd31d200d2f360b0607327596047157f&",
     "local": "originals/discord/mapas/la-muralla-de-sko/la_muralla_de_sko_1.BFHP"
+   }
+  ],
+  "shots": [
+   {
+    "name": "Captura_de_pantalla_1451.png",
+    "size": 1356784,
+    "url": "https://cdn.discordapp.com/attachments/1413782299786608682/1414920477562114069/Captura_de_pantalla_1451.png?ex=6ad54821&is=6ad3f6a1&hm=1cda2fd46b81385d57f3674676048a898c2954baac09970bea93b8dfa69aad7b&",
+    "local": "originals/discord/mapas/la-muralla-de-sko/screenshots/Captura_de_pantalla_1451.png"
    }
   ],
   "desc": "",
@@ -1615,6 +2207,14 @@
     "local": "originals/discord/mapas/batalla-en-los-alpes/batalla_en_los_alpes.BFHP"
    }
   ],
+  "shots": [
+   {
+    "name": "Captura_de_pantalla_1450.png",
+    "size": 1771654,
+    "url": "https://cdn.discordapp.com/attachments/1413782299786608682/1414920555551002685/Captura_de_pantalla_1450.png?ex=6ad54834&is=6ad3f6b4&hm=26e94ab7b0dbfe82fdc0efc3151ebd723a877680cddc4f6462792ec04df90150&",
+    "local": "originals/discord/mapas/batalla-en-los-alpes/screenshots/Captura_de_pantalla_1450.png"
+   }
+  ],
   "desc": "",
   "count": 1,
   "slug": "batalla-en-los-alpes"
@@ -1634,6 +2234,14 @@
     "size": 1209856,
     "url": "https://cdn.discordapp.com/attachments/1413782299786608682/1414920600136454257/el_mundo_conocido_con_cuevAS.BFHP?ex=6ad5483f&is=6ad3f6bf&hm=90ba11984a855a52eabb0c005e164a77d85c6f65b08830911bc098d5c0d0e616&",
     "local": "originals/discord/mapas/el-mundo-conocido/el_mundo_conocido_con_cuevAS.BFHP"
+   }
+  ],
+  "shots": [
+   {
+    "name": "Captura_de_pantalla_1456.png",
+    "size": 1974436,
+    "url": "https://cdn.discordapp.com/attachments/1413782299786608682/1414920640066093117/Captura_de_pantalla_1456.png?ex=6ad54848&is=6ad3f6c8&hm=196473fa81789addeddba2e7a2d6cd9f805b6cdecf6f4afa1592ed9d74d8fa37&",
+    "local": "originals/discord/mapas/el-mundo-conocido/screenshots/Captura_de_pantalla_1456.png"
    }
   ],
   "desc": "",
@@ -1657,6 +2265,14 @@
     "local": "originals/discord/mapas/mapa-4v4/MAPA_4V4_BY_AULO.BFHP"
    }
   ],
+  "shots": [
+   {
+    "name": "Captura_de_pantalla_1452.png",
+    "size": 1672334,
+    "url": "https://cdn.discordapp.com/attachments/1413782299786608682/1414920721347510324/Captura_de_pantalla_1452.png?ex=6ad5485b&is=6ad3f6db&hm=270ee5a26b0c445cfdfcab49c8e5ed570b7cc865fb7755b88c55f79d9e378300&",
+    "local": "originals/discord/mapas/mapa-4v4/screenshots/Captura_de_pantalla_1452.png"
+   }
+  ],
   "desc": "",
   "count": 1,
   "slug": "mapa-4v4"
@@ -1676,6 +2292,14 @@
     "size": 1064320,
     "url": "https://cdn.discordapp.com/attachments/1413782299786608682/1414923523117420614/halconislaspro.BFHP?ex=6ad54af7&is=6ad3f977&hm=1deb4f8c85730618e2b276423b90699957d965fec4cc9ce985e2516e21a12e4f&",
     "local": "originals/discord/mapas/1v1-islas/halconislaspro.BFHP"
+   }
+  ],
+  "shots": [
+   {
+    "name": "Captura_de_pantalla_1431.png",
+    "size": 1506104,
+    "url": "https://cdn.discordapp.com/attachments/1413782299786608682/1414923571884458078/Captura_de_pantalla_1431.png?ex=6ad54b03&is=6ad3f983&hm=f984867ccbed42396656924931d7eca6811ff71b3848418c5c69b69c362fef6e&",
+    "local": "originals/discord/mapas/1v1-islas/screenshots/Captura_de_pantalla_1431.png"
    }
   ],
   "desc": "",
@@ -1699,6 +2323,14 @@
     "local": "originals/discord/mapas/2v2-montanoso/2v2_halcon_pro.BFHP"
    }
   ],
+  "shots": [
+   {
+    "name": "Captura_de_pantalla_1432.png",
+    "size": 1809336,
+    "url": "https://cdn.discordapp.com/attachments/1413782299786608682/1414923658010431638/Captura_de_pantalla_1432.png?ex=6ad54b18&is=6ad3f998&hm=30f6982cb0c513727bba587e626ed03de86a36837450e163e08a1da550aa3803&",
+    "local": "originals/discord/mapas/2v2-montanoso/screenshots/Captura_de_pantalla_1432.png"
+   }
+  ],
   "desc": "",
   "count": 1,
   "slug": "2v2-montanoso"
@@ -1718,6 +2350,14 @@
     "size": 1012521,
     "url": "https://cdn.discordapp.com/attachments/1413782299786608682/1414923688364609628/3vs3_halcon_pro.BFHP?ex=6ad54b1f&is=6ad3f99f&hm=e4b984a11c2a5cfee55a0c6fd512b3b122691dfdb13c223ae303fd446e80150c&",
     "local": "originals/discord/mapas/3v3-montanoso/3vs3_halcon_pro.BFHP"
+   }
+  ],
+  "shots": [
+   {
+    "name": "Captura_de_pantalla_1433.png",
+    "size": 1778270,
+    "url": "https://cdn.discordapp.com/attachments/1413782299786608682/1414923748422848603/Captura_de_pantalla_1433.png?ex=6ad54b2d&is=6ad3f9ad&hm=40b61bafa056ffe10822bc8c97f318fdf5146ac4f2015632b65ba942ec0248c1&",
+    "local": "originals/discord/mapas/3v3-montanoso/screenshots/Captura_de_pantalla_1433.png"
    }
   ],
   "desc": "",
@@ -1741,6 +2381,14 @@
     "local": "originals/discord/mapas/4v4-pro/4_vs_4_pro.BFHP"
    }
   ],
+  "shots": [
+   {
+    "name": "Captura_de_pantalla_1434.png",
+    "size": 1806686,
+    "url": "https://cdn.discordapp.com/attachments/1413782299786608682/1414923824872427603/Captura_de_pantalla_1434.png?ex=6ad54b3f&is=6ad3f9bf&hm=5e7cec8bb8b685643ea3a92faacab7d86744236fe1ffceb59fa2159861dd02b5&",
+    "local": "originals/discord/mapas/4v4-pro/screenshots/Captura_de_pantalla_1434.png"
+   }
+  ],
   "desc": "",
   "count": 1,
   "slug": "4v4-pro"
@@ -1760,6 +2408,14 @@
     "size": 884224,
     "url": "https://cdn.discordapp.com/attachments/1413782299786608682/1414923853498417162/1v1pequehalcon.BFHP?ex=6ad54b46&is=6ad3f9c6&hm=792bb697a64c1ebce272768478112ba71867c73eb51d5197e602b8771a71e01a&",
     "local": "originals/discord/mapas/1v1-pequeno/1v1pequehalcon.BFHP"
+   }
+  ],
+  "shots": [
+   {
+    "name": "Captura_de_pantalla_1435.png",
+    "size": 1727402,
+    "url": "https://cdn.discordapp.com/attachments/1413782299786608682/1414923895084945418/Captura_de_pantalla_1435.png?ex=6ad54b50&is=6ad3f9d0&hm=3ed62b61d431c74ddae89b3ed2ad063c9546a7b2f3f0a9701c10ffaa399fd5eb&",
+    "local": "originals/discord/mapas/1v1-pequeno/screenshots/Captura_de_pantalla_1435.png"
    }
   ],
   "desc": "",
@@ -1783,6 +2439,14 @@
     "local": "originals/discord/mapas/mapa-2v2v2v2/mapa2v2v2v2_halcon.BFHP"
    }
   ],
+  "shots": [
+   {
+    "name": "Captura_de_pantalla_1436.png",
+    "size": 1277868,
+    "url": "https://cdn.discordapp.com/attachments/1413782299786608682/1414923997652717644/Captura_de_pantalla_1436.png?ex=6ad54b69&is=6ad3f9e9&hm=977814e4d95fddd9f1b30618d65dd469d76ddb6faeb0e6a0c42de169a17704c2&",
+    "local": "originals/discord/mapas/mapa-2v2v2v2/screenshots/Captura_de_pantalla_1436.png"
+   }
+  ],
   "desc": "",
   "count": 1,
   "slug": "mapa-2v2v2v2"
@@ -1802,6 +2466,14 @@
     "size": 3699595,
     "url": "https://cdn.discordapp.com/attachments/1413782299786608682/1414924040392675448/2v2v2v2_mejorado.BFHP?ex=6ad54b73&is=6ad3f9f3&hm=37a7fcec29ccd09ad2cecf2dff709f329634813b9f435e3f8655e2373e668840&",
     "local": "originals/discord/mapas/mapa-2v2v2v2-mejorado/2v2v2v2_mejorado.BFHP"
+   }
+  ],
+  "shots": [
+   {
+    "name": "Captura_de_pantalla_1437.png",
+    "size": 1292882,
+    "url": "https://cdn.discordapp.com/attachments/1413782299786608682/1414924078929674321/Captura_de_pantalla_1437.png?ex=6ad54b7c&is=6ad3f9fc&hm=b9bb8d47f41b61971739ca04ea74dde4feb3e8773ce056d76a105b50af52809a&",
+    "local": "originals/discord/mapas/mapa-2v2v2v2-mejorado/screenshots/Captura_de_pantalla_1437.png"
    }
   ],
   "desc": "",
@@ -1825,6 +2497,14 @@
     "local": "originals/discord/mapas/mapa-4v4/4_v_4__mapagrande_isla.BFHP"
    }
   ],
+  "shots": [
+   {
+    "name": "Captura_de_pantalla_1438.png",
+    "size": 1282774,
+    "url": "https://cdn.discordapp.com/attachments/1413782299786608682/1414924153378832446/Captura_de_pantalla_1438.png?ex=6ad54b8e&is=6ad3fa0e&hm=86c9ba0fe0133e65c90f82bf1d08ccda9741c91f019544f08d1b676f79ea08b4&",
+    "local": "originals/discord/mapas/mapa-4v4/screenshots/Captura_de_pantalla_1438.png"
+   }
+  ],
   "desc": "",
   "count": 1,
   "slug": "mapa-4v4"
@@ -1844,6 +2524,14 @@
     "size": 1002004,
     "url": "https://cdn.discordapp.com/attachments/1413782299786608682/1414924195887972416/mapa_invierno_1v1v1_armadefinitiva.BFHP?ex=6ad54b98&is=6ad3fa18&hm=7c4b9bd4ae6982c29f704e4ef6717355dade726124791e0bab748be68d07a926&",
     "local": "originals/discord/mapas/arma-definitiva-1v1v1/mapa_invierno_1v1v1_armadefinitiva.BFHP"
+   }
+  ],
+  "shots": [
+   {
+    "name": "Captura_de_pantalla_1440.png",
+    "size": 1602748,
+    "url": "https://cdn.discordapp.com/attachments/1413782299786608682/1414924234488283227/Captura_de_pantalla_1440.png?ex=6ad54ba1&is=6ad3fa21&hm=304857c62a9aeb789a283d70bc7e80e514a7a7d97c60f2465a9067dc8dd763f7&",
+    "local": "originals/discord/mapas/arma-definitiva-1v1v1/screenshots/Captura_de_pantalla_1440.png"
    }
   ],
   "desc": "",
@@ -1867,6 +2555,14 @@
     "local": "originals/discord/mapas/arma-definitiva-1v1v1/1_1_1_armadefintiva_v2.BFHP"
    }
   ],
+  "shots": [
+   {
+    "name": "Captura_de_pantalla_1439.png",
+    "size": 1474698,
+    "url": "https://cdn.discordapp.com/attachments/1413782299786608682/1414924312699469874/Captura_de_pantalla_1439.png?ex=6ad54bb4&is=6ad3fa34&hm=72b01f71ca7ff3457a0dfff317b7a41b2becbe7c7c7b3426972e927de8c5dc96&",
+    "local": "originals/discord/mapas/arma-definitiva-1v1v1/screenshots/Captura_de_pantalla_1439.png"
+   }
+  ],
   "desc": "",
   "count": 1,
   "slug": "arma-definitiva-1v1v1"
@@ -1886,6 +2582,14 @@
     "size": 4868096,
     "url": "https://cdn.discordapp.com/attachments/1413782299786608682/1414924348598521896/mapa_europa_cartago_para2.BFHP?ex=6ad54bbc&is=6ad3fa3c&hm=ac309eea3551ae3853a5f796c6c7138ec127937908bd2ef3041f2ea7fcf49b28&",
     "local": "originals/discord/mapas/mapa-europa/mapa_europa_cartago_para2.BFHP"
+   }
+  ],
+  "shots": [
+   {
+    "name": "Captura_de_pantalla_1441.png",
+    "size": 1700022,
+    "url": "https://cdn.discordapp.com/attachments/1413782299786608682/1414924384812011612/Captura_de_pantalla_1441.png?ex=6ad54bc5&is=6ad3fa45&hm=331c393e90d92cbd039b7bfcf8fcbeba63ab599561727ae57e3a1f72e9c6c46a&",
+    "local": "originals/discord/mapas/mapa-europa/screenshots/Captura_de_pantalla_1441.png"
    }
   ],
   "desc": "",
@@ -1909,6 +2613,14 @@
     "local": "originals/discord/mapas/el-arma-definitiva/el_arma_definitiva_v9.BFHP"
    }
   ],
+  "shots": [
+   {
+    "name": "Captura_de_pantalla_1447.png",
+    "size": 1458512,
+    "url": "https://cdn.discordapp.com/attachments/1413782299786608682/1414929663343464579/Captura_de_pantalla_1447.png?ex=6ad550af&is=6ad3ff2f&hm=6bd88d9bbeb5158ebbea4ca13e9f425f4d5331fd81cf6850de27a3e8e979bc26&",
+    "local": "originals/discord/mapas/el-arma-definitiva/screenshots/Captura_de_pantalla_1447.png"
+   }
+  ],
   "desc": "Mapa para 1v1 o 1v1v1 donde hay un nuevo objeto extremadamente poderoso en algún rincón.",
   "count": 1,
   "slug": "el-arma-definitiva"
@@ -1928,6 +2640,14 @@
     "size": 3797087,
     "url": "https://cdn.discordapp.com/attachments/1413782299786608682/1414929714388140164/mapa_grande_2vs2vs2vs2v7_islas.BFHP?ex=6ad550bc&is=6ad3ff3c&hm=4c6e1c9793ef6ad526f44cad3b112de7a276cf595576b96b60aff976dc2a98ac&",
     "local": "originals/discord/mapas/batalla-de-islas/mapa_grande_2vs2vs2vs2v7_islas.BFHP"
+   }
+  ],
+  "shots": [
+   {
+    "name": "Captura_de_pantalla_1445.png",
+    "size": 1696920,
+    "url": "https://cdn.discordapp.com/attachments/1413782299786608682/1414929759552536636/Captura_de_pantalla_1445.png?ex=6ad550c6&is=6ad3ff46&hm=a915e8a1e783aa6083cdb0e9fe7c860efa749103e8a83c91f68bc3871949429b&",
+    "local": "originals/discord/mapas/batalla-de-islas/screenshots/Captura_de_pantalla_1445.png"
    }
   ],
   "desc": "",
@@ -1951,6 +2671,14 @@
     "local": "originals/discord/mapas/batalla-de-islas-pequenas/islas_peques7.BFHP"
    }
   ],
+  "shots": [
+   {
+    "name": "Captura_de_pantalla_1446.png",
+    "size": 1252052,
+    "url": "https://cdn.discordapp.com/attachments/1413782299786608682/1414929833259171840/Captura_de_pantalla_1446.png?ex=6ad550d8&is=6ad3ff58&hm=dcfef9684973196f0b61a2e059e091d8589946d49f567dc78116499be339305e&",
+    "local": "originals/discord/mapas/batalla-de-islas-pequenas/screenshots/Captura_de_pantalla_1446.png"
+   }
+  ],
   "desc": "",
   "count": 1,
   "slug": "batalla-de-islas-pequenas"
@@ -1970,6 +2698,14 @@
     "size": 884224,
     "url": "https://cdn.discordapp.com/attachments/1413782299786608682/1414929892860100678/la_super_fortaleza_6.BFHP?ex=6ad550e6&is=6ad3ff66&hm=9ad7e7f20c31f2e01f4f64fa81f5f08c2f17a311185575da9f8e94f8bcf4395d&",
     "local": "originals/discord/mapas/superfortaleza/la_super_fortaleza_6.BFHP"
+   }
+  ],
+  "shots": [
+   {
+    "name": "Captura_de_pantalla_1443.png",
+    "size": 1425946,
+    "url": "https://cdn.discordapp.com/attachments/1413782299786608682/1414929959188828313/Captura_de_pantalla_1443.png?ex=6ad550f6&is=6ad3ff76&hm=c1ef7b52a4ea4e048b0f54797c995d3bb493a789a74fcc01033a0c891e217d3b&",
+    "local": "originals/discord/mapas/superfortaleza/screenshots/Captura_de_pantalla_1443.png"
    }
   ],
   "desc": "",
@@ -1993,6 +2729,14 @@
     "local": "originals/discord/mapas/superfortaleza-2v1/la_super_fortalezaaaa_2vs1.BFHP"
    }
   ],
+  "shots": [
+   {
+    "name": "Captura_de_pantalla_1444.png",
+    "size": 1439204,
+    "url": "https://cdn.discordapp.com/attachments/1413782299786608682/1414930029120458843/Captura_de_pantalla_1444.png?ex=6ad55107&is=6ad3ff87&hm=d6cab0e99928f9a039a18fb8ca8dd0b59cdd3d51490db3c2adf821efaf9bf036&",
+    "local": "originals/discord/mapas/superfortaleza-2v1/screenshots/Captura_de_pantalla_1444.png"
+   }
+  ],
   "desc": "",
   "count": 1,
   "slug": "superfortaleza-2v1"
@@ -2012,6 +2756,14 @@
     "size": 1100768,
     "url": "https://cdn.discordapp.com/attachments/1413782299786608682/1414930101031669790/4_reyes.BFHP?ex=6ad55118&is=6ad3ff98&hm=70654dcffcbd8744eedd441f5dafc8451264611b63d2c5925ca2439822e2df98&",
     "local": "originals/discord/mapas/4-reyes/4_reyes.BFHP"
+   }
+  ],
+  "shots": [
+   {
+    "name": "Captura_de_pantalla_1463.png",
+    "size": 1770648,
+    "url": "https://cdn.discordapp.com/attachments/1413782299786608682/1414930183164530829/Captura_de_pantalla_1463.png?ex=6ad5512b&is=6ad3ffab&hm=695cfd10078f959b1b9d5fc8a271f0e0285d2f7226a98ce7a094b318de75505c&",
+    "local": "originals/discord/mapas/4-reyes/screenshots/Captura_de_pantalla_1463.png"
    }
   ],
   "desc": "",
@@ -2037,6 +2789,14 @@
     "local": "originals/discord/mapas/batalla-por-gergovia/Batalla_por_Gergovia.BFHP"
    }
   ],
+  "shots": [
+   {
+    "name": "Captura_de_pantalla_1391.png",
+    "size": 1841360,
+    "url": "https://cdn.discordapp.com/attachments/1413782299786608682/1414930259350126672/Captura_de_pantalla_1391.png?ex=6ad5513d&is=6ad3ffbd&hm=16fcdd6bee71b386f0392e99964577deed9409c1fb69bec448d1d0e6a135fb6a&",
+    "local": "originals/discord/mapas/batalla-por-gergovia/screenshots/Captura_de_pantalla_1391.png"
+   }
+  ],
   "desc": "",
   "count": 1,
   "slug": "batalla-por-gergovia"
@@ -2056,6 +2816,14 @@
     "size": 4423092,
     "url": "https://cdn.discordapp.com/attachments/1413782299786608682/1422369584517742602/The_Middle-earth.BFHP?ex=6ad4b227&is=6ad360a7&hm=0885baf7e6ec79b06609788ba9810be21a544293819fc8b6fd068b25b1936ab1&",
     "local": "originals/discord/mapas/la-tierra-media/The_Middle-earth.BFHP"
+   }
+  ],
+  "shots": [
+   {
+    "name": "Captura_de_pantalla_1572.png",
+    "size": 2314848,
+    "url": "https://cdn.discordapp.com/attachments/1413782299786608682/1422369996016844831/Captura_de_pantalla_1572.png?ex=6ad4b289&is=6ad36109&hm=af62ee595fedfe459c3def90e3c4fe4a25bbf95594b8089239dca3a07223179f&",
+    "local": "originals/discord/mapas/la-tierra-media/screenshots/Captura_de_pantalla_1572.png"
    }
   ],
   "desc": "",
@@ -2079,6 +2847,14 @@
     "local": "originals/discord/mapas/minitorneo/MiniTorneo_01.BFHP"
    }
   ],
+  "shots": [
+   {
+    "name": "image.png",
+    "size": 2132449,
+    "url": "https://cdn.discordapp.com/attachments/1413782299786608682/1506241767899529357/image.png?ex=6ad547b6&is=6ad3f636&hm=4be5867f1c3fd0eaab22897f63f5c6bb50f5f6ab41f6f7b1aebea7e0f896cd68&",
+    "local": "originals/discord/mapas/minitorneo/screenshots/image.png"
+   }
+  ],
   "desc": "",
   "count": 1,
   "slug": "minitorneo"
@@ -2098,6 +2874,14 @@
     "size": 3874936,
     "url": "https://cdn.discordapp.com/attachments/1413782299786608682/1513605213729067258/Ancient_world_of_Numida.BFHP?ex=6ad50ab4&is=6ad3b934&hm=b0db2464aa9226b8e95f3bb73b90e4dd69900cb5615f1c9ff8beb2b1fe52b2fc&",
     "local": "originals/discord/mapas/mediterraneo/Ancient_world_of_Numida.BFHP"
+   }
+  ],
+  "shots": [
+   {
+    "name": "Captura_de_pantalla_2570.png",
+    "size": 2399484,
+    "url": "https://cdn.discordapp.com/attachments/1413782299786608682/1513605335330586707/Captura_de_pantalla_2570.png?ex=6ad50ad1&is=6ad3b951&hm=0478570d398da8cc174252889e037a18d7a2dbafca10c5ccfbbc5560c299bf9a&",
+    "local": "originals/discord/mapas/mediterraneo/screenshots/Captura_de_pantalla_2570.png"
    }
   ],
   "desc": "",
@@ -2123,6 +2907,14 @@
     "local": "originals/discord/aventuras/el-asedio/el_asedio.bfhp"
    }
   ],
+  "shots": [
+   {
+    "name": "Captura_de_pantalla_1314.png",
+    "size": 1763238,
+    "url": "https://cdn.discordapp.com/attachments/1413800335213985836/1414561056604426240/SPOILER_Captura_de_pantalla_1314.png?ex=6ad54ae5&is=6ad3f965&hm=008cb34a942b4675f7237435063bb7d07136b4b5135790219dd77a9c949ac3c0&",
+    "local": "originals/discord/aventuras/el-asedio/screenshots/Captura_de_pantalla_1314.png"
+   }
+  ],
   "desc": "Los íberos tratan de defenderse de los infinitos ejércitos cartagineses, cosa que es prácticamente imposible, pero no tanto para Pavald...",
   "count": 1,
   "slug": "el-asedio"
@@ -2144,6 +2936,14 @@
     "size": 1420112,
     "url": "https://cdn.discordapp.com/attachments/1413800335213985836/1414561102179860571/La_Defensa_De_Forfora.BFHP?ex=6ad54af0&is=6ad3f970&hm=0c9038f7b8bd43df957103b688c18850e17613fc75037ca60f8a9f60146250a1&",
     "local": "originals/discord/aventuras/la-defensa-de-forfora/La_Defensa_De_Forfora.BFHP"
+   }
+  ],
+  "shots": [
+   {
+    "name": "Captura_de_pantalla_1373.png",
+    "size": 1929088,
+    "url": "https://cdn.discordapp.com/attachments/1413800335213985836/1414561168990670878/SPOILER_Captura_de_pantalla_1373.png?ex=6ad54aff&is=6ad3f97f&hm=c06e8f2d5579b4131f3dcd572ef533b03897b8d93fa325e3bb2cfa076035b6d5&",
+    "local": "originals/discord/aventuras/la-defensa-de-forfora/screenshots/Captura_de_pantalla_1373.png"
    }
   ],
   "desc": "Forfora es la ciudad íbera mejor defendida, pero su situación intermedia lleva a muchas civilizaciones a pelearse por ella. ¿Resistirá? Tú puedes decidirlo...",
@@ -2169,6 +2969,14 @@
     "local": "originals/discord/aventuras/ciudadela/Ciudadela_3.0.BFHP"
    }
   ],
+  "shots": [
+   {
+    "name": "Captura_de_pantalla_1303.png",
+    "size": 1894270,
+    "url": "https://cdn.discordapp.com/attachments/1413800335213985836/1414561313668988938/Captura_de_pantalla_1303.png?ex=6ad54b22&is=6ad3f9a2&hm=eeb3d792414a41d9424d769301dc4185e79741b91ccc8e372fdc163af7a12f9e&",
+    "local": "originals/discord/aventuras/ciudadela/screenshots/Captura_de_pantalla_1303.png"
+   }
+  ],
   "desc": "",
   "count": 1,
   "slug": "ciudadela"
@@ -2190,6 +2998,14 @@
     "size": 1514914,
     "url": "https://cdn.discordapp.com/attachments/1413800335213985836/1414561356958400595/Des3.BFHP?ex=6ad54b2c&is=6ad3f9ac&hm=47e37a2511c7ad52236305c3d823b8927ae2b50efbe753e2cd95f6632e1efb77&",
     "local": "originals/discord/aventuras/desierto/Des3.BFHP"
+   }
+  ],
+  "shots": [
+   {
+    "name": "Captura_de_pantalla_1305.png",
+    "size": 1651172,
+    "url": "https://cdn.discordapp.com/attachments/1413800335213985836/1414561427733090408/Captura_de_pantalla_1305.png?ex=6ad54b3d&is=6ad3f9bd&hm=18fd2cdab5e47bff0c51afcb6e3f1ba42ef649e74cbbbf93915a1fc595a9ea4b&",
+    "local": "originals/discord/aventuras/desierto/screenshots/Captura_de_pantalla_1305.png"
    }
   ],
   "desc": "",
@@ -2215,6 +3031,14 @@
     "local": "originals/discord/aventuras/prae/Prae_mas_dificil.BFHP"
    }
   ],
+  "shots": [
+   {
+    "name": "Captura_de_pantalla_1306.png",
+    "size": 1620424,
+    "url": "https://cdn.discordapp.com/attachments/1413800335213985836/1414561522214244383/SPOILER_Captura_de_pantalla_1306.png?ex=6ad54b54&is=6ad3f9d4&hm=b756598e826537e1c2aabeec6f97a20cc03d16bd7a6212feff155a7788e78660&",
+    "local": "originals/discord/aventuras/prae/screenshots/Captura_de_pantalla_1306.png"
+   }
+  ],
   "desc": "",
   "count": 1,
   "slug": "prae"
@@ -2236,6 +3060,14 @@
     "size": 1481310,
     "url": "https://cdn.discordapp.com/attachments/1413800335213985836/1414561617147854858/Union_2_buena_5.2.rar?ex=6ad54b6a&is=6ad3f9ea&hm=7efd874420632f096e6a0624ed5c51feeaf86ab5a50ba1c97398864195e10c7e&",
     "local": "originals/discord/aventuras/aventura-de-iomhar/Union_2_buena_5.2.rar"
+   }
+  ],
+  "shots": [
+   {
+    "name": "Captura_de_pantalla_1356.png",
+    "size": 1878898,
+    "url": "https://cdn.discordapp.com/attachments/1413800335213985836/1414561692607844432/SPOILER_Captura_de_pantalla_1356.png?ex=6ad54b7c&is=6ad3f9fc&hm=6c812064e7f85404485d4abe0d4eae916b1b2e4d372019ce2a218b82f291779a&",
+    "local": "originals/discord/aventuras/aventura-de-iomhar/screenshots/Captura_de_pantalla_1356.png"
    }
   ],
   "desc": "",
@@ -2261,6 +3093,14 @@
     "local": "originals/discord/aventuras/mapa-9/mapa_nueve.BFHP"
    }
   ],
+  "shots": [
+   {
+    "name": "Captura_de_pantalla_1409.png",
+    "size": 1723924,
+    "url": "https://cdn.discordapp.com/attachments/1413800335213985836/1414563665079963719/SPOILER_Captura_de_pantalla_1409.png?ex=6ad54d53&is=6ad3fbd3&hm=0747dec419396891605d355a35ebb56807930c2a5d0210fd4bc61a99c01fb47c&",
+    "local": "originals/discord/aventuras/mapa-9/screenshots/Captura_de_pantalla_1409.png"
+   }
+  ],
   "desc": "El joven Mecenas se incorpora a su primer destino, Saguntum, una fortaleza aislada del resto de la Republica. Será el segundo al mando del general Quinto. Bueno, solo serán unos meses...",
   "count": 1,
   "slug": "mapa-9"
@@ -2282,6 +3122,14 @@
     "size": 1502720,
     "url": "https://cdn.discordapp.com/attachments/1413800335213985836/1414563706087538788/Marsella.BFHP?ex=6ad54d5c&is=6ad3fbdc&hm=a773d618453062ae3d8ae390daf38161ff408a60aa145992328900bfa27821c0&",
     "local": "originals/discord/aventuras/marsella/Marsella.BFHP"
+   }
+  ],
+  "shots": [
+   {
+    "name": "Captura_de_pantalla_1410.png",
+    "size": 1609894,
+    "url": "https://cdn.discordapp.com/attachments/1413800335213985836/1414563749045600277/SPOILER_Captura_de_pantalla_1410.png?ex=6ad54d67&is=6ad3fbe7&hm=6e602c8a9ddf564c1b5ceb29dc81d29fc4d4c634aefb40911c8756d99fa4ed33&",
+    "local": "originals/discord/aventuras/marsella/screenshots/Captura_de_pantalla_1410.png"
    }
   ],
   "desc": "Marsella ha caído en manos romanas. La hegemonia cartaginesa en el Mediterráneo y su alianza comercial con las naciones galas están en juego.",
@@ -2307,6 +3155,14 @@
     "local": "originals/discord/aventuras/marsella-2/Marsella2.BFHP"
    }
   ],
+  "shots": [
+   {
+    "name": "Captura_de_pantalla_1411.png",
+    "size": 1597306,
+    "url": "https://cdn.discordapp.com/attachments/1413800335213985836/1414563881774481418/SPOILER_Captura_de_pantalla_1411.png?ex=6ad54d86&is=6ad3fc06&hm=1d472ae1ae4e25369ec293a47b2506cc44afcc7f15a7b2a5b381b29672e54f68&",
+    "local": "originals/discord/aventuras/marsella-2/screenshots/Captura_de_pantalla_1411.png"
+   }
+  ],
   "desc": "Marsella está romanizada. Julio César está terminando su gloriosa campaña en la Galia y su futuro y el gobierno de Roma están en juego.",
   "count": 1,
   "slug": "marsella-2"
@@ -2328,6 +3184,14 @@
     "size": 1418752,
     "url": "https://cdn.discordapp.com/attachments/1413800335213985836/1414563935725817896/Latinos.BFHP?ex=6ad54d93&is=6ad3fc13&hm=215fa66c8a275479337c6bffecab5ea30fc7f8d3d89744357adea659d8f3e1a2&",
     "local": "originals/discord/aventuras/latinos/Latinos.BFHP"
+   }
+  ],
+  "shots": [
+   {
+    "name": "Captura_de_pantalla_1412.png",
+    "size": 1697256,
+    "url": "https://cdn.discordapp.com/attachments/1413800335213985836/1414563983498936410/SPOILER_Captura_de_pantalla_1412.png?ex=6ad54d9e&is=6ad3fc1e&hm=d7414d385fdcbcf0f112fd2cc4841447969f2bc5fd2be712dae41886aaec0981&",
+    "local": "originals/discord/aventuras/latinos/screenshots/Captura_de_pantalla_1412.png"
    }
   ],
   "desc": "En el medio de la península itálica un pueblo esta siendo explotado por sus vecinos. Dos hermanos lo cambiarán todo. Ésta es su historia.",
@@ -2353,6 +3217,14 @@
     "local": "originals/discord/aventuras/iberia/Iberia.BFHP"
    }
   ],
+  "shots": [
+   {
+    "name": "Captura_de_pantalla_1413.png",
+    "size": 1650944,
+    "url": "https://cdn.discordapp.com/attachments/1413800335213985836/1414564091309068288/SPOILER_Captura_de_pantalla_1413.png?ex=6ad54db8&is=6ad3fc38&hm=663d1aab369fc454dadb021ffa52f1bf9dd45f36e04b233611590fb1b6503393&",
+    "local": "originals/discord/aventuras/iberia/screenshots/Captura_de_pantalla_1413.png"
+   }
+  ],
   "desc": "Mecenas llega a Iberia.",
   "count": 1,
   "slug": "iberia"
@@ -2374,6 +3246,14 @@
     "size": 1565808,
     "url": "https://cdn.discordapp.com/attachments/1413800335213985836/1414564151560507484/Etruria.BFHP?ex=6ad54dc7&is=6ad3fc47&hm=45c7b7cf70fd6c76cfec9e39de113b58a358b3e108dc36bf7f55f2b82348a84f&",
     "local": "originals/discord/aventuras/etruria/Etruria.BFHP"
+   }
+  ],
+  "shots": [
+   {
+    "name": "Captura_de_pantalla_1415.png",
+    "size": 1713942,
+    "url": "https://cdn.discordapp.com/attachments/1413800335213985836/1414564203108503653/SPOILER_Captura_de_pantalla_1415.png?ex=6ad54dd3&is=6ad3fc53&hm=ed085ad77f9f75cf235955fab2643aeb0ee0fdf3f8de4e6d729c2d52feb10c5f&",
+    "local": "originals/discord/aventuras/etruria/screenshots/Captura_de_pantalla_1415.png"
    }
   ],
   "desc": "Todo empieza con una traición. Para capturar los asentamientos primero hay que capturar los fortines que los defienden, si no es imposible. Para capturar los fortines de Arretium y ganar hay que haber matado a todos los Guardianes Sagrados de todos los fortines de Etruria.",
@@ -2399,6 +3279,14 @@
     "local": "originals/discord/aventuras/equiada/Equiada-ImperyumIII.BFHP"
    }
   ],
+  "shots": [
+   {
+    "name": "Captura_de_pantalla_1416.png",
+    "size": 1725570,
+    "url": "https://cdn.discordapp.com/attachments/1413800335213985836/1414564327620608082/SPOILER_Captura_de_pantalla_1416.png?ex=6ad54df1&is=6ad3fc71&hm=8b38ba09fc578eb9294964ae50de23cbbb28c10a960f90b7f6cd5aa6a5197751&",
+    "local": "originals/discord/aventuras/equiada/screenshots/Captura_de_pantalla_1416.png"
+   }
+  ],
   "desc": "La situación de los galos es insostenible. Tributar a los romanos al oeste o a los germanos al este. Si fueras capaz de unirlos la ocupación terminaría.",
   "count": 1,
   "slug": "equiada"
@@ -2420,6 +3308,14 @@
     "size": 4885107,
     "url": "https://cdn.discordapp.com/attachments/1413800335213985836/1414564415621304361/Arraquis-ImperyumIII.BFHP?ex=6ad54e06&is=6ad3fc86&hm=a612ee8ae499cb02af71538f6630e6ab787aa7176c0ec7c47c2ab28a0358710f&",
     "local": "originals/discord/aventuras/arraquis/Arraquis-ImperyumIII.BFHP"
+   }
+  ],
+  "shots": [
+   {
+    "name": "Captura_de_pantalla_1417.png",
+    "size": 1160578,
+    "url": "https://cdn.discordapp.com/attachments/1413800335213985836/1414564451809628170/SPOILER_Captura_de_pantalla_1417.png?ex=6ad54e0e&is=6ad3fc8e&hm=cb37ef106314b08c9a0927e529388ace5a4101278c3e6cd31340f8971bb9287c&",
+    "local": "originals/discord/aventuras/arraquis/screenshots/Captura_de_pantalla_1417.png"
    }
   ],
   "desc": "¿Serás capaz de conquistar Cartago? Te espera una dura lucha en el desierto contra el mayor enemigo de Roma.",
@@ -2445,6 +3341,14 @@
     "local": "originals/discord/aventuras/tatuin/Tatuin-ImperyumIII.BFHP"
    }
   ],
+  "shots": [
+   {
+    "name": "Captura_de_pantalla_1418.png",
+    "size": 1712506,
+    "url": "https://cdn.discordapp.com/attachments/1413800335213985836/1414564533892153494/SPOILER_Captura_de_pantalla_1418.png?ex=6ad54e22&is=6ad3fca2&hm=e0b63011787518d61426087a178d63f763c1e9366d59d9b77d75940afbe7f2b0&",
+    "local": "originals/discord/aventuras/tatuin/screenshots/Captura_de_pantalla_1418.png"
+   }
+  ],
   "desc": "En la tierra del Nilo, solo hay sitio para un Faraón",
   "count": 1,
   "slug": "tatuin"
@@ -2466,6 +3370,14 @@
     "size": 3920384,
     "url": "https://cdn.discordapp.com/attachments/1413800335213985836/1414564577588412426/Legio_8.BFHP?ex=6ad54e2c&is=6ad3fcac&hm=583194b45f6294834eadaa695b6e23a7aecbde8a2bd265f6a5ebbbb40c3a6b84&",
     "local": "originals/discord/aventuras/legio-8/Legio_8.BFHP"
+   }
+  ],
+  "shots": [
+   {
+    "name": "Captura_de_pantalla_1419.png",
+    "size": 1893094,
+    "url": "https://cdn.discordapp.com/attachments/1413800335213985836/1414564619342843994/SPOILER_Captura_de_pantalla_1419.png?ex=6ad54e36&is=6ad3fcb6&hm=a4d8a43f91c1f59cc621e7af912800b1c13c95d6df97b36e7cf143407e8b3030&",
+    "local": "originals/discord/aventuras/legio-8/screenshots/Captura_de_pantalla_1419.png"
    }
   ],
   "desc": "En la frontera germana Legio 8 tiene que resistir con sus aliados galos de la ofensiva enemiga. Comandas a las tropas de Mesgara. El futuro de los tuyos está en tus manos.",
@@ -2491,6 +3403,14 @@
     "local": "originals/discord/aventuras/celtiberos/Celtiberos.BFHP"
    }
   ],
+  "shots": [
+   {
+    "name": "Captura_de_pantalla_1420.png",
+    "size": 1850974,
+    "url": "https://cdn.discordapp.com/attachments/1413800335213985836/1414564692671860736/SPOILER_Captura_de_pantalla_1420.png?ex=6ad54e48&is=6ad3fcc8&hm=acbd78fe634d19a03c0cb9d120132f42a6d51b5700248a08d63cb71e7a4a071d&",
+    "local": "originals/discord/aventuras/celtiberos/screenshots/Captura_de_pantalla_1420.png"
+   }
+  ],
   "desc": "Conquista esta tierra celtíbera con la ayuda de Master.",
   "count": 1,
   "slug": "celtiberos"
@@ -2512,6 +3432,14 @@
     "size": 1025552,
     "url": "https://cdn.discordapp.com/attachments/1413800335213985836/1414566507232493578/Las_cuevas_del_Hades.BFHP?ex=6ad54ff8&is=6ad3fe78&hm=46fa7b5a0936f00b776b599abf6b5511230bc386bcb4c1f368e9e4a1d4d39728&",
     "local": "originals/discord/aventuras/las-cuevas-del-hades/Las_cuevas_del_Hades.BFHP"
+   }
+  ],
+  "shots": [
+   {
+    "name": "Captura_de_pantalla_1393.png",
+    "size": 1682838,
+    "url": "https://cdn.discordapp.com/attachments/1413800335213985836/1414566549804679229/SPOILER_Captura_de_pantalla_1393.png?ex=6ad55002&is=6ad3fe82&hm=6d768e5d840639e9a2f83a1359a6308a03c511874e41482b2334dc4a06974287&",
+    "local": "originals/discord/aventuras/las-cuevas-del-hades/screenshots/Captura_de_pantalla_1393.png"
    }
   ],
   "desc": "Incluso un superhéroe tiene un resbalón... Lárax no iba a ser menos. Y entonces hay que estar preparado. ¿Tú lo estás? ¡Cuántos más muertos tengas en el armario más tendrás que saltar!",
@@ -2537,6 +3465,14 @@
     "local": "originals/discord/aventuras/el-intento-de-guigoras/El_intento_de_Guigoras.BFHP"
    }
   ],
+  "shots": [
+   {
+    "name": "Captura_de_pantalla_1394.png",
+    "size": 1675038,
+    "url": "https://cdn.discordapp.com/attachments/1413800335213985836/1414566708013699165/SPOILER_Captura_de_pantalla_1394.png?ex=6ad55028&is=6ad3fea8&hm=10187a00318358c19066a9222911492a6c8ae91dc3bfb1eb04c5d11e6c5cad21&",
+    "local": "originals/discord/aventuras/el-intento-de-guigoras/screenshots/Captura_de_pantalla_1394.png"
+   }
+  ],
   "desc": "¿Podrá Guigoras con la ayuda de sus aliados galos unificar a los íberos y juntos expulsar a los romanos de estas montañas?",
   "count": 1,
   "slug": "el-intento-de-guigoras"
@@ -2558,6 +3494,14 @@
     "size": 1770218,
     "url": "https://cdn.discordapp.com/attachments/1413800335213985836/1414566747507261532/Guigoras_en_Salmantica.BFHP?ex=6ad55031&is=6ad3feb1&hm=bc041ef5cdbd3b260314a46eeafc9b505abd56738ad188ba59cee8c621900286&",
     "local": "originals/discord/aventuras/guigoras-en-salmantica/Guigoras_en_Salmantica.BFHP"
+   }
+  ],
+  "shots": [
+   {
+    "name": "Captura_de_pantalla_1396.png",
+    "size": 1820986,
+    "url": "https://cdn.discordapp.com/attachments/1413800335213985836/1414566792067809373/SPOILER_Captura_de_pantalla_1396.png?ex=6ad5503c&is=6ad3febc&hm=60b4df89c3401815ecdd95bfcb5305bd87ecd8d54729d852e223a59b821db5be&",
+    "local": "originals/discord/aventuras/guigoras-en-salmantica/screenshots/Captura_de_pantalla_1396.png"
    }
   ],
   "desc": "Salmantica esta gobernada por cartagineses que para conservarla han pactado con Roma. La ocupacion romana es evidente. Hará falta mucha ayuda de la Orden de Lucil y de Salmantica.",
@@ -2583,6 +3527,14 @@
     "local": "originals/discord/aventuras/la-prueba-de-guigoras/La_prueba_de_Guigoras.BFHP"
    }
   ],
+  "shots": [
+   {
+    "name": "Captura_de_pantalla_1397.png",
+    "size": 1322256,
+    "url": "https://cdn.discordapp.com/attachments/1413800335213985836/1414566870266281994/Captura_de_pantalla_1397.png?ex=6ad5504f&is=6ad3fecf&hm=b529b17323502ca4a5db93076856aa3c9e402197bff4ed94c2ba218c854754c1&",
+    "local": "originals/discord/aventuras/la-prueba-de-guigoras/screenshots/Captura_de_pantalla_1397.png"
+   }
+  ],
   "desc": "La Orden de Lucil manda a Guigoras a tierras africanas pero... ¿es un destierro? o ¿realmente se decide aquí el futuro de Iberia?",
   "count": 1,
   "slug": "la-prueba-de-guigoras"
@@ -2604,6 +3556,14 @@
     "size": 5219840,
     "url": "https://cdn.discordapp.com/attachments/1413800335213985836/1414566909390618675/Emerita_Augusta.BFHP?ex=6ad55058&is=6ad3fed8&hm=012c5b26cdb1d7cf695371606311420dca2165fc9f1b78a623b1e5d997ffc442&",
     "local": "originals/discord/aventuras/guigoras-en-emerita-augusta/Emerita_Augusta.BFHP"
+   }
+  ],
+  "shots": [
+   {
+    "name": "Captura_de_pantalla_1398.png",
+    "size": 1660436,
+    "url": "https://cdn.discordapp.com/attachments/1413800335213985836/1414566993042079854/SPOILER_Captura_de_pantalla_1398.png?ex=6ad5506c&is=6ad3feec&hm=39e6a382913fa8e602d767ec64c4b2320f60bd2ead070e44816339c3de7307a0&",
+    "local": "originals/discord/aventuras/guigoras-en-emerita-augusta/screenshots/Captura_de_pantalla_1398.png"
    }
   ],
   "desc": "Las sacerdotisas íberas han conseguido la \"Alianza\" de sus caudillos en su lucha contra Roma, hecho el reparto del \"botín\" y os han elegido para ser \"los capitanes\" de esta titánica empresa... ¿Estarás a la altura de tu pueblo?",
@@ -2629,6 +3589,14 @@
     "local": "originals/discord/aventuras/la-aventura-gala/La_aventura_gala_..BFHP"
    }
   ],
+  "shots": [
+   {
+    "name": "Captura_de_pantalla_1400.png",
+    "size": 1661258,
+    "url": "https://cdn.discordapp.com/attachments/1413800335213985836/1414567073786630225/Captura_de_pantalla_1400.png?ex=6ad5507f&is=6ad3feff&hm=6088f87289fe9d3789c23f035ab8265d729c8fd16224ad8126ac6491681eff00&",
+    "local": "originals/discord/aventuras/la-aventura-gala/screenshots/Captura_de_pantalla_1400.png"
+   }
+  ],
   "desc": "A la muerte del rey de Ausques y Tarballes, el reino queda repartido: Ausques para Julio y Tarbelles para Santra, pero ahora Julio es un mercenario de César para recuperar lo que es suyo.",
   "count": 1,
   "slug": "la-aventura-gala"
@@ -2650,6 +3618,14 @@
     "size": 1852928,
     "url": "https://cdn.discordapp.com/attachments/1413800335213985836/1414567108209279066/Tributo_Imperium..BFHP?ex=6ad55087&is=6ad3ff07&hm=b5f92cc70be54db759a33441688c87716824f1a1d0675f03fdf9ef668b00f68f&",
     "local": "originals/discord/aventuras/tributo-imperium/Tributo_Imperium..BFHP"
+   }
+  ],
+  "shots": [
+   {
+    "name": "Captura_de_pantalla_1401.png",
+    "size": 1619632,
+    "url": "https://cdn.discordapp.com/attachments/1413800335213985836/1414567145567682621/SPOILER_Captura_de_pantalla_1401.png?ex=6ad55090&is=6ad3ff10&hm=355e5279b7558d3230767ee94ae1f5b22a4dee64f3331f62720cecb2ea326cc4&",
+    "local": "originals/discord/aventuras/tributo-imperium/screenshots/Captura_de_pantalla_1401.png"
    }
   ],
   "desc": "Controla la fortaleza cartaginesa y busca la alianza con los íberos contra Roma.",
@@ -2675,6 +3651,14 @@
     "local": "originals/discord/aventuras/reyes-celtas/Reyes_Celtas.BFHP"
    }
   ],
+  "shots": [
+   {
+    "name": "Captura_de_pantalla_1405.png",
+    "size": 1856742,
+    "url": "https://cdn.discordapp.com/attachments/1413800335213985836/1414567225385418772/SPOILER_Captura_de_pantalla_1405.png?ex=6ad550a3&is=6ad3ff23&hm=11831f65f6297c55f8cf0cc6e41e55b6d13116933ea5518f23fccb708cbcd6ba&",
+    "local": "originals/discord/aventuras/reyes-celtas/screenshots/Captura_de_pantalla_1405.png"
+   }
+  ],
   "desc": "Nueva aventura de Guigoras en el salvaje Norte. ¡Sobrevive con él y sus camaradas a todos los golpes de sus enemigos y de tu destino!",
   "count": 1,
   "slug": "reyes-celtas"
@@ -2698,6 +3682,14 @@
     "local": "originals/discord/aventuras/la-respuesta-esta-en-el-aire/La_Respuesta_Esta_en_el_Aire.BFHP"
    }
   ],
+  "shots": [
+   {
+    "name": "Captura_de_pantalla_1406.png",
+    "size": 1532814,
+    "url": "https://cdn.discordapp.com/attachments/1413800335213985836/1414567303122518086/SPOILER_Captura_de_pantalla_1406.png?ex=6ad550b6&is=6ad3ff36&hm=3322da35f022f62a043894b33e79bd6a5dc160f22605393b7a2955dec996f086&",
+    "local": "originals/discord/aventuras/la-respuesta-esta-en-el-aire/screenshots/Captura_de_pantalla_1406.png"
+   }
+  ],
   "desc": "Keltill regresa a su ciudad con intención de unirse a la lucha contra Roma, pero es demasiado tarde. Ha sido reducida a cenizas. La única resistencia ahora son los celtas de Castro, sus territorios y tal vez exista el Templo de Lucil y una resistencia íbera. ¿Podrás cambiar la historia?",
   "count": 1,
   "slug": "la-respuesta-esta-en-el-aire"
@@ -2714,6 +3706,14 @@
    "https://imperivmgbr.foroactivo.com/t797-primeros-mapas"
   ],
   "files": [],
+  "shots": [
+   {
+    "name": "Captura_de_pantalla_1307.png",
+    "size": 1594240,
+    "url": "https://cdn.discordapp.com/attachments/1413800335213985836/1414568858110398586/Captura_de_pantalla_1307.png?ex=6ad55229&is=6ad400a9&hm=d6fbe995ed22af40082b961fc1181ac4c89760e374d5f5591c73b54e3616e5c2&",
+    "local": "originals/discord/aventuras/inicios-de-haenor/screenshots/Captura_de_pantalla_1307.png"
+   }
+  ],
   "desc": "",
   "count": 1,
   "slug": "inicios-de-haenor"
@@ -2735,6 +3735,14 @@
     "size": 1794048,
     "url": "https://cdn.discordapp.com/attachments/1413800335213985836/1414568891086016572/Haenor_conoce_a_Viriatocomienzo_de_una_historia_sin_mod.BFHP?ex=6ad55231&is=6ad400b1&hm=38ac3825dd5a85b321454d752127dc396c9b76fe27f39f009917b96c03372d80&",
     "local": "originals/discord/aventuras/haenor-rescate-de-viriato/Haenor_conoce_a_Viriatocomienzo_de_una_historia_sin_mod.BFHP"
+   }
+  ],
+  "shots": [
+   {
+    "name": "Captura_de_pantalla_1308.png",
+    "size": 1891610,
+    "url": "https://cdn.discordapp.com/attachments/1413800335213985836/1414568939844927488/Captura_de_pantalla_1308.png?ex=6ad5523c&is=6ad400bc&hm=a9936db3ff068794d04035b196f232a68dc57ccaaf1302bc455cb35684c4ddf8&",
+    "local": "originals/discord/aventuras/haenor-rescate-de-viriato/screenshots/Captura_de_pantalla_1308.png"
    }
   ],
   "desc": "Roma esta persiguiendo a Viriato que tiene que escapar para buscar aliados para recuperar su amada Hispania y se encuentra a Haenor un gran guerrero que clama venganza.",
@@ -2760,6 +3768,14 @@
     "local": "originals/discord/aventuras/defensores-del-tumulo/Defensores_del_Desierto.zip"
    }
   ],
+  "shots": [
+   {
+    "name": "Captura_de_pantalla_1317.png",
+    "size": 2387446,
+    "url": "https://cdn.discordapp.com/attachments/1413800335213985836/1414569040399171606/Captura_de_pantalla_1317.png?ex=6ad55254&is=6ad400d4&hm=21cec0cbadd822c4fba3ac1c9a1dbe6346df0446c26b18d4541102bf47ee4388&",
+    "local": "originals/discord/aventuras/defensores-del-tumulo/screenshots/Captura_de_pantalla_1317.png"
+   }
+  ],
   "desc": "Tu grupo ha sido elegido por los dioses para defender la colina sagrada del ataque de los bárbaros. Tu misión es resistir el mayor número posible de días. Al final de cada día los dioses te otorgarán un deseo.",
   "count": 1,
   "slug": "defensores-del-tumulo"
@@ -2781,6 +3797,14 @@
     "size": 945927,
     "url": "https://cdn.discordapp.com/attachments/1413800335213985836/1414569122720645191/Aventura_en_Alesia.zip?ex=6ad55268&is=6ad400e8&hm=5620155d1ff5c17c4b3380a4007be6c860c92d3558ba7b6c00983d447b09ccf1&",
     "local": "originals/discord/aventuras/aventura-en-alesia/Aventura_en_Alesia.zip"
+   }
+  ],
+  "shots": [
+   {
+    "name": "Captura_de_pantalla_1345.png",
+    "size": 1112052,
+    "url": "https://cdn.discordapp.com/attachments/1413800335213985836/1414569162440704060/Captura_de_pantalla_1345.png?ex=6ad55271&is=6ad400f1&hm=3a9707d85c9d9ec8dbaadf7255285573d5fe65faed1716bc9bafec232ab8c922&",
+    "local": "originals/discord/aventuras/aventura-en-alesia/screenshots/Captura_de_pantalla_1345.png"
    }
   ],
   "desc": "",
@@ -2806,6 +3830,14 @@
     "local": "originals/discord/aventuras/infierno-en-iberia/Infierno_en_Iberia.BFHP"
    }
   ],
+  "shots": [
+   {
+    "name": "Captura_de_pantalla_1384.png",
+    "size": 1694066,
+    "url": "https://cdn.discordapp.com/attachments/1413800335213985836/1414569268862910626/SPOILER_Captura_de_pantalla_1384.png?ex=6ad5528b&is=6ad4010b&hm=1b04a31d08c23b65db518aa675a0f6ea6e1e5854e579e62989662e66b71a2fe5&",
+    "local": "originals/discord/aventuras/infierno-en-iberia/screenshots/Captura_de_pantalla_1384.png"
+   }
+  ],
   "desc": "Publio Cornelio Escipión desembarca en Iberia para retomar la guerra contra los cartagineses en suelo hispano. Los cartagineses, con Asdrúbal Barca a la cabeza, les saldrán al paso, pero esta vez un héroe íbero se interpondrá entre los dos imperios más poderosos de la época para cambiar el destino del mundo.",
   "count": 1,
   "slug": "infierno-en-iberia"
@@ -2827,6 +3859,14 @@
     "size": 4330496,
     "url": "https://cdn.discordapp.com/attachments/1413800335213985836/1414569307483930624/escipiA3n_contra_todos.BFHP?ex=6ad55294&is=6ad40114&hm=d9e535c112b09827db90dad1976c2a1494d2e913c53073054ba06f636867799d&",
     "local": "originals/discord/aventuras/escipion-contra-todos/escipiA3n_contra_todos.BFHP"
+   }
+  ],
+  "shots": [
+   {
+    "name": "Captura_de_pantalla_1385.png",
+    "size": 1694040,
+    "url": "https://cdn.discordapp.com/attachments/1413800335213985836/1414569346763591690/SPOILER_Captura_de_pantalla_1385.png?ex=6ad5529d&is=6ad4011d&hm=244105d47983818ace5211443bffd42e911ce52d9554efbab290e1e2f714bc14&",
+    "local": "originals/discord/aventuras/escipion-contra-todos/screenshots/Captura_de_pantalla_1385.png"
    }
   ],
   "desc": "Publio Cornelio Escipión desembarca en Iberia para retomar la guerra contra los cartagineses en suelo hispano. Los cartagineses, con Asdrúbal Barca a la cabeza, les saldrán al paso, pero esta vez un héroe íbero se interpondrá entre los dos imperios más poderosos de la época para cambiar el destino del mundo.",
@@ -2852,6 +3892,14 @@
     "local": "originals/discord/aventuras/asdrubal-senor-de-iberia/AsdrAobal_SeAor_de_Iberia.BFHP"
    }
   ],
+  "shots": [
+   {
+    "name": "Captura_de_pantalla_1386.png",
+    "size": 1695030,
+    "url": "https://cdn.discordapp.com/attachments/1413800335213985836/1414569425910366231/SPOILER_Captura_de_pantalla_1386.png?ex=6ad552b0&is=6ad40130&hm=898d4150df36396606a72f3fb1c33c8fd0853fbcd68e19d6840c0bffb26a2eb5&",
+    "local": "originals/discord/aventuras/asdrubal-senor-de-iberia/screenshots/Captura_de_pantalla_1386.png"
+   }
+  ],
   "desc": "Publio Cornelio Escipión desembarca en Iberia para retomar la guerra contra los cartagineses en suelo hispano. Los cartagineses, con Asdrúbal Barca a la cabeza, les saldrán al paso, pero estan atrapados entre dos fuegos, los rebeldes íberos, celosos de su independencia y los poderosísimos romanos. Intenta cambiar el destino del mundo siendo Asdrúbal Barca.",
   "count": 1,
   "slug": "asdrubal-senor-de-iberia"
@@ -2873,6 +3921,14 @@
     "size": 2058329,
     "url": "https://cdn.discordapp.com/attachments/1413800335213985836/1414569464632180879/Atlantida.BFHP?ex=6ad552b9&is=6ad40139&hm=f392641c58eed2ee45b8983d2c62983686ebfb2341d82ba04846e94ae92b788b&",
     "local": "originals/discord/aventuras/atlantida/Atlantida.BFHP"
+   }
+  ],
+  "shots": [
+   {
+    "name": "Captura_de_pantalla_1387.png",
+    "size": 1704474,
+    "url": "https://cdn.discordapp.com/attachments/1413800335213985836/1414569503639212094/Captura_de_pantalla_1387.png?ex=6ad552c3&is=6ad40143&hm=885c249f5a35d778d5cd037a5dde84e27201d58c2888ae8914816b9dcb5591a2&",
+    "local": "originals/discord/aventuras/atlantida/screenshots/Captura_de_pantalla_1387.png"
    }
   ],
   "desc": "Pugna por el control de la resurgida Atlántida, si la conquista Og, comprará más mercenarios. Sobrevive a las oleadas de los 7 Reyes.",
@@ -2898,6 +3954,14 @@
     "local": "originals/discord/aventuras/la-venganza-gala-i/la_venganza_gala_version_2019.BFHP"
    }
   ],
+  "shots": [
+   {
+    "name": "Captura_de_pantalla_1322.png",
+    "size": 1557042,
+    "url": "https://cdn.discordapp.com/attachments/1413800335213985836/1414571377343598602/SPOILER_Captura_de_pantalla_1322.png?ex=6ad55481&is=6ad40301&hm=6f860d74dc831b3410cd8dba60fb1f125adb598e62b77b55065e4c2a0d4897c0&",
+    "local": "originals/discord/aventuras/la-venganza-gala-i/screenshots/Captura_de_pantalla_1322.png"
+   }
+  ],
   "desc": "El pueblo de Gended, un simple campesino, ha sido conquistado por los romanos y han matado a todos sus habitantes. Ahora, Gended busca venganza.",
   "count": 1,
   "slug": "la-venganza-gala-i"
@@ -2919,6 +3983,14 @@
     "size": 1304042,
     "url": "https://cdn.discordapp.com/attachments/1413800335213985836/1414571415121821738/La_venganza_gala_II.BFHP?ex=6ad5548a&is=6ad4030a&hm=a761c42e502a78ba8b21a0b908b8b6c6918424404cf739e2703963c1b6f06442&",
     "local": "originals/discord/aventuras/la-venganza-gala-ii/La_venganza_gala_II.BFHP"
+   }
+  ],
+  "shots": [
+   {
+    "name": "Captura_de_pantalla_1324.png",
+    "size": 1402940,
+    "url": "https://cdn.discordapp.com/attachments/1413800335213985836/1414571458792919100/Captura_de_pantalla_1324.png?ex=6ad55495&is=6ad40315&hm=6a4f7db1c517d7fda2f77d79804491fa971ad17d3841fc6931b5e22ab600a855&",
+    "local": "originals/discord/aventuras/la-venganza-gala-ii/screenshots/Captura_de_pantalla_1324.png"
    }
   ],
   "desc": "20 años despues de la muerte de Gended su hijo Gounde es general del ejército galo.",
@@ -2944,6 +4016,14 @@
     "local": "originals/discord/aventuras/la-venganza-gala-iii/La_venganza_gala_III.BFHP"
    }
   ],
+  "shots": [
+   {
+    "name": "Captura_de_pantalla_1325.png",
+    "size": 1139342,
+    "url": "https://cdn.discordapp.com/attachments/1413800335213985836/1414571531337732127/Captura_de_pantalla_1325.png?ex=6ad554a6&is=6ad40326&hm=d2fcb0ff2935b1bb3eb5f18f0962d1801cf0f27a5a692f370054314a9eb09ff8&",
+    "local": "originals/discord/aventuras/la-venganza-gala-iii/screenshots/Captura_de_pantalla_1325.png"
+   }
+  ],
   "desc": "A Gounde le espera un juicio por el consejo de ancianos.",
   "count": 1,
   "slug": "la-venganza-gala-iii"
@@ -2965,6 +4045,14 @@
     "size": 1134627,
     "url": "https://cdn.discordapp.com/attachments/1413800335213985836/1414571571766628513/La_venganza_gala_IV.BFHP?ex=6ad554b0&is=6ad40330&hm=6f925effa1386fc919a4d09598397e7d5cd67b00ea6c5e961e96b3b530faa673&",
     "local": "originals/discord/aventuras/la-venganza-gala-iv/La_venganza_gala_IV.BFHP"
+   }
+  ],
+  "shots": [
+   {
+    "name": "Captura_de_pantalla_1326.png",
+    "size": 916464,
+    "url": "https://cdn.discordapp.com/attachments/1413800335213985836/1414571614019915776/Captura_de_pantalla_1326.png?ex=6ad554ba&is=6ad4033a&hm=68c111b234316f20c9827245a3847cee98e8f39498bb0d12b9e2401f80e1a9da&",
+    "local": "originals/discord/aventuras/la-venganza-gala-iv/screenshots/Captura_de_pantalla_1326.png"
    }
   ],
   "desc": "El barco de Gounde naufraga en Egipto debido a las corrientes del mar cuando se disponían a ir a las Galias.",
@@ -2990,6 +4078,14 @@
     "local": "originals/discord/aventuras/la-venganza-gala-v/La_venganza_gala_V.BFHP"
    }
   ],
+  "shots": [
+   {
+    "name": "Captura_de_pantalla_1319.png",
+    "size": 1813496,
+    "url": "https://cdn.discordapp.com/attachments/1413800335213985836/1414571684597596190/Captura_de_pantalla_1319.png?ex=6ad554cb&is=6ad4034b&hm=0ebc1da90583a2dc8244a23613635d0e371d21be353e111bd2cf8e8ef5506fb0&",
+    "local": "originals/discord/aventuras/la-venganza-gala-v/screenshots/Captura_de_pantalla_1319.png"
+   }
+  ],
   "desc": "Gounde, Gongetet y Hospinget parten hacia los países nórdicos para salvar a Hospongotet que va a ser ejecutado por los romanos.",
   "count": 1,
   "slug": "la-venganza-gala-v"
@@ -3011,6 +4107,14 @@
     "size": 2133504,
     "url": "https://cdn.discordapp.com/attachments/1413800335213985836/1414574848444858389/Germanos_al_ataque_2.0.BFHP?ex=6ad4aefd&is=6ad35d7d&hm=6737d8599ba21c41af6f4e5e66e815595978cadfb1f7e68ac7478eee3d727687&",
     "local": "originals/discord/aventuras/germanos-al-ataque/Germanos_al_ataque_2.0.BFHP"
+   }
+  ],
+  "shots": [
+   {
+    "name": "Captura_de_pantalla_1327.png",
+    "size": 1461128,
+    "url": "https://cdn.discordapp.com/attachments/1413800335213985836/1414574891939926148/SPOILER_Captura_de_pantalla_1327.png?ex=6ad4af07&is=6ad35d87&hm=6002cef347bfeb86e4231d141535d33d58eae25407cc97c527cfb67816e06568&",
+    "local": "originals/discord/aventuras/germanos-al-ataque/screenshots/Captura_de_pantalla_1327.png"
    }
   ],
   "desc": "Germar debe acabar con los galos e imponer el dominio germano sobre ellos.",
@@ -3036,6 +4140,14 @@
     "local": "originals/discord/aventuras/la-rebelion-germana/La_Rebelion_germana.BFHP"
    }
   ],
+  "shots": [
+   {
+    "name": "Captura_de_pantalla_1328.png",
+    "size": 1383046,
+    "url": "https://cdn.discordapp.com/attachments/1413800335213985836/1414574972969684992/SPOILER_Captura_de_pantalla_1328.png?ex=6ad4af1b&is=6ad35d9b&hm=85279aac0beda125cb562fd3e2ea28fc2fc4ba4ff25a07bff4be6780006bc2b7&",
+    "local": "originals/discord/aventuras/la-rebelion-germana/screenshots/Captura_de_pantalla_1328.png"
+   }
+  ],
   "desc": "Los germanos estaban sometidos a los romanos, pero la muerte de Garro Fogo, el mejor amigo de Boemo Matego, a manos de Brutus Máximo ha iniciado una rebelión.",
   "count": 1,
   "slug": "la-rebelion-germana"
@@ -3057,6 +4169,14 @@
     "size": 1364489,
     "url": "https://cdn.discordapp.com/attachments/1413800335213985836/1414575014363009124/En_tres_pellejos.BFHP?ex=6ad4af24&is=6ad35da4&hm=d84e7b255c7938d3be26160e313c685930d89938d44561fc5253398f76dd0be6&",
     "local": "originals/discord/aventuras/en-tres-pellejos/En_tres_pellejos.BFHP"
+   }
+  ],
+  "shots": [
+   {
+    "name": "Captura_de_pantalla_1329.png",
+    "size": 1469708,
+    "url": "https://cdn.discordapp.com/attachments/1413800335213985836/1414575047984681022/SPOILER_Captura_de_pantalla_1329.png?ex=6ad4af2c&is=6ad35dac&hm=ca6bef4b63e41def276271da02f0b3278a581092baa26fa46a292e5867abaab5&",
+    "local": "originals/discord/aventuras/en-tres-pellejos/screenshots/Captura_de_pantalla_1329.png"
    }
   ],
   "desc": "Tres vidas, general romano, prisionero y salvaje, pero solo una correcta.",
@@ -3082,6 +4202,14 @@
     "local": "originals/discord/aventuras/en-tres-pellejos-2/En_tres_pellejos_2.BFHP"
    }
   ],
+  "shots": [
+   {
+    "name": "Captura_de_pantalla_1330.png",
+    "size": 1533148,
+    "url": "https://cdn.discordapp.com/attachments/1413800335213985836/1414575124526399528/SPOILER_Captura_de_pantalla_1330.png?ex=6ad4af3f&is=6ad35dbf&hm=6fedfccf9201cbc5f75f5a5109d9b6e923117f65a02e6271b5f20a3af6fb4f30&",
+    "local": "originals/discord/aventuras/en-tres-pellejos-2/screenshots/Captura_de_pantalla_1330.png"
+   }
+  ],
   "desc": "Cayo Bannanicus Fressisuis ha sido capturado por los germanos. Ahora aguarda su destino en una pequeña y maloliente prisión.",
   "count": 1,
   "slug": "en-tres-pellejos-2"
@@ -3105,6 +4233,14 @@
     "local": "originals/discord/aventuras/campamento-de-entrenamiento-galo/Campamento_de_entrenamiento_galo.zip"
    }
   ],
+  "shots": [
+   {
+    "name": "Captura_de_pantalla_1453.png",
+    "size": 1247902,
+    "url": "https://cdn.discordapp.com/attachments/1413800335213985836/1414575208706080768/SPOILER_Captura_de_pantalla_1453.png?ex=6ad4af53&is=6ad35dd3&hm=f6504ecc989131c0d8841dd15c5b133ac0206cd5feb974ff713f014b322462b0&",
+    "local": "originals/discord/aventuras/campamento-de-entrenamiento-galo/screenshots/Captura_de_pantalla_1453.png"
+   }
+  ],
   "desc": "Gotheto va a un campamento galo para aprender a ser un mejor guerrero.",
   "count": 1,
   "slug": "campamento-de-entrenamiento-galo"
@@ -3124,6 +4260,14 @@
     "size": 1922102,
     "url": "https://cdn.discordapp.com/attachments/1413800335213985836/1414575257678774424/Espartaco_3.0.BFHP?ex=6ad4af5e&is=6ad35dde&hm=f5d5f8b2db6e5f7193809afffe04155959fc9a0c3800c0fca9fc01eadabb939e&",
     "local": "originals/discord/aventuras/espartaco/Espartaco_3.0.BFHP"
+   }
+  ],
+  "shots": [
+   {
+    "name": "Captura_de_pantalla_1331.png",
+    "size": 1668784,
+    "url": "https://cdn.discordapp.com/attachments/1413800335213985836/1414575283435995297/SPOILER_Captura_de_pantalla_1331.png?ex=6ad4af65&is=6ad35de5&hm=c3d51687704c5bb7f7c4f013bcd496ccca3ff779edd327e6823dc51400408d47&",
+    "local": "originals/discord/aventuras/espartaco/screenshots/Captura_de_pantalla_1331.png"
    }
   ],
   "desc": "",
@@ -3149,6 +4293,14 @@
     "local": "originals/discord/aventuras/los-espiritus-vivientes/Los_espiritus_vivientes.BFHP"
    }
   ],
+  "shots": [
+   {
+    "name": "Captura_de_pantalla_1332.png",
+    "size": 1287974,
+    "url": "https://cdn.discordapp.com/attachments/1413800335213985836/1414575385332416604/SPOILER_Captura_de_pantalla_1332.png?ex=6ad4af7d&is=6ad35dfd&hm=5e17055f27e3ba736f7160f797df73f5c57740cc8e6ff8c44b0b45d92e2c41c3&",
+    "local": "originals/discord/aventuras/los-espiritus-vivientes/screenshots/Captura_de_pantalla_1332.png"
+   }
+  ],
   "desc": "Unos extraños sucesos alertan al jefe ibero Iberius, que no duda en mandar llamar a Gombeyet, un galo que según dicen resuelve cualquier problema en cualquier pueblo, país o ciudad.",
   "count": 1,
   "slug": "los-espiritus-vivientes"
@@ -3170,6 +4322,14 @@
     "size": 1345951,
     "url": "https://cdn.discordapp.com/attachments/1413800335213985836/1414575420887666749/La_aventura_de_Jokano.BFHP?ex=6ad4af85&is=6ad35e05&hm=93b284dbd35d8d64f3d816ed5a6c4b39f13e28e5818d31251bff36363d1b85ec&",
     "local": "originals/discord/aventuras/la-aventura-de-jokano/La_aventura_de_Jokano.BFHP"
+   }
+  ],
+  "shots": [
+   {
+    "name": "Captura_de_pantalla_1333.png",
+    "size": 1690420,
+    "url": "https://cdn.discordapp.com/attachments/1413800335213985836/1414575470061682809/SPOILER_Captura_de_pantalla_1333.png?ex=6ad4af91&is=6ad35e11&hm=43b472c194febd2590eb8945cfc3a90d5ce2c18f6d16727dade675b9b18376ac&",
+    "local": "originals/discord/aventuras/la-aventura-de-jokano/screenshots/Captura_de_pantalla_1333.png"
    }
   ],
   "desc": "Jokano despierta dentro de un círculo de fuego sin recordar cómo ha llegado hasta allí y lo primero que escucha es una misteriosa voz que no sabe de dónde proviene. ¿Qué aventuras le depararán?",
@@ -3195,6 +4355,14 @@
     "local": "originals/discord/aventuras/la-toma-de-galicarcomo/La_toma_de_Galicarcogo_aventura.BFHP"
    }
   ],
+  "shots": [
+   {
+    "name": "Captura_de_pantalla_1334.png",
+    "size": 1602394,
+    "url": "https://cdn.discordapp.com/attachments/1413800335213985836/1414575550042738688/SPOILER_Captura_de_pantalla_1334.png?ex=6ad4afa4&is=6ad35e24&hm=ce480589c7bc4a2835bcd478c9abb2e0b118e3c04d1690838c3c1f1f73865eb6&",
+    "local": "originals/discord/aventuras/la-toma-de-galicarcomo/screenshots/Captura_de_pantalla_1334.png"
+   }
+  ],
   "desc": "Marco \"el patán\" es destinado a tomar una fortaleza gala que está causando graves problemas a Roma. De su victoria depende que siga siendo llamado \"el patán\" o no.",
   "count": 1,
   "slug": "la-toma-de-galicarcomo"
@@ -3216,6 +4384,14 @@
     "size": 1276422,
     "url": "https://cdn.discordapp.com/attachments/1413800335213985836/1414575602526195762/Dragon_Ball_Z_Saga_Saiyan.BFHP?ex=6ad4afb1&is=6ad35e31&hm=9fe1f69221e240468cf7f38080b207135b4cc9185c354b1eb0cabb4fb54867fa&",
     "local": "originals/discord/aventuras/dragon-ball-z-saga-saiyan/Dragon_Ball_Z_Saga_Saiyan.BFHP"
+   }
+  ],
+  "shots": [
+   {
+    "name": "Captura_de_pantalla_1335.png",
+    "size": 1443900,
+    "url": "https://cdn.discordapp.com/attachments/1413800335213985836/1414575639742382132/SPOILER_Captura_de_pantalla_1335.png?ex=6ad4afba&is=6ad35e3a&hm=ecaa31cb22b95ca8c4539aca7bceb8ceffabba63a0f06eddd03ad4c9c6c564e1&",
+    "local": "originals/discord/aventuras/dragon-ball-z-saga-saiyan/screenshots/Captura_de_pantalla_1335.png"
    }
   ],
   "desc": "Revive las aventuras de Goku y sus amigos en esta aventura basada en el famoso anime japonés \"Dragon Ball Z\".",
@@ -3241,6 +4417,14 @@
     "local": "originals/discord/aventuras/la-senda-del-cartagines/la_senda_del_cartagines.BFHP"
    }
   ],
+  "shots": [
+   {
+    "name": "Captura_de_pantalla_1336.png",
+    "size": 1258526,
+    "url": "https://cdn.discordapp.com/attachments/1413800335213985836/1414575710642901052/SPOILER_Captura_de_pantalla_1336.png?ex=6ad4afca&is=6ad35e4a&hm=7176252f4fb1c0c849b21c386a115e219ebb671b8fe5556ef7386945d355aa26&",
+    "local": "originals/discord/aventuras/la-senda-del-cartagines/screenshots/Captura_de_pantalla_1336.png"
+   }
+  ],
   "desc": "Vive las locas aventuras de Oreo, un joven cartaginés de 15 años que aspira a convertirse en un héroe en un mundo convulso...",
   "count": 1,
   "slug": "la-senda-del-cartagines"
@@ -3262,6 +4446,14 @@
     "size": 1374254,
     "url": "https://cdn.discordapp.com/attachments/1413800335213985836/1414575744910233720/Guerras_tribales.BFHP?ex=6ad4afd3&is=6ad35e53&hm=e67f16bb6c8cb4497c22f02e904319d2692ad709b812bb841ca87b15637f6449&",
     "local": "originals/discord/aventuras/guerras-tribales/Guerras_tribales.BFHP"
+   }
+  ],
+  "shots": [
+   {
+    "name": "Captura_de_pantalla_1338.png",
+    "size": 1797082,
+    "url": "https://cdn.discordapp.com/attachments/1413800335213985836/1414575782013046874/SPOILER_Captura_de_pantalla_1338.png?ex=6ad4afdb&is=6ad35e5b&hm=1478b3382a748d07e8f1da22b0779d559d272c3e3d2121469b20d26a21fd7216&",
+    "local": "originals/discord/aventuras/guerras-tribales/screenshots/Captura_de_pantalla_1338.png"
    }
   ],
   "desc": "Las diferentes tribus galas se encuentran en guerra, mientras que los pérfidos romanos aprovechan la oportunidad para imponer su dominio ¿Conseguirá Radogasto imponerse sobre las demás tribus y expulsar a los romanos de las tierras galas?",
@@ -3287,6 +4479,14 @@
     "local": "originals/discord/aventuras/la-batalla-de-las-termopilas/La_batalla_de_las_termopilas.BFHP"
    }
   ],
+  "shots": [
+   {
+    "name": "Captura_de_pantalla_1339.png",
+    "size": 1575344,
+    "url": "https://cdn.discordapp.com/attachments/1413800335213985836/1414575855627407492/SPOILER_Captura_de_pantalla_1339.png?ex=6ad4afed&is=6ad35e6d&hm=2951aac5991714b33df710b34887dd5e7bb5aa939b9b6750b1a7b4e5c33bf93c&",
+    "local": "originals/discord/aventuras/la-batalla-de-las-termopilas/screenshots/Captura_de_pantalla_1339.png"
+   }
+  ],
   "desc": "Año 480 A.C. El rey de los persas, Jerjes I, se propone conquistar Grecia. Los atenienses están aterrados, pero los espartanos no retroceden y deciden mandar a 300 de sus mejores hombres para que luchen hasta el final en una batalla de la que saben que probablemente no volverán. Así, atenienses y espartanos conseguirán tiempo para organizar a sus hombres y expulsar a los persas de Grecia. Sin embargo, la traición de Laertes dificulta mucho su misión, pues han perdido el factor sorpresa.",
   "count": 1,
   "slug": "la-batalla-de-las-termopilas"
@@ -3308,6 +4508,14 @@
     "size": 1088885,
     "url": "https://cdn.discordapp.com/attachments/1413800335213985836/1414575910245634158/Los_naufragos.BFHP?ex=6ad4affa&is=6ad35e7a&hm=554d5692b638f8052b1840ce28ad3f030c3b8f4d25e1920f8d6d25c903e27ee5&",
     "local": "originals/discord/aventuras/los-naufragos/Los_naufragos.BFHP"
+   }
+  ],
+  "shots": [
+   {
+    "name": "Captura_de_pantalla_1340.png",
+    "size": 913034,
+    "url": "https://cdn.discordapp.com/attachments/1413800335213985836/1414575948103290921/SPOILER_Captura_de_pantalla_1340.png?ex=6ad4b003&is=6ad35e83&hm=f3086f2322bda8a065d1fad44e43723b1570f5417514783d9e7bdb3e02f96d59&",
+    "local": "originals/discord/aventuras/los-naufragos/screenshots/Captura_de_pantalla_1340.png"
    }
   ],
   "desc": "Formas parte del ejército romano y tu grupo ha naufragado tras una exitosa campaña en Britania. Ahora te encuentras en una isla britana y deberás sobrevivir hasta que los esclavos sean capaces de construir un nuevo barco que os permita salir de la isla y volver a Roma.",
@@ -3333,6 +4541,14 @@
     "local": "originals/discord/aventuras/atrapado-en-la-cueva-del-horror/Atrapado_en_la_cueva_del_horror.BFHP"
    }
   ],
+  "shots": [
+   {
+    "name": "Captura_de_pantalla_1341.png",
+    "size": 990992,
+    "url": "https://cdn.discordapp.com/attachments/1413800335213985836/1414576043464855554/SPOILER_Captura_de_pantalla_1341.png?ex=6ad4b01a&is=6ad35e9a&hm=4a499a52f4dca481763ee260522cd1f64351efbf24bb691d65e34ed2c3a9658a&",
+    "local": "originals/discord/aventuras/atrapado-en-la-cueva-del-horror/screenshots/Captura_de_pantalla_1341.png"
+   }
+  ],
   "desc": "Normed se ha visto atrapado en la cueva del horror. Dicen los antiguos que se trata de un laberinto poblado de gente fría e implacable. Deberás tomar las mejores decisiones si quieres sobrevivir y salir de allí.",
   "count": 1,
   "slug": "atrapado-en-la-cueva-del-horror"
@@ -3354,6 +4570,14 @@
     "size": 4339200,
     "url": "https://cdn.discordapp.com/attachments/1413800335213985836/1414576086662119494/Game_of_thrones_version_2.0.BFHP?ex=6ad4b024&is=6ad35ea4&hm=9d924d88578c631e46961f83b02ab225bcdaa9de3170abbe371074c332fd50ee&",
     "local": "originals/discord/aventuras/juego-de-tronos/Game_of_thrones_version_2.0.BFHP"
+   }
+  ],
+  "shots": [
+   {
+    "name": "Captura_de_pantalla_1342.png",
+    "size": 1847192,
+    "url": "https://cdn.discordapp.com/attachments/1413800335213985836/1414576117481734194/Captura_de_pantalla_1342.png?ex=6ad4b02b&is=6ad35eab&hm=b655dcf0b4e895ab08b7afad62ee69c2a1e5cf66fbd93dd87c2a868bb04c7132&",
+    "local": "originals/discord/aventuras/juego-de-tronos/screenshots/Captura_de_pantalla_1342.png"
    }
   ],
   "desc": "Revive las aventuras de Jon Nieve y de Khaleesi para pacificar los 7 reinos.",
@@ -3379,6 +4603,14 @@
     "local": "originals/discord/aventuras/aguila-roja/Las_aventuras_de_Imperyus.rar"
    }
   ],
+  "shots": [
+   {
+    "name": "Captura_de_pantalla_1343.png",
+    "size": 985420,
+    "url": "https://cdn.discordapp.com/attachments/1413800335213985836/1414576208816898068/SPOILER_Captura_de_pantalla_1343.png?ex=6ad4b041&is=6ad35ec1&hm=8c48b3e2b5b42535b0d5af5833308d77502c11fdb018190b88438ebf3488de21&",
+    "local": "originals/discord/aventuras/aguila-roja/screenshots/Captura_de_pantalla_1343.png"
+   }
+  ],
   "desc": "Tras varios ataques fallidos las ciudades romanas se alían para acabar definitivamente con los galos.",
   "count": 1,
   "slug": "aguila-roja"
@@ -3400,6 +4632,14 @@
     "size": 6159893,
     "url": "https://cdn.discordapp.com/attachments/1413800335213985836/1414613832197738597/Nimlundum.BFHP?ex=6ad4d34b&is=6ad381cb&hm=ff3043c88104ac87197e8b677f74fabfc886bc6ef35ec670392ae9ff9f3af12f&",
     "local": "originals/discord/aventuras/la-defensa-de-nimlundum/Nimlundum.BFHP"
+   }
+  ],
+  "shots": [
+   {
+    "name": "Captura_de_pantalla_1320.png",
+    "size": 1840518,
+    "url": "https://cdn.discordapp.com/attachments/1413800335213985836/1414613912795615314/Captura_de_pantalla_1320.png?ex=6ad4d35f&is=6ad381df&hm=c0ba106d56348d8c69cbead27e9db6ada8c780761091dd3b1d103db49e526cea&",
+    "local": "originals/discord/aventuras/la-defensa-de-nimlundum/screenshots/Captura_de_pantalla_1320.png"
    }
   ],
   "desc": "Guía a Marcusa a través de los desafíos que el destino le tiene preparados y ayúdale a alzarse con la victoria.",
@@ -3425,6 +4665,14 @@
     "local": "originals/discord/aventuras/kalindan-saga/KalindanSaga.zip"
    }
   ],
+  "shots": [
+   {
+    "name": "Captura_de_pantalla_1351.png",
+    "size": 1843148,
+    "url": "https://cdn.discordapp.com/attachments/1413800335213985836/1414614035693043773/SPOILER_Captura_de_pantalla_1351.png?ex=6ad4d37c&is=6ad381fc&hm=a5556bbac0c221df1cb4c2cdc5faaf989c39edaab8caf48f61e72d8521e82fc4&",
+    "local": "originals/discord/aventuras/kalindan-saga/screenshots/Captura_de_pantalla_1351.png"
+   }
+  ],
   "desc": "Sigue las aventuras de un héroe (o una heroína) a lo largo de las tierras de Kalindan.",
   "count": 1,
   "slug": "kalindan-saga"
@@ -3446,6 +4694,14 @@
     "size": 1513984,
     "url": "https://cdn.discordapp.com/attachments/1413800335213985836/1414614119541116999/Anadakia.BFHP?ex=6ad4d390&is=6ad38210&hm=44809eb72c99ecc5a1ecd6158c6a87987c4b18101e726b266b4b4d475478ef0a&",
     "local": "originals/discord/aventuras/el-valle-de-andakia/Anadakia.BFHP"
+   }
+  ],
+  "shots": [
+   {
+    "name": "Captura_de_pantalla_1346.png",
+    "size": 1923228,
+    "url": "https://cdn.discordapp.com/attachments/1413800335213985836/1414614172221575238/SPOILER_Captura_de_pantalla_1346.png?ex=6ad4d39c&is=6ad3821c&hm=c15b840e59a0a8c3ee310abb822ccfd09ff0cb0e0f5844ad9add9bcaf57c0121&",
+    "local": "originals/discord/aventuras/el-valle-de-andakia/screenshots/Captura_de_pantalla_1346.png"
    }
   ],
   "desc": "Elektro es el hijo de el jefe de una pequeña tribu que vive en las montañas del hermoso y rico en minerales y fauna valle de Andakia. Elektro vivía una pacifica vida con su pueblo hasta que un día...",
@@ -3471,6 +4727,14 @@
     "local": "originals/discord/aventuras/la-emboscada/Emboscada.BFHP"
    }
   ],
+  "shots": [
+   {
+    "name": "Captura_de_pantalla_1347.png",
+    "size": 1583150,
+    "url": "https://cdn.discordapp.com/attachments/1413800335213985836/1414614256380416154/SPOILER_Captura_de_pantalla_1347.png?ex=6ad4d3b0&is=6ad38230&hm=f3d1609ea4441975b670c59808ce12c247aea2f6a9bf0f844d0f2576effda94b&",
+    "local": "originals/discord/aventuras/la-emboscada/screenshots/Captura_de_pantalla_1347.png"
+   }
+  ],
   "desc": "El general Cayus es emboscado por los bárbaros en medio de un bosque, le superan en número y tendrá que actuar rápidamente para salvar la mayor parte de su legión...",
   "count": 1,
   "slug": "la-emboscada"
@@ -3492,6 +4756,14 @@
     "size": 1278934,
     "url": "https://cdn.discordapp.com/attachments/1413800335213985836/1414614342296670249/La_Odisea_de_Maximus_completa.rar?ex=6ad4d3c5&is=6ad38245&hm=777f9e256a21c05c26f2f1ab493cad53945c5f7eae83e4bc1083114a3cad4858&",
     "local": "originals/discord/aventuras/la-odisea-de-maximus/La_Odisea_de_Maximus_completa.rar"
+   }
+  ],
+  "shots": [
+   {
+    "name": "Captura_de_pantalla_1461.png",
+    "size": 1829720,
+    "url": "https://cdn.discordapp.com/attachments/1413800335213985836/1414614388173832436/SPOILER_Captura_de_pantalla_1461.png?ex=6ad4d3d0&is=6ad38250&hm=8771ebf083e3a47fc1f1dbe3a9aa1888884b45c20cae3c01a3e1e39c5ff48915&",
+    "local": "originals/discord/aventuras/la-odisea-de-maximus/screenshots/Captura_de_pantalla_1461.png"
    }
   ],
   "desc": "Maximus, con la esperanza de sacar a su familia de la pobreza y conseguir la ciudadanía romana, se alista en las legiones y es destinado con la Séptima Legión a Iberia, donde su destino le aguarda...",
@@ -3517,6 +4789,14 @@
     "local": "originals/discord/aventuras/el-valle-de-dressrosa/El_valle_de_Dressrosa_0.0.BFHP"
    }
   ],
+  "shots": [
+   {
+    "name": "Captura_de_pantalla_1348.png",
+    "size": 1827066,
+    "url": "https://cdn.discordapp.com/attachments/1413800335213985836/1414614524975124582/SPOILER_Captura_de_pantalla_1348.png?ex=6ad4d3f1&is=6ad38271&hm=936f6780959fac321563ec2d7f8e92bb738a7b6fd6396fec31c7b05b1ae599c7&",
+    "local": "originals/discord/aventuras/el-valle-de-dressrosa/screenshots/Captura_de_pantalla_1348.png"
+   }
+  ],
   "desc": "Esmael y su pueblo deben luchar por la libertad y expulsar a los romanos que les asedian, sin ninguna comunicación ni apoyo exterior...",
   "count": 1,
   "slug": "el-valle-de-dressrosa"
@@ -3538,6 +4818,14 @@
     "size": 884224,
     "url": "https://cdn.discordapp.com/attachments/1413800335213985836/1414614600275460250/Locura_mapa_normal.BFHP?ex=6ad4d402&is=6ad38282&hm=f3e28efd1a03e6442d89ee6895a6ca1366148b48996f1c4415fd6ff859be73fd&",
     "local": "originals/discord/aventuras/mapa-normal/Locura_mapa_normal.BFHP"
+   }
+  ],
+  "shots": [
+   {
+    "name": "Captura_de_pantalla_1454.png",
+    "size": 1754418,
+    "url": "https://cdn.discordapp.com/attachments/1413800335213985836/1414614652997996766/SPOILER_Captura_de_pantalla_1454.png?ex=6ad4d40f&is=6ad3828f&hm=286ae7fb8a92ce8876579c7601ddc8fb8e8a91ae0eba7785fcbcaec32ff3e080&",
+    "local": "originals/discord/aventuras/mapa-normal/screenshots/Captura_de_pantalla_1454.png"
    }
   ],
   "desc": "",
@@ -3563,6 +4851,14 @@
     "local": "originals/discord/aventuras/rompolis/ROMPOLIS.BFHP"
    }
   ],
+  "shots": [
+   {
+    "name": "Captura_de_pantalla_1352.png",
+    "size": 1690154,
+    "url": "https://cdn.discordapp.com/attachments/1413800335213985836/1414616343382196275/SPOILER_Captura_de_pantalla_1352.png?ex=6ad4d5a2&is=6ad38422&hm=2c4602b559dc64c7655db659d4d18a87dc6a8d04517f412a66e3a1a2cdb9e9b9&",
+    "local": "originals/discord/aventuras/rompolis/screenshots/Captura_de_pantalla_1352.png"
+   }
+  ],
   "desc": "",
   "count": 1,
   "slug": "rompolis"
@@ -3584,6 +4880,14 @@
     "size": 1326984,
     "url": "https://cdn.discordapp.com/attachments/1413800335213985836/1414616380698923060/Astigi_2.0.BFHP?ex=6ad4d5ab&is=6ad3842b&hm=9c5290e433b40931a71b91a051711f1ba4beca1f8d31464dd800d657a2746957&",
     "local": "originals/discord/aventuras/astigi/Astigi_2.0.BFHP"
+   }
+  ],
+  "shots": [
+   {
+    "name": "Captura_de_pantalla_1353.png",
+    "size": 1762318,
+    "url": "https://cdn.discordapp.com/attachments/1413800335213985836/1414616420049752166/SPOILER_Captura_de_pantalla_1353.png?ex=6ad4d5b4&is=6ad38434&hm=0d61fa76bce880f604acd722578674b75a820c049c6c0baf71e5aa5921dc1eb9&",
+    "local": "originals/discord/aventuras/astigi/screenshots/Captura_de_pantalla_1353.png"
    }
   ],
   "desc": "",
@@ -3609,6 +4913,14 @@
     "local": "originals/discord/aventuras/parix/Parix_2.0.BFHP"
    }
   ],
+  "shots": [
+   {
+    "name": "Captura_de_pantalla_1354.png",
+    "size": 1716316,
+    "url": "https://cdn.discordapp.com/attachments/1413800335213985836/1414616504858705930/Captura_de_pantalla_1354.png?ex=6ad4d5c9&is=6ad38449&hm=3accdb0b96a7915bac9a1734429bf19cdedcc953354daa0c538c7502ee22a16d&",
+    "local": "originals/discord/aventuras/parix/screenshots/Captura_de_pantalla_1354.png"
+   }
+  ],
   "desc": "",
   "count": 1,
   "slug": "parix"
@@ -3630,6 +4942,14 @@
     "size": 1268593,
     "url": "https://cdn.discordapp.com/attachments/1413800335213985836/1414616547724492982/iberia_2.0.BFHP?ex=6ad4d5d3&is=6ad38453&hm=90cd5e208fa7148f5acdef5d098aa47c0fc1545724b6b91eae2b73abcc25a930&",
     "local": "originals/discord/aventuras/iberia/iberia_2.0.BFHP"
+   }
+  ],
+  "shots": [
+   {
+    "name": "Captura_de_pantalla_1355.png",
+    "size": 1744176,
+    "url": "https://cdn.discordapp.com/attachments/1413800335213985836/1414616588358783068/SPOILER_Captura_de_pantalla_1355.png?ex=6ad4d5dc&is=6ad3845c&hm=a58bf6ebd8fdc29208a6ce55508cf94bfdb38983a52e5fe12fca807762bb49fc&",
+    "local": "originals/discord/aventuras/iberia/screenshots/Captura_de_pantalla_1355.png"
    }
   ],
   "desc": "",
@@ -3655,6 +4975,14 @@
     "local": "originals/discord/aventuras/las-tres-piedras-magicas/LAS_TRES_PIEDRAS_MAGICAS_2.3.BFHP"
    }
   ],
+  "shots": [
+   {
+    "name": "Captura_de_pantalla_1367.png",
+    "size": 1934350,
+    "url": "https://cdn.discordapp.com/attachments/1413800335213985836/1414616755648860200/SPOILER_Captura_de_pantalla_1367.png?ex=6ad4d604&is=6ad38484&hm=35294140d9ff3932847dcfe316f00765830c543ffb29f584fe34907491e1901c&",
+    "local": "originals/discord/aventuras/las-tres-piedras-magicas/screenshots/Captura_de_pantalla_1367.png"
+   }
+  ],
   "desc": "",
   "count": 1,
   "slug": "las-tres-piedras-magicas"
@@ -3676,6 +5004,14 @@
     "size": 716643,
     "url": "https://cdn.discordapp.com/attachments/1413800335213985836/1414618798027313263/Sefia_el_inicio_de_una_leyenda.rar?ex=6ad4d7eb&is=6ad3866b&hm=8ab6392690b914f691c06e1bccf3c27af4f8e8230cfa63a53be294a982f36582&",
     "local": "originals/discord/aventuras/sefia-el-inicio-de-una-leyenda/Sefia_el_inicio_de_una_leyenda.rar"
+   }
+  ],
+  "shots": [
+   {
+    "name": "Captura_de_pantalla_1359.png",
+    "size": 1469794,
+    "url": "https://cdn.discordapp.com/attachments/1413800335213985836/1414618864456699904/SPOILER_Captura_de_pantalla_1359.png?ex=6ad4d7fb&is=6ad3867b&hm=21f933a58ac612fd79e02029ea36b94cb9e227c65e0b94653b4f36c0afd3e09b&",
+    "local": "originals/discord/aventuras/sefia-el-inicio-de-una-leyenda/screenshots/Captura_de_pantalla_1359.png"
    }
   ],
   "desc": "",
@@ -3701,6 +5037,14 @@
     "local": "originals/discord/aventuras/las-guerras-sertorianas/CAMBIO_RADICAL_4.bfhp"
    }
   ],
+  "shots": [
+   {
+    "name": "Captura_de_pantalla_1363.png",
+    "size": 1522704,
+    "url": "https://cdn.discordapp.com/attachments/1413800335213985836/1414618960057339924/SPOILER_Captura_de_pantalla_1363.png?ex=6ad4d812&is=6ad38692&hm=6a07c87668aad1ca400b9f8174c0934c9b736b47d4b7d89ad4d8f78c640c5ec9&",
+    "local": "originals/discord/aventuras/las-guerras-sertorianas/screenshots/Captura_de_pantalla_1363.png"
+   }
+  ],
   "desc": "Recreacion del mapa de Imperium 2 de la lucha con Aníbal en Zama. La lucha se traslada a entorno de hierba y árboles, la batalla entre las fuerzas íberas comandadas por Sertorio y las romanas por Pompeyo.",
   "count": 1,
   "slug": "las-guerras-sertorianas"
@@ -3717,6 +5061,14 @@
    "https://imperivmgbr.foroactivo.com/t1297-aventura-la-defensa-de-roma-216-a-c"
   ],
   "files": [],
+  "shots": [
+   {
+    "name": "Captura_de_pantalla_1377.png",
+    "size": 1792592,
+    "url": "https://cdn.discordapp.com/attachments/1413800335213985836/1414619150575341808/Captura_de_pantalla_1377.png?ex=6ad4d83f&is=6ad386bf&hm=fd9bb6580ea8eea238d792a39f951b80ccfdb878ce7a1888b6cafd982a990657&",
+    "local": "originals/discord/aventuras/la-defensa-de-roma/screenshots/Captura_de_pantalla_1377.png"
+   }
+  ],
   "desc": "Los cartagineses, liderados por Aníbal, han entrado desde hace mucho tiempo en la península italiana. Cuatro años después de la gran victoria de Aníbal en la batalla de Canne sobre las legiones romanas, los ejércitos cartagineses llegaron a las puertas de Roma amenazando sus fronteras e infundiendo terror en la población. El Senado de Roma te confía poder militar. ¡Reúne tus fuerzas y repele al enemigo!",
   "count": 1,
   "slug": "la-defensa-de-roma"
@@ -3733,6 +5085,14 @@
    "https://imperivmgbr.foroactivo.com/t1298-aventura-escipion-a-las-puertas-de-cartago147-a-c"
   ],
   "files": [],
+  "shots": [
+   {
+    "name": "Captura_de_pantalla_1378.png",
+    "size": 1758138,
+    "url": "https://cdn.discordapp.com/attachments/1413800335213985836/1414619204241461268/Captura_de_pantalla_1378.png?ex=6ad4d84c&is=6ad386cc&hm=2237d912d1ffb998a8a901808ec007b5ca55e6ada0c74175132ca609395c0191&",
+    "local": "originals/discord/aventuras/escipion-a-las-puertas-de-cartago/screenshots/Captura_de_pantalla_1378.png"
+   }
+  ],
   "desc": "Después de la Segunda Guerra Púnica, Cartago continuó preocupando al Senado de Roma por el comercio. Como el tratado de paz firmado al final de la Segunda Guerra Púnica evitó que Cartago declarara la guerra sin el consentimiento de los romanos, cuando los cartagineses se cansaron de las provocaciones de Massinissa, rey de los Numidos, empuñaban armas, el Senado declaró la guerra en 149 a.C. Luego Roma envió al cónsul Escipión el Emiliano en 147 a.C. para poner fin al conflicto y finalmente destruir Cartago.",
   "count": 1,
   "slug": "escipion-a-las-puertas-de-cartago"
@@ -3749,6 +5109,14 @@
    "https://imperivmgbr.foroactivo.com/t1299-aventura-rebelion-de-espartaco-73-a-c"
   ],
   "files": [],
+  "shots": [
+   {
+    "name": "Captura_de_pantalla_1379.png",
+    "size": 1968320,
+    "url": "https://cdn.discordapp.com/attachments/1413800335213985836/1414619268267376791/SPOILER_Captura_de_pantalla_1379.png?ex=6ad4d85b&is=6ad386db&hm=d8645ca7734734ef9f071396349b469fb86ec42f0d037b875dcc604acfe74ae4&",
+    "local": "originals/discord/aventuras/rebelion-de-espartaco/screenshots/Captura_de_pantalla_1379.png"
+   }
+  ],
   "desc": "En el 73 a.C. los gladiadores de la escuela de Capua se rebelaron. Encabezados por Spartacus, un hombre de Tracia, huyeron y se dirigieron hacia el sur. Después de unos 30 km de marcha, acamparon en la ladera del Vesubio. Allí, Spartacus y sus hombres derrotaron a un contingente romano enviado a perseguirlos. Esto encendió la chispa de la rebelión y en muy poco tiempo miles de esclavos de toda Italia se unieron a los gladiadores. ¿Podrá Spartacus hacer frente a las legiones romanas?",
   "count": 1,
   "slug": "rebelion-de-espartaco"
@@ -3770,6 +5138,14 @@
     "size": 7709502,
     "url": "https://cdn.discordapp.com/attachments/1413800335213985836/1414619350446641202/Cartagonova.rar?ex=6ad4d86f&is=6ad386ef&hm=5118c88b7add61f5610a3014fe7289e6b1a00ff4ba301e65ef77e686d1552f4f&",
     "local": "originals/discord/aventuras/cartagonova/Cartagonova.rar"
+   }
+  ],
+  "shots": [
+   {
+    "name": "Captura_de_pantalla_1357.png",
+    "size": 1560606,
+    "url": "https://cdn.discordapp.com/attachments/1413800335213985836/1414619399360610314/SPOILER_Captura_de_pantalla_1357.png?ex=6ad4d87b&is=6ad386fb&hm=e797620ae198886dbad3b20bfb011a5c9bf7df571e7100020be9258d9d7a2cbe&",
+    "local": "originals/discord/aventuras/cartagonova/screenshots/Captura_de_pantalla_1357.png"
    }
   ],
   "desc": "Asdrúbal Barca, hermano de Aníbal Barca, emprende la reconquista de la costa mediterránea hispánica hasta llegar a Aquitania.",
@@ -3795,6 +5171,14 @@
     "local": "originals/discord/aventuras/el-sitio-de-numancia/El_sitio_de_numancia.BFHP"
    }
   ],
+  "shots": [
+   {
+    "name": "Captura_de_pantalla_1372.png",
+    "size": 1944236,
+    "url": "https://cdn.discordapp.com/attachments/1413800335213985836/1414619970368966757/SPOILER_Captura_de_pantalla_1372.png?ex=6ad4d903&is=6ad38783&hm=ec4e1527f087d8b143ff70899710f8d6b4ded00cbcf339c45948de1f39f54e11&",
+    "local": "originals/discord/aventuras/el-sitio-de-numancia/screenshots/Captura_de_pantalla_1372.png"
+   }
+  ],
   "desc": "",
   "count": 1,
   "slug": "el-sitio-de-numancia"
@@ -3814,6 +5198,14 @@
     "size": 2731520,
     "url": "https://cdn.discordapp.com/attachments/1413800335213985836/1414620017537978389/La_reconquista_de_Segeda.BFHP?ex=6ad4d90e&is=6ad3878e&hm=4c46366c2ec3d128fde0838bd53aacdb32489fd0654ef33022b164908f39bf67&",
     "local": "originals/discord/aventuras/la-reconquista-de-segeda/La_reconquista_de_Segeda.BFHP"
+   }
+  ],
+  "shots": [
+   {
+    "name": "Captura_de_pantalla_1455.png",
+    "size": 1917988,
+    "url": "https://cdn.discordapp.com/attachments/1413800335213985836/1414620061351673936/SPOILER_Captura_de_pantalla_1455.png?ex=6ad4d918&is=6ad38798&hm=21da088f1018037b503900f123c886c4e0a18dbb2979f69ab20d9c0f98711c4c&",
+    "local": "originals/discord/aventuras/la-reconquista-de-segeda/screenshots/Captura_de_pantalla_1455.png"
    }
   ],
   "desc": "",
@@ -3837,6 +5229,14 @@
     "local": "originals/discord/aventuras/la-reconquista-de-nertobriga/La_reconquista_de_Nertobriga.BFHP"
    }
   ],
+  "shots": [
+   {
+    "name": "Captura_de_pantalla_1465.png",
+    "size": 1936688,
+    "url": "https://cdn.discordapp.com/attachments/1413800335213985836/1414620180524306442/SPOILER_Captura_de_pantalla_1465.png?ex=6ad4d935&is=6ad387b5&hm=9f00df25082679e54de3d6b88740bcf55cf5f3e4045575cdc9538d07d14dfa1c&",
+    "local": "originals/discord/aventuras/la-reconquista-de-nertobriga/screenshots/Captura_de_pantalla_1465.png"
+   }
+  ],
   "desc": "",
   "count": 1,
   "slug": "la-reconquista-de-nertobriga"
@@ -3856,6 +5256,14 @@
     "size": 1802917,
     "url": "https://cdn.discordapp.com/attachments/1413800335213985836/1414622570833248286/el_camino_de_un_sikario_imperial.zip?ex=6ad4db6f&is=6ad389ef&hm=f6bada8d05d5919fb977d38eec52d707ce009ef0141b9d2582e39faeadf9d4e9&",
     "local": "originals/discord/aventuras/el-camino-de-un-sikario-imperial/el_camino_de_un_sikario_imperial.zip"
+   }
+  ],
+  "shots": [
+   {
+    "name": "Captura_de_pantalla_1427.png",
+    "size": 1929182,
+    "url": "https://cdn.discordapp.com/attachments/1413800335213985836/1414622622993617096/SPOILER_Captura_de_pantalla_1427.png?ex=6ad4db7b&is=6ad389fb&hm=859736baf0acb57897c33ef029fbb905f1a3778a5ff467e0089fbbc5246ca966&",
+    "local": "originals/discord/aventuras/el-camino-de-un-sikario-imperial/screenshots/Captura_de_pantalla_1427.png"
    }
   ],
   "desc": "El Imperivm revive, los infils aumentan, se alza una nueva era... No hay reglas, los clanes forman alianzas para derrotar a los más poderosos... Esta es la historia de Tristán y su venganza.",
@@ -3879,6 +5287,14 @@
     "local": "originals/discord/aventuras/el-camino-de-un-sikario-imperial-2/el_camino_de_un_sikario_imperial2.rar"
    }
   ],
+  "shots": [
+   {
+    "name": "Captura_de_pantalla_1428.png",
+    "size": 1935888,
+    "url": "https://cdn.discordapp.com/attachments/1413800335213985836/1414622719970119690/SPOILER_Captura_de_pantalla_1428.png?ex=6ad4db92&is=6ad38a12&hm=54918b107f6add790e66b97b023c40fef3a9a4eb25b29a8fcc332c5fd78a747a&",
+    "local": "originals/discord/aventuras/el-camino-de-un-sikario-imperial-2/screenshots/Captura_de_pantalla_1428.png"
+   }
+  ],
   "desc": "El Imperivm recae. Un poderoso hechicero domina todo el mundo conocido. Empezó un genocidio en masa de héroes romanos, les quito 300 de salud a todo héroe romano que capturaban. Fueron perseguidos como perros... Aquí empieza la historia de Tristán y su venganza.",
   "count": 1,
   "slug": "el-camino-de-un-sikario-imperial-2"
@@ -3900,6 +5316,14 @@
     "local": "originals/discord/aventuras/defenders/Defenders_v28.BFHP"
    }
   ],
+  "shots": [
+   {
+    "name": "Captura_de_pantalla_1442.png",
+    "size": 2392454,
+    "url": "https://cdn.discordapp.com/attachments/1413800335213985836/1414622807022633073/Captura_de_pantalla_1442.png?ex=6ad4dba7&is=6ad38a27&hm=18e338da57f0cdf6da0f454dd27e7b80795357b932bdc958a73b3986b6990223&",
+    "local": "originals/discord/aventuras/defenders/screenshots/Captura_de_pantalla_1442.png"
+   }
+  ],
   "desc": "Tu grupo ha sido elegido por los dioses para defender la colina sagrada del ataque de los bárbaros. Tu misión es resistir el mayor número posible de días. Al final de cada día los dioses te otorgarán un deseo.",
   "count": 1,
   "slug": "defenders"
@@ -3919,6 +5343,14 @@
     "size": 645338,
     "url": "https://cdn.discordapp.com/attachments/1413800335213985836/1414622850253586615/Defenders_nightmare4.BFHP?ex=6ad4dbb1&is=6ad38a31&hm=3eff25f91ff5318245045e07fa961f65a1bd8795c62918aa737bb5d06df17dec&",
     "local": "originals/discord/aventuras/defenders-nightmare/Defenders_nightmare4.BFHP"
+   }
+  ],
+  "shots": [
+   {
+    "name": "Captura_de_pantalla_1442.png",
+    "size": 2392454,
+    "url": "https://cdn.discordapp.com/attachments/1413800335213985836/1414622894528663675/Captura_de_pantalla_1442.png?ex=6ad4dbbc&is=6ad38a3c&hm=361f02a3595f5fadfd2e630cd6146ef6debb599dbe7b67a590e9f5685afd8ebb&",
+    "local": "originals/discord/aventuras/defenders-nightmare/screenshots/Captura_de_pantalla_1442.png"
    }
   ],
   "desc": "",
@@ -3944,6 +5376,14 @@
     "local": "originals/discord/aventuras/invasion-zombie-en-cartago-nova/CartagoNovaZombie.BFHP"
    }
   ],
+  "shots": [
+   {
+    "name": "Captura_de_pantalla_1382.png",
+    "size": 1759828,
+    "url": "https://cdn.discordapp.com/attachments/1413800335213985836/1414626537952514058/SPOILER_Captura_de_pantalla_1382.png?ex=6ad4df21&is=6ad38da1&hm=ce328cfa1ff55d2f85e37759b8b7fede557af24e598d0059e9fde3bc31d9270f&",
+    "local": "originals/discord/aventuras/invasion-zombie-en-cartago-nova/screenshots/Captura_de_pantalla_1382.png"
+   }
+  ],
   "desc": "Partida de aventura en donde tendrás que ayudar a Falbalá a buscar asilo en una tierra desconocida para ella.",
   "count": 1,
   "slug": "invasion-zombie-en-cartago-nova"
@@ -3965,6 +5405,14 @@
     "size": 1970688,
     "url": "https://cdn.discordapp.com/attachments/1413800335213985836/1414626575080620193/Batalla_de_CartagoNova.BFHP?ex=6ad4df29&is=6ad38da9&hm=21e067df105b599042a720c04cba6492e5022f19ed5d6284b9f4772f47d93a3b&",
     "local": "originals/discord/aventuras/batalla-en-cartago-nova/Batalla_de_CartagoNova.BFHP"
+   }
+  ],
+  "shots": [
+   {
+    "name": "Captura_de_pantalla_1383.png",
+    "size": 1699974,
+    "url": "https://cdn.discordapp.com/attachments/1413800335213985836/1414626620844670996/SPOILER_Captura_de_pantalla_1383.png?ex=6ad4df34&is=6ad38db4&hm=bda1a9000aab872c413a531b410fedb0708d4d5cd861d518be7b24ff68031799&",
+    "local": "originals/discord/aventuras/batalla-en-cartago-nova/screenshots/Captura_de_pantalla_1383.png"
    }
   ],
   "desc": "",
@@ -3990,6 +5438,14 @@
     "local": "originals/discord/aventuras/desembarco-en-hispania/Desembarco_en_Hispania.zip"
    }
   ],
+  "shots": [
+   {
+    "name": "Captura_de_pantalla_1381.png",
+    "size": 1415620,
+    "url": "https://cdn.discordapp.com/attachments/1413800335213985836/1414626745369235506/SPOILER_Captura_de_pantalla_1381.png?ex=6ad4df52&is=6ad38dd2&hm=adce935b598875e324d4f9a07ca8ab14495cf47f15b662efd7ed2bed1fd7840b&",
+    "local": "originals/discord/aventuras/desembarco-en-hispania/screenshots/Captura_de_pantalla_1381.png"
+   }
+  ],
   "desc": "Cartago pone la vista en Hispania, una tierra rica la cual servirá para compensar las pérdidas tras su derrota contra Roma en la Primera Guerra Púnica, sin embargo algunas tribus iberas no le facilitarán la expansión. En el año 236 a.C. el general Amílcar Barca desembarca en Hispania.",
   "count": 1,
   "slug": "desembarco-en-hispania"
@@ -4009,6 +5465,14 @@
     "size": 245067,
     "url": "https://cdn.discordapp.com/attachments/1413800335213985836/1414626830425788540/La_Ultima_Carga_Teutonica_HD.zip?ex=6ad4df66&is=6ad38de6&hm=e18216842b36c7c8912ceb9ee140d578bc2c7243e261ee3ca4f9b0e8b51233cc&",
     "local": "originals/discord/aventuras/la-ultima-carga-teutonica/La_Ultima_Carga_Teutonica_HD.zip"
+   }
+  ],
+  "shots": [
+   {
+    "name": "Captura_de_pantalla_1464.png",
+    "size": 1656146,
+    "url": "https://cdn.discordapp.com/attachments/1413800335213985836/1414626882137362626/SPOILER_Captura_de_pantalla_1464.png?ex=6ad4df73&is=6ad38df3&hm=65fc45419022f63e40e5bd6483720888fbc50418ba193b635ca088715d7ac591&",
+    "local": "originals/discord/aventuras/la-ultima-carga-teutonica/screenshots/Captura_de_pantalla_1464.png"
    }
   ],
   "desc": "Los teutones se preparan para la invasión de la Galia. Toma el mando de la horda para acabar con las tribus galas, en el camino te encontrarás grandes misterios.",
@@ -4034,6 +5498,14 @@
     "local": "originals/discord/aventuras/cneo-poza/Cneo_Poza.BFHP"
    }
   ],
+  "shots": [
+   {
+    "name": "Captura_de_pantalla_1390.png",
+    "size": 1295840,
+    "url": "https://cdn.discordapp.com/attachments/1413800335213985836/1414626997430124714/SPOILER_Captura_de_pantalla_1390.png?ex=6ad4df8e&is=6ad38e0e&hm=42fabe7a6580ba06094b073f202e4c259555a043df894b37cd36400e9493d9ac&",
+    "local": "originals/discord/aventuras/cneo-poza/screenshots/Captura_de_pantalla_1390.png"
+   }
+  ],
   "desc": "Partida 2v2 con mecánicas de Grandes Batallas",
   "count": 1,
   "slug": "cneo-poza"
@@ -4053,6 +5525,14 @@
     "size": 2475520,
     "url": "https://cdn.discordapp.com/attachments/1413800335213985836/1414627080335003698/Germanico1parte.BFHP?ex=6ad4dfa2&is=6ad38e22&hm=8e892da2d2112f44a83ef1d959ddb6292946e625612331341f11349990513588&",
     "local": "originals/discord/aventuras/germanico/Germanico1parte.BFHP"
+   }
+  ],
+  "shots": [
+   {
+    "name": "Captura_de_pantalla_1458.png",
+    "size": 1658376,
+    "url": "https://cdn.discordapp.com/attachments/1413800335213985836/1414627130586824814/SPOILER_Captura_de_pantalla_1458.png?ex=6ad4dfae&is=6ad38e2e&hm=52627e95c2fc92c069836846400a9821810d13df154bf0c7b3111fc72c089919&",
+    "local": "originals/discord/aventuras/germanico/screenshots/Captura_de_pantalla_1458.png"
    }
   ],
   "desc": "",
@@ -4078,6 +5558,14 @@
     "local": "originals/discord/aventuras/la-batalla-de-minas-tirith/La_Batalla_de_Minas_Tirith.BFHP"
    }
   ],
+  "shots": [
+   {
+    "name": "Captura_de_pantalla_1488.png",
+    "size": 1390724,
+    "url": "https://cdn.discordapp.com/attachments/1413800335213985836/1416204390137593989/Captura_de_pantalla_1488.png?ex=6ad4adde&is=6ad35c5e&hm=781958a1f093f9bde43f636aa879a8c99c023ec6fdae90a60dba71fb738c7168&",
+    "local": "originals/discord/aventuras/la-batalla-de-minas-tirith/screenshots/Captura_de_pantalla_1488.png"
+   }
+  ],
   "desc": "La batalla más grande en la historia de la Tercera Edad está a punto de comenzar. Los ejércitos de Sauron se ciernen sobre todos los pueblos libres de la Tierra Media. Dirige el ejército de Gondor en la sangrienta defensa de la capital del reino: Minas Tirith. Si la ciudad cae, nada podrá detener la expansión de las tinieblas…",
   "count": 1,
   "slug": "la-batalla-de-minas-tirith"
@@ -4097,6 +5585,14 @@
     "size": 8505587,
     "url": "https://cdn.discordapp.com/attachments/1413800335213985836/1417959453818355712/Harder_great_battles_britain_v2.rar?ex=6ad521a6&is=6ad3d026&hm=144c82b4ecfeb18e9b4f569188318b9aa0eacfa0da80e1bdd6e73dffafb9e3c0&",
     "local": "originals/discord/aventuras/la-conquista-de-britania-harder/Harder_great_battles_britain_v2.rar"
+   }
+  ],
+  "shots": [
+   {
+    "name": "Captura_de_pantalla_1547.png",
+    "size": 1378988,
+    "url": "https://cdn.discordapp.com/attachments/1413800335213985836/1417959811676508250/Captura_de_pantalla_1547.png?ex=6ad521fb&is=6ad3d07b&hm=00b6afc11f76cfe1d9a038c23778648e6ebaf944aab1a195dcfc28ec96174958&",
+    "local": "originals/discord/aventuras/la-conquista-de-britania-harder/screenshots/Captura_de_pantalla_1547.png"
    }
   ],
   "desc": "",
@@ -4122,6 +5618,14 @@
     "local": "originals/discord/aventuras/paso-a-paso/Paso_a_paso.BFHP"
    }
   ],
+  "shots": [
+   {
+    "name": "Captura_de_pantalla_1380.png",
+    "size": 1925033,
+    "url": "https://cdn.discordapp.com/attachments/1413800335213985836/1429931512064770099/SPOILER_Captura_de_pantalla_1380.png?ex=6ad52dff&is=6ad3dc7f&hm=d50697e2ed5aad47225a7b8ce0ad97d1fc46cf04b4dbd12e51ac2f8d60798e83&",
+    "local": "originals/discord/aventuras/paso-a-paso/screenshots/Captura_de_pantalla_1380.png"
+   }
+  ],
   "desc": "De un campesino a un comandante de las legiones romanas. Ese será el objetivo de nuestro protagonista Anemij, quien deberá pasar una auténtica odisea para lograrlo. ¿Conseguirá cumplir sus sueños?, ¿o quedará en el olvido como muchos otros soñadores?. Solo tu puedes cambiar su destino.",
   "count": 1,
   "slug": "paso-a-paso"
@@ -4141,6 +5645,14 @@
     "size": 1477637,
     "url": "https://cdn.discordapp.com/attachments/1413800335213985836/1429931786128850986/Se_como_un_dios.BFHP?ex=6ad52e40&is=6ad3dcc0&hm=b958870ad82bd44c6f727c2d4da53dacfb375854a1c04b6ab348439d0a21bda4&",
     "local": "originals/discord/aventuras/se-como-un-dios/Se_como_un_dios.BFHP"
+   }
+  ],
+  "shots": [
+   {
+    "name": "Captura_de_pantalla_1593.png",
+    "size": 2416580,
+    "url": "https://cdn.discordapp.com/attachments/1413800335213985836/1429931932052885666/Captura_de_pantalla_1593.png?ex=6ad52e63&is=6ad3dce3&hm=e337818d3d9af29a15f98a0617481e27118e0eed2a5817a7445d35f6d49f582a&",
+    "local": "originals/discord/aventuras/se-como-un-dios/screenshots/Captura_de_pantalla_1593.png"
    }
   ],
   "desc": "En una isla perdida en las costas de la Galia, cuatro tribus hostiles no terminan de hacer las paces y crean una guerra interminable. Ellos intentarán por todos los medios tener el favor divino que les ayudará con su guerra. Sólo un dios como tú podrá unificar la isla y decidir el destino de estos galos.",
