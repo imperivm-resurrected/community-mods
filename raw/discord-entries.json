@@ -1,0 +1,4150 @@
+[
+ {
+  "channel": "saga-imperivm",
+  "section": "MAPAS IMPERIVM I",
+  "title": "ANILLO MORTAL",
+  "author": "",
+  "discord": "https://discord.com/channels/479629904657514526/1414409056830885920/1416221917123186799",
+  "year": "",
+  "base": "",
+  "links": [],
+  "files": [
+   {
+    "name": "Anillo_mortal.BFHP",
+    "size": 1032707,
+    "url": "https://cdn.discordapp.com/attachments/1414409056830885920/1416221916816998531/Anillo_mortal.BFHP?ex=6ad4be31&is=6ad36cb1&hm=9384543c507badd5e884c45d146b129061c2803e70ed92b038c75c03848919f0&",
+    "local": "originals/discord/saga-imperivm/anillo-mortal/Anillo_mortal.BFHP"
+   }
+  ],
+  "desc": "Mapa para tres jugadores en el que existen pequeñas islas que darán ventaja al jugador que se atreva a explorarlas.",
+  "count": 1,
+  "slug": "anillo-mortal"
+ },
+ {
+  "channel": "saga-imperivm",
+  "section": "MAPAS IMPERIVM I",
+  "title": "BATALLA POR LA SUPERVIVENCIA",
+  "author": "",
+  "discord": "https://discord.com/channels/479629904657514526/1414409056830885920/1416222012451590187",
+  "year": "",
+  "base": "",
+  "links": [],
+  "files": [
+   {
+    "name": "Batalla_por_la_supervivencia.bfhp",
+    "size": 1051667,
+    "url": "https://cdn.discordapp.com/attachments/1414409056830885920/1416222012183150694/Batalla_por_la_supervivencia.bfhp?ex=6ad4be47&is=6ad36cc7&hm=fd795397b461c72342cf8c52c34f08212b02f9ec5b8281b1862924231a4fdabb&",
+    "local": "originals/discord/saga-imperivm/batalla-por-la-supervivencia/Batalla_por_la_supervivencia.bfhp"
+   }
+  ],
+  "desc": "Un mapa en el que lo primero que han de hacer los jugadores es escapar de una isla en la que están prisioneros. No puede ser jugado por enemigos controlados por el ordenador.",
+  "count": 1,
+  "slug": "batalla-por-la-supervivencia"
+ },
+ {
+  "channel": "saga-imperivm",
+  "section": "MAPAS IMPERIVM I",
+  "title": "CAOS EN LAS ISLAS",
+  "author": "",
+  "discord": "https://discord.com/channels/479629904657514526/1414409056830885920/1416222102700298310",
+  "year": "",
+  "base": "",
+  "links": [],
+  "files": [
+   {
+    "name": "Caos_en_las_islas.bfhp",
+    "size": 1056787,
+    "url": "https://cdn.discordapp.com/attachments/1414409056830885920/1416222097105227928/Caos_en_las_islas.bfhp?ex=6ad4be5c&is=6ad36cdc&hm=236995c9e76a870a98d29f33bd42ee19ee282f9140afa6acba9ec50ac0f468a4&",
+    "local": "originals/discord/saga-imperivm/caos-en-las-islas/Caos_en_las_islas.bfhp"
+   }
+  ],
+  "desc": "Tres grandes islas con dos fortalezas cada una. Hay sorpresas en las pequeñas islas que las rodean. Recomendado para tres equipos de dos jugadores cada uno.",
+  "count": 1,
+  "slug": "caos-en-las-islas"
+ },
+ {
+  "channel": "saga-imperivm",
+  "section": "MAPAS IMPERIVM I",
+  "title": "CUATRO REINOS",
+  "author": "",
+  "discord": "https://discord.com/channels/479629904657514526/1414409056830885920/1416222147847917631",
+  "year": "",
+  "base": "",
+  "links": [],
+  "files": [
+   {
+    "name": "Cuatro_reinos.bfhp",
+    "size": 1057299,
+    "url": "https://cdn.discordapp.com/attachments/1414409056830885920/1416222147642134640/Cuatro_reinos.bfhp?ex=6ad4be68&is=6ad36ce8&hm=c7ca0ec6669930216942f3a9ee91726038d893985b3b685ccb612741b270475c&",
+    "local": "originals/discord/saga-imperivm/cuatro-reinos/Cuatro_reinos.bfhp"
+   }
+  ],
+  "desc": "Lleno de estrechos pasadizos, este mapa montañoso tiene una fortaleza romana en el centro que dará gran ventaja a quien la conquiste.",
+  "count": 1,
+  "slug": "cuatro-reinos"
+ },
+ {
+  "channel": "saga-imperivm",
+  "section": "MAPAS IMPERIVM I",
+  "title": "EL DESPERTAR DE LOS TEUTONES",
+  "author": "",
+  "discord": "https://discord.com/channels/479629904657514526/1414409056830885920/1416222201023037490",
+  "year": "",
+  "base": "",
+  "links": [],
+  "files": [
+   {
+    "name": "El_despertar_de_los_teutones.bfhp",
+    "size": 3864595,
+    "url": "https://cdn.discordapp.com/attachments/1414409056830885920/1416222195880824963/El_despertar_de_los_teutones.bfhp?ex=6ad4be73&is=6ad36cf3&hm=fefabefc9f19cc6bf469670fa90be655de5f1139c69d612cd96f87d8b1572a97&",
+    "local": "originals/discord/saga-imperivm/el-despertar-de-los-teutones/El_despertar_de_los_teutones.bfhp"
+   }
+  ],
+  "desc": "Lleno de lagos, el movimiento por este mapa no resulta fácil. El jugador que se atreva a conquistar la fortaleza romana custodiada por teutones que se encuentra en el centro, será el más poderoso.",
+  "count": 1,
+  "slug": "el-despertar-de-los-teutones"
+ },
+ {
+  "channel": "saga-imperivm",
+  "section": "MAPAS IMPERIVM I",
+  "title": "EL MURO",
+  "author": "",
+  "discord": "https://discord.com/channels/479629904657514526/1414409056830885920/1416222243498885182",
+  "year": "",
+  "base": "",
+  "links": [],
+  "files": [
+   {
+    "name": "El_muro.bfhp",
+    "size": 1048595,
+    "url": "https://cdn.discordapp.com/attachments/1414409056830885920/1416222243481980928/El_muro.bfhp?ex=6ad4be7e&is=6ad36cfe&hm=317d99a56d89e666d91457145cdd5f068a2769b6b9e72025a4ecddfc675f4b5b&",
+    "local": "originals/discord/saga-imperivm/el-muro/El_muro.bfhp"
+   }
+  ],
+  "desc": "Una gran cadena montañosa separa dos zonas de este mapa. En cada una de las zonas se establecen tres jugadores.",
+  "count": 1,
+  "slug": "el-muro"
+ },
+ {
+  "channel": "saga-imperivm",
+  "section": "MAPAS IMPERIVM I",
+  "title": "EL VALLE DE LA MUERTE",
+  "author": "",
+  "discord": "https://discord.com/channels/479629904657514526/1414409056830885920/1416222298813239427",
+  "year": "",
+  "base": "",
+  "links": [],
+  "files": [
+   {
+    "name": "El_valle_de_la_muerte.bfhp",
+    "size": 1038867,
+    "url": "https://cdn.discordapp.com/attachments/1414409056830885920/1416222298435747941/El_valle_de_la_muerte.bfhp?ex=6ad4be8c&is=6ad36d0c&hm=fd50cb7fc7a9b6b6e34fd2e82c7005183f8ab80aaeecc824416b02a10d83e6e8&",
+    "local": "originals/discord/saga-imperivm/el-valle-de-la-muerte/El_valle_de_la_muerte.bfhp"
+   }
+  ],
+  "desc": "Este mapa continental, dará a los jugadores la oportunidad de medir sus fuerzas en un gran valle situado en su centro.",
+  "count": 1,
+  "slug": "el-valle-de-la-muerte"
+ },
+ {
+  "channel": "saga-imperivm",
+  "section": "MAPAS IMPERIVM I",
+  "title": "EL VALLE DE LOS TEUTONES",
+  "author": "",
+  "discord": "https://discord.com/channels/479629904657514526/1414409056830885920/1416222346401812630",
+  "year": "",
+  "base": "",
+  "links": [],
+  "files": [
+   {
+    "name": "El_valle_de_los_teutones.bfhp",
+    "size": 1027603,
+    "url": "https://cdn.discordapp.com/attachments/1414409056830885920/1416222346032844800/El_valle_de_los_teutones.bfhp?ex=6ad4be97&is=6ad36d17&hm=c7335310fc7ae9defe2e8a1c627c1b99952ad31cfc41a7fa0e4f656a13c20971&",
+    "local": "originals/discord/saga-imperivm/el-valle-de-los-teutones/El_valle_de_los_teutones.bfhp"
+   }
+  ],
+  "desc": "Un mapa para dos equipos de tres jugadores cada uno, en el que los jugadores estarán constantemente hostigados por el ataque de tribus teutonas.",
+  "count": 1,
+  "slug": "el-valle-de-los-teutones"
+ },
+ {
+  "channel": "saga-imperivm",
+  "section": "MAPAS IMPERIVM I",
+  "title": "GUERRA EN EL MAR",
+  "author": "",
+  "discord": "https://discord.com/channels/479629904657514526/1414409056830885920/1416222392102948944",
+  "year": "",
+  "base": "",
+  "links": [],
+  "files": [
+   {
+    "name": "Guerra_en_el_mar.bfhp",
+    "size": 1050643,
+    "url": "https://cdn.discordapp.com/attachments/1414409056830885920/1416222391863869502/Guerra_en_el_mar.bfhp?ex=6ad4bea2&is=6ad36d22&hm=53335b2888bbfa990f59d71572035db16d6c51463aaa3abc04a71a4b322ce5d7&",
+    "local": "originals/discord/saga-imperivm/guerra-en-el-mar/Guerra_en_el_mar.bfhp"
+   }
+  ],
+  "desc": "Un mar lleno de islas: las orientales ocupadas por romanos y las occidentales por galos. El resto, pobladas por teutones, que darán ventaja al jugador que las ocupe. Especial para dos equipos de tres jugadores.",
+  "count": 1,
+  "slug": "guerra-en-el-mar"
+ },
+ {
+  "channel": "saga-imperivm",
+  "section": "MAPAS IMPERIVM I",
+  "title": "LA BATALLA DE STONEHENGE",
+  "author": "",
+  "discord": "https://discord.com/channels/479629904657514526/1414409056830885920/1416222443382640740",
+  "year": "",
+  "base": "",
+  "links": [],
+  "files": [
+   {
+    "name": "La_batalla_de_Stonehenge.bfhp",
+    "size": 1178643,
+    "url": "https://cdn.discordapp.com/attachments/1414409056830885920/1416222442900291694/La_batalla_de_Stonehenge.bfhp?ex=6ad4beae&is=6ad36d2e&hm=8cf156884324f7b97503d3b8fddbdd884681e6ceb35f15e751c4ba6c753cd40f&",
+    "local": "originals/discord/saga-imperivm/la-batalla-de-stonehenge/La_batalla_de_Stonehenge.bfhp"
+   }
+  ],
+  "desc": "Un poderoso romano manejado por el ordenador domina este mapa montañoso. El objetivo es eliminarlo. Se recomienda que el resto de jugadores jueguen en equipo.",
+  "count": 1,
+  "slug": "la-batalla-de-stonehenge"
+ },
+ {
+  "channel": "saga-imperivm",
+  "section": "MAPAS IMPERIVM I",
+  "title": "LA COSTA NORTE",
+  "author": "",
+  "discord": "https://discord.com/channels/479629904657514526/1414409056830885920/1416222495752720445",
+  "year": "",
+  "base": "",
+  "links": [],
+  "files": [
+   {
+    "name": "La_costa_norte.bfhp",
+    "size": 1009683,
+    "url": "https://cdn.discordapp.com/attachments/1414409056830885920/1416222495115317248/La_costa_norte.bfhp?ex=6ad4beba&is=6ad36d3a&hm=35470323e5b3a205866070655f17f513a1c5cbcd9ae0e801b83f0817cd1ca3ea&",
+    "local": "originals/discord/saga-imperivm/la-costa-norte/La_costa_norte.bfhp"
+   }
+  ],
+  "desc": "Un mapa costero con una orografía difícil. Mejor para cuatro jugadores independientes.",
+  "count": 1,
+  "slug": "la-costa-norte"
+ },
+ {
+  "channel": "saga-imperivm",
+  "section": "MAPAS IMPERIVM I",
+  "title": "LA ISLA MISTERIOSA",
+  "author": "",
+  "discord": "https://discord.com/channels/479629904657514526/1414409056830885920/1416222577344647271",
+  "year": "",
+  "base": "",
+  "links": [],
+  "files": [
+   {
+    "name": "La_Isla_misteriosa.bfhp",
+    "size": 3863059,
+    "url": "https://cdn.discordapp.com/attachments/1414409056830885920/1416222576950251660/La_Isla_misteriosa.bfhp?ex=6ad4bece&is=6ad36d4e&hm=bb209a6add2d2eeb938aa406746b298a35c72e0dc0032268d30969281cffe985&",
+    "local": "originals/discord/saga-imperivm/la-isla-misteriosa/La_Isla_misteriosa.bfhp"
+   }
+  ],
+  "desc": "En este mapa, cuatro de los jugadores comienzan cada uno en una pequeña isla, y el resto juntos, en una gran isla central.",
+  "count": 1,
+  "slug": "la-isla-misteriosa"
+ },
+ {
+  "channel": "saga-imperivm",
+  "section": "MAPAS IMPERIVM I",
+  "title": "LA RIBERA",
+  "author": "",
+  "discord": "https://discord.com/channels/479629904657514526/1414409056830885920/1416222623804821596",
+  "year": "",
+  "base": "",
+  "links": [],
+  "files": [
+   {
+    "name": "La_ribera.bfhp",
+    "size": 315923,
+    "url": "https://cdn.discordapp.com/attachments/1414409056830885920/1416222623360090142/La_ribera.bfhp?ex=6ad4bed9&is=6ad36d59&hm=30fe3202237e570681d235c0f465cf724d63a1fe0a87ce66d034d04f72f9d574&",
+    "local": "originals/discord/saga-imperivm/la-ribera/La_ribera.bfhp"
+   }
+  ],
+  "desc": "Un río divide este pequeño mapa en dos zonas, la primera bajo control romano y la segunda controlada por los galos. Para dos jugadores.",
+  "count": 1,
+  "slug": "la-ribera"
+ },
+ {
+  "channel": "saga-imperivm",
+  "section": "MAPAS IMPERIVM I",
+  "title": "LAS ISLAS DE LA CRUZ",
+  "author": "",
+  "discord": "https://discord.com/channels/479629904657514526/1414409056830885920/1416222689063866449",
+  "year": "",
+  "base": "",
+  "links": [],
+  "files": [
+   {
+    "name": "Las_islas_de_la_cruz.bfhp",
+    "size": 1106451,
+    "url": "https://cdn.discordapp.com/attachments/1414409056830885920/1416222688418070528/Las_islas_de_la_cruz.bfhp?ex=6ad4bee9&is=6ad36d69&hm=6d7026463a6af930e40cb3ca5254304ec0f62546911c45fd403abfbf82dea3ed&",
+    "local": "originals/discord/saga-imperivm/las-islas-de-la-cruz/Las_islas_de_la_cruz.bfhp"
+   }
+  ],
+  "desc": "Lleno de islas de diferentes tamaños, este mapa dificulta el acceso al territorio de los demás jugadores.",
+  "count": 1,
+  "slug": "las-islas-de-la-cruz"
+ },
+ {
+  "channel": "saga-imperivm",
+  "section": "MAPAS IMPERIVM I",
+  "title": "LUCHA DE GIGANTES",
+  "author": "",
+  "discord": "https://discord.com/channels/479629904657514526/1414409056830885920/1416222727743737906",
+  "year": "",
+  "base": "",
+  "links": [],
+  "files": [
+   {
+    "name": "Lucha_de_gigantes.bfhp",
+    "size": 1054227,
+    "url": "https://cdn.discordapp.com/attachments/1414409056830885920/1416222727366508545/Lucha_de_gigantes.bfhp?ex=6ad4bef2&is=6ad36d72&hm=a001b1ba6ba627eaa9e0dc1560fb7b7060ee299e67aa4cd45a440a955b73e706&",
+    "local": "originals/discord/saga-imperivm/lucha-de-gigantes/Lucha_de_gigantes.bfhp"
+   }
+  ],
+  "desc": "Al comienzo de la partida se dispone de un sólo héroe que hay que conservar durante toda la partida puesto que no está permitido contratar a más.",
+  "count": 1,
+  "slug": "lucha-de-gigantes"
+ },
+ {
+  "channel": "saga-imperivm",
+  "section": "MAPAS IMPERIVM I",
+  "title": "MARES DEL TERROR",
+  "author": "",
+  "discord": "https://discord.com/channels/479629904657514526/1414409056830885920/1416222765945720862",
+  "year": "",
+  "base": "",
+  "links": [],
+  "files": [
+   {
+    "name": "Mares_del_terror.bfhp",
+    "size": 1080339,
+    "url": "https://cdn.discordapp.com/attachments/1414409056830885920/1416222765647794196/Mares_del_terror.bfhp?ex=6ad4befb&is=6ad36d7b&hm=4768dcdc09830dd0dece8e48efa1e7e7745d5cbd20ad638d2438c15f1ce42870&",
+    "local": "originals/discord/saga-imperivm/mares-del-terror/Mares_del_terror.bfhp"
+   }
+  ],
+  "desc": "Una isla grande poblada de fuerzas neutrales, rodeada de otras más pequeñas. Especial para dos equipos con dos jugadores cada uno.",
+  "count": 1,
+  "slug": "mares-del-terror"
+ },
+ {
+  "channel": "saga-imperivm",
+  "section": "MAPAS IMPERIVM I",
+  "title": "NORTE Y SUR",
+  "author": "",
+  "discord": "https://discord.com/channels/479629904657514526/1414409056830885920/1416222811936133161",
+  "year": "",
+  "base": "",
+  "links": [],
+  "files": [
+   {
+    "name": "Norte_y_Sur.bfhp",
+    "size": 1046547,
+    "url": "https://cdn.discordapp.com/attachments/1414409056830885920/1416222811575418920/Norte_y_Sur.bfhp?ex=6ad4bf06&is=6ad36d86&hm=c6c3c474818e2ccb636ea4ecf4e9999ae6296dbf659e7a6ad6754cdad108ace2&",
+    "local": "originals/discord/saga-imperivm/norte-y-sur/Norte_y_Sur.bfhp"
+   }
+  ],
+  "desc": "Una cadena montañosa divide de norte a sur este mapa continental, de manera que el paso entre ambas zonas es muy difícil. Especial para dos equipos de tres jugadores cada uno.",
+  "count": 1,
+  "slug": "norte-y-sur"
+ },
+ {
+  "channel": "saga-imperivm",
+  "section": "MAPAS IMPERIVM I",
+  "title": "TIERRAS CASTIGADAS",
+  "author": "",
+  "discord": "https://discord.com/channels/479629904657514526/1414409056830885920/1416222859444883506",
+  "year": "",
+  "base": "",
+  "links": [],
+  "files": [
+   {
+    "name": "Tierras_castigadas.bfhp",
+    "size": 1059347,
+    "url": "https://cdn.discordapp.com/attachments/1414409056830885920/1416222859038031983/Tierras_castigadas.bfhp?ex=6ad4bf11&is=6ad36d91&hm=c86cf70d514f4353aeb57094377edac82b8eb5f7d46ad77a085eee4e77b2e336&",
+    "local": "originals/discord/saga-imperivm/tierras-castigadas/Tierras_castigadas.bfhp"
+   }
+  ],
+  "desc": "Un mapa costero con dos grandes penínsulas, una romana y la segunda gala. La configuración del mapa favorece que se produzcan batallas navales en él. Para dos equipos de cuatro jugadores cada uno.",
+  "count": 1,
+  "slug": "tierras-castigadas"
+ },
+ {
+  "channel": "saga-imperivm",
+  "section": "MAPAS IMPERIVM I",
+  "title": "UNA X MARCA EL LUGAR",
+  "author": "",
+  "discord": "https://discord.com/channels/479629904657514526/1414409056830885920/1416222901488717947",
+  "year": "",
+  "base": "",
+  "links": [],
+  "files": [
+   {
+    "name": "Una_X_marca_el_lugar.bfhp",
+    "size": 1039379,
+    "url": "https://cdn.discordapp.com/attachments/1414409056830885920/1416222901425668218/Una_X_marca_el_lugar.bfhp?ex=6ad4bf1b&is=6ad36d9b&hm=eb1b01b66d4578a6fad6564f796e831edde0b6bb0039b46574e6dd7724aa3ca7&",
+    "local": "originals/discord/saga-imperivm/una-x-marca-el-lugar/Una_X_marca_el_lugar.bfhp"
+   }
+  ],
+  "desc": "Una gran isla en el centro rodeada de varias pequeñas que pueden -y deben- ser exploradas.",
+  "count": 1,
+  "slug": "una-x-marca-el-lugar"
+ },
+ {
+  "channel": "saga-imperivm",
+  "section": "MAPAS IMPERIVM I",
+  "title": "VOLCANO",
+  "author": "",
+  "discord": "https://discord.com/channels/479629904657514526/1414409056830885920/1416222939811938375",
+  "year": "",
+  "base": "",
+  "links": [],
+  "files": [
+   {
+    "name": "Volcano.bfhp",
+    "size": 294419,
+    "url": "https://cdn.discordapp.com/attachments/1414409056830885920/1416222939619266690/Volcano.bfhp?ex=6ad4bf24&is=6ad36da4&hm=2914d1175d50e3fac10de19c29e78ea4f84a58891aa3cd75935c8d1af7892208&",
+    "local": "originals/discord/saga-imperivm/volcano/Volcano.bfhp"
+   }
+  ],
+  "desc": "Un mapa montañoso en el que las fortalezas están situadas cerca de un enorme volcán.",
+  "count": 1,
+  "slug": "volcano"
+ },
+ {
+  "channel": "saga-imperivm",
+  "section": "MAPAS IMPERIVM I",
+  "title": "ASCENDENCIA",
+  "author": "",
+  "discord": "https://discord.com/channels/479629904657514526/1414409056830885920/1416222996405944380",
+  "year": "",
+  "base": "",
+  "links": [],
+  "files": [
+   {
+    "name": "Ascendencia.bfhp",
+    "size": 1053184,
+    "url": "https://cdn.discordapp.com/attachments/1414409056830885920/1416222996116541500/Ascendencia.bfhp?ex=6ad4bf32&is=6ad36db2&hm=75fa186296b1a76d6f7652db555c2837a4dfde098d66834535676e00299e2618&",
+    "local": "originals/discord/saga-imperivm/ascendencia/Ascendencia.bfhp"
+   }
+  ],
+  "desc": "La región cuenta con cuatro áreas y con un gran número de puestos avanzados. Una vez capturado, un puesto avanzado puede entrenar unidades. ¿Conseguirás vencer y hacerte con el control total?",
+  "count": 1,
+  "slug": "ascendencia"
+ },
+ {
+  "channel": "saga-imperivm",
+  "section": "MAPAS IMPERIVM I",
+  "title": "LA CAÍDA DE ÁVALON",
+  "author": "",
+  "discord": "https://discord.com/channels/479629904657514526/1414409056830885920/1416223048151072798",
+  "year": "",
+  "base": "",
+  "links": [],
+  "files": [
+   {
+    "name": "La_caida_de_Avalon.bfhp",
+    "size": 1413139,
+    "url": "https://cdn.discordapp.com/attachments/1414409056830885920/1416223047861407774/La_caida_de_Avalon.bfhp?ex=6ad4bf3e&is=6ad36dbe&hm=81d1bbcdb220904dd652d4c65482c109df2bd425dd542494d0a0a948a33571ea&",
+    "local": "originals/discord/saga-imperivm/la-caida-de-avalon/La_caida_de_Avalon.bfhp"
+   }
+  ],
+  "desc": "Tras la muerte del rey de Avalon, la que fuera gran ciudad ha sido dividida y ha sufrido el acoso de numerosos enemigos. ¿Podrán unirse los herederos de Avalon para salvar su hogar de la destrucción total? ",
+  "count": 1,
+  "slug": "la-caida-de-avalon"
+ },
+ {
+  "channel": "saga-imperivm",
+  "section": "AVENTURAS IMPERIVM I",
+  "title": "LÁRAX",
+  "author": "",
+  "discord": "https://discord.com/channels/479629904657514526/1414409056830885920/1416223141436457060",
+  "year": "",
+  "base": "",
+  "links": [],
+  "files": [],
+  "desc": "Los teutones han invadido la Galia. Ávidos de sangre y destrucción, saquean Kormaris acabando con sus habitantes. Sólo Lárax ha sobrevivido y clama venganza.",
+  "count": 1,
+  "slug": "larax"
+ },
+ {
+  "channel": "saga-imperivm",
+  "section": "AVENTURAS IMPERIVM I",
+  "title": "EL TRONO DE DACIA",
+  "author": "",
+  "discord": "https://discord.com/channels/479629904657514526/1414409056830885920/1416223245581160501",
+  "year": "",
+  "base": "",
+  "links": [],
+  "files": [
+   {
+    "name": "Return_to_the_Throne.BFHP",
+    "size": 2216589,
+    "url": "https://cdn.discordapp.com/attachments/1414409056830885920/1416223245023182999/Return_to_the_Throne.BFHP?ex=6ad4bf6d&is=6ad36ded&hm=5d65c4e1c94fdd8570dd861314744afae4c6582cad0d03c4bae5c8b32f1fc957&",
+    "local": "originals/discord/saga-imperivm/el-trono-de-dacia/Return_to_the_Throne.BFHP"
+   }
+  ],
+  "desc": "Siglo III d.C. Roma asiste al esplendor de Dacia, una de las provincias más prósperas del Imperio. Un enclave demasiado tentador para hombres ávidos de poder. Un laberinto de conspiraciones que culmina con el asesinato del gobernador Cayo Agrippa. Su hijo Fabio es condenado a galeras. En la soledad de su confinamiento, jura venganza...",
+  "count": 1,
+  "slug": "el-trono-de-dacia"
+ },
+ {
+  "channel": "saga-imperivm",
+  "section": "AVENTURAS IMPERIVM I",
+  "title": "DEFENSORES",
+  "author": "",
+  "discord": "https://discord.com/channels/479629904657514526/1414409056830885920/1416223307660922901",
+  "year": "",
+  "base": "",
+  "links": [],
+  "files": [
+   {
+    "name": "Defenders.bfhp",
+    "size": 628832,
+    "url": "https://cdn.discordapp.com/attachments/1414409056830885920/1416223307379773605/Defenders.bfhp?ex=6ad4bf7c&is=6ad36dfc&hm=087e92433f8260b8cb4adb463a2d254c10b056ef11be605715afde5fa40a0dbd&",
+    "local": "originals/discord/saga-imperivm/defensores/Defenders.bfhp"
+   }
+  ],
+  "desc": "Tu grupo ha sido elegido por los dioses para defender la colina sagrada del ataque de los bárbaros. Tu misión es resistir el mayor número posible de días. Al final de cada día los dioses te otorgarán un deseo.",
+  "count": 1,
+  "slug": "defensores"
+ },
+ {
+  "channel": "saga-imperivm",
+  "section": "MAPAS IMPERIVM II",
+  "title": "MEDITERRÁNEO",
+  "author": "",
+  "discord": "https://discord.com/channels/479629904657514526/1414409056830885920/1416247266418757826",
+  "year": "",
+  "base": "",
+  "links": [],
+  "files": [
+   {
+    "name": "Ancient_world.BFHP",
+    "size": 3788317,
+    "url": "https://cdn.discordapp.com/attachments/1414409056830885920/1416247266393718909/Ancient_world.BFHP?ex=6ad4d5cc&is=6ad3844c&hm=daaa1fb8d15e59570d67bfb51dca41103f1ebd2e55f78555932ae16364fd1743&",
+    "local": "originals/discord/saga-imperivm/mediterraneo/Ancient_world.BFHP"
+   }
+  ],
+  "desc": "Hispania, la Galia, Roma y Cartago compiten por el dominio del Mediterráneo.",
+  "count": 1,
+  "slug": "mediterraneo"
+ },
+ {
+  "channel": "saga-imperivm",
+  "section": "MAPAS IMPERIVM II",
+  "title": "LA MALDICIÓN DEL ALTAR",
+  "author": "",
+  "discord": "https://discord.com/channels/479629904657514526/1414409056830885920/1416247317899509800",
+  "year": "",
+  "base": "",
+  "links": [],
+  "files": [
+   {
+    "name": "Arena_of_Sorrow.BFHP",
+    "size": 1031721,
+    "url": "https://cdn.discordapp.com/attachments/1414409056830885920/1416247317379551243/Arena_of_Sorrow.BFHP?ex=6ad4d5d9&is=6ad38459&hm=74d41b5a747d128b3a4275474d98fec230104a359810672dddc5f3a7ba9b1d84&",
+    "local": "originals/discord/saga-imperivm/la-maldicion-del-altar/Arena_of_Sorrow.BFHP"
+   }
+  ],
+  "desc": "Cuatro civilizaciones luchan por el control de la región. En el centro se erige un misterioso altar. Aquel que consiga entrar sufrirá la maldición, pero quizá consiga emplear los poderes del altar en su propio beneficio. ",
+  "count": 1,
+  "slug": "la-maldicion-del-altar"
+ },
+ {
+  "channel": "saga-imperivm",
+  "section": "MAPAS IMPERIVM II",
+  "title": "HISPANIA",
+  "author": "",
+  "discord": "https://discord.com/channels/479629904657514526/1414409056830885920/1416247375751680001",
+  "year": "",
+  "base": "",
+  "links": [],
+  "files": [
+   {
+    "name": "Battle_for_Spain.BFHP",
+    "size": 3812381,
+    "url": "https://cdn.discordapp.com/attachments/1414409056830885920/1416247375445626880/Battle_for_Spain.BFHP?ex=6ad4d5e6&is=6ad38466&hm=56aec468ffb3998c72b7ab63e3bc4608e7227fae1976baad5c3278b7a1cecf17&",
+    "local": "originals/discord/saga-imperivm/hispania/Battle_for_Spain.BFHP"
+   }
+  ],
+  "desc": "La península Ibérica es el perfecto campo de batalla para jugadores expertos. Recomendado para cuatro equipos de dos jugadores.",
+  "count": 1,
+  "slug": "hispania"
+ },
+ {
+  "channel": "saga-imperivm",
+  "section": "MAPAS IMPERIVM II",
+  "title": "FIEBRE DEL ORO",
+  "author": "",
+  "discord": "https://discord.com/channels/479629904657514526/1414409056830885920/1416247422778347630",
+  "year": "",
+  "base": "",
+  "links": [],
+  "files": [
+   {
+    "name": "Golden_land.BFHP",
+    "size": 980509,
+    "url": "https://cdn.discordapp.com/attachments/1414409056830885920/1416247422425763860/Golden_land.BFHP?ex=6ad4d5f2&is=6ad38472&hm=c6a0a21dad0f9894d9c7ff62188eb461cc73d0ae6d958f42e14a92ac086c0d57&",
+    "local": "originals/discord/saga-imperivm/fiebre-del-oro/Golden_land.BFHP"
+   }
+  ],
+  "desc": "Aldeas y fortines repletos de oro. Quien consiga capturarlos podrá crear el mayor de los ejércitos.",
+  "count": 1,
+  "slug": "fiebre-del-oro"
+ },
+ {
+  "channel": "saga-imperivm",
+  "section": "MAPAS IMPERIVM II",
+  "title": "EL REGALO DE LOS DIOSES",
+  "author": "",
+  "discord": "https://discord.com/channels/479629904657514526/1414409056830885920/1416247469439844483",
+  "year": "",
+  "base": "",
+  "links": [],
+  "files": [
+   {
+    "name": "Land_of_gods.BFHP",
+    "size": 3192342,
+    "url": "https://cdn.discordapp.com/attachments/1414409056830885920/1416247469100236811/Land_of_gods.BFHP?ex=6ad4d5fd&is=6ad3847d&hm=ecd4e159cd2814fab1f16226e7e0b4d490346584cec8ba36add2b7d0b425c01e&",
+    "local": "originals/discord/saga-imperivm/el-regalo-de-los-dioses/Land_of_gods.BFHP"
+   }
+  ],
+  "desc": "El enfrentamiento de los dioses en estas tierras dejó huella en la orografía, generando un paisaje de extrañas y simbólicas montañas...",
+  "count": 1,
+  "slug": "el-regalo-de-los-dioses"
+ },
+ {
+  "channel": "saga-imperivm",
+  "section": "MAPAS IMPERIVM II",
+  "title": "PASAJES MONTAÑOSOS",
+  "author": "",
+  "discord": "https://discord.com/channels/479629904657514526/1414409056830885920/1416247512452300821",
+  "year": "",
+  "base": "",
+  "links": [],
+  "files": [
+   {
+    "name": "Mountain_Passages.BFHP",
+    "size": 294401,
+    "url": "https://cdn.discordapp.com/attachments/1414409056830885920/1416247512142057632/Mountain_Passages.BFHP?ex=6ad4d607&is=6ad38487&hm=cee78656b183e30462541069409244593a70f35dbc14c82a677daf0d75cc1800&",
+    "local": "originals/discord/saga-imperivm/pasajes-montanosos/Mountain_Passages.BFHP"
+   }
+  ],
+  "desc": "Las fortalezas de los dos jugadores están separadas por pasajes montañosos...",
+  "count": 1,
+  "slug": "pasajes-montanosos"
+ },
+ {
+  "channel": "saga-imperivm",
+  "section": "MAPAS IMPERIVM II",
+  "title": "RÍO UTOPÍA",
+  "author": "",
+  "discord": "https://discord.com/channels/479629904657514526/1414409056830885920/1416247570602135582",
+  "year": "",
+  "base": "",
+  "links": [],
+  "files": [
+   {
+    "name": "River_Utopia.BFHP",
+    "size": 3662877,
+    "url": "https://cdn.discordapp.com/attachments/1414409056830885920/1416247570350735370/River_Utopia.BFHP?ex=6ad4d615&is=6ad38495&hm=70a0b5a037f8d1efb055f01f1ebb63629aa110455834d2f79696afa22057e0a3&",
+    "local": "originals/discord/saga-imperivm/rio-utopia/River_Utopia.BFHP"
+   }
+  ],
+  "desc": "La paz de la región está a punto de llegar a su fin. Los señores de la guerra han planeado la conquista de estas tierras y se preparan para desembarcar sus ejércitos.",
+  "count": 1,
+  "slug": "rio-utopia"
+ },
+ {
+  "channel": "saga-imperivm",
+  "section": "MAPAS IMPERIVM II",
+  "title": "MULTI-DEFENSA",
+  "author": "",
+  "discord": "https://discord.com/channels/479629904657514526/1414409056830885920/1416247615124934757",
+  "year": "",
+  "base": "",
+  "links": [],
+  "files": [
+   {
+    "name": "MultiDefense.bfhp",
+    "size": 1039882,
+    "url": "https://cdn.discordapp.com/attachments/1414409056830885920/1416247614784933929/MultiDefense.bfhp?ex=6ad4d61f&is=6ad3849f&hm=ae4cc97d51a7e7815ba1a721dc220abaeccdcf65303487264c1330560550bc4d&",
+    "local": "originals/discord/saga-imperivm/multi-defensa/MultiDefense.bfhp"
+   }
+  ],
+  "desc": "Los bárbaros del norte están desatados. Tres asentamientos se interponen en su camino. Tu tarea es elegir qué tipo de guerreros deben entrenar los asentamientos para salir victoriosos del campo de batalla.",
+  "count": 1,
+  "slug": "multi-defensa"
+ },
+ {
+  "channel": "saga-imperivm",
+  "section": "AVENTURAS IMPERIVM II",
+  "title": "LAS CAMPAÑAS DE ANÍBAL",
+  "author": "OskaOtzuna",
+  "discord": "https://discord.com/channels/479629904657514526/1414409056830885920/1416247731034263592",
+  "year": "",
+  "base": "",
+  "links": [
+   "https://mega.nz/file/aIEQHTwC#6kxU8SyWFCl93a468YVhw_YIOYalo-FYtvLrVU_jrlY"
+  ],
+  "files": [],
+  "desc": "Año 238 a.C. Cartago emprende la conquista de la península Ibérica como primer paso para recuperar su hegemonía. Un plan que ni Roma ni los pueblos iberos están dispuestos a aceptar…",
+  "count": 5,
+  "slug": "las-campanas-de-anibal"
+ },
+ {
+  "channel": "saga-imperivm",
+  "section": "AVENTURAS IMPERIVM II",
+  "title": "LAS GUERRAS PÚNICAS",
+  "author": "OskaOtzuna",
+  "discord": "https://discord.com/channels/479629904657514526/1414409056830885920/1416247829361463427",
+  "year": "",
+  "base": "",
+  "links": [
+   "https://mega.nz/file/uQUkhQhA#h1wIwY60cD4tNvymcVgSiZs7zEhWSV5Dt1WzjmuS1Es"
+  ],
+  "files": [],
+  "desc": "Roma y Cartago, las dos civilizaciones más poderosas de la Antigüedad, se enfrentan en tres épicas guerras por el dominio del Mediterráneo. El Senado romano ha puesto sus ejércitos a tus órdenes. No debes fallar…",
+  "count": 6,
+  "slug": "las-guerras-punicas"
+ },
+ {
+  "channel": "saga-imperivm",
+  "section": "AVENTURAS IMPERIVM II",
+  "title": "EL SITIO DE NUMANCIA",
+  "author": "",
+  "discord": "https://discord.com/channels/479629904657514526/1414409056830885920/1416247909955010640",
+  "year": "",
+  "base": "",
+  "links": [],
+  "files": [
+   {
+    "name": "Numantia.BFHP",
+    "size": 1247668,
+    "url": "https://cdn.discordapp.com/attachments/1414409056830885920/1416247909653151754/Numantia.BFHP?ex=6ad4d666&is=6ad384e6&hm=aa227c8e64e14a42a9e8f88072cf9663ef3758c97f161266552d55db1325748b&",
+    "local": "originals/discord/saga-imperivm/el-sitio-de-numancia/Numantia.BFHP"
+   }
+  ],
+  "desc": "Año 133 a.C. Roma se dispone al asalto del último bastión ibero en la meseta. ¿Podrás cambiar el curso de la historia y derrotar a las poderosas legiones que asedian Numancia.",
+  "count": 1,
+  "slug": "el-sitio-de-numancia"
+ },
+ {
+  "channel": "mapas",
+  "section": "",
+  "title": "EL MURO",
+  "author": "arkano57",
+  "discord": "https://discord.com/channels/479629904657514526/1413782299786608682/1414907821325287515",
+  "year": "2009",
+  "base": "Imperivm III v1.40",
+  "links": [
+   "https://imperivmgbr.foroactivo.com/t183-mapa-el-muro"
+  ],
+  "files": [
+   {
+    "name": "El_muro.BFHP",
+    "size": 1006497,
+    "url": "https://cdn.discordapp.com/attachments/1413782299786608682/1414907821010587680/El_muro.BFHP?ex=6ad53c58&is=6ad3ead8&hm=02b729eb2fa5b66b952fcb39f333b6ea82c6236feead0301aa5b70850a4121c2&",
+    "local": "originals/discord/mapas/el-muro/El_muro.BFHP"
+   }
+  ],
+  "desc": "",
+  "count": 1,
+  "slug": "el-muro"
+ },
+ {
+  "channel": "mapas",
+  "section": "",
+  "title": "EL FRENTE",
+  "author": "arkano57",
+  "discord": "https://discord.com/channels/479629904657514526/1413782299786608682/1414907892217151509",
+  "year": "2009",
+  "base": "Imperivm III v1.40",
+  "links": [
+   "https://imperivmgbr.foroactivo.com/t195-recopilacion-la-coleccion-de-arkano"
+  ],
+  "files": [
+   {
+    "name": "El_frente.BFHP",
+    "size": 1121479,
+    "url": "https://cdn.discordapp.com/attachments/1413782299786608682/1414907891705581578/El_frente.BFHP?ex=6ad53c69&is=6ad3eae9&hm=323df162aca6cd8df4183c9febb9ba57504626d7f95aa50ac8b59a2d8a20f659&",
+    "local": "originals/discord/mapas/el-frente/El_frente.BFHP"
+   }
+  ],
+  "desc": "",
+  "count": 1,
+  "slug": "el-frente"
+ },
+ {
+  "channel": "mapas",
+  "section": "",
+  "title": "LA GRAN MURALLA",
+  "author": "arkano57",
+  "discord": "https://discord.com/channels/479629904657514526/1413782299786608682/1414907968977371149",
+  "year": "2009",
+  "base": "Imperivm III v1.40",
+  "links": [
+   "https://imperivmgbr.foroactivo.com/t195-recopilacion-la-coleccion-de-arkano"
+  ],
+  "files": [
+   {
+    "name": "La_gran_muralla.BFHP",
+    "size": 1343488,
+    "url": "https://cdn.discordapp.com/attachments/1413782299786608682/1414907968792559648/La_gran_muralla.BFHP?ex=6ad53c7b&is=6ad3eafb&hm=d56f5abff6c12d3f742186ec75145e37289d554f8df8102b6f676ae7e4b161e4&",
+    "local": "originals/discord/mapas/la-gran-muralla/La_gran_muralla.BFHP"
+   }
+  ],
+  "desc": "",
+  "count": 1,
+  "slug": "la-gran-muralla"
+ },
+ {
+  "channel": "mapas",
+  "section": "",
+  "title": "ISLA PROHIBIDA",
+  "author": "arkano57",
+  "discord": "https://discord.com/channels/479629904657514526/1413782299786608682/1414908042465509427",
+  "year": "2010",
+  "base": "Imperivm III v1.40",
+  "links": [
+   "https://imperivmgbr.foroactivo.com/t195-recopilacion-la-coleccion-de-arkano"
+  ],
+  "files": [
+   {
+    "name": "ISLA_PROHIBIDA.BFHP",
+    "size": 1130107,
+    "url": "https://cdn.discordapp.com/attachments/1413782299786608682/1414908042297741423/ISLA_PROHIBIDA.BFHP?ex=6ad53c8d&is=6ad3eb0d&hm=9a587951dd1df2dfe64c0b51ce022adb5c9dc24ada2e961e0dcc14b132274e5b&",
+    "local": "originals/discord/mapas/isla-prohibida/ISLA_PROHIBIDA.BFHP"
+   }
+  ],
+  "desc": "",
+  "count": 1,
+  "slug": "isla-prohibida"
+ },
+ {
+  "channel": "mapas",
+  "section": "",
+  "title": "RESISTENCIA BRITANA",
+  "author": "arkano57 y Marwan",
+  "discord": "https://discord.com/channels/479629904657514526/1413782299786608682/1414908115337609307",
+  "year": "2010",
+  "base": "Imperivm III v1.40",
+  "links": [
+   "https://imperivmgbr.foroactivo.com/t195-recopilacion-la-coleccion-de-arkano"
+  ],
+  "files": [
+   {
+    "name": "Resistencia_Britana.BFHP",
+    "size": 1263072,
+    "url": "https://cdn.discordapp.com/attachments/1413782299786608682/1414908114817253417/Resistencia_Britana.BFHP?ex=6ad53c9e&is=6ad3eb1e&hm=3bedbb5f1fabd187187916f80f08142e6a0e3dc24c95bb464d8b0e049669c4a4&",
+    "local": "originals/discord/mapas/resistencia-britana/Resistencia_Britana.BFHP"
+   }
+  ],
+  "desc": "",
+  "count": 1,
+  "slug": "resistencia-britana"
+ },
+ {
+  "channel": "mapas",
+  "section": "",
+  "title": "ITALIA",
+  "author": "moonson",
+  "discord": "https://discord.com/channels/479629904657514526/1413782299786608682/1414908212842594468",
+  "year": "2010",
+  "base": "Imperivm III v1.40",
+  "links": [
+   "https://imperivmgbr.foroactivo.com/t357-mapa-para-online-y-aventura-el-asedio"
+  ],
+  "files": [
+   {
+    "name": "Italia.BFHP",
+    "size": 3886510,
+    "url": "https://cdn.discordapp.com/attachments/1413782299786608682/1414908212397740032/Italia.BFHP?ex=6ad53cb5&is=6ad3eb35&hm=7b06014f13afa73aa461c98cf572888640b2aeca45bd32bef5dcf8c055582d83&",
+    "local": "originals/discord/mapas/italia/Italia.BFHP"
+   }
+  ],
+  "desc": "",
+  "count": 1,
+  "slug": "italia"
+ },
+ {
+  "channel": "mapas",
+  "section": "",
+  "title": "MAPA COMUNIDAD",
+  "author": "Poliko",
+  "discord": "https://discord.com/channels/479629904657514526/1413782299786608682/1414908287664787546",
+  "year": "2010",
+  "base": "Imperivm III v1.40",
+  "links": [
+   "https://imperivmgbr.foroactivo.com/t302-sin-descarga-mapa-en-comunidad"
+  ],
+  "files": [
+   {
+    "name": "Mapa_comundiad.bfhp",
+    "size": 1456640,
+    "url": "https://cdn.discordapp.com/attachments/1413782299786608682/1414908287358599278/Mapa_comundiad.bfhp?ex=6ad53cc7&is=6ad3eb47&hm=2dca1822bfe83f2f101abd9515f9790b31d75d20c5f423da94c9711658f5890f&",
+    "local": "originals/discord/mapas/mapa-comunidad/Mapa_comundiad.bfhp"
+   }
+  ],
+  "desc": "",
+  "count": 1,
+  "slug": "mapa-comunidad"
+ },
+ {
+  "channel": "mapas",
+  "section": "",
+  "title": "REFORMA",
+  "author": "Jochi",
+  "discord": "https://discord.com/channels/479629904657514526/1413782299786608682/1414908365007487059",
+  "year": "2012",
+  "base": "Imperivm III v1.40",
+  "links": [
+   "https://imperivmgbr.foroactivo.com/t630-mis-mapas-hechos"
+  ],
+  "files": [
+   {
+    "name": "Reforma.BFHP",
+    "size": 1282346,
+    "url": "https://cdn.discordapp.com/attachments/1413782299786608682/1414908364663558194/Reforma.BFHP?ex=6ad53cd9&is=6ad3eb59&hm=aa8df7b4e324b5a9e23892168e35abd95b74b03f878327abbf63ba73ff078a1e&",
+    "local": "originals/discord/mapas/reforma/Reforma.BFHP"
+   }
+  ],
+  "desc": "",
+  "count": 1,
+  "slug": "reforma"
+ },
+ {
+  "channel": "mapas",
+  "section": "",
+  "title": "LABERINTO",
+  "author": "Jochi",
+  "discord": "https://discord.com/channels/479629904657514526/1413782299786608682/1414908433639018568",
+  "year": "2012",
+  "base": "Imperivm III v1.40",
+  "links": [
+   "https://imperivmgbr.foroactivo.com/t630-mis-mapas-hechos"
+  ],
+  "files": [
+   {
+    "name": "LABERINTO_1.BFHP",
+    "size": 1183988,
+    "url": "https://cdn.discordapp.com/attachments/1413782299786608682/1414908433370448044/LABERINTO_1.BFHP?ex=6ad53cea&is=6ad3eb6a&hm=45b606d9048999dcd2622b1353c82f08e9e6512753bd863314412ad8320e8ae5&",
+    "local": "originals/discord/mapas/laberinto/LABERINTO_1.BFHP"
+   }
+  ],
+  "desc": "",
+  "count": 1,
+  "slug": "laberinto"
+ },
+ {
+  "channel": "mapas",
+  "section": "",
+  "title": "MAPA 6",
+  "author": "Guigoras",
+  "discord": "https://discord.com/channels/479629904657514526/1413782299786608682/1414910728179290153",
+  "year": "2013",
+  "base": "Imperivm III v1.40",
+  "links": [
+   "https://imperivmgbr.foroactivo.com/t697-recopilacion-de-guigoras-en-mega-y-mediafire"
+  ],
+  "files": [
+   {
+    "name": "mapa_seis.BFHP",
+    "size": 1166848,
+    "url": "https://cdn.discordapp.com/attachments/1413782299786608682/1414910728074297455/mapa_seis.BFHP?ex=6ad53f0d&is=6ad3ed8d&hm=bd99a2ffd474d6a9c2e0e759b305ab30114f48212206406c95e3214dd9f6f9a0&",
+    "local": "originals/discord/mapas/mapa-6/mapa_seis.BFHP"
+   }
+  ],
+  "desc": "Defiende tu fortaleza de los ataques de romanos y germanos.",
+  "count": 1,
+  "slug": "mapa-6"
+ },
+ {
+  "channel": "mapas",
+  "section": "",
+  "title": "MAPA 8",
+  "author": "Guigoras",
+  "discord": "https://discord.com/channels/479629904657514526/1413782299786608682/1414910812643921920",
+  "year": "2013",
+  "base": "Imperivm III v1.40",
+  "links": [
+   "https://imperivmgbr.foroactivo.com/t697-recopilacion-de-guigoras-en-mega-y-mediafire"
+  ],
+  "files": [
+   {
+    "name": "mapa_ocho.BFHP",
+    "size": 1613832,
+    "url": "https://cdn.discordapp.com/attachments/1413782299786608682/1414910812363034696/mapa_ocho.BFHP?ex=6ad53f21&is=6ad3eda1&hm=6bb6058197782fa250868f6f404d21584b2efd48708d23619ab95c16d819c9f4&",
+    "local": "originals/discord/mapas/mapa-8/mapa_ocho.BFHP"
+   }
+  ],
+  "desc": "El reino se ha dividido. Los germanos animados por los romanos se han rebelado y Roma ha capturado el fortín del paso para desde allí atacarte. Los galos no tardarán en abandonarte. ¿Podrás con todos ellos?",
+  "count": 1,
+  "slug": "mapa-8"
+ },
+ {
+  "channel": "mapas",
+  "section": "",
+  "title": "ETRURIA LIBRE",
+  "author": "Guigoras",
+  "discord": "https://discord.com/channels/479629904657514526/1413782299786608682/1414910900690747432",
+  "year": "2013",
+  "base": "Imperivm III v1.40",
+  "links": [
+   "https://imperivmgbr.foroactivo.com/t697-recopilacion-de-guigoras-en-mega-y-mediafire"
+  ],
+  "files": [
+   {
+    "name": "Etruria_Libre.BFHP",
+    "size": 1565696,
+    "url": "https://cdn.discordapp.com/attachments/1413782299786608682/1414910900300943490/Etruria_Libre.BFHP?ex=6ad53f36&is=6ad3edb6&hm=c34d020884e484d9133d81ec9a86a21564910d3c070541c3dfeedc449633553b&",
+    "local": "originals/discord/mapas/etruria-libre/Etruria_Libre.BFHP"
+   }
+  ],
+  "desc": "",
+  "count": 1,
+  "slug": "etruria-libre"
+ },
+ {
+  "channel": "mapas",
+  "section": "",
+  "title": "SERIE CIVILIZACIÓN TOTAL",
+  "author": "Guigoras",
+  "discord": "https://discord.com/channels/479629904657514526/1413782299786608682/1414910975961858088",
+  "year": "2016",
+  "base": "Imperivm III v1.40",
+  "links": [
+   "https://imperivmgbr.foroactivo.com/t697-recopilacion-de-guigoras-en-mega-y-mediafire"
+  ],
+  "files": [
+   {
+    "name": "Civilizacion_total.rar",
+    "size": 1762849,
+    "url": "https://cdn.discordapp.com/attachments/1413782299786608682/1414910975605211158/Civilizacion_total.rar?ex=6ad53f48&is=6ad3edc8&hm=40c7b775497b6fe7d8ae8f3c92d65f46fb54b52e5527060d3cc68590dc9fd446&",
+    "local": "originals/discord/mapas/serie-civilizacion-total/Civilizacion_total.rar"
+   }
+  ],
+  "desc": "",
+  "count": 8,
+  "slug": "serie-civilizacion-total"
+ },
+ {
+  "channel": "mapas",
+  "section": "",
+  "title": "PIEL DE TORO",
+  "author": "Guigoras",
+  "discord": "https://discord.com/channels/479629904657514526/1413782299786608682/1414911042290581534",
+  "year": "2017",
+  "base": "Imperivm III v1.40",
+  "links": [
+   "https://imperivmgbr.foroactivo.com/t697-recopilacion-de-guigoras-en-mega-y-mediafire"
+  ],
+  "files": [
+   {
+    "name": "Piel_de_TORO.BFHP",
+    "size": 1620076,
+    "url": "https://cdn.discordapp.com/attachments/1413782299786608682/1414911041904836668/Piel_de_TORO.BFHP?ex=6ad53f58&is=6ad3edd8&hm=0555f6531a724cdf8dd160d327710495847a575b5d6bfe3dba14d0b2a314ec7a&",
+    "local": "originals/discord/mapas/piel-de-toro/Piel_de_TORO.BFHP"
+   }
+  ],
+  "desc": "",
+  "count": 1,
+  "slug": "piel-de-toro"
+ },
+ {
+  "channel": "mapas",
+  "section": "",
+  "title": "GAME OF THRONES",
+  "author": "Guigoras",
+  "discord": "https://discord.com/channels/479629904657514526/1413782299786608682/1414911109064036362",
+  "year": "2017",
+  "base": "Imperivm III v1.40",
+  "links": [
+   "https://imperivmgbr.foroactivo.com/t697-recopilacion-de-guigoras-en-mega-y-mediafire"
+  ],
+  "files": [
+   {
+    "name": "Game_Of_Thrones.BFHP",
+    "size": 1499087,
+    "url": "https://cdn.discordapp.com/attachments/1413782299786608682/1414911108636082206/Game_Of_Thrones.BFHP?ex=6ad53f68&is=6ad3ede8&hm=f1f957ffe5ead52f5174e90abf150bf3edbd27328d62f2378f061d914d1da228&",
+    "local": "originals/discord/mapas/game-of-thrones/Game_Of_Thrones.BFHP"
+   }
+  ],
+  "desc": "",
+  "count": 1,
+  "slug": "game-of-thrones"
+ },
+ {
+  "channel": "mapas",
+  "section": "",
+  "title": "SERIE TRES FORTALEZAS",
+  "author": "Guigoras",
+  "discord": "https://discord.com/channels/479629904657514526/1413782299786608682/1414911175761596437",
+  "year": "2018",
+  "base": "Imperivm III v1.40",
+  "links": [
+   "https://imperivmgbr.foroactivo.com/t697-recopilacion-de-guigoras-en-mega-y-mediafire"
+  ],
+  "files": [
+   {
+    "name": "Tres_fortalezas.rar",
+    "size": 1668162,
+    "url": "https://cdn.discordapp.com/attachments/1413782299786608682/1414911175312936980/Tres_fortalezas.rar?ex=6ad53f77&is=6ad3edf7&hm=02bafebff868e49c7874c37ff9fa4749eebe5a2ee5f3afd7aa7b90023cf803be&",
+    "local": "originals/discord/mapas/serie-tres-fortalezas/Tres_fortalezas.rar"
+   }
+  ],
+  "desc": "",
+  "count": 7,
+  "slug": "serie-tres-fortalezas"
+ },
+ {
+  "channel": "mapas",
+  "section": "",
+  "title": "PASO GALOS-ÍBEROS",
+  "author": "adri55555",
+  "discord": "https://discord.com/channels/479629904657514526/1413782299786608682/1414913630834528279",
+  "year": "2015",
+  "base": "Imperivm III v1.40",
+  "links": [
+   "https://imperivmgbr.foroactivo.com/t797-primeros-mapas"
+  ],
+  "files": [
+   {
+    "name": "paso_galos-iberos_sin_mod.BFHP",
+    "size": 1144320,
+    "url": "https://cdn.discordapp.com/attachments/1413782299786608682/1414913630327279616/paso_galos-iberos_sin_mod.BFHP?ex=6ad541c1&is=6ad3f041&hm=3a9f4c074671d0000553b0b81605ff51c9fe76af21ceab6a8b27b9301cd42cb5&",
+    "local": "originals/discord/mapas/paso-galos-iberos/paso_galos-iberos_sin_mod.BFHP"
+   }
+  ],
+  "desc": "",
+  "count": 1,
+  "slug": "paso-galos-iberos"
+ },
+ {
+  "channel": "mapas",
+  "section": "",
+  "title": "ROMA V EGIPTO",
+  "author": "lusitano",
+  "discord": "https://discord.com/channels/479629904657514526/1413782299786608682/1414913697977073807",
+  "year": "2015",
+  "base": "Imperivm III v1.40",
+  "links": [
+   "https://imperivmgbr.foroactivo.com/t817-pack-de-mapas-gbr-compatibles-con-mod"
+  ],
+  "files": [
+   {
+    "name": "roma_v_egipto2.BFHP",
+    "size": 1158379,
+    "url": "https://cdn.discordapp.com/attachments/1413782299786608682/1414913697666564176/roma_v_egipto2.BFHP?ex=6ad541d1&is=6ad3f051&hm=3db03a99a3d52687372e1da7d2b9496bb148d3ee1ea387dfb8ad2bdb17d8b035&",
+    "local": "originals/discord/mapas/roma-v-egipto/roma_v_egipto2.BFHP"
+   }
+  ],
+  "desc": "",
+  "count": 1,
+  "slug": "roma-v-egipto"
+ },
+ {
+  "channel": "mapas",
+  "section": "",
+  "title": "BATALLA POR IBERIA",
+  "author": "lusitano",
+  "discord": "https://discord.com/channels/479629904657514526/1413782299786608682/1414913791086297118",
+  "year": "2015",
+  "base": "Imperivm III v1.40",
+  "links": [
+   "https://imperivmgbr.foroactivo.com/t817-pack-de-mapas-gbr-compatibles-con-mod"
+  ],
+  "files": [
+   {
+    "name": "BATALLA_POR_IBERIA.BFHP",
+    "size": 1040999,
+    "url": "https://cdn.discordapp.com/attachments/1413782299786608682/1414913790717460511/BATALLA_POR_IBERIA.BFHP?ex=6ad541e7&is=6ad3f067&hm=dadd92639cf14842588788fe0eff18419ffe63a105dfe596140119a1f76518a3&",
+    "local": "originals/discord/mapas/batalla-por-iberia/BATALLA_POR_IBERIA.BFHP"
+   }
+  ],
+  "desc": "",
+  "count": 1,
+  "slug": "batalla-por-iberia"
+ },
+ {
+  "channel": "mapas",
+  "section": "",
+  "title": "GUERRA DE LAS NACIONES",
+  "author": "lusitano",
+  "discord": "https://discord.com/channels/479629904657514526/1413782299786608682/1414913865908490260",
+  "year": "2015",
+  "base": "Imperivm III v1.40",
+  "links": [
+   "https://imperivmgbr.foroactivo.com/t817-pack-de-mapas-gbr-compatibles-con-mod"
+  ],
+  "files": [
+   {
+    "name": "guerra_de_las_naciones.BFHP",
+    "size": 1088543,
+    "url": "https://cdn.discordapp.com/attachments/1413782299786608682/1414913865552105532/guerra_de_las_naciones.BFHP?ex=6ad541f9&is=6ad3f079&hm=3452b3b62a0b77a2877e43e15143f218266ecec9bf234c2f2dd579da888b9bd6&",
+    "local": "originals/discord/mapas/guerra-de-las-naciones/guerra_de_las_naciones.BFHP"
+   }
+  ],
+  "desc": "",
+  "count": 1,
+  "slug": "guerra-de-las-naciones"
+ },
+ {
+  "channel": "mapas",
+  "section": "",
+  "title": "IBERIA V GERMANIA",
+  "author": "lusitano",
+  "discord": "https://discord.com/channels/479629904657514526/1413782299786608682/1414913938042261614",
+  "year": "2015",
+  "base": "Imperivm III v1.40",
+  "links": [
+   "https://imperivmgbr.foroactivo.com/t817-pack-de-mapas-gbr-compatibles-con-mod"
+  ],
+  "files": [
+   {
+    "name": "iberia_v_germania.BFHP",
+    "size": 1061470,
+    "url": "https://cdn.discordapp.com/attachments/1413782299786608682/1414913937551397004/iberia_v_germania.BFHP?ex=6ad5420a&is=6ad3f08a&hm=f30866f4aa7bf68217f67ef7409613f78c5207f39eac42ad350470367457a6c8&",
+    "local": "originals/discord/mapas/iberia-v-germania/iberia_v_germania.BFHP"
+   }
+  ],
+  "desc": "",
+  "count": 1,
+  "slug": "iberia-v-germania"
+ },
+ {
+  "channel": "mapas",
+  "section": "",
+  "title": "ROMA CONTRA LOS BÁRBAROS",
+  "author": "lusitano",
+  "discord": "https://discord.com/channels/479629904657514526/1413782299786608682/1414914020334506126",
+  "year": "2015",
+  "base": "Imperivm III v1.40",
+  "links": [
+   "https://imperivmgbr.foroactivo.com/t817-pack-de-mapas-gbr-compatibles-con-mod"
+  ],
+  "files": [
+   {
+    "name": "roma_contra_los_barbaros.BFHP",
+    "size": 1194173,
+    "url": "https://cdn.discordapp.com/attachments/1413782299786608682/1414914020015607928/roma_contra_los_barbaros.BFHP?ex=6ad5421e&is=6ad3f09e&hm=a3d3e86c6e00d810b4cdf146515f54d2ed19d6ac6a3cb4653ac830318b2b0fe7&",
+    "local": "originals/discord/mapas/roma-contra-los-barbaros/roma_contra_los_barbaros.BFHP"
+   }
+  ],
+  "desc": "",
+  "count": 1,
+  "slug": "roma-contra-los-barbaros"
+ },
+ {
+  "channel": "mapas",
+  "section": "",
+  "title": "ESTRATEGIA GENÉRICA",
+  "author": "molerotoni",
+  "discord": "https://discord.com/channels/479629904657514526/1413782299786608682/1414914118334414859",
+  "year": "2015",
+  "base": "Imperivm III v1.40",
+  "links": [
+   "https://imperivmgbr.foroactivo.com/t812-mi-primer-mapa"
+  ],
+  "files": [
+   {
+    "name": "estrategia_generica.BFHP",
+    "size": 5274112,
+    "url": "https://cdn.discordapp.com/attachments/1413782299786608682/1414914118158385152/estrategia_generica.BFHP?ex=6ad54235&is=6ad3f0b5&hm=eceb3bd6432f758dc6e353dc5d85cb04e53ff65d07002988c89ae56149ff3757&",
+    "local": "originals/discord/mapas/estrategia-generica/estrategia_generica.BFHP"
+   }
+  ],
+  "desc": "",
+  "count": 1,
+  "slug": "estrategia-generica"
+ },
+ {
+  "channel": "mapas",
+  "section": "",
+  "title": "CONTRA LA GRAN ROMA",
+  "author": "Avian98",
+  "discord": "https://discord.com/channels/479629904657514526/1413782299786608682/1414914211670265857",
+  "year": "2019",
+  "base": "Imperivm III v1.56",
+  "links": [
+   "https://imperivmgbr.foroactivo.com/t1190-mapa-contra-la-gran-roma"
+  ],
+  "files": [
+   {
+    "name": "contra_la_gran_roma2.BFHP",
+    "size": 2277218,
+    "url": "https://cdn.discordapp.com/attachments/1413782299786608682/1414914211556884490/contra_la_gran_roma2.BFHP?ex=6ad5424b&is=6ad3f0cb&hm=cafc3c25caf908c625f7bc6ffa5f03e4b151ae12cae15ff0da7c44dfb6e9fcd0&",
+    "local": "originals/discord/mapas/contra-la-gran-roma/contra_la_gran_roma2.BFHP"
+   }
+  ],
+  "desc": "",
+  "count": 1,
+  "slug": "contra-la-gran-roma"
+ },
+ {
+  "channel": "mapas",
+  "section": "",
+  "title": "JUEGO DE TRONOS",
+  "author": "Quinto Tulio Cicerón",
+  "discord": "https://discord.com/channels/479629904657514526/1413782299786608682/1414914373033529426",
+  "year": "2019",
+  "base": "Imperivm III v1.40",
+  "links": [
+   "https://imperivmgbr.foroactivo.com/t1131-sin-descarga-mapa-juego-de-tronos"
+  ],
+  "files": [
+   {
+    "name": "Juego_de_Tronos_Grande.rar",
+    "size": 581556,
+    "url": "https://cdn.discordapp.com/attachments/1413782299786608682/1414914372689461389/Juego_de_Tronos_Grande.rar?ex=6ad54272&is=6ad3f0f2&hm=04896e34d9f9c836ed411b55ec7666d1b608cc244db09a280af7b7d6cc5266da&",
+    "local": "originals/discord/mapas/juego-de-tronos/Juego_de_Tronos_Grande.rar"
+   }
+  ],
+  "desc": "",
+  "count": 1,
+  "slug": "juego-de-tronos"
+ },
+ {
+  "channel": "mapas",
+  "section": "",
+  "title": "COLOSSEUM 2V2",
+  "author": "Ferónidas",
+  "discord": "https://discord.com/channels/479629904657514526/1413782299786608682/1414917319859372083",
+  "year": "2020",
+  "base": "Imperivm III v1.56",
+  "links": [
+   "https://imperivmgbr.foroactivo.com/t1304-competitivo-colosseum-2vs2"
+  ],
+  "files": [
+   {
+    "name": "T_2vs2_Colosseum.BFHP",
+    "size": 1614848,
+    "url": "https://cdn.discordapp.com/attachments/1413782299786608682/1414917319590678548/T_2vs2_Colosseum.BFHP?ex=6ad54530&is=6ad3f3b0&hm=4468f271e1ed221882fc5120bc5b14e525c081d47a94780db633368bdb6ec8cb&",
+    "local": "originals/discord/mapas/colosseum-2v2/T_2vs2_Colosseum.BFHP"
+   }
+  ],
+  "desc": "",
+  "count": 1,
+  "slug": "colosseum-2v2"
+ },
+ {
+  "channel": "mapas",
+  "section": "",
+  "title": "ASAMBLEA DEL VALLE",
+  "author": "Ferónidas",
+  "discord": "https://discord.com/channels/479629904657514526/1413782299786608682/1414917392617705554",
+  "year": "2020",
+  "base": "Imperivm III v1.56",
+  "links": [
+   "https://imperivmgbr.foroactivo.com/t1219-competitivo-asamblea-del-valle"
+  ],
+  "files": [
+   {
+    "name": "Asamblea_del_Valle.BFHP",
+    "size": 1488334,
+    "url": "https://cdn.discordapp.com/attachments/1413782299786608682/1414917392672489502/Asamblea_del_Valle.BFHP?ex=6ad54542&is=6ad3f3c2&hm=3a7bb63a1bbcd3c33203e1b6a89b3fc9bf7143cc51467a7a1f17d41f5186df21&",
+    "local": "originals/discord/mapas/asamblea-del-valle/Asamblea_del_Valle.BFHP"
+   }
+  ],
+  "desc": "",
+  "count": 1,
+  "slug": "asamblea-del-valle"
+ },
+ {
+  "channel": "mapas",
+  "section": "",
+  "title": "MAPAS SIMÉTRICOS IMPERIVM WORLD CUP",
+  "author": "Ferónidas",
+  "discord": "https://discord.com/channels/479629904657514526/1413782299786608682/1414917470728224889",
+  "year": "2021",
+  "base": "Imperivm HD vRelease 1.0",
+  "links": [],
+  "files": [
+   {
+    "name": "ImperivmWorldCup.rar",
+    "size": 5921215,
+    "url": "https://cdn.discordapp.com/attachments/1413782299786608682/1414917470459793478/ImperivmWorldCup.rar?ex=6ad54554&is=6ad3f3d4&hm=08c3736adaa70b56afaf756b8cf1c704fbf9588c4e07ce0e44bda7febbd9a06c&",
+    "local": "originals/discord/mapas/mapas-simetricos-imperivm-world-cup/ImperivmWorldCup.rar"
+   }
+  ],
+  "desc": "",
+  "count": 36,
+  "slug": "mapas-simetricos-imperivm-world-cup"
+ },
+ {
+  "channel": "mapas",
+  "section": "",
+  "title": "VANGUARDIA 4v4",
+  "author": "Ferónidas",
+  "discord": "https://discord.com/channels/479629904657514526/1413782299786608682/1414917557730939072",
+  "year": "2024",
+  "base": "Imperivm HD vRelease 1.0",
+  "links": [],
+  "files": [
+   {
+    "name": "Vanguardia4v4.BFHP",
+    "size": 295936,
+    "url": "https://cdn.discordapp.com/attachments/1413782299786608682/1414917557386870805/Vanguardia4v4.BFHP?ex=6ad54569&is=6ad3f3e9&hm=3995ebbe9c6db7e48e307e5a9967982ab9298385c57be29ecfa85b3a06d3176e&",
+    "local": "originals/discord/mapas/vanguardia-4v4/Vanguardia4v4.BFHP"
+   }
+  ],
+  "desc": "",
+  "count": 1,
+  "slug": "vanguardia-4v4"
+ },
+ {
+  "channel": "mapas",
+  "section": "",
+  "title": "LUCHA DE ZONAS",
+  "author": "frank9999",
+  "discord": "https://discord.com/channels/479629904657514526/1413782299786608682/1414917652773601330",
+  "year": "2020",
+  "base": "Imperivm III v1.40",
+  "links": [
+   "https://imperivmgbr.foroactivo.com/t1220-las-guerras-sertorianas-y-lucha-de-las-bases"
+  ],
+  "files": [
+   {
+    "name": "LAS_BASES_DE_UN_TRIUNFO.BFHP",
+    "size": 2938137,
+    "url": "https://cdn.discordapp.com/attachments/1413782299786608682/1414917652366757928/LAS_BASES_DE_UN_TRIUNFO.BFHP?ex=6ad54580&is=6ad3f400&hm=0f2026cb9c341af0e73b2cfe4d5539ca15cad23b37e8c8f9e3bc2c167fecf7ea&",
+    "local": "originals/discord/mapas/lucha-de-zonas/LAS_BASES_DE_UN_TRIUNFO.BFHP"
+   }
+  ],
+  "desc": "",
+  "count": 1,
+  "slug": "lucha-de-zonas"
+ },
+ {
+  "channel": "mapas",
+  "section": "",
+  "title": "3v3 TOURNAMENT MAP",
+  "author": "Desconocido",
+  "discord": "https://discord.com/channels/479629904657514526/1413782299786608682/1414917729659519016",
+  "year": "2020",
+  "base": "Imperivm III v1.56",
+  "links": [],
+  "files": [
+   {
+    "name": "ASINOTENEMOSPROBLEMASXD.BFHP",
+    "size": 1068032,
+    "url": "https://cdn.discordapp.com/attachments/1413782299786608682/1414917723758137476/ASINOTENEMOSPROBLEMASXD.BFHP?ex=6ad54591&is=6ad3f411&hm=082ef7fde73d653e4895ebe5fbca0abea49addf443c75a40b23de49645a3f1ef&",
+    "local": "originals/discord/mapas/3v3-tournament-map/ASINOTENEMOSPROBLEMASXD.BFHP"
+   }
+  ],
+  "desc": "",
+  "count": 1,
+  "slug": "3v3-tournament-map"
+ },
+ {
+  "channel": "mapas",
+  "section": "",
+  "title": "LA GUERRA DE LOS HÉROES",
+  "author": "sgtsebastian",
+  "discord": "https://discord.com/channels/479629904657514526/1413782299786608682/1414917826992541710",
+  "year": "2020",
+  "base": "Imperivm III v1.56",
+  "links": [
+   "https://imperivmgbr.foroactivo.com/t1305-la-guerra-de-los-heroes"
+  ],
+  "files": [
+   {
+    "name": "La_guerra_de_los_heroes_v2.BFHP",
+    "size": 4882432,
+    "url": "https://cdn.discordapp.com/attachments/1413782299786608682/1414917826921107509/La_guerra_de_los_heroes_v2.BFHP?ex=6ad545a9&is=6ad3f429&hm=d2edf9de0c14b264b0d012ad677a842b47322ce7940eecdc120fd64b02a29bec&",
+    "local": "originals/discord/mapas/la-guerra-de-los-heroes/La_guerra_de_los_heroes_v2.BFHP"
+   }
+  ],
+  "desc": "",
+  "count": 1,
+  "slug": "la-guerra-de-los-heroes"
+ },
+ {
+  "channel": "mapas",
+  "section": "",
+  "title": "BATTLE ROYALE",
+  "author": "sgtsebastian",
+  "discord": "https://discord.com/channels/479629904657514526/1413782299786608682/1414917901286375435",
+  "year": "2021",
+  "base": "Imperivm III v1.56",
+  "links": [],
+  "files": [
+   {
+    "name": "BattleRoyalePRUEBA2.BFHP",
+    "size": 1595913,
+    "url": "https://cdn.discordapp.com/attachments/1413782299786608682/1414917901013487626/BattleRoyalePRUEBA2.BFHP?ex=6ad545bb&is=6ad3f43b&hm=1b814c209130528496526fb0105114339855d03141ea0a7f7b64ea7f971860e2&",
+    "local": "originals/discord/mapas/battle-royale/BattleRoyalePRUEBA2.BFHP"
+   }
+  ],
+  "desc": "",
+  "count": 1,
+  "slug": "battle-royale"
+ },
+ {
+  "channel": "mapas",
+  "section": "",
+  "title": "TRAMÓREA",
+  "author": "MDavidHC",
+  "discord": "https://discord.com/channels/479629904657514526/1413782299786608682/1414917979476590723",
+  "year": "2021",
+  "base": "Imperivm III v1.40",
+  "links": [
+   "https://imperivmgbr.foroactivo.com/t1179-mapa-tramorea"
+  ],
+  "files": [
+   {
+    "name": "TRAMOREA_V2.1.BFHP",
+    "size": 4885504,
+    "url": "https://cdn.discordapp.com/attachments/1413782299786608682/1414917979090583552/TRAMOREA_V2.1.BFHP?ex=6ad545ce&is=6ad3f44e&hm=9385327f62b62ffdda75c351dc838a58416e77538c5420eaf0741b1a37902719&",
+    "local": "originals/discord/mapas/tramorea/TRAMOREA_V2.1.BFHP"
+   }
+  ],
+  "desc": "Cuatro Jugadores. Un mundo enorme dividido en zonas fácilmente defendibles. Dos ciudades separan el norte del sur, y cuatro misterios se ocultan en las zonas más peligrosas del mapa y mucho más.  ¿Quién se atreve a adentrarse en el peligroso y maravilloso mundo de Tramórea?",
+  "count": 1,
+  "slug": "tramorea"
+ },
+ {
+  "channel": "mapas",
+  "section": "",
+  "title": "PRIMERA GUERRA PÚNICA",
+  "author": "jclempire",
+  "discord": "https://discord.com/channels/479629904657514526/1413782299786608682/1414918068513013782",
+  "year": "2021",
+  "base": "Imperivm III v1.40",
+  "links": [
+   "https://imperivmgbr.foroactivo.com/t1311-1-guerra-punica-mapa-de-estrategia-1-3-jugadores"
+  ],
+  "files": [
+   {
+    "name": "PrimeraGuerraPunica2y3-jclempire.BFHP",
+    "size": 1801028,
+    "url": "https://cdn.discordapp.com/attachments/1413782299786608682/1414918068102107246/PrimeraGuerraPunica2y3-jclempire.BFHP?ex=6ad545e3&is=6ad3f463&hm=34179801f97076f1c978d3da282765c2b18f07bcf64cd73cc87b70759b423c14&",
+    "local": "originals/discord/mapas/primera-guerra-punica/PrimeraGuerraPunica2y3-jclempire.BFHP"
+   }
+  ],
+  "desc": "",
+  "count": 1,
+  "slug": "primera-guerra-punica"
+ },
+ {
+  "channel": "mapas",
+  "section": "",
+  "title": "EL RÍO DEL SILENCIO 3v3",
+  "author": "Terminator888",
+  "discord": "https://discord.com/channels/479629904657514526/1413782299786608682/1414920289414025228",
+  "year": "2021",
+  "base": "Imperivm HD vRelease 1.0",
+  "links": [],
+  "files": [
+   {
+    "name": "el_rio_del_silencio3vs3.BFHP",
+    "size": 963595,
+    "url": "https://cdn.discordapp.com/attachments/1413782299786608682/1414920289233666139/el_rio_del_silencio3vs3.BFHP?ex=6ad547f4&is=6ad3f674&hm=58031184f47835724c6254796f83342ef0579f90d2f85949fcd1b1fb29304e9f&",
+    "local": "originals/discord/mapas/el-rio-del-silencio-3v3/el_rio_del_silencio3vs3.BFHP"
+   }
+  ],
+  "desc": "",
+  "count": 1,
+  "slug": "el-rio-del-silencio-3v3"
+ },
+ {
+  "channel": "mapas",
+  "section": "",
+  "title": "EL RÍO DEL SILENCIO 4v4",
+  "author": "Terminator888",
+  "discord": "https://discord.com/channels/479629904657514526/1413782299786608682/1414920368514400288",
+  "year": "2021",
+  "base": "Imperivm HD vRelease 1.0",
+  "links": [],
+  "files": [
+   {
+    "name": "el_rio_del_silencio4vs4_1.BFHP",
+    "size": 960292,
+    "url": "https://cdn.discordapp.com/attachments/1413782299786608682/1414920368174665811/el_rio_del_silencio4vs4_1.BFHP?ex=6ad54807&is=6ad3f687&hm=c57967b657c2200edaa1bd021931e801c4a41d94420e67a4942e7247aadd521d&",
+    "local": "originals/discord/mapas/el-rio-del-silencio-4v4/el_rio_del_silencio4vs4_1.BFHP"
+   }
+  ],
+  "desc": "",
+  "count": 1,
+  "slug": "el-rio-del-silencio-4v4"
+ },
+ {
+  "channel": "mapas",
+  "section": "",
+  "title": "LA MURALLA DE SKO",
+  "author": "Terminator888",
+  "discord": "https://discord.com/channels/479629904657514526/1413782299786608682/1414920438475395224",
+  "year": "2021",
+  "base": "Imperivm HD vRelease 1.0",
+  "links": [],
+  "files": [
+   {
+    "name": "la_muralla_de_sko_1.BFHP",
+    "size": 1098764,
+    "url": "https://cdn.discordapp.com/attachments/1413782299786608682/1414920438240378891/la_muralla_de_sko_1.BFHP?ex=6ad54818&is=6ad3f698&hm=9f893161543f7eca73bfc3ec38979da1dd31d200d2f360b0607327596047157f&",
+    "local": "originals/discord/mapas/la-muralla-de-sko/la_muralla_de_sko_1.BFHP"
+   }
+  ],
+  "desc": "",
+  "count": 1,
+  "slug": "la-muralla-de-sko"
+ },
+ {
+  "channel": "mapas",
+  "section": "",
+  "title": "BATALLA EN LOS ALPES",
+  "author": "Soundless Flow",
+  "discord": "https://discord.com/channels/479629904657514526/1413782299786608682/1414920517592547439",
+  "year": "2021",
+  "base": "Imperivm HD vRelease 1.0",
+  "links": [],
+  "files": [
+   {
+    "name": "batalla_en_los_alpes.BFHP",
+    "size": 1072640,
+    "url": "https://cdn.discordapp.com/attachments/1413782299786608682/1414920517298950224/batalla_en_los_alpes.BFHP?ex=6ad5482b&is=6ad3f6ab&hm=f320c16b7db497d49df02e0315ec3e7db5539814e22cd69b75767ca0b9e9e7ce&",
+    "local": "originals/discord/mapas/batalla-en-los-alpes/batalla_en_los_alpes.BFHP"
+   }
+  ],
+  "desc": "",
+  "count": 1,
+  "slug": "batalla-en-los-alpes"
+ },
+ {
+  "channel": "mapas",
+  "section": "",
+  "title": "EL MUNDO CONOCIDO",
+  "author": "Aulo",
+  "discord": "https://discord.com/channels/479629904657514526/1413782299786608682/1414920600505286768",
+  "year": "2021",
+  "base": "Imperivm HD vRelease 1.0",
+  "links": [],
+  "files": [
+   {
+    "name": "el_mundo_conocido_con_cuevAS.BFHP",
+    "size": 1209856,
+    "url": "https://cdn.discordapp.com/attachments/1413782299786608682/1414920600136454257/el_mundo_conocido_con_cuevAS.BFHP?ex=6ad5483f&is=6ad3f6bf&hm=90ba11984a855a52eabb0c005e164a77d85c6f65b08830911bc098d5c0d0e616&",
+    "local": "originals/discord/mapas/el-mundo-conocido/el_mundo_conocido_con_cuevAS.BFHP"
+   }
+  ],
+  "desc": "",
+  "count": 1,
+  "slug": "el-mundo-conocido"
+ },
+ {
+  "channel": "mapas",
+  "section": "",
+  "title": "MAPA 4v4",
+  "author": "Aulo",
+  "discord": "https://discord.com/channels/479629904657514526/1413782299786608682/1414920681694429254",
+  "year": "2024",
+  "base": "Imperivm HD vRelease 1.0",
+  "links": [],
+  "files": [
+   {
+    "name": "MAPA_4V4_BY_AULO.BFHP",
+    "size": 1039222,
+    "url": "https://cdn.discordapp.com/attachments/1413782299786608682/1414920681279328326/MAPA_4V4_BY_AULO.BFHP?ex=6ad54852&is=6ad3f6d2&hm=00e081ea9a39d89ebaba13dfe3af07325be1af0b9e19473d9132759c579ee58b&",
+    "local": "originals/discord/mapas/mapa-4v4/MAPA_4V4_BY_AULO.BFHP"
+   }
+  ],
+  "desc": "",
+  "count": 1,
+  "slug": "mapa-4v4"
+ },
+ {
+  "channel": "mapas",
+  "section": "",
+  "title": "1v1 ISLAS",
+  "author": "Halcón",
+  "discord": "https://discord.com/channels/479629904657514526/1413782299786608682/1414923523675394079",
+  "year": "2023",
+  "base": "Imperivm HD vRelease 1.0",
+  "links": [],
+  "files": [
+   {
+    "name": "halconislaspro.BFHP",
+    "size": 1064320,
+    "url": "https://cdn.discordapp.com/attachments/1413782299786608682/1414923523117420614/halconislaspro.BFHP?ex=6ad54af7&is=6ad3f977&hm=1deb4f8c85730618e2b276423b90699957d965fec4cc9ce985e2516e21a12e4f&",
+    "local": "originals/discord/mapas/1v1-islas/halconislaspro.BFHP"
+   }
+  ],
+  "desc": "",
+  "count": 1,
+  "slug": "1v1-islas"
+ },
+ {
+  "channel": "mapas",
+  "section": "",
+  "title": "2v2 MONTAÑOSO",
+  "author": "Halcón",
+  "discord": "https://discord.com/channels/479629904657514526/1413782299786608682/1414923611931934770",
+  "year": "2023",
+  "base": "Imperivm HD vRelease 1.0",
+  "links": [],
+  "files": [
+   {
+    "name": "2v2_halcon_pro.BFHP",
+    "size": 1006991,
+    "url": "https://cdn.discordapp.com/attachments/1413782299786608682/1414923611390738514/2v2_halcon_pro.BFHP?ex=6ad54b0c&is=6ad3f98c&hm=d73f768faa5106627a2f11bf2796e4fb6b2621f64f83222749ee8c7d7ac2b62b&",
+    "local": "originals/discord/mapas/2v2-montanoso/2v2_halcon_pro.BFHP"
+   }
+  ],
+  "desc": "",
+  "count": 1,
+  "slug": "2v2-montanoso"
+ },
+ {
+  "channel": "mapas",
+  "section": "",
+  "title": "3v3 MONTAÑOSO",
+  "author": "Halcón",
+  "discord": "https://discord.com/channels/479629904657514526/1413782299786608682/1414923688968716379",
+  "year": "2023",
+  "base": "Imperivm HD vRelease 1.0",
+  "links": [],
+  "files": [
+   {
+    "name": "3vs3_halcon_pro.BFHP",
+    "size": 1012521,
+    "url": "https://cdn.discordapp.com/attachments/1413782299786608682/1414923688364609628/3vs3_halcon_pro.BFHP?ex=6ad54b1f&is=6ad3f99f&hm=e4b984a11c2a5cfee55a0c6fd512b3b122691dfdb13c223ae303fd446e80150c&",
+    "local": "originals/discord/mapas/3v3-montanoso/3vs3_halcon_pro.BFHP"
+   }
+  ],
+  "desc": "",
+  "count": 1,
+  "slug": "3v3-montanoso"
+ },
+ {
+  "channel": "mapas",
+  "section": "",
+  "title": "4v4 PRO",
+  "author": "Halcón",
+  "discord": "https://discord.com/channels/479629904657514526/1413782299786608682/1414923781109055488",
+  "year": "2023",
+  "base": "Imperivm HD vRelease 1.0",
+  "links": [],
+  "files": [
+   {
+    "name": "4_vs_4_pro.BFHP",
+    "size": 1018557,
+    "url": "https://cdn.discordapp.com/attachments/1413782299786608682/1414923780802740306/4_vs_4_pro.BFHP?ex=6ad54b35&is=6ad3f9b5&hm=168583d22feea1451cb2e972fd6eb8527521a53e09cde796405b45f8b5d2125e&",
+    "local": "originals/discord/mapas/4v4-pro/4_vs_4_pro.BFHP"
+   }
+  ],
+  "desc": "",
+  "count": 1,
+  "slug": "4v4-pro"
+ },
+ {
+  "channel": "mapas",
+  "section": "",
+  "title": "1v1 PEQUEÑO",
+  "author": "Halcón",
+  "discord": "https://discord.com/channels/479629904657514526/1413782299786608682/1414923853930692758",
+  "year": "2023",
+  "base": "Imperivm HD vRelease 1.0",
+  "links": [],
+  "files": [
+   {
+    "name": "1v1pequehalcon.BFHP",
+    "size": 884224,
+    "url": "https://cdn.discordapp.com/attachments/1413782299786608682/1414923853498417162/1v1pequehalcon.BFHP?ex=6ad54b46&is=6ad3f9c6&hm=792bb697a64c1ebce272768478112ba71867c73eb51d5197e602b8771a71e01a&",
+    "local": "originals/discord/mapas/1v1-pequeno/1v1pequehalcon.BFHP"
+   }
+  ],
+  "desc": "",
+  "count": 1,
+  "slug": "1v1-pequeno"
+ },
+ {
+  "channel": "mapas",
+  "section": "",
+  "title": "MAPA 2v2v2v2",
+  "author": "Halcón",
+  "discord": "https://discord.com/channels/479629904657514526/1413782299786608682/1414923954740789389",
+  "year": "2023",
+  "base": "Imperivm HD vRelease 1.0",
+  "links": [],
+  "files": [
+   {
+    "name": "mapa2v2v2v2_halcon.BFHP",
+    "size": 3707178,
+    "url": "https://cdn.discordapp.com/attachments/1413782299786608682/1414923954589667380/mapa2v2v2v2_halcon.BFHP?ex=6ad54b5e&is=6ad3f9de&hm=3df7a257c35954b5e0ba318af2b3bd727afaa0d5dd3bd392818b8d1b1276a375&",
+    "local": "originals/discord/mapas/mapa-2v2v2v2/mapa2v2v2v2_halcon.BFHP"
+   }
+  ],
+  "desc": "",
+  "count": 1,
+  "slug": "mapa-2v2v2v2"
+ },
+ {
+  "channel": "mapas",
+  "section": "",
+  "title": "MAPA 2v2v2v2 MEJORADO",
+  "author": "Halcón",
+  "discord": "https://discord.com/channels/479629904657514526/1413782299786608682/1414924040740671680",
+  "year": "2023",
+  "base": "Imperivm HD vRelease 1.0",
+  "links": [],
+  "files": [
+   {
+    "name": "2v2v2v2_mejorado.BFHP",
+    "size": 3699595,
+    "url": "https://cdn.discordapp.com/attachments/1413782299786608682/1414924040392675448/2v2v2v2_mejorado.BFHP?ex=6ad54b73&is=6ad3f9f3&hm=37a7fcec29ccd09ad2cecf2dff709f329634813b9f435e3f8655e2373e668840&",
+    "local": "originals/discord/mapas/mapa-2v2v2v2-mejorado/2v2v2v2_mejorado.BFHP"
+   }
+  ],
+  "desc": "",
+  "count": 1,
+  "slug": "mapa-2v2v2v2-mejorado"
+ },
+ {
+  "channel": "mapas",
+  "section": "",
+  "title": "MAPA 4v4",
+  "author": "Halcón",
+  "discord": "https://discord.com/channels/479629904657514526/1413782299786608682/1414924116598849697",
+  "year": "2023",
+  "base": "Imperivm HD vRelease 1.0",
+  "links": [],
+  "files": [
+   {
+    "name": "4_v_4__mapagrande_isla.BFHP",
+    "size": 3695969,
+    "url": "https://cdn.discordapp.com/attachments/1413782299786608682/1414924116074692668/4_v_4__mapagrande_isla.BFHP?ex=6ad54b85&is=6ad3fa05&hm=388905ef29a75b9b55178d964b4e8f58da9be0d28be2a495af9f3485d08e75a0&",
+    "local": "originals/discord/mapas/mapa-4v4/4_v_4__mapagrande_isla.BFHP"
+   }
+  ],
+  "desc": "",
+  "count": 1,
+  "slug": "mapa-4v4"
+ },
+ {
+  "channel": "mapas",
+  "section": "",
+  "title": "ARMA DEFINITIVA 1v1v1",
+  "author": "Halcón",
+  "discord": "https://discord.com/channels/479629904657514526/1413782299786608682/1414924196156411934",
+  "year": "2023",
+  "base": "Imperivm HD vRelease 1.0",
+  "links": [],
+  "files": [
+   {
+    "name": "mapa_invierno_1v1v1_armadefinitiva.BFHP",
+    "size": 1002004,
+    "url": "https://cdn.discordapp.com/attachments/1413782299786608682/1414924195887972416/mapa_invierno_1v1v1_armadefinitiva.BFHP?ex=6ad54b98&is=6ad3fa18&hm=7c4b9bd4ae6982c29f704e4ef6717355dade726124791e0bab748be68d07a926&",
+    "local": "originals/discord/mapas/arma-definitiva-1v1v1/mapa_invierno_1v1v1_armadefinitiva.BFHP"
+   }
+  ],
+  "desc": "",
+  "count": 1,
+  "slug": "arma-definitiva-1v1v1"
+ },
+ {
+  "channel": "mapas",
+  "section": "",
+  "title": "ARMA DEFINITIVA 1v1v1",
+  "author": "Halcón",
+  "discord": "https://discord.com/channels/479629904657514526/1413782299786608682/1414924274619383891",
+  "year": "2023",
+  "base": "Imperivm HD vRelease 1.0",
+  "links": [],
+  "files": [
+   {
+    "name": "1_1_1_armadefintiva_v2.BFHP",
+    "size": 1113300,
+    "url": "https://cdn.discordapp.com/attachments/1413782299786608682/1414924274694623292/1_1_1_armadefintiva_v2.BFHP?ex=6ad54bab&is=6ad3fa2b&hm=03ae2c10afe801744ceb9295efcf309fffb43edd9c52c4dc1d937938f95077a7&",
+    "local": "originals/discord/mapas/arma-definitiva-1v1v1/1_1_1_armadefintiva_v2.BFHP"
+   }
+  ],
+  "desc": "",
+  "count": 1,
+  "slug": "arma-definitiva-1v1v1"
+ },
+ {
+  "channel": "mapas",
+  "section": "",
+  "title": "MAPA EUROPA",
+  "author": "Halcón",
+  "discord": "https://discord.com/channels/479629904657514526/1413782299786608682/1414924348883603529",
+  "year": "2025",
+  "base": "Imperivm HD vRelease 1.0",
+  "links": [],
+  "files": [
+   {
+    "name": "mapa_europa_cartago_para2.BFHP",
+    "size": 4868096,
+    "url": "https://cdn.discordapp.com/attachments/1413782299786608682/1414924348598521896/mapa_europa_cartago_para2.BFHP?ex=6ad54bbc&is=6ad3fa3c&hm=ac309eea3551ae3853a5f796c6c7138ec127937908bd2ef3041f2ea7fcf49b28&",
+    "local": "originals/discord/mapas/mapa-europa/mapa_europa_cartago_para2.BFHP"
+   }
+  ],
+  "desc": "",
+  "count": 1,
+  "slug": "mapa-europa"
+ },
+ {
+  "channel": "mapas",
+  "section": "",
+  "title": "EL ARMA DEFINITIVA",
+  "author": "Rubeneitor",
+  "discord": "https://discord.com/channels/479629904657514526/1413782299786608682/1414929613519454280",
+  "year": "2023",
+  "base": "Imperivm HD vRelease 1.0",
+  "links": [],
+  "files": [
+   {
+    "name": "el_arma_definitiva_v9.BFHP",
+    "size": 1070592,
+    "url": "https://cdn.discordapp.com/attachments/1413782299786608682/1414929613414600714/el_arma_definitiva_v9.BFHP?ex=6ad550a3&is=6ad3ff23&hm=17aefb1972a6f354849edab5d4c51ec14dbbbd06fa5c4fd09eca7af6d829e770&",
+    "local": "originals/discord/mapas/el-arma-definitiva/el_arma_definitiva_v9.BFHP"
+   }
+  ],
+  "desc": "Mapa para 1v1 o 1v1v1 donde hay un nuevo objeto extremadamente poderoso en algún rincón.",
+  "count": 1,
+  "slug": "el-arma-definitiva"
+ },
+ {
+  "channel": "mapas",
+  "section": "",
+  "title": "BATALLA DE ISLAS",
+  "author": "Rubeneitor",
+  "discord": "https://discord.com/channels/479629904657514526/1413782299786608682/1414929714719494185",
+  "year": "2023",
+  "base": "Imperivm HD vRelease 1.0",
+  "links": [],
+  "files": [
+   {
+    "name": "mapa_grande_2vs2vs2vs2v7_islas.BFHP",
+    "size": 3797087,
+    "url": "https://cdn.discordapp.com/attachments/1413782299786608682/1414929714388140164/mapa_grande_2vs2vs2vs2v7_islas.BFHP?ex=6ad550bc&is=6ad3ff3c&hm=4c6e1c9793ef6ad526f44cad3b112de7a276cf595576b96b60aff976dc2a98ac&",
+    "local": "originals/discord/mapas/batalla-de-islas/mapa_grande_2vs2vs2vs2v7_islas.BFHP"
+   }
+  ],
+  "desc": "",
+  "count": 1,
+  "slug": "batalla-de-islas"
+ },
+ {
+  "channel": "mapas",
+  "section": "",
+  "title": "BATALLA DE ISLAS PEQUEÑAS",
+  "author": "Rubeneitor",
+  "discord": "https://discord.com/channels/479629904657514526/1413782299786608682/1414929796462547035",
+  "year": "2024",
+  "base": "Imperivm HD vRelease 1.0",
+  "links": [],
+  "files": [
+   {
+    "name": "islas_peques7.BFHP",
+    "size": 3796992,
+    "url": "https://cdn.discordapp.com/attachments/1413782299786608682/1414929795526955099/islas_peques7.BFHP?ex=6ad550cf&is=6ad3ff4f&hm=e95ebe84e6433047f88075da7221f7bc498c39e9ba0b75d1b0bda2ff48e23a8a&",
+    "local": "originals/discord/mapas/batalla-de-islas-pequenas/islas_peques7.BFHP"
+   }
+  ],
+  "desc": "",
+  "count": 1,
+  "slug": "batalla-de-islas-pequenas"
+ },
+ {
+  "channel": "mapas",
+  "section": "",
+  "title": "SUPERFORTALEZA",
+  "author": "Rubeneitor",
+  "discord": "https://discord.com/channels/479629904657514526/1413782299786608682/1414929893309022248",
+  "year": "2025",
+  "base": "Imperivm HD vRelease 1.0",
+  "links": [],
+  "files": [
+   {
+    "name": "la_super_fortaleza_6.BFHP",
+    "size": 884224,
+    "url": "https://cdn.discordapp.com/attachments/1413782299786608682/1414929892860100678/la_super_fortaleza_6.BFHP?ex=6ad550e6&is=6ad3ff66&hm=9ad7e7f20c31f2e01f4f64fa81f5f08c2f17a311185575da9f8e94f8bcf4395d&",
+    "local": "originals/discord/mapas/superfortaleza/la_super_fortaleza_6.BFHP"
+   }
+  ],
+  "desc": "",
+  "count": 1,
+  "slug": "superfortaleza"
+ },
+ {
+  "channel": "mapas",
+  "section": "",
+  "title": "SUPERFORTALEZA 2v1",
+  "author": "Rubeneitor",
+  "discord": "https://discord.com/channels/479629904657514526/1413782299786608682/1414929993951084594",
+  "year": "2025",
+  "base": "Imperivm HD vRelease 1.0",
+  "links": [],
+  "files": [
+   {
+    "name": "la_super_fortalezaaaa_2vs1.BFHP",
+    "size": 884224,
+    "url": "https://cdn.discordapp.com/attachments/1413782299786608682/1414929993620000809/la_super_fortalezaaaa_2vs1.BFHP?ex=6ad550fe&is=6ad3ff7e&hm=d90f72c735be43a0e49fbd99c23fb7f16f77b0da8d68dec1dbe2efab83c2822e&",
+    "local": "originals/discord/mapas/superfortaleza-2v1/la_super_fortalezaaaa_2vs1.BFHP"
+   }
+  ],
+  "desc": "",
+  "count": 1,
+  "slug": "superfortaleza-2v1"
+ },
+ {
+  "channel": "mapas",
+  "section": "",
+  "title": "4 REYES",
+  "author": "Arkalix",
+  "discord": "https://discord.com/channels/479629904657514526/1413782299786608682/1414930101531050087",
+  "year": "2023",
+  "base": "Imperivm HD vRelease 1.0",
+  "links": [],
+  "files": [
+   {
+    "name": "4_reyes.BFHP",
+    "size": 1100768,
+    "url": "https://cdn.discordapp.com/attachments/1413782299786608682/1414930101031669790/4_reyes.BFHP?ex=6ad55118&is=6ad3ff98&hm=70654dcffcbd8744eedd441f5dafc8451264611b63d2c5925ca2439822e2df98&",
+    "local": "originals/discord/mapas/4-reyes/4_reyes.BFHP"
+   }
+  ],
+  "desc": "",
+  "count": 1,
+  "slug": "4-reyes"
+ },
+ {
+  "channel": "mapas",
+  "section": "",
+  "title": "BATALLA POR GERGOVIA",
+  "author": "ruben.rdrgz",
+  "discord": "https://discord.com/channels/479629904657514526/1413782299786608682/1414930216664567840",
+  "year": "2024",
+  "base": "Imperivm HD vRelease 1.0",
+  "links": [
+   "https://imperivmgbr.foroactivo.com/t1453-mapa-batalla-por-gergovia"
+  ],
+  "files": [
+   {
+    "name": "Batalla_por_Gergovia.BFHP",
+    "size": 1172992,
+    "url": "https://cdn.discordapp.com/attachments/1413782299786608682/1414930216253653083/Batalla_por_Gergovia.BFHP?ex=6ad55133&is=6ad3ffb3&hm=c4d6d641734f86584fe468bbd9fdbd76ca8954d62255fb5a15806741ff77565f&",
+    "local": "originals/discord/mapas/batalla-por-gergovia/Batalla_por_Gergovia.BFHP"
+   }
+  ],
+  "desc": "",
+  "count": 1,
+  "slug": "batalla-por-gergovia"
+ },
+ {
+  "channel": "mapas",
+  "section": "",
+  "title": "LA TIERRA MEDIA",
+  "author": "Ferónidas",
+  "discord": "https://discord.com/channels/479629904657514526/1413782299786608682/1422369584803217409",
+  "year": "2025",
+  "base": "Imperivm HD vRelease 1.0",
+  "links": [],
+  "files": [
+   {
+    "name": "The_Middle-earth.BFHP",
+    "size": 4423092,
+    "url": "https://cdn.discordapp.com/attachments/1413782299786608682/1422369584517742602/The_Middle-earth.BFHP?ex=6ad4b227&is=6ad360a7&hm=0885baf7e6ec79b06609788ba9810be21a544293819fc8b6fd068b25b1936ab1&",
+    "local": "originals/discord/mapas/la-tierra-media/The_Middle-earth.BFHP"
+   }
+  ],
+  "desc": "",
+  "count": 1,
+  "slug": "la-tierra-media"
+ },
+ {
+  "channel": "mapas",
+  "section": "",
+  "title": "MINITORNEO",
+  "author": "Inu El Heredero",
+  "discord": "https://discord.com/channels/479629904657514526/1413782299786608682/1506241387216113736",
+  "year": "2026",
+  "base": "Imperivm HD vRelease 1.0",
+  "links": [],
+  "files": [
+   {
+    "name": "MiniTorneo_01.BFHP",
+    "size": 885248,
+    "url": "https://cdn.discordapp.com/attachments/1413782299786608682/1506241387262378044/MiniTorneo_01.BFHP?ex=6ad5475b&is=6ad3f5db&hm=733b1fbddf84455f4f4fc09b1431923f83bd1754c43935033f15b2f17be3ce55&",
+    "local": "originals/discord/mapas/minitorneo/MiniTorneo_01.BFHP"
+   }
+  ],
+  "desc": "",
+  "count": 1,
+  "slug": "minitorneo"
+ },
+ {
+  "channel": "mapas",
+  "section": "",
+  "title": "MEDITERRÁNEO",
+  "author": "Numida",
+  "discord": "https://discord.com/channels/479629904657514526/1413782299786608682/1513605214005887156",
+  "year": "2026",
+  "base": "Imperivm HD vRelease 1.0",
+  "links": [],
+  "files": [
+   {
+    "name": "Ancient_world_of_Numida.BFHP",
+    "size": 3874936,
+    "url": "https://cdn.discordapp.com/attachments/1413782299786608682/1513605213729067258/Ancient_world_of_Numida.BFHP?ex=6ad50ab4&is=6ad3b934&hm=b0db2464aa9226b8e95f3bb73b90e4dd69900cb5615f1c9ff8beb2b1fe52b2fc&",
+    "local": "originals/discord/mapas/mediterraneo/Ancient_world_of_Numida.BFHP"
+   }
+  ],
+  "desc": "",
+  "count": 1,
+  "slug": "mediterraneo"
+ },
+ {
+  "channel": "aventuras",
+  "section": "",
+  "title": "EL ASEDIO",
+  "author": "moonson",
+  "discord": "https://discord.com/channels/479629904657514526/1413800335213985836/1414560974496727141",
+  "year": "2010",
+  "base": "Imperivm III v1.40",
+  "links": [
+   "https://imperivmgbr.foroactivo.com/t357-mapa-para-online-y-aventura-el-asedio"
+  ],
+  "files": [
+   {
+    "name": "el_asedio.bfhp",
+    "size": 1516573,
+    "url": "https://cdn.discordapp.com/attachments/1413800335213985836/1414560974014513254/el_asedio.bfhp?ex=6ad54ad1&is=6ad3f951&hm=5e8b83ebe1e43d2e3b52ef6902894f40688f0d9dd03882896b2a9bf87048fa90&",
+    "local": "originals/discord/aventuras/el-asedio/el_asedio.bfhp"
+   }
+  ],
+  "desc": "Los íberos tratan de defenderse de los infinitos ejércitos cartagineses, cosa que es prácticamente imposible, pero no tanto para Pavald...",
+  "count": 1,
+  "slug": "el-asedio"
+ },
+ {
+  "channel": "aventuras",
+  "section": "",
+  "title": "LA DEFENSA DE FORFORA",
+  "author": "El Jüsticiero Misteryoso",
+  "discord": "https://discord.com/channels/479629904657514526/1413800335213985836/1414561102687244288",
+  "year": "2010",
+  "base": "Imperivm III v1.40",
+  "links": [
+   "https://imperivmgbr.foroactivo.com/t368-aventura-la-defensa-de-forfora"
+  ],
+  "files": [
+   {
+    "name": "La_Defensa_De_Forfora.BFHP",
+    "size": 1420112,
+    "url": "https://cdn.discordapp.com/attachments/1413800335213985836/1414561102179860571/La_Defensa_De_Forfora.BFHP?ex=6ad54af0&is=6ad3f970&hm=0c9038f7b8bd43df957103b688c18850e17613fc75037ca60f8a9f60146250a1&",
+    "local": "originals/discord/aventuras/la-defensa-de-forfora/La_Defensa_De_Forfora.BFHP"
+   }
+  ],
+  "desc": "Forfora es la ciudad íbera mejor defendida, pero su situación intermedia lleva a muchas civilizaciones a pelearse por ella. ¿Resistirá? Tú puedes decidirlo...",
+  "count": 1,
+  "slug": "la-defensa-de-forfora"
+ },
+ {
+  "channel": "aventuras",
+  "section": "",
+  "title": "CIUDADELA",
+  "author": "Jochi",
+  "discord": "https://discord.com/channels/479629904657514526/1413800335213985836/1414561238666575945",
+  "year": "2012",
+  "base": "Imperivm III v1.40",
+  "links": [
+   "https://imperivmgbr.foroactivo.com/t630-mis-mapas-hechos"
+  ],
+  "files": [
+   {
+    "name": "Ciudadela_3.0.BFHP",
+    "size": 4721664,
+    "url": "https://cdn.discordapp.com/attachments/1413800335213985836/1414561238339293225/Ciudadela_3.0.BFHP?ex=6ad54b10&is=6ad3f990&hm=9a090fc5be20d7c926309515e0575fa87d8c834fa8b64d00bc383e2aa399d68e&",
+    "local": "originals/discord/aventuras/ciudadela/Ciudadela_3.0.BFHP"
+   }
+  ],
+  "desc": "",
+  "count": 1,
+  "slug": "ciudadela"
+ },
+ {
+  "channel": "aventuras",
+  "section": "",
+  "title": "DESIERTO",
+  "author": "Jochi",
+  "discord": "https://discord.com/channels/479629904657514526/1413800335213985836/1414561357537345637",
+  "year": "2012",
+  "base": "Imperivm III v1.40",
+  "links": [
+   "https://imperivmgbr.foroactivo.com/t630-mis-mapas-hechos"
+  ],
+  "files": [
+   {
+    "name": "Des3.BFHP",
+    "size": 1514914,
+    "url": "https://cdn.discordapp.com/attachments/1413800335213985836/1414561356958400595/Des3.BFHP?ex=6ad54b2c&is=6ad3f9ac&hm=47e37a2511c7ad52236305c3d823b8927ae2b50efbe753e2cd95f6632e1efb77&",
+    "local": "originals/discord/aventuras/desierto/Des3.BFHP"
+   }
+  ],
+  "desc": "",
+  "count": 1,
+  "slug": "desierto"
+ },
+ {
+  "channel": "aventuras",
+  "section": "",
+  "title": "PRAE",
+  "author": "Jochi",
+  "discord": "https://discord.com/channels/479629904657514526/1413800335213985836/1414561461073871009",
+  "year": "2012",
+  "base": "Imperivm III v1.40",
+  "links": [
+   "https://imperivmgbr.foroactivo.com/t630-mis-mapas-hechos"
+  ],
+  "files": [
+   {
+    "name": "Prae_mas_dificil.BFHP",
+    "size": 3760640,
+    "url": "https://cdn.discordapp.com/attachments/1413800335213985836/1414561460775813131/Prae_mas_dificil.BFHP?ex=6ad54b45&is=6ad3f9c5&hm=40c3429d585b258a9f537b7ed0e56999221031e2ab1958c99e2a8b26527d38e0&",
+    "local": "originals/discord/aventuras/prae/Prae_mas_dificil.BFHP"
+   }
+  ],
+  "desc": "",
+  "count": 1,
+  "slug": "prae"
+ },
+ {
+  "channel": "aventuras",
+  "section": "",
+  "title": "AVENTURA DE IOMHAR",
+  "author": "Jochi",
+  "discord": "https://discord.com/channels/479629904657514526/1413800335213985836/1414561617424945233",
+  "year": "2013",
+  "base": "Imperivm III v1.40",
+  "links": [
+   "https://imperivmgbr.foroactivo.com/t654-mi-aventura-principal"
+  ],
+  "files": [
+   {
+    "name": "Union_2_buena_5.2.rar",
+    "size": 1481310,
+    "url": "https://cdn.discordapp.com/attachments/1413800335213985836/1414561617147854858/Union_2_buena_5.2.rar?ex=6ad54b6a&is=6ad3f9ea&hm=7efd874420632f096e6a0624ed5c51feeaf86ab5a50ba1c97398864195e10c7e&",
+    "local": "originals/discord/aventuras/aventura-de-iomhar/Union_2_buena_5.2.rar"
+   }
+  ],
+  "desc": "",
+  "count": 1,
+  "slug": "aventura-de-iomhar"
+ },
+ {
+  "channel": "aventuras",
+  "section": "",
+  "title": "MAPA 9",
+  "author": "Guigoras",
+  "discord": "https://discord.com/channels/479629904657514526/1413800335213985836/1414563574021361714",
+  "year": "2013",
+  "base": "Imperivm III v1.40",
+  "links": [
+   "https://imperivmgbr.foroactivo.com/t697-recopilacion-de-guigoras-en-mega-y-mediafire"
+  ],
+  "files": [
+   {
+    "name": "mapa_nueve.BFHP",
+    "size": 1707081,
+    "url": "https://cdn.discordapp.com/attachments/1413800335213985836/1414563573656584302/mapa_nueve.BFHP?ex=6ad54d3d&is=6ad3fbbd&hm=178cc605e18dd144f429749e2a1a2c80f67551e1bed2193f91f6c7db7b841c9a&",
+    "local": "originals/discord/aventuras/mapa-9/mapa_nueve.BFHP"
+   }
+  ],
+  "desc": "El joven Mecenas se incorpora a su primer destino, Saguntum, una fortaleza aislada del resto de la Republica. Será el segundo al mando del general Quinto. Bueno, solo serán unos meses...",
+  "count": 1,
+  "slug": "mapa-9"
+ },
+ {
+  "channel": "aventuras",
+  "section": "",
+  "title": "MARSELLA",
+  "author": "Guigoras",
+  "discord": "https://discord.com/channels/479629904657514526/1413800335213985836/1414563706460962888",
+  "year": "2013",
+  "base": "Imperivm III v1.40",
+  "links": [
+   "https://imperivmgbr.foroactivo.com/t697-recopilacion-de-guigoras-en-mega-y-mediafire"
+  ],
+  "files": [
+   {
+    "name": "Marsella.BFHP",
+    "size": 1502720,
+    "url": "https://cdn.discordapp.com/attachments/1413800335213985836/1414563706087538788/Marsella.BFHP?ex=6ad54d5c&is=6ad3fbdc&hm=a773d618453062ae3d8ae390daf38161ff408a60aa145992328900bfa27821c0&",
+    "local": "originals/discord/aventuras/marsella/Marsella.BFHP"
+   }
+  ],
+  "desc": "Marsella ha caído en manos romanas. La hegemonia cartaginesa en el Mediterráneo y su alianza comercial con las naciones galas están en juego.",
+  "count": 1,
+  "slug": "marsella"
+ },
+ {
+  "channel": "aventuras",
+  "section": "",
+  "title": "MARSELLA 2",
+  "author": "Guigoras",
+  "discord": "https://discord.com/channels/479629904657514526/1413800335213985836/1414563835419033733",
+  "year": "2013",
+  "base": "Imperivm III v1.40",
+  "links": [
+   "https://imperivmgbr.foroactivo.com/t697-recopilacion-de-guigoras-en-mega-y-mediafire"
+  ],
+  "files": [
+   {
+    "name": "Marsella2.BFHP",
+    "size": 1497088,
+    "url": "https://cdn.discordapp.com/attachments/1413800335213985836/1414563835188084846/Marsella2.BFHP?ex=6ad54d7b&is=6ad3fbfb&hm=0acaad6cafa72e9921d6ad423f7f0be8a446773f3a74471a8aeadd2291d6b9d7&",
+    "local": "originals/discord/aventuras/marsella-2/Marsella2.BFHP"
+   }
+  ],
+  "desc": "Marsella está romanizada. Julio César está terminando su gloriosa campaña en la Galia y su futuro y el gobierno de Roma están en juego.",
+  "count": 1,
+  "slug": "marsella-2"
+ },
+ {
+  "channel": "aventuras",
+  "section": "",
+  "title": "LATINOS",
+  "author": "Guigoras",
+  "discord": "https://discord.com/channels/479629904657514526/1413800335213985836/1414563937101287444",
+  "year": "2013",
+  "base": "Imperivm III v1.40",
+  "links": [
+   "https://imperivmgbr.foroactivo.com/t697-recopilacion-de-guigoras-en-mega-y-mediafire"
+  ],
+  "files": [
+   {
+    "name": "Latinos.BFHP",
+    "size": 1418752,
+    "url": "https://cdn.discordapp.com/attachments/1413800335213985836/1414563935725817896/Latinos.BFHP?ex=6ad54d93&is=6ad3fc13&hm=215fa66c8a275479337c6bffecab5ea30fc7f8d3d89744357adea659d8f3e1a2&",
+    "local": "originals/discord/aventuras/latinos/Latinos.BFHP"
+   }
+  ],
+  "desc": "En el medio de la península itálica un pueblo esta siendo explotado por sus vecinos. Dos hermanos lo cambiarán todo. Ésta es su historia.",
+  "count": 1,
+  "slug": "latinos"
+ },
+ {
+  "channel": "aventuras",
+  "section": "",
+  "title": "IBERIA",
+  "author": "Guigoras",
+  "discord": "https://discord.com/channels/479629904657514526/1413800335213985836/1414564040029634694",
+  "year": "2013",
+  "base": "Imperivm III v1.40",
+  "links": [
+   "https://imperivmgbr.foroactivo.com/t697-recopilacion-de-guigoras-en-mega-y-mediafire"
+  ],
+  "files": [
+   {
+    "name": "Iberia.BFHP",
+    "size": 1377280,
+    "url": "https://cdn.discordapp.com/attachments/1413800335213985836/1414564039690027058/Iberia.BFHP?ex=6ad54dac&is=6ad3fc2c&hm=df9121fdf2c5e6cfc7b10c7634071deb1141363e1db14c4b8c1f82180aeb4f13&",
+    "local": "originals/discord/aventuras/iberia/Iberia.BFHP"
+   }
+  ],
+  "desc": "Mecenas llega a Iberia.",
+  "count": 1,
+  "slug": "iberia"
+ },
+ {
+  "channel": "aventuras",
+  "section": "",
+  "title": "ETRURIA",
+  "author": "Guigoras",
+  "discord": "https://discord.com/channels/479629904657514526/1413800335213985836/1414564151946252349",
+  "year": "2013",
+  "base": "Imperivm III v1.40",
+  "links": [
+   "https://imperivmgbr.foroactivo.com/t697-recopilacion-de-guigoras-en-mega-y-mediafire"
+  ],
+  "files": [
+   {
+    "name": "Etruria.BFHP",
+    "size": 1565808,
+    "url": "https://cdn.discordapp.com/attachments/1413800335213985836/1414564151560507484/Etruria.BFHP?ex=6ad54dc7&is=6ad3fc47&hm=45c7b7cf70fd6c76cfec9e39de113b58a358b3e108dc36bf7f55f2b82348a84f&",
+    "local": "originals/discord/aventuras/etruria/Etruria.BFHP"
+   }
+  ],
+  "desc": "Todo empieza con una traición. Para capturar los asentamientos primero hay que capturar los fortines que los defienden, si no es imposible. Para capturar los fortines de Arretium y ganar hay que haber matado a todos los Guardianes Sagrados de todos los fortines de Etruria.",
+  "count": 1,
+  "slug": "etruria"
+ },
+ {
+  "channel": "aventuras",
+  "section": "",
+  "title": "EQUIADA",
+  "author": "Guigoras",
+  "discord": "https://discord.com/channels/479629904657514526/1413800335213985836/1414564275812434013",
+  "year": "2014",
+  "base": "Imperivm III v1.40",
+  "links": [
+   "https://imperivmgbr.foroactivo.com/t697-recopilacion-de-guigoras-en-mega-y-mediafire"
+  ],
+  "files": [
+   {
+    "name": "Equiada-ImperyumIII.BFHP",
+    "size": 1598976,
+    "url": "https://cdn.discordapp.com/attachments/1413800335213985836/1414564275271237652/Equiada-ImperyumIII.BFHP?ex=6ad54de4&is=6ad3fc64&hm=ea4fb4be99c3c892daf4c115ac81acfa632a16f4bae0bfeacfa8634b12f31492&",
+    "local": "originals/discord/aventuras/equiada/Equiada-ImperyumIII.BFHP"
+   }
+  ],
+  "desc": "La situación de los galos es insostenible. Tributar a los romanos al oeste o a los germanos al este. Si fueras capaz de unirlos la ocupación terminaría.",
+  "count": 1,
+  "slug": "equiada"
+ },
+ {
+  "channel": "aventuras",
+  "section": "",
+  "title": "ARRAQUIS",
+  "author": "Guigoras",
+  "discord": "https://discord.com/channels/479629904657514526/1413800335213985836/1414564415738613853",
+  "year": "2014",
+  "base": "Imperivm III v1.40",
+  "links": [
+   "https://imperivmgbr.foroactivo.com/t697-recopilacion-de-guigoras-en-mega-y-mediafire"
+  ],
+  "files": [
+   {
+    "name": "Arraquis-ImperyumIII.BFHP",
+    "size": 4885107,
+    "url": "https://cdn.discordapp.com/attachments/1413800335213985836/1414564415621304361/Arraquis-ImperyumIII.BFHP?ex=6ad54e06&is=6ad3fc86&hm=a612ee8ae499cb02af71538f6630e6ab787aa7176c0ec7c47c2ab28a0358710f&",
+    "local": "originals/discord/aventuras/arraquis/Arraquis-ImperyumIII.BFHP"
+   }
+  ],
+  "desc": "¿Serás capaz de conquistar Cartago? Te espera una dura lucha en el desierto contra el mayor enemigo de Roma.",
+  "count": 1,
+  "slug": "arraquis"
+ },
+ {
+  "channel": "aventuras",
+  "section": "",
+  "title": "TATUIN",
+  "author": "Guigoras",
+  "discord": "https://discord.com/channels/479629904657514526/1413800335213985836/1414564490745483355",
+  "year": "2014",
+  "base": "Imperivm III v1.40",
+  "links": [
+   "https://imperivmgbr.foroactivo.com/t697-recopilacion-de-guigoras-en-mega-y-mediafire"
+  ],
+  "files": [
+   {
+    "name": "Tatuin-ImperyumIII.BFHP",
+    "size": 4535808,
+    "url": "https://cdn.discordapp.com/attachments/1413800335213985836/1414564490564997180/Tatuin-ImperyumIII.BFHP?ex=6ad54e17&is=6ad3fc97&hm=1c28c6127537549a5e0b7efc2ad74b409397378ad684dd481f63c3b396fd70a8&",
+    "local": "originals/discord/aventuras/tatuin/Tatuin-ImperyumIII.BFHP"
+   }
+  ],
+  "desc": "En la tierra del Nilo, solo hay sitio para un Faraón",
+  "count": 1,
+  "slug": "tatuin"
+ },
+ {
+  "channel": "aventuras",
+  "section": "",
+  "title": "LEGIO 8",
+  "author": "Guigoras",
+  "discord": "https://discord.com/channels/479629904657514526/1413800335213985836/1414564577789612135",
+  "year": "2014",
+  "base": "Imperivm III v1.40",
+  "links": [
+   "https://imperivmgbr.foroactivo.com/t697-recopilacion-de-guigoras-en-mega-y-mediafire"
+  ],
+  "files": [
+   {
+    "name": "Legio_8.BFHP",
+    "size": 3920384,
+    "url": "https://cdn.discordapp.com/attachments/1413800335213985836/1414564577588412426/Legio_8.BFHP?ex=6ad54e2c&is=6ad3fcac&hm=583194b45f6294834eadaa695b6e23a7aecbde8a2bd265f6a5ebbbb40c3a6b84&",
+    "local": "originals/discord/aventuras/legio-8/Legio_8.BFHP"
+   }
+  ],
+  "desc": "En la frontera germana Legio 8 tiene que resistir con sus aliados galos de la ofensiva enemiga. Comandas a las tropas de Mesgara. El futuro de los tuyos está en tus manos.",
+  "count": 1,
+  "slug": "legio-8"
+ },
+ {
+  "channel": "aventuras",
+  "section": "",
+  "title": "CELTÍBEROS",
+  "author": "Guigoras",
+  "discord": "https://discord.com/channels/479629904657514526/1413800335213985836/1414564656890253322",
+  "year": "2014",
+  "base": "Imperivm III v1.40",
+  "links": [
+   "https://imperivmgbr.foroactivo.com/t697-recopilacion-de-guigoras-en-mega-y-mediafire"
+  ],
+  "files": [
+   {
+    "name": "Celtiberos.BFHP",
+    "size": 1401251,
+    "url": "https://cdn.discordapp.com/attachments/1413800335213985836/1414564656391000265/Celtiberos.BFHP?ex=6ad54e3f&is=6ad3fcbf&hm=fd142b92a93f2cf4d481010eb6a373b9bcd01782281fea0e17dded05225d94e9&",
+    "local": "originals/discord/aventuras/celtiberos/Celtiberos.BFHP"
+   }
+  ],
+  "desc": "Conquista esta tierra celtíbera con la ayuda de Master.",
+  "count": 1,
+  "slug": "celtiberos"
+ },
+ {
+  "channel": "aventuras",
+  "section": "",
+  "title": "LAS CUEVAS DEL HADES",
+  "author": "Guigoras",
+  "discord": "https://discord.com/channels/479629904657514526/1413800335213985836/1414566507450728550",
+  "year": "2015",
+  "base": "Imperivm III v1.40",
+  "links": [
+   "https://imperivmgbr.foroactivo.com/t697-recopilacion-de-guigoras-en-mega-y-mediafire"
+  ],
+  "files": [
+   {
+    "name": "Las_cuevas_del_Hades.BFHP",
+    "size": 1025552,
+    "url": "https://cdn.discordapp.com/attachments/1413800335213985836/1414566507232493578/Las_cuevas_del_Hades.BFHP?ex=6ad54ff8&is=6ad3fe78&hm=46fa7b5a0936f00b776b599abf6b5511230bc386bcb4c1f368e9e4a1d4d39728&",
+    "local": "originals/discord/aventuras/las-cuevas-del-hades/Las_cuevas_del_Hades.BFHP"
+   }
+  ],
+  "desc": "Incluso un superhéroe tiene un resbalón... Lárax no iba a ser menos. Y entonces hay que estar preparado. ¿Tú lo estás? ¡Cuántos más muertos tengas en el armario más tendrás que saltar!",
+  "count": 1,
+  "slug": "las-cuevas-del-hades"
+ },
+ {
+  "channel": "aventuras",
+  "section": "",
+  "title": "EL INTENTO DE GUIGORAS",
+  "author": "Guigoras",
+  "discord": "https://discord.com/channels/479629904657514526/1413800335213985836/1414566646323871804",
+  "year": "2015",
+  "base": "Imperivm III v1.40",
+  "links": [
+   "https://imperivmgbr.foroactivo.com/t697-recopilacion-de-guigoras-en-mega-y-mediafire"
+  ],
+  "files": [
+   {
+    "name": "El_intento_de_Guigoras.BFHP",
+    "size": 3071488,
+    "url": "https://cdn.discordapp.com/attachments/1413800335213985836/1414566645938126939/El_intento_de_Guigoras.BFHP?ex=6ad55019&is=6ad3fe99&hm=5a0a21aba017f41a260ca9c59cf9f50bd061ec1bc2bb41efaaf486886724c4c5&",
+    "local": "originals/discord/aventuras/el-intento-de-guigoras/El_intento_de_Guigoras.BFHP"
+   }
+  ],
+  "desc": "¿Podrá Guigoras con la ayuda de sus aliados galos unificar a los íberos y juntos expulsar a los romanos de estas montañas?",
+  "count": 1,
+  "slug": "el-intento-de-guigoras"
+ },
+ {
+  "channel": "aventuras",
+  "section": "",
+  "title": "GUIGORAS EN SALMANTICA",
+  "author": "Guigoras",
+  "discord": "https://discord.com/channels/479629904657514526/1413800335213985836/1414566747821838477",
+  "year": "2015",
+  "base": "Imperivm III v1.40",
+  "links": [
+   "https://imperivmgbr.foroactivo.com/t697-recopilacion-de-guigoras-en-mega-y-mediafire"
+  ],
+  "files": [
+   {
+    "name": "Guigoras_en_Salmantica.BFHP",
+    "size": 1770218,
+    "url": "https://cdn.discordapp.com/attachments/1413800335213985836/1414566747507261532/Guigoras_en_Salmantica.BFHP?ex=6ad55031&is=6ad3feb1&hm=bc041ef5cdbd3b260314a46eeafc9b505abd56738ad188ba59cee8c621900286&",
+    "local": "originals/discord/aventuras/guigoras-en-salmantica/Guigoras_en_Salmantica.BFHP"
+   }
+  ],
+  "desc": "Salmantica esta gobernada por cartagineses que para conservarla han pactado con Roma. La ocupacion romana es evidente. Hará falta mucha ayuda de la Orden de Lucil y de Salmantica.",
+  "count": 1,
+  "slug": "guigoras-en-salmantica"
+ },
+ {
+  "channel": "aventuras",
+  "section": "",
+  "title": "LA PRUEBA DE GUIGORAS",
+  "author": "Guigoras",
+  "discord": "https://discord.com/channels/479629904657514526/1413800335213985836/1414566831993262101",
+  "year": "2013",
+  "base": "Imperivm III v1.40",
+  "links": [
+   "https://imperivmgbr.foroactivo.com/t697-recopilacion-de-guigoras-en-mega-y-mediafire"
+  ],
+  "files": [
+   {
+    "name": "La_prueba_de_Guigoras.BFHP",
+    "size": 2853376,
+    "url": "https://cdn.discordapp.com/attachments/1413800335213985836/1414566831896662026/La_prueba_de_Guigoras.BFHP?ex=6ad55046&is=6ad3fec6&hm=eafaf0fccba237a4e91d0587a8c0feb11a2dcd6ba8f12eee0384cafaa7bdb477&",
+    "local": "originals/discord/aventuras/la-prueba-de-guigoras/La_prueba_de_Guigoras.BFHP"
+   }
+  ],
+  "desc": "La Orden de Lucil manda a Guigoras a tierras africanas pero... ¿es un destierro? o ¿realmente se decide aquí el futuro de Iberia?",
+  "count": 1,
+  "slug": "la-prueba-de-guigoras"
+ },
+ {
+  "channel": "aventuras",
+  "section": "",
+  "title": "GUIGORAS EN EMERITA AUGUSTA",
+  "author": "Guigoras",
+  "discord": "https://discord.com/channels/479629904657514526/1413800335213985836/1414566909663510601",
+  "year": "2015",
+  "base": "Imperivm III v1.40",
+  "links": [
+   "https://imperivmgbr.foroactivo.com/t697-recopilacion-de-guigoras-en-mega-y-mediafire"
+  ],
+  "files": [
+   {
+    "name": "Emerita_Augusta.BFHP",
+    "size": 5219840,
+    "url": "https://cdn.discordapp.com/attachments/1413800335213985836/1414566909390618675/Emerita_Augusta.BFHP?ex=6ad55058&is=6ad3fed8&hm=012c5b26cdb1d7cf695371606311420dca2165fc9f1b78a623b1e5d997ffc442&",
+    "local": "originals/discord/aventuras/guigoras-en-emerita-augusta/Emerita_Augusta.BFHP"
+   }
+  ],
+  "desc": "Las sacerdotisas íberas han conseguido la \"Alianza\" de sus caudillos en su lucha contra Roma, hecho el reparto del \"botín\" y os han elegido para ser \"los capitanes\" de esta titánica empresa... ¿Estarás a la altura de tu pueblo?",
+  "count": 1,
+  "slug": "guigoras-en-emerita-augusta"
+ },
+ {
+  "channel": "aventuras",
+  "section": "",
+  "title": "LA AVENTURA GALA",
+  "author": "Guigoras",
+  "discord": "https://discord.com/channels/479629904657514526/1413800335213985836/1414567035115147325",
+  "year": "2015",
+  "base": "Imperivm III v1.40",
+  "links": [
+   "https://imperivmgbr.foroactivo.com/t697-recopilacion-de-guigoras-en-mega-y-mediafire"
+  ],
+  "files": [
+   {
+    "name": "La_aventura_gala_..BFHP",
+    "size": 6280192,
+    "url": "https://cdn.discordapp.com/attachments/1413800335213985836/1414567034783531058/La_aventura_gala_..BFHP?ex=6ad55076&is=6ad3fef6&hm=df7c8d75bf28114e4b072dc5b003d65beeb228dd1a8bfbc34f10e602188724a0&",
+    "local": "originals/discord/aventuras/la-aventura-gala/La_aventura_gala_..BFHP"
+   }
+  ],
+  "desc": "A la muerte del rey de Ausques y Tarballes, el reino queda repartido: Ausques para Julio y Tarbelles para Santra, pero ahora Julio es un mercenario de César para recuperar lo que es suyo.",
+  "count": 1,
+  "slug": "la-aventura-gala"
+ },
+ {
+  "channel": "aventuras",
+  "section": "",
+  "title": "TRIBUTO IMPERIUM",
+  "author": "Guigoras",
+  "discord": "https://discord.com/channels/479629904657514526/1413800335213985836/1414567108595023892",
+  "year": "2017",
+  "base": "Imperivm III v1.40",
+  "links": [
+   "https://imperivmgbr.foroactivo.com/t697-recopilacion-de-guigoras-en-mega-y-mediafire"
+  ],
+  "files": [
+   {
+    "name": "Tributo_Imperium..BFHP",
+    "size": 1852928,
+    "url": "https://cdn.discordapp.com/attachments/1413800335213985836/1414567108209279066/Tributo_Imperium..BFHP?ex=6ad55087&is=6ad3ff07&hm=b5f92cc70be54db759a33441688c87716824f1a1d0675f03fdf9ef668b00f68f&",
+    "local": "originals/discord/aventuras/tributo-imperium/Tributo_Imperium..BFHP"
+   }
+  ],
+  "desc": "Controla la fortaleza cartaginesa y busca la alianza con los íberos contra Roma.",
+  "count": 1,
+  "slug": "tributo-imperium"
+ },
+ {
+  "channel": "aventuras",
+  "section": "",
+  "title": "REYES CELTAS",
+  "author": "Guigoras",
+  "discord": "https://discord.com/channels/479629904657514526/1413800335213985836/1414567185086681130",
+  "year": "2017",
+  "base": "Imperivm III v1.40",
+  "links": [
+   "https://imperivmgbr.foroactivo.com/t697-recopilacion-de-guigoras-en-mega-y-mediafire"
+  ],
+  "files": [
+   {
+    "name": "Reyes_Celtas.BFHP",
+    "size": 4832397,
+    "url": "https://cdn.discordapp.com/attachments/1413800335213985836/1414567184566583399/Reyes_Celtas.BFHP?ex=6ad5509a&is=6ad3ff1a&hm=d574c59596a6401f08416c98fe5f97c87cecc1e15135e1bfff993e221955d7c4&",
+    "local": "originals/discord/aventuras/reyes-celtas/Reyes_Celtas.BFHP"
+   }
+  ],
+  "desc": "Nueva aventura de Guigoras en el salvaje Norte. ¡Sobrevive con él y sus camaradas a todos los golpes de sus enemigos y de tu destino!",
+  "count": 1,
+  "slug": "reyes-celtas"
+ },
+ {
+  "channel": "aventuras",
+  "section": "",
+  "title": "LA RESPUESTA ESTÁ EN EL AIRE",
+  "author": "Guigoras",
+  "discord": "https://discord.com/channels/479629904657514526/1413800335213985836/1414567265604468827",
+  "year": "2020",
+  "base": "Imperivm III v1.40",
+  "links": [
+   "https://imperivmgbr.foroactivo.com/t697-recopilacion-de-guigoras-en-mega-y-mediafire"
+  ],
+  "files": [
+   {
+    "name": "La_Respuesta_Esta_en_el_Aire.BFHP",
+    "size": 1796641,
+    "url": "https://cdn.discordapp.com/attachments/1413800335213985836/1414567265344426064/La_Respuesta_Esta_en_el_Aire.BFHP?ex=6ad550ad&is=6ad3ff2d&hm=7aae433abdc2953a8cdfbe4a234fe5f01dcfaef2cab21f44138722b7f49e6d44&",
+    "local": "originals/discord/aventuras/la-respuesta-esta-en-el-aire/La_Respuesta_Esta_en_el_Aire.BFHP"
+   }
+  ],
+  "desc": "Keltill regresa a su ciudad con intención de unirse a la lucha contra Roma, pero es demasiado tarde. Ha sido reducida a cenizas. La única resistencia ahora son los celtas de Castro, sus territorios y tal vez exista el Templo de Lucil y una resistencia íbera. ¿Podrás cambiar la historia?",
+  "count": 1,
+  "slug": "la-respuesta-esta-en-el-aire"
+ },
+ {
+  "channel": "aventuras",
+  "section": "",
+  "title": "INICIOS DE HAENOR",
+  "author": "adri55555",
+  "discord": "https://discord.com/channels/479629904657514526/1413800335213985836/1414568858462851148",
+  "year": "2015",
+  "base": "Imperivm III v1.40",
+  "links": [
+   "https://imperivmgbr.foroactivo.com/t797-primeros-mapas"
+  ],
+  "files": [],
+  "desc": "",
+  "count": 1,
+  "slug": "inicios-de-haenor"
+ },
+ {
+  "channel": "aventuras",
+  "section": "",
+  "title": "HAENOR, RESCATE DE VIRIATO",
+  "author": "adri55555 y arkano57",
+  "discord": "https://discord.com/channels/479629904657514526/1413800335213985836/1414568890997932094",
+  "year": "2015",
+  "base": "Imperivm III v1.40",
+  "links": [
+   "https://imperivmgbr.foroactivo.com/t797-primeros-mapas"
+  ],
+  "files": [
+   {
+    "name": "Haenor_conoce_a_Viriatocomienzo_de_una_historia_sin_mod.BFHP",
+    "size": 1794048,
+    "url": "https://cdn.discordapp.com/attachments/1413800335213985836/1414568891086016572/Haenor_conoce_a_Viriatocomienzo_de_una_historia_sin_mod.BFHP?ex=6ad55231&is=6ad400b1&hm=38ac3825dd5a85b321454d752127dc396c9b76fe27f39f009917b96c03372d80&",
+    "local": "originals/discord/aventuras/haenor-rescate-de-viriato/Haenor_conoce_a_Viriatocomienzo_de_una_historia_sin_mod.BFHP"
+   }
+  ],
+  "desc": "Roma esta persiguiendo a Viriato que tiene que escapar para buscar aliados para recuperar su amada Hispania y se encuentra a Haenor un gran guerrero que clama venganza.",
+  "count": 1,
+  "slug": "haenor-rescate-de-viriato"
+ },
+ {
+  "channel": "aventuras",
+  "section": "",
+  "title": "DEFENSORES DEL TÚMULO",
+  "author": "Hareld y Haemimont Games",
+  "discord": "https://discord.com/channels/479629904657514526/1413800335213985836/1414568999030620183",
+  "year": "2016",
+  "base": "Imperivm III v1.40",
+  "links": [
+   "https://imperivmgbr.foroactivo.com/t896-aventura-defensores-del-tumulo"
+  ],
+  "files": [
+   {
+    "name": "Defensores_del_Desierto.zip",
+    "size": 478953,
+    "url": "https://cdn.discordapp.com/attachments/1413800335213985836/1414568998930092112/Defensores_del_Desierto.zip?ex=6ad5524a&is=6ad400ca&hm=37ae9bb3cdb7052cba16d2b1b5d9c54dc536e936a84e32eec99e43ee24972a58&",
+    "local": "originals/discord/aventuras/defensores-del-tumulo/Defensores_del_Desierto.zip"
+   }
+  ],
+  "desc": "Tu grupo ha sido elegido por los dioses para defender la colina sagrada del ataque de los bárbaros. Tu misión es resistir el mayor número posible de días. Al final de cada día los dioses te otorgarán un deseo.",
+  "count": 1,
+  "slug": "defensores-del-tumulo"
+ },
+ {
+  "channel": "aventuras",
+  "section": "",
+  "title": "AVENTURA EN ALESIA",
+  "author": "Martín",
+  "discord": "https://discord.com/channels/479629904657514526/1413800335213985836/1414569123110981793",
+  "year": "2016",
+  "base": "Imperivm III v1.40",
+  "links": [
+   "https://imperivmgbr.foroactivo.com/t900-mapa-aventura-en-alesia"
+  ],
+  "files": [
+   {
+    "name": "Aventura_en_Alesia.zip",
+    "size": 945927,
+    "url": "https://cdn.discordapp.com/attachments/1413800335213985836/1414569122720645191/Aventura_en_Alesia.zip?ex=6ad55268&is=6ad400e8&hm=5620155d1ff5c17c4b3380a4007be6c860c92d3558ba7b6c00983d447b09ccf1&",
+    "local": "originals/discord/aventuras/aventura-en-alesia/Aventura_en_Alesia.zip"
+   }
+  ],
+  "desc": "",
+  "count": 1,
+  "slug": "aventura-en-alesia"
+ },
+ {
+  "channel": "aventuras",
+  "section": "",
+  "title": "INFIERNO EN IBERIA",
+  "author": "OskaOtzuna",
+  "discord": "https://discord.com/channels/479629904657514526/1413800335213985836/1414569231076429844",
+  "year": "2017",
+  "base": "Imperivm III v1.40",
+  "links": [
+   "https://imperivmgbr.foroactivo.com/t945-recopilacion-aventuras-varias"
+  ],
+  "files": [
+   {
+    "name": "Infierno_en_Iberia.BFHP",
+    "size": 4351721,
+    "url": "https://cdn.discordapp.com/attachments/1413800335213985836/1414569230782959648/Infierno_en_Iberia.BFHP?ex=6ad55282&is=6ad40102&hm=e0e9191758587eaaf19b63f1ba4d77d7de276a029160f167e505ddcc454d6ebe&",
+    "local": "originals/discord/aventuras/infierno-en-iberia/Infierno_en_Iberia.BFHP"
+   }
+  ],
+  "desc": "Publio Cornelio Escipión desembarca en Iberia para retomar la guerra contra los cartagineses en suelo hispano. Los cartagineses, con Asdrúbal Barca a la cabeza, les saldrán al paso, pero esta vez un héroe íbero se interpondrá entre los dos imperios más poderosos de la época para cambiar el destino del mundo.",
+  "count": 1,
+  "slug": "infierno-en-iberia"
+ },
+ {
+  "channel": "aventuras",
+  "section": "",
+  "title": "ESCIPIÓN CONTRA TODOS",
+  "author": "OskaOtzuna",
+  "discord": "https://discord.com/channels/479629904657514526/1413800335213985836/1414569307827867748",
+  "year": "2017",
+  "base": "Imperivm III v1.40",
+  "links": [
+   "https://imperivmgbr.foroactivo.com/t945-recopilacion-aventuras-varias"
+  ],
+  "files": [
+   {
+    "name": "escipiA3n_contra_todos.BFHP",
+    "size": 4330496,
+    "url": "https://cdn.discordapp.com/attachments/1413800335213985836/1414569307483930624/escipiA3n_contra_todos.BFHP?ex=6ad55294&is=6ad40114&hm=d9e535c112b09827db90dad1976c2a1494d2e913c53073054ba06f636867799d&",
+    "local": "originals/discord/aventuras/escipion-contra-todos/escipiA3n_contra_todos.BFHP"
+   }
+  ],
+  "desc": "Publio Cornelio Escipión desembarca en Iberia para retomar la guerra contra los cartagineses en suelo hispano. Los cartagineses, con Asdrúbal Barca a la cabeza, les saldrán al paso, pero esta vez un héroe íbero se interpondrá entre los dos imperios más poderosos de la época para cambiar el destino del mundo.",
+  "count": 1,
+  "slug": "escipion-contra-todos"
+ },
+ {
+  "channel": "aventuras",
+  "section": "",
+  "title": "ASDRÚBAL, SEÑOR DE IBERIA",
+  "author": "OskaOtzuna",
+  "discord": "https://discord.com/channels/479629904657514526/1413800335213985836/1414569387339415613",
+  "year": "2017",
+  "base": "Imperivm III v1.40",
+  "links": [
+   "https://imperivmgbr.foroactivo.com/t945-recopilacion-aventuras-varias"
+  ],
+  "files": [
+   {
+    "name": "AsdrAobal_SeAor_de_Iberia.BFHP",
+    "size": 4330496,
+    "url": "https://cdn.discordapp.com/attachments/1413800335213985836/1414569387066789898/AsdrAobal_SeAor_de_Iberia.BFHP?ex=6ad552a7&is=6ad40127&hm=b84b8cd44a713713dd1ab98779fa36e20036398d9cfb3cb3ba5b46ff83fc150f&",
+    "local": "originals/discord/aventuras/asdrubal-senor-de-iberia/AsdrAobal_SeAor_de_Iberia.BFHP"
+   }
+  ],
+  "desc": "Publio Cornelio Escipión desembarca en Iberia para retomar la guerra contra los cartagineses en suelo hispano. Los cartagineses, con Asdrúbal Barca a la cabeza, les saldrán al paso, pero estan atrapados entre dos fuegos, los rebeldes íberos, celosos de su independencia y los poderosísimos romanos. Intenta cambiar el destino del mundo siendo Asdrúbal Barca.",
+  "count": 1,
+  "slug": "asdrubal-senor-de-iberia"
+ },
+ {
+  "channel": "aventuras",
+  "section": "",
+  "title": "ATLÁNTIDA",
+  "author": "Zardof",
+  "discord": "https://discord.com/channels/479629904657514526/1413800335213985836/1414569464804016140",
+  "year": "2017",
+  "base": "Imperivm III v1.40",
+  "links": [
+   "https://imperivmgbr.foroactivo.com/t945-recopilacion-aventuras-varias"
+  ],
+  "files": [
+   {
+    "name": "Atlantida.BFHP",
+    "size": 2058329,
+    "url": "https://cdn.discordapp.com/attachments/1413800335213985836/1414569464632180879/Atlantida.BFHP?ex=6ad552b9&is=6ad40139&hm=f392641c58eed2ee45b8983d2c62983686ebfb2341d82ba04846e94ae92b788b&",
+    "local": "originals/discord/aventuras/atlantida/Atlantida.BFHP"
+   }
+  ],
+  "desc": "Pugna por el control de la resurgida Atlántida, si la conquista Og, comprará más mercenarios. Sobrevive a las oleadas de los 7 Reyes.",
+  "count": 1,
+  "slug": "atlantida"
+ },
+ {
+  "channel": "aventuras",
+  "section": "",
+  "title": "LA VENGANZA GALA I",
+  "author": "IMPERYUS",
+  "discord": "https://discord.com/channels/479629904657514526/1413800335213985836/1414571328387809431",
+  "year": "2019",
+  "base": "Imperivm III v1.40",
+  "links": [
+   "https://imperivmgbr.foroactivo.com/t1067-recopilacion-aventuras-de-imperyus-santi-garcia-pascual"
+  ],
+  "files": [
+   {
+    "name": "la_venganza_gala_version_2019.BFHP",
+    "size": 2033664,
+    "url": "https://cdn.discordapp.com/attachments/1413800335213985836/1414571328094076968/la_venganza_gala_version_2019.BFHP?ex=6ad55476&is=6ad402f6&hm=461c95f4fdbe03794bb4ab4cb5773dd457079cf72e570e40abc3ca9d2220c256&",
+    "local": "originals/discord/aventuras/la-venganza-gala-i/la_venganza_gala_version_2019.BFHP"
+   }
+  ],
+  "desc": "El pueblo de Gended, un simple campesino, ha sido conquistado por los romanos y han matado a todos sus habitantes. Ahora, Gended busca venganza.",
+  "count": 1,
+  "slug": "la-venganza-gala-i"
+ },
+ {
+  "channel": "aventuras",
+  "section": "",
+  "title": "LA VENGANZA GALA II",
+  "author": "IMPERYUS",
+  "discord": "https://discord.com/channels/479629904657514526/1413800335213985836/1414571415549771776",
+  "year": "2017",
+  "base": "Imperivm III v1.40",
+  "links": [
+   "https://imperivmgbr.foroactivo.com/t1067-recopilacion-aventuras-de-imperyus-santi-garcia-pascual"
+  ],
+  "files": [
+   {
+    "name": "La_venganza_gala_II.BFHP",
+    "size": 1304042,
+    "url": "https://cdn.discordapp.com/attachments/1413800335213985836/1414571415121821738/La_venganza_gala_II.BFHP?ex=6ad5548a&is=6ad4030a&hm=a761c42e502a78ba8b21a0b908b8b6c6918424404cf739e2703963c1b6f06442&",
+    "local": "originals/discord/aventuras/la-venganza-gala-ii/La_venganza_gala_II.BFHP"
+   }
+  ],
+  "desc": "20 años despues de la muerte de Gended su hijo Gounde es general del ejército galo.",
+  "count": 1,
+  "slug": "la-venganza-gala-ii"
+ },
+ {
+  "channel": "aventuras",
+  "section": "",
+  "title": "LA VENGANZA GALA III",
+  "author": "IMPERYUS",
+  "discord": "https://discord.com/channels/479629904657514526/1413800335213985836/1414571490917093407",
+  "year": "2017",
+  "base": "Imperivm III v1.40",
+  "links": [
+   "https://imperivmgbr.foroactivo.com/t1067-recopilacion-aventuras-de-imperyus-santi-garcia-pascual"
+  ],
+  "files": [
+   {
+    "name": "La_venganza_gala_III.BFHP",
+    "size": 1155193,
+    "url": "https://cdn.discordapp.com/attachments/1413800335213985836/1414571490963361872/La_venganza_gala_III.BFHP?ex=6ad5549c&is=6ad4031c&hm=49842048f48bc5895d9e7ad0a5b7221a88779a7282787db775d6c5ce9a56825a&",
+    "local": "originals/discord/aventuras/la-venganza-gala-iii/La_venganza_gala_III.BFHP"
+   }
+  ],
+  "desc": "A Gounde le espera un juicio por el consejo de ancianos.",
+  "count": 1,
+  "slug": "la-venganza-gala-iii"
+ },
+ {
+  "channel": "aventuras",
+  "section": "",
+  "title": "LA VENGANZA GALA IV",
+  "author": "IMPERYUS",
+  "discord": "https://discord.com/channels/479629904657514526/1413800335213985836/1414571572039127040",
+  "year": "2017",
+  "base": "Imperivm III v1.40",
+  "links": [
+   "https://imperivmgbr.foroactivo.com/t1067-recopilacion-aventuras-de-imperyus-santi-garcia-pascual"
+  ],
+  "files": [
+   {
+    "name": "La_venganza_gala_IV.BFHP",
+    "size": 1134627,
+    "url": "https://cdn.discordapp.com/attachments/1413800335213985836/1414571571766628513/La_venganza_gala_IV.BFHP?ex=6ad554b0&is=6ad40330&hm=6f925effa1386fc919a4d09598397e7d5cd67b00ea6c5e961e96b3b530faa673&",
+    "local": "originals/discord/aventuras/la-venganza-gala-iv/La_venganza_gala_IV.BFHP"
+   }
+  ],
+  "desc": "El barco de Gounde naufraga en Egipto debido a las corrientes del mar cuando se disponían a ir a las Galias.",
+  "count": 1,
+  "slug": "la-venganza-gala-iv"
+ },
+ {
+  "channel": "aventuras",
+  "section": "",
+  "title": "LA VENGANZA GALA V",
+  "author": "IMPERYUS",
+  "discord": "https://discord.com/channels/479629904657514526/1413800335213985836/1414571646311989259",
+  "year": "2017",
+  "base": "Imperivm III v1.40",
+  "links": [
+   "https://imperivmgbr.foroactivo.com/t1067-recopilacion-aventuras-de-imperyus-santi-garcia-pascual"
+  ],
+  "files": [
+   {
+    "name": "La_venganza_gala_V.BFHP",
+    "size": 1299497,
+    "url": "https://cdn.discordapp.com/attachments/1413800335213985836/1414571646102278174/La_venganza_gala_V.BFHP?ex=6ad554c1&is=6ad40341&hm=23e527afcc181fec5610b974b7622f54a707d756a7c74a0ad08a8e9795643f76&",
+    "local": "originals/discord/aventuras/la-venganza-gala-v/La_venganza_gala_V.BFHP"
+   }
+  ],
+  "desc": "Gounde, Gongetet y Hospinget parten hacia los países nórdicos para salvar a Hospongotet que va a ser ejecutado por los romanos.",
+  "count": 1,
+  "slug": "la-venganza-gala-v"
+ },
+ {
+  "channel": "aventuras",
+  "section": "",
+  "title": "GERMANOS AL ATAQUE",
+  "author": "IMPERYUS",
+  "discord": "https://discord.com/channels/479629904657514526/1413800335213985836/1414574848772149349",
+  "year": "2019",
+  "base": "Imperivm III v1.40",
+  "links": [
+   "https://imperivmgbr.foroactivo.com/t1067-recopilacion-aventuras-de-imperyus-santi-garcia-pascual"
+  ],
+  "files": [
+   {
+    "name": "Germanos_al_ataque_2.0.BFHP",
+    "size": 2133504,
+    "url": "https://cdn.discordapp.com/attachments/1413800335213985836/1414574848444858389/Germanos_al_ataque_2.0.BFHP?ex=6ad4aefd&is=6ad35d7d&hm=6737d8599ba21c41af6f4e5e66e815595978cadfb1f7e68ac7478eee3d727687&",
+    "local": "originals/discord/aventuras/germanos-al-ataque/Germanos_al_ataque_2.0.BFHP"
+   }
+  ],
+  "desc": "Germar debe acabar con los galos e imponer el dominio germano sobre ellos.",
+  "count": 1,
+  "slug": "germanos-al-ataque"
+ },
+ {
+  "channel": "aventuras",
+  "section": "",
+  "title": "LA REBELIÓN GERMANA",
+  "author": "IMPERYUS",
+  "discord": "https://discord.com/channels/479629904657514526/1413800335213985836/1414574930518872185",
+  "year": "2019",
+  "base": "Imperivm III v1.40",
+  "links": [
+   "https://imperivmgbr.foroactivo.com/t1067-recopilacion-aventuras-de-imperyus-santi-garcia-pascual"
+  ],
+  "files": [
+   {
+    "name": "La_Rebelion_germana.BFHP",
+    "size": 2072576,
+    "url": "https://cdn.discordapp.com/attachments/1413800335213985836/1414574930132992000/La_Rebelion_germana.BFHP?ex=6ad4af10&is=6ad35d90&hm=3dfe6e6c488215a885deda74f825f675189565d7b05d48ec37a51ab2fbda11b7&",
+    "local": "originals/discord/aventuras/la-rebelion-germana/La_Rebelion_germana.BFHP"
+   }
+  ],
+  "desc": "Los germanos estaban sometidos a los romanos, pero la muerte de Garro Fogo, el mejor amigo de Boemo Matego, a manos de Brutus Máximo ha iniciado una rebelión.",
+  "count": 1,
+  "slug": "la-rebelion-germana"
+ },
+ {
+  "channel": "aventuras",
+  "section": "",
+  "title": "EN TRES PELLEJOS",
+  "author": "IMPERYUS",
+  "discord": "https://discord.com/channels/479629904657514526/1413800335213985836/1414575014593691759",
+  "year": "2019",
+  "base": "Imperivm III v1.40",
+  "links": [
+   "https://imperivmgbr.foroactivo.com/t1067-recopilacion-aventuras-de-imperyus-santi-garcia-pascual"
+  ],
+  "files": [
+   {
+    "name": "En_tres_pellejos.BFHP",
+    "size": 1364489,
+    "url": "https://cdn.discordapp.com/attachments/1413800335213985836/1414575014363009124/En_tres_pellejos.BFHP?ex=6ad4af24&is=6ad35da4&hm=d84e7b255c7938d3be26160e313c685930d89938d44561fc5253398f76dd0be6&",
+    "local": "originals/discord/aventuras/en-tres-pellejos/En_tres_pellejos.BFHP"
+   }
+  ],
+  "desc": "Tres vidas, general romano, prisionero y salvaje, pero solo una correcta.",
+  "count": 1,
+  "slug": "en-tres-pellejos"
+ },
+ {
+  "channel": "aventuras",
+  "section": "",
+  "title": "EN TRES PELLEJOS 2",
+  "author": "IMPERYUS",
+  "discord": "https://discord.com/channels/479629904657514526/1413800335213985836/1414575085880082455",
+  "year": "2019",
+  "base": "Imperivm III v1.40",
+  "links": [
+   "https://imperivmgbr.foroactivo.com/t1067-recopilacion-aventuras-de-imperyus-santi-garcia-pascual"
+  ],
+  "files": [
+   {
+    "name": "En_tres_pellejos_2.BFHP",
+    "size": 1378357,
+    "url": "https://cdn.discordapp.com/attachments/1413800335213985836/1414575085510987797/En_tres_pellejos_2.BFHP?ex=6ad4af35&is=6ad35db5&hm=05b2c52e256f6dede644b02f7b2b24565ba23d0f6d6c179c2e3024397f2b2e20&",
+    "local": "originals/discord/aventuras/en-tres-pellejos-2/En_tres_pellejos_2.BFHP"
+   }
+  ],
+  "desc": "Cayo Bannanicus Fressisuis ha sido capturado por los germanos. Ahora aguarda su destino en una pequeña y maloliente prisión.",
+  "count": 1,
+  "slug": "en-tres-pellejos-2"
+ },
+ {
+  "channel": "aventuras",
+  "section": "",
+  "title": "CAMPAMENTO DE ENTRENAMIENTO GALO",
+  "author": "IMPERYUS",
+  "discord": "https://discord.com/channels/479629904657514526/1413800335213985836/1414575167463751751",
+  "year": "2019",
+  "base": "Imperivm III v1.40",
+  "links": [
+   "https://imperivmgbr.foroactivo.com/t1067-recopilacion-aventuras-de-imperyus-santi-garcia-pascual"
+  ],
+  "files": [
+   {
+    "name": "Campamento_de_entrenamiento_galo.zip",
+    "size": 407049,
+    "url": "https://cdn.discordapp.com/attachments/1413800335213985836/1414575167413424190/Campamento_de_entrenamiento_galo.zip?ex=6ad4af49&is=6ad35dc9&hm=36a78236e7d49f028d39a8f281deb5e000ca97748e9a0418dd68d21609bbf6c9&",
+    "local": "originals/discord/aventuras/campamento-de-entrenamiento-galo/Campamento_de_entrenamiento_galo.zip"
+   }
+  ],
+  "desc": "Gotheto va a un campamento galo para aprender a ser un mejor guerrero.",
+  "count": 1,
+  "slug": "campamento-de-entrenamiento-galo"
+ },
+ {
+  "channel": "aventuras",
+  "section": "",
+  "title": "ESPARTACO",
+  "author": "IMPERYUS",
+  "discord": "https://discord.com/channels/479629904657514526/1413800335213985836/1414575257762791517",
+  "year": "",
+  "base": "",
+  "links": [],
+  "files": [
+   {
+    "name": "Espartaco_3.0.BFHP",
+    "size": 1922102,
+    "url": "https://cdn.discordapp.com/attachments/1413800335213985836/1414575257678774424/Espartaco_3.0.BFHP?ex=6ad4af5e&is=6ad35dde&hm=f5d5f8b2db6e5f7193809afffe04155959fc9a0c3800c0fca9fc01eadabb939e&",
+    "local": "originals/discord/aventuras/espartaco/Espartaco_3.0.BFHP"
+   }
+  ],
+  "desc": "",
+  "count": 1,
+  "slug": "espartaco"
+ },
+ {
+  "channel": "aventuras",
+  "section": "",
+  "title": "LOS ESPÍRITUS VIVIENTES",
+  "author": "IMPERYUS",
+  "discord": "https://discord.com/channels/479629904657514526/1413800335213985836/1414575330567651400",
+  "year": "2019",
+  "base": "Imperivm III v1.40",
+  "links": [
+   "https://imperivmgbr.foroactivo.com/t1067-recopilacion-aventuras-de-imperyus-santi-garcia-pascual"
+  ],
+  "files": [
+   {
+    "name": "Los_espiritus_vivientes.BFHP",
+    "size": 1904128,
+    "url": "https://cdn.discordapp.com/attachments/1413800335213985836/1414575330525450331/Los_espiritus_vivientes.BFHP?ex=6ad4af70&is=6ad35df0&hm=acf974cb3b4248aff4e0c2ffc4dbecfb0f7afcd5f50af3d0445bc928f7383d1f&",
+    "local": "originals/discord/aventuras/los-espiritus-vivientes/Los_espiritus_vivientes.BFHP"
+   }
+  ],
+  "desc": "Unos extraños sucesos alertan al jefe ibero Iberius, que no duda en mandar llamar a Gombeyet, un galo que según dicen resuelve cualquier problema en cualquier pueblo, país o ciudad.",
+  "count": 1,
+  "slug": "los-espiritus-vivientes"
+ },
+ {
+  "channel": "aventuras",
+  "section": "",
+  "title": "LA AVENTURA DE JOKANO",
+  "author": "IMPERYUS",
+  "discord": "https://discord.com/channels/479629904657514526/1413800335213985836/1414575421156233216",
+  "year": "2019",
+  "base": "Imperivm III v1.40",
+  "links": [
+   "https://imperivmgbr.foroactivo.com/t1067-recopilacion-aventuras-de-imperyus-santi-garcia-pascual"
+  ],
+  "files": [
+   {
+    "name": "La_aventura_de_Jokano.BFHP",
+    "size": 1345951,
+    "url": "https://cdn.discordapp.com/attachments/1413800335213985836/1414575420887666749/La_aventura_de_Jokano.BFHP?ex=6ad4af85&is=6ad35e05&hm=93b284dbd35d8d64f3d816ed5a6c4b39f13e28e5818d31251bff36363d1b85ec&",
+    "local": "originals/discord/aventuras/la-aventura-de-jokano/La_aventura_de_Jokano.BFHP"
+   }
+  ],
+  "desc": "Jokano despierta dentro de un círculo de fuego sin recordar cómo ha llegado hasta allí y lo primero que escucha es una misteriosa voz que no sabe de dónde proviene. ¿Qué aventuras le depararán?",
+  "count": 1,
+  "slug": "la-aventura-de-jokano"
+ },
+ {
+  "channel": "aventuras",
+  "section": "",
+  "title": "LA TOMA DE GALICARCOMO",
+  "author": "IMPERYUS",
+  "discord": "https://discord.com/channels/479629904657514526/1413800335213985836/1414575515548909589",
+  "year": "2019",
+  "base": "Imperivm III v1.40",
+  "links": [
+   "https://imperivmgbr.foroactivo.com/t1067-recopilacion-aventuras-de-imperyus-santi-garcia-pascual"
+  ],
+  "files": [
+   {
+    "name": "La_toma_de_Galicarcogo_aventura.BFHP",
+    "size": 1613472,
+    "url": "https://cdn.discordapp.com/attachments/1413800335213985836/1414575515443925094/La_toma_de_Galicarcogo_aventura.BFHP?ex=6ad4af9c&is=6ad35e1c&hm=36fbfdff496a107991f4c9d78acdad18b865a45e7eec674004d54cea497f0033&",
+    "local": "originals/discord/aventuras/la-toma-de-galicarcomo/La_toma_de_Galicarcogo_aventura.BFHP"
+   }
+  ],
+  "desc": "Marco \"el patán\" es destinado a tomar una fortaleza gala que está causando graves problemas a Roma. De su victoria depende que siga siendo llamado \"el patán\" o no.",
+  "count": 1,
+  "slug": "la-toma-de-galicarcomo"
+ },
+ {
+  "channel": "aventuras",
+  "section": "",
+  "title": "DRAGON BALL Z (SAGA SAIYAN)",
+  "author": "IMPERYUS",
+  "discord": "https://discord.com/channels/479629904657514526/1413800335213985836/1414575603004473496",
+  "year": "2018",
+  "base": "Imperivm III v1.40",
+  "links": [
+   "https://imperivmgbr.foroactivo.com/t1067-recopilacion-aventuras-de-imperyus-santi-garcia-pascual"
+  ],
+  "files": [
+   {
+    "name": "Dragon_Ball_Z_Saga_Saiyan.BFHP",
+    "size": 1276422,
+    "url": "https://cdn.discordapp.com/attachments/1413800335213985836/1414575602526195762/Dragon_Ball_Z_Saga_Saiyan.BFHP?ex=6ad4afb1&is=6ad35e31&hm=9fe1f69221e240468cf7f38080b207135b4cc9185c354b1eb0cabb4fb54867fa&",
+    "local": "originals/discord/aventuras/dragon-ball-z-saga-saiyan/Dragon_Ball_Z_Saga_Saiyan.BFHP"
+   }
+  ],
+  "desc": "Revive las aventuras de Goku y sus amigos en esta aventura basada en el famoso anime japonés \"Dragon Ball Z\".",
+  "count": 1,
+  "slug": "dragon-ball-z-saga-saiyan"
+ },
+ {
+  "channel": "aventuras",
+  "section": "",
+  "title": "LA SENDA DEL CARTAGINÉS",
+  "author": "IMPERYUS",
+  "discord": "https://discord.com/channels/479629904657514526/1413800335213985836/1414575676438220922",
+  "year": "2018",
+  "base": "Imperivm III v1.40",
+  "links": [
+   "https://imperivmgbr.foroactivo.com/t1067-recopilacion-aventuras-de-imperyus-santi-garcia-pascual"
+  ],
+  "files": [
+   {
+    "name": "la_senda_del_cartagines.BFHP",
+    "size": 1443740,
+    "url": "https://cdn.discordapp.com/attachments/1413800335213985836/1414575676140294204/la_senda_del_cartagines.BFHP?ex=6ad4afc2&is=6ad35e42&hm=1921494b400b43061785df396983f30e8c72f086f064730244f30f75214fb5cc&",
+    "local": "originals/discord/aventuras/la-senda-del-cartagines/la_senda_del_cartagines.BFHP"
+   }
+  ],
+  "desc": "Vive las locas aventuras de Oreo, un joven cartaginés de 15 años que aspira a convertirse en un héroe en un mundo convulso...",
+  "count": 1,
+  "slug": "la-senda-del-cartagines"
+ },
+ {
+  "channel": "aventuras",
+  "section": "",
+  "title": "GUERRAS TRIBALES",
+  "author": "IMPERYUS",
+  "discord": "https://discord.com/channels/479629904657514526/1413800335213985836/1414575745287589940",
+  "year": "2018",
+  "base": "Imperivm III v1.40",
+  "links": [
+   "https://imperivmgbr.foroactivo.com/t1067-recopilacion-aventuras-de-imperyus-santi-garcia-pascual"
+  ],
+  "files": [
+   {
+    "name": "Guerras_tribales.BFHP",
+    "size": 1374254,
+    "url": "https://cdn.discordapp.com/attachments/1413800335213985836/1414575744910233720/Guerras_tribales.BFHP?ex=6ad4afd3&is=6ad35e53&hm=e67f16bb6c8cb4497c22f02e904319d2692ad709b812bb841ca87b15637f6449&",
+    "local": "originals/discord/aventuras/guerras-tribales/Guerras_tribales.BFHP"
+   }
+  ],
+  "desc": "Las diferentes tribus galas se encuentran en guerra, mientras que los pérfidos romanos aprovechan la oportunidad para imponer su dominio ¿Conseguirá Radogasto imponerse sobre las demás tribus y expulsar a los romanos de las tierras galas?",
+  "count": 1,
+  "slug": "guerras-tribales"
+ },
+ {
+  "channel": "aventuras",
+  "section": "",
+  "title": "LA BATALLA DE LAS TERMÓPILAS",
+  "author": "IMPERYUS",
+  "discord": "https://discord.com/channels/479629904657514526/1413800335213985836/1414575817136279573",
+  "year": "2018",
+  "base": "Imperivm III v1.40",
+  "links": [
+   "https://imperivmgbr.foroactivo.com/t1067-recopilacion-aventuras-de-imperyus-santi-garcia-pascual"
+  ],
+  "files": [
+   {
+    "name": "La_batalla_de_las_termopilas.BFHP",
+    "size": 1497938,
+    "url": "https://cdn.discordapp.com/attachments/1413800335213985836/1414575816863383694/La_batalla_de_las_termopilas.BFHP?ex=6ad4afe4&is=6ad35e64&hm=92bea85f50b695f854b2839941baf34841d05c24336a00b0ac17fb6330e6e464&",
+    "local": "originals/discord/aventuras/la-batalla-de-las-termopilas/La_batalla_de_las_termopilas.BFHP"
+   }
+  ],
+  "desc": "Año 480 A.C. El rey de los persas, Jerjes I, se propone conquistar Grecia. Los atenienses están aterrados, pero los espartanos no retroceden y deciden mandar a 300 de sus mejores hombres para que luchen hasta el final en una batalla de la que saben que probablemente no volverán. Así, atenienses y espartanos conseguirán tiempo para organizar a sus hombres y expulsar a los persas de Grecia. Sin embargo, la traición de Laertes dificulta mucho su misión, pues han perdido el factor sorpresa.",
+  "count": 1,
+  "slug": "la-batalla-de-las-termopilas"
+ },
+ {
+  "channel": "aventuras",
+  "section": "",
+  "title": "LOS NÁUFRAGOS",
+  "author": "IMPERYUS",
+  "discord": "https://discord.com/channels/479629904657514526/1413800335213985836/1414575910794825818",
+  "year": "2018",
+  "base": "Imperivm III v1.40",
+  "links": [
+   "https://imperivmgbr.foroactivo.com/t1067-recopilacion-aventuras-de-imperyus-santi-garcia-pascual"
+  ],
+  "files": [
+   {
+    "name": "Los_naufragos.BFHP",
+    "size": 1088885,
+    "url": "https://cdn.discordapp.com/attachments/1413800335213985836/1414575910245634158/Los_naufragos.BFHP?ex=6ad4affa&is=6ad35e7a&hm=554d5692b638f8052b1840ce28ad3f030c3b8f4d25e1920f8d6d25c903e27ee5&",
+    "local": "originals/discord/aventuras/los-naufragos/Los_naufragos.BFHP"
+   }
+  ],
+  "desc": "Formas parte del ejército romano y tu grupo ha naufragado tras una exitosa campaña en Britania. Ahora te encuentras en una isla britana y deberás sobrevivir hasta que los esclavos sean capaces de construir un nuevo barco que os permita salir de la isla y volver a Roma.",
+  "count": 1,
+  "slug": "los-naufragos"
+ },
+ {
+  "channel": "aventuras",
+  "section": "",
+  "title": "ATRAPADO EN LA CUEVA DEL HORROR",
+  "author": "IMPERYUS",
+  "discord": "https://discord.com/channels/479629904657514526/1413800335213985836/1414576000930545675",
+  "year": "2018",
+  "base": "Imperivm III v1.40",
+  "links": [
+   "https://imperivmgbr.foroactivo.com/t1067-recopilacion-aventuras-de-imperyus-santi-garcia-pascual"
+  ],
+  "files": [
+   {
+    "name": "Atrapado_en_la_cueva_del_horror.BFHP",
+    "size": 1925732,
+    "url": "https://cdn.discordapp.com/attachments/1413800335213985836/1414576000813240381/Atrapado_en_la_cueva_del_horror.BFHP?ex=6ad4b010&is=6ad35e90&hm=29e3af2dc1fa3431bd1849079df56bd4e9970ad00f7821187debe56b73b2e5da&",
+    "local": "originals/discord/aventuras/atrapado-en-la-cueva-del-horror/Atrapado_en_la_cueva_del_horror.BFHP"
+   }
+  ],
+  "desc": "Normed se ha visto atrapado en la cueva del horror. Dicen los antiguos que se trata de un laberinto poblado de gente fría e implacable. Deberás tomar las mejores decisiones si quieres sobrevivir y salir de allí.",
+  "count": 1,
+  "slug": "atrapado-en-la-cueva-del-horror"
+ },
+ {
+  "channel": "aventuras",
+  "section": "",
+  "title": "JUEGO DE TRONOS",
+  "author": "IMPERYUS",
+  "discord": "https://discord.com/channels/479629904657514526/1413800335213985836/1414576086939074730",
+  "year": "2018",
+  "base": "Imperivm III v1.40",
+  "links": [
+   "https://imperivmgbr.foroactivo.com/t1067-recopilacion-aventuras-de-imperyus-santi-garcia-pascual"
+  ],
+  "files": [
+   {
+    "name": "Game_of_thrones_version_2.0.BFHP",
+    "size": 4339200,
+    "url": "https://cdn.discordapp.com/attachments/1413800335213985836/1414576086662119494/Game_of_thrones_version_2.0.BFHP?ex=6ad4b024&is=6ad35ea4&hm=9d924d88578c631e46961f83b02ab225bcdaa9de3170abbe371074c332fd50ee&",
+    "local": "originals/discord/aventuras/juego-de-tronos/Game_of_thrones_version_2.0.BFHP"
+   }
+  ],
+  "desc": "Revive las aventuras de Jon Nieve y de Khaleesi para pacificar los 7 reinos.",
+  "count": 1,
+  "slug": "juego-de-tronos"
+ },
+ {
+  "channel": "aventuras",
+  "section": "",
+  "title": "ÁGUILA ROJA",
+  "author": "IMPERYUS",
+  "discord": "https://discord.com/channels/479629904657514526/1413800335213985836/1414576157839331443",
+  "year": "2019",
+  "base": "Imperivm III v1.40",
+  "links": [
+   "https://imperivmgbr.foroactivo.com/t1067-recopilacion-aventuras-de-imperyus-santi-garcia-pascual"
+  ],
+  "files": [
+   {
+    "name": "Las_aventuras_de_Imperyus.rar",
+    "size": 219766,
+    "url": "https://cdn.discordapp.com/attachments/1413800335213985836/1414576157466034256/Las_aventuras_de_Imperyus.rar?ex=6ad4b035&is=6ad35eb5&hm=32609f3221ce9d0a96c6f9205454b6bb57a0a65627e8b383d43059e7a54d5c8d&",
+    "local": "originals/discord/aventuras/aguila-roja/Las_aventuras_de_Imperyus.rar"
+   }
+  ],
+  "desc": "Tras varios ataques fallidos las ciudades romanas se alían para acabar definitivamente con los galos.",
+  "count": 1,
+  "slug": "aguila-roja"
+ },
+ {
+  "channel": "aventuras",
+  "section": "",
+  "title": "LA DEFENSA DE NIMLUNDUM",
+  "author": "molerotoni",
+  "discord": "https://discord.com/channels/479629904657514526/1413800335213985836/1414613832608776263",
+  "year": "2018",
+  "base": "Imperivm III v1.40",
+  "links": [
+   "https://imperivmgbr.foroactivo.com/t989-la-defensa-de-nimlundum"
+  ],
+  "files": [
+   {
+    "name": "Nimlundum.BFHP",
+    "size": 6159893,
+    "url": "https://cdn.discordapp.com/attachments/1413800335213985836/1414613832197738597/Nimlundum.BFHP?ex=6ad4d34b&is=6ad381cb&hm=ff3043c88104ac87197e8b677f74fabfc886bc6ef35ec670392ae9ff9f3af12f&",
+    "local": "originals/discord/aventuras/la-defensa-de-nimlundum/Nimlundum.BFHP"
+   }
+  ],
+  "desc": "Guía a Marcusa a través de los desafíos que el destino le tiene preparados y ayúdale a alzarse con la victoria.",
+  "count": 1,
+  "slug": "la-defensa-de-nimlundum"
+ },
+ {
+  "channel": "aventuras",
+  "section": "",
+  "title": "KALINDAN SAGA",
+  "author": "molerotoni",
+  "discord": "https://discord.com/channels/479629904657514526/1413800335213985836/1414613982068740167",
+  "year": "2018",
+  "base": "Imperivm III v1.40",
+  "links": [
+   "https://imperivmgbr.foroactivo.com/t1061-os-voy-dejando-los-dientes-largos"
+  ],
+  "files": [
+   {
+    "name": "KalindanSaga.zip",
+    "size": 1721881,
+    "url": "https://cdn.discordapp.com/attachments/1413800335213985836/1414613981464625282/KalindanSaga.zip?ex=6ad4d36f&is=6ad381ef&hm=3faf82552d6e86c49e68fc87220bb9c33c2f852c8a0001b1329a93224065043d&",
+    "local": "originals/discord/aventuras/kalindan-saga/KalindanSaga.zip"
+   }
+  ],
+  "desc": "Sigue las aventuras de un héroe (o una heroína) a lo largo de las tierras de Kalindan.",
+  "count": 1,
+  "slug": "kalindan-saga"
+ },
+ {
+  "channel": "aventuras",
+  "section": "",
+  "title": "EL VALLE DE ANDAKIA",
+  "author": "Elektro",
+  "discord": "https://discord.com/channels/479629904657514526/1413800335213985836/1414614119621070942",
+  "year": "2018",
+  "base": "Imperivm III v1.40",
+  "links": [
+   "https://imperivmgbr.foroactivo.com/t700-mapa-el-valle-de-andakia"
+  ],
+  "files": [
+   {
+    "name": "Anadakia.BFHP",
+    "size": 1513984,
+    "url": "https://cdn.discordapp.com/attachments/1413800335213985836/1414614119541116999/Anadakia.BFHP?ex=6ad4d390&is=6ad38210&hm=44809eb72c99ecc5a1ecd6158c6a87987c4b18101e726b266b4b4d475478ef0a&",
+    "local": "originals/discord/aventuras/el-valle-de-andakia/Anadakia.BFHP"
+   }
+  ],
+  "desc": "Elektro es el hijo de el jefe de una pequeña tribu que vive en las montañas del hermoso y rico en minerales y fauna valle de Andakia. Elektro vivía una pacifica vida con su pueblo hasta que un día...",
+  "count": 1,
+  "slug": "el-valle-de-andakia"
+ },
+ {
+  "channel": "aventuras",
+  "section": "",
+  "title": "LA EMBOSCADA",
+  "author": "Elektro",
+  "discord": "https://discord.com/channels/479629904657514526/1413800335213985836/1414614211568599120",
+  "year": "2018",
+  "base": "Imperivm III v1.40",
+  "links": [
+   "https://imperivmgbr.foroactivo.com/t701-aventura-la-emboscada"
+  ],
+  "files": [
+   {
+    "name": "Emboscada.BFHP",
+    "size": 1805594,
+    "url": "https://cdn.discordapp.com/attachments/1413800335213985836/1414614211283259412/Emboscada.BFHP?ex=6ad4d3a6&is=6ad38226&hm=3ab7f94bce7b3bb70e515547fda3f388b0a439d0b2c2d58e6d0023e22a2c8372&",
+    "local": "originals/discord/aventuras/la-emboscada/Emboscada.BFHP"
+   }
+  ],
+  "desc": "El general Cayus es emboscado por los bárbaros en medio de un bosque, le superan en número y tendrá que actuar rápidamente para salvar la mayor parte de su legión...",
+  "count": 1,
+  "slug": "la-emboscada"
+ },
+ {
+  "channel": "aventuras",
+  "section": "",
+  "title": "LA ODISEA DE MAXIMUS",
+  "author": "Elektro",
+  "discord": "https://discord.com/channels/479629904657514526/1413800335213985836/1414614342699057173",
+  "year": "2019",
+  "base": "Imperivm III v1.40",
+  "links": [
+   "https://imperivmgbr.foroactivo.com/t1212-desactualizado-aventura-la-odisea-de-maximus-completa"
+  ],
+  "files": [
+   {
+    "name": "La_Odisea_de_Maximus_completa.rar",
+    "size": 1278934,
+    "url": "https://cdn.discordapp.com/attachments/1413800335213985836/1414614342296670249/La_Odisea_de_Maximus_completa.rar?ex=6ad4d3c5&is=6ad38245&hm=777f9e256a21c05c26f2f1ab493cad53945c5f7eae83e4bc1083114a3cad4858&",
+    "local": "originals/discord/aventuras/la-odisea-de-maximus/La_Odisea_de_Maximus_completa.rar"
+   }
+  ],
+  "desc": "Maximus, con la esperanza de sacar a su familia de la pobreza y conseguir la ciudadanía romana, se alista en las legiones y es destinado con la Séptima Legión a Iberia, donde su destino le aguarda...",
+  "count": 1,
+  "slug": "la-odisea-de-maximus"
+ },
+ {
+  "channel": "aventuras",
+  "section": "",
+  "title": "EL VALLE DE DRESSROSA",
+  "author": "Esmael",
+  "discord": "https://discord.com/channels/479629904657514526/1413800335213985836/1414614479123251401",
+  "year": "2018",
+  "base": "Imperivm III v1.40",
+  "links": [
+   "https://imperivmgbr.foroactivo.com/t1025-el-valle-de-dressrosa"
+  ],
+  "files": [
+   {
+    "name": "El_valle_de_Dressrosa_0.0.BFHP",
+    "size": 1906634,
+    "url": "https://cdn.discordapp.com/attachments/1413800335213985836/1414614478800031805/El_valle_de_Dressrosa_0.0.BFHP?ex=6ad4d3e6&is=6ad38266&hm=2b82c571e33f563d0a2585afe9ae9c1d4905dc1fd9d67ab598f9d740aefad957&",
+    "local": "originals/discord/aventuras/el-valle-de-dressrosa/El_valle_de_Dressrosa_0.0.BFHP"
+   }
+  ],
+  "desc": "Esmael y su pueblo deben luchar por la libertad y expulsar a los romanos que les asedian, sin ninguna comunicación ni apoyo exterior...",
+  "count": 1,
+  "slug": "el-valle-de-dressrosa"
+ },
+ {
+  "channel": "aventuras",
+  "section": "",
+  "title": "MAPA NORMAL",
+  "author": "Esmael",
+  "discord": "https://discord.com/channels/479629904657514526/1413800335213985836/1414614600619397220",
+  "year": "2019",
+  "base": "Imperivm III v1.40",
+  "links": [
+   "https://imperivmgbr.foroactivo.com/t1100-mis-mapas-yo-tambien-quiero-una-seccion-propia"
+  ],
+  "files": [
+   {
+    "name": "Locura_mapa_normal.BFHP",
+    "size": 884224,
+    "url": "https://cdn.discordapp.com/attachments/1413800335213985836/1414614600275460250/Locura_mapa_normal.BFHP?ex=6ad4d402&is=6ad38282&hm=f3e28efd1a03e6442d89ee6895a6ca1366148b48996f1c4415fd6ff859be73fd&",
+    "local": "originals/discord/aventuras/mapa-normal/Locura_mapa_normal.BFHP"
+   }
+  ],
+  "desc": "",
+  "count": 1,
+  "slug": "mapa-normal"
+ },
+ {
+  "channel": "aventuras",
+  "section": "",
+  "title": "ROMPOLIS",
+  "author": "yito79",
+  "discord": "https://discord.com/channels/479629904657514526/1413800335213985836/1414616302248792217",
+  "year": "2019",
+  "base": "Imperivm III v1.40",
+  "links": [
+   "https://imperivmgbr.foroactivo.com/t1117-mapas-de-yito"
+  ],
+  "files": [
+   {
+    "name": "ROMPOLIS.BFHP",
+    "size": 1508952,
+    "url": "https://cdn.discordapp.com/attachments/1413800335213985836/1414616301925826782/ROMPOLIS.BFHP?ex=6ad4d598&is=6ad38418&hm=bfdf8935bca017bb68cd7cf45de0a431a7f5283850e98e8b98fe989faec1ea62&",
+    "local": "originals/discord/aventuras/rompolis/ROMPOLIS.BFHP"
+   }
+  ],
+  "desc": "",
+  "count": 1,
+  "slug": "rompolis"
+ },
+ {
+  "channel": "aventuras",
+  "section": "",
+  "title": "ASTIGI",
+  "author": "yito79",
+  "discord": "https://discord.com/channels/479629904657514526/1413800335213985836/1414616381072347186",
+  "year": "2019",
+  "base": "Imperivm III v1.40",
+  "links": [
+   "https://imperivmgbr.foroactivo.com/t1117-mapas-de-yito"
+  ],
+  "files": [
+   {
+    "name": "Astigi_2.0.BFHP",
+    "size": 1326984,
+    "url": "https://cdn.discordapp.com/attachments/1413800335213985836/1414616380698923060/Astigi_2.0.BFHP?ex=6ad4d5ab&is=6ad3842b&hm=9c5290e433b40931a71b91a051711f1ba4beca1f8d31464dd800d657a2746957&",
+    "local": "originals/discord/aventuras/astigi/Astigi_2.0.BFHP"
+   }
+  ],
+  "desc": "",
+  "count": 1,
+  "slug": "astigi"
+ },
+ {
+  "channel": "aventuras",
+  "section": "",
+  "title": "PARIX",
+  "author": "yito79",
+  "discord": "https://discord.com/channels/479629904657514526/1413800335213985836/1414616460562661416",
+  "year": "2019",
+  "base": "Imperivm III v1.40",
+  "links": [
+   "https://imperivmgbr.foroactivo.com/t1117-mapas-de-yito"
+  ],
+  "files": [
+   {
+    "name": "Parix_2.0.BFHP",
+    "size": 1937920,
+    "url": "https://cdn.discordapp.com/attachments/1413800335213985836/1414616460285841599/Parix_2.0.BFHP?ex=6ad4d5be&is=6ad3843e&hm=9ceec75878d1fa7aa8b750bae86e5a65e55378730cdf93821da7e5ad28fa95a2&",
+    "local": "originals/discord/aventuras/parix/Parix_2.0.BFHP"
+   }
+  ],
+  "desc": "",
+  "count": 1,
+  "slug": "parix"
+ },
+ {
+  "channel": "aventuras",
+  "section": "",
+  "title": "IBERIA",
+  "author": "yito79",
+  "discord": "https://discord.com/channels/479629904657514526/1413800335213985836/1414616548026351777",
+  "year": "2019",
+  "base": "Imperivm III v1.40",
+  "links": [
+   "https://imperivmgbr.foroactivo.com/t1117-mapas-de-yito"
+  ],
+  "files": [
+   {
+    "name": "iberia_2.0.BFHP",
+    "size": 1268593,
+    "url": "https://cdn.discordapp.com/attachments/1413800335213985836/1414616547724492982/iberia_2.0.BFHP?ex=6ad4d5d3&is=6ad38453&hm=90cd5e208fa7148f5acdef5d098aa47c0fc1545724b6b91eae2b73abcc25a930&",
+    "local": "originals/discord/aventuras/iberia/iberia_2.0.BFHP"
+   }
+  ],
+  "desc": "",
+  "count": 1,
+  "slug": "iberia"
+ },
+ {
+  "channel": "aventuras",
+  "section": "",
+  "title": "LAS TRES PIEDRAS MÁGICAS",
+  "author": "yito79",
+  "discord": "https://discord.com/channels/479629904657514526/1413800335213985836/1414616715064774676",
+  "year": "2019",
+  "base": "Imperivm III v1.40",
+  "links": [
+   "https://imperivmgbr.foroactivo.com/t1154-las-tres-piedras-magicas"
+  ],
+  "files": [
+   {
+    "name": "LAS_TRES_PIEDRAS_MAGICAS_2.3.BFHP",
+    "size": 2776064,
+    "url": "https://cdn.discordapp.com/attachments/1413800335213985836/1414616714783490148/LAS_TRES_PIEDRAS_MAGICAS_2.3.BFHP?ex=6ad4d5fb&is=6ad3847b&hm=3485588e21417f2c945c22a8566af45af062a10bfffb818aa29c0940f13bc473&",
+    "local": "originals/discord/aventuras/las-tres-piedras-magicas/LAS_TRES_PIEDRAS_MAGICAS_2.3.BFHP"
+   }
+  ],
+  "desc": "",
+  "count": 1,
+  "slug": "las-tres-piedras-magicas"
+ },
+ {
+  "channel": "aventuras",
+  "section": "",
+  "title": "SEFIA, EL INICIO DE UNA LEYENDA",
+  "author": "Allwars",
+  "discord": "https://discord.com/channels/479629904657514526/1413800335213985836/1414618798342017176",
+  "year": "2020",
+  "base": "Imperivm III v1.40",
+  "links": [
+   "https://imperivmgbr.foroactivo.com/t1263-sefia-el-inicio-de-una-leyenda"
+  ],
+  "files": [
+   {
+    "name": "Sefia_el_inicio_de_una_leyenda.rar",
+    "size": 716643,
+    "url": "https://cdn.discordapp.com/attachments/1413800335213985836/1414618798027313263/Sefia_el_inicio_de_una_leyenda.rar?ex=6ad4d7eb&is=6ad3866b&hm=8ab6392690b914f691c06e1bccf3c27af4f8e8230cfa63a53be294a982f36582&",
+    "local": "originals/discord/aventuras/sefia-el-inicio-de-una-leyenda/Sefia_el_inicio_de_una_leyenda.rar"
+   }
+  ],
+  "desc": "",
+  "count": 1,
+  "slug": "sefia-el-inicio-de-una-leyenda"
+ },
+ {
+  "channel": "aventuras",
+  "section": "",
+  "title": "LAS GUERRAS SERTORIANAS",
+  "author": "frank9999",
+  "discord": "https://discord.com/channels/479629904657514526/1413800335213985836/1414618914981150791",
+  "year": "2020",
+  "base": "Imperivm III v1.40",
+  "links": [
+   "https://imperivmgbr.foroactivo.com/t1220-las-guerras-sertorianas-y-lucha-de-las-bases"
+  ],
+  "files": [
+   {
+    "name": "CAMBIO_RADICAL_4.bfhp",
+    "size": 5109789,
+    "url": "https://cdn.discordapp.com/attachments/1413800335213985836/1414618914754662470/CAMBIO_RADICAL_4.bfhp?ex=6ad4d807&is=6ad38687&hm=98d029b5838e98b3613233e391d3513b480ef10bc22d23a237fc918f7e684748&",
+    "local": "originals/discord/aventuras/las-guerras-sertorianas/CAMBIO_RADICAL_4.bfhp"
+   }
+  ],
+  "desc": "Recreacion del mapa de Imperium 2 de la lucha con Aníbal en Zama. La lucha se traslada a entorno de hierba y árboles, la batalla entre las fuerzas íberas comandadas por Sertorio y las romanas por Pompeyo.",
+  "count": 1,
+  "slug": "las-guerras-sertorianas"
+ },
+ {
+  "channel": "aventuras",
+  "section": "",
+  "title": "LA DEFENSA DE ROMA",
+  "author": "Mietitore",
+  "discord": "https://discord.com/channels/479629904657514526/1413800335213985836/1414619045583388796",
+  "year": "2020",
+  "base": "Imperivm III v1.56",
+  "links": [
+   "https://imperivmgbr.foroactivo.com/t1297-aventura-la-defensa-de-roma-216-a-c"
+  ],
+  "files": [],
+  "desc": "Los cartagineses, liderados por Aníbal, han entrado desde hace mucho tiempo en la península italiana. Cuatro años después de la gran victoria de Aníbal en la batalla de Canne sobre las legiones romanas, los ejércitos cartagineses llegaron a las puertas de Roma amenazando sus fronteras e infundiendo terror en la población. El Senado de Roma te confía poder militar. ¡Reúne tus fuerzas y repele al enemigo!",
+  "count": 1,
+  "slug": "la-defensa-de-roma"
+ },
+ {
+  "channel": "aventuras",
+  "section": "",
+  "title": "ESCIPIÓN A LAS PUERTAS DE CARTAGO",
+  "author": "Mietitore",
+  "discord": "https://discord.com/channels/479629904657514526/1413800335213985836/1414619152714436661",
+  "year": "2020",
+  "base": "Imperivm III v1.56",
+  "links": [
+   "https://imperivmgbr.foroactivo.com/t1298-aventura-escipion-a-las-puertas-de-cartago147-a-c"
+  ],
+  "files": [],
+  "desc": "Después de la Segunda Guerra Púnica, Cartago continuó preocupando al Senado de Roma por el comercio. Como el tratado de paz firmado al final de la Segunda Guerra Púnica evitó que Cartago declarara la guerra sin el consentimiento de los romanos, cuando los cartagineses se cansaron de las provocaciones de Massinissa, rey de los Numidos, empuñaban armas, el Senado declaró la guerra en 149 a.C. Luego Roma envió al cónsul Escipión el Emiliano en 147 a.C. para poner fin al conflicto y finalmente destruir Cartago.",
+  "count": 1,
+  "slug": "escipion-a-las-puertas-de-cartago"
+ },
+ {
+  "channel": "aventuras",
+  "section": "",
+  "title": "REBELIÓN DE ESPARTACO",
+  "author": "Mietitore",
+  "discord": "https://discord.com/channels/479629904657514526/1413800335213985836/1414619217298460917",
+  "year": "2020",
+  "base": "Imperivm III v1.56",
+  "links": [
+   "https://imperivmgbr.foroactivo.com/t1299-aventura-rebelion-de-espartaco-73-a-c"
+  ],
+  "files": [],
+  "desc": "En el 73 a.C. los gladiadores de la escuela de Capua se rebelaron. Encabezados por Spartacus, un hombre de Tracia, huyeron y se dirigieron hacia el sur. Después de unos 30 km de marcha, acamparon en la ladera del Vesubio. Allí, Spartacus y sus hombres derrotaron a un contingente romano enviado a perseguirlos. Esto encendió la chispa de la rebelión y en muy poco tiempo miles de esclavos de toda Italia se unieron a los gladiadores. ¿Podrá Spartacus hacer frente a las legiones romanas?",
+  "count": 1,
+  "slug": "rebelion-de-espartaco"
+ },
+ {
+  "channel": "aventuras",
+  "section": "",
+  "title": "CARTAGONOVA",
+  "author": "Kalyga",
+  "discord": "https://discord.com/channels/479629904657514526/1413800335213985836/1414619350987444234",
+  "year": "2020",
+  "base": "Imperivm III v1.40",
+  "links": [
+   "https://imperivmgbr.foroactivo.com/t1222-cartagonova"
+  ],
+  "files": [
+   {
+    "name": "Cartagonova.rar",
+    "size": 7709502,
+    "url": "https://cdn.discordapp.com/attachments/1413800335213985836/1414619350446641202/Cartagonova.rar?ex=6ad4d86f&is=6ad386ef&hm=5118c88b7add61f5610a3014fe7289e6b1a00ff4ba301e65ef77e686d1552f4f&",
+    "local": "originals/discord/aventuras/cartagonova/Cartagonova.rar"
+   }
+  ],
+  "desc": "Asdrúbal Barca, hermano de Aníbal Barca, emprende la reconquista de la costa mediterránea hispánica hasta llegar a Aquitania.",
+  "count": 1,
+  "slug": "cartagonova"
+ },
+ {
+  "channel": "aventuras",
+  "section": "",
+  "title": "EL SITIO DE NUMANCIA",
+  "author": "Kalyga",
+  "discord": "https://discord.com/channels/479629904657514526/1413800335213985836/1414619489932414996",
+  "year": "2022",
+  "base": "Imperivm HD vRelease 1.0",
+  "links": [
+   "https://imperivmgbr.foroactivo.com/t1393-el-sitio-de-numancia"
+  ],
+  "files": [
+   {
+    "name": "El_sitio_de_numancia.BFHP",
+    "size": 2189312,
+    "url": "https://cdn.discordapp.com/attachments/1413800335213985836/1414619489684815934/El_sitio_de_numancia.BFHP?ex=6ad4d890&is=6ad38710&hm=771e0df20662c61c1b26ca4749ed4f0cd6e22848b6141fee45581f60738f3532&",
+    "local": "originals/discord/aventuras/el-sitio-de-numancia/El_sitio_de_numancia.BFHP"
+   }
+  ],
+  "desc": "",
+  "count": 1,
+  "slug": "el-sitio-de-numancia"
+ },
+ {
+  "channel": "aventuras",
+  "section": "",
+  "title": "LA RECONQUISTA DE SEGEDA",
+  "author": "Kalyga",
+  "discord": "https://discord.com/channels/479629904657514526/1413800335213985836/1414620018104205493",
+  "year": "2022",
+  "base": "Imperivm HD vRelease 1.0",
+  "links": [],
+  "files": [
+   {
+    "name": "La_reconquista_de_Segeda.BFHP",
+    "size": 2731520,
+    "url": "https://cdn.discordapp.com/attachments/1413800335213985836/1414620017537978389/La_reconquista_de_Segeda.BFHP?ex=6ad4d90e&is=6ad3878e&hm=4c46366c2ec3d128fde0838bd53aacdb32489fd0654ef33022b164908f39bf67&",
+    "local": "originals/discord/aventuras/la-reconquista-de-segeda/La_reconquista_de_Segeda.BFHP"
+   }
+  ],
+  "desc": "",
+  "count": 1,
+  "slug": "la-reconquista-de-segeda"
+ },
+ {
+  "channel": "aventuras",
+  "section": "",
+  "title": "LA RECONQUISTA DE NERTOBRIGA",
+  "author": "Kalyga",
+  "discord": "https://discord.com/channels/479629904657514526/1413800335213985836/1414620134412128306",
+  "year": "2022",
+  "base": "Imperivm HD vRelease 1.0",
+  "links": [],
+  "files": [
+   {
+    "name": "La_reconquista_de_Nertobriga.BFHP",
+    "size": 1503773,
+    "url": "https://cdn.discordapp.com/attachments/1413800335213985836/1414620134064128012/La_reconquista_de_Nertobriga.BFHP?ex=6ad4d92a&is=6ad387aa&hm=56f09f2f417a67622b6ac118621d6a75e3dbedcea2fe2d29a471c8a2e855b630&",
+    "local": "originals/discord/aventuras/la-reconquista-de-nertobriga/La_reconquista_de_Nertobriga.BFHP"
+   }
+  ],
+  "desc": "",
+  "count": 1,
+  "slug": "la-reconquista-de-nertobriga"
+ },
+ {
+  "channel": "aventuras",
+  "section": "",
+  "title": "EL CAMINO DE UN SIKARIO IMPERIAL",
+  "author": "Halcón",
+  "discord": "https://discord.com/channels/479629904657514526/1413800335213985836/1414622571143368815",
+  "year": "2020",
+  "base": "Imperivm III v1.56",
+  "links": [],
+  "files": [
+   {
+    "name": "el_camino_de_un_sikario_imperial.zip",
+    "size": 1802917,
+    "url": "https://cdn.discordapp.com/attachments/1413800335213985836/1414622570833248286/el_camino_de_un_sikario_imperial.zip?ex=6ad4db6f&is=6ad389ef&hm=f6bada8d05d5919fb977d38eec52d707ce009ef0141b9d2582e39faeadf9d4e9&",
+    "local": "originals/discord/aventuras/el-camino-de-un-sikario-imperial/el_camino_de_un_sikario_imperial.zip"
+   }
+  ],
+  "desc": "El Imperivm revive, los infils aumentan, se alza una nueva era... No hay reglas, los clanes forman alianzas para derrotar a los más poderosos... Esta es la historia de Tristán y su venganza.",
+  "count": 1,
+  "slug": "el-camino-de-un-sikario-imperial"
+ },
+ {
+  "channel": "aventuras",
+  "section": "",
+  "title": "EL CAMINO DE UN SIKARIO IMPERIAL 2",
+  "author": "Halcón",
+  "discord": "https://discord.com/channels/479629904657514526/1413800335213985836/1414622672825876510",
+  "year": "2021",
+  "base": "Imperivm III v1.56",
+  "links": [],
+  "files": [
+   {
+    "name": "el_camino_de_un_sikario_imperial2.rar",
+    "size": 1781046,
+    "url": "https://cdn.discordapp.com/attachments/1413800335213985836/1414622672532541460/el_camino_de_un_sikario_imperial2.rar?ex=6ad4db87&is=6ad38a07&hm=2fc00153ae3ebec58c74ffbb7c5fdf21fe4626502bf6e86d04f4493b0c2f60e2&",
+    "local": "originals/discord/aventuras/el-camino-de-un-sikario-imperial-2/el_camino_de_un_sikario_imperial2.rar"
+   }
+  ],
+  "desc": "El Imperivm recae. Un poderoso hechicero domina todo el mundo conocido. Empezó un genocidio en masa de héroes romanos, les quito 300 de salud a todo héroe romano que capturaban. Fueron perseguidos como perros... Aquí empieza la historia de Tristán y su venganza.",
+  "count": 1,
+  "slug": "el-camino-de-un-sikario-imperial-2"
+ },
+ {
+  "channel": "aventuras",
+  "section": "",
+  "title": "DEFENDERS",
+  "author": "Rubeneitor, Hareld y Haemimont Games",
+  "discord": "https://discord.com/channels/479629904657514526/1413800335213985836/1414622759597903872",
+  "year": "2022",
+  "base": "Imperivm HD vRelease 1.0",
+  "links": [],
+  "files": [
+   {
+    "name": "Defenders_v28.BFHP",
+    "size": 636211,
+    "url": "https://cdn.discordapp.com/attachments/1413800335213985836/1414622759236927568/Defenders_v28.BFHP?ex=6ad4db9c&is=6ad38a1c&hm=f0e98e6d8043af495ffad0f00b42b72b03f0d8aca2b6a1623e1075d520a9484d&",
+    "local": "originals/discord/aventuras/defenders/Defenders_v28.BFHP"
+   }
+  ],
+  "desc": "Tu grupo ha sido elegido por los dioses para defender la colina sagrada del ataque de los bárbaros. Tu misión es resistir el mayor número posible de días. Al final de cada día los dioses te otorgarán un deseo.",
+  "count": 1,
+  "slug": "defenders"
+ },
+ {
+  "channel": "aventuras",
+  "section": "",
+  "title": "DEFENDERS NIGHTMARE",
+  "author": "Rubeneitor, Hareld y Haemimont Games",
+  "discord": "https://discord.com/channels/479629904657514526/1413800335213985836/1414622850517569576",
+  "year": "2022",
+  "base": "Imperivm HD vRelease 1.0",
+  "links": [],
+  "files": [
+   {
+    "name": "Defenders_nightmare4.BFHP",
+    "size": 645338,
+    "url": "https://cdn.discordapp.com/attachments/1413800335213985836/1414622850253586615/Defenders_nightmare4.BFHP?ex=6ad4dbb1&is=6ad38a31&hm=3eff25f91ff5318245045e07fa961f65a1bd8795c62918aa737bb5d06df17dec&",
+    "local": "originals/discord/aventuras/defenders-nightmare/Defenders_nightmare4.BFHP"
+   }
+  ],
+  "desc": "",
+  "count": 1,
+  "slug": "defenders-nightmare"
+ },
+ {
+  "channel": "aventuras",
+  "section": "",
+  "title": "INVASIÓN ZOMBIE EN CARTAGO NOVA",
+  "author": "manuel.torrente",
+  "discord": "https://discord.com/channels/479629904657514526/1413800335213985836/1414626495409946705",
+  "year": "2022",
+  "base": "Imperivm III v1.40",
+  "links": [
+   "https://imperivmgbr.foroactivo.com/t1405-aventura-invasion-zombie-en-cartago-nova"
+  ],
+  "files": [
+   {
+    "name": "CartagoNovaZombie.BFHP",
+    "size": 6870016,
+    "url": "https://cdn.discordapp.com/attachments/1413800335213985836/1414626495229595808/CartagoNovaZombie.BFHP?ex=6ad4df16&is=6ad38d96&hm=20522065cb166bc6255a0b4aeea3586ea4aa8426ea27eaa8abfa6f3c03ce24bb&",
+    "local": "originals/discord/aventuras/invasion-zombie-en-cartago-nova/CartagoNovaZombie.BFHP"
+   }
+  ],
+  "desc": "Partida de aventura en donde tendrás que ayudar a Falbalá a buscar asilo en una tierra desconocida para ella.",
+  "count": 1,
+  "slug": "invasion-zombie-en-cartago-nova"
+ },
+ {
+  "channel": "aventuras",
+  "section": "",
+  "title": "BATALLA EN CARTAGO NOVA",
+  "author": "manuel.torrente",
+  "discord": "https://discord.com/channels/479629904657514526/1413800335213985836/1414626575319826513",
+  "year": "2022",
+  "base": "Imperivm III v1.40",
+  "links": [
+   "https://imperivmgbr.foroactivo.com/t1403-aventura-batalla-de-cartago-nova"
+  ],
+  "files": [
+   {
+    "name": "Batalla_de_CartagoNova.BFHP",
+    "size": 1970688,
+    "url": "https://cdn.discordapp.com/attachments/1413800335213985836/1414626575080620193/Batalla_de_CartagoNova.BFHP?ex=6ad4df29&is=6ad38da9&hm=21e067df105b599042a720c04cba6492e5022f19ed5d6284b9f4772f47d93a3b&",
+    "local": "originals/discord/aventuras/batalla-en-cartago-nova/Batalla_de_CartagoNova.BFHP"
+   }
+  ],
+  "desc": "",
+  "count": 1,
+  "slug": "batalla-en-cartago-nova"
+ },
+ {
+  "channel": "aventuras",
+  "section": "",
+  "title": "DESEMBARCO EN HISPANIA",
+  "author": "Jorgra2000",
+  "discord": "https://discord.com/channels/479629904657514526/1413800335213985836/1414626685344546867",
+  "year": "2022",
+  "base": "Imperivm HD vRelease 1.0",
+  "links": [
+   "https://imperivmgbr.foroactivo.com/t1383-aventura-desembarco-en-hispania"
+  ],
+  "files": [
+   {
+    "name": "Desembarco_en_Hispania.zip",
+    "size": 511385,
+    "url": "https://cdn.discordapp.com/attachments/1413800335213985836/1414626685352939610/Desembarco_en_Hispania.zip?ex=6ad4df44&is=6ad38dc4&hm=3fddf9c8765773735484bd6b819da23f0dba5b0783f8a9a1e084ebfc2c4aa5aa&",
+    "local": "originals/discord/aventuras/desembarco-en-hispania/Desembarco_en_Hispania.zip"
+   }
+  ],
+  "desc": "Cartago pone la vista en Hispania, una tierra rica la cual servirá para compensar las pérdidas tras su derrota contra Roma en la Primera Guerra Púnica, sin embargo algunas tribus iberas no le facilitarán la expansión. En el año 236 a.C. el general Amílcar Barca desembarca en Hispania.",
+  "count": 1,
+  "slug": "desembarco-en-hispania"
+ },
+ {
+  "channel": "aventuras",
+  "section": "",
+  "title": "LA ÚLTIMA CARGA TEUTÓNICA",
+  "author": "Jorgra2000",
+  "discord": "https://discord.com/channels/479629904657514526/1413800335213985836/1414626831038021692",
+  "year": "2023",
+  "base": "Imperivm HD vRelease 1.0",
+  "links": [],
+  "files": [
+   {
+    "name": "La_Ultima_Carga_Teutonica_HD.zip",
+    "size": 245067,
+    "url": "https://cdn.discordapp.com/attachments/1413800335213985836/1414626830425788540/La_Ultima_Carga_Teutonica_HD.zip?ex=6ad4df66&is=6ad38de6&hm=e18216842b36c7c8912ceb9ee140d578bc2c7243e261ee3ca4f9b0e8b51233cc&",
+    "local": "originals/discord/aventuras/la-ultima-carga-teutonica/La_Ultima_Carga_Teutonica_HD.zip"
+   }
+  ],
+  "desc": "Los teutones se preparan para la invasión de la Galia. Toma el mando de la horda para acabar con las tribus galas, en el camino te encontrarás grandes misterios.",
+  "count": 1,
+  "slug": "la-ultima-carga-teutonica"
+ },
+ {
+  "channel": "aventuras",
+  "section": "",
+  "title": "CNEO POZA",
+  "author": "Davidvx98",
+  "discord": "https://discord.com/channels/479629904657514526/1413800335213985836/1414626958326628563",
+  "year": "2024",
+  "base": "Imperivm HD vRelease 1.0",
+  "links": [
+   "https://imperivmgbr.foroactivo.com/t1451-aventura-cneo-poza"
+  ],
+  "files": [
+   {
+    "name": "Cneo_Poza.BFHP",
+    "size": 1611776,
+    "url": "https://cdn.discordapp.com/attachments/1413800335213985836/1414626957970243715/Cneo_Poza.BFHP?ex=6ad4df85&is=6ad38e05&hm=194a02001b4b1018edde70b2970890586a3fa9cd8fee1f068a90c748cde9a13f&",
+    "local": "originals/discord/aventuras/cneo-poza/Cneo_Poza.BFHP"
+   }
+  ],
+  "desc": "Partida 2v2 con mecánicas de Grandes Batallas",
+  "count": 1,
+  "slug": "cneo-poza"
+ },
+ {
+  "channel": "aventuras",
+  "section": "",
+  "title": "GERMÁNICO",
+  "author": "Georgius",
+  "discord": "https://discord.com/channels/479629904657514526/1413800335213985836/1414627080611561563",
+  "year": "2024",
+  "base": "Imperivm HD vRelease 1.0",
+  "links": [],
+  "files": [
+   {
+    "name": "Germanico1parte.BFHP",
+    "size": 2475520,
+    "url": "https://cdn.discordapp.com/attachments/1413800335213985836/1414627080335003698/Germanico1parte.BFHP?ex=6ad4dfa2&is=6ad38e22&hm=8e892da2d2112f44a83ef1d959ddb6292946e625612331341f11349990513588&",
+    "local": "originals/discord/aventuras/germanico/Germanico1parte.BFHP"
+   }
+  ],
+  "desc": "",
+  "count": 1,
+  "slug": "germanico"
+ },
+ {
+  "channel": "aventuras",
+  "section": "",
+  "title": "LA BATALLA DE MINAS TIRITH",
+  "author": "Turok7",
+  "discord": "https://discord.com/channels/479629904657514526/1413800335213985836/1416204243869634630",
+  "year": "2018",
+  "base": "Imperivm III v1.40",
+  "links": [
+   "https://imperivmeditor.forumcommunity.net/?t=60887852"
+  ],
+  "files": [
+   {
+    "name": "La_Batalla_de_Minas_Tirith.BFHP",
+    "size": 1644544,
+    "url": "https://cdn.discordapp.com/attachments/1413800335213985836/1416204243156860999/La_Batalla_de_Minas_Tirith.BFHP?ex=6ad4adbb&is=6ad35c3b&hm=cf5c00a68edd01d27b24fdac33e1eb08bc55408410800e66b836a0b978fc1a66&",
+    "local": "originals/discord/aventuras/la-batalla-de-minas-tirith/La_Batalla_de_Minas_Tirith.BFHP"
+   }
+  ],
+  "desc": "La batalla más grande en la historia de la Tercera Edad está a punto de comenzar. Los ejércitos de Sauron se ciernen sobre todos los pueblos libres de la Tierra Media. Dirige el ejército de Gondor en la sangrienta defensa de la capital del reino: Minas Tirith. Si la ciudad cae, nada podrá detener la expansión de las tinieblas…",
+  "count": 1,
+  "slug": "la-batalla-de-minas-tirith"
+ },
+ {
+  "channel": "aventuras",
+  "section": "",
+  "title": "LA CONQUISTA DE BRITANIA (HARDER)",
+  "author": "Rubeneitor",
+  "discord": "https://discord.com/channels/479629904657514526/1413800335213985836/1417959454154031154",
+  "year": "2025",
+  "base": "Imperivm HD vRelease 1.0",
+  "links": [],
+  "files": [
+   {
+    "name": "Harder_great_battles_britain_v2.rar",
+    "size": 8505587,
+    "url": "https://cdn.discordapp.com/attachments/1413800335213985836/1417959453818355712/Harder_great_battles_britain_v2.rar?ex=6ad521a6&is=6ad3d026&hm=144c82b4ecfeb18e9b4f569188318b9aa0eacfa0da80e1bdd6e73dffafb9e3c0&",
+    "local": "originals/discord/aventuras/la-conquista-de-britania-harder/Harder_great_battles_britain_v2.rar"
+   }
+  ],
+  "desc": "",
+  "count": 1,
+  "slug": "la-conquista-de-britania-harder"
+ },
+ {
+  "channel": "aventuras",
+  "section": "",
+  "title": "PASO A PASO",
+  "author": "Melo",
+  "discord": "https://discord.com/channels/479629904657514526/1413800335213985836/1429931435011211274",
+  "year": "2025",
+  "base": "Imperivm HD vRelease 1.0",
+  "links": [
+   "https://imperivmgbr.foroactivo.com/t1391-sin-descarga-aventura-paso-a-paso"
+  ],
+  "files": [
+   {
+    "name": "Paso_a_paso.BFHP",
+    "size": 2161152,
+    "url": "https://cdn.discordapp.com/attachments/1413800335213985836/1429931434579333172/Paso_a_paso.BFHP?ex=6ad52dec&is=6ad3dc6c&hm=50d847f57155d3f92b5319401941b9a4d0e9a0c407c4a04a5f6e4ee1c1ddd2a2&",
+    "local": "originals/discord/aventuras/paso-a-paso/Paso_a_paso.BFHP"
+   }
+  ],
+  "desc": "De un campesino a un comandante de las legiones romanas. Ese será el objetivo de nuestro protagonista Anemij, quien deberá pasar una auténtica odisea para lograrlo. ¿Conseguirá cumplir sus sueños?, ¿o quedará en el olvido como muchos otros soñadores?. Solo tu puedes cambiar su destino.",
+  "count": 1,
+  "slug": "paso-a-paso"
+ },
+ {
+  "channel": "aventuras",
+  "section": "",
+  "title": "SÉ COMO UN DIOS",
+  "author": "Melo",
+  "discord": "https://discord.com/channels/479629904657514526/1413800335213985836/1429931786405810197",
+  "year": "2025",
+  "base": "Imperivm HD vRelease 1.0",
+  "links": [],
+  "files": [
+   {
+    "name": "Se_como_un_dios.BFHP",
+    "size": 1477637,
+    "url": "https://cdn.discordapp.com/attachments/1413800335213985836/1429931786128850986/Se_como_un_dios.BFHP?ex=6ad52e40&is=6ad3dcc0&hm=b958870ad82bd44c6f727c2d4da53dacfb375854a1c04b6ab348439d0a21bda4&",
+    "local": "originals/discord/aventuras/se-como-un-dios/Se_como_un_dios.BFHP"
+   }
+  ],
+  "desc": "En una isla perdida en las costas de la Galia, cuatro tribus hostiles no terminan de hacer las paces y crean una guerra interminable. Ellos intentarán por todos los medios tener el favor divino que les ayudará con su guerra. Sólo un dios como tú podrá unificar la isla y decidir el destino de estos galos.",
+  "count": 1,
+  "slug": "se-como-un-dios"
+ }
+]
