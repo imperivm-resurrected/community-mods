@@ -8,7 +8,7 @@ and publish them on [GameBanana](https://gamebanana.com/games/26069), crediting 
 - `ported/<id>/`: each ported mod, with its `mod.json`.
 - `raw/`: raw data from Discord and the forum.
 - `tools/`: scripts to regenerate `raw/` (see below).
-- `AUTHORS.md`: modders and editors, with their Discord account when found, to contact them (local only, not in git: it holds contact data).
+- `AUTHORS.md`: modders and editors, with their Discord account when found, to contact them.
 
 ## Authors and removal requests
 
