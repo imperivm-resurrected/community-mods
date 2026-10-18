@@ -1,5 +1,6 @@
-// Wrap a Discord map/adventure (raw/discord-entries.json) as an Imperivm Resurrected mod in ported/<slug>/
-//   node tools/wrap-map.js [channel/]<slug> [--players "2-4 players"] [--no-redistributable]
+// Wrap a Discord map/adventure (raw/discord-entries.json) or a forum topic (raw/forum-entries.json, downloaded by
+// tools/download-forum.js) as an Imperivm Resurrected mod in ported/<slug>/
+//   node tools/wrap-map.js [channel/]<slug> | forum/t<topic id> [--players "2-4 players"] [--no-redistributable]
 // Nothing in the map changes, so the original author is the only author (no porter credit).
 // .rar/.zip are unpacked with bsdtar: it is the system `tar` on Windows 10+ and macOS; on Linux install it
 // (libarchive-tools / libarchive). BSDTAR=<path> overrides it.
@@ -7,14 +8,32 @@ const fs = require("fs"), path = require("path"), { execFileSync } = require("ch
 const ROOT = path.join(__dirname, "..");
 const args = process.argv.slice(2), opt = {};
 for (let i = 0; i < args.length; i++) if (args[i].startsWith("--")) opt[args[i].slice(2)] = args[i + 1]?.startsWith("--") || i + 1 >= args.length ? true : args[++i]; else opt._ = args[i];
-if (!opt._) { console.error('usage: node tools/wrap-map.js [channel/]<slug> [--players "4 players"] [--no-redistributable]'); process.exit(1); }
+if (!opt._) { console.error('usage: node tools/wrap-map.js [channel/]<slug> | forum/t<id> [--players "4 players"] [--no-redistributable]'); process.exit(1); }
 
+const slugify = s => s.normalize("NFD").replace(/[\u0300-\u036f]/g, "").toLowerCase().replace(/[^a-z0-9]+/g, "-").replace(/^-|-$/g, "");
+const discord = require("../raw/discord-entries.json");
+// A forum topic: title without the [TAGS], files from raw/download-log.json, year from the first post (raw/forum.json, local)
+const forumEntry = topic => {
+  const t = require("../raw/forum-entries.json")[topic];
+  if (!t) { console.error("not in raw/forum-entries.json: t" + topic); process.exit(1); }
+  const dl = (() => { try { return require("../raw/download-log.json"); } catch { return {}; } })();
+  const files = [...new Set(Object.values(dl).filter(v => v.key === "t" + topic).flatMap(v => v.files))]
+    .map(local => ({ name: path.basename(local), local }));
+  const title = t.title.replace(/\[[^\]]*\]/g, " ").replace(/\s+/g, " ").trim();
+  const date = (() => { try { return require("../raw/forum.json")[topic]?.posts[0]?.date || ""; } catch { return ""; } })();
+  let slug = slugify(title);
+  if (discord.some(x => x.slug === slug)) slug += "-t" + topic; // same title as a Discord entry
+  return { channel: "forum", slug, title, author: t.author, year: (date.match(/\b(19|20)\d\d\b/) || [""])[0],
+    base: /\bHD\b/.test(t.title) ? "Imperivm HD" : "", desc: "", files, section: t.title };
+};
 const [want, chan] = opt._.split("/").reverse();
-const found = require("../raw/discord-entries.json").filter(x => x.slug === want && (!chan || x.channel === chan));
+const found = chan === "forum" ? [forumEntry(want.replace(/^t/, ""))] : discord.filter(x => x.slug === want && (!chan || x.channel === chan));
 if (found.length !== 1) { console.error(found.length ? `ambiguous, use channel/slug: ${found.map(x => x.channel + "/" + x.slug).join(" ")}` : `not found: ${opt._}`); process.exit(1); }
 const e = found[0];
+if (!e.files.length) { console.error("nothing downloaded for", opt._); process.exit(1); }
 const id = (e.channel === "saga-imperivm" ? "saga-" : "") + e.slug;
-const isAdv = e.channel === "aventuras" || /AVENTURAS/.test(e.section);
+// forum topics: decided after unpacking, from the title or game.xml game_type (0 = skirmish map, 1/2 = adventure)
+let isAdv = e.channel === "aventuras" || /AVENTURAS?|adventure/i.test(e.section);
 const SMALL = new Set(["de", "del", "la", "las", "el", "los", "en", "y", "a", "por", "al", "un", "una", "con", "of", "the"]);
 const titleCase = s => s.toLowerCase().split(/(\s+)/).map((w, i) => i && SMALL.has(w) ? w : w.charAt(0).toUpperCase() + w.slice(1))
   .join("").replace(/\b(i{1,3}|iv|vi{0,3}|ix|x{1,3})\b/gi, m => m.toUpperCase()).replace(/(\d)v(\d)/gi, "$1v$2");
@@ -58,7 +77,8 @@ const bigMods = !hdFiles || !fs.existsSync(MODS) ? [] : fs.readdirSync(MODS).map
   const hidden = new Set(fs.existsSync(hiddenTxt) ? fs.readFileSync(hiddenTxt, "utf8").split(/\r?\n/)
     .map(l => l.trim().toLowerCase().replace(/\\/g, "/")).filter(l => l && !l.startsWith(";")) : []);
   const own = Object.keys(classFiles(path.join(dir, "DATA")));
-  return { mod: m, own: new Set(own), classes: new Set([...Object.keys(hdFiles).filter(c => !hidden.has(hdFiles[c])), ...own]) };
+  // forum-* = a mod downloaded from the forum but not ported to Resurrected yet: a map needing it has to wait
+  return { mod: m, ported: !m.startsWith("forum-"), own: new Set(own), classes: new Set([...Object.keys(hdFiles).filter(c => !hidden.has(hdFiles[c])), ...own]) };
 });
 // Classes a map uses: placed objects (class="X") and classes its scripts create or look up (Place("X"...)). Parts of the
 // .bfhp are LZ-compressed, which mangles some names ("GAxema718"): those show up once, a real unit several times, so an
@@ -75,7 +95,8 @@ const usedClasses = f => {
   return Object.keys(seen).filter(c => (seen[c] >= 2 || known(c)) && !own.has(c.toLowerCase()));
 };
 
-const out = path.join(ROOT, "ported", id), dest = path.join(out, isAdv ? "adventures" : "scenarios");
+const out = path.join(ROOT, "ported", id);
+let dest = path.join(out, isAdv ? "adventures" : "scenarios");
 fs.rmSync(out, { recursive: true, force: true });
 fs.mkdirSync(dest, { recursive: true });
 for (const f of e.files) {
@@ -93,19 +114,24 @@ for (const f of fs.readdirSync(dest, { recursive: true })) {
 for (const f of fs.readdirSync(dest)) if (fs.statSync(path.join(dest, f)).isDirectory()) fs.rmSync(path.join(dest, f), { recursive: true });
 // "Mapa..BFHP" (common typo) -> "Mapa.BFHP": the SDK rejects ".." in paths
 for (const f of fs.readdirSync(dest)) if (f.includes("..")) fs.renameSync(path.join(dest, f), path.join(dest, f.replace(/\.{2,}/g, ".")));
-const maps = fs.readdirSync(dest).filter(f => /\.bfhp$/i.test(f));
+let maps = fs.readdirSync(dest).filter(f => /\.bfhp$/i.test(f));
 if (!maps.length) { console.error("no .bfhp in", e.files.map(f => f.name)); process.exit(1); }
+if (e.channel === "forum" && !isAdv && maps.some(f => /<properties[^>]*?\sgame_type="[12]"/.test(fs.readFileSync(path.join(dest, f), "latin1")))) {
+  isAdv = true;
+  fs.renameSync(dest, path.join(out, "adventures"));
+  dest = path.join(out, "adventures");
+}
 const counts = maps.map(f => slots(path.join(dest, f))).filter(Boolean);
 const used = hdClasses ? [...new Set(maps.flatMap(f => usedClasses(path.join(dest, f))))] : null;
 const missing = used?.filter(c => !hdClasses.has(c.toLowerCase())) || []; // not in the HD game
 // needs = the big mods that have every missing class; none -> the map needs a mod we don't have
 const needs = missing.length ? bigMods.filter(m => missing.every(c => m.classes.has(c.toLowerCase()))).map(m => m.mod) : [];
 const unknown = missing.length && !needs.length ? missing : [];
-// incompatible = big mods (other than the one it needs) that hide a class the map uses and would otherwise have
-// (from the HD game or the mod it needs); classes nobody has are already reported as unknown
-const available = c => hdClasses.has(c.toLowerCase()) || bigMods.some(m => needs.includes(m.mod) && m.own.has(c.toLowerCase()));
+const waits = needs.length && !needs.some(m => bigMods.find(b => b.mod === m).ported) ? needs : []; // only unported mods have them
+if (!waits.length) needs.splice(0, needs.length, ...needs.filter(m => bigMods.find(b => b.mod === m).ported));
+// incompatible = big mods that hide (hidden.txt) a class of the HD game the map uses
 const breaks = used ? bigMods.filter(m => !needs.includes(m.mod))
-  .map(m => ({ mod: m.mod, lost: used.filter(c => available(c) && !m.classes.has(c.toLowerCase())) })).filter(x => x.lost.length) : [];
+  .map(m => ({ mod: m.mod, lost: used.filter(c => hdClasses.has(c.toLowerCase()) && !m.classes.has(c.toLowerCase())) })).filter(x => x.lost.length) : [];
 const lo = Math.min(...counts), hi = Math.max(...counts);
 const players = opt.players || (counts.length ? (lo === hi ? `${lo} players` : `${lo}-${hi} players`) : null);
 
@@ -131,5 +157,5 @@ const mod = {
 fs.writeFileSync(path.join(out, "mod.json"), JSON.stringify(mod, null, 2) + "\n");
 console.log(`${out}\n  ${maps.join(", ")} -> ${path.basename(dest)}/\n  category ${mod.category}, tags ${JSON.stringify(mod.tags)}${counts.length < maps.length ? "  ⚠️ some map has no readable players" : ""}${!isAdv && !players ? "  ⚠️ missing --players" : ""}`
   + (used === null ? "\n  ⚠️ compatibility not checked (no originals/game-data)" : unknown.length ? `\n  ❌ not in the HD game nor in a known mod: ${unknown.join(", ")}` : "")
-  + (needs.length ? `\n  🧩 needs ${needs.join(" or ")} (${missing.join(", ")})` : "")
+  + (waits.length ? `\n  ⏳ blocked: needs ${waits.join(" or ")}, not ported to Resurrected yet (${missing.join(", ")})` : needs.length ? `\n  🧩 needs ${needs.join(" or ")} (${missing.join(", ")})` : "")
   + breaks.map(b => `\n  🚫 incompatible with ${b.mod} (hides ${b.lost.join(", ")})`).join(""));

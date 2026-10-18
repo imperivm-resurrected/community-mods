@@ -1,0 +1,35 @@
+{
+  "id": "haenor-rescate-de-viriato",
+  "name": "Haenor, Rescate de Viriato",
+  "version": "1.0",
+  "authors": [
+    "adri55555 y arkano57"
+  ],
+  "description": {
+    "spanish": "Roma esta persiguiendo a Viriato que tiene que escapar para buscar aliados para recuperar su amada Hispania y se encuentra a Haenor un gran guerrero que clama venganza. Aventura de adri55555 y arkano57 (2015, Imperivm III v1.40).",
+    "english": "Adventure by adri55555 y arkano57 (2015, Imperivm III v1.40)."
+  },
+  "category": "Campaigns",
+  "tags": [
+    "Spanish"
+  ],
+  "requires": [
+    "forum-t262"
+  ],
+  "incompatibleWith": [
+    "caesar-mod",
+    "community-mod",
+    "forum-t1326",
+    "forum-t1354",
+    "forum-t1417",
+    "forum-t1484",
+    "forum-t1485",
+    "forum-t227",
+    "forum-t254",
+    "forum-t461",
+    "forum-t487",
+    "forum-t588",
+    "forum-t731"
+  ],
+  "redistributable": true
+}

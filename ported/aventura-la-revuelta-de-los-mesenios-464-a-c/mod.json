@@ -1,0 +1,20 @@
+{
+  "id": "aventura-la-revuelta-de-los-mesenios-464-a-c",
+  "name": "Aventura - la Revuelta de los Mesenios (464 A.c.)",
+  "version": "1.0",
+  "authors": [
+    "Mietitore"
+  ],
+  "description": {
+    "spanish": "En 464 aC los ilotas de Messenia, sometido a los espartanos por muchos siglos, tomó las armas para tratar de recuperar la libertad. Después de alguna victoria, los Iloti se vieron obligados a retirarse a la fortaleza de Itome y comenzaron una larga resistencia. Sparta pidió ayuda al entonces aliado Atenas, quien envió un contingente en su ayuda. Aventura de Mietitore (2020).",
+    "english": "Adventure by Mietitore (2020)."
+  },
+  "category": "Campaigns",
+  "tags": [
+    "Spanish"
+  ],
+  "requires": [
+    "caesar-mod"
+  ],
+  "redistributable": true
+}

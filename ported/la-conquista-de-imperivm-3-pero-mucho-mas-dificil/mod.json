@@ -1,0 +1,21 @@
+{
+  "id": "la-conquista-de-imperivm-3-pero-mucho-mas-dificil",
+  "name": "La Conquista de Imperivm 3 Pero Mucho Mas Dificil",
+  "version": "1.0",
+  "authors": [
+    "RUBENEITOR"
+  ],
+  "description": {
+    "spanish": "Español Te gustaba la antigua conquista y quieres un nuevo desafio? Pues prueba con esta nueva conquista mejorada. La dificultad esta ajustada para los antiguos veteranos del juego y se recomienda jugarla en dificil para experimentar la max acción. English U liked the previus conquest and u want a new challenge? Then try this new improved conquest.. Aventura de RUBENEITOR (2022).",
+    "english": "Adventure by RUBENEITOR (2022)."
+  },
+  "category": "Campaigns",
+  "tags": [
+    "Spanish"
+  ],
+  "incompatibleWith": [
+    "caesar-mod",
+    "community-mod"
+  ],
+  "redistributable": true
+}

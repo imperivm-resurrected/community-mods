@@ -1,0 +1,24 @@
+{
+  "id": "cneo-poza",
+  "name": "Cneo Poza",
+  "version": "1.0",
+  "authors": [
+    "Davidvx98"
+  ],
+  "description": {
+    "spanish": "Partida 2v2 con mecánicas de Grandes Batallas. Aventura de Davidvx98 (2024, Imperivm HD vRelease 1.0).",
+    "english": "Adventure by Davidvx98 (2024, Imperivm HD vRelease 1.0)."
+  },
+  "category": "Campaigns",
+  "tags": [
+    "Spanish"
+  ],
+  "requires": [
+    "forum-t731"
+  ],
+  "incompatibleWith": [
+    "caesar-mod",
+    "community-mod"
+  ],
+  "redistributable": true
+}

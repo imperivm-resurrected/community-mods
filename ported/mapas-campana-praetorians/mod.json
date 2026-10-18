@@ -1,0 +1,17 @@
+{
+  "id": "mapas-campana-praetorians",
+  "name": "Mapas Campaña Praetorians",
+  "version": "1.0",
+  "authors": [
+    "Quinto Tulio Cicerón"
+  ],
+  "description": {
+    "spanish": "Mapa de Quinto Tulio Cicerón (2026).",
+    "english": "Map by Quinto Tulio Cicerón (2026)."
+  },
+  "category": "Maps",
+  "tags": [
+    "1 players"
+  ],
+  "redistributable": true
+}

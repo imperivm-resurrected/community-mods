@@ -21,7 +21,8 @@ Every mod is published with full credit to its original author. Many of these mo
 2. **Download** to `originals/<id>/`.
 3. **Discord maps and adventures** (Type *wrap*): creates `ported/<id>/` with the `.bfhp` and `mod.json`:
    ```bash
-   node tools/wrap-map.js [channel/]<slug>
+   node tools/wrap-map.js [channel/]<slug>    # Discord entry
+   node tools/wrap-map.js forum/t<topic id>   # forum topic, after tools/download-forum.js
    ```
    `.rar`/`.zip` are unpacked with bsdtar: it is the system `tar` on Windows 10+ and macOS; on Linux install `libarchive-tools` (Debian/Ubuntu) or `libarchive` (Arch, Fedora, Nix). `BSDTAR=<path>` points to another binary.
    **Compatibility (1.40, 1.56 and HD).** Resurrected runs on the HD game, so a map made for 1.40/1.56 or for a mod breaks if it places a unit or object the HD game does not have. `wrap-map.js` checks every class the map places against the game data, if extracted once (from `imperivm-resurrected/sdk/en`):
@@ -49,6 +50,9 @@ python3 tools/scrape-forum.py      # forum -> raw/forum.json (local; resumes if 
 node tools/parse-forum.js          # raw/forum.json -> raw/forum-entries.json (topics with the author's links)
 node tools/parse-discord.js        # raw/discord.json (local) -> raw/discord-entries.json
 node tools/download-discord.js     # Discord attachments -> originals/discord/ (URLs expire after ~24 h)
+node tools/download-forum.js       # files behind the live links of rows with no local copy -> originals/forum/<t id>/files/
+                                   #   (Mega needs megadl; ModDB needs a browser on CDP port 9333 for its Cloudflare check)
+node tools/download-forum-shots.js # screenshots of forum topics -> originals/forum/t<id>/screenshots/
 node tools/check-links.js [--all]  # checks the downloads -> raw/links.json
 node tools/build-table.js --force  # draft of MODS.md + MISSING.md (overwrites manual edits)
 ```
