@@ -17,7 +17,7 @@ const HEAD = "| # | Nombre | Autor(es) | Base | Fuente | Descarga | Permiso | Es
 const out = [];
 let n = 0;
 const row = (name, author, base, source, download, permiso = "❔") =>
-  `| ${++n} | ${cell(name)} | ${cell(author)} | ${cell(base)} | ${source} | ${download} | ${permiso} | ⏳ pendiente | |`;
+  `| ${++n} | ${cell(name)} | ${cell(author)} | ${cell(base)} | ${source} | ${download} | ${permiso} | 📋 por portear | |`;
 
 out.push(`# Mods para portear a Imperivm Resurrected
 
@@ -26,7 +26,7 @@ Desde aquí se edita a mano.
 
 **Descarga**: ✅ vivo · ❌ muerto · ⚠️ dudoso (revisar a mano) · ❔ sin comprobar · 💾 copia local en \`originals/\`.
 **Permiso**: ✅ concedido o licencia libre · ❌ denegado · ❔ sin pedir · 🕐 pedido, esperando.
-**Estado**: ⏳ pendiente · 🔧 en curso · 🧪 probando · ✅ publicado · 🚫 no se puede portear.
+**Estado**: 📋 por portear · 🔧 porteado (falta subir) · ✅ subido a GameBanana · 🚫 no se puede portear.
 `);
 
 // --- Mods grandes (lista a mano: son pocos y cada uno es un mundo)
