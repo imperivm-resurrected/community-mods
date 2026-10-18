@@ -1,2 +1,6 @@
 originals/
 .browser-profile/
+ported/**/*.[bB][fF][hH][pP]
+ported/**/*.bmp
+ported/**/*.pak
+ported/*.zip
