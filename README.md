@@ -1,6 +1,6 @@
 # community-mods
 
-Port the community's mods, maps and adventures to [Imperivm Resurrected](https://github.com/THIONG/imperivm-resurrected)
+Port the community's mods, maps and adventures to [Imperivm Resurrected](https://github.com/imperivm-resurrected/imperivm-resurrected)
 and publish them on [GameBanana](https://gamebanana.com/games/26069), crediting each author.
 
 - `MODS.md`: the table. It is the source of truth and is edited by hand.
