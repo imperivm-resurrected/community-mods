@@ -5,7 +5,7 @@ Edited by hand from here on.
 
 **Download**: ✅ alive · ❌ dead · ⚠️ doubtful (check by hand) · ❔ not checked · 💾 local copy in `originals/`.
 **Permission**: ✅ granted or free license · ❌ denied · ❔ not asked · 🕐 asked, waiting.
-**Type**: wrap (add the `.bfhp` and a `mod.json`) · wrap? (from the forum, not yet checked to be just a map) · requires X (port X first) · reduce (`reducir-mod.js` + clean up) · rewrite (redo with the SDK) · review (may not be a mod).
+**Type**: wrap (add the `.bfhp` and a `mod.json`) · wrap? (from the forum, not yet checked to be just a map) · requires X (port X first) · reduce (`shrink-mod.js` + clean up) · rewrite (redo with the SDK) · review (may not be a mod).
 **Status**: 📋 to port · 🔧 ported (not uploaded) · ✅ on GameBanana · 🚫 cannot be ported.
 
 ## Mods
