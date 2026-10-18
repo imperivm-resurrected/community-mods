@@ -28,7 +28,7 @@ Every mod is published with full credit to its original author. Many of these mo
    ```bash
    node tools/extract-data.js "<game>" <community-mods>/originals/game-data
    ```
-   Classes missing from the game are looked up in the mods under `originals/mods/<mod id>/data` (same tool, pointed at the mod folder); if one mod has them all, it goes to `requires` in `mod.json`. Otherwise it prints ❌ with the missing classes: the map needs a mod we do not have (Type *requires ? mod* in `MODS.md`). Some names look truncated because parts of the `.bfhp` are compressed; only names placed at least twice count.
+   Big mods change that set too: copy each one's `mod.json`, `hidden.txt` and `DATA/**/*.sc.xml` to `originals/mods/<mod id>/` (the Community Mod and the Caesar Mod hide game files, e.g. the wild horse). Then each map gets `requires` if only that mod has a class it uses, and `incompatibleWith` if that mod hides one; `MODS.md` shows both in *Type*. A map using classes nobody has prints ❌: it needs a mod we do not have (*requires ? mod*). Parts of the `.bfhp` are compressed and mangle some names, so an unknown name only counts if placed at least twice.
 
    Nothing in the map changes, so the original author is the only author (no porter credit). The slug comes from `raw/discord-entries.json`. Players are read from the `.bfhp` (slots with `control="Both"`/`"Human"`); `--players` overrides it.
 

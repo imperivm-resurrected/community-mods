@@ -13,5 +13,8 @@
   "tags": [
     "8 players"
   ],
+  "incompatibleWith": [
+    "community-mod"
+  ],
   "redistributable": true
 }

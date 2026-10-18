@@ -11,5 +11,8 @@
   },
   "category": "Maps",
   "tags": [],
+  "incompatibleWith": [
+    "caesar-mod"
+  ],
   "redistributable": true
 }

@@ -13,5 +13,9 @@
   "tags": [
     "8 players"
   ],
+  "incompatibleWith": [
+    "caesar-mod",
+    "community-mod"
+  ],
   "redistributable": true
 }

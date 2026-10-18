@@ -16,5 +16,8 @@
   "requires": [
     "community-mod"
   ],
+  "incompatibleWith": [
+    "caesar-mod"
+  ],
   "redistributable": true
 }

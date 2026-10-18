@@ -37,24 +37,42 @@ const mapDesc = f => {
     .replace(/\\n|\s+/g, " ").replace(/ +([,.!?])/g, "$1").trim()
     .replace(/^(Partida de estrategia|Partida de aventura|Scenario Game)$/i, ""); // editor defaults, not the author's
 };
-// Compatibility: Resurrected runs on the HD game, so a 1.40/1.56 map (or one made for a mod) breaks if it places a class
+// Compatibility: Resurrected runs on the HD game, so a 1.40/1.56 map (or one made for a mod) breaks if it uses a class
 // the HD data doesn't define. Needs originals/game-data (sdk/en: node tools/extract-data.js "<game>" originals/game-data).
-// Mods we have (originals/mods/<mod id>/data, extracted the same way from the mod's data.pak) tell which mod a map needs:
-// the folder name is the mod's id, written to "requires" so the game loads it first.
-const classesIn = dir => new Set(fs.readdirSync(dir, { recursive: true }).filter(f => /\.xml$/i.test(f))
-  .flatMap(f => [...fs.readFileSync(path.join(dir, f), "latin1").matchAll(/<class\b[^>]*?\bid\s*=\s*"([^"]+)"/g)].map(m => m[1].toLowerCase())));
+// Big mods in originals/mods/<mod id>/ (their mod.json, hidden.txt and DATA/**/*.sc.xml) change that set: a mod's classes
+// are HD's minus the files its hidden.txt hides, plus its own. A map needs a mod ("requires") if only that mod has a
+// class it uses, and can't run with a mod ("incompatibleWith") if that mod hides a class it uses.
+const CLASS_ID = /<class\b[^>]*?\bid\s*=\s*"([^"]+)"/g;
+const classFiles = dir => { // class id (lowercase) -> "data/classes/x.sc.xml"
+  const r = {};
+  if (!fs.existsSync(dir)) return r;
+  for (const f of fs.readdirSync(dir, { recursive: true })) if (/\.sc\.xml$/i.test(f))
+    for (const m of fs.readFileSync(path.join(dir, f), "latin1").matchAll(CLASS_ID)) r[m[1].toLowerCase()] = ("data/" + f).replace(/\\/g, "/").toLowerCase();
+  return r;
+};
 const DATA = path.join(ROOT, "originals", "game-data", "DATA"), MODS = path.join(ROOT, "originals", "mods");
-const hdClasses = fs.existsSync(DATA) ? classesIn(DATA) : null;
-const modClasses = !fs.existsSync(MODS) ? [] : fs.readdirSync(MODS).filter(m => fs.existsSync(path.join(MODS, m, "data")))
-  .map(m => ({ mod: m, classes: classesIn(path.join(MODS, m, "data")) }));
-const unknownClasses = f => {
+const hdFiles = fs.existsSync(DATA) ? classFiles(DATA) : null;
+const hdClasses = hdFiles && new Set(Object.keys(hdFiles));
+const bigMods = !hdFiles || !fs.existsSync(MODS) ? [] : fs.readdirSync(MODS).map(m => {
+  const dir = path.join(MODS, m), hiddenTxt = path.join(dir, "hidden.txt");
+  const hidden = new Set(fs.existsSync(hiddenTxt) ? fs.readFileSync(hiddenTxt, "utf8").split(/\r?\n/)
+    .map(l => l.trim().toLowerCase().replace(/\\/g, "/")).filter(l => l && !l.startsWith(";")) : []);
+  const own = Object.keys(classFiles(path.join(dir, "DATA")));
+  return { mod: m, own: new Set(own), classes: new Set([...Object.keys(hdFiles).filter(c => !hidden.has(hdFiles[c])), ...own]) };
+});
+// Classes a map uses: placed objects (class="X") and classes its scripts create or look up (Place("X"...)). Parts of the
+// .bfhp are LZ-compressed, which mangles some names ("GAxema718"): those show up once, a real unit several times, so an
+// unknown placed name only counts if seen at least twice.
+const usedClasses = f => {
   const s = fs.readFileSync(f, "latin1");
-  const own = new Set([...s.matchAll(/<class\b[^>]*?\bid\s*=\s*"([^"]+)"/g)].map(m => m[1].toLowerCase())); // classes the map defines itself
-  // Parts of the .bfhp are LZ-compressed, which mangles some names ("GAxema718"): those show up once, while a real unit
-  // is placed several times. So only names seen at least twice count.
+  const known = c => hdClasses.has(c.toLowerCase()) || bigMods.some(m => m.own.has(c.toLowerCase()));
+  const own = new Set([...s.matchAll(CLASS_ID)].map(m => m[1].toLowerCase())); // classes the map defines itself
   const seen = {};
   for (const m of s.matchAll(/\bclass="([A-Za-z_][\w.-]{0,60})"/g)) seen[m[1]] = (seen[m[1]] || 0) + 1;
-  return Object.keys(seen).filter(c => seen[c] >= 2 && !hdClasses.has(c.toLowerCase()) && !own.has(c.toLowerCase()));
+  // script calls that create or look up objects by class; a bare string could be a character or group name ("Fisherman")
+  for (const m of s.matchAll(/\b(?:Place|_PlaceEx|CreateFeedback|ClassPlayerObjs|ClassPlayerAreaObjs)\(\s*"([A-Za-z]\w{2,40})"/g)) if (known(m[1])) seen[m[1]] = (seen[m[1]] || 0) + 2;
+  // a known class counts even once (heroes are unique); an unknown name needs 2 sightings (mangled names show up once)
+  return Object.keys(seen).filter(c => (seen[c] >= 2 || known(c)) && !own.has(c.toLowerCase()));
 };
 
 const out = path.join(ROOT, "ported", id), dest = path.join(out, isAdv ? "adventures" : "scenarios");
@@ -78,9 +96,16 @@ for (const f of fs.readdirSync(dest)) if (f.includes("..")) fs.renameSync(path.j
 const maps = fs.readdirSync(dest).filter(f => /\.bfhp$/i.test(f));
 if (!maps.length) { console.error("no .bfhp in", e.files.map(f => f.name)); process.exit(1); }
 const counts = maps.map(f => slots(path.join(dest, f))).filter(Boolean);
-const unknown = hdClasses ? [...new Set(maps.flatMap(f => unknownClasses(path.join(dest, f))))] : null;
-// needs = mods that define every missing class; if none covers them all, the map needs a mod we don't have
-const needs = unknown?.length ? modClasses.filter(m => unknown.every(c => m.classes.has(c.toLowerCase()))).map(m => m.mod) : [];
+const used = hdClasses ? [...new Set(maps.flatMap(f => usedClasses(path.join(dest, f))))] : null;
+const missing = used?.filter(c => !hdClasses.has(c.toLowerCase())) || []; // not in the HD game
+// needs = the big mods that have every missing class; none -> the map needs a mod we don't have
+const needs = missing.length ? bigMods.filter(m => missing.every(c => m.classes.has(c.toLowerCase()))).map(m => m.mod) : [];
+const unknown = missing.length && !needs.length ? missing : [];
+// incompatible = big mods (other than the one it needs) that hide a class the map uses and would otherwise have
+// (from the HD game or the mod it needs); classes nobody has are already reported as unknown
+const available = c => hdClasses.has(c.toLowerCase()) || bigMods.some(m => needs.includes(m.mod) && m.own.has(c.toLowerCase()));
+const breaks = used ? bigMods.filter(m => !needs.includes(m.mod))
+  .map(m => ({ mod: m.mod, lost: used.filter(c => available(c) && !m.classes.has(c.toLowerCase())) })).filter(x => x.lost.length) : [];
 const lo = Math.min(...counts), hi = Math.max(...counts);
 const players = opt.players || (counts.length ? (lo === hi ? `${lo} players` : `${lo}-${hi} players`) : null);
 
@@ -100,8 +125,11 @@ const mod = {
   category: isAdv ? "Campaigns" : "Maps",
   tags: isAdv ? ["Spanish"] : players ? [players] : [],
   ...(needs.length === 1 ? { requires: needs } : {}),
+  ...(breaks.length ? { incompatibleWith: breaks.map(b => b.mod) } : {}),
   redistributable: !opt["no-redistributable"], // publishing on GameBanana already redistributes it; false only if the author asks
 };
 fs.writeFileSync(path.join(out, "mod.json"), JSON.stringify(mod, null, 2) + "\n");
 console.log(`${out}\n  ${maps.join(", ")} -> ${path.basename(dest)}/\n  category ${mod.category}, tags ${JSON.stringify(mod.tags)}${counts.length < maps.length ? "  ⚠️ some map has no readable players" : ""}${!isAdv && !players ? "  ⚠️ missing --players" : ""}`
-  + (unknown === null ? "\n  ⚠️ compatibility not checked (no originals/game-data)" : !unknown.length ? "" : needs.length ? `\n  🧩 needs ${needs.join(" or ")} (${unknown.join(", ")})` : `\n  ❌ not in the HD game nor in a known mod: ${unknown.join(", ")}`));
+  + (used === null ? "\n  ⚠️ compatibility not checked (no originals/game-data)" : unknown.length ? `\n  ❌ not in the HD game nor in a known mod: ${unknown.join(", ")}` : "")
+  + (needs.length ? `\n  🧩 needs ${needs.join(" or ")} (${missing.join(", ")})` : "")
+  + breaks.map(b => `\n  🚫 incompatible with ${b.mod} (hides ${b.lost.join(", ")})`).join(""));
