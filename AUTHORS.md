@@ -11,7 +11,7 @@ Built from the authors in `MODS.md` and a member search of the *Imperivm III Edi
 | Guigoras | 27 | 2013–2020 | — | MAPA 6, MAPA 8, ETRURIA LIBRE, … | | |
 | Halcón | 13 | 2020–2025 | — | 1v1 ISLAS, 2v2 MONTAÑOSO, 3v3 MONTAÑOSO, … | | |
 | Camarada | 10 | ? | [camarada1701](https://discord.com/users/443781887169921024) | CGWAR Greek Civilization Mod v6, Creación de una nueva unidad , El HIPATISTA, Creación de una nueva unidad , Un Mercenario, … | 2026-10-18 (#chat-mapas) | 🕐 |
-| Rubeneitor / RUBENEITOR | 10 | 2022–2025 | [rubeneitor](https://discord.com/users/404297581573832706) | EL ARMA DEFINITIVA, BATALLA DE ISLAS, BATALLA DE ISLAS PEQUEÑAS, … | 2026-10-18 (#chat-mapas) | 🕐 (uploads his own maps to GameBanana himself: 9 so far) |
+| Rubeneitor / RUBENEITOR | 10 | 2022–2025 | [rubeneitor](https://discord.com/users/404297581573832706) | EL ARMA DEFINITIVA, BATALLA DE ISLAS, BATALLA DE ISLAS PEQUEÑAS, … | 2026-10-18 (#chat-mapas) | ✅ yes (2026-10-18); he also uploads his own to GameBanana (9 so far) |
 | El Jüsticiero Misteryoso / El_Jüsticiero_Misteryoso | 10 | 2010 | — | LA DEFENSA DE FORFORA, [SIN DESCARGA] Mis mapas, [SIN DESCARGA] [Mapa] Apuestas, … | | |
 | Ferónidas | 9 | 2020–2025 | [feronidas](https://discord.com/users/501125170946244609) | Community Mod v12, COLOSSEUM 2V2, ASAMBLEA DEL VALLE, … | 2026-10-18 (DM) | ✅ post in #chat-mapas, contact authors by every means |
 | Poliko | 9 | 2010 | [poliko_obsceno](https://discord.com/users/259135028448067584) | MAPA COMUNIDAD, [SIN DESCARGA] [Mapa] El Paso Helado, INTENTO DE EDICION DEL GUERRERO CON MAZA., … | 2026-10-18 (#chat-mapas) | 🕐 |
