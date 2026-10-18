@@ -1,5 +1,5 @@
 // Download the files behind the live links of the MODS.md rows with no local copy (💾) into originals/forum/<key>/files/,
-// where <key> is t<forum topic id> or row<N> for the big mods. Resumable: what is already on disk is skipped.
+// where <key> is t<forum topic id>, or the slugged row name for rows with no forum topic. Resumable: what is already on disk is skipped.
 //   node tools/download-forum.js [--only mega,mediafire,dropbox,drive,moddb,terabox]
 // Needs: megadl (megatools) for Mega. ModDB sits behind a Cloudflare challenge: a browser on CDP port 9333 with
 // agent-browser (`agent-browser connect 9333`) solves it, then curl downloads with the browser's cookies.
@@ -21,13 +21,14 @@ const save = () => fs.writeFileSync(OUT, JSON.stringify(log, null, 1));
 // The forum often has a link twice, whole and cut at the first space ("/s/<id>/Le"): the file id is what counts.
 const fileId = u => (u.match(/dropbox\.com\/s\/(\w+)/) || u.match(/mega(?:\.co)?\.nz\/(?:#!|file\/|#F!|folder\/)([\w-]+)/)
   || u.match(/mediafire\.com\/(?:file\/|download\/|\?)(\w+)/) || u.match(/\/d\/([\w-]+)/) || [])[1] || u;
+const slug = s => s.normalize("NFD").replace(/[\u0300-\u036f]/g, "").toLowerCase().replace(/[^a-z0-9]+/g, "-").replace(/^-|-$/g, "");
 // rows -> targets
 const targets = [], seenIds = new Set();
 for (const l of fs.readFileSync(path.join(ROOT, "MODS.md"), "utf8").split("\n")) {
   const c = l.split("|");
   if (c.length < 11 || !/^\s*\d+\s*$/.test(c[1]) || l.includes("💾") || /✅/.test(c[9])) continue; // local copy, or already on GameBanana
   const topic = (c[6].match(/foroactivo\.com\/t(\d+)-/) || [])[1];
-  const key = topic ? `t${topic}` : `row${c[1].trim()}`;
+  const key = topic ? `t${topic}` : slug(c[2]); // row numbers change, names do not
   // links in the table may carry forum BBCode leftovers ("...#key[/descarga")
   for (const u of [...c[7].matchAll(/\]\((https?:[^)]+)\)/g)].map(m => m[1].replace(/\[\/?\w*$/, "")))
     if (hostOf(u) && links[u]?.ok !== false && !/mega\.nz\/?$/.test(u) && (!only.length || only.includes(hostOf(u))) && !seenIds.has(fileId(u)) && seenIds.add(fileId(u)))

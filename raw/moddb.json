@@ -1,0 +1,618 @@
+[
+ {
+  "kind": "mod",
+  "where": "imperivm-great-battles-of-rome",
+  "url": "/mods/larax-adventure",
+  "title": "Celtic Kings Adventure",
+  "updated": "2026-10-18",
+  "released": "2026-05-23",
+  "summary": "Imperivm I adventure adapted for Imperivm GBR HD (Steam)."
+ },
+ {
+  "kind": "mod",
+  "where": "imperivm-great-battles-of-rome",
+  "url": "/mods/imperivm-legacy",
+  "title": "Imperivm Legacy",
+  "updated": "2026-09-06",
+  "released": "2024-09-16",
+  "summary": "𝗜𝗺𝗽𝗲𝗿𝗶𝘃𝗺 𝗟𝗲𝗴𝗮𝗰𝘆 is a mod for Imperivm - Great Battles of Rome. It can be installed both on the Steam HD and..."
+ },
+ {
+  "kind": "mod",
+  "where": "imperivm-great-battles-of-rome",
+  "url": "/mods/caesar-mod",
+  "title": "Caesar Mod",
+  "updated": "2026-06-01",
+  "released": "2025-06-02",
+  "summary": "After nearly two years of hard work in total independence, I'm proud to officially release the Caesar Mod! This is a heartfelt tribute to all Greek Mod..."
+ },
+ {
+  "kind": "mod",
+  "where": "imperivm-great-battles-of-rome",
+  "url": "/mods/greek-civilization-mod",
+  "title": "Greek Civilization MOD v. 2.5",
+  "updated": "2025-08-12",
+  "released": "2022-07-09",
+  "summary": "We're thrilled to announce the return of the Imperivm game expansion, “Greek Civilization MOD.” This revolutionary MOD introduces the Greek civilization..."
+ },
+ {
+  "kind": "mod",
+  "where": "imperivm-great-battles-of-rome",
+  "url": "/mods/imperivm-3",
+  "title": "Imperivm 3",
+  "updated": "2025-06-09",
+  "released": "2025-05-29",
+  "summary": "Imperivm 3 mod: \n\nEs un mod que adapta las aventuras de \"Imperivm 3: Grandes Batallas de Roma\"."
+ },
+ {
+  "kind": "mod",
+  "where": "imperivm-great-battles-of-rome",
+  "url": "/mods/celtic-kings-iii-adventures",
+  "title": "Celtic Kings III: Adventures",
+  "updated": "2025-05-06",
+  "released": "2024-10-04",
+  "summary": "El mod: “Celtic Kings: Rage of War III” es la continuación de la primera versión conocida de “Celtic Kings: Rage of War” llamada posteriormente..."
+ },
+ {
+  "kind": "mod",
+  "where": "imperivm-great-battles-of-rome",
+  "url": "/mods/imperivm-gbr-plus",
+  "title": "Imperivm GBR Plus",
+  "updated": "2023-06-11",
+  "released": "2019-10-26",
+  "summary": "Imperivm GBR Plus es una modificación de Imperivm III - Las Grandes Batallas de Roma que mejora la experiencia de juego."
+ },
+ {
+  "kind": "mod",
+  "where": "imperivm-great-battles-of-rome",
+  "url": "/mods/asurmod",
+  "title": "AsvrMod",
+  "updated": "2019-11-22",
+  "summary": "Mod para Imperium III GBR\n\nMod for Imperium III GBR\n\nNuevas unidades, nuevos items, nuevos escenarios, nuevos héroes y estrategias!\n\nAsurMod"
+ },
+ {
+  "kind": "mod",
+  "where": "imperivm-great-battles-of-rome",
+  "url": "/mods/gbr-tactics2",
+  "title": "GBR Tactics",
+  "updated": "2011-09-02",
+  "released": "2009-09-18",
+  "summary": "Imperivm GBR this splendid game, so I decided to create mod GBR TACTICS. Mod introduces many changes which they improve game, I repaired several bugs..."
+ },
+ {
+  "kind": "addon",
+  "where": "imperivm-great-battles-of-rome",
+  "url": "/games/imperivm-great-battles-of-rome/addons/random-real-world",
+  "title": "Random Real World",
+  "updated": "2025-05-06",
+  "summary": "Have you ever desired to play Imperium in a map that represents a real historical location? In conquest mode these maps exists, however you cannot play..."
+ },
+ {
+  "kind": "addon",
+  "where": "imperivm-great-battles-of-rome",
+  "url": "/games/imperivm-great-battles-of-rome/addons/300-espartanos",
+  "title": "300 espartanos",
+  "updated": "2022-11-19",
+  "summary": "En 300 espartanos tomaremos el control de Leónidas y sus valientes guerreros para derrotar al inmenso ejército persa del rey Jerjes."
+ },
+ {
+  "kind": "addon",
+  "where": "imperivm-great-battles-of-rome",
+  "url": "/games/imperivm-great-battles-of-rome/addons/desembarco-en-hispania1",
+  "title": "Desembarco en Hispania",
+  "updated": "2022-02-27",
+  "summary": "Cartago pone la vista en Hispania, una tierra rica la cual servirá para compensar las pérdidas tras su derrota contra Roma en la Primera Guerra Púnica..."
+ },
+ {
+  "kind": "addon",
+  "where": "imperivm-great-battles-of-rome",
+  "url": "/games/imperivm-great-battles-of-rome/addons/primeraguerrapunica-20",
+  "title": "PrimeraGuerraPunica 2.0",
+  "updated": "2020-12-14",
+  "summary": "Mapa de estrategia del Imperivm III: Las Grandes Batallas de Roma. Esta inspirado en la histórica contienda en la isla de Sicilia. Esta versión 2.0..."
+ },
+ {
+  "kind": "addon",
+  "where": "imperivm-great-battles-of-rome",
+  "url": "/games/imperivm-great-battles-of-rome/addons/aventura-la-rivolta-dei-messeni-464-ac-spanish",
+  "title": "Aventura - La Revuelta de los Mesenios (464 a.C.) - Español",
+  "updated": "2020-09-09",
+  "summary": "IMPORTANTE: Para jugar DEBE tener el GREEK-MOD de la VERSIÓN 1.8 o 1.81!!! \" En 464 aC los ilotas de Messenia, sometido a los espartanos por muchos siglos..."
+ },
+ {
+  "kind": "addon",
+  "where": "imperivm-great-battles-of-rome",
+  "url": "/games/imperivm-great-battles-of-rome/addons/avventura-la-rivolta-dei-messeni-464-ac-ita",
+  "title": "Avventura - La Rivolta dei Messeni (464 a.C.) - ITA",
+  "updated": "2020-09-09",
+  "summary": "Per Giocare questa Avventura E' NECESSARIA la GREEK MOD (Ultima Versione 1.8 o 1.81)!!! \"Nel 464 a.C. gli Iloti della Messenia, sottomessi agli Spartiati..."
+ },
+ {
+  "kind": "addon",
+  "where": "imperivm-great-battles-of-rome",
+  "url": "/games/imperivm-great-battles-of-rome/addons/aventura-ribellione-di-spartaco-73-ac-spanish",
+  "title": "Aventura -   Rebelión de Espartaco (73 a.C.) - Español",
+  "updated": "2020-09-26",
+  "summary": "No es compatible con el Greek-Mod!! Compatible solo con Imperivm 1.40 y Imperivm HD de Steam! \"En el 73 a.C. Los gladiadores de la escuela de Capua se..."
+ },
+ {
+  "kind": "addon",
+  "where": "imperivm-great-battles-of-rome",
+  "url": "/games/imperivm-great-battles-of-rome/addons/avventura-ribellione-di-spartaco-73-ac-ita",
+  "title": "Avventura - Ribellione di Spartaco (73 a.C.) - ITA",
+  "updated": "2020-09-11",
+  "summary": "Non compatibile con la Greek-Mod!! Compatibile solo con Imperivm 1.40 e Imperivm HD di Steam! \"Nel 73 a.C. i gladiatori della scuola di Capua si ribellarono..."
+ },
+ {
+  "kind": "addon",
+  "where": "imperivm-great-battles-of-rome",
+  "url": "/games/imperivm-great-battles-of-rome/addons/scipione-alle-porte-di-cartagine-147-ac-spanish",
+  "title": "Aventura -   Escipión a las puertas de Cartago(147 a.C.)-Español",
+  "updated": "2020-09-09",
+  "summary": "No es compatible con el Greek-Mod!! Compatible solo con Imperivm 1.40 y Imperivm HD de Steam! \"Después de la Segunda Guerra Púnica,Cartago continuó..."
+ },
+ {
+  "kind": "addon",
+  "where": "imperivm-great-battles-of-rome",
+  "url": "/games/imperivm-great-battles-of-rome/addons/scipione-alle-porte-di-cartagine-147-ac-ita",
+  "title": "Avventura - Scipione alle porte di Cartagine(147 a.C.)-ITA",
+  "updated": "2020-09-09",
+  "summary": "Non compatibile con la Greek-Mod e la versione 1.60 o 1.61 di Steam!! \"Finita la Seconda Guerra Punica Cartagine continuava a impensierire sui commerci..."
+ },
+ {
+  "kind": "addon",
+  "where": "imperivm-great-battles-of-rome",
+  "url": "/games/imperivm-great-battles-of-rome/addons/la-difesa-di-roma-spanish",
+  "title": "Aventura - La Defensa de Roma - Español",
+  "updated": "2021-02-17",
+  "summary": "No es compatible con el Greek-Mod!! Compatible solo con Imperivm 1.40 y Imperivm HD de Steam! \"Los cartagineses, liderados por Annibale, han entrado desde..."
+ },
+ {
+  "kind": "addon",
+  "where": "imperivm-great-battles-of-rome",
+  "url": "/games/imperivm-great-battles-of-rome/addons/la-difesa-di-roma",
+  "title": "Avventura - La Difesa di Roma - ITA",
+  "updated": "2020-09-09",
+  "summary": "Non compatibile con la Greek-Mod e la versione 1.60 o 1.61 di Steam!! \"I Cartaginesi, capeggiati da Annibale, sono penetrati già da tempo nella penisola..."
+ },
+ {
+  "kind": "addon",
+  "where": "imperivm-great-battles-of-rome",
+  "url": "/games/imperivm-great-battles-of-rome/addons/avventura-conquista-della-gallia-58-ac-esp-cap1",
+  "title": "Aventura - Conquista de la Galia (58 a.C.)-Español Cap.1",
+  "updated": "2021-02-27",
+  "summary": "VERSIÓN DEFINITIVA actualizada el 27 de febrero de 2021! IMPORTANTE: Para jugar DEBE tener el GREEK-MOD (La aventura ya está incluida en el MOD griego,ultima..."
+ },
+ {
+  "kind": "addon",
+  "where": "imperivm-great-battles-of-rome",
+  "url": "/games/imperivm-great-battles-of-rome/addons/avventura-conquista-della-gallia-58-ac-ita-cap1",
+  "title": "Avventura - Conquista della Gallia (58 a.C.)-ITA Cap.1",
+  "updated": "2021-04-18",
+  "summary": "VERSIONE DEFINITIVA aggiornata il 18 Aprile 2021! Per Giocare questa Avventura E' NECESSARIA la GREEK MOD (L'Avventura è già inclusa nella Greek Mod..."
+ },
+ {
+  "kind": "addon",
+  "where": "imperivm-great-battles-of-rome",
+  "url": "/games/imperivm-great-battles-of-rome/addons/scenarios",
+  "title": "Scenarios",
+  "updated": "2018-03-12",
+  "released": "2005-05-10",
+  "summary": "singles\n2 enemies with the choice of the nation\nmap\nhand-drawn\ntested\ninstallation:\nadd to mgr's directory\nin the folder scripts"
+ },
+ {
+  "kind": "download",
+  "where": "imperivm-great-battles-of-rome",
+  "url": "/mods/larax-adventure/downloads/celtic-kings-adventure-vanilla-italian",
+  "title": "Celtic Kings Adventure - Vanilla - Italian",
+  "updated": "2026-10-18",
+  "summary": "Imperivm I adventure adapted for Imperivm GBR HD (Steam). Italian version."
+ },
+ {
+  "kind": "download",
+  "where": "imperivm-great-battles-of-rome",
+  "url": "/mods/larax-adventure/downloads/celtic-kings-adventure-vanilla-spanish",
+  "title": "Celtic Kings Adventure - Vanilla - Spanish",
+  "updated": "2026-10-18",
+  "summary": "Imperivm I adventure adapted for Imperivm GBR HD (Steam). Spanish version."
+ },
+ {
+  "kind": "download",
+  "where": "imperivm-great-battles-of-rome",
+  "url": "/mods/larax-adventure/downloads/celtic-kings-adventure-vanilla-english",
+  "title": "Celtic Kings Adventure - Vanilla - English",
+  "updated": "2026-10-18",
+  "summary": "Imperivm I adventure adapted for Imperivm GBR HD (Steam). English version."
+ },
+ {
+  "kind": "download",
+  "where": "imperivm-great-battles-of-rome",
+  "url": "/mods/caesar-mod/downloads/caesar-mod-110",
+  "title": "Caesar Mod 1.1.0",
+  "updated": "2026-06-02",
+  "summary": "This new version of Caesar Mod includes a huge number of changes and completes the revision of all game scripts exactly one year after the 1.0.0 release..."
+ },
+ {
+  "kind": "download",
+  "where": "imperivm-great-battles-of-rome",
+  "url": "/mods/caesar-mod/downloads/caesar-mod-105",
+  "title": "Caesar Mod 1.0.5",
+  "updated": "2026-01-31",
+  "summary": "This new version of the Caesar Mod fixes multiple issues and improves overall gameplay quality. Two very important changes are the new deterministic system..."
+ },
+ {
+  "kind": "download",
+  "where": "imperivm-great-battles-of-rome",
+  "url": "/mods/caesar-mod/downloads/caesar-mod-104",
+  "title": "Caesar Mod 1.0.4",
+  "updated": "2025-12-06",
+  "summary": "This new version of the Caesar Mod focuses on improving game stability through major AI enhancements, better management of upgrades and numerous fixes..."
+ },
+ {
+  "kind": "download",
+  "where": "imperivm-great-battles-of-rome",
+  "url": "/mods/caesar-mod/downloads/caesar-mod-103",
+  "title": "Caesar Mod 1.0.3",
+  "updated": "2025-09-20",
+  "summary": "This new version of the Caesar Mod fixes several issues, focuses on various graphical aspects and adds some very useful new features; another important..."
+ },
+ {
+  "kind": "download",
+  "where": "imperivm-great-battles-of-rome",
+  "url": "/mods/caesar-mod/downloads/caesar-mod-102",
+  "title": "Caesar Mod 1.0.2",
+  "updated": "2025-08-10",
+  "summary": "This new version of the Caesar Mod greatly improves shipyards and animals. A new command is now available at the shipyard to allow the player to send..."
+ },
+ {
+  "kind": "download",
+  "where": "imperivm-great-battles-of-rome",
+  "url": "/mods/caesar-mod/downloads/caesar-mod-101",
+  "title": "Caesar Mod 1.0.1",
+  "updated": "2025-07-15",
+  "summary": "This new version of the Caesar Mod fixes several bugs and exploits in order to make the game experience more enjoyable and to prevent some unfair behaviours..."
+ },
+ {
+  "kind": "download",
+  "where": "imperivm-great-battles-of-rome",
+  "url": "/mods/caesar-mod/downloads/caesar-mod-100",
+  "title": "Caesar Mod 1.0.0",
+  "updated": "2025-05-31",
+  "summary": "This is the very first version of the Caesar Mod: it is a project created with the aim of improving every aspect of the game through general rebalancing..."
+ },
+ {
+  "kind": "download",
+  "where": "imperivm-great-battles-of-rome",
+  "url": "/mods/celtic-kings-iii-adventures/downloads/the-druid-king-demo",
+  "title": "The Druid King Demo",
+  "updated": "2025-05-06",
+  "summary": "La historia de The Druid King tiene lugar en la antigua Galia, la primera tierra conquistada por Julio César. Escribió su famosísimo \"Commentarii de..."
+ },
+ {
+  "kind": "download",
+  "where": "imperivm-great-battles-of-rome",
+  "url": "/mods/celtic-kings-iii-adventures/downloads/celtic-kings-iii-adventures-release-01",
+  "title": "Celtic Kings III: Adventures Release 0.1",
+  "updated": "2024-10-04",
+  "summary": "El mod: “Celtic Kings III: Adventures” es la continuación de la primera versión conocida de “Celtic Kings: Rage of War” llamada posteriormente..."
+ },
+ {
+  "kind": "download",
+  "where": "imperivm-great-battles-of-rome",
+  "url": "/mods/imperivm-legacy/downloads/legacy-modespanol-v241",
+  "title": "Legacy Mod(Español) v2.4.1",
+  "updated": "2026-09-06",
+  "summary": "𝗜𝗺𝗽𝗲𝗿𝗶𝘃𝗺 𝗟𝗲𝗴𝗮𝗰𝘆 es un mod para Imperivm: las grandes batallas de Roma, compatible tanto para la versión Steam..."
+ },
+ {
+  "kind": "download",
+  "where": "imperivm-great-battles-of-rome",
+  "url": "/mods/imperivm-legacy/downloads/legacy-moditaliano-v241",
+  "title": "Legacy Mod(Italiano) v2.4.1",
+  "updated": "2026-09-06",
+  "summary": "𝗜𝗺𝗽𝗲𝗿𝗶𝘃𝗺 𝗟𝗲𝗴𝗮𝗰𝘆 è una mod per Imperivm: Le grandi battaglie di Roma, compatibile sia con la versione Steam..."
+ },
+ {
+  "kind": "download",
+  "where": "imperivm-great-battles-of-rome",
+  "url": "/mods/imperivm-legacy/downloads/legacy-modenglish-v241",
+  "title": "Legacy Mod(English) v2.4.1",
+  "updated": "2026-09-06",
+  "summary": "𝗜𝗺𝗽𝗲𝗿𝗶𝘃𝗺 𝗟𝗲𝗴𝗮𝗰𝘆 is a mod for Imperivm: Great Battles of Rome, compatible with both the Steam HD version and..."
+ },
+ {
+  "kind": "download",
+  "where": "imperivm-great-battles-of-rome",
+  "url": "/mods/imperivm-gbr-plus/downloads/imperivm-gbr-plus-v131",
+  "title": "Imperivm GBR Plus v1.3.1",
+  "updated": "2023-12-30",
+  "summary": "Descargar el instalador de Imperivm GBR Plus versión 1.3.1"
+ },
+ {
+  "kind": "download",
+  "where": "imperivm-great-battles-of-rome",
+  "url": "/games/imperivm-great-battles-of-rome/downloads/mediterranevm-mod-alpha",
+  "title": "Imperivm III: Mediterranevm",
+  "updated": "2022-05-08",
+  "summary": "To install the mod, simply move all of its components in the game's directory. When asked if you want to replace the files, click \"yes\". Have fun!"
+ },
+ {
+  "kind": "download",
+  "where": "imperivm-great-battles-of-rome",
+  "url": "/mods/imperivm-gbr-plus/downloads/imperivm-gbr-plus-v130",
+  "title": "Imperivm GBR Plus v1.3.0",
+  "updated": "2021-12-22",
+  "summary": "Descargar el instalador de Imperivm GBR Plus versión 1.3.0"
+ },
+ {
+  "kind": "download",
+  "where": "imperivm-great-battles-of-rome",
+  "url": "/mods/imperivm-gbr-plus/downloads/imperivm-gbr-plus-v120",
+  "title": "Imperivm GBR Plus v1.2.0",
+  "updated": "2021-05-19",
+  "summary": "Descargar el instalador de Imperivm GBR Plus versión 1.2.0"
+ },
+ {
+  "kind": "download",
+  "where": "imperivm-great-battles-of-rome",
+  "url": "/mods/imperivm-gbr-plus/downloads/imperivm-gbr-plus-v110",
+  "title": "Imperivm GBR Plus v1.1.0",
+  "updated": "2021-05-19",
+  "summary": "Descargar el instalador de Imperivm GBR Plus versión 1.1.0"
+ },
+ {
+  "kind": "download",
+  "where": "imperivm-great-battles-of-rome",
+  "url": "/mods/asurmod/downloads/asvrmod-7a-08",
+  "title": "AsvrMod 7a 0.8",
+  "updated": "2019-11-23",
+  "summary": "Versión de pruebas de AsvrMod VII Ancient Generals. Se agradecerá que se notifique cualquier error detectado para poder continuar el desarrollo. Instrucciones..."
+ },
+ {
+  "kind": "download",
+  "where": "imperivm-great-battles-of-rome",
+  "url": "/mods/imperivm-gbr-plus/downloads/imperivm-gbr-plus-v100",
+  "title": "Imperivm GBR Plus v1.0.0",
+  "updated": "2021-05-19",
+  "summary": "Descargar el instalador de Imperivm GBR Plus versión 1.0.0"
+ },
+ {
+  "kind": "download",
+  "where": "imperivm-great-battles-of-rome",
+  "url": "/games/imperivm-great-battles-of-rome/downloads/imperivm-iii-epic-battle-music-mod",
+  "title": "Imperivm III   Epic Battle Music Mod",
+  "updated": "2017-12-02",
+  "summary": "Epic Battle music for ingame playing. Created with Reaper I am a sound engineer and I love this game so I decided to create this mod for people who like..."
+ },
+ {
+  "kind": "download",
+  "where": "imperivm-great-battles-of-rome",
+  "url": "/mods/asurmod/downloads/asvrmod-vii-ancient-generals-a07",
+  "title": "AsvrMod VII Ancient Generals a0.7",
+  "updated": "2017-09-24",
+  "summary": "Versión de pruebas de AsvrMod VII Ancient Generals. Se agradecerá que se notifique cualquier error detectado para poder continuar el desarrollo."
+ },
+ {
+  "kind": "download",
+  "where": "imperivm-great-battles-of-rome",
+  "url": "/mods/asurmod/downloads/asvrmod-vi-twotg-parche-11",
+  "title": "AsvrMod VI tWotG Parche 1.1",
+  "updated": "2016-02-21",
+  "summary": "Pequeño parche para AsvrMod VI tWotG que incluye: -Modificada la IA para adaptarla a los cambios de AsvrMod respecto a Imperium III GBR Algunos cambios..."
+ },
+ {
+  "kind": "download",
+  "where": "imperivm-great-battles-of-rome",
+  "url": "/mods/asurmod/downloads/asvrmod-vi-twotg-autoinstalador",
+  "title": "AsvrMod VI tWotG",
+  "updated": "2016-01-17",
+  "summary": "AsvrMod VI: the Wrath of the Gods (instalación automática) Nueva versión de AsvrMod para Imperivm III -Nuevos y poderosos items -Nuevos cursores -Muchas..."
+ },
+ {
+  "kind": "download",
+  "where": "imperivm-great-battles-of-rome",
+  "url": "/mods/asurmod/downloads/asvrmod-vi-twotg-instalacin-manual",
+  "title": "AsvrMod VI tWotG (instalación manual)",
+  "updated": "2016-01-16",
+  "summary": "AsvrMod VI: the Wrath of the Gods (instalación manual) Nueva versión de AsvrMod para Imperivm III -Nuevos y poderosos items -Nuevos cursores -Muchas..."
+ },
+ {
+  "kind": "download",
+  "where": "imperivm-great-battles-of-rome",
+  "url": "/mods/asurmod/downloads/asvrmod-v1",
+  "title": "AsvrMod V instalación manual",
+  "updated": "2015-07-24",
+  "summary": "AsvrMod V instalación manual. Extraer el archivo .zip en el directorio de Imperium III GBR."
+ },
+ {
+  "kind": "download",
+  "where": "imperivm-great-battles-of-rome",
+  "url": "/mods/asurmod/downloads/asvrmod-v",
+  "title": "AsvrMod V",
+  "updated": "2015-07-18",
+  "summary": "AsvrMod V: Nueva versión de AsurMod con gran cantidad de novedades."
+ },
+ {
+  "kind": "download",
+  "where": "imperivm-great-battles-of-rome",
+  "url": "/mods/asurmod/downloads/asurmod-40",
+  "title": "AsurMod 4.0",
+  "updated": "2015-05-15",
+  "released": "2005-05-10",
+  "summary": "Nueva versión de AsurMod con cantidad de mejoras, mejor acabado y mayor rendimiento.\n\n[AsurMod-4.0]"
+ },
+ {
+  "kind": "download",
+  "where": "imperivm-great-battles-of-rome",
+  "url": "/mods/asurmod/downloads/asurmod-30v",
+  "title": "--AsurMod-- 3.0v",
+  "updated": "2015-04-03",
+  "summary": "--AsurMod-- 3.0v Nueva actualización del mod para Imperium III GBR."
+ },
+ {
+  "kind": "download",
+  "where": "imperivm-great-battles-of-rome",
+  "url": "/mods/asurmod/downloads/imperium-iii-gbr-official-patchs",
+  "title": "Imperium III gbr official patchs",
+  "updated": "2015-03-10",
+  "summary": "Imperium III GBR official patchs: 1.20, 1.28 and 1.40"
+ },
+ {
+  "kind": "download",
+  "where": "imperivm-great-battles-of-rome",
+  "url": "/mods/asurmod/downloads/asurmod-27",
+  "title": "AsurMod 2.7",
+  "updated": "2015-03-09",
+  "summary": "New version of AsurMod!!! --AsurMod-- v2.7 Full vesion of Mod"
+ },
+ {
+  "kind": "download",
+  "where": "imperivm-great-battles-of-rome",
+  "url": "/mods/asurmod/downloads/asurmod",
+  "title": "AsurMod",
+  "updated": "2015-03-02",
+  "summary": "Versión 2.6 de AsurMod. [Mod para Imperium III GBR][Mod for Imperium III GBR] Nuevas unidades, nuevos items, nuevos escenarios, nuevos héroes y estrategias..."
+ },
+ {
+  "kind": "download",
+  "where": "imperivm-great-battles-of-rome",
+  "url": "/mods/gbr-tactics2/downloads/gbr-tactics-download",
+  "title": "GBR Tactics download",
+  "updated": "2010-07-21",
+  "released": "2005-05-10",
+  "summary": "Version 2.4 US - You must install the game directory. *WARNING! If you have problems running the game, you must delete your profile &#40;GAME/Profiles/myprofile&#41..."
+ },
+ {
+  "kind": "mod",
+  "where": "celtic-kings-the-punic-wars",
+  "url": "/mods/imperivm-ii-la-conquista-de-hispania-full-hd",
+  "title": "Imperivm II - La Conquista de Hispania + Full HD",
+  "updated": "2026-09-05",
+  "released": "2026-09-05",
+  "summary": "From the creator of Imperivm 1: La Amenaza Teutón + Full HD (The BEST Imperivm 1 MOD) Imperivm 2: Full HD MOD."
+ },
+ {
+  "kind": "mod",
+  "where": "celtic-kings-the-punic-wars",
+  "url": "/mods/nemesis-of-the-roman-empire-the-punic-wars-1600x900-resolution-mod",
+  "title": "Nemesis of the Roman Empire (The Punic Wars) 1600x900 resolution mod",
+  "updated": "2020-03-22",
+  "released": "2020-02-22",
+  "summary": "This is a simple mod that changes the resolution of the classic Nemesis of the Roman Empire game do 1600x900 and only works with 1600x900 resolution..."
+ },
+ {
+  "kind": "download",
+  "where": "celtic-kings-the-punic-wars",
+  "url": "/mods/imperivm-ii-la-conquista-de-hispania-full-hd/downloads/imperivm-2-la-conquista-de-hispania-full-hd",
+  "title": "Imperivm 2: La Conquista de Hispania Full HD",
+  "updated": "2026-09-05",
+  "summary": "ES: Parche Full HD para \"Imperivm 2: La Conquista de Hispania\". Con soporte multilingüe. EN: Full HD patch for \"Imperivm 2: La Conquista de Hispania..."
+ },
+ {
+  "kind": "download",
+  "where": "celtic-kings-the-punic-wars",
+  "url": "/games/celtic-kings-the-punic-wars/downloads/no-quick-load-button",
+  "title": "no quick load button",
+  "updated": "2026-05-14",
+  "summary": "This simple mod changes the function of the quick load button to quick save so that if clicked by accident when playing it will not load but will save..."
+ },
+ {
+  "kind": "download",
+  "where": "celtic-kings-the-punic-wars",
+  "url": "/mods/nemesis-of-the-roman-empire-the-punic-wars-1600x900-resolution-mod/downloads/1600x900-mod-10",
+  "title": "1600x900 Mod 1.0",
+  "updated": "2020-03-22",
+  "released": "2004-05-21",
+  "summary": "This is a simple mod that changes the resolution of the classic Nemesis of the Roman Empire game do 1600x900 and only works with 1600x900 resolution..."
+ },
+ {
+  "kind": "mod",
+  "where": "celtic-kings-rage-of-war",
+  "url": "/mods/la-amenaza-teuton",
+  "title": "Imperivm 1: La Amenaza Teutón + Full HD",
+  "updated": "2026-10-16",
+  "released": "2026-04-24",
+  "summary": "Imperivm 1 HD is a mod («La Amenaza Teutón», The Teuton Threat) and a Full HD patch for Imperivm - La Guerra de las Galias (Celtic Kings / Imperivm..."
+ },
+ {
+  "kind": "download",
+  "where": "celtic-kings-rage-of-war",
+  "url": "/mods/la-amenaza-teuton/downloads/la-amenaza-teuton-v091-imperivm-1-la-guerra-de-las-galias",
+  "title": "La Amenaza Teuton v0.9.1 - Imperivm 1: La guerra de las galias",
+  "updated": "2026-10-16",
+  "summary": "La Amenaza Teuton v0.9.1 - Imperivm 1: La guerra de las galias\n\nRequires the game \"Imperivm. La Guerra de las Galias\" installed"
+ },
+ {
+  "kind": "download",
+  "where": "celtic-kings-rage-of-war",
+  "url": "/mods/la-amenaza-teuton/downloads/imperivm-1-la-guerra-de-las-galias-full-hd-v5",
+  "title": "Imperivm 1: La Guerra de las Galias Full HD v5",
+  "updated": "2026-10-03",
+  "summary": "EN: Full HD patch for \"Imperivm 1: La Guerra de las Galias\". With multi-language support\n\nRequires the game \"Imperivm. La Guerra de las Galias\" installed"
+ },
+ {
+  "kind": "download",
+  "where": "celtic-kings-rage-of-war",
+  "url": "/mods/la-amenaza-teuton/downloads/custommaps1",
+  "title": "CustomMaps",
+  "updated": "2026-09-09",
+  "summary": "A python web application, served from a local server, to create or edit random map templates."
+ },
+ {
+  "kind": "download",
+  "where": "celtic-kings-rage-of-war",
+  "url": "/mods/la-amenaza-teuton/downloads/greengroundmod",
+  "title": "GreenGroundMod",
+  "updated": "2026-08-30",
+  "summary": "Replaced Ground textures with Grass textures. See README.MD."
+ },
+ {
+  "kind": "download",
+  "where": "celtic-kings-rage-of-war",
+  "url": "/mods/la-amenaza-teuton/downloads/la-amenaza-teuton-v070-imperivm-1-la-guerra-de-las-galias",
+  "title": "La Amenaza Teuton v0.7.0 - Imperivm 1: La guerra de las galias",
+  "updated": "2026-09-03",
+  "summary": "La Amenaza Teuton v0.7.0 - Imperivm 1: La guerra de las galias"
+ },
+ {
+  "kind": "download",
+  "where": "celtic-kings-rage-of-war",
+  "url": "/mods/la-amenaza-teuton/downloads/minimal-modding-example-using-vfs",
+  "title": "Minimal modding example using VFS",
+  "updated": "2026-08-16",
+  "summary": "A tiny example of how to modify the game without repacking the original .pak archives. Instead of editing the game data in place, you drop your own loose..."
+ },
+ {
+  "kind": "download",
+  "where": "celtic-kings-rage-of-war",
+  "url": "/mods/la-amenaza-teuton/downloads/imperivm-1-la-guerra-de-las-galias-full-hd",
+  "title": "Imperivm 1: La Guerra de las Galias Full HD",
+  "updated": "2026-07-24",
+  "summary": "ES: Parche Full HD para \"Imperivm 1: La Guerra de las Galias\". Con soporte multilingüe. EN: Full HD patch for \"Imperivm 1: La Guerra de las Galias..."
+ },
+ {
+  "kind": "download",
+  "where": "celtic-kings-rage-of-war",
+  "url": "/games/celtic-kings-rage-of-war/downloads/the-druid-king-demo",
+  "title": "The Druid King Demo",
+  "updated": "2025-05-06",
+  "summary": "La historia de The Druid King tiene lugar en la antigua Galia, la primera tierra conquistada por Julio César. Escribió su famosísimo \"Commentarii de..."
+ },
+ {
+  "kind": "download",
+  "where": "celtic-kings-rage-of-war",
+  "url": "/games/celtic-kings-rage-of-war/downloads/patch-1-16-5",
+  "title": "Patch 1.16",
+  "updated": "2004-09-22",
+  "summary": "The changes include improved compatibility with Win98 and SBLive!, several performance enhancements, several crash bugs fixed, and significantly improved..."
+ },
+ {
+  "kind": "download",
+  "where": "celtic-kings-rage-of-war",
+  "url": "/games/celtic-kings-rage-of-war/downloads/celtic-kings-rage-of-war-demo",
+  "title": "Celtic Kings: Rage of War Demo",
+  "updated": "2003-08-14",
+  "released": "2002-08-21",
+  "summary": "Celtic Kings is a real-time strategy game with online multiplayer features that mixes strategy and role-playing elements."
+ }
+]

@@ -63,12 +63,12 @@
   ]
  },
  "https://www.moddb.com/mods/imperivm-legacy/downloads": {
-  "key": "row3",
+  "key": "imperivm-legacy-2-4-1",
   "name": "Imperivm Legacy 2.4.1",
   "files": [
-   "originals/forum/row3/files/LegacyModInstaller_2.4.1ESP.exe",
-   "originals/forum/row3/files/LegacyModInstaller_2.4.1ITA.exe",
-   "originals/forum/row3/files/LegacyModInstaller_2.4.1ENG.exe"
+   "originals/forum/imperivm-legacy-2-4-1/files/LegacyModInstaller_2.4.1ESP.exe",
+   "originals/forum/imperivm-legacy-2-4-1/files/LegacyModInstaller_2.4.1ITA.exe",
+   "originals/forum/imperivm-legacy-2-4-1/files/LegacyModInstaller_2.4.1ENG.exe"
   ]
  },
  "https://www.mediafire.com/file/4wyp1zz9z5b2i3r/Texturas_del_Mod_-_Greek_civilization.rar/file": {
@@ -197,24 +197,24 @@
   ]
  },
  "http://www.mediafire.com/file/7afcs1d55bjccmk/MOD_LARECONQUISTA_2010.rar/file": {
-  "key": "row8",
+  "key": "la-reconquista-2010",
   "name": "La Reconquista 2010",
   "files": [
-   "originals/forum/row8/files/MOD_LARECONQUISTA_2010.rar"
+   "originals/forum/la-reconquista-2010/files/MOD_LARECONQUISTA_2010.rar"
   ]
  },
  "https://mega.nz/file/aIEQHTwC#6kxU8SyWFCl93a468YVhw_YIOYalo-FYtvLrVU_jrlY": {
-  "key": "row41",
+  "key": "aventuras-ii-las-campanas-de-anibal-5-maps",
   "name": "[AVENTURAS II] LAS CAMPAÑAS DE ANÍBAL (5 maps)",
   "files": [
-   "originals/forum/row41/files/Las Conquistas de Anibal.rar"
+   "originals/forum/aventuras-ii-las-campanas-de-anibal-5-maps/files/Las Conquistas de Anibal.rar"
   ]
  },
  "https://mega.nz/file/uQUkhQhA#h1wIwY60cD4tNvymcVgSiZs7zEhWSV5Dt1WzjmuS1Es": {
-  "key": "row42",
+  "key": "aventuras-ii-las-guerras-punicas-6-maps",
   "name": "[AVENTURAS II] LAS GUERRAS PÚNICAS (6 maps)",
   "files": [
-   "originals/forum/row42/files/Las Guerras Púnicas.rar"
+   "originals/forum/aventuras-ii-las-guerras-punicas-6-maps/files/Las Guerras Púnicas.rar"
   ]
  },
  "https://mega.nz/file/a1Q1hTBC#53z9cJCo5QkGAVmrh8ia4W6mh0lb19F6ZiQiLrhnkno": {
@@ -515,7 +515,8 @@
  "https://mega.nz/file/4BJTSCQK": {
   "key": "t1291",
   "name": "Historia de Kilelrgoldfer (DEMO)",
-  "files": []
+  "files": [],
+  "error": "spawnSync megadl ENOENT"
  },
  "https://www.moddb.com/games/imperivm-great-battles-of-rome/addons/aventura-la-rivolta-dei-messeni-464-ac-spanish": {
   "key": "t1300",
@@ -534,7 +535,8 @@
  "https://mega.nz/file/4EI0kJoL": {
   "key": "t1371",
   "name": "[CGWAR MOD] [Aventura] Sparta la batalla de las termopilas ep 1 Aguardando la tormenta",
-  "files": []
+  "files": [],
+  "error": "spawnSync megadl ENOENT"
  },
  "https://drive.google.com/drive/folders/1cFrr1TtSVEN5YIYeJa21Kc5FDKtySRd6?usp=sharing": {
   "key": "t1420",
@@ -576,6 +578,57 @@
   "name": "Nueva Mina de Hierro",
   "files": [
    "originals/forum/t1485/files/Minas_Oro_Hierro_V1.5_Candidato.zip"
+  ]
+ },
+ "https://www.moddb.com/mods/gbr-tactics2/downloads/gbr-tactics-download": {
+  "key": "gbr-tactics-2-4",
+  "name": "GBR Tactics 2.4",
+  "files": [
+   "originals/forum/gbr-tactics-2-4/files/GBR-Tactics-v.2.4-US.exe"
+  ]
+ },
+ "https://www.moddb.com/mods/imperivm-gbr-plus/downloads/imperivm-gbr-plus-v131": {
+  "key": "imperivm-gbr-plus-v1-3-1",
+  "name": "Imperivm GBR Plus v1.3.1",
+  "files": [
+   "originals/forum/imperivm-gbr-plus-v1-3-1/files/Imperivm_GBR_Plus_v1.3.1.zip"
+  ]
+ },
+ "https://www.moddb.com/games/imperivm-great-battles-of-rome/downloads/mediterranevm-mod-alpha": {
+  "key": "imperivm-iii-mediterranevm-alpha",
+  "name": "Imperivm III: Mediterranevm (alpha)",
+  "files": [
+   "originals/forum/imperivm-iii-mediterranevm-alpha/files/Mediterranevm_Mod_-_components.rar"
+  ]
+ },
+ "https://www.moddb.com/games/imperivm-great-battles-of-rome/downloads/imperivm-iii-epic-battle-music-mod": {
+  "key": "imperivm-iii-epic-battle-music-mod",
+  "name": "Imperivm III Epic Battle Music Mod",
+  "files": [
+   "originals/forum/imperivm-iii-epic-battle-music-mod/files/Imperivm_III_-_Epic_Battle_Music_Mod.exe"
+  ]
+ },
+ "https://www.moddb.com/mods/larax-adventure/downloads": {
+  "key": "celtic-kings-adventure-larax-from-imperivm-i",
+  "name": "Celtic Kings Adventure (Larax, from Imperivm I)",
+  "files": [
+   "originals/forum/celtic-kings-adventure-larax-from-imperivm-i/files/Celtic_Kings_Adventure_-_Vanilla_-_Italian.4.zip",
+   "originals/forum/celtic-kings-adventure-larax-from-imperivm-i/files/Celtic_Kings_Adventure_-_Vanilla_-_Spanish.4.zip",
+   "originals/forum/celtic-kings-adventure-larax-from-imperivm-i/files/Celtic_Kings_Adventure_-_Vanilla_-_English.4.zip"
+  ]
+ },
+ "https://www.moddb.com/games/imperivm-great-battles-of-rome/addons/scenarios": {
+  "key": "scenarios",
+  "name": "Scenarios",
+  "files": [
+   "originals/forum/scenarios/files/Scenarios.rar"
+  ]
+ },
+ "https://www.moddb.com/games/imperivm-great-battles-of-rome/addons/random-real-world": {
+  "key": "random-real-world",
+  "name": "Random Real World",
+  "files": [
+   "originals/forum/random-real-world/files/random_real_world_v3.1.zip"
   ]
  }
 }

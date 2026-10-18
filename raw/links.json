@@ -2428,5 +2428,320 @@
   "status": "mega",
   "size": 300888790,
   "checked": "2026-10-18"
+ },
+ "http://www.fxinteractive.com/home.htm": {
+  "ok": true,
+  "status": "http 200",
+  "checked": "2026-10-18"
+ },
+ "http://www.fxinteractive.com/images/noticias/futbolsimulator/Detalle%20Selecci%C3%B3n%20Freelance%20FX%202016.pdf": {
+  "ok": false,
+  "status": "http 404",
+  "checked": "2026-10-18"
+ },
+ "https://discordapp.com/invite/2hVGQyb": {
+  "ok": true,
+  "status": "http 200",
+  "checked": "2026-10-18"
+ },
+ "https://imperivmeditor.forumcommunity.net/?t=60887852": {
+  "ok": false,
+  "status": "http 503",
+  "checked": "2026-10-18"
+ },
+ "http://imperivmysueditor.iespana.es/": {
+  "ok": false,
+  "status": "http no answer",
+  "checked": "2026-10-18"
+ },
+ "http://imperivmgbr.webcindario.com/mapas/1_Great_Losses_Rome.BFHP": {
+  "ok": false,
+  "status": "http no answer",
+  "checked": "2026-10-18"
+ },
+ "http://imperivmgbr.webcindario.com/mapas/Valor%20Extremo.BFHP": {
+  "ok": false,
+  "status": "http no answer",
+  "checked": "2026-10-18"
+ },
+ "http://www.imperivmymas.es.kz": {
+  "ok": false,
+  "status": "http no answer",
+  "checked": "2026-10-18"
+ },
+ "http://yfrog.com/jypasoheladoj": {
+  "ok": true,
+  "status": "http 200",
+  "checked": "2026-10-18"
+ },
+ "http://www.gamefront.com/files/20757481/Guerra+en+el+rio+Anas.BFHP": {
+  "ok": false,
+  "status": "http 403",
+  "checked": "2026-10-18"
+ },
+ "http://clanimperivmiii.webcindario.com/HistoriaMapasGuerraGalias.htm": {
+  "ok": false,
+  "status": "http no answer",
+  "checked": "2026-10-18"
+ },
+ "https://cdn.discordapp.com/attachments/618771065459703816/931552179729338418/unknown.png": {
+  "ok": false,
+  "status": "http 404",
+  "checked": "2026-10-18"
+ },
+ "https://cdn.discordapp.com/attachments/618771065459703816/931611703437828116/unknown.png": {
+  "ok": false,
+  "status": "http 404",
+  "checked": "2026-10-18"
+ },
+ "https://cdn.discordapp.com/attachments/618771065459703816/980436760557408307/unknown.png": {
+  "ok": false,
+  "status": "http 404",
+  "checked": "2026-10-18"
+ },
+ "http://imperiumgbr.mforos.com/1812673/8789890-trucos-de-imperium/": {
+  "ok": false,
+  "status": "http 403",
+  "checked": "2026-10-18"
+ },
+ "http://www.google.es/search?hl=es&q=programa+para+crear+dibujos&meta=&aq=f&aqi=&aql=&oq=&gs_rfai=": {
+  "ok": true,
+  "status": "http 200",
+  "checked": "2026-10-18"
+ },
+ "http://www.google.es/#hl=es&source=hp&q=Tutoriales+Photoshop&aq=f&aqi=g10&aql=&oq=&gs_rfai=&fp=1eed23e0698e403b": {
+  "ok": true,
+  "status": "http 200",
+  "checked": "2026-10-18"
+ },
+ "http://imperiummods.net23.net/EANUBISWARRIOR/ATTACK.RLE.BMP": {
+  "ok": false,
+  "status": "http no answer",
+  "checked": "2026-10-18"
+ },
+ "http://imperiummods.net23.net/EANUBISWARRIOR/ATTACK_SHADOW.RLE.BMP": {
+  "ok": false,
+  "status": "http no answer",
+  "checked": "2026-10-18"
+ },
+ "http://imperiummods.net23.net/EANUBISWARRIOR/DIE.RLE.BMP": {
+  "ok": false,
+  "status": "http no answer",
+  "checked": "2026-10-18"
+ },
+ "http://imperiummods.net23.net/EANUBISWARRIOR/DIE_SHADOW.RLE.BMP": {
+  "ok": false,
+  "status": "http no answer",
+  "checked": "2026-10-18"
+ },
+ "http://imperiummods.net23.net/EANUBISWARRIOR/IDLE.RLE.BMP": {
+  "ok": false,
+  "status": "http no answer",
+  "checked": "2026-10-18"
+ },
+ "http://imperiummods.net23.net/EANUBISWARRIOR/IDLE_SHADOW.RLE.BMP": {
+  "ok": false,
+  "status": "http no answer",
+  "checked": "2026-10-18"
+ },
+ "http://imperiummods.net23.net/EANUBISWARRIOR/TAUNT.RLE.BMP": {
+  "ok": false,
+  "status": "http no answer",
+  "checked": "2026-10-18"
+ },
+ "http://imperiummods.net23.net/EANUBISWARRIOR/TAUNT_SHADOW.RLE.BMP": {
+  "ok": false,
+  "status": "http no answer",
+  "checked": "2026-10-18"
+ },
+ "http://imperiummods.net23.net/EANUBISWARRIOR/TOATTACK.RLE.BMP": {
+  "ok": false,
+  "status": "http no answer",
+  "checked": "2026-10-18"
+ },
+ "http://imperiummods.net23.net/EANUBISWARRIOR/TOATTACK_SHADOW.RLE.BMP": {
+  "ok": false,
+  "status": "http no answer",
+  "checked": "2026-10-18"
+ },
+ "http://imperiummods.net23.net/EANUBISWARRIOR/WALK.RLE.BMP": {
+  "ok": false,
+  "status": "http no answer",
+  "checked": "2026-10-18"
+ },
+ "http://imperiummods.net23.net/EANUBISWARRIOR/WALK_SHADOW.RLE.BMP": {
+  "ok": false,
+  "status": "http no answer",
+  "checked": "2026-10-18"
+ },
+ "http://justicierom.webcindario.com/MONSTRUO_WALKRLE.bmp": {
+  "ok": false,
+  "status": "http no answer",
+  "checked": "2026-10-18"
+ },
+ "http://imperivmplus.webcindario.com/CFTutoriales.htm": {
+  "ok": false,
+  "status": "http no answer",
+  "checked": "2026-10-18"
+ },
+ "http://imperivmplus.webcindario.com/Modos%20de%20juego.htm": {
+  "ok": false,
+  "status": "http no answer",
+  "checked": "2026-10-18"
+ },
+ "http://www.alasdefuego.com/logo.jpg": {
+  "ok": false,
+  "status": "http no answer",
+  "checked": "2026-10-18"
+ },
+ "http://downloads.sourceforge.net/project/notepad-plus/notepad%2B%2B%20releases%20binary/npp%205.7%20bin/npp.5.7.Installer.exe?r=http%3A%2F%2Fsourceforge.net%2Fsearch%2F%3Ftype_of_search%3Dsoft%26words%3Dnotepad&ts=1283779161&use_mirror=freefr": {
+  "ok": false,
+  "status": "http 403",
+  "checked": "2026-10-18"
+ },
+ "http://www.davegh.com/blade/_davegh.htm": {
+  "ok": false,
+  "status": "http 404",
+  "checked": "2026-10-18"
+ },
+ "http://solopc.forumcommunity.net/?t=45059443": {
+  "ok": false,
+  "status": "http 503",
+  "checked": "2026-10-18"
+ },
+ "http://www.daz3d.com/products/daz-studio/daz-studio-what-is-daz-studio": {
+  "ok": true,
+  "status": "http 200",
+  "checked": "2026-10-18"
+ },
+ "http://freakshare.com/files/imc49tnx/Objetos-imperium-3.zip.html": {
+  "ok": false,
+  "status": "http no answer",
+  "checked": "2026-10-18"
+ },
+ "http://www.romaguerratotal.com/nova/viewtopic.php?t=9049": {
+  "ok": false,
+  "status": "http 404",
+  "checked": "2026-10-18"
+ },
+ "http://imperivmeditor.forumcommunity.net/": {
+  "ok": false,
+  "status": "http 503",
+  "checked": "2026-10-18"
+ },
+ "http://reverendos.wix.com/clan-reverendo": {
+  "ok": false,
+  "status": "http 404",
+  "checked": "2026-10-18"
+ },
+ "http://imperivmeditor.forumcommunity.net/?f=8678889": {
+  "ok": false,
+  "status": "http 503",
+  "checked": "2026-10-18"
+ },
+ "http://imperivmeditor.forumcommunity.net/?t=59002810&st=30#lastpost": {
+  "ok": false,
+  "status": "http 503",
+  "checked": "2026-10-18"
+ },
+ "http://imperivmeditor.forumcommunity.net/?t=59002815": {
+  "ok": false,
+  "status": "http 503",
+  "checked": "2026-10-18"
+ },
+ "http://imperivmeditor.forumcommunity.net/?t=59002823": {
+  "ok": false,
+  "status": "http 503",
+  "checked": "2026-10-18"
+ },
+ "http://imperivmeditor.forumcommunity.net/?t=59009709": {
+  "ok": false,
+  "status": "http 503",
+  "checked": "2026-10-18"
+ },
+ "http://imperivmeditor.forumcommunity.net/?t=59011901": {
+  "ok": false,
+  "status": "http 503",
+  "checked": "2026-10-18"
+ },
+ "http://imperivmeditor.forumcommunity.net/?t=59012006": {
+  "ok": false,
+  "status": "http 503",
+  "checked": "2026-10-18"
+ },
+ "http://imperivmeditor.forumcommunity.net/?t=59012018": {
+  "ok": false,
+  "status": "http 503",
+  "checked": "2026-10-18"
+ },
+ "http://imperivmeditor.forumcommunity.net/?t=59012402": {
+  "ok": false,
+  "status": "http 503",
+  "checked": "2026-10-18"
+ },
+ "http://imperivmeditor.forumcommunity.net/?t=59012540": {
+  "ok": false,
+  "status": "http 503",
+  "checked": "2026-10-18"
+ },
+ "http://imperivmeditor.forumcommunity.net/?t=59023801#lastpost": {
+  "ok": false,
+  "status": "http 503",
+  "checked": "2026-10-18"
+ },
+ "http://imperivm-world.forumcommunity.net/": {
+  "ok": false,
+  "status": "http 503",
+  "checked": "2026-10-18"
+ },
+ "http://imperivm-world.forumcommunity.net/?t=59412563": {
+  "ok": false,
+  "status": "http 503",
+  "checked": "2026-10-18"
+ },
+ "https://imperivmeditor.forumcommunity.net/": {
+  "ok": false,
+  "status": "http 503",
+  "checked": "2026-10-18"
+ },
+ "https://imperivmeditor.forumcommunity.net/?t=60714846": {
+  "ok": false,
+  "status": "http 503",
+  "checked": "2026-10-18"
+ },
+ "https://github.com/JavierRojo/Imperium_exporter": {
+  "ok": true,
+  "status": "http 200",
+  "checked": "2026-10-18"
+ },
+ "http://142.93.233.180/cks/": {
+  "ok": true,
+  "status": "http 301",
+  "checked": "2026-10-18"
+ },
+ "http://david-campos.com/cks/": {
+  "ok": true,
+  "status": "http 200",
+  "checked": "2026-10-18"
+ },
+ "https://github.com/david-campos/referencia_cks": {
+  "ok": true,
+  "status": "http 200",
+  "checked": "2026-10-18"
+ },
+ "https://github.com/david-campos/referencia_cks/raw/master/dist/impresion_a_pdf.pdf": {
+  "ok": true,
+  "status": "http 200",
+  "checked": "2026-10-18"
+ },
+ "https://chatgpt.com/share/6a8f1205-7440-83eb-928c-66f0160e608d": {
+  "ok": true,
+  "status": "http 200",
+  "checked": "2026-10-18"
+ },
+ "https://chatgpt.com/share/6a8f1281-7618-83eb-a40c-37268610953c": {
+  "ok": true,
+  "status": "http 200",
+  "checked": "2026-10-18"
  }
 }

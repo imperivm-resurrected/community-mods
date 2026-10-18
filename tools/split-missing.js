@@ -1,9 +1,23 @@
 // Keep MODS.md for rows that can be ported (a live ✅, local 💾 or not-yet-confirmed ⚠️/❔ download) and move the
 // rest (only dead ❌ links, or none) to MISSING.md. Works both ways, keeps sections and renumbers both files.
+// The dead links of rows that stay in MODS.md go to DEAD-LINKS.md, so the table only shows what works; a row that
+// moves to MISSING.md takes its dead links back.
 //   node tools/split-missing.js
 const fs = require("fs"), path = require("path");
 const ROOT = path.join(__dirname, "..");
-const MODS = path.join(ROOT, "MODS.md"), MISSING = path.join(ROOT, "MISSING.md");
+const MODS = path.join(ROOT, "MODS.md"), MISSING = path.join(ROOT, "MISSING.md"), DEAD = path.join(ROOT, "DEAD-LINKS.md");
+const DEAD_HEAD = `# Dead links
+
+Download links of the \`MODS.md\` rows that no longer work. They are kept here, out of the table, to look them up in the
+[Wayback Machine](https://web.archive.org) or to ask the author for the file. Rows with no working link at all are in
+\`MISSING.md\`, with their dead links.
+
+| Mod | Dead links |
+|---|---|
+`;
+// DEAD-LINKS.md -> { "Name": ["❌ [host](url)", ...] }
+const readDead = () => !fs.existsSync(DEAD) ? {} : Object.fromEntries(fs.readFileSync(DEAD, "utf8").split("\n")
+  .filter(l => /^\| .* \| ❌/.test(l)).map(l => { const i = l.indexOf(" | ❌"); return [l.slice(2, i), l.slice(i + 3, -2).split("<br>")]; }));
 const MISSING_HEAD = `# Mods with no working download
 
 Rows from \`MODS.md\` whose download links are all dead, or that never had one. If you still have a copy of any of these,
@@ -31,12 +45,18 @@ function parse(file, fallbackHead) {
 function split() {
   const mods = parse(MODS, ""), missing = parse(MISSING, MISSING_HEAD);
   const order = [...mods.order, ...missing.order.filter(s => !mods.order.includes(s))];
-  const out = { mods: {}, missing: {} };
+  const out = { mods: {}, missing: {} }, dead = readDead();
   for (const s of order) {
     const header = (mods.sections[s] || missing.sections[s]).header;
     const col = header[0].split("|").findIndex(h => h.trim() === "Download");
     for (const r of [...(mods.sections[s]?.rows || []), ...(missing.sections[s]?.rows || [])]) {
-      const to = /✅|💾|⚠️|❔/.test(r[col]) ? "mods" : "missing";
+      const to = /✅|💾|⚠️|❔/.test(r[col]) ? "mods" : "missing", name = r[2].trim();
+      const parts = r[col].trim().split("<br>").filter(Boolean);
+      if (to === "mods") {
+        const gone = parts.filter(p => p.startsWith("❌"));
+        if (gone.length) dead[name] = [...new Set([...(dead[name] || []), ...gone])];
+        r[col] = ` ${parts.filter(p => !p.startsWith("❌")).join("<br>")} `;
+      } else if (dead[name]) { r[col] = ` ${[...new Set([...parts, ...dead[name]])].join("<br>")} `; delete dead[name]; }
       (out[to][s] = out[to][s] || { header, rows: [] }).rows.push(r);
     }
   }
@@ -48,7 +68,9 @@ function split() {
     return n;
   };
   const a = write(MODS, mods.head, out.mods), b = write(MISSING, missing.head, out.missing);
-  console.log(`MODS.md: ${a} rows · MISSING.md: ${b} rows`);
+  const names = Object.keys(dead).sort((x, y) => x.localeCompare(y));
+  fs.writeFileSync(DEAD, DEAD_HEAD + names.map(n => `| ${n} | ${dead[n].join("<br>")} |`).join("\n") + "\n");
+  console.log(`MODS.md: ${a} rows · MISSING.md: ${b} rows · DEAD-LINKS.md: ${names.length} rows`);
 }
 
 module.exports = split;
