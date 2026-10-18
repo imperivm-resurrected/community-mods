@@ -8,16 +8,16 @@ Same columns and legend as `MODS.md`.
 
 | # | Name | Author(s) | Base | Type | Source | Download | Permission | Status | GameBanana |
 |---|---|---|---|---|---|---|---|---|---|
-| 1 | [AVENTURAS I] LÁRAX | ? (saga original) | ? | wrap | [Discord](https://discord.com/channels/479629904657514526/1414409056830885920/1416223141436457060) | — | ❔ | 📋 to port | |
+| 1 | [AVENTURAS I] LÁRAX | ? (saga original) | ? | wrap | [Discord](https://discord.com/channels/479629904657514526/1414409056830885920/1416223141436457060) | 📷 1 | ❔ | 📋 to port | |
 
 ## Adventures
 
 | # | Name | Author(s) | Base | Type | Source | Download | Permission | Status | GameBanana |
 |---|---|---|---|---|---|---|---|---|---|
-| 2 | INICIOS DE HAENOR (2015) | adri55555 | III v1.40 | wrap | [Discord](https://discord.com/channels/479629904657514526/1413800335213985836/1414568858462851148) · [forum](https://imperivmgbr.foroactivo.com/t797-primeros-mapas) | — | ❔ | 📋 to port | |
-| 3 | LA DEFENSA DE ROMA (2020) | Mietitore | III v1.56 | wrap | [Discord](https://discord.com/channels/479629904657514526/1413800335213985836/1414619045583388796) · [forum](https://imperivmgbr.foroactivo.com/t1297-aventura-la-defensa-de-roma-216-a-c) | — | ❔ | 📋 to port | |
-| 4 | ESCIPIÓN A LAS PUERTAS DE CARTAGO (2020) | Mietitore | III v1.56 | wrap | [Discord](https://discord.com/channels/479629904657514526/1413800335213985836/1414619152714436661) · [forum](https://imperivmgbr.foroactivo.com/t1298-aventura-escipion-a-las-puertas-de-cartago147-a-c) | — | ❔ | 📋 to port | |
-| 5 | REBELIÓN DE ESPARTACO (2020) | Mietitore | III v1.56 | wrap | [Discord](https://discord.com/channels/479629904657514526/1413800335213985836/1414619217298460917) · [forum](https://imperivmgbr.foroactivo.com/t1299-aventura-rebelion-de-espartaco-73-a-c) | — | ❔ | 📋 to port | |
+| 2 | INICIOS DE HAENOR (2015) | adri55555 | III v1.40 | wrap | [Discord](https://discord.com/channels/479629904657514526/1413800335213985836/1414568858462851148) · [forum](https://imperivmgbr.foroactivo.com/t797-primeros-mapas) | 📷 1 | ❔ | 📋 to port | |
+| 3 | LA DEFENSA DE ROMA (2020) | Mietitore | III v1.56 | wrap | [Discord](https://discord.com/channels/479629904657514526/1413800335213985836/1414619045583388796) · [forum](https://imperivmgbr.foroactivo.com/t1297-aventura-la-defensa-de-roma-216-a-c) | 📷 1 | ❔ | 📋 to port | |
+| 4 | ESCIPIÓN A LAS PUERTAS DE CARTAGO (2020) | Mietitore | III v1.56 | wrap | [Discord](https://discord.com/channels/479629904657514526/1413800335213985836/1414619152714436661) · [forum](https://imperivmgbr.foroactivo.com/t1298-aventura-escipion-a-las-puertas-de-cartago147-a-c) | 📷 1 | ❔ | 📋 to port | |
+| 5 | REBELIÓN DE ESPARTACO (2020) | Mietitore | III v1.56 | wrap | [Discord](https://discord.com/channels/479629904657514526/1413800335213985836/1414619217298460917) · [forum](https://imperivmgbr.foroactivo.com/t1299-aventura-rebelion-de-espartaco-73-a-c) | 📷 1 | ❔ | 📋 to port | |
 
 ## Forum · Map downloads (not on Discord)
 

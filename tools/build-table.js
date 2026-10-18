@@ -24,7 +24,7 @@ out.push(`# Mods to port to Imperivm Resurrected
 Generated on ${new Date().toISOString().slice(0, 10)} from the Discord server *Imperivm III Editores* and [${FORUM.replace("https://", "")}](${FORUM}).
 Edited by hand from here on.
 
-**Download**: ✅ alive · ❌ dead · ⚠️ doubtful (check by hand) · ❔ not checked · 💾 local copy in \`originals/\`.
+**Download**: ✅ alive · ❌ dead · ⚠️ doubtful (check by hand) · ❔ not checked · 💾 local copy in \`originals/\` · 📷 N screenshots in \`originals/discord/<channel>/<slug>/screenshots/\`.
 **Permission**: ✅ granted or free license · ❌ denied · ❔ not asked · 🕐 asked, waiting.
 **Status**: 📋 to port · 🔧 ported (not uploaded) · ✅ on GameBanana · 🚫 cannot be ported.
 `);
@@ -60,7 +60,9 @@ for (const [chan, title] of groups) {
     const files = e.files.map(x => `💾 \`${x.name}\``);
     const name = (chan === "saga-imperivm" ? `[${e.section.replace(/ IMPERIVM /, " ")}] ` : "") + e.title + (e.count > 1 ? ` (${e.count} maps)` : "") + (e.year ? ` (${e.year})` : "");
     const src = [`[Discord](${e.discord})`, ...f.map(u => `[forum](${forum[forumId(u)] ? topicUrl(forumId(u)) : u})`)].join(" · ");
-    out.push(row(name, e.author || "? (saga original)", e.base?.replace("Imperivm ", "") || "?", src, [...files, dl(other).replace(/^—$/, "")].filter(Boolean).join("<br>") || "—"));
+    const shots = (e.shots || []).filter(x => x.local).length; // screenshots downloaded to originals/discord/<channel>/<slug>/screenshots/
+    out.push(row(name, e.author || "? (saga original)", e.base?.replace("Imperivm ", "") || "?", src,
+      [...files, dl(other).replace(/^—$/, ""), shots ? `📷 ${shots}` : ""].filter(Boolean).join("<br>") || "—"));
   }
   out.push("");
 }
