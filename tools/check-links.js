@@ -1,4 +1,4 @@
-// Check every download link in raw/forum.json + raw/discord.json -> raw/links.json { url: {ok, status, size?, name?, checked} }
+// Check every download link in raw/forum-entries.json + raw/discord-entries.json -> raw/links.json { url: {ok, status, size?, name?, checked} }
 // ok: true = alive, false = dead, null = unknown (needs a manual look)
 const fs = require("fs"), path = require("path");
 const OUT = path.join(__dirname, "../raw/links.json");
@@ -46,8 +46,8 @@ async function check(url) {
 (async () => {
   let done = {};
   try { done = JSON.parse(fs.readFileSync(OUT, "utf8")); } catch { /* first run */ }
-  const forum = Object.values(require("../raw/forum.json")).flatMap(t => t.posts.flatMap(p => p.links));
-  const discord = Object.values(require("../raw/discord.json")).flat().flatMap(m => m.content.match(/https?:\/\/[^\s)>]+/g) || []);
+  const forum = Object.values(require("../raw/forum-entries.json")).flatMap(t => t.links);
+  const discord = require("../raw/discord-entries.json").flatMap(e => e.links);
   const isDownload = u => /mega|mediafire|box\.com|dropbox|drive\.google|moddb|megaupload|rapidshare|hotfile|fileserve|4shared|terabox|myairbridge|altervista|docs\.google/.test(u);
   const urls = [...new Set([...forum, ...discord].filter(isDownload))].filter(u => !done[u] || process.argv.includes("--all"));
   console.log(urls.length, "to check");
@@ -57,5 +57,5 @@ async function check(url) {
     await sleep(/mega/.test(u) ? 700 : 1200);
   }
   const v = Object.values(done);
-  console.log("vivos", v.filter(x => x.ok).length, "muertos", v.filter(x => x.ok === false).length, "dudosos", v.filter(x => x.ok === null).length);
+  console.log("alive", v.filter(x => x.ok).length, "dead", v.filter(x => x.ok === false).length, "doubtful", v.filter(x => x.ok === null).length);
 })();

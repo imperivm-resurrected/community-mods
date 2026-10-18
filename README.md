@@ -6,7 +6,7 @@ and publish them on [GameBanana](https://gamebanana.com/games/26069), crediting 
 - `MODS.md`: the table. It is the source of truth and is edited by hand.
 - `originals/`: downloads, untouched (not in git).
 - `ported/<id>/`: each ported mod, with its `mod.json`.
-- `raw/`: raw data from Discord and the forum.
+- `raw/`: the mod entries pulled from Discord and the forum, and the link checks. The full crawls (`forum.json`, `discord.json`) stay local: they hold unrelated messages.
 - `tools/`: scripts to regenerate `raw/` (see below).
 - `AUTHORS.md`: modders and editors, with their Discord account when found, to contact them.
 
@@ -38,11 +38,16 @@ Every mod is published with full credit to its original author. Many of these mo
 ## Regenerating the data
 
 ```bash
-python3 tools/scrape-forum.py      # forum -> raw/forum.json (resumes if interrupted)
-node tools/parse-discord.js        # raw/discord.json -> raw/discord-entries.json
+python3 tools/scrape-forum.py      # forum -> raw/forum.json (local; resumes if interrupted)
+node tools/parse-forum.js          # raw/forum.json -> raw/forum-entries.json (topics with the author's links)
+node tools/parse-discord.js        # raw/discord.json (local) -> raw/discord-entries.json
 node tools/download-discord.js     # Discord attachments -> originals/discord/ (URLs expire after ~24 h)
 node tools/check-links.js [--all]  # checks the downloads -> raw/links.json
 node tools/build-table.js --force  # draft of MODS.md (overwrites manual edits)
 ```
 
 The data was gathered from the *Imperivm III Editores* Discord server and the [imperivmgbr.foroactivo.com](https://imperivmgbr.foroactivo.com) forum.
+
+## License
+
+The scripts in `tools/` are GPL-3.0 (see `LICENSE`), like Imperivm Resurrected. The maps, adventures and mods, and their names and descriptions, belong to their authors and are not covered by it.

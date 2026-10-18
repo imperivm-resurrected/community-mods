@@ -5,7 +5,7 @@ const OUT = path.join(ROOT, "MODS.md");
 if (fs.existsSync(OUT) && !process.argv.includes("--force")) { console.error("MODS.md already exists; use --force to overwrite it"); process.exit(1); }
 
 const entries = require("../raw/discord-entries.json");
-const forum = require("../raw/forum.json");
+const forum = require("../raw/forum-entries.json");
 const links = (() => { try { return require("../raw/links.json"); } catch { return {}; } })();
 const FORUM = "https://imperivmgbr.foroactivo.com";
 const cell = s => String(s ?? "").replace(/\|/g, "\\|").replace(/\s+/g, " ").trim();
@@ -32,7 +32,7 @@ Edited by hand from here on.
 // --- Big mods (hand-picked list: there are few and each one is its own world)
 const v12 = "https://mega.nz/file/bB1UUYYB#m1swkkwZ5SUsU4WWIl4yBZ1OjBM-CZ2DJMkN5dYReYE";
 const ch = id => `https://discord.com/channels/479629904657514526/${id}`;
-const topicLinks = id => [...new Set((forum[id]?.posts || []).filter(p => p.author === forum[id].author).flatMap(p => p.links))];
+const topicLinks = id => forum[id]?.links || [];
 out.push("## Mods\n", HEAD,
   row("Community Mod v12", "Ferónidas and community", "HD vRelease 1.0", `[Discord](${ch("915050595713429534")})`, dl([v12])),
   row("Caesar Mod 1.1.0", "Paulus Ludorum (Paolo Lamberto) + Greek Mod creators", "HD", `[Discord](${ch("1416185549873610823")})`,
@@ -42,7 +42,7 @@ out.push("## Mods\n", HEAD,
   row("CGWAR Greek Civilization Mod v6", "Camarada and the CGWAR team", "1.40 only", `[forum](${FORUM}/t1354)`, dl(topicLinks("1354"))),
   row("AsvrMod VI: Wrath of the Gods", "Asvr", "1.40", `[forum](${FORUM}/t731)`, dl(topicLinks("731"))),
   row("Mod Comunidad Imperivm (MCI) 2010-2013", "forum community", "1.40", `[forum](${FORUM}/t262)`, dl(topicLinks("262"))),
-  row("La Reconquista 2010", forum["71"]?.author || "?", "1.40", `[forum](${FORUM}/f44-descarga-e-informacion)`,
+  row("La Reconquista 2010", "JVLIVS CAESAR", "1.40", `[forum](${FORUM}/f44-descarga-e-informacion)`,
     dl(Object.values(forum).filter(t => t.subforum.startsWith("f44")).flatMap(t => topicLinks(String(t.id))))),
   "");
 const bigMods = new Set(["1207", "1354", "731", "262"]);
