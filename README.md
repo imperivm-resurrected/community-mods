@@ -5,7 +5,7 @@ and publish them on [GameBanana](https://gamebanana.com/games/26069), crediting 
 
 - `MODS.md`: the table of what can be ported. It is the source of truth and is edited by hand.
 - `MISSING.md`: the rows with no working download (dead links or none). `node tools/split-missing.js` moves rows between both files after editing a download.
-- `PENDING.md` (local, not in git): what is left to port, grouped by what holds it back, with where its files are. `node tools/pending.js` regenerates it from `MODS.md`.
+- `PENDING.md`: what is left to port, grouped by what holds it back, with where its files are. `node tools/pending.js` regenerates it from `MODS.md`.
 - `originals/`: downloads, untouched (not in git). Screenshots for the GameBanana page: of each Discord entry in `originals/discord/<channel>/<slug>/screenshots/`, and of forum topics in `originals/forum/t<id>/screenshots/` (`node tools/download-forum-shots.js`, images in the opening post); 📷 in `MODS.md`.
 - `ported/<id>/`: each ported mod, with its `mod.json`.
 - `raw/`: the mod entries pulled from Discord and the forum, and the link checks. The full crawls (`forum.json`, `discord.json`) stay local: they hold unrelated messages.
