@@ -16,18 +16,18 @@ and publish them on [GameBanana](https://gamebanana.com/games/26069), crediting 
 3. **Discord maps and adventures** (Type *wrap*): creates `ported/<id>/` with the `.bfhp` and `mod.json`:
    ```bash
    BSDTAR=$(nix build --no-link --print-out-paths nixpkgs#libarchive)/bin/bsdtar \
-     node tools/wrap-map.js [channel/]<slug> --porter "Villoh"
+     node tools/wrap-map.js [channel/]<slug>
    ```
-   The slug comes from `raw/discord-entries.json`. Players are read from the `.bfhp` (slots with `control="Both"`/`"Human"`); `--players` overrides it.
+   Nothing in the map changes, so the original author is the only author (no porter credit). The slug comes from `raw/discord-entries.json`. Players are read from the `.bfhp` (slots with `control="Both"`/`"Human"`); `--players` overrides it.
 
    **Mods with `.pak`** (Type *reduce*): from `imperivm-resurrected/sdk/es`:
    ```bash
    node herramientas/reducir-mod.js <original> "<game>" ../../../imperivm-mods-port/ported/<id> --id <id> --nombre "<Name>" --version 1.0 --categoria "Maps"
    ```
-4. **`mod.json`** with `"authors": ["<Original author>", "<your name> (port)"]`, `category`, `tags` (players or language) and `"redistributable": true` (the room host can send it; `--no-redistributable` if the author asks not to).
+4. **`mod.json`** with `"authors": ["<Original author>"]` (add `"<your name> (port)"` only for real adaptation work: Type *reduce* or *rewrite*), `category`, `tags` (players or language) and `"redistributable": true` (the room host can send it; `--no-redistributable` if the author asks not to).
 5. **Validate**: `node herramientas/validar-mod.js <folder>`.
 6. **Test** in the game (`mods\`, Additional content) and check `Logs\imperivm\imperivm-mod.log`.
-7. **Publish**: zip the folder, *Add → Mod* on GameBanana, same category, tags and version. Under **Credits**, the author as *Original Creator* and you as *Porter*. Link the original thread.
+7. **Publish**: zip the folder, *Add → Mod* on GameBanana, same category, tags and version. Under **Credits**, the author as *Original Creator*; you as *Porter* only for *reduce*/*rewrite* mods (for *wrap*, being the submitter is enough). Link the original thread.
 8. Update the row in `MODS.md` (status and GameBanana link).
 
 ## Regenerating the data

@@ -3,12 +3,11 @@
   "name": "El Muro",
   "version": "1.0",
   "authors": [
-    "arkano57",
-    "Villoh (port)"
+    "arkano57"
   ],
   "description": {
-    "spanish": "Mapa de arkano57 (2009, Imperivm III v1.40). Porteado a Imperivm Resurrected por Villoh.",
-    "english": "Map by arkano57 (2009, Imperivm III v1.40). Ported to Imperivm Resurrected by Villoh."
+    "spanish": "Mapa de arkano57 (2009, Imperivm III v1.40).",
+    "english": "Map by arkano57 (2009, Imperivm III v1.40)."
   },
   "category": "Maps",
   "tags": [

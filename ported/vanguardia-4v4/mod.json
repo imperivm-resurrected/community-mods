@@ -3,12 +3,11 @@
   "name": "Vanguardia 4v4",
   "version": "1.0",
   "authors": [
-    "Ferónidas",
-    "Villoh (port)"
+    "Ferónidas"
   ],
   "description": {
-    "spanish": "Mapa de Ferónidas (2024, Imperivm HD vRelease 1.0). Porteado a Imperivm Resurrected por Villoh.",
-    "english": "Map by Ferónidas (2024, Imperivm HD vRelease 1.0). Ported to Imperivm Resurrected by Villoh."
+    "spanish": "Mapa de Ferónidas (2024, Imperivm HD vRelease 1.0).",
+    "english": "Map by Ferónidas (2024, Imperivm HD vRelease 1.0)."
   },
   "category": "Maps",
   "tags": [

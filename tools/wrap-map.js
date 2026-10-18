@@ -1,11 +1,12 @@
 // Wrap a Discord map/adventure (raw/discord-entries.json) as an Imperivm Resurrected mod in ported/<slug>/
-//   node tools/wrap-map.js [channel/]<slug> --porter "<your name>" [--players "2-4 players"] [--no-redistributable]
+//   node tools/wrap-map.js [channel/]<slug> [--players "2-4 players"] [--no-redistributable]
+// Nothing in the map changes, so the original author is the only author (no porter credit).
 // .rar/.zip are unpacked with bsdtar (NixOS: nix shell nixpkgs#libarchive).
 const fs = require("fs"), path = require("path"), { execFileSync } = require("child_process");
 const ROOT = path.join(__dirname, "..");
 const args = process.argv.slice(2), opt = {};
 for (let i = 0; i < args.length; i++) if (args[i].startsWith("--")) opt[args[i].slice(2)] = args[i + 1]?.startsWith("--") || i + 1 >= args.length ? true : args[++i]; else opt._ = args[i];
-if (!opt._ || !opt.porter) { console.error('usage: node tools/wrap-map.js [channel/]<slug> --porter "<name>" [--players "4 players"] [--no-redistributable]'); process.exit(1); }
+if (!opt._) { console.error('usage: node tools/wrap-map.js [channel/]<slug> [--players "4 players"] [--no-redistributable]'); process.exit(1); }
 
 const [want, chan] = opt._.split("/").reverse();
 const found = require("../raw/discord-entries.json").filter(x => x.slug === want && (!chan || x.channel === chan));
@@ -52,10 +53,10 @@ const mod = {
   id,
   name: titleCase(e.title),
   version: "1.0",
-  authors: [author, `${opt.porter} (port)`],
+  authors: [author],
   description: {
-    spanish: `${e.desc ? e.desc + " " : ""}${what} de ${author}${meta ? ` (${meta})` : ""}. Porteado a Imperivm Resurrected por ${opt.porter}.`,
-    english: `${what === "Aventura" ? "Adventure" : what === "Mapa" ? "Map" : maps.length + " maps"} by ${author}${meta ? ` (${meta})` : ""}. Ported to Imperivm Resurrected by ${opt.porter}.`,
+    spanish: `${e.desc ? e.desc + " " : ""}${what} de ${author}${meta ? ` (${meta})` : ""}.`,
+    english: `${what === "Aventura" ? "Adventure" : what === "Mapa" ? "Map" : maps.length + " maps"} by ${author}${meta ? ` (${meta})` : ""}.`,
   },
   category: isAdv ? "Campaigns" : "Maps",
   tags: isAdv ? ["Spanish"] : players ? [players] : [],
