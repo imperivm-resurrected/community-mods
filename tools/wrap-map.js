@@ -1,6 +1,7 @@
 // Wrap a Discord map/adventure (raw/discord-entries.json) or a forum topic (raw/forum-entries.json, downloaded by
 // tools/download-forum.js) as an Imperivm Resurrected mod in ported/<slug>/
-//   node tools/wrap-map.js [channel/]<slug> | forum/t<topic id> [--players "2-4 players"] [--no-redistributable]
+//   node tools/wrap-map.js [channel/]<slug> | forum/t<topic id> [--players "2-4 players"] [--file <text>] [--add <entry>[:<text>]]
+//                                                                 [--no-redistributable]
 // Nothing in the map changes, so the original author is the only author (no porter credit).
 // .rar/.zip are unpacked with bsdtar: it is the system `tar` on Windows 10+ and macOS; on Linux install it
 // (libarchive-tools / libarchive). BSDTAR=<path> overrides it.
@@ -41,6 +42,15 @@ if (!e.files.length && e.channel !== "forum") {
 }
 // --file <text>: only the downloads whose name has it (a forum topic often has several maps or versions)
 if (opt.file) e.files = e.files.filter(f => f.name.toLowerCase().includes(String(opt.file).toLowerCase()));
+// --add <entry>[:<text>]: also the downloads of another entry (whose name has <text>), e.g. more maps of the same series
+// posted in another topic
+if (opt.add) {
+  const [spec, text = ""] = String(opt.add).split(/:(.*)/);
+  const [w, c] = spec.split("/").reverse();
+  const x = c === "forum" ? forumEntry(w.replace(/^t/, "")) : discord.find(d => d.slug === w && (!c || d.channel === c));
+  if (!x) { console.error("--add: not found:", spec); process.exit(1); }
+  e.files.push(...x.files.filter(f => f.name.toLowerCase().includes(text.toLowerCase())));
+}
 if (!e.files.length) { console.error("nothing downloaded for", opt._); process.exit(1); }
 const id = (e.channel === "saga-imperivm" ? "saga-" : "") + e.slug;
 // forum topics: decided after unpacking, from the title or game.xml game_type (0 = skirmish map, 1/2 = adventure)
@@ -155,6 +165,11 @@ for (const f of fs.readdirSync(dest, { recursive: true })) {
 for (const f of fs.readdirSync(dest)) if (fs.statSync(path.join(dest, f)).isDirectory()) fs.rmSync(path.join(dest, f), { recursive: true });
 // "Mapa..BFHP" (common typo) -> "Mapa.BFHP": the SDK rejects ".." in paths
 for (const f of fs.readdirSync(dest)) if (f.includes("..")) fs.renameSync(path.join(dest, f), path.join(dest, f.replace(/\.{2,}/g, ".")));
+// "VersiÃ³n" (a UTF-8 name read as Latin-1 somewhere on the way) -> "Versión"
+for (const f of fs.readdirSync(dest)) {
+  const u = /[\u0080-\u00ff]/.test(f) && !/[^\u0000-\u00ff]/.test(f) ? Buffer.from(f, "latin1").toString("utf8") : f;
+  if (u !== f && !u.includes("\ufffd")) fs.renameSync(path.join(dest, f), path.join(dest, u));
+}
 let maps = fs.readdirSync(dest).filter(f => /\.bfhp$/i.test(f));
 if (!maps.length) { console.error("no .bfhp in", e.files.map(f => f.name)); process.exit(1); }
 // a map the HD game already ships (same bytes; copy Scenarios/ and Adventures/ of the game to originals/game-data/):
@@ -226,7 +241,7 @@ fs.writeFileSync(path.join(out, "mod.json"), JSON.stringify(mod, null, 2) + "\n"
 // raw/ported.json: which entry each ported mod comes from (tools/sync-table.js uses it to update MODS.md)
 const SRC = path.join(ROOT, "raw", "ported.json");
 const src = (() => { try { return JSON.parse(fs.readFileSync(SRC, "utf8")); } catch { return {}; } })();
-src[id] = opt._ + (opt.file ? ` --file ${opt.file}` : ""); // what to run to wrap it again
+src[id] = opt._ + (opt.file ? ` --file ${opt.file}` : "") + (opt.add ? ` --add ${opt.add}` : ""); // what to run to wrap it again
 fs.writeFileSync(SRC, JSON.stringify(Object.fromEntries(Object.entries(src).sort()), null, 1) + "\n");
 console.log(`${out}\n  ${maps.join(", ")} -> ${path.basename(dest)}/\n  category ${mod.category}, tags ${JSON.stringify(mod.tags)}${counts.length < maps.length ? "  ⚠️ some map has no readable players" : ""}${!isAdv && !players ? "  ⚠️ missing --players" : ""}`
   + (used === null ? "\n  ⚠️ compatibility not checked (no originals/game-data)" : unknown.length ? `\n  ❌ not in the HD game nor in a known mod: ${unknown.join(", ")}` : "")

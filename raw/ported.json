@@ -71,7 +71,7 @@
  "isla-prohibida": "mapas/isla-prohibida",
  "italia": "mapas/italia",
  "juego-de-tronos-imperyus": "aventuras/juego-de-tronos-imperyus",
- "juego-de-tronos-quinto-tulio-ciceron": "mapas/juego-de-tronos-quinto-tulio-ciceron",
+ "juego-de-tronos-quinto-tulio-ciceron": "mapas/juego-de-tronos-quinto-tulio-ciceron --add forum/t1420:Juego de Tronos",
  "kalindan-saga": "aventuras/kalindan-saga",
  "la-aventura-de-jokano": "aventuras/la-aventura-de-jokano",
  "la-aventura-gala": "aventuras/la-aventura-gala",
