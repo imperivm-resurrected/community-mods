@@ -10,9 +10,9 @@
     "spanish": "Un mapa en el que lo primero que han de hacer los jugadores es escapar de una isla en la que están prisioneros. No puede ser jugado por enemigos controlados por el ordenador. Mapa de Haemimont Games (Imperivm I, recopilado por Ferónidas).",
     "english": "Map by Haemimont Games (Imperivm I, collected by Ferónidas)."
   },
-  "category": "Maps",
+  "category": "Scenarios",
   "tags": [
-    "5 players"
+    "Players: 5"
   ],
   "incompatibleWith": [
     "caesar-mod"

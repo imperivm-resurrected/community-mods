@@ -6,12 +6,10 @@
     "IMPERYUS"
   ],
   "description": {
-    "spanish": "Gounde, Gongetet y Hospinget parten hacia los países nórdicos para salvar a Hospongotet que va a ser ejecutado por los romanos. Aventura de IMPERYUS (2017, Imperivm III v1.40).",
-    "english": "Adventure by IMPERYUS (2017, Imperivm III v1.40)."
+    "spanish": "Gounde, Gongetet y Hospinget parten hacia los países nórdicos para salvar a Hospongotet que va a ser ejecutado por los romanos. Conquista de IMPERYUS (2017, Imperivm III v1.40).",
+    "english": "Conquest by IMPERYUS (2017, Imperivm III v1.40)."
   },
-  "category": "Campaigns",
-  "tags": [
-    "Spanish"
-  ],
+  "category": "Conquests",
+  "tags": [],
   "redistributable": true
 }

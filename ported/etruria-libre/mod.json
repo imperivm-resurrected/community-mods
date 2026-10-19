@@ -9,9 +9,9 @@
     "spanish": "Elije tu fortaleza, alianzas, colores, para capturar toda la region! Los puertos producen oro si su ciudad no es del jugador nº1 al comenzar la partida dejaran de proporcionar oro la capturarlos! Mapa de Guigoras (2013, Imperivm III v1.40).",
     "english": "Map by Guigoras (2013, Imperivm III v1.40)."
   },
-  "category": "Maps",
+  "category": "Scenarios",
   "tags": [
-    "6 players"
+    "Players: 6"
   ],
   "redistributable": true
 }

@@ -10,9 +10,9 @@
     "spanish": "Mapa para tres jugadores en el que existen pequeñas islas que darán ventaja al jugador que se atreva a explorarlas. Mapa de Haemimont Games (Imperivm I, recopilado por Ferónidas).",
     "english": "Map by Haemimont Games (Imperivm I, collected by Ferónidas)."
   },
-  "category": "Maps",
+  "category": "Scenarios",
   "tags": [
-    "3 players"
+    "Players: 3"
   ],
   "redistributable": true
 }

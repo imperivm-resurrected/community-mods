@@ -10,9 +10,9 @@
     "spanish": "Año 133 a.C. Roma se dispone al asalto del último bastión ibero en la meseta. ¿Podrás cambiar el curso de la historia y derrotar a las poderosas legiones que asedian Numancia. Aventura de Haemimont Games (Imperivm II, recopilado por Ferónidas).",
     "english": "Adventure by Haemimont Games (Imperivm II, collected by Ferónidas)."
   },
-  "category": "Campaigns",
+  "category": "Adventures",
   "tags": [
-    "Spanish"
+    "Language: Spanish"
   ],
   "incompatibleWith": [
     "caesar-mod"

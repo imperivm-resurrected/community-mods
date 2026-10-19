@@ -10,7 +10,7 @@ Built from the authors in `MODS.md` and a member search of the *Imperivm III Edi
 | IMPERYUS | 45 | 2017–2019 | — | LA VENGANZA GALA I, LA VENGANZA GALA II, LA VENGANZA GALA III, … | 2026-10-18 (forum PM to IMPERYUS) | 🕐 |
 | Guigoras | 27 | 2013–2020 | — | MAPA 6, MAPA 8, ETRURIA LIBRE, … | 2026-10-18 (forum PM to Gigoras) | 🕐 |
 | Halcón | 13 | 2020–2025 | — | 1v1 ISLAS, 2v2 MONTAÑOSO, 3v3 MONTAÑOSO, … | 2026-10-18 (forum PM to Halcon69) | 🕐 |
-| Camarada | 10 | ? | [camarada1701](https://discord.com/users/443781887169921024) | CGWAR Greek Civilization Mod v6, Creación de una nueva unidad , El HIPATISTA, Creación de una nueva unidad , Un Mercenario, … | 2026-10-18 (#chat-mapas, DM 2026-10-19) | 🕐 |
+| Camarada | 10 | ? | [camarada1701](https://discord.com/users/443781887169921024) | CGWAR Greek Civilization Mod v6, Creación de una nueva unidad , El HIPATISTA, Creación de una nueva unidad , Un Mercenario, … | 2026-10-18 (#chat-mapas, DM 2026-10-19) | ✅ yes (2026-10-19, Discord) |
 | Rubeneitor / RUBENEITOR | 10 | 2022–2025 | [rubeneitor](https://discord.com/users/404297581573832706) | EL ARMA DEFINITIVA, BATALLA DE ISLAS, BATALLA DE ISLAS PEQUEÑAS, … | 2026-10-18 (#chat-mapas) | ✅ yes (2026-10-18); he also uploads his own to GameBanana (9 so far) |
 | El Jüsticiero Misteryoso / El_Jüsticiero_Misteryoso | 10 | 2010 | — | LA DEFENSA DE FORFORA, [SIN DESCARGA] Mis mapas, [SIN DESCARGA] [Mapa] Apuestas, … | | |
 | Ferónidas | 9 | 2020–2025 | [feronidas](https://discord.com/users/501125170946244609) | Community Mod v12, COLOSSEUM 2V2, ASAMBLEA DEL VALLE, … | 2026-10-18 (DM) | ✅ post in #chat-mapas, contact authors by every means |
@@ -26,14 +26,14 @@ Built from the authors in `MODS.md` and a member search of the *Imperivm III Edi
 | yito79 | 5 | 2019 | — | ROMPOLIS, ASTIGI, PARIX, … | 2026-10-18 (forum PM to yito79) | 🕐 |
 | Mietitore | 5 | 2020 | — | LA DEFENSA DE ROMA, ESCIPIÓN A LAS PUERTAS DE CARTAGO, REBELIÓN DE ESPARTACO, … | 2026-10-18 (forum PM to Mietitore) | 🕐 |
 | Frodo45127 | 5 | ? | — | [SIN DESCARGA] [Aventura] Gartomix y la ruina de Numancia V2, Programa para edición de scripts, Bonus nuevos, … | 2026-10-18 (forum PM to Frodo45127) | 🕐 |
-| molerotoni | 4 | 2015–2018 | — | ESTRATEGIA GENÉRICA, LA DEFENSA DE NIMLUNDUM, KALINDAN SAGA, … | 2026-10-18 (forum PM to molerotoni) | 🕐 |
+| molerotoni | 4 | 2015–2018 | — | ESTRATEGIA GENÉRICA, LA DEFENSA DE NIMLUNDUM, KALINDAN SAGA, … | 2026-10-18 (forum PM to molerotoni) | ✅ yes (2026-10-19) except KALINDAN SAGA ❌ (proof of concept, leave it out) |
 | Quinto Tulio Cicerón | 4 | 2019 | [quinto_tulio_ciceron](https://discord.com/users/1393596641898008656) | JUEGO DE TRONOS, [CGWAR MOD] Conquista en tiempo real, [CGWAR MOD] Mapa de conquista de Europa en tiempo real, … | 2026-10-18 (#chat-mapas) | 🕐 |
 | Aulo / aulo | 4 | 2021–2024 | [antoniogarciacalvo](https://discord.com/users/721135302277857341) | EL MUNDO CONOCIDO, MAPA 4v4, [SIN DESCARGA] Ibero central, … | 2026-10-18 (#chat-mapas) | 🕐 |
 | Kalyga | 4 | 2020–2022 | — | CARTAGONOVA, EL SITIO DE NUMANCIA, LA RECONQUISTA DE SEGEDA, … | 2026-10-18 (forum PM to Kalyga) | 🕐 |
 | Davidvx98 | 4 | 2024 | [davidvx98](https://discord.com/users/184044945370251273) | CNEO POZA, [SIN DESCARGA] [Aventura] Lárax El Emisario, [SIN DESCARGA] Nuevo mapa de Estrategia o GB (AYUDA IA), … | 2026-10-18 (#chat-mapas) | 🕐 |
 | Asur | 4 | ? | [asur_15576](https://discord.com/users/1152397169513467996) | [Recopilación] Mapas aleatorios basados en lugares reales del mundo, Descarga nuevos objetos para imperium 3 AQUI, Nuevas unidades, texturas y animaciones, … | 2026-10-18 (#chat-mapas) | 🕐 |
 | LegiónBerciana | 4 | ? | — | Nuevo MAPA "El Bierzo", Nuevos Mapas para Modo Estrategia África y Europa., Mooding de Imperium III mediante IA (ChatGPT), … | 2026-10-18 (forum PM to LegiónBerciana) | 🕐 |
-| Razor | 4 | ? | [fabian_8n](https://discord.com/users/569228870134530068) | Nemesis : Shadow FIXED, Editar y crear file .PASS, Creation of the "Greek civilization" (Italian), … | 2026-10-18 (#chat-mapas) | 🕐 |
+| Razor | 4 | ? | [fabian_8n](https://discord.com/users/569228870134530068) (confirmed) | Nemesis : Shadow FIXED, Editar y crear file .PASS, Creation of the "Greek civilization" (Italian), … | 2026-10-18 (#chat-mapas), 2026-10-19 (forum PM, DM) | ✅ yes (2026-10-19, Discord: "libre de hacer lo que quieras") |
 | adri55555 | 3 | 2015 | — | PASO GALOS-ÍBEROS, INICIOS DE HAENOR, HAENOR, RESCATE DE VIRIATO | 2026-10-18 (forum PM to adri55555) | 🕐 |
 | Terminator888 | 3 | 2021 | [terminator888](https://discord.com/users/552442167746887720) | EL RÍO DEL SILENCIO 3v3, EL RÍO DEL SILENCIO 4v4, LA MURALLA DE SKO | 2026-10-18 (#chat-mapas) | 🕐 |
 | lucio13 | 3 | ? | — | AXTERIX Y OBELIX, ASEDIO A ALESIA, [SIN DESCARGA] LAABERINTO | | |
@@ -42,7 +42,7 @@ Built from the authors in `MODS.md` and a member search of the *Imperivm III Edi
 | frank9999 | 2 | 2020 | — | LUCHA DE ZONAS, LAS GUERRAS SERTORIANAS | 2026-10-18 (forum PM to frank9999) | 🕐 |
 | sgtsebastian | 2 | 2020–2021 | — | LA GUERRA DE LOS HÉROES, BATTLE ROYALE | 2026-10-18 (forum PM to sgtsebastian) | 🕐 |
 | Martín | 2 | 2016 | — | AVENTURA EN ALESIA, [DESACTUALIZADO] [Mapa] Plano de Alesia | 2026-10-18 (forum PM to Martín) | 🕐 |
-| Esmael | 2 | 2018–2019 | — | EL VALLE DE DRESSROSA, MAPA NORMAL | 2026-10-18 (forum PM to Esmael) | 🕐 |
+| Esmael | 2 | 2018–2019 | — | EL VALLE DE DRESSROSA, MAPA NORMAL | 2026-10-18 (forum PM to Esmael) | ✅ yes (2026-10-19); asks us to upload them for him |
 | manuel.torrente | 2 | 2022 | — | INVASIÓN ZOMBIE EN CARTAGO NOVA, BATALLA EN CARTAGO NOVA | 2026-10-18 (forum PM to manuel.torrente) | 🕐 |
 | Jorgra2000 | 2 | 2022–2023 | [jorgra2000](https://discord.com/users/463390919429980200) | DESEMBARCO EN HISPANIA, LA ÚLTIMA CARGA TEUTÓNICA | 2026-10-18 (#chat-mapas) | 🕐 |
 | Melo | 2 | 2025 | [melo1050](https://discord.com/users/591768250090651659) ❓<br>[melok90](https://discord.com/users/328326175598444544) ❓ | PASO A PASO, SÉ COMO UN DIOS | | |
@@ -60,8 +60,8 @@ Built from the authors in `MODS.md` and a member search of the *Imperivm III Edi
 | Marwan | 1 | 2010 | — | RESISTENCIA BRITANA | | |
 | Avian98 | 1 | 2019 | — | CONTRA LA GRAN ROMA | 2026-10-18 (forum PM to Avian98) | 🕐 |
 | Desconocido | 1 | 2020 | — | 3v3 TOURNAMENT MAP | | |
-| MDavidHC | 1 | 2021 | — | TRAMÓREA | 2026-10-18 (forum PM to MDavidHC) | 🕐 |
-| jclempire | 1 | 2021 | — | PRIMERA GUERRA PÚNICA | 2026-10-18 (forum PM to jclempire) | 🕐 |
+| MDavidHC | 1 | 2021 | — | TRAMÓREA | 2026-10-18 (forum PM to MDavidHC) | ✅ yes (2026-10-19) |
+| jclempire | 1 | 2021 | — | PRIMERA GUERRA PÚNICA | 2026-10-18 (forum PM to jclempire) | ✅ yes (2026-10-19, forum + Discord); conditions: send him the GameBanana link, credit him and link the original forum post. May release a rebalanced update (fast speed, vs AI). Asks for an HD key if one turns up |
 | Soundless Flow | 1 | 2021 | [soundless_flow](https://discord.com/users/463438025720856587) | BATALLA EN LOS ALPES | 2026-10-18 (#chat-mapas) | 🕐 |
 | Arkalix | 1 | 2023 | [arkalix.](https://discord.com/users/559135492067688458) | 4 REYES | 2026-10-18 (#chat-mapas) | 🕐 |
 | ruben.rdrgz | 1 | 2024 | [rubix09432](https://discord.com/users/384787462922436608) | BATALLA POR GERGOVIA | 2026-10-18 (#chat-mapas) | 🕐 |
@@ -102,3 +102,4 @@ Built from the authors in `MODS.md` and a member search of the *Imperivm III Edi
 | OlvidoGX | 1 | 2024 | — (ModDB: [olvidogx](https://www.moddb.com/company/olvidogx)) ❓ same as OlvidoGames? | Imperivm 3 (adapted adventures) | | |
 | azangara | 1 | 2018 | — (ModDB: [azangara](https://www.moddb.com/members/azangara)) | Scenarios | | |
 | ENSOO | 1 | 2025 | — (ModDB: [ensoo](https://www.moddb.com/members/ensoo)) | Random Real World | | |
+| WARRIOR4444 | 1 | ? | — (forum: WARRIOR4444) | CGWAR Greek Civilization Mod v6 (co-author) | 2026-10-19 (forum PM) | 🕐 |

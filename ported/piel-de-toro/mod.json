@@ -9,9 +9,9 @@
     "spanish": "Elige con que facción conquistas Hispania! 1-Iberia, 2-Roma. 3-Cartago. Las aldeas de Hispania son neutrales y tributan al dueño del fortín que las protege!.Centinelas(flechas venenosas) y estructuras del conquistador.  Alianzas para colores (1y5),(2y6),(3y7) 4- NEUTRAL. Scegliere quale fazione guadagna Hispania! 1-Iberia, 2-Roma. 3-Cartagine. Mapa de Guigoras (2017, Imperivm III v1.40).",
     "english": "Map by Guigoras (2017, Imperivm III v1.40)."
   },
-  "category": "Maps",
+  "category": "Scenarios",
   "tags": [
-    "3 players"
+    "Players: 3"
   ],
   "redistributable": true
 }

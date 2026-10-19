@@ -21,7 +21,10 @@
     "english": "The first mod made by the Imperivm community (2010-2013), on top of JVLIVS CAESAR's La Reconquista: new units, iron and tributes between settlements, unit stances, formations, rituals, online game modes, random maps, 9 maps and 19 adventures, music and a Spanish translation. Adapted to the HD game keeping its fixes."
   },
   "tags": [
-    "Spanish"
+    "Type: Scenarios",
+    "Type: Adventures",
+    "Players: 2-7",
+    "Language: Spanish"
   ],
   "redistributable": true
 }

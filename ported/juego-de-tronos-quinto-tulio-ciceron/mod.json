@@ -9,9 +9,11 @@
     "spanish": "8 mapas de Quinto Tulio Cicerón (2019, Imperivm III v1.40).",
     "english": "8 maps by Quinto Tulio Cicerón (2019, Imperivm III v1.40)."
   },
-  "category": "Maps",
+  "category": "Scenarios",
   "tags": [
-    "1-2 players"
+    "Type: Adventures",
+    "Players: 2",
+    "Language: Spanish"
   ],
   "redistributable": true
 }

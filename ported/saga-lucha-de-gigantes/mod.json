@@ -10,9 +10,9 @@
     "spanish": "Al comienzo de la partida se dispone de un sólo héroe que hay que conservar durante toda la partida puesto que no está permitido contratar a más. Mapa de Haemimont Games (Imperivm I, recopilado por Ferónidas).",
     "english": "Map by Haemimont Games (Imperivm I, collected by Ferónidas)."
   },
-  "category": "Maps",
+  "category": "Scenarios",
   "tags": [
-    "4 players"
+    "Players: 4"
   ],
   "incompatibleWith": [
     "caesar-mod"

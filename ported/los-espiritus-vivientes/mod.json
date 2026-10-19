@@ -6,12 +6,10 @@
     "IMPERYUS"
   ],
   "description": {
-    "spanish": "Unos extraños sucesos alertan al jefe ibero Iberius, que no duda en mandar llamar a Gombeyet, un galo que según dicen resuelve cualquier problema en cualquier pueblo, país o ciudad. Aventura de IMPERYUS (2019, Imperivm III v1.40).",
-    "english": "Adventure by IMPERYUS (2019, Imperivm III v1.40)."
+    "spanish": "Unos extraños sucesos alertan al jefe ibero Iberius, que no duda en mandar llamar a Gombeyet, un galo que según dicen resuelve cualquier problema en cualquier pueblo, país o ciudad. Conquista de IMPERYUS (2019, Imperivm III v1.40).",
+    "english": "Conquest by IMPERYUS (2019, Imperivm III v1.40)."
   },
-  "category": "Campaigns",
-  "tags": [
-    "Spanish"
-  ],
+  "category": "Conquests",
+  "tags": [],
   "redistributable": true
 }

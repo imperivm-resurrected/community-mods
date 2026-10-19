@@ -10,10 +10,8 @@
     "spanish": "Doce fortalezas. Once enemigos. Un único vencedor. Mapa de Quinto Tulio Cicerón (2025). Murallas, torres y puertas griegas del CGWAR adaptadas a Grecia como civilización propia.",
     "english": "Map by Quinto Tulio Cicerón (2025). The CGWAR's Greek walls, towers and gates, adapted to Greece as a civilization of its own."
   },
-  "category": "Maps",
-  "tags": [
-    "1 players"
-  ],
+  "category": "Scenarios",
+  "tags": [],
   "requires": [
     "cgwar"
   ],

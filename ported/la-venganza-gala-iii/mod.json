@@ -6,12 +6,10 @@
     "IMPERYUS"
   ],
   "description": {
-    "spanish": "A Gounde le espera un juicio por el consejo de ancianos. Aventura de IMPERYUS (2017, Imperivm III v1.40).",
-    "english": "Adventure by IMPERYUS (2017, Imperivm III v1.40)."
+    "spanish": "A Gounde le espera un juicio por el consejo de ancianos. Conquista de IMPERYUS (2017, Imperivm III v1.40).",
+    "english": "Conquest by IMPERYUS (2017, Imperivm III v1.40)."
   },
-  "category": "Campaigns",
-  "tags": [
-    "Spanish"
-  ],
+  "category": "Conquests",
+  "tags": [],
   "redistributable": true
 }

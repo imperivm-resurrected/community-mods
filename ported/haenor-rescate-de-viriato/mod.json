@@ -9,9 +9,9 @@
     "spanish": "Roma esta persiguiendo a Viriato que tiene que escapar para buscar aliados para recuperar su amada Hispania y se encuentra a Haenor un gran guerrero que clama venganza. Aventura de adri55555 y arkano57 (2015, Imperivm III v1.40).",
     "english": "Adventure by adri55555 y arkano57 (2015, Imperivm III v1.40)."
   },
-  "category": "Campaigns",
+  "category": "Adventures",
   "tags": [
-    "Spanish"
+    "Language: Spanish"
   ],
   "requires": [
     "mci"

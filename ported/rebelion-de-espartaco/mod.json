@@ -9,9 +9,9 @@
     "spanish": "En el 73 a.C. los gladiadores de la escuela de Capua se rebelaron. Encabezados por Spartacus, un hombre de Tracia, huyeron y se dirigieron hacia el sur. Después de unos 30 km de marcha, acamparon en la ladera del Vesubio. Allí, Spartacus y sus hombres derrotaron a un contingente romano enviado a perseguirlos. Esto encendió la chispa de la rebelión y en muy poco tiempo miles de esclavos de toda Italia se unieron a los gladiadores. ¿Podrá Spartacus hacer frente a las legiones romanas? Aventura de Mietitore (2020, Imperivm III v1.56).",
     "english": "Adventure by Mietitore (2020, Imperivm III v1.56)."
   },
-  "category": "Campaigns",
+  "category": "Adventures",
   "tags": [
-    "Spanish"
+    "Language: Spanish"
   ],
   "requires": [
     "greek-civilization-mod"

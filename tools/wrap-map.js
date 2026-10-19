@@ -1,6 +1,6 @@
 // Wrap a Discord map/adventure (raw/discord-entries.json) or a forum topic (raw/forum-entries.json, downloaded by
 // tools/download-forum.js) as an Imperivm Resurrected mod in ported/<slug>/
-//   node tools/wrap-map.js [channel/]<slug> | forum/t<topic id> [--players "2-4 players"] [--file <text>] [--add <entry>[:<text>]]
+//   node tools/wrap-map.js [channel/]<slug> | forum/t<topic id> [--players "2-4"] [--file <text>] [--add <entry>[:<text>]]
 //                                                                 [--no-redistributable]
 // Nothing in the map changes, so the original author is the only author (no porter credit).
 // .rar/.zip are unpacked with bsdtar: it is the system `tar` on Windows 10+ and macOS; on Linux install it
@@ -9,7 +9,7 @@ const fs = require("fs"), path = require("path"), { execFileSync } = require("ch
 const ROOT = path.join(__dirname, "..");
 const args = process.argv.slice(2), opt = {};
 for (let i = 0; i < args.length; i++) if (args[i].startsWith("--")) opt[args[i].slice(2)] = args[i + 1]?.startsWith("--") || i + 1 >= args.length ? true : args[++i]; else opt._ = args[i];
-if (!opt._) { console.error('usage: node tools/wrap-map.js [channel/]<slug> | forum/t<id> [--players "4 players"] [--no-redistributable]'); process.exit(1); }
+if (!opt._) { console.error('usage: node tools/wrap-map.js [channel/]<slug> | forum/t<id> [--players "2-4"] [--no-redistributable]'); process.exit(1); }
 
 const slugify = s => s.normalize("NFD").replace(/[\u0300-\u036f]/g, "").toLowerCase().replace(/[^a-z0-9]+/g, "-").replace(/^-|-$/g, "");
 const discord = require("../raw/discord-entries.json");
@@ -191,13 +191,30 @@ for (const f of maps.filter(f => taken.has(f.toLowerCase()))) {
   console.log(`  renamed ${f} -> ${to} (another ported mod has that file name)`);
 }
 maps = fs.readdirSync(dest).filter(f => /\.bfhp$/i.test(f));
-if (e.channel === "forum" && !isAdv && maps.some(f => /<properties[^>]*?\sgame_type="[12]"/.test(fs.readFileSync(path.join(dest, f), "latin1")))) {
-  isAdv = true;
-  fs.renameSync(dest, path.join(out, "adventures"));
-  dest = path.join(out, "adventures");
+// each map to the folder of the kind it states (game.xml game_type: 0 scenario, 1 adventure, 2 conquest; adventure="1" in
+// old maps): the Scenarios list only shows type 0 and conquests only show up in conquests/. A type 0 map of an adventure
+// entry (a mission made as a normal map) stays in adventures/, which the SDK allows.
+const FOLDERS = ["scenarios", "adventures", "conquests"], where = {};
+const kindOf = f => {
+  const p = (fs.readFileSync(path.join(dest, f)).subarray(0, 65536).toString("latin1").match(/<properties\b[^>]*>/) || [""])[0];
+  const a = n => (p.match(new RegExp(`\\s${n}="([^"]*)"`)) || [])[1];
+  const k = Math.max(0, ["0", "1", "2"].indexOf(a("game_type") ?? "0"));
+  return k === 0 && Number(a("adventure") || 0) ? 1 : k;
+};
+for (const f of maps) {
+  const k = kindOf(f), to = FOLDERS[k === 0 && isAdv ? 1 : k];
+  where[f] = to;
+  if (to === path.basename(dest)) continue;
+  fs.mkdirSync(path.join(out, to), { recursive: true });
+  for (const b of fs.readdirSync(dest).filter(b => b.replace(/\.\w+$/, "").toLowerCase() === f.replace(/\.bfhp$/i, "").toLowerCase()))
+    fs.renameSync(path.join(dest, b), path.join(out, to, b)); // the map and its .bmp preview
 }
-const counts = maps.map(f => slots(path.join(dest, f))).filter(Boolean);
-const used = hdClasses ? [...new Set(maps.flatMap(f => usedClasses(path.join(dest, f))))] : null;
+if (!fs.readdirSync(dest).length) fs.rmdirSync(dest);
+const at = f => path.join(out, where[f], f);
+const has = k => Object.values(where).includes(k);
+// players: the human slots of the skirmish maps (an adventure or a conquest is played alone)
+const counts = maps.filter(f => where[f] === "scenarios").map(f => slots(at(f))).filter(Boolean);
+const used = hdClasses ? [...new Set(maps.flatMap(f => usedClasses(at(f))))] : null;
 const missing = used?.filter(c => !hdClasses.has(c.toLowerCase()) && !extraClasses.has(c.toLowerCase())) || []; // not in the HD game or extras/
 // needs = the big mods that have every missing class; none -> the map needs a mod we don't have
 const needs = missing.length ? bigMods.filter(m => missing.every(c => m.classes.has(c.toLowerCase()))).map(m => m.mod) : [];
@@ -212,10 +229,12 @@ const PREFER = ["community-mod", "greek-civilization-mod", "caesar-mod"];
 // requires ported/greek-mod-terrains (tools/greek-terrains.js) unless it already requires a mod that has them
 const TERRAIN_MODS = ["greek-civilization-mod", "caesar-mod"];
 const extraTerrain = maps.some(f => { try {
-  return require("./hpfs.js")(fs.readFileSync(path.join(dest, f))).some(x => /maps\/\d+\/terrain\.terrain\.grid$/i.test(x.path) && x.read().subarray(20).some(v => v > 40));
+  return require("./hpfs.js")(fs.readFileSync(at(f))).some(x => /maps\/\d+\/terrain\.terrain\.grid$/i.test(x.path) && x.read().subarray(20).some(v => v > 40));
 } catch { return false; } });
 const lo = Math.min(...counts), hi = Math.max(...counts);
-const players = opt.players || (counts.length ? (lo === hi ? `${lo} players` : `${lo}-${hi} players`) : null);
+// "Players: 2" / "Players: 2-4": the SDK and GameBanana take 2 to 8, so a map for one human (against the AI) gets none
+const pLo = Math.max(2, lo), pHi = Math.min(8, hi);
+const players = opt.players ? `Players: ${opt.players}` : counts.length && hi >= 2 ? `Players: ${pLo === pHi ? pLo : `${pLo}-${pHi}`}` : null;
 // maps for the CGWAR: in the 1.40 mod Greece replaced Imperial Rome, and its M* walls, towers and gates were redrawn Greek.
 // Ported, Greece is a civilization of its own with K* pieces and M* is Roman again: switch them so the maps look as their
 // authors saw them (same name length: rewritten in place). That is an edit of the map, so the porter is credited.
@@ -224,7 +243,7 @@ if (needs.includes("cgwar")) {
   const cg = path.join(ROOT, "ported", "cgwar", "DATA", "CLASSES");
   const kIds = new Set(fs.readdirSync(cg).flatMap(f => [...fs.readFileSync(path.join(cg, f), "latin1").matchAll(/<class\b[^>]*?\bid="([^"]+)"/g)].map(m => m[1])));
   for (const f of maps) {
-    const p = path.join(dest, f), buf = fs.readFileSync(p);
+    const p = at(f), buf = fs.readFileSync(p);
     for (const x of require("./hpfs.js")(buf).filter(x => /map\.obj\.xml$/i.test(x.path))) {
       let n = 0;
       const s = x.read().toString("latin1").replace(/class="M((?:Walls\w*|Tower|Gate\d))"/g, (m, c) => kIds.has("K" + c) ? (n++, `class="K${c}"`) : m);
@@ -239,10 +258,15 @@ const saga = e.channel === "saga-imperivm";
 // a saga entry with an author is a community remake of the original (e.g. OskaOtzuna's Imperivm II adventures)
 const author = saga ? e.author || "Haemimont Games" : e.author || "?";
 const sagaGame = saga && (/ II$/.test(e.section) ? "Imperivm II" : "Imperivm I");
-const desc = e.desc || (maps.length === 1 ? mapDesc(path.join(dest, maps[0])) : "");
+const desc = e.desc || (maps.length === 1 ? mapDesc(at(maps[0])) : "");
 const meta = saga ? (e.author ? `versión mejorada de la aventura de ${sagaGame} de Haemimont Games, recopilada por Ferónidas` : `${sagaGame}, recopilado por Ferónidas`) : [e.year, e.base].filter(Boolean).join(", ");
 const metaEn = saga ? (e.author ? `improved version of the ${sagaGame} adventure by Haemimont Games, collected by Ferónidas` : `${sagaGame}, collected by Ferónidas`) : meta;
-const what = isAdv ? "Aventura" : maps.length > 1 ? `${maps.length} mapas` : "Mapa";
+// the main category: what most of it is (adventures over conquests over scenarios on a tie); the rest go as "Type: …" tags
+const CATS = { scenarios: "Scenarios", adventures: "Adventures", conquests: "Conquests" };
+const byCount = FOLDERS.filter(has).sort((a, b) => maps.filter(f => where[f] === b).length - maps.filter(f => where[f] === a).length || FOLDERS.indexOf(b) - FOLDERS.indexOf(a));
+const main = byCount[0];
+isAdv = main === "adventures";
+const what = main === "adventures" ? "Aventura" : main === "conquests" ? "Conquista" : maps.length > 1 ? `${maps.length} mapas` : "Mapa";
 const mod = {
   id,
   name: (saga ? `${sagaGame}: ` : "") + titleCase(e.title),
@@ -250,10 +274,11 @@ const mod = {
   authors: saga ? [...(e.author ? [e.author] : []), "Haemimont Games", "FX Interactive"] : [author, ...(greekWalls ? ["Villoh (port)"] : [])],
   description: {
     spanish: `${desc ? desc.replace(/([^.!?…])$/, "$1.") + " " : ""}${what} de ${author}${meta ? ` (${meta})` : ""}.${greekWalls ? " Murallas, torres y puertas griegas del CGWAR adaptadas a Grecia como civilización propia." : ""}`,
-    english: `${what === "Aventura" ? "Adventure" : what === "Mapa" ? "Map" : maps.length + " maps"} by ${author}${metaEn ? ` (${metaEn})` : ""}.${greekWalls ? " The CGWAR's Greek walls, towers and gates, adapted to Greece as a civilization of its own." : ""}`,
+    english: `${{ Aventura: "Adventure", Conquista: "Conquest", Mapa: "Map" }[what] || maps.length + " maps"} by ${author}${metaEn ? ` (${metaEn})` : ""}.${greekWalls ? " The CGWAR's Greek walls, towers and gates, adapted to Greece as a civilization of its own." : ""}`,
   },
-  category: isAdv ? "Campaigns" : "Maps",
-  tags: isAdv ? ["Spanish"] : players ? [players] : [],
+  category: CATS[main],
+  // Players only counts for scenarios and Language for adventures (the SDK's filters); every adventure here is in Spanish
+  tags: [...byCount.slice(1).map(k => `Type: ${CATS[k]}`), ...(has("scenarios") && players ? [players] : []), ...(has("adventures") ? ["Language: Spanish"] : [])],
   // requires means "all of these": with several candidates, take one (the most used first)
   ...(needs.length || extraTerrain ? { requires: [
     ...(needs.length ? [[...PREFER, ...needs].find(m => needs.includes(m))] : []),
@@ -269,7 +294,7 @@ const SRC = path.join(ROOT, "raw", "ported.json");
 const src = (() => { try { return JSON.parse(fs.readFileSync(SRC, "utf8")); } catch { return {}; } })();
 src[id] = opt._ + (opt.file ? ` --file ${opt.file}` : "") + (opt.add ? ` --add ${opt.add}` : ""); // what to run to wrap it again
 fs.writeFileSync(SRC, JSON.stringify(Object.fromEntries(Object.entries(src).sort()), null, 1) + "\n");
-console.log(`${out}\n  ${maps.join(", ")} -> ${path.basename(dest)}/\n  category ${mod.category}, tags ${JSON.stringify(mod.tags)}${counts.length < maps.length ? "  ⚠️ some map has no readable players" : ""}${!isAdv && !players ? "  ⚠️ missing --players" : ""}${greekWalls ? `\n  🏛️ ${greekWalls} M* walls/towers/gates -> K* (Greek): porter credited` : ""}`
+console.log(`${out}\n  ${maps.join(", ")} -> ${[...new Set(maps.map(f => where[f]))].join(", ")}/\n  category ${mod.category}, tags ${JSON.stringify(mod.tags)}${counts.length < maps.filter(f => where[f] === "scenarios").length ? "  ⚠️ some scenario has no readable players" : ""}${has("scenarios") && !players ? "  ⚠️ no Players tag (one human slot, or --players)" : ""}${greekWalls ? `\n  🏛️ ${greekWalls} M* walls/towers/gates -> K* (Greek): porter credited` : ""}`
   + (used === null ? "\n  ⚠️ compatibility not checked (no originals/game-data)" : unknown.length ? `\n  ❌ not in the HD game nor in a known mod: ${unknown.join(", ")}` : "")
   + (waits.length ? `\n  ⏳ blocked: needs ${waits.join(" or ")}, not ported to Resurrected yet (${missing.join(", ")})` : needs.length ? `\n  🧩 needs ${needs.join(" or ")} (${missing.join(", ")})${needs.length > 1 ? " -> requires " + mod.requires[0] : ""}` : "")
   + breaks.map(b => `\n  🚫 incompatible with ${b.mod} (hides ${b.lost.join(", ")})`).join(""));

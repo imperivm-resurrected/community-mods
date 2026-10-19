@@ -9,9 +9,9 @@
     "spanish": "Partida 2v2 con mecánicas de Grandes Batallas. Aventura de Davidvx98 (2024, Imperivm HD vRelease 1.0).",
     "english": "Adventure by Davidvx98 (2024, Imperivm HD vRelease 1.0)."
   },
-  "category": "Campaigns",
+  "category": "Adventures",
   "tags": [
-    "Spanish"
+    "Language: Spanish"
   ],
   "requires": [
     "gamebanana-729311"

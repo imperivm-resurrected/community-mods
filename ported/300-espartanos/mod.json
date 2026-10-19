@@ -9,9 +9,9 @@
     "spanish": "El futuro de Grecia está en juego, el rey espartano Leónidas se enfrenta al inmerso ejército de Jerjes con un ejército inferior en número. El desfiladero de las Termópilas será el escenario de la gran batalla. Aventura de Jorgra2000 Games (2022).",
     "english": "Adventure by Jorgra2000 Games (2022)."
   },
-  "category": "Campaigns",
+  "category": "Adventures",
   "tags": [
-    "Spanish"
+    "Language: Spanish"
   ],
   "requires": [
     "cgwar"

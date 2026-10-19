@@ -10,9 +10,9 @@
     "spanish": "Un poderoso romano manejado por el ordenador domina este mapa montañoso. El objetivo es eliminarlo. Se recomienda que el resto de jugadores jueguen en equipo. Mapa de Haemimont Games (Imperivm I, recopilado por Ferónidas).",
     "english": "Map by Haemimont Games (Imperivm I, collected by Ferónidas)."
   },
-  "category": "Maps",
+  "category": "Scenarios",
   "tags": [
-    "5 players"
+    "Players: 5"
   ],
   "requires": [
     "community-mod"

@@ -9,9 +9,9 @@
     "spanish": "Asdrúbal Barca, hermano de Aníbal Barca, emprende la reconquista de la costa mediterránea hispánica hasta llegar a Aquitania. Aventura de Kalyga (2020, Imperivm III v1.40).",
     "english": "Adventure by Kalyga (2020, Imperivm III v1.40)."
   },
-  "category": "Campaigns",
+  "category": "Adventures",
   "tags": [
-    "Spanish"
+    "Language: Spanish"
   ],
   "requires": [
     "imperivm1-legacy"

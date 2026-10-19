@@ -6,12 +6,10 @@
     "IMPERYUS"
   ],
   "description": {
-    "spanish": "20 años despues de la muerte de Gended su hijo Gounde es general del ejército galo. Aventura de IMPERYUS (2017, Imperivm III v1.40).",
-    "english": "Adventure by IMPERYUS (2017, Imperivm III v1.40)."
+    "spanish": "20 años despues de la muerte de Gended su hijo Gounde es general del ejército galo. Conquista de IMPERYUS (2017, Imperivm III v1.40).",
+    "english": "Conquest by IMPERYUS (2017, Imperivm III v1.40)."
   },
-  "category": "Campaigns",
-  "tags": [
-    "Spanish"
-  ],
+  "category": "Conquests",
+  "tags": [],
   "redistributable": true
 }

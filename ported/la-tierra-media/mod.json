@@ -9,9 +9,9 @@
     "spanish": "4 vs 1 P1 · Hobbiton P2 · Rivendell P3 · Edoras P4 · Iron Hills P5 · Sauron. Mapa de Ferónidas (2025, Imperivm HD vRelease 1.0).",
     "english": "Map by Ferónidas (2025, Imperivm HD vRelease 1.0)."
   },
-  "category": "Maps",
+  "category": "Scenarios",
   "tags": [
-    "5 players"
+    "Players: 5"
   ],
   "requires": [
     "community-mod"

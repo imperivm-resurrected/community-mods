@@ -10,9 +10,9 @@
     "spanish": "Tu grupo ha sido elegido por los dioses para defender la colina sagrada del ataque de los bárbaros. Tu misión es resistir el mayor número posible de días. Al final de cada día los dioses te otorgarán un deseo. Aventura de Haemimont Games (Imperivm I, recopilado por Ferónidas).",
     "english": "Adventure by Haemimont Games (Imperivm I, collected by Ferónidas)."
   },
-  "category": "Campaigns",
+  "category": "Adventures",
   "tags": [
-    "Spanish"
+    "Language: Spanish"
   ],
   "redistributable": true
 }

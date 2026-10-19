@@ -9,9 +9,9 @@
     "spanish": "Poblacion:Normal Oro:Por defecto Niebla de guerra o mapa ya explorado a vuestra elección. Puedes elegir la bonificación que quieras, aconsejo llevar estos colores para que se vea mas claro, las facciones ya estan predeterminadas al número de jugador, no se pueden hacer alianzas. Jug1:Azul oscuro//Galo Jug2:Amarillo//Germano Jug3:Azul Claro//Ibero Jug4:Verde Claro//Romano. Mapa de sgtsebastian (2020, Imperivm III v1.56).",
     "english": "Map by sgtsebastian (2020, Imperivm III v1.56)."
   },
-  "category": "Maps",
+  "category": "Scenarios",
   "tags": [
-    "4 players"
+    "Players: 4"
   ],
   "incompatibleWith": [
     "caesar-mod",

@@ -9,9 +9,9 @@
     "spanish": "El reino se ha dividido. Los germanos animados por los romanos se han rebelado y Roma ha capturado el fortín del paso para desde allí atacarte. Los galos no tardarán en abandonarte. ¿Podrás con todos ellos? Mapa de Guigoras (2013, Imperivm III v1.40).",
     "english": "Map by Guigoras (2013, Imperivm III v1.40)."
   },
-  "category": "Maps",
+  "category": "Scenarios",
   "tags": [
-    "4 players"
+    "Players: 4"
   ],
   "incompatibleWith": [
     "caesar-mod"

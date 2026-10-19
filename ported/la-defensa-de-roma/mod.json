@@ -9,9 +9,9 @@
     "spanish": "Los cartagineses, liderados por Aníbal, han entrado desde hace mucho tiempo en la península italiana. Cuatro años después de la gran victoria de Aníbal en la batalla de Canne sobre las legiones romanas, los ejércitos cartagineses llegaron a las puertas de Roma amenazando sus fronteras e infundiendo terror en la población. El Senado de Roma te confía poder militar. ¡Reúne tus fuerzas y repele al enemigo! Aventura de Mietitore (2020, Imperivm III v1.56).",
     "english": "Adventure by Mietitore (2020, Imperivm III v1.56)."
   },
-  "category": "Campaigns",
+  "category": "Adventures",
   "tags": [
-    "Spanish"
+    "Language: Spanish"
   ],
   "requires": [
     "greek-mod-terrains"

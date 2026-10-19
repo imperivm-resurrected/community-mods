@@ -52,7 +52,7 @@ The tools compare each mod with the game's data, so extract it first. `extract-d
    | *rewrite* | A loose-file mod made for 1.40 | `node tools/port-140.js <folder> ported/<id> --id <id> …` (see [Mods made for 1.40](#mods-made-for-140)) |
    | *wrap · requires imperivm1-legacy* | A map with Imperivm I classes | `node tools/imperivm1.js add <map.bfhp>`, then `wrap-map.js` |
 
-4. **`mod.json`**: `"authors": ["<Original author>"]`; add `"<your name> (port)"` only for real adaptation work (*reduce*, *rewrite*). Plus `category`, `tags` (players or language) and `"redistributable": true` (the room host can send it; `--no-redistributable` if the author asks not to).
+4. **`mod.json`**: `"authors": ["<Original author>"]`; add `"<your name> (port)"` only for real adaptation work (*reduce*, *rewrite*). Plus `category` (`Scenarios`, `Adventures`, `Conquests`… as on GameBanana), `tags` in the SDK's form (`Players: 2-4` for scenarios, 2 to 8; `Language: Spanish` for adventures; `Type: <category>` for anything else the mod also is) and `"redistributable": true` (the room host can send it; `--no-redistributable` if the author asks not to).
 5. **Validate** (from the SDK): `node validate-mod.js <folder> --game "<game>" --data originals/game-data/DATA`.
 6. **Test** in the game (`mods\`, Additional content) and check `Logs\imperivm\imperivm-mod.log`. `LogFiles=1` under `[Debug]` in `imperivm-mod.ini` logs every file the game opens.
 7. **Publish**: zip the folder, *Add → Mod* on GameBanana, same category, tags and version. Under **Credits**, the author as *Original Creator*; you as *Porter* only for *reduce*/*rewrite* mods (for *wrap*, being the submitter is enough). Link the original thread.

@@ -9,9 +9,9 @@
     "spanish": "Algunos problemas en la frontera requieren la presencia de Julio César en la Provincia.Un choque banal de tribus será el pretexto para una de las mayores operaciones militares en la historia romana:la conquista de la Galia. Aventura de Mietitore (2020).",
     "english": "Adventure by Mietitore (2020)."
   },
-  "category": "Campaigns",
+  "category": "Adventures",
   "tags": [
-    "Spanish"
+    "Language: Spanish"
   ],
   "requires": [
     "greek-civilization-mod"
