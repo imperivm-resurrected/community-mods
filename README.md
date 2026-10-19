@@ -64,7 +64,7 @@ Each file is compared with HD **and** with 1.40, the version the mod was made on
 - both changed it: 3-way merge (`git merge-file`, 1.40 as base). Where both touched the same lines, XML is merged attribute by attribute and `.ini` key by key over the whole file (HD moved blocks around), and the mod wins a value both changed (a balance mod is about those values). Anything else goes to `raw/port-140/<id>.md`;
 - `.rle.mmp`: rebuilt as standalone `.rle` from the mod's `rle.mmp`, and left out if the pixels are the HD ones (a mod can't replace a game sprite anyway);
 - texts: only the entries that differ from the HD Spanish table, as `loc/spanish.loc.xml` (added to the game's, so HD's own new texts stay);
-- classes saved as Latin-1 become UTF-8 (otherwise HD skips them without a word), and item/victory scripts get the signature line HD needs.
+- menu backgrounds drawn for 1024x768 are widened to the HD size (the left half and the right border kept, the parchment between stretched), classes saved as Latin-1 become UTF-8 (otherwise HD skips them without a word), and item/victory scripts get the signature line HD needs.
 
 Conflicts are resolved by hand in `extras/<id>/` (the final files, plus `mod.json` with credits and description); the tool copies them over its output, so the port can be rebuilt from the original download. `ported/<id>/` of these mods isn't in git: it's mostly the authors' files and game data.
 

@@ -160,6 +160,28 @@ const locEntries = s => { const m = new Map(); for (const e of s.matchAll(/<tran
 const hdLoc = idx(path.join(ROOT, "originals/game-data/local-spanish"));
 const decode = b => (b.subarray(0, 3).equals(Buffer.from([0xef, 0xbb, 0xbf])) || !/[\x80-\xff]/.test(b.toString("latin1")) ? b.toString("utf8") : (() => { const u = b.toString("utf8"); return u.includes("\ufffd") ? b.toString("latin1") : u; })());
 
+// A 4:3 BMP (16-bit 5-5-5 or 24-bit, same height) widened to `width` as 24-bit: the left half and a 24 px right border stay
+// as drawn, the band between them is stretched (linear). Old menu backgrounds put their figure on the left and a frame on
+// the right, with plain parchment in between.
+// ponytail: fixed layout (left half + 24 px border); a per-mod crop option if some background has its figure elsewhere
+function widenBmp(b, width) {
+  const off = b.readUInt32LE(10), w = b.readInt32LE(18), hh = b.readInt32LE(22), h = Math.abs(hh), bpp = b.readUInt16LE(28);
+  if (b.readUInt32LE(30) !== 0 || (bpp !== 16 && bpp !== 24) || width <= w) return null;
+  const inStride = Math.ceil(w * bpp / 32) * 4, px = (x, y) => { const o = off + y * inStride + x * bpp / 8;
+    if (bpp === 24) return [b[o + 2], b[o + 1], b[o]];
+    const v = b.readUInt16LE(o); return [(v >> 10 & 31) * 255 / 31, (v >> 5 & 31) * 255 / 31, (v & 31) * 255 / 31]; };
+  const left = Math.floor(w / 2), border = 24, band = w - left - border, newBand = width - left - border;
+  const srcX = x => (x < left ? x : x >= left + newBand ? x - newBand + band : left + (x - left) * (band - 1) / Math.max(newBand - 1, 1));
+  const outStride = Math.ceil(width * 3 / 4) * 4, out = Buffer.alloc(54 + outStride * h);
+  out.write("BM", 0); out.writeUInt32LE(out.length, 2); out.writeUInt32LE(54, 10); out.writeUInt32LE(40, 14);
+  out.writeInt32LE(width, 18); out.writeInt32LE(hh, 22); out.writeUInt16LE(1, 26); out.writeUInt16LE(24, 28); out.writeUInt32LE(outStride * h, 34);
+  for (let y = 0; y < h; y++) for (let x = 0; x < width; x++) {
+    const sx = srcX(x), x0 = Math.floor(sx), t = sx - x0, p = px(x0, y), q = px(Math.min(x0 + 1, w - 1), y), o = 54 + y * outStride + x * 3;
+    for (let c = 0; c < 3; c++) out[o + 2 - c] = Math.round(p[c] + (q[c] - p[c]) * t);
+  }
+  return out;
+}
+
 const locSeen = new Set();
 for (const f of fs.readdirSync(modDir, { recursive: true })) {
   const p = path.join(modDir, f);
@@ -187,10 +209,14 @@ for (const f of fs.readdirSync(modDir, { recursive: true })) {
     }
     const g = hdLoc.get(k), data = fs.readFileSync(p);
     if (g && md5(fs.readFileSync(g)) === md5(data)) { count("same as HD"); continue; }
-    // a menu background drawn for 1024x768 over HD's (1366x768): the HD menu layout needs its own
+    // a menu background drawn for 1024x768 over HD's 1366x768: the HD menu is laid out for its own size, so widen it
     const size = b => (b.toString("latin1", 0, 2) === "BM" ? [b.readInt32LE(18), Math.abs(b.readInt32LE(22))] : null);
     const a = size(data), h = g && size(fs.readFileSync(g));
-    if (a && h && (a[0] < h[0] || a[1] < h[1])) { count("low-res screen image (HD kept)"); report.push({ rel, note: `${a.join("x")} over HD's ${h.join("x")}: left out, HD's stays` }); continue; }
+    if (a && h && (a[0] !== h[0] || a[1] !== h[1])) {
+      const wide = a[1] === h[1] && widenBmp(data, h[0]);
+      if (wide) { write(rel, wide); count("screen image widened to HD"); continue; }
+      count("low-res screen image (HD kept)"); report.push({ rel, note: `${a.join("x")} over HD's ${h.join("x")}: left out, HD's stays` }); continue;
+    }
     write(/\.(xml|txt|ini)$/i.test(k) ? path.join("local/spanish", inner) : rel, data); count("language file");
     continue;
   }
