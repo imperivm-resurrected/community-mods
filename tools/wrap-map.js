@@ -86,6 +86,7 @@ const id = (e.channel === "saga-imperivm" ? "saga-" : "") + e.slug;
 const editionMd5 = new Map();
 const editionVideos = new Set(); // videos unpacked for an edition: they never replace one the entry has (same name, another file)
 const editionKept = new Set(); // the ones placed so far (an own video of the same name, unpacked later, replaces them)
+const videoAlias = new Map(); // a pack's mangled video name -> the name the map plays
 // forum topics: decided after unpacking, from the title or game.xml game_type (0 = skirmish map, 1/2 = adventure)
 // --adventure: a single-player story map made as a normal map (game_type 0) whose post doesn't say so
 let isAdv = e.channel === "aventuras" || /AVENTURAS?|adventure/i.test(e.section) || /\[aventura\]/i.test(e.title) || !!opt.adventure;
@@ -192,8 +193,17 @@ for (const f of e.files) {
       const have = execFileSync(BSDTAR, ["-tf", src], { encoding: "utf8", maxBuffer: 1 << 28 }).split("\n");
       const names = new Set(fs.readdirSync(dest, { recursive: true }).filter(g => /\.bfhp$/i.test(g))
         .flatMap(g => [...fs.readFileSync(path.join(dest, g), "latin1").matchAll(/PlayMovie\((?:Translate\()?"([^"]+\.avi)"/gi)].map(m => path.basename(m[1].replace(/\\+/g, "/")).toLowerCase())));
-      const vids = have.filter(n => names.has(path.basename(n).toLowerCase()));
-      for (const n of names) if (!vids.some(v => path.basename(v).toLowerCase() === n)) console.log(`  ⚠️ plays ${n}, which the pack does not have`);
+      // a pack's file names are often mangled ("L_eroe d_Egitto.avi" for "L'eroe d'Egitto.avi"): match without punctuation and
+      // unpack it under the name the map plays
+      const norm = s => s.toLowerCase().replace(/[^a-z0-9]+/g, "_");
+      const vids = [];
+      for (const n of names) {
+        const exact = have.filter(h => path.basename(h).toLowerCase() === n);
+        const alt = !exact.length && have.find(h => /\.avi$/i.test(h) && norm(path.basename(h)) === norm(n));
+        if (exact.length) vids.push(...exact);
+        else if (alt) { vids.push(alt); videoAlias.set(path.basename(alt).toLowerCase(), n); console.log(`  🎬 plays ${n}: the pack has it as ${path.basename(alt)}`); }
+        else console.log(`  ⚠️ plays ${n}, which the pack does not have`);
+      }
       if (vids.length) execFileSync(BSDTAR, ["-xf", src, "-C", dest, ...vids], { maxBuffer: 1 << 28 });
       if (f.edition) for (const v of vids) editionVideos.add(v.replace(/\\/g, "/"));
     }
@@ -208,6 +218,7 @@ for (const f of fs.readdirSync(dest, { recursive: true }).filter(f => /\.bfhp$/i
     const rel = m[1].replace(/\\+|\/+/g, "/");
     played.set(path.basename(rel).toLowerCase(), rel.replace(/^(\w+)\//, (_m, d) => d.toLowerCase() + "/"));
   }
+for (const [alt, n] of videoAlias) if (played.has(n)) played.set(alt, played.get(n));
 // flatten folders inside archives, keep only what the game reads next to a map
 for (const f of fs.readdirSync(dest, { recursive: true })) {
   const p = path.join(dest, f);
