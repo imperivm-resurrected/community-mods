@@ -41,7 +41,7 @@ Edited by hand from here on.
 
 | # | Name | Author(s) | Base | Type | Source | Download | Permission | Status | GameBanana |
 |---|---|---|---|---|---|---|---|---|---|
-| 1 | Community Mod v12 | Ferónidas and community | HD vRelease 1.0 | done | [Discord](https://discord.com/channels/479629904657514526/915050595713429534) | ✅ [mega](https://mega.nz/file/bB1UUYYB#m1swkkwZ5SUsU4WWIl4yBZ1OjBM-CZ2DJMkN5dYReYE) | ❔ | ✅ v12 uploaded (THIONG) | [726223](https://gamebanana.com/mods/726223) |
+| 1 | Community Mod v12 | Ferónidas | HD vRelease 1.0 | done | [Discord](https://discord.com/channels/479629904657514526/915050595713429534) | ✅ [mega](https://mega.nz/file/bB1UUYYB#m1swkkwZ5SUsU4WWIl4yBZ1OjBM-CZ2DJMkN5dYReYE) | ❔ | ✅ v12 uploaded (THIONG) | [726223](https://gamebanana.com/mods/726223) |
 | 2 | Caesar Mod 1.1.0 | Paulus Ludorum (Paolo Lamberto) + Greek Mod creators | HD | done | [Discord](https://discord.com/channels/479629904657514526/1416185549873610823) | ⚠️ [moddb](https://www.moddb.com/mods/caesar-mod/downloads/caesar-mod-110) | ✅ CC BY-SA 4.0 | ✅ uploaded (THIONG) | [728740](https://gamebanana.com/mods/728740) |
 | 3 | Imperivm Legacy 2.4.1 | Nicoghiro31 | HD 1.0 | reduce | [Discord](https://discord.com/channels/479629904657514526/1142861080880763060) | ✅ [moddb](https://www.moddb.com/mods/imperivm-legacy/downloads)<br>💾 3 files | ❔ | 📋 to port | |
 | 4 | Greek Civilization Mod v1.8 | Rattlesmake | 1.40 and 1.5+ (Steam) | — | [forum](https://imperivmgbr.foroactivo.com/t1207-greek-civilization-mod-v1-8-by-rattlesmake) | ✅ [mega](https://mega.nz/file/TJUFCIpD#H-5OMIwj1uLU7WtE0ho5yXsCL8QrT8bVwISFNBY-o50)<br>📷 7 | ❔ | ✅ superseded by Greek Civilization Mod 4.2 (Gabbo) | [728851](https://gamebanana.com/mods/728851) |
