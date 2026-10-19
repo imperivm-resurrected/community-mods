@@ -52,6 +52,10 @@ const SIGNATURES = { itemscripts: "//void, Obj owner", gamescripts: "//void, int
 const write = (rel, data) => { if (/\.sc\.xml$/i.test(rel) && !isUtf8(data)) { data = Buffer.from(data.toString("latin1"), "utf8"); count("class converted to UTF-8"); }
   const sig = /\.vs$/i.test(rel) && SIGNATURES[rel.split(/[\\/]/).slice(-2, -1)[0].toLowerCase()];
   if (sig && !/^\s*\/\//.test(data.toString("latin1"))) { data = Buffer.concat([Buffer.from(sig + "\r\n"), data]); count("script signature added"); }
+  // HD's TS_BritishTactic.vs declares nSpearmen twice (it added "bool nSpearmen = false;", never used): it doesn't
+  // compile, and a merge brings the line into the mod's copy (imperivm-resurrected#12)
+  if (/ts_britishtactic\.vs$/i.test(rel) && /^\s*bool nSpearmen = false;\s*$/m.test(data.toString("latin1"))) {
+    data = Buffer.from(data.toString("latin1").replace(/^[ \t]*bool nSpearmen = false;[ \t]*\r?\n/m, ""), "latin1"); count("HD bug fixed (TS_BritishTactic.vs)"); }
   const p = path.join(outDir, rel); fs.mkdirSync(path.dirname(p), { recursive: true }); fs.writeFileSync(p, data); };
 
 // --- merging a conflict hunk (arrays of lines: hd, base, mod) ---
