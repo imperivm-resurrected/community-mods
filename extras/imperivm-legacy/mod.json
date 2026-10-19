@@ -1,0 +1,16 @@
+{
+  "id": "imperivm-legacy",
+  "name": "Imperivm Legacy",
+  "version": "2.4.1",
+  "authors": [
+    "Nicoghiro31",
+    "Villoh (port)"
+  ],
+  "description": {
+    "english": "A new iteration of the Mediterranevm mod: an expansion of the base game that keeps its concept and adds new content, unpublished ideas and deeper gameplay. Includes new units, buildings, art and sounds, six [LM] scenarios and tutorials.",
+    "spanish": "Una nueva iteración del mod Mediterranevm: una expansión del juego base que conserva su concepto y añade contenido nuevo, ideas inéditas y una jugabilidad más profunda. Incluye nuevas unidades, edificios, gráficos y sonidos, seis escenarios [LM] y tutoriales."
+  },
+  "category": "Gameplay & Balance",
+  "tags": [],
+  "redistributable": true
+}

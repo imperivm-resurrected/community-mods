@@ -97,6 +97,16 @@ The MCI ([extras/mci/](extras/mci/)) is the first one: 1104 files from the 9.0 z
 
 The CGWAR ([extras/cgwar/](extras/cgwar/)) put Greece in place of Imperial Rome; here it is a new civilization (`civs/greece.json`, index 30, letter `K`) and Imperial Rome stays HD's. After `port-140.js`, [`tools/cgwar-greece.js`](tools/cgwar-greece.js) makes the change: Greek classes get `race="greece"`, the Imperial pieces the mod redrew (walls, gates, tower, peasants) become `K*` copies so the city builder finds them by letter, the "Rome" merge (Republican Rome turning Republican or Imperial in the Arena), its AI scripts and the official adventures, conquest and random map towns it edited go, and the shared commands become patches that only add the Greek sources (the Greek-only commands go to `DATA/COMMANDS/GREECE.XML`). The mod's AI settlement scripts assume "Imperial Rome = Greece", and a Greek AI does see its base, Imperial Rome: they go in as `GR_*.vs`, so every other civilization keeps HD's AI. A patch on each HD helper (`ESH_*`) hands Greek settlements over with `AIRun`; the two main loops (`ES_Stronghold`, `ES_Village`) `Sleep()`, which crashes inside `AIRun`, so they go in `[EconomyScripts]` and a `GetEconomyScript.vs` patch picks them. Greece starts the random map in the mod's own Greek towns: `extras/cgwar/patches/randommapsettlements/` was made with the SDK's `create-template.js --base "Imperial Roman"` from an in-game dump (`Dump=randommapsettlements/maps/1/map.obj.xml`) with the mod's `RandomMapSettlements.bfhp`, where the Imperial Roman towns are the Greek ones, and their `M*` walls made `K*`. The maps made for it place `MWalls*`/`MTower`/`MGate*`, Roman again here: `wrap-map.js` switches them to `K*` in maps that need the CGWAR, which makes them *rewrite* (porter credited).
 
+## Big mods made for HD
+
+A mod made for HD (not 1.40) is reduced with the SDK's `shrink-mod.js`, which keeps only what differs from the game. Imperivm Legacy 2.4.1 ships as three installers (ENG, ESP, ITA; Clickteam, not Inno Setup, so `innoextract` fails): `7z e -t#` splits one into `.bz2` chunks, but it loses the file names, so the simplest way is to install it with wine (`WINEPREFIX=/tmp/wine-legacy wine <installer>`, to `C:\legacy`). The three installers only differ in the language package (`local\<language>.pak`, a chunk of ~19 MB: the one that differs between installers, `bunzip2` it after `7z e -t#`), so install one and copy the `.pak` of the others into its `local\` as `spanish.pak` and `italian.pak`.
+
+```bash
+node shrink-mod.js <installed mod> "<game>" ported/imperivm-legacy --id imperivm-legacy --name "Imperivm Legacy" --version 2.4.1 --category "Gameplay & Balance"
+```
+
+Then copy `extras/imperivm-legacy/` over the result: the 4 files with broken paths in the original mod (`BASETAVERN`, `RAMUNIT`, `RTHERMAE`, `FOG_OWNER_MARKER`) and its `mod.json`. `ported/imperivm-legacy/` (353 MB) isn't in git, like the 1.40 ones.
+
 ## Maps with Imperivm I classes
 
 Some maps still place Imperivm I (*Celtic Kings: Rage of War*) classes that neither Imperivm III 1.40 nor HD has: Cartagonova has 482 `TeutonWolf`, 311 `GWFighter`, cliffs, rocks and heroes; the Imperivm II saga map Hispania has the old Viking Lord. `tools/imperivm1.js` builds the shared mod `ported/imperivm1-legacy` with them, so the maps stay untouched:

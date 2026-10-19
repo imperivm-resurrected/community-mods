@@ -1,0 +1,56 @@
+<class id="RamUnit" cpp_class="CVXUnit" parent="Military" entity="Units/BTaran/BTaran.ent.xml">
+
+	<properties sight="850" range="80" min_range="0"/>
+	<properties speed="40"/>
+	<properties damage="300" armor_slash="20" armor_pierce="20"/>
+	<properties damage_type="siege"/>
+	<properties maxhealth="1000"/>
+	<properties max_food="0" feeds="0" does_not_regenerate="1"/>
+
+	<properties radius="80" selection_radius="80"/>
+	
+	<properties display_name="Ram"/>
+
+	<method sig="idle" vs="data/subai/ram_idle.vs"/>
+	<method sig="attack" vs="data/subai/ram_attack.vs"/>
+	
+	<behavior script="data/subai/stamina_counter.vs"/>
+
+	<value0
+		flags="0"/>
+	<value5
+		flags="0"/>
+
+	<defaultcmd target="Inn">
+		<cmd name="approach"/>
+	</defaultcmd>
+
+	<defaultcmd target="ShipBattle">
+		<cmd name="approach"/>
+	</defaultcmd>
+
+	<defaultcmd target="Wagon">
+		<cmd name="approach"/>
+	</defaultcmd>
+
+	<defaultcmd target="Unit">
+		<cmd name="approach"/>
+	</defaultcmd>
+
+	<defaultcmd target="Hero">
+		<cmd name="approach"/>
+	</defaultcmd>
+
+	<defaultcmd target="Building">
+		<cmd name="attack"/>
+		<cmd name="approach"/>
+	</defaultcmd>
+
+	<defaultcmd target="ItemHolder">
+		<cmd name="approach"/>
+	</defaultcmd>
+      
+      <sounds attack="TaranAttack"/>
+      <sounds command="TaranWalk"/>
+      <sounds die="Sounds/effects/catapult_die.wav"/>
+</class>
