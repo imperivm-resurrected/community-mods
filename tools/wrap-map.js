@@ -51,7 +51,20 @@ const titleCase = s => s.toLowerCase().split(/(\s+)/).map((w, i) => i && SMALL.h
 
 // Lobby slots = playerdata entries a human can take (control="Both"/"Human"); the XML is stored uncompressed in the .bfhp.
 // Checked against the lobby: El muro -> 6 ("Map for 6").
-const slots = f => (fs.readFileSync(f, "latin1").match(/control="(Both|Human)"/g) || []).length;
+// The .bfhp always stores 16 playerdata (ids 0-15); only 0-7 are lobby slots (Imperivm II maps leave 8-15 set to Both).
+const slots = f => {
+  const s = fs.readFileSync(f, "latin1"), seen = new Set();
+  let n = 0;
+  for (let i = s.indexOf("<playerdata"); i >= 0; i = s.indexOf("<playerdata", i + 1)) {
+    const blk = s.slice(i, i + 400).replace(/[^\x20-\x7e]/g, " ");
+    const get = k => (blk.match(new RegExp(`\\b${k}="([^"]*)"`)) || [])[1];
+    const id = get("id");
+    if (id == null || seen.has(id) || +id > 7) continue;
+    seen.add(id);
+    if (/^(Both|Human)$/.test(get("control") || "")) n++;
+  }
+  return n;
+};
 // The map's own description (game.xml <properties description="...">), used when the Discord post has none.
 // Long texts are split across container blocks, so binary junk can follow: cut at the first control byte or
 // run of spaces and, if cut, back off to the last full sentence. Editors saved UTF-8 or Latin-1: try UTF-8 first.
@@ -160,8 +173,7 @@ if (e.channel === "forum" && !isAdv && maps.some(f => /<properties[^>]*?\sgame_t
   fs.renameSync(dest, path.join(out, "adventures"));
   dest = path.join(out, "adventures");
 }
-// Imperivm III takes 8 players at most; Imperivm II maps can have up to 12 slots
-const counts = maps.map(f => slots(path.join(dest, f))).filter(Boolean).map(n => Math.min(n, 8));
+const counts = maps.map(f => slots(path.join(dest, f))).filter(Boolean);
 const used = hdClasses ? [...new Set(maps.flatMap(f => usedClasses(path.join(dest, f))))] : null;
 const missing = used?.filter(c => !hdClasses.has(c.toLowerCase()) && !extraClasses.has(c.toLowerCase())) || []; // not in the HD game or extras/
 // needs = the big mods that have every missing class; none -> the map needs a mod we don't have
