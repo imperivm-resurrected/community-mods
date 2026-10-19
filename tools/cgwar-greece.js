@@ -43,7 +43,10 @@ for (const f of fs.readdirSync(CLASSES).filter(f => /^(M\w+|RARENA|RBARRACKS|RBL
 const WINTER = find(CLASSES, "WINTER");
 if (WINTER) { for (const f of fs.readdirSync(WINTER).filter(f => /^M/i.test(f))) fs.rmSync(path.join(WINTER, f)); if (!fs.readdirSync(WINTER).length) fs.rmdirSync(WINTER); }
 // AI: the mod's settlement scripts assume "Imperial Rome = Greece", and a Greek AI does see ImperialRome (the base), so
-// they work as they are for Greece: each goes in as GR_<name>, and HD's own script hands a Greek settlement over to it.
+// they work as they are for Greece: each goes in as GR_<name>.
+// - ESH_* helpers: HD's own script hands a Greek settlement over to it with set.AIRun.
+// - ES_* main loops (ES_Stronghold, ES_Village) never return and Sleep(): run through AIRun they crashed the game as soon
+//   as an AI got a Greek town (gbr.exe+2945fa). They go in [EconomyScripts] and GetEconomyScript.vs picks them instead.
 // Every other civilization keeps HD's AI.
 const AI = find(OUT, "DATA/AI"), HD_AI = find(HD, "DATA/AI");
 const aiIni = rd(path.join(HD_AI, "AI.INI"));
@@ -55,14 +58,18 @@ for (const f of fs.readdirSync(AI).filter(f => /\.vs$/i.test(f))) {
   if (!name || !/^\/\/\s*void,\s*Settlement set/i.test(hd[0]) || !/\b(ImperialRome|race\s*==\s*4)\b/.test(rd(path.join(AI, f)))) continue;
   let i = 1; while (i < hd.length && (!hd[i].trim() || hd[i].trim().startsWith("//") || DECL.test(hd[i]))) i++; // first line of code
   fs.renameSync(path.join(AI, f), path.join(AI, "GR_" + f));
-  wr(path.join(OUT, "patches", "DATA", "AI", f), `@before ${hd[i].trim()}\r\nif (Mod_TrueRace(set.GetCentralBuilding) == Greece)\r\n{\r\n\tset.AIRun("GR_${name}");\r\n\treturn;\r\n}\r\n`);
+  if (!/^ES_/i.test(name)) wr(path.join(OUT, "patches", "DATA", "AI", f), `@before ${hd[i].trim()}\r\nif (Mod_TrueRace(set.GetCentralBuilding) == Greece)\r\n{\r\n\tset.AIRun("GR_${name}");\r\n\treturn;\r\n}\r\n`);
   greekAi.push(name);
 }
+const greekLoops = greekAi.filter(n => /^ES_/i.test(n)).map(n => "GR_" + n.replace(/\.vs$/i, "")); // GR_ES_Stronghold, GR_ES_Village
+wr(path.join(OUT, "patches", "DATA", "AI", "GETECONOMYSCRIPT.VS"), `@before if (set.IsVillage)\r\nif (Mod_TrueRace(set.GetCentralBuilding) == Greece)\r\n{\r\n`
+  + greekLoops.map(n => `\tif (set.Is${/village/i.test(n) ? "Village" : "Stronghold"})\r\n\t\treturn ${n};\r\n`).join("") + "}\r\n");
 for (const f of ["CALCGAIKAPRIORITY.VS", "ESH_GOLDTRADE.VS"]) rm("DATA/AI/" + f); // only the Rome merge
 const modIni = rd(path.join(AI, "AI.INI")); rm("DATA/AI/AI.INI");
 const iniVal = (s, sec, k) => { const b = s.split(new RegExp(`^\\[${sec.replace(".", "\\.")}\\]`, "m"))[1]; return b && (b.split(/^\[/m)[0].match(new RegExp(`^${k}\\s*=\\s*(\\S+)`, "m")) || [])[1]; };
 const maxK = [...modIni.matchAll(/^(AIV_MaxK\w+)\s*=\s*(-?\d+)/gm)].map(m => `${m[1]} = ${m[2]}`);
-wr(path.join(OUT, "patches", "DATA", "AI", "AI.INI"), ["[Scripts]", ...greekAi.map(n => `GR_${n} = void, Settlement set`),
+wr(path.join(OUT, "patches", "DATA", "AI", "AI.INI"), ["[EconomyScripts]", ...greekLoops.map(n => "+" + n),
+  "[Scripts]", ...greekAi.map(n => `GR_${n} = void, Settlement set`),
   "[Vars.All]", ...maxK,
   // the mod's economy tuning, for every AI as in the mod (HD has these keys twice in [Vars.All])
   "-AIV_SquanderGoldAmount", "-AIV_SquanderFoolAmount", "-AIV_ExcessGold",
