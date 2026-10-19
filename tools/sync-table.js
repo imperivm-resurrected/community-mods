@@ -33,7 +33,8 @@ for (const file of ["MODS.md", "MISSING.md"]) {
       return l;
     }
     const mod = readJson(path.join(ROOT, "ported", id, "mod.json"));
-    const type = " wrap" + (mod.requires ? " · requires " + mod.requires.map(nm).join(", ") : "")
+    // "<porter> (port)" in authors: the map was edited (e.g. the CGWAR maps' walls), so it is a rewrite
+    const type = (mod.authors?.some(a => / \(port\)$/.test(a)) ? " rewrite" : " wrap") + (mod.requires ? " · requires " + mod.requires.map(nm).join(", ") : "")
       + (mod.incompatibleWith ? " · not with " + mod.incompatibleWith.map(nm).join(", ") : "") + " ";
     const status = /✅/.test(c[S]) ? c[S] : " 🔧 ported (not uploaded) ";
     if (c[T] === type && c[S] === status) return l;

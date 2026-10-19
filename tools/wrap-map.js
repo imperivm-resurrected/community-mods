@@ -216,6 +216,23 @@ const extraTerrain = maps.some(f => { try {
 } catch { return false; } });
 const lo = Math.min(...counts), hi = Math.max(...counts);
 const players = opt.players || (counts.length ? (lo === hi ? `${lo} players` : `${lo}-${hi} players`) : null);
+// maps for the CGWAR: in the 1.40 mod Greece replaced Imperial Rome, and its M* walls, towers and gates were redrawn Greek.
+// Ported, Greece is a civilization of its own with K* pieces and M* is Roman again: switch them so the maps look as their
+// authors saw them (same name length: rewritten in place). That is an edit of the map, so the porter is credited.
+let greekWalls = 0;
+if (needs.includes("cgwar")) {
+  const cg = path.join(ROOT, "ported", "cgwar", "DATA", "CLASSES");
+  const kIds = new Set(fs.readdirSync(cg).flatMap(f => [...fs.readFileSync(path.join(cg, f), "latin1").matchAll(/<class\b[^>]*?\bid="([^"]+)"/g)].map(m => m[1])));
+  for (const f of maps) {
+    const p = path.join(dest, f), buf = fs.readFileSync(p);
+    for (const x of require("./hpfs.js")(buf).filter(x => /map\.obj\.xml$/i.test(x.path))) {
+      let n = 0;
+      const s = x.read().toString("latin1").replace(/class="M((?:Walls\w*|Tower|Gate\d))"/g, (m, c) => kIds.has("K" + c) ? (n++, `class="K${c}"`) : m);
+      if (n) { x.write(Buffer.from(s, "latin1")); greekWalls += n; }
+    }
+    fs.writeFileSync(p, buf);
+  }
+}
 
 // the saga: the maps and adventures of Imperivm I and II that came with the games, collected by Ferónidas on Discord
 const saga = e.channel === "saga-imperivm";
@@ -230,10 +247,10 @@ const mod = {
   id,
   name: (saga ? `${sagaGame}: ` : "") + titleCase(e.title),
   version: "1.0",
-  authors: saga ? [...(e.author ? [e.author] : []), "Haemimont Games", "FX Interactive"] : [author],
+  authors: saga ? [...(e.author ? [e.author] : []), "Haemimont Games", "FX Interactive"] : [author, ...(greekWalls ? ["Villoh (port)"] : [])],
   description: {
-    spanish: `${desc ? desc.replace(/([^.!?…])$/, "$1.") + " " : ""}${what} de ${author}${meta ? ` (${meta})` : ""}.`,
-    english: `${what === "Aventura" ? "Adventure" : what === "Mapa" ? "Map" : maps.length + " maps"} by ${author}${metaEn ? ` (${metaEn})` : ""}.`,
+    spanish: `${desc ? desc.replace(/([^.!?…])$/, "$1.") + " " : ""}${what} de ${author}${meta ? ` (${meta})` : ""}.${greekWalls ? " Murallas, torres y puertas griegas del CGWAR adaptadas a Grecia como civilización propia." : ""}`,
+    english: `${what === "Aventura" ? "Adventure" : what === "Mapa" ? "Map" : maps.length + " maps"} by ${author}${metaEn ? ` (${metaEn})` : ""}.${greekWalls ? " The CGWAR's Greek walls, towers and gates, adapted to Greece as a civilization of its own." : ""}`,
   },
   category: isAdv ? "Campaigns" : "Maps",
   tags: isAdv ? ["Spanish"] : players ? [players] : [],
@@ -252,7 +269,7 @@ const SRC = path.join(ROOT, "raw", "ported.json");
 const src = (() => { try { return JSON.parse(fs.readFileSync(SRC, "utf8")); } catch { return {}; } })();
 src[id] = opt._ + (opt.file ? ` --file ${opt.file}` : "") + (opt.add ? ` --add ${opt.add}` : ""); // what to run to wrap it again
 fs.writeFileSync(SRC, JSON.stringify(Object.fromEntries(Object.entries(src).sort()), null, 1) + "\n");
-console.log(`${out}\n  ${maps.join(", ")} -> ${path.basename(dest)}/\n  category ${mod.category}, tags ${JSON.stringify(mod.tags)}${counts.length < maps.length ? "  ⚠️ some map has no readable players" : ""}${!isAdv && !players ? "  ⚠️ missing --players" : ""}`
+console.log(`${out}\n  ${maps.join(", ")} -> ${path.basename(dest)}/\n  category ${mod.category}, tags ${JSON.stringify(mod.tags)}${counts.length < maps.length ? "  ⚠️ some map has no readable players" : ""}${!isAdv && !players ? "  ⚠️ missing --players" : ""}${greekWalls ? `\n  🏛️ ${greekWalls} M* walls/towers/gates -> K* (Greek): porter credited` : ""}`
   + (used === null ? "\n  ⚠️ compatibility not checked (no originals/game-data)" : unknown.length ? `\n  ❌ not in the HD game nor in a known mod: ${unknown.join(", ")}` : "")
   + (waits.length ? `\n  ⏳ blocked: needs ${waits.join(" or ")}, not ported to Resurrected yet (${missing.join(", ")})` : needs.length ? `\n  🧩 needs ${needs.join(" or ")} (${missing.join(", ")})${needs.length > 1 ? " -> requires " + mod.requires[0] : ""}` : "")
   + breaks.map(b => `\n  🚫 incompatible with ${b.mod} (hides ${b.lost.join(", ")})`).join(""));
