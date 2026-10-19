@@ -1,0 +1,7 @@
+<!-- Imperivm I class NHero01: copy of the HD GHero3b (display name) -->
+<class id="NHero01" cpp_class="CVXHero" parent="GaulHero" entity="Units/GHero3/GHero3.ent.xml">
+
+	<properties display_name="Brand" display_name_plural="Heroes"/>
+	<properties icon="gameres/icons/GHero3.bmp"/>
+
+</class>

@@ -1,0 +1,5 @@
+<!-- Imperivm I class Cliffs2 with its original art (from the Celtic Kings demo) -->
+<class id="Cliffs2" cpp_class="CVXDecor" parent="Object"
+entity="MapObjects/Cliffs2/Clifs2_as.ent.xml">
+  <properties edittree_pos="Structures/Others/Rocks 2"/>
+</class>

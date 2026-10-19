@@ -1,0 +1,6 @@
+<!-- Imperivm I class TeleportRocks_4 with its original art (from the Celtic Kings demo) -->
+<class id="TeleportRocks_4" cpp_class="CVXScriptObj" parent="Object"
+entity="MapObjects/TeleportRocks_4/TeleportRocks_4.ent.xml">
+<properties health="100" maxhealth="100"/>
+  <properties edittree_pos="Structures/Others/Rocks 5"/>
+</class>

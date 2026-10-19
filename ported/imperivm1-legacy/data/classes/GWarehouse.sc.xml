@@ -1,0 +1,13 @@
+<!-- Imperivm I class GWarehouse with its original art (from the Celtic Kings demo) -->
+<class id="GWarehouse" cpp_class="CVXBuilding" parent="Building"
+  entity        = "buildings/warehouse/warehouse 01 as.ent.xml"
+  entity_autumn = "buildings/warehouse/warehouse 01 as.ent.xml"
+  entity_spring = "buildings/warehouse/warehouse 01 as.ent.xml"
+ 
+>
+	<properties icon="gameres/icons/GWarehouse.bmp"/>
+	<properties display_name="Warehouse"/>
+	<properties radius="230" selection_radius="250"/>
+	<properties help="/contents/buildings/Village"/>
+
+</class>

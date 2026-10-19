@@ -3,7 +3,7 @@
 //   node tools/sync-table.js
 const fs = require("fs"), path = require("path");
 const ROOT = path.join(__dirname, "..");
-const NAME = { "community-mod": "Community Mod", "caesar-mod": "Caesar Mod", "greek-civilization-mod": "Greek Mod 4.2", "gamebanana-729311": "AsvrMod VII" };
+const NAME = { "community-mod": "Community Mod", "caesar-mod": "Caesar Mod", "greek-civilization-mod": "Greek Mod 4.2", "gamebanana-729311": "AsvrMod VII", "imperivm1-legacy": "Imperivm I legacy" };
 const nm = id => NAME[id] || id;
 const readJson = f => { try { return JSON.parse(fs.readFileSync(f, "utf8")); } catch (err) { console.error(`${f}: ${err.message}`); process.exit(1); } };
 const ported = readJson(path.join(ROOT, "raw", "ported.json"));
@@ -27,7 +27,9 @@ for (const file of ["MODS.md", "MISSING.md"]) {
     const arg = d ? byDiscord[d] : t ? `forum/t${t}` : null;
     const id = arg && bySource[arg];
     if (!id) {
-      if (/🔧/.test(c[S])) stale.push(`${file} ${c[1].trim()} ${c[2].trim()}`);
+      // a row not made by wrap-map.js names its ported/ folder in parentheses: "... (imperivm1-legacy)"
+      const own = (c[2].match(/\(([a-z0-9-]+)\)\s*$/) || [])[1];
+      if (/🔧/.test(c[S]) && !(own && fs.existsSync(path.join(ROOT, "ported", own)))) stale.push(`${file} ${c[1].trim()} ${c[2].trim()}`);
       return l;
     }
     const mod = readJson(path.join(ROOT, "ported", id, "mod.json"));

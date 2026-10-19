@@ -1,0 +1,5 @@
+<!-- Imperivm I class GrObj01 with its original art (from the Celtic Kings demo) -->
+<class id="GrObj01" cpp_class="CVXDecor" parent="Object"
+entity="MapObjects/GroundObjects/GrObj01.ent.xml">
+  <properties edittree_pos="Structures/Others/Cliff (small) 2"/>
+</class>

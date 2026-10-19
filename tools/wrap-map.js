@@ -108,7 +108,13 @@ const bigMods = !hdFiles || !fs.existsSync(MODS) ? [] : fs.readdirSync(MODS).map
   const own = Object.keys(classFiles(path.join(dir, "DATA")));
   // forum-* = a mod downloaded from the forum but not ported to Resurrected yet: a map needing it has to wait
   return { mod: m, ported: !m.startsWith("forum-"), own: new Set(own), classes: new Set([...Object.keys(hdFiles).filter(c => !hidden.has(hdFiles[c])), ...own]) };
-});
+}).concat(!hdFiles ? [] : fs.readdirSync(path.join(ROOT, "ported")).filter(m => m !== id && fs.existsSync(path.join(ROOT, "ported", m, "data"))).map(m => {
+  // our own class mods (e.g. imperivm1-legacy from tools/imperivm1.js): its id is in its mod.json
+  const own = Object.keys(classFiles(path.join(ROOT, "ported", m, "data")));
+  let modId = m;
+  try { modId = JSON.parse(fs.readFileSync(path.join(ROOT, "ported", m, "mod.json"), "utf8")).id || m; } catch { /* folder name */ }
+  return { mod: modId, ported: true, own: new Set(own), classes: new Set([...Object.keys(hdFiles), ...own]) };
+}));
 // Classes a map uses: placed objects (class="X") and classes its scripts create or look up (Place("X"...)). Parts of the
 // .bfhp are LZ-compressed, which mangles some names ("GAxema718"): those show up once, a real unit several times, so an
 // unknown placed name only counts if seen at least twice.
@@ -227,7 +233,9 @@ console.log(`${out}\n  ${maps.join(", ")} -> ${path.basename(dest)}/\n  category
 // blocked (needs a mod not ported yet) or uses classes nobody has: report it, but leave nothing in ported/
 if (waits.length || unknown.length) {
   fs.rmSync(out, { recursive: true, force: true }); process.exitCode = 2;
-  const SRC = path.join(ROOT, "raw", "ported.json"), src = JSON.parse(fs.readFileSync(SRC, "utf8"));
+  const SRC = path.join(ROOT, "raw", "ported.json");
+  let src = {};
+  try { src = JSON.parse(fs.readFileSync(SRC, "utf8")); } catch { /* no list yet */ }
   delete src[id];
   fs.writeFileSync(SRC, JSON.stringify(src, null, 1) + "\n");
 }

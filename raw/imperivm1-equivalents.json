@@ -1,0 +1,133 @@
+{
+ "GHero01": {
+  "hd": "GHero1",
+  "how": "haemimont",
+  "votes": {
+   "GHero1": 1
+  }
+ },
+ "GHero02": {
+  "hd": "GHero2",
+  "how": "display name"
+ },
+ "GHero03": {
+  "hd": "GHero3",
+  "how": "haemimont",
+  "votes": {
+   "GHero3": 1
+  }
+ },
+ "GHero20": {
+  "hd": "GHero4",
+  "how": "display name"
+ },
+ "GHero21": {
+  "hd": "GHero2b",
+  "how": "display name"
+ },
+ "GHero22": {
+  "hd": "GHero2a",
+  "how": "display name"
+ },
+ "GHero24": {
+  "hd": "GHero3a",
+  "how": "display name"
+ },
+ "GVikingLord": {
+  "hd": "BVikingLord",
+  "how": "haemimont",
+  "votes": {
+   "BVikingLord": 8
+  }
+ },
+ "GWFighter": {
+  "hd": "GWomanWarrior",
+  "how": "haemimont",
+  "votes": {
+   "GWomanWarrior": 46
+  }
+ },
+ "NHero01": {
+  "hd": "GHero3b",
+  "how": "display name"
+ },
+ "NHero02": {
+  "hd": "GHero7",
+  "how": "display name"
+ },
+ "RHero08": {
+  "hd": "RHero3",
+  "how": "haemimont",
+  "votes": {
+   "RHero3": 1,
+   "RHero4": 1
+  }
+ },
+ "RHero09": {
+  "hd": "MHero1",
+  "how": "haemimont",
+  "votes": {
+   "MHero1": 1
+  }
+ },
+ "RHero10": {
+  "hd": "RHero1",
+  "how": "haemimont",
+  "votes": {
+   "RHero1": 2
+  }
+ },
+ "RHero11": {
+  "hd": "MHero4",
+  "how": "haemimont",
+  "votes": {
+   "MHero4": 1,
+   "RHero1a": 1
+  }
+ },
+ "RHero20": {
+  "hd": "RHero3",
+  "how": "same model as RHero08"
+ },
+ "RHero21": {
+  "hd": "RHero1",
+  "how": "same model as RHero10"
+ },
+ "RHero22": {
+  "hd": "MHero1",
+  "how": "same model as RHero09"
+ },
+ "RHero23": {
+  "hd": "MHero4",
+  "how": "same model as RHero11"
+ },
+ "RHero24": {
+  "hd": "RHero3",
+  "how": "same model as RHero6"
+ },
+ "RHero6": {
+  "hd": "RHero3",
+  "how": "haemimont",
+  "votes": {
+   "RHero3": 1
+  }
+ },
+ "TeutonArcher": {
+  "hd": "TTeutonArcher",
+  "how": "haemimont",
+  "votes": {
+   "TTeutonArcher": 17
+  }
+ },
+ "TeutonMetal": {
+  "hd": "TTeutonRider",
+  "how": "haemimont",
+  "votes": {
+   "TTeutonRider": 32
+  }
+ },
+ "TeutonWolf": {
+  "hd": "TTeutonRider",
+  "how": "same model as TeutonMetal"
+ }
+}

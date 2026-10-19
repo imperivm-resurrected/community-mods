@@ -1,0 +1,8 @@
+<!-- Imperivm I class RHero11: copy of the HD MHero4 (haemimont) -->
+<class id="RHero11" cpp_class="CVXHero" parent="ImperialRomanHero" entity="Units/Caesar/Caesar.ent.xml">
+
+	<properties display_name="Caesar" display_name_plural="Heroes"/>
+	<properties icon="gameres/icons/Caesar.bmp"/>
+	<properties edittree_pos="Units/Heroes/Caesar (Roman)"/>
+
+</class>

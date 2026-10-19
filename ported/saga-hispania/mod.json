@@ -14,5 +14,8 @@
   "tags": [
     "8 players"
   ],
+  "requires": [
+    "imperivm1-legacy"
+  ],
   "redistributable": true
 }

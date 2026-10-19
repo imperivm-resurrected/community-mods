@@ -32,10 +32,10 @@ Every mod is published with full credit to its original author. Many of these mo
    ```
    Also copy the game's `Scenarios/` and `Adventures/` folders there: a map the HD game already ships (same bytes) is not wrapped.
    Big mods change that set too: copy each one's `mod.json`, `hidden.txt` and `DATA/**/*.sc.xml` to `originals/mods/<mod id>/` (the Community Mod and the Caesar Mod hide game files, e.g. the wild horse). A GameBanana mod with no `mod.json` gets the id `gamebanana-<id>` in the game; a mod still to port goes in as `forum-t<topic>`. Then each map gets `requires` if a mod has every class it lacks (with several, the first of Community Mod, Greek Mod, Caesar Mod), and `incompatibleWith` for each mod that hides an HD class it uses; `MODS.md` shows both in *Type*. A map that needs a mod not ported yet (⏳), or classes nobody has (❌, *requires ? mod*), is reported and left out of `ported/`. Parts of the `.bfhp` are compressed and mangle some names, so an unknown name only counts if placed at least twice.
-   Classes are also known by their `altid`, the old name the HD game still accepts (`RWallsN` is `Rwalls2` in Imperivm II maps). A class the map places that has no HD equivalent at all can be added by hand in `extras/<id>/data/classes/` (e.g. `extras/saga-hispania`: the Imperivm II Viking Lord as a copy of the HD one); `wrap-map.js` copies `extras/<id>/` into the mod and counts its classes as known. Players are the lobby slots (playerdata ids 0–7) a human can take.
+   Classes are also known by their `altid`, the old name the HD game still accepts (`RWallsN` is `Rwalls2` in Imperivm II maps). Imperivm I classes the HD game dropped come from the shared mod `imperivm1-legacy` (see [Maps with Imperivm I classes](#maps-with-imperivm-i-classes)): any class mod in `ported/` counts as known, so those maps get `requires: ["imperivm1-legacy"]`. For a one-off fix, files in `extras/<id>/` are copied into that mod and their classes count as known. Players are the lobby slots (playerdata ids 0–7) a human can take.
    A `.bfhp` with the same file name as one in another ported mod is renamed `<name> (<id>).bfhp`, or one would hide the other. Videos (`.avi`) go to `movies/`. Saga entries are credited to Haemimont Games and FX Interactive.
 
-   Nothing in the map changes, so the original author is the only author (no porter credit). The slug comes from `raw/discord-entries.json`. Players are read from the `.bfhp` (slots with `control="Both"`/`"Human"`); `--players` overrides it.
+   Nothing in the map changes, so the original author is the only author (no porter credit). The slug comes from `raw/discord-entries.json`. `--players` overrides the players tag; `--file <text>` keeps only the downloads whose name has it.
 
    **Mods with `.pak`** (Type *reduce*): from `imperivm-resurrected/sdk/en`:
    ```bash
@@ -46,6 +46,30 @@ Every mod is published with full credit to its original author. Many of these mo
 6. **Test** in the game (`mods\`, Additional content) and check `Logs\imperivm\imperivm-mod.log`.
 7. **Publish**: zip the folder, *Add → Mod* on GameBanana, same category, tags and version. Under **Credits**, the author as *Original Creator*; you as *Porter* only for *reduce*/*rewrite* mods (for *wrap*, being the submitter is enough). Link the original thread.
 8. `node tools/sync-table.js` sets *Type* and *Status* of every wrapped row from its `mod.json` (`raw/ported.json` says which row each mod comes from). Add the GameBanana link by hand. If a download turns out dead, run `node tools/split-missing.js`.
+
+## Maps with Imperivm I classes
+
+Some maps still place Imperivm I (*Celtic Kings: Rage of War*) classes that neither Imperivm III 1.40 nor HD has: Cartagonova has 482 `TeutonWolf`, 311 `GWFighter`, cliffs, rocks and heroes; the Imperivm II saga map Hispania has the old Viking Lord. `tools/imperivm1.js` builds the shared mod `ported/imperivm1-legacy` with them, so the maps stay untouched:
+
+```bash
+# once: both are free on ModDB, under Celtic Kings: Rage of War > Downloads (needs a browser: Cloudflare)
+#   "Patch 1.16" (celtickingspatch116.exe) and "Celtic Kings: Rage of War Demo" (celtickingsdemo.zip)
+node tools/imperivm1.js setup <celtickingspatch116.exe> <celtickingsdemo.zip>
+# per map (or class name); then wrap the map as usual
+node tools/imperivm1.js add <map.bfhp>
+```
+
+How each class is resolved:
+
+1. **The class definitions** come from the patch's `data.pak` (every Imperivm I class: name, model, type).
+2. **The HD equivalent** comes from Haemimont itself. The patch ships 4 original Imperivm I maps (Ascendency, Return to the Throne, Defenders, The fall of Avalon) that Haemimont converted for the Imperivm III saga, and every object kept its exact position. Pairing both versions by position gives the replacement Haemimont chose: `TeutonMetal` → `TTeutonRider`, `GWFighter` → `GWomanWarrior`, `GVikingLord` → `BVikingLord`, `RHero10` → `RHero1`… The saga copies come from Discord (`originals/discord/saga-imperivm/`).
+3. Classes those 4 maps don't place are matched by **display name** (`NHero01` "Brand" → `GHero3b` "Brand"), then by **sharing a model** with a matched class (`TeutonWolf` uses the `TeutonMetal` rider model, so → `TTeutonRider`). The result is `raw/imperivm1-equivalents.json`.
+4. A class with an equivalent becomes a copy of the HD class under the old id (without its `altid`, which stays with the original).
+5. **Objects the HD game never had** (cliffs `Cliffs*`, `TeleportRocks_*`, `GrObj01`, the warehouse) keep their original class and art, recovered from the demo: it is a Wise installer whose files are raw deflate streams; one is the demo's `.pak` (the `.ent.xml`, `.pass` and `.rle.mmp` headers) and the biggest other one its `rle.mmp` (the pixels). Each `.rle.mmp` + `rle.mmp` becomes a standalone `.rle` (the SDK's `lib/rle.js`, `resolveMmp`), which the game loads from a mod. Seasonal variants the demo lacks are dropped (the main art stands in).
+
+The art is Haemimont's/FX's, from a demo given away for free in 2002: lost media otherwise. It is not in git (`ported/imperivm1-legacy/**/*.rle` and `.pass` are ignored); `setup` + `add` rebuild it. Credits: Haemimont Games and FX Interactive, with Villoh as porter.
+
+The same idea works for any old map: look for the class in an older `data.pak` (the official Imperivm III patches 1.20–1.40 ship theirs: `Cab3.cab` inside `Imperivm III-1.40-ES.exe`), and for an official map converted by Haemimont to learn the replacement.
 
 ## Regenerating the data
 
