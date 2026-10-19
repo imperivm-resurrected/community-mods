@@ -1,0 +1,16 @@
+{
+  "id": "mediterranevm-alpha",
+  "name": "Mediterranevm (alpha)",
+  "version": "alpha",
+  "authors": [
+    "GreekModTeam",
+    "Villoh (port)"
+  ],
+  "description": {
+    "english": "Alpha of the Mediterranevm mod, the ancestor of Imperivm Legacy: reworked units and buildings (Numidian tent, outpost, Berber assassin, Libyan footman, Teuton archer, Britons and more), new art and voices.",
+    "spanish": "Alfa del mod Mediterranevm, antecesor de Imperivm Legacy: unidades y edificios rehechos (tienda númida, puesto avanzado, asesino bereber, infante libio, arquero teutón, britanos y más), con gráficos y voces nuevos."
+  },
+  "category": "Gameplay & Balance",
+  "tags": [],
+  "redistributable": true
+}

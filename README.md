@@ -11,6 +11,7 @@ and publish them on [GameBanana](https://gamebanana.com/games/26069), crediting 
 | [`MISSING.md`](MISSING.md) | Rows with no working download (dead links or none) |
 | [`DEAD-LINKS.md`](DEAD-LINKS.md) | Dead links of rows that stay in `MODS.md` (they have another working one) |
 | [`PENDING.md`](PENDING.md) | What is left to port, grouped by what holds it back, with where its files are. Generated: don't edit |
+| [`SOURCES.md`](SOURCES.md) | Forums, Discord servers, Telegram and sites (Spanish, Italian, English) where more mods can be found, with their state and what is already scraped |
 | [`AUTHORS.md`](AUTHORS.md) | Modders and editors, with their Discord account when found, to contact them |
 | [`ported/`](ported/) | Each ported mod, with its `mod.json`. Third-party binaries (`.bfhp`, `.bmp`, `.pak`, `.avi`) and the folders rebuilt by `port-140.js` aren't in git |
 | [`extras/`](extras/) | Our own changes to a mod: hand-resolved files, fixes, preview images, `mod.json` with credits. The tools copy them into `ported/<id>/` |
@@ -161,6 +162,6 @@ The SDK tools (`extract-data.js`, `shrink-mod.js`, `validate-mod.js`, `read-rle.
 
 ## Sources and license
 
-The data was gathered from the *Imperivm III Editores* Discord server, the [imperivmgbr.foroactivo.com](https://imperivmgbr.foroactivo.com) forum, [ModDB](https://www.moddb.com) and [GameBanana](https://gamebanana.com/games/26069).
+The data was gathered from the *Imperivm III Editores* Discord server, the [imperivmgbr.foroactivo.com](https://imperivmgbr.foroactivo.com) forum, [ModDB](https://www.moddb.com) and [GameBanana](https://gamebanana.com/games/26069). More places to look are in [SOURCES.md](SOURCES.md).
 
 The scripts in `tools/` are GPL-3.0 (see [LICENSE](LICENSE)), like Imperivm Resurrected. The maps, adventures and mods, and their names and descriptions, belong to their authors and are not covered by it.

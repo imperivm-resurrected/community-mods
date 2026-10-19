@@ -121,3 +121,9 @@ Same columns and legend as [MODS.md](MODS.md#how-to-read-the-tables).
 | 96 | Archivos del juego descomprimidos v1.40 | Ferónidas | ? | review | [forum](https://imperivmgbr.foroactivo.com/t1204-archivos-del-juego-descomprimidos-v1-40) | ❌ [mega](https://mega.nz/#!Gc9nmIrJ!vCIozLZu8OPR5yHh9pbngQ2p8MrN3srJiCWXc2UFfso) | ❔ | 📋 to port | |
 | 97 | AI para versión original | juanjomunz | ? | review | [forum](https://imperivmgbr.foroactivo.com/t1228-ai-para-version-original) | ❌ [mega](https://mega.nz/file/Lpln1DCK#C9rBnvrrrjFcr726QjV6zGaD4NR3uSoPjQDV67oxgMY) | ❔ | 📋 to port | |
 | 98 | Ayuda para aplicar los cambios | OlvidoGames | ? | review | [forum](https://imperivmgbr.foroactivo.com/t1363-ayuda-para-aplicar-los-cambios) | ❌ [drive](https://drive.google.com/file/d/1FoYl1FTJhJqgh-jiSQKF3u2-6vGh7dhH/view?usp=sharing) | ❔ | 📋 to port | |
+
+## Greek Mod line (newer versions, no public link)
+
+| # | Name | Author(s) | Base | Type | Source | Download | Permission | Status | GameBanana |
+|---|---|---|---|---|---|---|---|---|---|
+| 99 | Greek Mod adventures, conquests and maps pack (`adventures_maps_pack` / `Greek_MapsAdventures.zip`; the Greek Mod needs it for its adventures) | GreekModTeam | ? | review | [steam](https://steamcommunity.com/app/752580/discussions/0/599662719724049430/) | | ❔ | 📋 to port | |
