@@ -95,6 +95,9 @@ function mergeHunk(type, A, O, B) { // returns [lines, unresolved?]
   }
   return [out, false];
 }
+// .ini sections that describe the HD game itself: a 1.40 mod's values would break it ([Resolutions]: 640x480 ... 1600x1200
+// instead of HD's widescreen modes, so the game starts at 640x480)
+const HD_ONLY_SECTIONS = new Set(["resolutions"]);
 // .ini: key by key over the whole file (HD moved blocks around, so hunks would look like deletions). Start from HD's
 // text and apply the values the mod changed from 1.40; keys the mod added go at the end of their section.
 function mergeIni(hdFile, baseFile, modFile) {
@@ -107,6 +110,7 @@ function mergeIni(hdFile, baseFile, modFile) {
   const byKey = new Map([...hd.values()].map(e => [e.key.toLowerCase(), e])); // HD may have moved a key to another section
   const change = new Map(), add = [];
   for (const [k, e] of mod) {
+    if (HD_ONLY_SECTIONS.has(e.sec)) continue; // the HD game's own (screen modes), not balance
     const b = base.get(k);
     if (b && b.val === e.val) continue;
     const h = hd.get(k) || byKey.get(e.key.toLowerCase());
