@@ -3,72 +3,97 @@
 Port the community's mods, maps and adventures to [Imperivm Resurrected](https://github.com/imperivm-resurrected/imperivm-resurrected)
 and publish them on [GameBanana](https://gamebanana.com/games/26069), crediting each author.
 
-- `MODS.md`: the table of what can be ported. It is the source of truth and is edited by hand.
-- `MISSING.md`: the rows with no working download (dead links or none). `node tools/split-missing.js` moves rows between both files after editing a download.
-- `PENDING.md`: what is left to port, grouped by what holds it back, with where its files are. `node tools/pending.js` regenerates it from `MODS.md`.
-- `originals/`: downloads, untouched (not in git). Screenshots for the GameBanana page: of each Discord entry in `originals/discord/<channel>/<slug>/screenshots/`, and of forum topics in `originals/forum/t<id>/screenshots/` (`node tools/download-forum-shots.js`, images in the opening post); 📷 in `MODS.md`.
-- `ported/<id>/`: each ported mod, with its `mod.json`.
-- `raw/`: the mod entries pulled from Discord and the forum, and the link checks. The full crawls (`forum.json`, `discord.json`) stay local: they hold unrelated messages.
-- `tools/`: scripts to regenerate `raw/` (see below).
-- `AUTHORS.md`: modders and editors, with their Discord account when found, to contact them.
+## Repository layout
+
+| Path | What it is | In git |
+|---|---|---|
+| `MODS.md` | The table of what can be ported: the source of truth, edited by hand. Its legend (*Type*, *Status*, link marks) is under "How to read the tables" | ✅ |
+| `MISSING.md` | Rows with no working download (dead links or none) | ✅ |
+| `DEAD-LINKS.md` | Dead links of rows that stay in `MODS.md` (they have another working one) | ✅ |
+| `PENDING.md` | What is left to port, grouped by what holds it back, with where its files are. Generated: don't edit | ✅ |
+| `AUTHORS.md` | Modders and editors, with their Discord account when found, to contact them | ✅ |
+| `ported/<id>/` | Each ported mod, with its `mod.json`. Third-party binaries (`.bfhp`, `.bmp`, `.pak`, `.avi`) and the folders rebuilt by `port-140.js` are left out | partly |
+| `extras/<id>/` | Our own changes to a mod: hand-resolved files, fixes, preview images, `mod.json` with credits. The tools copy them into `ported/<id>/` | ✅ |
+| `raw/` | Mod entries pulled from Discord, the forum and ModDB (`*-entries.json`, `moddb.json`), link checks (`links.json`), downloads (`download-log.json`), which row each ported mod comes from (`ported.json`), Imperivm I equivalents, `port-140` reports | ✅ |
+| `raw/forum.json`, `raw/discord.json` | The full crawls: they hold unrelated messages | ❌ |
+| `originals/` | Downloads, untouched (`discord/`, `forum/`, `gamebanana/`), game data extracted for the tools (`game-data/`, `game-140/`, `imperivm1/`), big mods' classes (`mods/`), screenshots | ❌ |
+| `tools/` | The scripts (see [Tools](#tools)) | ✅ |
+| `OUTREACH.md`, `SCREENSHOTS.md` | Local working notes: messages to authors, screenshots to take | ❌ |
 
 ## Authors and removal requests
 
 Every mod is published with full credit to its original author. Many of these modders and editors are no longer active, so reaching them is often hard. In any case, if a modder or editor asks for their mod to be removed, it will be removed from GameBanana and from this repository, no questions asked.
 
-## For each mod
+## Setup (once)
+
+The tools compare each mod with the game's data, so extract it first. `extract-data.js` is in the SDK, `imperivm-resurrected/sdk/en/tools/`; `<game>` is the HD game folder.
+
+| What | Command | Used by |
+|---|---|---|
+| HD `DATA` | `node extract-data.js "<game>" originals/game-data` | `wrap-map`, `validate-mod` |
+| The HD maps | copy the game's `Scenarios/` and `Adventures/` to `originals/game-data/` | `wrap-map` (skips maps the game already ships) |
+| Every HD pack | `node extract-data.js "<game>" originals/game-data/paks <Name>.pak`, for each `Packs\*.pak` | `port-140` |
+| HD Spanish texts | `extract-data.js` on `local\spanish.pak` (copy it into a `Packs\` folder first), output `originals/game-data/local-spanish` | `port-140` |
+| The 1.40 packs | `data.pak`, `Units.pak`, `Buildings.pak`, `MapObjects.pak` from `Cab3.cab` inside `Imperivm III-1.40-ES.exe` (forum t731, `Imperium_3_official_patch.zip`), extracted to `originals/game-140/paks` | `port-140` |
+| Big mods' classes | each one's `mod.json`, `hidden.txt` and `DATA/**/*.sc.xml` in `originals/mods/<mod id>/` | `wrap-map` (`requires`, `incompatibleWith`) |
+| Imperivm I data | `node tools/imperivm1.js setup <patch.exe> <demo.zip>` (see [Maps with Imperivm I classes](#maps-with-imperivm-i-classes)) | `imperivm1` |
+
+`.rar`/`.zip` are unpacked with bsdtar: it is the system `tar` on Windows 10+ and macOS; on Linux install `libarchive-tools` (Debian/Ubuntu) or `libarchive` (Arch, Fedora, Nix). `BSDTAR=<path>` points to another binary.
+
+## Porting a mod
 
 1. **Author.** Try to reach the author (Discord, see `AUTHORS.md`, or forum) and note the answer in the *Permission* column. If they cannot be reached, publish with full credit; remove it if they ask (see above). If the license allows it (e.g. CC BY-SA), there is no need to ask, but the author must be credited.
-2. **Download** to `originals/<id>/`.
-3. **Discord maps and adventures** (Type *wrap*): creates `ported/<id>/` with the `.bfhp` and `mod.json`:
-   ```bash
-   node tools/wrap-map.js [channel/]<slug>    # Discord entry
-   node tools/wrap-map.js forum/t<topic id>   # forum topic, after tools/download-forum.js
-   ```
-   `.rar`/`.zip` are unpacked with bsdtar: it is the system `tar` on Windows 10+ and macOS; on Linux install `libarchive-tools` (Debian/Ubuntu) or `libarchive` (Arch, Fedora, Nix). `BSDTAR=<path>` points to another binary.
-   **Compatibility (1.40, 1.56 and HD).** Resurrected runs on the HD game, so a map made for 1.40/1.56 or for a mod breaks if it places a unit or object the HD game does not have. `wrap-map.js` checks every class the map places against the game data, if extracted once (from `imperivm-resurrected/sdk/en`):
-   ```bash
-   node tools/extract-data.js "<game>" <community-mods>/originals/game-data
-   ```
-   Also copy the game's `Scenarios/` and `Adventures/` folders there: a map the HD game already ships (same bytes) is not wrapped.
-   Big mods change that set too: copy each one's `mod.json`, `hidden.txt` and `DATA/**/*.sc.xml` to `originals/mods/<mod id>/` (the Community Mod and the Caesar Mod hide game files, e.g. the wild horse). A GameBanana mod with no `mod.json` gets the id `gamebanana-<id>` in the game; a mod still to port goes in as `forum-t<topic>`. Then each map gets `requires` if a mod has every class it lacks (with several, the first of Community Mod, Greek Mod, Caesar Mod), and `incompatibleWith` for each mod that hides an HD class it uses; `MODS.md` shows both in *Type*. A map that needs a mod not ported yet (⏳), or classes nobody has (❌, *requires ? mod*), is reported and left out of `ported/`. Parts of the `.bfhp` are compressed and mangle some names, so an unknown name only counts if placed at least twice.
-   Classes are also known by their `altid`, the old name the HD game still accepts (`RWallsN` is `Rwalls2` in Imperivm II maps). Imperivm I classes the HD game dropped come from the shared mod `imperivm1-legacy` (see [Maps with Imperivm I classes](#maps-with-imperivm-i-classes)): any class mod in `ported/` counts as known, so those maps get `requires: ["imperivm1-legacy"]`. For a one-off fix, files in `extras/<id>/` are copied into that mod and their classes count as known. Players are the lobby slots (playerdata ids 0–7) a human can take.
-   A `.bfhp` with the same file name as one in another ported mod is renamed `<name> (<id>).bfhp`, or one would hide the other. Videos (`.avi`) go to `movies/`. Saga entries are credited to Haemimont Games and FX Interactive.
+2. **Download**: `node tools/download-discord.js` (Discord attachments) or `node tools/download-forum.js` (forum, Mega, MediaFire, ModDB…).
+3. **Port**, with the tool for its *Type*:
 
-   Nothing in the map changes, so the original author is the only author (no porter credit). The slug comes from `raw/discord-entries.json`. `--players` overrides the players tag; `--file <text>` keeps only the downloads whose name has it.
+   | Type | What the mod is | Tool |
+   |---|---|---|
+   | *wrap* | A map or adventure, untouched | `node tools/wrap-map.js [channel/]<slug>` (Discord) or `forum/t<topic id>` |
+   | *reduce* | A mod with whole `.pak` packages | `node shrink-mod.js <original> "<game>" ported/<id> --id <id> …` (SDK) |
+   | *rewrite* | A loose-file mod made for 1.40 | `node tools/port-140.js <folder> ported/<id> --id <id> …` (see [Mods made for 1.40](#mods-made-for-140)) |
+   | *wrap · requires imperivm1-legacy* | A map with Imperivm I classes | `node tools/imperivm1.js add <map.bfhp>`, then `wrap-map.js` |
 
-   **Mods with `.pak`** (Type *reduce*): from `imperivm-resurrected/sdk/en`:
-   ```bash
-   node tools/shrink-mod.js <original> "<game>" <community-mods>/ported/<id> --id <id> --name "<Name>" --version 1.0 --category "Maps"
-   ```
-4. **`mod.json`** with `"authors": ["<Original author>"]` (add `"<your name> (port)"` only for real adaptation work: Type *reduce* or *rewrite*), `category`, `tags` (players or language) and `"redistributable": true` (the room host can send it; `--no-redistributable` if the author asks not to).
-5. **Validate** (from `imperivm-resurrected/sdk/en`): `node tools/validate-mod.js <folder> --game "<game>"`.
-6. **Test** in the game (`mods\`, Additional content) and check `Logs\imperivm\imperivm-mod.log`.
+4. **`mod.json`**: `"authors": ["<Original author>"]`; add `"<your name> (port)"` only for real adaptation work (*reduce*, *rewrite*). Plus `category`, `tags` (players or language) and `"redistributable": true` (the room host can send it; `--no-redistributable` if the author asks not to).
+5. **Validate** (from the SDK): `node validate-mod.js <folder> --game "<game>" --data originals/game-data/DATA`.
+6. **Test** in the game (`mods\`, Additional content) and check `Logs\imperivm\imperivm-mod.log`. `LogFiles=1` under `[Debug]` in `imperivm-mod.ini` logs every file the game opens.
 7. **Publish**: zip the folder, *Add → Mod* on GameBanana, same category, tags and version. Under **Credits**, the author as *Original Creator*; you as *Porter* only for *reduce*/*rewrite* mods (for *wrap*, being the submitter is enough). Link the original thread.
-8. `node tools/sync-table.js` sets *Type* and *Status* of every wrapped row from its `mod.json` (`raw/ported.json` says which row each mod comes from). Add the GameBanana link by hand. If a download turns out dead, run `node tools/split-missing.js`.
+8. **Update the tables**: `node tools/sync-table.js` sets *Type* and *Status* from each `mod.json`; add the GameBanana link by hand; `node tools/split-missing.js` after editing a download; `node tools/pending.js` regenerates `PENDING.md`.
+
+### Maps and adventures (`wrap-map.js`)
+
+Resurrected runs on the HD game, so a map made for 1.40, 1.56, a mod or an older Imperivm breaks if it places a unit or object HD doesn't have. `wrap-map.js` checks every class the map places (and the ones its scripts create) against the HD data, the big mods in `originals/mods/` and the class mods in `ported/`:
+
+- a mod that has every class the map lacks goes in `requires` (with several, the first of Community Mod, Greek Mod, Caesar Mod); one that hides an HD class the map uses goes in `incompatibleWith`. `MODS.md` shows both in *Type*;
+- a map that needs a mod not ported yet (⏳, ids `forum-t<topic>`) or classes nobody has (❌) is reported and left out of `ported/`;
+- classes are also known by their `altid`, the old name HD still accepts (`RWallsN` is `Rwalls2` in Imperivm II maps); parts of the `.bfhp` are compressed and mangle some names, so an unknown name only counts if placed at least twice;
+- a map HD already ships (same bytes) is skipped; a file name another ported mod has is renamed `<name> (<id>).bfhp`; videos go to `movies/`; players are the lobby slots (playerdata ids 0–7) a human can take;
+- files in `extras/<id>/` are copied into the mod, and their classes count as known.
+
+Nothing in the map changes, so the original author is the only author (no porter credit). Saga entries are credited to Haemimont Games and FX Interactive. `--players` overrides the players tag; `--file <text>` keeps only the downloads whose name has it. A GameBanana mod with no `mod.json` gets the id `gamebanana-<id>` in the game.
 
 ## Mods made for 1.40
 
-Most big mods (MCI, CGWAR, AsvrMod, La Reconquista, GBR Tactics) were copied over an Imperivm III 1.40 install: loose `DATA`, `UNITS`, `UI`… folders and often their own `rle.mmp`. On HD they would undo its fixes, and their `.rle.mmp` sprites only work with their own `rle.mmp`. `tools/port-140.js` turns one into a Resurrected mod:
+Most big mods (MCI, CGWAR, AsvrMod, La Reconquista, GBR Tactics) were copied over an Imperivm III 1.40 install: loose `DATA`, `UNITS`, `UI`… folders and often their own `rle.mmp`. On HD they would undo its fixes, and their `.rle.mmp` sprites only work with their own `rle.mmp`. `tools/port-140.js` compares each file with HD **and** with 1.40, the version the mod was made on:
+
+| The file | Result |
+|---|---|
+| Same as HD, or same as 1.40 (the mod didn't touch it) | Left out: the HD one stays |
+| Only the mod changed it | The mod's |
+| Both changed it | 3-way merge (`git merge-file`, 1.40 as base). Where both touched the same lines, XML is merged attribute by attribute and the mod wins a value both changed (a balance mod is about those values). Anything else goes to `raw/port-140/<id>.md` for review |
+| `.ini` | Key by key over the whole file (HD moved blocks around). `[Resolutions]` is always HD's: a 1.40 list starts the game at 640x480 |
+| `.rle.mmp` sprites | Rebuilt as standalone `.rle` from the mod's `rle.mmp`; left out if the pixels are HD's (a mod can't replace a game sprite anyway) |
+| `currentlang\*.loc.xml` | Only the entries that differ from the HD Spanish table, as `loc/spanish.loc.xml` (added to the game's, so HD's own texts stay) |
+| Menu background | Drawn for 1024x768; fitted to the HD one, 1920x1080 on Steam (a loose `Currentlang/MENUBACKGROUND.bmp` over the pack's 1366x768): scaled to the height, the left half and the right border kept, the parchment between stretched |
+| Classes in Latin-1 | Saved as UTF-8 (otherwise HD skips them without a word) |
+| Item and victory scripts | Get the signature line HD needs |
+
+Conflicts are resolved by hand in `extras/<id>/` (the final files, plus `mod.json` with credits and description); the tool copies them over its output, so the port can be rebuilt from the original download plus the repo. `ported/<id>/` of these mods isn't in git: it's mostly the authors' files and game data.
 
 ```bash
-# once: every HD pack, the HD Spanish texts, and the 1.40 patch's packs (forum t731, Imperium_3_official_patch.zip >
-# "Imperivm III-1.40-ES.exe" > Cab3.cab), each with extract-data.js
 node tools/port-140.js <old mod folder> ported/<id> --id <id> --name "<Name>" --version <v> --category "<Category>"
 ```
 
-Each file is compared with HD **and** with 1.40, the version the mod was made on:
-
-- same as HD, or same as 1.40 (the mod didn't touch it): left out, the HD one stays;
-- only the mod changed it: the mod's;
-- both changed it: 3-way merge (`git merge-file`, 1.40 as base). Where both touched the same lines, XML is merged attribute by attribute and `.ini` key by key over the whole file (HD moved blocks around; `[Resolutions]` is always HD's, a 1.40 list starts the game at 640x480), and the mod wins a value both changed (a balance mod is about those values). Anything else goes to `raw/port-140/<id>.md`;
-- `.rle.mmp`: rebuilt as standalone `.rle` from the mod's `rle.mmp`, and left out if the pixels are the HD ones (a mod can't replace a game sprite anyway);
-- texts: only the entries that differ from the HD Spanish table, as `loc/spanish.loc.xml` (added to the game's, so HD's own new texts stay);
-- a menu background drawn for 1024x768 is fitted to the HD one, 1920x1080 on Steam (a loose `Currentlang/MENUBACKGROUND.bmp` over the pack's 1366x768; scaled to the height, the left half and the right border kept, the parchment between stretched), classes saved as Latin-1 become UTF-8 (otherwise HD skips them without a word), and item/victory scripts get the signature line HD needs.
-
-Conflicts are resolved by hand in `extras/<id>/` (the final files, plus `mod.json` with credits and description); the tool copies them over its output, so the port can be rebuilt from the original download. `ported/<id>/` of these mods isn't in git: it's mostly the authors' files and game data.
-
-The MCI (`extras/mci/`) is the first one: 1104 files from the 9.0 zip, 123 merged with HD, 27 resolved by hand (the HD guard post, gold selling, AI-only parry mode, kill statistics and sentry guards kept alongside the MCI's tributes, stances and veterans). Its own bugs from 1.40 are kept as they were (scripts it references but never shipped); only `GreatTavern`, a class that doesn't exist, is dropped from the random map, where HD would hang.
+The MCI (`extras/mci/`) is the first one: 1104 files from the 9.0 zip, 123 merged with HD, 30 resolved or fixed by hand (the HD guard post, gold selling, AI-only parry mode, kill statistics and sentry guards kept alongside the MCI's tributes, stances and veterans). Its own bugs from 1.40 are kept as they were (scripts it references but never shipped), except where HD would break: `GreatTavern`, a class that doesn't exist, is dropped from the random map (it would hang), and `beh_punto.vs` calls `CreateFeedback` instead of `PlaceFeedback`, which no game version has.
 
 ## Maps with Imperivm I classes
 
@@ -94,22 +119,33 @@ The art is Haemimont's/FX's, from a demo given away for free in 2002: lost media
 
 The same idea works for any old map: look for the class in an older `data.pak` (the official Imperivm III patches 1.20–1.40 ship theirs: `Cab3.cab` inside `Imperivm III-1.40-ES.exe`), and for an official map converted by Haemimont to learn the replacement.
 
-## Regenerating the data
+## Tools
 
-```bash
-python3 tools/scrape-forum.py      # forum -> raw/forum.json (local; resumes if interrupted)
-node tools/parse-forum.js          # raw/forum.json -> raw/forum-entries.json (topics with the author's links)
-node tools/parse-discord.js        # raw/discord.json (local) -> raw/discord-entries.json
-node tools/download-discord.js     # Discord attachments -> originals/discord/ (URLs expire after ~24 h)
-node tools/download-forum.js       # files behind the live links of rows with no local copy -> originals/forum/<t id>/files/
-                                   #   (Mega needs megadl; ModDB needs a browser on CDP port 9333 for its Cloudflare check)
-node tools/download-forum-shots.js # screenshots of forum topics -> originals/forum/t<id>/screenshots/
-node tools/check-links.js [--all]  # checks the downloads -> raw/links.json
-node tools/build-table.js --force  # draft of MODS.md + MISSING.md (overwrites manual edits)
-```
+| Script | What it does |
+|---|---|
+| **Gathering** | |
+| `scrape-forum.py` | Forum → `raw/forum.json` (local; resumes if interrupted) |
+| `parse-forum.js` | `raw/forum.json` → `raw/forum-entries.json`: topics with the author's links |
+| `parse-discord.js` | `raw/discord.json` (local) → `raw/discord-entries.json` |
+| `scrape-moddb.js` | Everything on ModDB for the Imperivm games → `raw/moddb.json` |
+| `download-discord.js` | Discord attachments → `originals/discord/<channel>/<slug>/` (URLs expire after ~24 h) |
+| `download-forum.js` | Files behind the live links of rows with no local copy → `originals/forum/<key>/files/`. Mega needs `megadl`; ModDB a browser on CDP port 9333 (Cloudflare). `--force=<keys>` downloads again |
+| `download-forum-shots.js` | Screenshots in each forum topic's opening post → `originals/forum/t<id>/screenshots/` |
+| `check-links.js [--all]` | Checks the downloads → `raw/links.json` |
+| **Tables** | |
+| `build-table.js --force` | First draft of `MODS.md` + `MISSING.md`. Overwrites manual edits: only in a scratch copy |
+| `split-missing.js` | Moves rows between `MODS.md` and `MISSING.md` by their downloads, and dead links to `DEAD-LINKS.md` |
+| `sync-table.js` | *Type* and *Status* of every ported row from its `mod.json` |
+| `pending.js` | `PENDING.md` from `MODS.md` |
+| **Porting** | |
+| `wrap-map.js` | A map or adventure → `ported/<id>/` |
+| `port-140.js` | A loose-file 1.40 mod → `ported/<id>/` |
+| `imperivm1.js` | Imperivm I classes → `ported/imperivm1-legacy/` |
 
-The data was gathered from the *Imperivm III Editores* Discord server and the [imperivmgbr.foroactivo.com](https://imperivmgbr.foroactivo.com) forum.
+The SDK tools (`extract-data.js`, `shrink-mod.js`, `validate-mod.js`, `read-rle.js`…) are in `imperivm-resurrected/sdk/en/tools/`.
 
-## License
+## Sources and license
+
+The data was gathered from the *Imperivm III Editores* Discord server, the [imperivmgbr.foroactivo.com](https://imperivmgbr.foroactivo.com) forum, [ModDB](https://www.moddb.com) and [GameBanana](https://gamebanana.com/games/26069).
 
 The scripts in `tools/` are GPL-3.0 (see `LICENSE`), like Imperivm Resurrected. The maps, adventures and mods, and their names and descriptions, belong to their authors and are not covered by it.
