@@ -5,20 +5,19 @@ and publish them on [GameBanana](https://gamebanana.com/games/26069), crediting 
 
 ## Repository layout
 
-| Path | What it is | In git |
-|---|---|---|
-| `MODS.md` | The table of what can be ported: the source of truth, edited by hand. Its legend (*Type*, *Status*, link marks) is under "How to read the tables" | ✅ |
-| `MISSING.md` | Rows with no working download (dead links or none) | ✅ |
-| `DEAD-LINKS.md` | Dead links of rows that stay in `MODS.md` (they have another working one) | ✅ |
-| `PENDING.md` | What is left to port, grouped by what holds it back, with where its files are. Generated: don't edit | ✅ |
-| `AUTHORS.md` | Modders and editors, with their Discord account when found, to contact them | ✅ |
-| `ported/<id>/` | Each ported mod, with its `mod.json`. Third-party binaries (`.bfhp`, `.bmp`, `.pak`, `.avi`) and the folders rebuilt by `port-140.js` are left out | partly |
-| `extras/<id>/` | Our own changes to a mod: hand-resolved files, fixes, preview images, `mod.json` with credits. The tools copy them into `ported/<id>/` | ✅ |
-| `raw/` | Mod entries pulled from Discord, the forum and ModDB (`*-entries.json`, `moddb.json`), link checks (`links.json`), downloads (`download-log.json`), which row each ported mod comes from (`ported.json`), Imperivm I equivalents, `port-140` reports | ✅ |
-| `raw/forum.json`, `raw/discord.json` | The full crawls: they hold unrelated messages | ❌ |
-| `originals/` | Downloads, untouched (`discord/`, `forum/`, `gamebanana/`), game data extracted for the tools (`game-data/`, `game-140/`, `imperivm1/`), big mods' classes (`mods/`), screenshots | ❌ |
-| `tools/` | The scripts (see [Tools](#tools)) | ✅ |
-| `OUTREACH.md`, `SCREENSHOTS.md` | Local working notes: messages to authors, screenshots to take | ❌ |
+| Path | What it is |
+|---|---|
+| [MODS.md](MODS.md) | The table of what can be ported: the source of truth, edited by hand. Its legend (*Type*, *Status*, link marks) is under [How to read the tables](MODS.md#how-to-read-the-tables) |
+| [MISSING.md](MISSING.md) | Rows with no working download (dead links or none) |
+| [DEAD-LINKS.md](DEAD-LINKS.md) | Dead links of rows that stay in `MODS.md` (they have another working one) |
+| [PENDING.md](PENDING.md) | What is left to port, grouped by what holds it back, with where its files are. Generated: don't edit |
+| [AUTHORS.md](AUTHORS.md) | Modders and editors, with their Discord account when found, to contact them |
+| [ported/](ported/) | Each ported mod, with its `mod.json`. Third-party binaries (`.bfhp`, `.bmp`, `.pak`, `.avi`) and the folders rebuilt by `port-140.js` aren't in git |
+| [extras/](extras/) | Our own changes to a mod: hand-resolved files, fixes, preview images, `mod.json` with credits. The tools copy them into `ported/<id>/` |
+| [raw/](raw/) | Mod entries pulled from Discord, the forum and ModDB (`*-entries.json`, `moddb.json`), link checks (`links.json`), downloads (`download-log.json`), which row each ported mod comes from (`ported.json`), Imperivm I equivalents, `port-140` reports |
+| [tools/](tools/) | The scripts (see [Tools](#tools)) |
+
+Downloads and extracted game data go in `originals/`, outside git (see [Setup](#setup-once)).
 
 ## Authors and removal requests
 
@@ -42,7 +41,7 @@ The tools compare each mod with the game's data, so extract it first. `extract-d
 
 ## Porting a mod
 
-1. **Author.** Try to reach the author (Discord, see `AUTHORS.md`, or forum) and note the answer in the *Permission* column. If they cannot be reached, publish with full credit; remove it if they ask (see above). If the license allows it (e.g. CC BY-SA), there is no need to ask, but the author must be credited.
+1. **Author.** Try to reach the author (Discord, see [AUTHORS.md](AUTHORS.md), or forum) and note the answer in the *Permission* column. If they cannot be reached, publish with full credit; remove it if they ask (see above). If the license allows it (e.g. CC BY-SA), there is no need to ask, but the author must be credited.
 2. **Download**: `node tools/download-discord.js` (Discord attachments) or `node tools/download-forum.js` (forum, Mega, MediaFire, ModDB…).
 3. **Port**, with the tool for its *Type*:
 
@@ -79,7 +78,7 @@ Most big mods (MCI, CGWAR, AsvrMod, La Reconquista, GBR Tactics) were copied ove
 |---|---|
 | Same as HD, or same as 1.40 (the mod didn't touch it) | Left out: the HD one stays |
 | Only the mod changed it | The mod's |
-| Both changed it | 3-way merge (`git merge-file`, 1.40 as base). Where both touched the same lines, XML is merged attribute by attribute and the mod wins a value both changed (a balance mod is about those values). Anything else goes to `raw/port-140/<id>.md` for review |
+| Both changed it | 3-way merge (`git merge-file`, 1.40 as base). Where both touched the same lines, XML is merged attribute by attribute and the mod wins a value both changed (a balance mod is about those values). Anything else goes to `raw/port-140/<id>.md` for review ([MCI's](raw/port-140/mci.md)) |
 | `.ini` | Key by key over the whole file (HD moved blocks around). `[Resolutions]` is always HD's: a 1.40 list starts the game at 640x480 |
 | `.rle.mmp` sprites | Rebuilt as standalone `.rle` from the mod's `rle.mmp`; left out if the pixels are HD's (a mod can't replace a game sprite anyway) |
 | `currentlang\*.loc.xml` | Only the entries that differ from the HD Spanish table, as `loc/spanish.loc.xml` (added to the game's, so HD's own texts stay) |
@@ -93,7 +92,7 @@ Conflicts are resolved by hand in `extras/<id>/` (the final files, plus `mod.jso
 node tools/port-140.js <old mod folder> ported/<id> --id <id> --name "<Name>" --version <v> --category "<Category>"
 ```
 
-The MCI (`extras/mci/`) is the first one: 1104 files from the 9.0 zip, 123 merged with HD, 30 resolved or fixed by hand (the HD guard post, gold selling, AI-only parry mode, kill statistics and sentry guards kept alongside the MCI's tributes, stances and veterans). Its own bugs from 1.40 are kept as they were (scripts it references but never shipped), except where HD would break: `GreatTavern`, a class that doesn't exist, is dropped from the random map (it would hang), and `beh_punto.vs` calls `CreateFeedback` instead of `PlaceFeedback`, which no game version has.
+The MCI ([extras/mci/](extras/mci/)) is the first one: 1104 files from the 9.0 zip, 123 merged with HD, 30 resolved or fixed by hand (the HD guard post, gold selling, AI-only parry mode, kill statistics and sentry guards kept alongside the MCI's tributes, stances and veterans). Its own bugs from 1.40 are kept as they were (scripts it references but never shipped), except where HD would break: `GreatTavern`, a class that doesn't exist, is dropped from the random map (it would hang), and `beh_punto.vs` calls `CreateFeedback` instead of `PlaceFeedback`, which no game version has.
 
 ## Maps with Imperivm I classes
 
@@ -124,23 +123,23 @@ The same idea works for any old map: look for the class in an older `data.pak` (
 | Script | What it does |
 |---|---|
 | **Gathering** | |
-| `scrape-forum.py` | Forum → `raw/forum.json` (local; resumes if interrupted) |
-| `parse-forum.js` | `raw/forum.json` → `raw/forum-entries.json`: topics with the author's links |
-| `parse-discord.js` | `raw/discord.json` (local) → `raw/discord-entries.json` |
-| `scrape-moddb.js` | Everything on ModDB for the Imperivm games → `raw/moddb.json` |
-| `download-discord.js` | Discord attachments → `originals/discord/<channel>/<slug>/` (URLs expire after ~24 h) |
-| `download-forum.js` | Files behind the live links of rows with no local copy → `originals/forum/<key>/files/`. Mega needs `megadl`; ModDB a browser on CDP port 9333 (Cloudflare). `--force=<keys>` downloads again |
-| `download-forum-shots.js` | Screenshots in each forum topic's opening post → `originals/forum/t<id>/screenshots/` |
-| `check-links.js [--all]` | Checks the downloads → `raw/links.json` |
+| [`scrape-forum.py`](tools/scrape-forum.py) | Forum → `raw/forum.json` (not in git: the full crawl holds unrelated messages; resumes if interrupted) |
+| [`parse-forum.js`](tools/parse-forum.js) | `raw/forum.json` → `raw/forum-entries.json`: topics with the author's links |
+| [`parse-discord.js`](tools/parse-discord.js) | `raw/discord.json` (not in git, like `forum.json`) → `raw/discord-entries.json` |
+| [`scrape-moddb.js`](tools/scrape-moddb.js) | Everything on ModDB for the Imperivm games → `raw/moddb.json` |
+| [`download-discord.js`](tools/download-discord.js) | Discord attachments → `originals/discord/<channel>/<slug>/` (URLs expire after ~24 h) |
+| [`download-forum.js`](tools/download-forum.js) | Files behind the live links of rows with no local copy → `originals/forum/<key>/files/`. Mega needs `megadl`; ModDB a browser on CDP port 9333 (Cloudflare). `--force=<keys>` downloads again |
+| [`download-forum-shots.js`](tools/download-forum-shots.js) | Screenshots in each forum topic's opening post → `originals/forum/t<id>/screenshots/` |
+| [`check-links.js`](tools/check-links.js) `[--all]` | Checks the downloads → `raw/links.json` |
 | **Tables** | |
-| `build-table.js --force` | First draft of `MODS.md` + `MISSING.md`. Overwrites manual edits: only in a scratch copy |
-| `split-missing.js` | Moves rows between `MODS.md` and `MISSING.md` by their downloads, and dead links to `DEAD-LINKS.md` |
-| `sync-table.js` | *Type* and *Status* of every ported row from its `mod.json` |
-| `pending.js` | `PENDING.md` from `MODS.md` |
+| [`build-table.js`](tools/build-table.js) `--force` | First draft of `MODS.md` + `MISSING.md`. Overwrites manual edits: only in a scratch copy |
+| [`split-missing.js`](tools/split-missing.js) | Moves rows between `MODS.md` and `MISSING.md` by their downloads, and dead links to `DEAD-LINKS.md` |
+| [`sync-table.js`](tools/sync-table.js) | *Type* and *Status* of every ported row from its `mod.json` |
+| [`pending.js`](tools/pending.js) | `PENDING.md` from `MODS.md` |
 | **Porting** | |
-| `wrap-map.js` | A map or adventure → `ported/<id>/` |
-| `port-140.js` | A loose-file 1.40 mod → `ported/<id>/` |
-| `imperivm1.js` | Imperivm I classes → `ported/imperivm1-legacy/` |
+| [`wrap-map.js`](tools/wrap-map.js) | A map or adventure → `ported/<id>/` |
+| [`port-140.js`](tools/port-140.js) | A loose-file 1.40 mod → `ported/<id>/` |
+| [`imperivm1.js`](tools/imperivm1.js) | Imperivm I classes → `ported/imperivm1-legacy/` |
 
 The SDK tools (`extract-data.js`, `shrink-mod.js`, `validate-mod.js`, `read-rle.js`…) are in `imperivm-resurrected/sdk/en/tools/`.
 
@@ -148,4 +147,4 @@ The SDK tools (`extract-data.js`, `shrink-mod.js`, `validate-mod.js`, `read-rle.
 
 The data was gathered from the *Imperivm III Editores* Discord server, the [imperivmgbr.foroactivo.com](https://imperivmgbr.foroactivo.com) forum, [ModDB](https://www.moddb.com) and [GameBanana](https://gamebanana.com/games/26069).
 
-The scripts in `tools/` are GPL-3.0 (see `LICENSE`), like Imperivm Resurrected. The maps, adventures and mods, and their names and descriptions, belong to their authors and are not covered by it.
+The scripts in `tools/` are GPL-3.0 (see [LICENSE](LICENSE)), like Imperivm Resurrected. The maps, adventures and mods, and their names and descriptions, belong to their authors and are not covered by it.
