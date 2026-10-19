@@ -9,6 +9,7 @@
   },
   "letter": "K",
   "internalName": "Greek",
+  "template": "Greek",
   "ai": true,
   "alias": {
     "classes": {

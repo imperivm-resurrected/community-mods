@@ -272,6 +272,13 @@ if (locSeen.size) {
   stats["texts that differ from HD"] = lines.length;
 }
 
+// entities naming "SHADOW.RLE": 1.40 found SHADOW.RLE.MMP in its packs, but HD only takes a mod's loose sprite with a
+// lowercase .rle (otherwise it looks for SHADOW.RLE.bmp and, for a building, crashes)
+for (const f of fs.readdirSync(outDir, { recursive: true }).filter(f => /\.ent\.xml$/i.test(f))) {
+  const p = path.join(outDir, f), s = fs.readFileSync(p, "latin1"), n = s.replace(/(\bfile\s*=\s*"[^"]*\.)rle"/gi, '$1rle"');
+  if (n !== s) { fs.writeFileSync(p, n, "latin1"); count("entity with .RLE made .rle"); }
+}
+
 // conflicts resolved by hand: extras/<id>/ holds the final files, copied over the result (and off the report)
 const EXTRAS = path.join(ROOT, "extras", opt.id);
 if (fs.existsSync(EXTRAS)) for (const f of fs.readdirSync(EXTRAS, { recursive: true })) {
