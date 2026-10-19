@@ -1,0 +1,27 @@
+{
+  "id": "mci",
+  "name": "Mod Comunidad Imperivm (MCI) 9.0",
+  "version": "9.0",
+  "category": "Gameplay & Balance",
+  "authors": [
+    "Comunidad Imperivm",
+    "JVLIVS CAESAR (La Reconquista)",
+    "zeloslaw",
+    "El Jüsticiero Misteryoso",
+    "Camarada",
+    "Poliko",
+    "frikypani",
+    "frodo45127",
+    "moonson",
+    "JNXF",
+    "Villoh (port)"
+  ],
+  "description": {
+    "spanish": "El primer mod creado por la Comunidad Imperivm (2010-2013), sobre el Mod La Reconquista de JVLIVS CAESAR: unidades nuevas (hipatista, mercenario, carro de hierro, recaudador), acero y tributos entre asentamientos, modos pasivo/defensivo/agresivo/sed de sangre, formaciones, rituales, modos de juego online, mapas aleatorios (España, África, Britania, Italia, Espiral…), 9 mapas y 19 aventuras, música y traducción. Adaptado al juego HD conservando sus correcciones.",
+    "english": "The first mod made by the Imperivm community (2010-2013), on top of JVLIVS CAESAR's La Reconquista: new units, iron and tributes between settlements, unit stances, formations, rituals, online game modes, random maps, 9 maps and 19 adventures, music and a Spanish translation. Adapted to the HD game keeping its fixes."
+  },
+  "tags": [
+    "Spanish"
+  ],
+  "redistributable": true
+}

@@ -1,0 +1,12 @@
+<class id="ImperialRomanHero" cpp_class="CVXHero" parent="HeroMounted" entity="">
+
+	<properties maxhealth="2600"/>
+	<properties damage="30" armor_slash="16" armor_pierce="16"/>
+	<properties race="ImperialRome"/>
+	<properties max_army="60"/>
+	<properties HeroSkills="Scout, Administration, Quick March, Team attack, Team defense, Discipline, Egoism, Epic endurance"/>
+	<properties help="/contents/units/RHero"/>
+	
+	<sounds command="data/sound entities/VoiceRImperialHero.xml"/>
+
+</class>

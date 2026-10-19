@@ -11,3 +11,5 @@ raw/discord.json
 SCREENSHOTS.md
 ported/imperivm1-legacy/**/*.rle
 ported/imperivm1-legacy/**/*.pass
+# rebuilt by tools/port-140.js from the original zip + extras/<id>/ (hand resolutions and mod.json)
+ported/mci/

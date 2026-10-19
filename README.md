@@ -47,6 +47,29 @@ Every mod is published with full credit to its original author. Many of these mo
 7. **Publish**: zip the folder, *Add → Mod* on GameBanana, same category, tags and version. Under **Credits**, the author as *Original Creator*; you as *Porter* only for *reduce*/*rewrite* mods (for *wrap*, being the submitter is enough). Link the original thread.
 8. `node tools/sync-table.js` sets *Type* and *Status* of every wrapped row from its `mod.json` (`raw/ported.json` says which row each mod comes from). Add the GameBanana link by hand. If a download turns out dead, run `node tools/split-missing.js`.
 
+## Mods made for 1.40
+
+Most big mods (MCI, CGWAR, AsvrMod, La Reconquista, GBR Tactics) were copied over an Imperivm III 1.40 install: loose `DATA`, `UNITS`, `UI`… folders and often their own `rle.mmp`. On HD they would undo its fixes, and their `.rle.mmp` sprites only work with their own `rle.mmp`. `tools/port-140.js` turns one into a Resurrected mod:
+
+```bash
+# once: every HD pack, the HD Spanish texts, and the 1.40 patch's packs (forum t731, Imperium_3_official_patch.zip >
+# "Imperivm III-1.40-ES.exe" > Cab3.cab), each with extract-data.js
+node tools/port-140.js <old mod folder> ported/<id> --id <id> --name "<Name>" --version <v> --category "<Category>"
+```
+
+Each file is compared with HD **and** with 1.40, the version the mod was made on:
+
+- same as HD, or same as 1.40 (the mod didn't touch it): left out, the HD one stays;
+- only the mod changed it: the mod's;
+- both changed it: 3-way merge (`git merge-file`, 1.40 as base). Where both touched the same lines, XML is merged attribute by attribute and `.ini` key by key over the whole file (HD moved blocks around), and the mod wins a value both changed (a balance mod is about those values). Anything else goes to `raw/port-140/<id>.md`;
+- `.rle.mmp`: rebuilt as standalone `.rle` from the mod's `rle.mmp`, and left out if the pixels are the HD ones (a mod can't replace a game sprite anyway);
+- texts: only the entries that differ from the HD Spanish table, as `loc/spanish.loc.xml` (added to the game's, so HD's own new texts stay);
+- classes saved as Latin-1 become UTF-8 (otherwise HD skips them without a word), and item/victory scripts get the signature line HD needs.
+
+Conflicts are resolved by hand in `extras/<id>/` (the final files, plus `mod.json` with credits and description); the tool copies them over its output, so the port can be rebuilt from the original download. `ported/<id>/` of these mods isn't in git: it's mostly the authors' files and game data.
+
+The MCI (`extras/mci/`) is the first one: 1104 files from the 9.0 zip, 123 merged with HD, 27 resolved by hand (the HD guard post, gold selling, AI-only parry mode, kill statistics and sentry guards kept alongside the MCI's tributes, stances and veterans). Its own bugs from 1.40 are kept as they were (scripts it references but never shipped); only `GreatTavern`, a class that doesn't exist, is dropped from the random map, where HD would hang.
+
 ## Maps with Imperivm I classes
 
 Some maps still place Imperivm I (*Celtic Kings: Rage of War*) classes that neither Imperivm III 1.40 nor HD has: Cartagonova has 482 `TeutonWolf`, 311 `GWFighter`, cliffs, rocks and heroes; the Imperivm II saga map Hispania has the old Viking Lord. `tools/imperivm1.js` builds the shared mod `ported/imperivm1-legacy` with them, so the maps stay untouched:

@@ -101,6 +101,8 @@ const classFiles = dir => { // class id (lowercase) -> "data/classes/x.sc.xml"
 const DATA = path.join(ROOT, "originals", "game-data", "DATA"), MODS = path.join(ROOT, "originals", "mods");
 const hdFiles = fs.existsSync(DATA) ? classFiles(DATA) : null;
 const hdClasses = hdFiles && new Set(Object.keys(hdFiles));
+// a ported mod's data folder, any case (DATA from old mods)
+const dataDir = m => { const d = path.join(ROOT, "ported", m); const n = fs.statSync(d).isDirectory() && fs.readdirSync(d).find(x => x.toLowerCase() === "data"); return n ? path.join(d, n) : null; };
 const bigMods = !hdFiles || !fs.existsSync(MODS) ? [] : fs.readdirSync(MODS).map(m => {
   const dir = path.join(MODS, m), hiddenTxt = path.join(dir, "hidden.txt");
   const hidden = new Set(fs.existsSync(hiddenTxt) ? fs.readFileSync(hiddenTxt, "utf8").split(/\r?\n/)
@@ -108,9 +110,9 @@ const bigMods = !hdFiles || !fs.existsSync(MODS) ? [] : fs.readdirSync(MODS).map
   const own = Object.keys(classFiles(path.join(dir, "DATA")));
   // forum-* = a mod downloaded from the forum but not ported to Resurrected yet: a map needing it has to wait
   return { mod: m, ported: !m.startsWith("forum-"), own: new Set(own), classes: new Set([...Object.keys(hdFiles).filter(c => !hidden.has(hdFiles[c])), ...own]) };
-}).concat(!hdFiles ? [] : fs.readdirSync(path.join(ROOT, "ported")).filter(m => m !== id && fs.existsSync(path.join(ROOT, "ported", m, "data"))).map(m => {
+}).concat(!hdFiles ? [] : fs.readdirSync(path.join(ROOT, "ported")).filter(m => m !== id && dataDir(m)).map(m => {
   // our own class mods (e.g. imperivm1-legacy from tools/imperivm1.js): its id is in its mod.json
-  const own = Object.keys(classFiles(path.join(ROOT, "ported", m, "data")));
+  const own = Object.keys(classFiles(dataDir(m)));
   let modId = m;
   try { modId = JSON.parse(fs.readFileSync(path.join(ROOT, "ported", m, "mod.json"), "utf8")).id || m; } catch { /* folder name */ }
   return { mod: modId, ported: true, own: new Set(own), classes: new Set([...Object.keys(hdFiles), ...own]) };

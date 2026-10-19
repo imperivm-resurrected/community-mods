@@ -1,0 +1,7 @@
+<class id="Rhero4" cpp_class="CVXHero" parent="RepublicanRomanHero" entity="Units/Caesar/Caesar.ent.xml">
+
+	<properties display_name="Scipio" display_name_plural="Heroes"/>
+	<properties icon="gameres/icons/SCIPIO.BMP"/>
+	<properties edittree_pos="Units/Heroes/Scipio"/>
+
+</class>
