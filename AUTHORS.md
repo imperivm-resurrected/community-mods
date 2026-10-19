@@ -12,7 +12,7 @@ Built from the authors in `MODS.md` and a member search of the *Imperivm III Edi
 | Halcón | 13 | 2020–2025 | — | 1v1 ISLAS, 2v2 MONTAÑOSO, 3v3 MONTAÑOSO, … | 2026-10-18 (forum PM to Halcon69) | 🕐 |
 | Camarada | 10 | ? | [camarada1701](https://discord.com/users/443781887169921024) | CGWAR Greek Civilization Mod v6, Creación de una nueva unidad , El HIPATISTA, Creación de una nueva unidad , Un Mercenario, … | 2026-10-18 (#chat-mapas, DM 2026-10-19) | ✅ yes (2026-10-19, Discord) |
 | Rubeneitor / RUBENEITOR | 10 | 2022–2025 | [rubeneitor](https://discord.com/users/404297581573832706) | EL ARMA DEFINITIVA, BATALLA DE ISLAS, BATALLA DE ISLAS PEQUEÑAS, … | 2026-10-18 (#chat-mapas) | ✅ yes (2026-10-18); he also uploads his own to GameBanana (9 so far) |
-| El Jüsticiero Misteryoso / El_Jüsticiero_Misteryoso | 10 | 2010 | — | LA DEFENSA DE FORFORA, [SIN DESCARGA] Mis mapas, [SIN DESCARGA] [Mapa] Apuestas, … | | |
+| El Jüsticiero Misteryoso / El_Jüsticiero_Misteryoso | 10 | 2010 | — | LA DEFENSA DE FORFORA, [SIN DESCARGA] Mis mapas, [SIN DESCARGA] [Mapa] Apuestas, … | 2026-10-19 (forum PM to El_Jüsticiero_Misteryoso) | 🕐 |
 | Ferónidas | 9 | 2020–2025 | [feronidas](https://discord.com/users/501125170946244609) | Community Mod v12, COLOSSEUM 2V2, ASAMBLEA DEL VALLE, … | 2026-10-18 (DM) | ✅ post in #chat-mapas, contact authors by every means |
 | Poliko | 9 | 2010 | [poliko_obsceno](https://discord.com/users/259135028448067584) | MAPA COMUNIDAD, [SIN DESCARGA] [Mapa] El Paso Helado, INTENTO DE EDICION DEL GUERRERO CON MAZA., … | 2026-10-18 (#chat-mapas) | 🕐 |
 | JVLIVS CAESAR | 7 | ? | — | La Reconquista 2010, Comentarios en general referente elTutorial, [SIN DESCARGA] Las texturas de UNIDADES y EDIFICIOS con DATA para sincronizar, … | 2026-10-18 (forum PM to JVLIVS CAESAR) | 🕐 |
@@ -94,11 +94,11 @@ Built from the authors in `MODS.md` and a member search of the *Imperivm III Edi
 | jrojo96 | 1 | ? | — | Texturas automáticas: nueva herramienta para mods | | |
 | OlvidoGames | 1 | ? | — | Ayuda para aplicar los cambios | | |
 | Garrancha | 1 | ? | [garrancha.](https://discord.com/users/1047176130064560209) | Celtic Kings III: Adventures | 2026-10-18 (#chat-mapas) | 🕐 |
-| zeloslaw C | 1 | 2009 | — (ModDB: [zelu](https://www.moddb.com/members/zelu)) | GBR Tactics 2.4 | | |
+| zeloslaw C | 1 | 2009 | — (ModDB: [zelu](https://www.moddb.com/members/zelu)) | GBR Tactics 2.4 | 2026-10-19 (ModDB PM) | 🕐 |
 | MAFR-MODS | 1 | 2019–2023 | — (ModDB: [mafr-mods](https://www.moddb.com/members/mafr-mods)) | Imperivm GBR Plus v1.3.1 | | |
 | GreekModTeam | 1 | 2022 | [_gabbo.](https://discord.com/users/417724592480845824) (Gabbo, Greek Mod 4.2) · ModDB [mediterranevmteam](https://www.moddb.com/members/mediterranevmteam) | Imperivm III: Mediterranevm (alpha) | 2026-10-18 (Discord) | ✅ yes (2026-10-18) |
 | LucezarColombo | 1 | 2017 | — (ModDB: [lucezarcolombo](https://www.moddb.com/members/lucezarcolombo)) | Imperivm III Epic Battle Music Mod | | |
-| Luken_SOD | 1 | 2019–2026 | [luken8](https://discord.com/users/428292824534876213) ❓ (ModDB: [luken-sod](https://www.moddb.com/members/luken-sod)) | Celtic Kings Adventure (Larax, from Imperivm I) | | |
+| Luken_SOD | 1 | 2019–2026 | [luken8](https://discord.com/users/428292824534876213) ❓ (ModDB: [luken-sod](https://www.moddb.com/members/luken-sod)) | Celtic Kings Adventure (Larax, from Imperivm I) | 2026-10-19 (ModDB PM) | 🕐 |
 | OlvidoGX | 1 | 2024 | — (ModDB: [olvidogx](https://www.moddb.com/company/olvidogx)) ❓ same as OlvidoGames? | Imperivm 3 (adapted adventures) | | |
 | azangara | 1 | 2018 | — (ModDB: [azangara](https://www.moddb.com/members/azangara)) | Scenarios | | |
 | ENSOO | 1 | 2025 | — (ModDB: [ensoo](https://www.moddb.com/members/ensoo)) | Random Real World | | |
