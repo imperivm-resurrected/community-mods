@@ -273,7 +273,7 @@ if (locSeen.size) {
 }
 
 // a class the mod adds that HD also defines, in a file with another name (CGWAR's WildHorse: HD added its own in
-// WHORSE.SC.XML): two classes with one id; the game crashed on a map placing it
+// WHORSE.SC.XML): two classes with one id, and which one the game takes is not up to the mod
 {
   const ids = dir => { const m = new Map(); if (!dir || !fs.existsSync(dir)) return m;
     for (const f of fs.readdirSync(dir, { recursive: true })) if (/\.sc\.xml$/i.test(f))
