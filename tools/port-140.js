@@ -189,8 +189,8 @@ function fitBmp(b, width, height) {
   }
   return out;
 }
-// the HD menu background comes in three sizes, picked by the game for the screen; a mod's must cover all three
-const MENU_SET = ["menubackground.bmp", "menu_16_9.bmp", "menu_4_3.bmp"];
+// the menu draws only CurrentLang/MenuBackground.bmp, at its own size (HD: 1366x768); menu_16_9/menu_4_3 are never read
+const MENU_SET = ["menubackground.bmp"];
 
 const locSeen = new Set();
 for (const f of fs.readdirSync(modDir, { recursive: true })) {
