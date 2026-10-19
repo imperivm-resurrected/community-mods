@@ -187,6 +187,10 @@ for (const f of fs.readdirSync(modDir, { recursive: true })) {
     }
     const g = hdLoc.get(k), data = fs.readFileSync(p);
     if (g && md5(fs.readFileSync(g)) === md5(data)) { count("same as HD"); continue; }
+    // a menu background drawn for 1024x768 over HD's (1366x768): the HD menu layout needs its own
+    const size = b => (b.toString("latin1", 0, 2) === "BM" ? [b.readInt32LE(18), Math.abs(b.readInt32LE(22))] : null);
+    const a = size(data), h = g && size(fs.readFileSync(g));
+    if (a && h && (a[0] < h[0] || a[1] < h[1])) { count("low-res screen image (HD kept)"); report.push({ rel, note: `${a.join("x")} over HD's ${h.join("x")}: left out, HD's stays` }); continue; }
     write(/\.(xml|txt|ini)$/i.test(k) ? path.join("local/spanish", inner) : rel, data); count("language file");
     continue;
   }
