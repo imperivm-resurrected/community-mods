@@ -11,6 +11,7 @@ raw/discord.json
 SCREENSHOTS.md
 ported/imperivm1-legacy/**/*.rle
 ported/imperivm1-legacy/**/*.pass
-# rebuilt by tools/port-140.js from the original zip + extras/<id>/ (hand resolutions and mod.json)
+# rebuilt from the original zip + extras/<id>/ (hand resolutions and mod.json): tools/port-140.js, tools/greek-terrains.js
 ported/mci/
 ported/cgwar/
+ported/greek-mod-terrains/

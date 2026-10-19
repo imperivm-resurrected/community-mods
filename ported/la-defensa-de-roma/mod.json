@@ -13,5 +13,8 @@
   "tags": [
     "Spanish"
   ],
+  "requires": [
+    "greek-mod-terrains"
+  ],
   "redistributable": true
 }

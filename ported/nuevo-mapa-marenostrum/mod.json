@@ -14,7 +14,8 @@
     "8 players"
   ],
   "requires": [
-    "cgwar"
+    "cgwar",
+    "greek-mod-terrains"
   ],
   "incompatibleWith": [
     "caesar-mod",

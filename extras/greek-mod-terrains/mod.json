@@ -1,0 +1,19 @@
+{
+  "id": "greek-mod-terrains",
+  "name": "Greek Mod: terrenos extra",
+  "version": "1.0",
+  "authors": [
+    "Axaros",
+    "Nicoghiro31",
+    "Paolo Lamberto",
+    "Villoh (port)"
+  ],
+  "description": {
+    "spanish": "Los terrenos que añade el Greek Mod (hierba 3, 4 y 5, roca 3, rocas de costa 2, suelo 4 y dos aguas, en primavera, otoño e invierno), sin nada más. El juego HD llega hasta la capa 40 y se cierra al dibujar un mapa pintado con ellos. Texturas tomadas de la Caesar Mod de Paolo Lamberto (CC BY-SA 4.0); los mapas que los usan lo piden solos.",
+    "english": "The terrains the Greek Mod adds (grass 3, 4 and 5, rocks 3, shore rocks 2, ground 4 and two waters, in spring, autumn and winter), and nothing else. The HD game stops at layer 40 and crashes drawing a map painted with them. Textures taken from Paolo Lamberto's Caesar Mod (CC BY-SA 4.0); the maps that use them require it."
+  },
+  "license": "CC BY-SA 4.0",
+  "category": "Graphics",
+  "tags": [],
+  "redistributable": true
+}

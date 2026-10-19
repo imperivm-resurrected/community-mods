@@ -208,6 +208,12 @@ if (!waits.length) needs.splice(0, needs.length, ...needs.filter(m => bigMods.fi
 const breaks = used ? bigMods.filter(m => !needs.includes(m.mod))
   .map(m => ({ mod: m.mod, lost: used.filter(c => hdClasses.has(c.toLowerCase()) && !m.classes.has(c.toLowerCase())) })).filter(x => x.lost.length) : [];
 const PREFER = ["community-mod", "greek-civilization-mod", "caesar-mod"];
+// terrain layers past HD's 40 (the Greek Mod's, painted with it or the Caesar Mod): HD crashes drawing them, so the map
+// requires ported/greek-mod-terrains (tools/greek-terrains.js) unless it already requires a mod that has them
+const TERRAIN_MODS = ["greek-civilization-mod", "caesar-mod"];
+const extraTerrain = maps.some(f => { try {
+  return require("./hpfs.js")(fs.readFileSync(path.join(dest, f))).some(x => /maps\/\d+\/terrain\.terrain\.grid$/i.test(x.path) && x.read().subarray(20).some(v => v > 40));
+} catch { return false; } });
 const lo = Math.min(...counts), hi = Math.max(...counts);
 const players = opt.players || (counts.length ? (lo === hi ? `${lo} players` : `${lo}-${hi} players`) : null);
 
@@ -232,7 +238,10 @@ const mod = {
   category: isAdv ? "Campaigns" : "Maps",
   tags: isAdv ? ["Spanish"] : players ? [players] : [],
   // requires means "all of these": with several candidates, take one (the most used first)
-  ...(needs.length ? { requires: [[...PREFER, ...needs].find(m => needs.includes(m))] } : {}),
+  ...(needs.length || extraTerrain ? { requires: [
+    ...(needs.length ? [[...PREFER, ...needs].find(m => needs.includes(m))] : []),
+    ...(extraTerrain && !needs.some(m => TERRAIN_MODS.includes(m)) ? ["greek-mod-terrains"] : []),
+  ] } : {}),
   ...(breaks.length ? { incompatibleWith: breaks.map(b => b.mod) } : {}),
   redistributable: !opt["no-redistributable"], // publishing on GameBanana already redistributes it; false only if the author asks
 };
