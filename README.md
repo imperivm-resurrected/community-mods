@@ -78,7 +78,7 @@ Most big mods (MCI, CGWAR, AsvrMod, La Reconquista, GBR Tactics) were copied ove
 |---|---|
 | Same as HD, or same as 1.40 (the mod didn't touch it) | Left out: the HD one stays |
 | Only the mod changed it | The mod's |
-| Both changed it | 3-way merge (`git merge-file`, 1.40 as base). Where both touched the same lines, XML is merged attribute by attribute and the mod wins a value both changed (a balance mod is about those values). Anything else goes to `raw/port-140/<id>.md` for review ([MCI's](raw/port-140/mci.md)) |
+| Both changed it | 3-way merge (`git merge-file`, 1.40 as base; XML without blank lines if that lines up better, as HD added one between every line of some entities). Where both touched the same lines: XML attribute by attribute (repeated tags told apart by `idx`/`name`/`id`), the mod wins a value both changed (a balance mod is about those values), and a hunk the mod only re-indented is HD's. Anything else goes to `raw/port-140/<id>.md` for review ([MCI's](raw/port-140/mci.md)) |
 | `.ini` | Key by key over the whole file (HD moved blocks around). `[Resolutions]` is always HD's: a 1.40 list starts the game at 640x480 |
 | `.rle.mmp` sprites | Rebuilt as standalone `.rle` from the mod's `rle.mmp`; left out if the pixels are HD's (a mod can't replace a game sprite anyway) |
 | `currentlang\*.loc.xml` | Only the entries that differ from the HD Spanish table, as `loc/spanish.loc.xml` (added to the game's, so HD's own texts stay) |
@@ -93,6 +93,8 @@ node tools/port-140.js <old mod folder> ported/<id> --id <id> --name "<Name>" --
 ```
 
 The MCI ([extras/mci/](extras/mci/)) is the first one: 1104 files from the 9.0 zip, 123 merged with HD, 30 resolved or fixed by hand (the HD guard post, gold selling, AI-only parry mode, kill statistics and sentry guards kept alongside the MCI's tributes, stances and veterans). Its own bugs from 1.40 are kept as they were (scripts it references but never shipped), except where HD would break: `GreatTavern`, a class that doesn't exist, is dropped from the random map (it would hang), and `beh_punto.vs` calls `CreateFeedback` instead of `PlaceFeedback`, which no game version has.
+
+The CGWAR ([extras/cgwar/](extras/cgwar/)) puts Greece in place of Imperial Rome: 1338 files from the v6 rar (the separate textures rar is only the source BMPs), 436 sprites, 39 merged with HD, 11 resolved by hand (the Greek outpost sells food and gold through HD's `OUTPOST_COMMERCIAL.XML`, HD's horse scripts with the wild horse fleeing at a gallop, its Ares guard and arena commands on top of HD's).
 
 ## Maps with Imperivm I classes
 

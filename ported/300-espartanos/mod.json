@@ -1,0 +1,20 @@
+{
+  "id": "300-espartanos",
+  "name": "300 Espartanos",
+  "version": "1.0",
+  "authors": [
+    "Jorgra2000 Games"
+  ],
+  "description": {
+    "spanish": "El futuro de Grecia está en juego, el rey espartano Leónidas se enfrenta al inmerso ejército de Jerjes con un ejército inferior en número. El desfiladero de las Termópilas será el escenario de la gran batalla. Aventura de Jorgra2000 Games (2022).",
+    "english": "Adventure by Jorgra2000 Games (2022)."
+  },
+  "category": "Campaigns",
+  "tags": [
+    "Spanish"
+  ],
+  "requires": [
+    "cgwar"
+  ],
+  "redistributable": true
+}

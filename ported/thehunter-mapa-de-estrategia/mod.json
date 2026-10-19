@@ -1,0 +1,20 @@
+{
+  "id": "thehunter-mapa-de-estrategia",
+  "name": "Thehunter (mapa de Estrategia)",
+  "version": "1.0",
+  "authors": [
+    "RubenDetta"
+  ],
+  "description": {
+    "spanish": "Se libra la guerra en el Continente. ¿Quién saldrá victorioso? ¿El poderoso Imperio del Sol Negro o los reinos y territorios del norte? ¿Sacarán beneficio los territorios perífericos? Mapa de RubenDetta (2026).",
+    "english": "Map by RubenDetta (2026)."
+  },
+  "category": "Maps",
+  "tags": [
+    "8 players"
+  ],
+  "requires": [
+    "cgwar"
+  ],
+  "redistributable": true
+}

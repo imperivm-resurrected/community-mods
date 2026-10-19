@@ -1,0 +1,20 @@
+{
+  "id": "mapa-de-conquista-de-europa-en-tiempo-real",
+  "name": "Mapa de Conquista de Europa en Tiempo Real",
+  "version": "1.0",
+  "authors": [
+    "Quinto Tulio Cicerón"
+  ],
+  "description": {
+    "spanish": "Doce fortalezas. Once enemigos. Un único vencedor. Mapa de Quinto Tulio Cicerón (2025).",
+    "english": "Map by Quinto Tulio Cicerón (2025)."
+  },
+  "category": "Maps",
+  "tags": [
+    "1 players"
+  ],
+  "requires": [
+    "cgwar"
+  ],
+  "redistributable": true
+}

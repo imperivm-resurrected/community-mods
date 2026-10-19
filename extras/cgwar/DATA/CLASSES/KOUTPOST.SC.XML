@@ -1,0 +1,25 @@
+<class id="KOutpost" cpp_class="CVXOutpost" parent="Outpost"
+	entity="Buildings/KOutpost/KOutpost.ent.XML">
+	<properties race="ImperialRome"/>
+	<properties maxhealth="10000"/>
+	<properties icon="gameres/icons/Koutpost.bmp"/>
+	<properties display_name="Trade post"/>
+	<properties radius="345" selection_radius="350"/>
+	<properties edittree_pos="Structures/Outposts/Trade post (Greek)"/>
+	<properties help="/contents/buildings/KOutpost"/>
+	<properties description="Sells the food stored in the outpost to acquire gold"/>
+
+	<properties
+		range = "1000"
+		settlement_food="500"
+		settlement_gold="1000"
+	    defender_cls_1  = "KHoplite"	
+	    defenders_max_1 = "24"
+	    defenders_out_1 = "12"
+	    start_level_1   = "12"
+	    end_level_1     = "24"   
+	/>
+
+	<method sig="goutpost_sellfood" vs="data/subai/goutpost_sellfood.vs"/>
+    <method sig="goutpost_sellgold" vs="data/subai/goutpost_sellgold.vs"/>
+</class>

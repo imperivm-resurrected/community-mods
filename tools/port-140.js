@@ -71,12 +71,18 @@ function mergeLine(type, a, o, b) { // same key on the three sides
 }
 function mergeHunk(type, A, O, B) { // returns [lines, unresolved?]
   const num = s => s.join("\n").replace(/-?\d+(\.\d+)?/g, "#").replace(/\s+/g, " ").trim();
+  const ws = s => s.join("").replace(/\s+/g, "");
+  if (ws(B) === ws(O)) return [A, false];                       // the mod only re-indented it: HD's
   if (num(A) === num(B)) return [B, false];                     // only numbers differ: the mod's balance
   if (!O.join("").trim()) return [[...A, ...B], false];         // both added different things: keep both
-  const key = keyers[type];
+  let key = keyers[type];
   if (!key) return [B, true];
   const map = L => { const m = new Map(); for (const l of L) { if (!l.trim()) continue; const k = key(l); if (m.has(k)) return null; m.set(k, l); } return m; };
-  const a = map(A), o = map(O), b = map(B);
+  let a = map(A), o = map(O), b = map(B);
+  if ((!a || !o || !b) && type === "xml") { // same skeleton twice (<image idx="11" .../>, <image idx="12" .../>): tell them apart by their id
+    key = l => l.replace(/([\w-]+)(\s*=\s*)"([^"]*)"/g, (_m, k, eq, v) => /^(idx|name|id)$/i.test(k) ? `${k}${eq}"${v}"` : `${k}${eq}""`).trim();
+    a = map(A); o = map(O); b = map(B);
+  }
   if (!a || !o || !b) return [B, true];
   const out = [];
   for (const l of B) {
@@ -134,8 +140,17 @@ function mergeIni(hdFile, baseFile, modFile) {
 function merge3(rel, hdFile, baseFile, modFile) {
   const type = /\.xml$/i.test(rel) ? "xml" : /\.ini$/i.test(rel) ? "ini" : "text";
   if (type === "ini") return mergeIni(hdFile, baseFile, modFile);
-  const res = spawnSync("git", ["merge-file", "-p", "--diff3", "-L", "HD", "-L", "1.40", "-L", "mod", hdFile, baseFile, modFile], { encoding: "latin1", maxBuffer: 1e8 });
+  const git = (h, o, m) => spawnSync("git", ["merge-file", "-p", "--diff3", "-L", "HD", "-L", "1.40", "-L", "mod", h, o, m], { encoding: "latin1", maxBuffer: 1e8 });
+  let res = git(hdFile, baseFile, modFile);
   if (res.status === 0) return res.stdout;
+  if (type === "xml") { // HD put a blank line between every line of some entities (TArcher): without them the hunks line up again
+    const tmp = fs.mkdtempSync(path.join(require("os").tmpdir(), "p140-"));
+    const nb = (f, n) => { const p = path.join(tmp, n); fs.writeFileSync(p, fs.readFileSync(f, "latin1").split(/\r?\n/).filter(l => l.trim()).join("\r\n") + "\r\n", "latin1"); return p; };
+    const res2 = git(nb(hdFile, "a"), nb(baseFile, "o"), nb(modFile, "b"));
+    fs.rmSync(tmp, { recursive: true });
+    if (res2.status >= 0 && res2.status <= res.status) res = res2; // same count: the hunks are smaller
+    if (res.status === 0) return res.stdout;
+  }
   const eol = res.stdout.includes("\r\n") ? "\r\n" : "\n";
   const lines = res.stdout.split(/\r?\n/), out = [];
   for (let i = 0; i < lines.length; i++) {

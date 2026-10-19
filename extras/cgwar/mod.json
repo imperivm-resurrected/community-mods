@@ -1,0 +1,21 @@
+{
+  "id": "cgwar",
+  "name": "CGWAR - Greek civilization Mod",
+  "version": "6",
+  "category": "Civilizations",
+  "authors": [
+    "Camarada",
+    "Gurkhan",
+    "Razor",
+    "WARRIOR4444",
+    "Villoh (port)"
+  ],
+  "description": {
+    "spanish": "Añade la civilización griega sustituyendo a Roma Imperial: nuevas ciudades, aldeas, fortines, unidades (hoplita, peltasta, toxotai, hipaspista, catafracto, carro, guardia de Ares…) y tecnologías. Roma Republicana pasa a ser Roma, y en el Coliseo eliges convertirla en Republicana o Imperial. Nuevos objetos, IA mejorada, mapa de Grecia en el modo Conquista, aldea libre y unidades extra para el editor. Adaptado al juego HD conservando sus correcciones.",
+    "english": "Adds the Greek civilization in place of Imperial Rome: new cities, villages, outposts, units (hoplite, peltast, toxotai, hypaspist, cataphract, chariot, Ares guard…) and technologies. Republican Rome becomes Rome, and the Arena lets you turn it Republican or Imperial. New items, improved AI, a Greece map for Conquest, a free village and extra units for the editor. Adapted to the HD game keeping its fixes."
+  },
+  "tags": [
+    "Spanish"
+  ],
+  "redistributable": true
+}
