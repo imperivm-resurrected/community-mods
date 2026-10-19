@@ -272,6 +272,21 @@ if (locSeen.size) {
   stats["texts that differ from HD"] = lines.length;
 }
 
+// a class the mod adds that HD also defines, in a file with another name (CGWAR's WildHorse: HD added its own in
+// WHORSE.SC.XML): two classes with one id; the game crashed on a map placing it
+{
+  const ids = dir => { const m = new Map(); if (!dir || !fs.existsSync(dir)) return m;
+    for (const f of fs.readdirSync(dir, { recursive: true })) if (/\.sc\.xml$/i.test(f))
+      for (const x of fs.readFileSync(path.join(dir, f), "latin1").matchAll(/<class\b[^>]*?\bid\s*=\s*"([^"]+)"/g)) m.set(x[1].toLowerCase(), f.replace(/\\/g, "/").toUpperCase());
+    return m; };
+  const hdIds = ids(path.join(ROOT, "originals/game-data/paks/DATA/CLASSES"));
+  const modClasses = fs.readdirSync(outDir).find(d => d.toLowerCase() === "data");
+  for (const [id, f] of ids(modClasses && path.join(outDir, modClasses, "CLASSES"))) {
+    const h = hdIds.get(id);
+    if (h && h !== f) report.push({ rel: `DATA/CLASSES/${f}`, note: `class "${id}" is also HD's, in ${h}: two classes with one id (drop the mod's, or rename it)` });
+  }
+}
+
 // entities naming "SHADOW.RLE": 1.40 found SHADOW.RLE.MMP in its packs, but HD only takes a mod's loose sprite with a
 // lowercase .rle (otherwise it looks for SHADOW.RLE.bmp and, for a building, crashes)
 for (const f of fs.readdirSync(outDir, { recursive: true }).filter(f => /\.ent\.xml$/i.test(f))) {

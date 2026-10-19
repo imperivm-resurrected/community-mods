@@ -69,6 +69,9 @@ wr(path.join(OUT, "patches", "DATA", "AI", "AI.INI"), ["[Scripts]", ...greekAi.m
   ...["AIV_SquanderGoldAmount", "AIV_SquanderFoolAmount", "AIV_ExcessGold"].map(k => `${k} = ${iniVal(modIni, "Vars.All", k)}`),
   "[Vars.Hard]", ...["AIV_SquanderGoldAmount", "AIV_SquanderFoolAmount"].map(k => `${k} = ${iniVal(modIni, "Vars.Hard", k)}`), ""].join("\r\n"));
 
+// its WildHorse (1.40 had none) is defined again by HD in WHORSE.SC.XML, with the same stats and art plus capturing: two
+// classes with one id, and maps placing it crashed the game
+for (const r of ["DATA/CLASSES/WILDHORSE.SC.XML", "UNITS/WILDHORSE", "UI/ICONS/WILDHORSE.bmp"]) rm(r);
 for (const r of ["DATA/SUBAI/Technology_of_Rome_Buildings.vs", "DATA/SUBAI/VERIFY_RESEARCH.VS", "DATA/SUBAI/VERIFY_TRAINEX.VS",
   "Adventures/GreatBattles", "Adventures/GreatChallenges", "Conquests", "ConquestMaps", "DATA/INTERFACE/MENU/CONQUESTGAME.INI",
   "Packs/RandomMapSettlements.bfhp"]) rm(r);
