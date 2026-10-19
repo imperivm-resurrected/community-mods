@@ -1,0 +1,22 @@
+{
+  "id": "sparta-la-batalla-de-las-termopilas-ep-1-aguardando-la-tormenta",
+  "name": "Sparta la Batalla de las Termopilas Ep 1 Aguardando la Tormenta",
+  "version": "1.0",
+  "authors": [
+    "killergoldfer",
+    "Villoh (port)"
+  ],
+  "description": {
+    "spanish": "Agosto del año 480 A.C. Jerjes, rey de Persia, al mando de un formidable ejercito de mas de 200.000 guerreros, se dirije con paso firme hacia el corazon de Grecia. Al frente de 4.000 hombres, el rey espartano Leónidas se apresta a contener el avanze de las hordas persas en el paso de las Termópilas. Aventura de killergoldfer (2021). Piezas griegas del CGWAR (murallas, torres, puertas, aldeanos) adaptadas a Grecia como civilización propia.",
+    "english": "Adventure by killergoldfer (2021). The CGWAR's Greek pieces (walls, towers, gates, villagers), adapted to Greece as a civilization of its own."
+  },
+  "category": "Adventures",
+  "tags": [
+    "Language: Spanish"
+  ],
+  "requires": [
+    "cgwar",
+    "greek-mod-terrains"
+  ],
+  "redistributable": true
+}

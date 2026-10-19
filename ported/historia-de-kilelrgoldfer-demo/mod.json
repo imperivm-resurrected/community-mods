@@ -1,0 +1,17 @@
+{
+  "id": "historia-de-kilelrgoldfer-demo",
+  "name": "Historia de Kilelrgoldfer (demo)",
+  "version": "1.0",
+  "authors": [
+    "The_killergoldfer"
+  ],
+  "description": {
+    "spanish": "Aventura de The_killergoldfer (2020).",
+    "english": "Adventure by The_killergoldfer (2020)."
+  },
+  "category": "Adventures",
+  "tags": [
+    "Language: Spanish"
+  ],
+  "redistributable": true
+}

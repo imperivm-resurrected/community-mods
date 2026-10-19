@@ -1,6 +1,6 @@
 // Wrap a Discord map/adventure (raw/discord-entries.json) or a forum topic (raw/forum-entries.json, downloaded by
 // tools/download-forum.js) as an Imperivm Resurrected mod in ported/<slug>/
-//   node tools/wrap-map.js [channel/]<slug> | forum/t<topic id> [--players "2-4"] [--file <text>] [--add <entry>[:<text>]]
+//   node tools/wrap-map.js [channel/]<slug> | forum/t<topic id> [--players "2-4"] [--file <text>] [--add <entry>[:<text>]] [--adventure]
 //                                                                 [--no-redistributable]
 // Nothing in the map changes, so the original author is the only author (no porter credit).
 // .rar/.zip are unpacked with bsdtar: it is the system `tar` on Windows 10+ and macOS; on Linux install it
@@ -54,7 +54,8 @@ if (opt.add) {
 if (!e.files.length) { console.error("nothing downloaded for", opt._); process.exit(1); }
 const id = (e.channel === "saga-imperivm" ? "saga-" : "") + e.slug;
 // forum topics: decided after unpacking, from the title or game.xml game_type (0 = skirmish map, 1/2 = adventure)
-let isAdv = e.channel === "aventuras" || /AVENTURAS?|adventure/i.test(e.section);
+// --adventure: a single-player story map made as a normal map (game_type 0) whose post doesn't say so
+let isAdv = e.channel === "aventuras" || /AVENTURAS?|adventure/i.test(e.section) || /\[aventura\]/i.test(e.title) || !!opt.adventure;
 const SMALL = new Set(["de", "del", "la", "las", "el", "los", "en", "y", "a", "por", "al", "un", "una", "con", "of", "the"]);
 const titleCase = s => s.toLowerCase().split(/(\s+)/).map((w, i) => i && SMALL.has(w) ? w : w.charAt(0).toUpperCase() + w.slice(1))
   .join("").replace(/\b(i{1,3}|iv|vi{0,3}|ix|x{1,3})\b/gi, m => m.toUpperCase()).replace(/(\d)v(\d)/gi, "$1v$2");
@@ -154,15 +155,28 @@ for (const f of e.files) {
   if (/\.(rar|zip|7z)$/i.test(f.name)) execFileSync(process.env.BSDTAR || (process.platform === "linux" ? "bsdtar" : "tar"), ["-xf", src, "-C", dest]);
   else fs.copyFileSync(src, path.join(dest, f.name));
 }
+// videos go where the maps' PlayMovie("…") looks for them ("Movies//Intro.avi", "Adventures/videohistoriakiller/x.avi"),
+// Movies\ when no map names one
+const played = new Map();
+for (const f of fs.readdirSync(dest, { recursive: true }).filter(f => /\.bfhp$/i.test(f)))
+  for (const m of fs.readFileSync(path.join(dest, f), "latin1").matchAll(/PlayMovie\((?:Translate\()?"([^"]+\.avi)"/gi)) {
+    const rel = m[1].replace(/\\+|\/+/g, "/");
+    played.set(path.basename(rel).toLowerCase(), rel.replace(/^(\w+)\//, (_m, d) => d.toLowerCase() + "/"));
+  }
 // flatten folders inside archives, keep only what the game reads next to a map
 for (const f of fs.readdirSync(dest, { recursive: true })) {
   const p = path.join(dest, f);
   if (fs.statSync(p).isDirectory()) continue;
   if (/\.(bfhp|bmp)$/i.test(f)) { if (path.dirname(f) !== ".") fs.renameSync(p, path.join(dest, path.basename(f))); }
-  else if (/\.avi$/i.test(f)) { fs.mkdirSync(path.join(out, "movies"), { recursive: true }); fs.renameSync(p, path.join(out, "movies", path.basename(f))); } // intro/outro videos the adventure plays from Movies\\
+  else if (/\.avi$/i.test(f)) {
+    const to = path.join(out, played.get(path.basename(f).toLowerCase()) || path.join("movies", path.basename(f)));
+    fs.mkdirSync(path.dirname(to), { recursive: true });
+    fs.renameSync(p, to);
+  }
   else fs.rmSync(p);
 }
-for (const f of fs.readdirSync(dest)) if (fs.statSync(path.join(dest, f)).isDirectory()) fs.rmSync(path.join(dest, f), { recursive: true });
+for (const f of fs.readdirSync(dest)) if (fs.statSync(path.join(dest, f)).isDirectory()
+  && !fs.readdirSync(path.join(dest, f), { recursive: true }).some(g => /\.avi$/i.test(g))) fs.rmSync(path.join(dest, f), { recursive: true }); // keep the videos placed above
 // "Mapa..BFHP" (common typo) -> "Mapa.BFHP": the SDK rejects ".." in paths
 for (const f of fs.readdirSync(dest)) if (f.includes("..")) fs.renameSync(path.join(dest, f), path.join(dest, f.replace(/\.{2,}/g, ".")));
 // "VersiÃ³n" (a UTF-8 name read as Latin-1 somewhere on the way) -> "Versión"
@@ -215,7 +229,12 @@ const has = k => Object.values(where).includes(k);
 // players: the human slots of the skirmish maps (an adventure or a conquest is played alone)
 const counts = maps.filter(f => where[f] === "scenarios").map(f => slots(at(f))).filter(Boolean);
 const used = hdClasses ? [...new Set(maps.flatMap(f => usedClasses(at(f))))] : null;
-const missing = used?.filter(c => !hdClasses.has(c.toLowerCase()) && !extraClasses.has(c.toLowerCase())) || []; // not in the HD game or extras/
+// the CGWAR's own M* pieces (1.40: Greece replaced Imperial Rome) are its K* ones here: MVillager, which HD doesn't have, is
+// KVillager; M* walls, towers and gates HD does have, but the CGWAR redrew them Greek (both switched below)
+const CG = path.join(ROOT, "ported", "cgwar", "DATA", "CLASSES");
+const kIds = new Set(fs.existsSync(CG) ? fs.readdirSync(CG).flatMap(f => [...fs.readFileSync(path.join(CG, f), "latin1").matchAll(/<class\b[^>]*?\bid="([^"]+)"/g)].map(m => m[1])) : []);
+const kOf = c => /^M/.test(c) && !hdClasses?.has(c.toLowerCase()) && kIds.has("K" + c.slice(1)) ? "K" + c.slice(1) : c;
+const missing = used?.map(kOf).filter(c => !hdClasses.has(c.toLowerCase()) && !extraClasses.has(c.toLowerCase())) || []; // not in the HD game or extras/
 // needs = the big mods that have every missing class; none -> the map needs a mod we don't have
 const needs = missing.length ? bigMods.filter(m => missing.every(c => m.classes.has(c.toLowerCase()))).map(m => m.mod) : [];
 const unknown = missing.length && !needs.length ? missing : [];
@@ -240,13 +259,11 @@ const players = opt.players ? `Players: ${opt.players}` : counts.length && hi >=
 // authors saw them (same name length: rewritten in place). That is an edit of the map, so the porter is credited.
 let greekWalls = 0;
 if (needs.includes("cgwar")) {
-  const cg = path.join(ROOT, "ported", "cgwar", "DATA", "CLASSES");
-  const kIds = new Set(fs.readdirSync(cg).flatMap(f => [...fs.readFileSync(path.join(cg, f), "latin1").matchAll(/<class\b[^>]*?\bid="([^"]+)"/g)].map(m => m[1])));
   for (const f of maps) {
     const p = at(f), buf = fs.readFileSync(p);
     for (const x of require("./hpfs.js")(buf).filter(x => /map\.obj\.xml$/i.test(x.path))) {
       let n = 0;
-      const s = x.read().toString("latin1").replace(/class="M((?:Walls\w*|Tower|Gate\d))"/g, (m, c) => kIds.has("K" + c) ? (n++, `class="K${c}"`) : m);
+      const s = x.read().toString("latin1").replace(/class="M(\w+)"/g, (m, c) => kIds.has("K" + c) && (/^(Walls\w*|Tower|Gate\d)$/.test(c) || kOf("M" + c) !== "M" + c) ? (n++, `class="K${c}"`) : m);
       if (n) { x.write(Buffer.from(s, "latin1")); greekWalls += n; }
     }
     fs.writeFileSync(p, buf);
@@ -273,8 +290,8 @@ const mod = {
   version: "1.0",
   authors: saga ? [...(e.author ? [e.author] : []), "Haemimont Games", "FX Interactive"] : [author, ...(greekWalls ? ["Villoh (port)"] : [])],
   description: {
-    spanish: `${desc ? desc.replace(/([^.!?…])$/, "$1.") + " " : ""}${what} de ${author}${meta ? ` (${meta})` : ""}.${greekWalls ? " Murallas, torres y puertas griegas del CGWAR adaptadas a Grecia como civilización propia." : ""}`,
-    english: `${{ Aventura: "Adventure", Conquista: "Conquest", Mapa: "Map" }[what] || maps.length + " maps"} by ${author}${metaEn ? ` (${metaEn})` : ""}.${greekWalls ? " The CGWAR's Greek walls, towers and gates, adapted to Greece as a civilization of its own." : ""}`,
+    spanish: `${desc ? desc.replace(/([^.!?…])$/, "$1.") + " " : ""}${what} de ${author}${meta ? ` (${meta})` : ""}.${greekWalls ? " Piezas griegas del CGWAR (murallas, torres, puertas, aldeanos) adaptadas a Grecia como civilización propia." : ""}`,
+    english: `${{ Aventura: "Adventure", Conquista: "Conquest", Mapa: "Map" }[what] || maps.length + " maps"} by ${author}${metaEn ? ` (${metaEn})` : ""}.${greekWalls ? " The CGWAR's Greek pieces (walls, towers, gates, villagers), adapted to Greece as a civilization of its own." : ""}`,
   },
   category: CATS[main],
   // Players only counts for scenarios and Language for adventures (the SDK's filters); every adventure here is in Spanish
@@ -292,9 +309,9 @@ fs.writeFileSync(path.join(out, "mod.json"), JSON.stringify(mod, null, 2) + "\n"
 // raw/ported.json: which entry each ported mod comes from (tools/sync-table.js uses it to update MODS.md)
 const SRC = path.join(ROOT, "raw", "ported.json");
 const src = (() => { try { return JSON.parse(fs.readFileSync(SRC, "utf8")); } catch { return {}; } })();
-src[id] = opt._ + (opt.file ? ` --file ${opt.file}` : "") + (opt.add ? ` --add ${opt.add}` : ""); // what to run to wrap it again
+src[id] = opt._ + (opt.file ? ` --file ${opt.file}` : "") + (opt.add ? ` --add ${opt.add}` : "") + (opt.adventure ? " --adventure" : ""); // what to run to wrap it again
 fs.writeFileSync(SRC, JSON.stringify(Object.fromEntries(Object.entries(src).sort()), null, 1) + "\n");
-console.log(`${out}\n  ${maps.join(", ")} -> ${[...new Set(maps.map(f => where[f]))].join(", ")}/\n  category ${mod.category}, tags ${JSON.stringify(mod.tags)}${counts.length < maps.filter(f => where[f] === "scenarios").length ? "  ⚠️ some scenario has no readable players" : ""}${has("scenarios") && !players ? "  ⚠️ no Players tag (one human slot, or --players)" : ""}${greekWalls ? `\n  🏛️ ${greekWalls} M* walls/towers/gates -> K* (Greek): porter credited` : ""}`
+console.log(`${out}\n  ${maps.join(", ")} -> ${[...new Set(maps.map(f => where[f]))].join(", ")}/\n  category ${mod.category}, tags ${JSON.stringify(mod.tags)}${counts.length < maps.filter(f => where[f] === "scenarios").length ? "  ⚠️ some scenario has no readable players" : ""}${has("scenarios") && !players ? "  ⚠️ no Players tag (one human slot, or --players)" : ""}${greekWalls ? `\n  🏛️ ${greekWalls} M* pieces (walls, towers, gates, villagers) -> K* (Greek): porter credited` : ""}`
   + (used === null ? "\n  ⚠️ compatibility not checked (no originals/game-data)" : unknown.length ? `\n  ❌ not in the HD game nor in a known mod: ${unknown.join(", ")}` : "")
   + (waits.length ? `\n  ⏳ blocked: needs ${waits.join(" or ")}, not ported to Resurrected yet (${missing.join(", ")})` : needs.length ? `\n  🧩 needs ${needs.join(" or ")} (${missing.join(", ")})${needs.length > 1 ? " -> requires " + mod.requires[0] : ""}` : "")
   + breaks.map(b => `\n  🚫 incompatible with ${b.mod} (hides ${b.lost.join(", ")})`).join(""));

@@ -512,12 +512,6 @@
    "originals/forum/t1484/files/Matriz_de_stats_Validacion_Perfiles_Tacticos_Actualizados.xlsx"
   ]
  },
- "https://mega.nz/file/4BJTSCQK": {
-  "key": "t1291",
-  "name": "Historia de Kilelrgoldfer (DEMO)",
-  "files": [],
-  "error": "spawnSync megadl ENOENT"
- },
  "https://www.moddb.com/games/imperivm-great-battles-of-rome/addons/aventura-la-rivolta-dei-messeni-464-ac-spanish": {
   "key": "t1300",
   "name": "[GREEK MOD] AVENTURA - La Revuelta de los Mesenios (464 a.C.)",
@@ -531,12 +525,6 @@
   "files": [
    "originals/forum/t1301/files/Conquista_della_Gallia_58_a.C._-_Spanish.6.zip"
   ]
- },
- "https://mega.nz/file/4EI0kJoL": {
-  "key": "t1371",
-  "name": "[CGWAR MOD] [Aventura] Sparta la batalla de las termopilas ep 1 Aguardando la tormenta",
-  "files": [],
-  "error": "spawnSync megadl ENOENT"
  },
  "https://drive.google.com/drive/folders/1cFrr1TtSVEN5YIYeJa21Kc5FDKtySRd6?usp=sharing": {
   "key": "t1420",
@@ -699,6 +687,20 @@
   "name": "CARTAGONOVA (2020)",
   "files": [
    "originals/forum/t1222/files/Cartagonova.BFHP"
+  ]
+ },
+ "https://mega.nz/file/4BJTSCQK#b3IeZStG_F-JTDAHwO17ERWUw6E94RKhzUbhwA082dY": {
+  "key": "t1291",
+  "name": "Historia de Kilelrgoldfer (DEMO)",
+  "files": [
+   "originals/forum/t1291/files/demo historia killer.rar"
+  ]
+ },
+ "https://mega.nz/file/4EI0kJoL#Z834UGRgFHC7WLWs14TVzQIyp_9bup9KesOcMmpS6QQ": {
+  "key": "t1371",
+  "name": "[CGWAR MOD] [Aventura] Sparta la batalla de las termopilas ep 1 Aguardando la tormenta",
+  "files": [
+   "originals/forum/t1371/files/sparta aguardando la tormenta.rar"
   ]
  }
 }
