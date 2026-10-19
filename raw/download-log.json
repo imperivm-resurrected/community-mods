@@ -716,5 +716,19 @@
   "files": [
    "originals/forum/greek-mod-2-5-3/files/GreekModInstaller.exe"
   ]
+ },
+ "https://t.me/imperivmgreekmod#Greek261.zip": {
+  "key": "greek-mod-2-6-1",
+  "name": "Greek Mod 2.6.1",
+  "files": [
+   "originals/forum/greek-mod-2-6-1/files/Greek261.zip"
+  ]
+ },
+ "https://t.me/imperivmgreekmod#Greek_MapsAdventures.zip": {
+  "key": "greek-mod-maps-and-adventures-pack",
+  "name": "Greek Mod adventures, conquests and maps pack",
+  "files": [
+   "originals/forum/greek-mod-maps-and-adventures-pack/files/Greek_MapsAdventures.zip"
+  ]
  }
 }
