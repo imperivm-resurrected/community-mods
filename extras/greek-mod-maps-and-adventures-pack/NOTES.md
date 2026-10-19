@@ -13,20 +13,26 @@ comparison of the files inside each map for the rest).
 | Identical to a map of the HD game | 5 | Nothing: every player has them |
 | Identical to a map inside Greek Mod 1.8 and/or 4.2 | 122: 112 plus 10 that are also copies of another file of the pack (`Gallia - Big` / `Gallia_-_Big`…, keep one). By package: 69 in both, 4 only in 1.8, 49 only in 4.2 | Nothing: they are already on GameBanana inside Greek Mod 4.2 (728851). Includes the 37 `__IWC_*` scenarios by Ferónidas |
 | Another edition of a map we have (*compare*) | 14 | See below |
-| New | 15 | Port, with the author of the next section |
+| New | 15 | Port, with the author of the next section (+ Invaders = 16) |
 
 Two of the 14 editions are Italian translations found by name, not by content: the texts sit inside the big files, so they barely match.
 
-**Editions to compare** (which one to keep, or both under the right language):
+**The 14 editions: what to do** (checked file by file inside each map, `/tmp` diff of the `.bfhp` contents; texts in `Local/` aside)
 
-| Pack file | Ours | Difference |
-|---|---|---|
-| `1 L'avventura di Larax` (Haemimont Games, Italian) | row 202, *Celtic Kings Adventure* by Luken_SOD, Italian edition | Same text and start map; 58% of the files in common (627 of 892 are byte-identical), different title ("L'avventura di Larax" / "Imperivm I - La Guerra Gallica"). Also MISSING 1 (`[AVENTURAS I] LÁRAX`, no download) |
-| `2 Le Guerre Puniche`, `3 Le Campagne di Annibale` | Greek Mod 1.8 `The Punic Wars`, `Hannibal's Campaigns` | 65% / 74% of the files the same. Rattlesmake remakes of the Imperivm II campaigns, on the 1.8 and here with later fixes |
-| `5 Defenders`, `6 Invaders` | Imperivm I originals in `originals/imperivm1`, saga rows 33 and 182 | 84% / 88% |
-| `Conquista della Gallia`, `La Rivolta dei Messeni`, `Ribellione di Spartaco` | rows 214, 213, 196 (Mietitore) | The same adventures in **Italian**; ours are the Spanish editions (the texts are in the big files, so only 0-4% / 62-68% match) |
-| `ConquestRemake` ("Mare Nostrum") | Greek Mod 1.8 | 63% |
-| `Europa` ("Mediterraneo (grande)") | Greek Mod 4.2 | 81% |
+| Pack file | Ours | What differs | Decision |
+|---|---|---|---|
+| `Battaglia_di_Qadesh` | Greek Mod 4.2 | 1 file (`itemscustom.xml`) | **Skip.** Same map |
+| `Europa` ("Mediterraneo (grande)") | Greek Mod 4.2 | 2 files (`map.obj.xml`, `terrain.pass.grid`): a small fix of objects and passability | **Skip** (rides with the Greek Mod). Take the pack's if the 2.6.1 port needs it |
+| `2 Le Guerre Puniche`, `3 Le Campagne di Annibale` | Greek Mod 1.8 (`The Punic Wars`, `Hannibal's Campaigns`) | 17 / 12 files (5 `map.obj.xml`, scripts) plus Czech texts; the 1.8 has Spanish titles | **Skip.** They are Haemimont's Imperivm II campaigns as the Greek Mod ships them: they go with the Greek Mod port. The Spanish editions by OskaOtzuna are rows 42 and 43 |
+| `TTutorial CelticKings`, `TTutorial PunicWars`, `Tutorial` | Greek Mod 1.8 / the game | Only the texts | **Skip.** Official tutorials, they go with the Greek Mod |
+| `ConquestRemake` ("Mare Nostrum") | Greek Mod 1.8 | 28 files (`map.obj.xml`, terrain heights): a revised conquest map, Rattlesmake's | **Skip** here; it is part of the Greek Mod. Use the pack's when porting 2.6.1 (it replaces `Conquests/`) |
+| `5 Defenders` | `originals/imperivm1` and saga row 33 (*Defensores*) | 23 of 142 files, no new ones: a light edit, Italian texts added | **Skip.** We have it (row 33) and Rubeneitor's HD one (row 182) |
+| `6 Invaders` | `originals/imperivm1` only | 22 of 70 files and 8 new (Italian texts) | **Port.** No row covers it: our only copy is the raw Imperivm I data. Credit Haemimont Games and Mordred (Rattlesmake team) |
+| `1 L'avventura di Larax` | Row 202 (Luken_SOD, with movies) | Same 17 maps; 272 files changed (objects, scripts), plus a Spanish text pack (+109 MB) | **Skip.** Row 202 has a named author, the movies and three languages. Keep the pack's only as a reference |
+| `Conquista della Gallia`, `La Rivolta dei Messeni`, `Ribellione di Spartaco` (Mietitore) | Rows 214, 213, 196 | **Not just a translation**: different dialogues *and* different units and scripts. *Messeni*: tents and outposts swapped. *Spartaco*: walls and towers (`MTower` 69 → 23), arenas | **Port as a second file, "(Italiano)", in the same mod** as the Spanish one, credited to Mietitore. It is the same author, so his answer to the forum PM covers both. We cannot tell which edition is newer: on ModDB Messeni are the same day (2020-09-09), Spartaco ITA is earlier (09-11 vs 09-26) and Gallia ITA later (2021-04-18 vs 02-27) |
+
+So of the 14: **8 ride with the Greek Mod, 2 we already have, 1 is new (Invaders), 3 are Italian editions to add to our mods.**
+New to port in total: 15 + Invaders = **16**.
 
 ## Who signed what
 
@@ -54,5 +60,5 @@ our own sources; **probable** = a name that matches, nothing else; **unknown** =
 ## What changes in the tables
 
 - Row 259 stays one row (the pack), pointing here. The 15 new maps carry their author in `AUTHORS.md`.
-- Rows 196, 213, 214, 202 and MISSING 1, 17 now say the pack has another edition of them.
+- Rows 196, 213, 214, 202 and MISSING 1, 17 say the pack has another edition of them (rows 196, 213, 214: add it as a second file; 202: skip).
 - Not done: porting. `wrap-map.js` takes a Discord post or a forum topic, not a pack; to port these an `--entry` that reads this manifest is needed.
