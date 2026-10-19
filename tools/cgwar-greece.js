@@ -80,6 +80,9 @@ for (const f of fs.readdirSync(CLASSES).filter(f => /\.sc\.xml$/i.test(f))) {
   const id = classOf(s) || "";
   if (/^(K|Greek)/i.test(id)) s = s.replace(/\brace\s*=\s*"(ImperialRome|RepublicanRome)"/, 'race="greece"');
   s = s.replace(/Stronghold \(Imperial Rome\)/g, "Stronghold (Greek)");
+  // the free village has race="", which no game version uses: HD's any-race village is race="Mutable" (MutableVillage),
+  // and a building of no race is race="None"
+  s = s.replace(/\brace\s*=\s*""/, /cpp_class\s*=\s*"CVXTownHall"/.test(s) ? 'race="Mutable"' : 'race="None"');
   wr(p, s);
 }
 
