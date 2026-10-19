@@ -1,6 +1,6 @@
 // Wrap a Discord map/adventure (raw/discord-entries.json) or a forum topic (raw/forum-entries.json, downloaded by
 // tools/download-forum.js) as an Imperivm Resurrected mod in ported/<slug>/
-//   node tools/wrap-map.js [channel/]<slug> | forum/t<topic id> [--players "2-4"] [--file <text>] [--add <entry>[:<text>]] [--adventure]
+//   node tools/wrap-map.js [channel/]<slug> | forum/t<topic id> [--players "2-4"] [--file <text>] [--add <entry>[:<text>]] [--adventure] [--title <name>]
 //                                                                 [--no-redistributable]
 // Nothing in the map changes, so the original author is the only author (no porter credit).
 // .rar/.zip are unpacked with bsdtar: it is the system `tar` on Windows 10+ and macOS; on Linux install it
@@ -275,6 +275,33 @@ const saga = e.channel === "saga-imperivm";
 // a saga entry with an author is a community remake of the original (e.g. OskaOtzuna's Imperivm II adventures)
 const author = saga ? e.author || "Haemimont Games" : e.author || "?";
 const sagaGame = saga && (/ II$/.test(e.section) ? "Imperivm II" : "Imperivm I");
+// --title: the mod's name when the post's title is wrong (a typo: "Kilelrgoldfer" for Killergoldfer)
+const modName = (saga ? `${sagaGame}: ` : "") + titleCase(opt.title || e.title);
+// the editor's defaults ("Mapa modelo", "Aventura modelo", "Autor desconocido", "Partida de estrategia") are what the game
+// lists: each map gets its real name (the mod's, or its file's when there are several) and author. game.xml is rewritten in
+// place: putting its attributes on one line makes room
+const DEF_NAME = /^(mapa|aventura) modelo\d*$/i, DEF_AUTHOR = /^(autor desconocido|unknown author|)$/i, DEF_DESC = /^partida de estrategia$/i;
+const xmlEsc = v => v.replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/"/g, "&quot;");
+let renamed = 0;
+for (const f of maps) {
+  const p = at(f), buf = fs.readFileSync(p);
+  let x; try { x = require("./hpfs.js")(buf).find(x => /^game\.xml$/i.test(x.path)); } catch { continue; }
+  if (!x) continue;
+  const g = x.read().toString("latin1"), attr = k => (g.match(new RegExp(`\\s${k}="([^"]*)"`)) || [])[1];
+  const set = {};
+  if (DEF_NAME.test(attr("name") ?? "-"))
+    set.name = maps.length === 1 ? modName : f.replace(/\.bfhp$/i, "").replace(/ \([a-z0-9-]+\)$/, "").replace(/_/g, " ");
+  if (DEF_AUTHOR.test(attr("author") ?? "-") && author !== "?") set.author = author;
+  if (DEF_DESC.test(attr("description") ?? "-")) set.description = "";
+  if (!Object.keys(set).length) continue;
+  let t = g;
+  for (const [k, v] of Object.entries(set)) t = t.replace(new RegExp(`(\\s${k}=")[^"]*"`), (m, a) => a + Buffer.from(xmlEsc(v), "utf8").toString("latin1") + '"');
+  t = t.replace(/\r?\n\t*(?=[\w.]+=)/g, " ");
+  if (t.length > g.length) { console.log(`  ⚠️ ${f}: no room for its name in game.xml`); continue; }
+  x.write(Buffer.from(t + " ".repeat(g.length - t.length), "latin1"));
+  fs.writeFileSync(p, buf);
+  renamed++;
+}
 const desc = e.desc || (maps.length === 1 ? mapDesc(at(maps[0])) : "");
 const meta = saga ? (e.author ? `versión mejorada de la aventura de ${sagaGame} de Haemimont Games, recopilada por Ferónidas` : `${sagaGame}, recopilado por Ferónidas`) : [e.year, e.base].filter(Boolean).join(", ");
 const metaEn = saga ? (e.author ? `improved version of the ${sagaGame} adventure by Haemimont Games, collected by Ferónidas` : `${sagaGame}, collected by Ferónidas`) : meta;
@@ -286,7 +313,7 @@ isAdv = main === "adventures";
 const what = main === "adventures" ? "Aventura" : main === "conquests" ? "Conquista" : maps.length > 1 ? `${maps.length} mapas` : "Mapa";
 const mod = {
   id,
-  name: (saga ? `${sagaGame}: ` : "") + titleCase(e.title),
+  name: modName,
   version: "1.0",
   authors: saga ? [...(e.author ? [e.author] : []), "Haemimont Games", "FX Interactive"] : [author, ...(greekWalls ? ["Villoh (port)"] : [])],
   description: {
@@ -309,9 +336,9 @@ fs.writeFileSync(path.join(out, "mod.json"), JSON.stringify(mod, null, 2) + "\n"
 // raw/ported.json: which entry each ported mod comes from (tools/sync-table.js uses it to update MODS.md)
 const SRC = path.join(ROOT, "raw", "ported.json");
 const src = (() => { try { return JSON.parse(fs.readFileSync(SRC, "utf8")); } catch { return {}; } })();
-src[id] = opt._ + (opt.file ? ` --file ${opt.file}` : "") + (opt.add ? ` --add ${opt.add}` : "") + (opt.adventure ? " --adventure" : ""); // what to run to wrap it again
+src[id] = opt._ + (opt.file ? ` --file ${opt.file}` : "") + (opt.add ? ` --add ${opt.add}` : "") + (opt.adventure ? " --adventure" : "") + (opt.title ? ` --title ${opt.title}` : ""); // what to run to wrap it again
 fs.writeFileSync(SRC, JSON.stringify(Object.fromEntries(Object.entries(src).sort()), null, 1) + "\n");
-console.log(`${out}\n  ${maps.join(", ")} -> ${[...new Set(maps.map(f => where[f]))].join(", ")}/\n  category ${mod.category}, tags ${JSON.stringify(mod.tags)}${counts.length < maps.filter(f => where[f] === "scenarios").length ? "  ⚠️ some scenario has no readable players" : ""}${has("scenarios") && !players ? "  ⚠️ no Players tag (one human slot, or --players)" : ""}${greekWalls ? `\n  🏛️ ${greekWalls} M* pieces (walls, towers, gates, villagers) -> K* (Greek): porter credited` : ""}`
+console.log(`${out}\n  ${maps.join(", ")} -> ${[...new Set(maps.map(f => where[f]))].join(", ")}/\n  category ${mod.category}, tags ${JSON.stringify(mod.tags)}${counts.length < maps.filter(f => where[f] === "scenarios").length ? "  ⚠️ some scenario has no readable players" : ""}${has("scenarios") && !players ? "  ⚠️ no Players tag (one human slot, or --players)" : ""}${renamed ? `\n  🏷️ ${renamed} map(s): the editor's default name/author in game.xml replaced` : ""}${greekWalls ? `\n  🏛️ ${greekWalls} M* pieces (walls, towers, gates, villagers) -> K* (Greek): porter credited` : ""}`
   + (used === null ? "\n  ⚠️ compatibility not checked (no originals/game-data)" : unknown.length ? `\n  ❌ not in the HD game nor in a known mod: ${unknown.join(", ")}` : "")
   + (waits.length ? `\n  ⏳ blocked: needs ${waits.join(" or ")}, not ported to Resurrected yet (${missing.join(", ")})` : needs.length ? `\n  🧩 needs ${needs.join(" or ")} (${missing.join(", ")})${needs.length > 1 ? " -> requires " + mod.requires[0] : ""}` : "")
   + breaks.map(b => `\n  🚫 incompatible with ${b.mod} (hides ${b.lost.join(", ")})`).join(""));
