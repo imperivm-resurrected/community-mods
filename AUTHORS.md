@@ -22,9 +22,9 @@ Built from the authors in `MODS.md` and a member search of the *Imperivm III Edi
 | Jochi | 6 | 2012–2013 | — | REFORMA, LABERINTO, CIUDADELA, … | 2026-10-18 (forum PM to Jochi) | 🕐 |
 | lusitano | 6 | 2015 | [lusitano3805](https://discord.com/users/482726756483334154) ❓ | ROMA V EGIPTO, BATALLA POR IBERIA, GUERRA DE LAS NACIONES, … | 2026-10-18 (#chat-mapas) | 🕐 |
 | moonson | 5 | 2010 | — | ITALIA, EL ASEDIO, [SIN DESCARGA] [Mapa] Mediterraneo distintas versiones, … | | |
-| Hareld | 5 | 2016–2022 | — | DEFENSORES DEL TÚMULO, DEFENDERS, DEFENDERS NIGHTMARE, … | 2026-10-18 (forum PM to Hareld) | 🕐 |
+| Hareld | 5 | 2016–2022 | — | DEFENSORES DEL TÚMULO, DEFENDERS, DEFENDERS NIGHTMARE, … (his *Il popolo di Asclepio* is in the Greek Mod maps pack, Italian text by Giuseppe D'Addio) | 2026-10-18 (forum PM to Hareld) | 🕐 |
 | yito79 | 5 | 2019 | — | ROMPOLIS, ASTIGI, PARIX, … | 2026-10-18 (forum PM to yito79) | 🕐 |
-| Mietitore | 5 | 2020 | — | LA DEFENSA DE ROMA, ESCIPIÓN A LAS PUERTAS DE CARTAGO, REBELIÓN DE ESPARTACO, … | 2026-10-18 (forum PM to Mietitore) | 🕐 |
+| Mietitore | 5 | 2020 | — | LA DEFENSA DE ROMA, ESCIPIÓN A LAS PUERTAS DE CARTAGO, REBELIÓN DE ESPARTACO, … (signs `IL Mietitore` in some maps; the Greek Mod maps pack has the Italian editions of 3 of them) | 2026-10-18 (forum PM to Mietitore) | 🕐 |
 | Frodo45127 | 5 | ? | — | [SIN DESCARGA] [Aventura] Gartomix y la ruina de Numancia V2, Programa para edición de scripts, Bonus nuevos, … | 2026-10-18 (forum PM to Frodo45127) | 🕐 |
 | molerotoni | 4 | 2015–2018 | — | ESTRATEGIA GENÉRICA, LA DEFENSA DE NIMLUNDUM, KALINDAN SAGA, … | 2026-10-18 (forum PM to molerotoni) | ✅ yes (2026-10-19) except KALINDAN SAGA ❌ (proof of concept, leave it out) |
 | Quinto Tulio Cicerón | 4 | 2019 | [quinto_tulio_ciceron](https://discord.com/users/1393596641898008656) | JUEGO DE TRONOS, [CGWAR MOD] Conquista en tiempo real, [CGWAR MOD] Mapa de conquista de Europa en tiempo real, … | 2026-10-18 (#chat-mapas) | 🕐 |
@@ -55,7 +55,7 @@ Built from the authors in `MODS.md` and a member search of the *Imperivm III Edi
 | nelsonruz | 2 | ? | — | nuevos centinelas, NRMod Centinelas | | |
 | Paulus Ludorum | 1 | ? | [paulus_ludorum](https://discord.com/users/1375222359505768489) | Caesar Mod 1.1.0 | 2026-10-18 (#chat-mapas, DM 2026-10-19) | 🕐 |
 | Nicoghiro31 | 1 | ? | [nicoghiro](https://discord.com/users/468453125603328011) | Imperivm Legacy 2.4.1 | 2026-10-18 (#chat-mapas, DM 2026-10-19) | 🕐 |
-| Rattlesmake | 1 | ? | — | Greek Civilization Mod v1.8 | | |
+| Rattlesmake | 1 | ? | — | Greek Civilization Mod v1.8 (his name is also on the Punic Wars, Hannibal, Invaders and *Mare Nostrum* conquest maps inside it) | | |
 | Asvr | 1 | ? | [asvr](https://discord.com/users/470660226492792832) | AsvrMod VI: Wrath of the Gods | 2026-10-18 (#chat-mapas, DM) | ✅ (OK via Shaul R.) |
 | Marwan | 1 | 2010 | — | RESISTENCIA BRITANA | | |
 | Avian98 | 1 | 2019 | — | CONTRA LA GRAN ROMA | 2026-10-18 (forum PM to Avian98) | 🕐 |
@@ -83,7 +83,11 @@ Built from the authors in `MODS.md` and a member search of the *Imperivm III Edi
 | killergoldfer | 1 | ? | [killergoldfer](https://discord.com/users/524991573084078116) | [CGWAR MOD] [Aventura] Sparta la batalla de las termopilas ep 1 Aguardando la tormenta | 2026-10-18 (#chat-mapas) | 🕐 |
 | brimo | 1 | ? | — | [Aventura] El trono de Dacia Imperivm III HD | 2026-10-18 (forum PM to brimo) | 🕐 |
 | Jorgra2000 Games | 1 | ? | [jorgra2000](https://discord.com/users/463390919429980200) ❓ | [CGWAR MOD][Aventura] 300 espartanos | 2026-10-18 (#chat-mapas) | 🕐 |
-| Pablo2427 | 1 | ? | [pablo2427](https://discord.com/users/589393128214102016) | [GREEK MOD][Mapa] La Primera Guerra Púnica | 2026-10-18 (#chat-mapas) | 🕐 |
+| Pablo2427 | 1 | ? | [pablo2427](https://discord.com/users/589393128214102016) | [GREEK MOD][Mapa] La Primera Guerra Púnica (the map's `game.xml` says *Pablo Marcos Rodríguez*; the same adventure is in the Greek Mod maps pack) | 2026-10-18 (#chat-mapas) | 🕐 |
+| Giuseppe D'Addio | 9 | ? | — (not in the Discord or the Spanish forum; look in the Italian forum *Imperivm Editor*) | Greek Mod maps pack: *La guerra dei mercenari*, *La discesa di Brenno*, *L'unificazione* of Egitto, Italia, Britannia, Gallia and Germania, *L'Egitto maledetto*, *La battaglia di Qadesh*; translator of Hareld's *Il popolo di Asclepio* | | |
+| Ricky96Highlander (Ricky1996) | 2 | ? | — (staff of the old Italian forum *Imperivm World*). Probably the same person as `Captain Highlander` and `Riccardo 'Highlander' Tedesco` (three spellings in the maps' `game.xml`), not confirmed | Greek Mod maps pack: *Conquista gli altri popoli*, *Avventura tra le montagne*; as Captain Highlander *Il Re della Grecia* (*The Throne of Greece*); as Tedesco *Il figlio di Ankou* (ships with the HD game) | | |
+| Consul123 | 2 | ? | — (probably `Consul`, in the credits of the Mediterranevm Mod 1.0, not confirmed) | Greek Mod maps pack: *La battaglia di Avarico*, `PVP_dominazione_1` (already in Greek Mod 4.2) | | |
+| Project Studios Interactive | 1 | ? | — (no trace in our data) | Greek Mod maps pack: *L'Eroe d'Egitto I* | | |
 | Xeroxcr | 1 | ? | — | Texturas, Motivos, Layer y más DESCARGA NUEVOS! | | |
 | sandro18 | 1 | ? | — | Conversor problema | | |
 | grangordo | 1 | ? | — | programas edicion de texturas y modelados | | |

@@ -141,6 +141,7 @@ The same idea works for any old map: look for the class in an older `data.pak` (
 | [`parse-forum.js`](tools/parse-forum.js) | `raw/forum.json` → `raw/forum-entries.json`: topics with the author's links |
 | [`parse-discord.js`](tools/parse-discord.js) | `raw/discord.json` (not in git, like `forum.json`) → `raw/discord-entries.json` |
 | [`scrape-moddb.js`](tools/scrape-moddb.js) | Everything on ModDB for the Imperivm games → `raw/moddb.json` |
+| [`audit-pack.js`](tools/audit-pack.js) | A pack of maps → `AUDIT.md`: each map's name and author (from its `game.xml`) and whether it duplicates one of ours (SHA-256, then shared files). Needs `bsdtar` |
 | [`download-discord.js`](tools/download-discord.js) | Discord attachments → `originals/discord/<channel>/<slug>/` (URLs expire after ~24 h) |
 | [`download-forum.js`](tools/download-forum.js) | Files behind the live links of rows with no local copy → `originals/forum/<key>/files/`. Mega needs `megadl`; ModDB a browser on CDP port 9333 (Cloudflare). `--force=<keys>` downloads again |
 | [`download-forum-shots.js`](tools/download-forum-shots.js) | Screenshots in each forum topic's opening post → `originals/forum/t<id>/screenshots/` |

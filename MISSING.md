@@ -8,7 +8,7 @@ Same columns and legend as [MODS.md](MODS.md#how-to-read-the-tables).
 
 | # | Name | Author(s) | Base | Type | Source | Download | Permission | Status | GameBanana |
 |---|---|---|---|---|---|---|---|---|---|
-| 1 | [AVENTURAS I] LÁRAX | ? (saga original) | ? | wrap | [Discord](https://discord.com/channels/479629904657514526/1414409056830885920/1416223141436457060) | 📷 1 | ❔ | 📋 to port | |
+| 1 | [AVENTURAS I] LÁRAX | ? (saga original) | ? | wrap (an Italian edition of the Imperivm I adventure is in row 259, `1 L'avventura di Larax`; not the same file) | [Discord](https://discord.com/channels/479629904657514526/1414409056830885920/1416223141436457060) | 📷 1 | ❔ | 📋 to port | |
 
 ## ModDB (not on Discord or the forum)
 
