@@ -144,6 +144,7 @@ The same idea works for any old map: look for the class in an older `data.pak` (
 | [`port-140.js`](tools/port-140.js) | A loose-file 1.40 mod → `ported/<id>/` |
 | [`imperivm1.js`](tools/imperivm1.js) | Imperivm I classes → `ported/imperivm1-legacy/` |
 | [`cgwar-greece.js`](tools/cgwar-greece.js) | After `port-140.js`: the CGWAR's Greece as a new civilization |
+| [`hpfs.js`](tools/hpfs.js) `<map.bfhp> [outDir]` | Lists or extracts a scenario/adventure `.bfhp` (HPFS); as a module, it also rewrites a file in place |
 
 The SDK tools (`extract-data.js`, `shrink-mod.js`, `validate-mod.js`, `read-rle.js`…) are in `imperivm-resurrected/sdk/en/tools/`.
 
