@@ -158,6 +158,8 @@ const locEntries = s => { const m = new Map(); for (const e of s.matchAll(/<tran
   const t = (e[0].match(/\btext="([^"]*)"/) || [])[1], c = (e[0].match(/\bcontext="([^"]*)"/) || [])[1] || "", r = (e[0].match(/\bresult="([^"]*)"/) || [])[1];
   if (t != null) m.set(t + "\u0000" + c, { t, c, r, line: e[0] }); } return m; };
 const hdLoc = idx(path.join(ROOT, "originals/game-data/local-spanish"));
+// loose files in the game folder beat the pack (Steam ships a 1920x1080 Currentlang/MENUBACKGROUND.bmp over the 1366x768 one)
+for (const [k, v] of idx(path.join(GAME, "Currentlang"))) hdLoc.set("currentlang/" + k, v);
 const decode = b => (b.subarray(0, 3).equals(Buffer.from([0xef, 0xbb, 0xbf])) || !/[\x80-\xff]/.test(b.toString("latin1")) ? b.toString("utf8") : (() => { const u = b.toString("utf8"); return u.includes("\ufffd") ? b.toString("latin1") : u; })());
 
 // An old 4:3 BMP (16-bit 5-5-5 or 24-bit) fitted to width x height as 24-bit: scaled to the new height, then the left half
@@ -189,7 +191,7 @@ function fitBmp(b, width, height) {
   }
   return out;
 }
-// the menu draws only CurrentLang/MenuBackground.bmp, at its own size (HD: 1366x768); menu_16_9/menu_4_3 are never read
+// the menu draws only CurrentLang/MenuBackground.bmp, at its own size (Steam HD: 1920x1080, loose); menu_16_9/menu_4_3 are never read
 const MENU_SET = ["menubackground.bmp"];
 
 const locSeen = new Set();
