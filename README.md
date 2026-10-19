@@ -94,7 +94,7 @@ node tools/port-140.js <old mod folder> ported/<id> --id <id> --name "<Name>" --
 
 The MCI ([extras/mci/](extras/mci/)) is the first one: 1104 files from the 9.0 zip, 123 merged with HD, 30 resolved or fixed by hand (the HD guard post, gold selling, AI-only parry mode, kill statistics and sentry guards kept alongside the MCI's tributes, stances and veterans). Its own bugs from 1.40 are kept as they were (scripts it references but never shipped), except where HD would break: `GreatTavern`, a class that doesn't exist, is dropped from the random map (it would hang), and `beh_punto.vs` calls `CreateFeedback` instead of `PlaceFeedback`, which no game version has.
 
-The CGWAR ([extras/cgwar/](extras/cgwar/)) puts Greece in place of Imperial Rome: 1338 files from the v6 rar (the separate textures rar is only the source BMPs), 436 sprites, 39 merged with HD, 11 resolved by hand (the Greek outpost sells food and gold through HD's `OUTPOST_COMMERCIAL.XML`, HD's horse scripts with the wild horse fleeing at a gallop, its Ares guard and arena commands on top of HD's).
+The CGWAR ([extras/cgwar/](extras/cgwar/)) put Greece in place of Imperial Rome; here it is a new civilization (`civs/greece.json`, index 30, letter `K`) and Imperial Rome stays HD's. After `port-140.js`, [`tools/cgwar-greece.js`](tools/cgwar-greece.js) makes the change: Greek classes get `race="greece"`, the Imperial pieces the mod redrew (walls, gates, tower, peasants) become `K*` copies so the city builder finds them by letter, the "Rome" merge (Republican Rome turning Republican or Imperial in the Arena), its AI scripts and the official adventures, conquest and random map towns it edited go, and the shared commands become patches that only add the Greek sources (the Greek-only commands go to `DATA/COMMANDS/GREECE.XML`). The Greek AI is Imperial Rome's, translated by the `alias` tables. The maps made for it still place `MWalls*`/`MTower`, which look Roman again.
 
 ## Maps with Imperivm I classes
 
@@ -142,6 +142,7 @@ The same idea works for any old map: look for the class in an older `data.pak` (
 | [`wrap-map.js`](tools/wrap-map.js) | A map or adventure → `ported/<id>/` |
 | [`port-140.js`](tools/port-140.js) | A loose-file 1.40 mod → `ported/<id>/` |
 | [`imperivm1.js`](tools/imperivm1.js) | Imperivm I classes → `ported/imperivm1-legacy/` |
+| [`cgwar-greece.js`](tools/cgwar-greece.js) | After `port-140.js`: the CGWAR's Greece as a new civilization |
 
 The SDK tools (`extract-data.js`, `shrink-mod.js`, `validate-mod.js`, `read-rle.js`…) are in `imperivm-resurrected/sdk/en/tools/`.
 

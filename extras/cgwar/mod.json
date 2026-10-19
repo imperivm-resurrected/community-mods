@@ -11,11 +11,9 @@
     "Villoh (port)"
   ],
   "description": {
-    "spanish": "Añade la civilización griega sustituyendo a Roma Imperial: nuevas ciudades, aldeas, fortines, unidades (hoplita, peltasta, toxotai, hipaspista, catafracto, carro, guardia de Ares…) y tecnologías. Roma Republicana pasa a ser Roma, y en el Coliseo eliges convertirla en Republicana o Imperial. Nuevos objetos, IA mejorada, mapa de Grecia en el modo Conquista, aldea libre y unidades extra para el editor. Adaptado al juego HD conservando sus correcciones.",
-    "english": "Adds the Greek civilization in place of Imperial Rome: new cities, villages, outposts, units (hoplite, peltast, toxotai, hypaspist, cataphract, chariot, Ares guard…) and technologies. Republican Rome becomes Rome, and the Arena lets you turn it Republican or Imperial. New items, improved AI, a Greece map for Conquest, a free village and extra units for the editor. Adapted to the HD game keeping its fixes."
+    "spanish": "Añade Grecia como civilización nueva: ciudades, aldeas, fortines, unidades (hoplita, peltasta, toxotai, hipaspista, catafracto, carro, guardia de Ares…), héroes y tecnologías propias, con su IA. Nuevos objetos, aldea libre y unidades extra para el editor (mirmidón, hondero, Vael y Secuaz). Adaptado al juego HD conservando sus correcciones.",
+    "english": "Adds Greece as a new civilization: cities, villages, outposts, units (hoplite, peltast, toxotai, hypaspist, cataphract, chariot, Ares guard…), heroes and technologies of its own, with its AI. New items, a free village and extra units for the editor (myrmidon, slinger, Vael and Secuaz). Adapted to the HD game keeping its fixes."
   },
-  "tags": [
-    "Spanish"
-  ],
+  "tags": [],
   "redistributable": true
 }
