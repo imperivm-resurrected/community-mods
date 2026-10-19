@@ -1,0 +1,19 @@
+{
+  "id": "aventura-el-pueblo-de-asclepio",
+  "name": "Il popolo di Asclepio",
+  "version": "1.0",
+  "authors": [
+    "Hareld",
+    "Giuseppe D'Addio (Italian translation)"
+  ],
+  "description": {
+    "italian": "Dopo anni di guerra contro i barbari, Apollonia attraversa un momento cruciale: uno dei suoi due re è stato sconfitto e ucciso, e il suo successore chiede aiuto ai sacerdoti di Asclepio per continuare la battaglia. Dicono che gli dei benevoli offrono favori più piccoli, ma anche più giusti. Trova quello che raccontano i sacerdoti e forse puoi aiutare il tuo popolo... Avventura di Hareld, Giuseppe D'Addio (Italian translation).",
+    "spanish": "Aventura de Hareld, Giuseppe D'Addio (Italian translation) (2015, en italiano).",
+    "english": "Adventure by Hareld, Giuseppe D'Addio (Italian translation) (2015, in Italian)."
+  },
+  "category": "Adventures",
+  "tags": [
+    "Language: Italian"
+  ],
+  "redistributable": true
+}

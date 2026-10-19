@@ -25,10 +25,10 @@ for (const file of ["MODS.md", "MISSING.md"]) {
     const d = (c[SRC].match(/\((https:\/\/discord\.com\/channels\/[^)]+)\)/) || [])[1];
     const t = (c[SRC].match(/foroactivo\.com\/t(\d+)-/) || [])[1];
     const arg = d ? byDiscord[d] : t ? `forum/t${t}` : null;
-    const id = arg && bySource[arg];
+    // a row with no post of its own (a map of a pack, a mod we made) names its ported/ folder in parentheses: "... (imperivm1-legacy)"
+    const own = (c[2].match(/\(([a-z0-9-]+)\)\s*$/) || [])[1];
+    const id = (arg && bySource[arg]) || (own && ported[own] ? own : null);
     if (!id) {
-      // a row not made by wrap-map.js names its ported/ folder in parentheses: "... (imperivm1-legacy)"
-      const own = (c[2].match(/\(([a-z0-9-]+)\)\s*$/) || [])[1];
       if (/🔧/.test(c[S]) && !(own && fs.existsSync(path.join(ROOT, "ported", own)))) stale.push(`${file} ${c[1].trim()} ${c[2].trim()}`);
       return l;
     }

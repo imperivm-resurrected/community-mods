@@ -1,0 +1,21 @@
+{
+  "id": "invaders",
+  "name": "Invaders",
+  "version": "1.0",
+  "authors": [
+    "Mordred (Rattlesmake team)",
+    "Haemimont Games",
+    "FX Interactive"
+  ],
+  "description": {
+    "italian": "Avventura di Mordred (Rattlesmake team), Haemimont Games, FX Interactive.",
+    "spanish": "Aventura de Mordred (Rattlesmake team), Haemimont Games, FX Interactive (en inglés e italiano).",
+    "english": "Wave after wave your enemies come, and weariness makes your shooting slower. At the end of the day you will surely fall, but how many waves can you hold? Adventure by Mordred (Rattlesmake team), Haemimont Games, FX Interactive."
+  },
+  "category": "Adventures",
+  "tags": [
+    "Language: English",
+    "Language: Italian"
+  ],
+  "redistributable": true
+}

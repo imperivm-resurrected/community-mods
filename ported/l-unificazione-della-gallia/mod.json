@@ -1,0 +1,21 @@
+{
+  "id": "l-unificazione-della-gallia",
+  "name": "L'unificazione della Gallia",
+  "version": "1.0",
+  "authors": [
+    "Giuseppe D'Addio"
+  ],
+  "description": {
+    "italian": "Anno 58 a.C. Giulio Cesare, console dell'Illirico, ottiene il titolo di console delle Gallie, e viene incaricato dal Senato alla conquista dell'odierna Francia.  L'impresa, però, si rivelerà tutt'altro che semplice, giacché le tribù della Gallia sono un popolo diviso e in guerra, e le tribù germaniche hanno gettato un'occhio di riguardo... Avventura di Giuseppe D'Addio.",
+    "spanish": "Aventura de Giuseppe D'Addio (en italiano).",
+    "english": "Adventure by Giuseppe D'Addio (in Italian)."
+  },
+  "category": "Adventures",
+  "tags": [
+    "Language: Italian"
+  ],
+  "requires": [
+    "greek-civilization-mod"
+  ],
+  "redistributable": true
+}

@@ -1,0 +1,24 @@
+{
+  "id": "the-throne-of-greece",
+  "name": "Il Re della Grecia",
+  "version": "1.0",
+  "authors": [
+    "Captain Highlander"
+  ],
+  "description": {
+    "italian": "La Grecia è una nazione divisa, popolata da gente forte e orgogliosa. La Grecia ha bisogno di un nuovo eroe che liberi il territorio e la unisca di nuovo. Tuttavia, regnare su questa terra richiede coraggio e doti non comuni. Chi avrà mai la capacità di diventare il Re assoluto della Grecia? Avventura di Captain Highlander.",
+    "spanish": "Aventura de Captain Highlander (en italiano).",
+    "english": "Adventure by Captain Highlander (in Italian)."
+  },
+  "category": "Adventures",
+  "tags": [
+    "Language: Italian"
+  ],
+  "requires": [
+    "greek-civilization-mod"
+  ],
+  "incompatibleWith": [
+    "community-mod"
+  ],
+  "redistributable": true
+}

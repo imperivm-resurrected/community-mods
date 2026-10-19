@@ -48,7 +48,7 @@ The tools compare each mod with the game's data, so extract it first. `extract-d
 
    | Type | What the mod is | Tool |
    |---|---|---|
-   | *wrap* | A map or adventure, untouched | `node tools/wrap-map.js [channel/]<slug>` (Discord) or `forum/t<topic id>` |
+   | *wrap* | A map or adventure, untouched | `node tools/wrap-map.js [channel/]<slug>` (Discord), `forum/t<topic id>`, or `pack:<pack>/<map> --author "…"` for one map of a downloaded pack (see below) |
    | *reduce* | A mod with whole `.pak` packages | `node shrink-mod.js <original> "<game>" ported/<id> --id <id> …` (SDK) |
    | *rewrite* | A loose-file mod made for 1.40 | `node tools/port-140.js <folder> ported/<id> --id <id> …` (see [Mods made for 1.40](#mods-made-for-140)) |
    | *wrap · requires imperivm1-legacy* | A map with Imperivm I classes | `node tools/imperivm1.js add <map.bfhp>`, then `wrap-map.js` |
@@ -62,6 +62,8 @@ The tools compare each mod with the game's data, so extract it first. `extract-d
 ### Maps and adventures (`wrap-map.js`)
 
 Resurrected runs on the HD game, so a map made for 1.40, 1.56, a mod or an older Imperivm breaks if it places a unit or object HD doesn't have. `wrap-map.js` checks every class the map places (and the ones its scripts create) against the HD data, the big mods in `originals/mods/` and the class mods in `ported/`:
+
+**Packs and other languages.** A pack of maps with no post (`originals/forum/<pack>/files/*.zip`, e.g. the Greek Mod's `Greek_MapsAdventures.zip`) is audited first: `node tools/audit-pack.js <extracted pack> extras/<pack>/AUDIT.md --game "<game>"` says which maps we already have (so they are skipped), which are another edition and which are new. A new one is wrapped with `node tools/wrap-map.js "pack:<pack>/Adventures/<file>.BFHP" --author "Name; Other name" [--lang Italian]`: only that map, its preview and the videos it plays are unpacked, `--author` is required (the credits, separated by `;`) and `--lang` is the language of its texts (the card gets an Italian description too when it is Italian). The same adventure in another language goes **into the mod we already have** with `--add pack:<pack>/<map>`: both maps are listed in the game as `<name> (Español)` and `<name> (Italiano)`, and a video the entry already has is never replaced. Rows made this way have no post to match, so they name their `ported/` folder in parentheses (`… (guerra-dei-mercenari)`) and `sync-table.js` finds them by that.
 
 - a mod that has every class the map lacks goes in `requires` (with several, the first of Community Mod, Greek Mod, Caesar Mod); one that hides an HD class the map uses goes in `incompatibleWith`. `MODS.md` shows both in *Type*;
 - a map that needs a mod not ported yet (⏳, ids `forum-t<topic>`) or classes nobody has (❌) is reported and left out of `ported/`;
@@ -152,7 +154,7 @@ The same idea works for any old map: look for the class in an older `data.pak` (
 | [`sync-table.js`](tools/sync-table.js) | *Type* and *Status* of every ported row from its `mod.json` |
 | [`pending.js`](tools/pending.js) | `PENDING.md` from `MODS.md` |
 | **Porting** | |
-| [`wrap-map.js`](tools/wrap-map.js) | A map or adventure → `ported/<id>/` |
+| [`wrap-map.js`](tools/wrap-map.js) | A map or adventure (a Discord post, a forum topic or one map of a pack) → `ported/<id>/` |
 | [`port-140.js`](tools/port-140.js) | A loose-file 1.40 mod → `ported/<id>/` |
 | [`imperivm1.js`](tools/imperivm1.js) | Imperivm I classes → `ported/imperivm1-legacy/` |
 | [`cgwar-greece.js`](tools/cgwar-greece.js) | After `port-140.js`: the CGWAR's Greece as a new civilization |

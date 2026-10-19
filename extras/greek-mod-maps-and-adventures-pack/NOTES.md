@@ -57,8 +57,21 @@ our own sources; **probable** = a name that matches, nothing else; **unknown** =
 | Distruptor95 | 1 (`Hunger_Games`) | Distruptor95 | In Greek Mod 1.8 and 4.2 already; no other trace |
 | Autore sconosciuto | 1 (`War`) | Unknown | In Greek Mod 4.2 already |
 
-## What changes in the tables
+## Ported (2026-10-19)
 
-- Row 259 stays one row (the pack), pointing here. The 15 new maps carry their author in `AUTHORS.md`.
-- Rows 196, 213, 214, 202 and MISSING 1, 17 say the pack has another edition of them (rows 196, 213, 214: add it as a second file; 202: skip).
-- Not done: porting. `wrap-map.js` takes a Discord post or a forum topic, not a pack; to port these an `--entry` that reads this manifest is needed.
+`node tools/wrap-map.js "pack:greek-mod-maps-and-adventures-pack/Adventures/<file>" --author "…"` (see the README). The exact command of each is in `raw/ported.json`.
+
+| | Mods | Notes |
+|---|---|---|
+| New adventures | 14 (rows 260-273) | D'Addio's 8, Ricky96Highlander's 2, Avarico, *Il Re della Grecia*, *L'Eroe d'Egitto I*, *Invaders*. Italian texts (*Il Re della Grecia* has English too; *Invaders* English and Italian) |
+| Recovering a dead download | 2 | *La Primera Guerra Púnica* (row 229, `forum/t1410 --add pack:…`) and *Il popolo di Asclepio* (MISSING 17, `forum/t768 --add pack:…`, credited to Hareld and D'Addio) |
+| Italian edition added to a mod we had | 3 | Rows 196, 213, 214. Both maps in the same mod; the game lists them as `<name> (Español)` and `<name> (Italiano)`. The Spanish map changed in `game.xml` only (its name) |
+
+All 19 pass `validate-mod.js --game`. They were **not** run in the game.
+
+What to know:
+
+- **Requirements are the class check of `wrap-map.js`**: 8 of the 14 new ones, and the 3 editions, need Greek Mod 4.2 (`HHoplite`, `HTemple`, `CTent`…), *Il Re della Grecia*, *L'Eroe d'Egitto I* and *La Primera Guerra Púnica* are also **not with Community Mod** (it hides `WildHorse`). The pack was made for Greek Mod 2.x, not 4.2: when 2.6.1 is ported, check again which one each needs.
+- **Videos**: only *La discesa di Brenno* (3) and *Il Re della Grecia* (1) play videos the pack has. *L'Eroe d'Egitto I* plays `L'eroe d'Egitto.avi` and *La Rivolta dei Messeni* its intro and outro, **which the pack does not contain** (the script warns).
+- **Credits are what each map's `game.xml` says.** *Invaders* is credited to Mordred (Rattlesmake team), Haemimont Games and FX Interactive: the adventure is Haemimont's, the Italian texts and the edit come from the Rattlesmake team.
+- **Not uploaded.** Authors first: `OUTREACH.md` step 4c.

@@ -1,0 +1,18 @@
+{
+  "id": "l-egitto-maledetto",
+  "name": "L'Egitto maledetto",
+  "version": "1.0",
+  "authors": [
+    "Giuseppe D'Addio"
+  ],
+  "description": {
+    "italian": "In tutta la sua storia, l'Egitto ha sempre lottato contro il volere e la crudeltà della natura e contro vicini ostili per diventare una delle civiltà più grandi della storia. Avventura di Giuseppe D'Addio.",
+    "spanish": "Aventura de Giuseppe D'Addio (en italiano).",
+    "english": "Adventure by Giuseppe D'Addio (in Italian)."
+  },
+  "category": "Adventures",
+  "tags": [
+    "Language: Italian"
+  ],
+  "redistributable": true
+}

@@ -1,0 +1,18 @@
+{
+  "id": "l-unificazione-della-britannia",
+  "name": "L'Unificazione della Britannia",
+  "version": "1.0",
+  "authors": [
+    "Giuseppe D'Addio"
+  ],
+  "description": {
+    "italian": "Anno 43 d.C. Roma intraprende una nuova campagna di conquista della Britannia dopo circa novanta anni da quando Giulio Cesare vi mise piede. Inizia una guerra per la supremazia delle isole britanniche, piene di tribù gelose della loro indipendenza. Scegli da che parte stare, e guida la tua fazione alla vittoria! VERSIONA MOD GRECA. Avventura di Giuseppe D'Addio.",
+    "spanish": "Aventura de Giuseppe D'Addio (en italiano).",
+    "english": "Adventure by Giuseppe D'Addio (in Italian)."
+  },
+  "category": "Adventures",
+  "tags": [
+    "Language: Italian"
+  ],
+  "redistributable": true
+}

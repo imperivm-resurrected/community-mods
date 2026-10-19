@@ -1,0 +1,24 @@
+{
+  "id": "l-eroe-d-egitto-parte-1",
+  "name": "L'Eroe d'Egitto I",
+  "version": "1.0",
+  "authors": [
+    "Project Studios Interactive"
+  ],
+  "description": {
+    "italian": "Dopo l'improvvisa morte del faraone Amenhotep, il Gran Consiglio di Menphis organizza un enorme torneo nella capitale per decretarne il successore, data l'assenza di figli e di parenti prossimi del defunto sovrano. Tutti i Consigli delle varie città e villaggi del regno sono chiamati a nominare un campione che rappresenti la sua gente partecipando al torneo di Menphis. Avventura di Project Studios Interactive.",
+    "spanish": "Aventura de Project Studios Interactive (en italiano).",
+    "english": "Adventure by Project Studios Interactive (in Italian)."
+  },
+  "category": "Adventures",
+  "tags": [
+    "Language: Italian"
+  ],
+  "requires": [
+    "greek-civilization-mod"
+  ],
+  "incompatibleWith": [
+    "community-mod"
+  ],
+  "redistributable": true
+}

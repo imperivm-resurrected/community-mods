@@ -1,0 +1,18 @@
+{
+  "id": "l-unificazione-della-germania",
+  "name": "L'unificazione della Germania",
+  "version": "1.0",
+  "authors": [
+    "Giuseppe D'Addio"
+  ],
+  "description": {
+    "italian": "Anno 81 d.C. L'impero di Roma sotto Domiziano, insaziabile di conquiste e gloria, cerca di espandere i propri domini e sceglie la Germania come terra di conquista. Da molto tempo, dall'anno 11 d.C., Roma non invadeva le terre dei barbari più selvaggi d'Europa... Scegli la tua fazione tra Romani, Germani o anche Gallici, e sottometti tutte le tribù della zona. Avventura di Giuseppe D'Addio.",
+    "spanish": "Aventura de Giuseppe D'Addio (en italiano).",
+    "english": "Adventure by Giuseppe D'Addio (in Italian)."
+  },
+  "category": "Adventures",
+  "tags": [
+    "Language: Italian"
+  ],
+  "redistributable": true
+}

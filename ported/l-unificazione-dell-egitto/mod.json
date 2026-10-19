@@ -1,0 +1,18 @@
+{
+  "id": "l-unificazione-dell-egitto",
+  "name": "L'unificazione dell'Egitto",
+  "version": "1.0",
+  "authors": [
+    "Giuseppe D'Addio"
+  ],
+  "description": {
+    "italian": "È l'anno 2750 a.C. L'Egitto è diviso in varie dinastie, ognuna con le proprie potenzialità e difficoltà. Da ovest, i Libici a nord e i Meshwesh a sud minacciano la sicurezza già compromessa dell'Egitto, e anche i Nubiani e i Kushiti, al fondo del fiume Nilo, sono ansioni di prendersi la loro rivincita. Avventura di Giuseppe D'Addio.",
+    "spanish": "Aventura de Giuseppe D'Addio (en italiano).",
+    "english": "Adventure by Giuseppe D'Addio (in Italian)."
+  },
+  "category": "Adventures",
+  "tags": [
+    "Language: Italian"
+  ],
+  "redistributable": true
+}

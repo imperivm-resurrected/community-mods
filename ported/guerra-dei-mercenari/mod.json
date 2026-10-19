@@ -1,0 +1,21 @@
+{
+  "id": "guerra-dei-mercenari",
+  "name": "La guerra dei mercenari",
+  "version": "1.0",
+  "authors": [
+    "Giuseppe D'Addio"
+  ],
+  "description": {
+    "italian": "Anno 240 a.C. Distrutta dalla Prima Guerra Punica contro i Romani, Cartagine è costretta a cedere i suoi domini. Avventura di Giuseppe D'Addio.",
+    "spanish": "Aventura de Giuseppe D'Addio (en italiano).",
+    "english": "Adventure by Giuseppe D'Addio (in Italian)."
+  },
+  "category": "Adventures",
+  "tags": [
+    "Language: Italian"
+  ],
+  "requires": [
+    "greek-civilization-mod"
+  ],
+  "redistributable": true
+}

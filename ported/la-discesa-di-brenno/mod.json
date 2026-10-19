@@ -1,0 +1,18 @@
+{
+  "id": "la-discesa-di-brenno",
+  "name": "La discesa di Brenno",
+  "version": "1.0",
+  "authors": [
+    "Giuseppe D'Addio"
+  ],
+  "description": {
+    "italian": "Anno 390 a.C. Brenno, capo dei Galli Senoni, ha appena unificato tutte le sue tribù, tra la Romagna e il Piceno. Mentre egli sta assediando Chiusi, una città etrusca, Roma invia un'ambasceria per mediare tra i Galli e gli assediati, ma un grave incidente scatena l'ira dei Galli... Avventura di Giuseppe D'Addio.",
+    "spanish": "Aventura de Giuseppe D'Addio (en italiano).",
+    "english": "Adventure by Giuseppe D'Addio (in Italian)."
+  },
+  "category": "Adventures",
+  "tags": [
+    "Language: Italian"
+  ],
+  "redistributable": true
+}

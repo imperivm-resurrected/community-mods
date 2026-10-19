@@ -1,0 +1,23 @@
+{
+  "id": "la-primera-guerra-punica",
+  "name": "La Primera Guerra Púnica",
+  "version": "1.0",
+  "authors": [
+    "Pablo2427 (Pablo Marcos Rodríguez)"
+  ],
+  "description": {
+    "spanish": "Año 264 a.C.  Un grupo de mercenarios mamertinos osa retar a Cartago atrincherándose tras las murallas de la ciudad siciliana de Mesina. Tras ver cómo Hierón II, el tirano de Siracusa, se suma al bando cartaginés, a los mamertinos solo les queda una opción: acudir a Roma. Aventura de Pablo2427 (Pablo Marcos Rodríguez) (2023).",
+    "english": "Adventure by Pablo2427 (Pablo Marcos Rodríguez) (2023)."
+  },
+  "category": "Adventures",
+  "tags": [
+    "Language: Spanish"
+  ],
+  "requires": [
+    "greek-civilization-mod"
+  ],
+  "incompatibleWith": [
+    "community-mod"
+  ],
+  "redistributable": true
+}

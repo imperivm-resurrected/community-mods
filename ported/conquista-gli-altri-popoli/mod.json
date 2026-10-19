@@ -1,0 +1,18 @@
+{
+  "id": "conquista-gli-altri-popoli",
+  "name": "Conquista gli altri popoli",
+  "version": "1.0",
+  "authors": [
+    "Ricky96Highlander (Ricky1996)"
+  ],
+  "description": {
+    "italian": "Roma, Cartagine, Iberia, Gallia, Germania. Scegli il tuo popolo e sconfiggi tutti gli altri. Avventura di Ricky96Highlander (Ricky1996).",
+    "spanish": "Aventura de Ricky96Highlander (Ricky1996) (en italiano).",
+    "english": "Adventure by Ricky96Highlander (Ricky1996) (in Italian)."
+  },
+  "category": "Adventures",
+  "tags": [
+    "Language: Italian"
+  ],
+  "redistributable": true
+}

@@ -1,0 +1,18 @@
+{
+  "id": "la-battaglia-di-avarico",
+  "name": "Battaglia di Avarico - 52 a.C.",
+  "version": "1.0",
+  "authors": [
+    "Consul123"
+  ],
+  "description": {
+    "italian": "Giulio Cesare, proconsole romano, nell'inverno tra il 53 a.C. e il 52 a.C. ritornò in Gallia per placare le rivolte dei popoli già sottomessi e continuare la conuista. Nella sua campaga, Cesare conquistò le città di Vellaunodunum dei senoni, di Cenabum, capitale dei carnuti e di Noviocunum dei galli biturigi. Avventura di Consul123.",
+    "spanish": "Aventura de Consul123 (en italiano).",
+    "english": "Adventure by Consul123 (in Italian)."
+  },
+  "category": "Adventures",
+  "tags": [
+    "Language: Italian"
+  ],
+  "redistributable": true
+}

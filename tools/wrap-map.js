@@ -1,7 +1,12 @@
 // Wrap a Discord map/adventure (raw/discord-entries.json) or a forum topic (raw/forum-entries.json, downloaded by
 // tools/download-forum.js) as an Imperivm Resurrected mod in ported/<slug>/
-//   node tools/wrap-map.js [channel/]<slug> | forum/t<topic id> [--players "2-4"] [--file <text>] [--add <entry>[:<text>]] [--adventure] [--title <name>] [--desc <text>]
-//                                                                 [--no-redistributable]
+//   node tools/wrap-map.js [channel/]<slug> | forum/t<topic id> | pack:<pack>/<map> [--players "2-4"] [--file <text>] [--add <entry>[:<text>]] [--adventure] [--title <name>] [--desc <text>]
+//                                                                 [--author "A; B"] [--lang Italian] [--no-redistributable]
+// pack:<pack>/<map>: one map of a pack we downloaded (originals/forum/<pack>/files/*.zip, e.g. pack:greek-mod-maps-and-adventures-pack/Adventures/X.BFHP).
+// Only that map, its preview and the videos it plays are unpacked. A pack has no post to take the author from: --author is required
+// (several credits separated by ";"). --lang is the language of the pack's adventures ("Italian", "English,Italian"; default Italian).
+// --add pack:<...> next to an entry that has the same adventure in another language (e.g. forum/t1300 --add pack:<pack>/La Rivolta ...):
+// both go in one mod and the pack's edition is called "<name> (Italiano)" in the game's list.
 // Nothing in the map changes, so the original author is the only author (no porter credit).
 // .rar/.zip are unpacked with bsdtar: it is the system `tar` on Windows 10+ and macOS; on Linux install it
 // (libarchive-tools / libarchive). BSDTAR=<path> overrides it.
@@ -27,8 +32,25 @@ const forumEntry = topic => {
   return { channel: "forum", slug, title, author: t.author, year: (date.match(/\b(19|20)\d\d\b/) || [""])[0],
     base: /\bHD\b/.test(t.title) ? "Imperivm HD" : "", desc: "", files, section: t.title };
 };
+// pack:<pack>/<map>: see the header. Files carry `members`: only those are unpacked (the pack is gigabytes)
+const BSDTAR = process.env.BSDTAR || (process.platform === "linux" ? "bsdtar" : "tar");
+const packEntry = (spec, primary) => {
+  const m = spec.match(/^pack:([^/]+)\/(.+)$/);
+  if (!m) { console.error("usage: pack:<pack folder in originals/forum>/<map path inside the pack>"); process.exit(1); }
+  const dir = path.join("originals", "forum", m[1], "files");
+  const zip = fs.existsSync(path.join(ROOT, dir)) && fs.readdirSync(path.join(ROOT, dir)).find(n => /\.(zip|rar|7z)$/i.test(n));
+  if (!zip) { console.error(`no archive in ${dir}`); process.exit(1); }
+  if (primary && !opt.author) { console.error("a pack has no post: give the author with --author"); process.exit(1); }
+  const list = execFileSync(BSDTAR, ["-tf", path.join(ROOT, dir, zip)], { encoding: "utf8", maxBuffer: 1 << 28 }).split("\n").filter(Boolean);
+  const member = list.find(n => n.toLowerCase().endsWith("/" + m[2].toLowerCase()));
+  if (!member) { console.error(`not in ${zip}: ${m[2]}`); process.exit(1); }
+  const bmp = list.find(n => n.toLowerCase() === member.replace(/\.[^./]+$/, "").toLowerCase() + ".bmp");
+  const title = path.basename(member).replace(/\.[^.]+$/, "").replace(/_/g, " ").replace(/\s+/g, " ").trim();
+  return { channel: "pack", slug: slugify(primary && opt.title ? opt.title : title), title, author: opt.author || "", year: "", base: "", desc: "", links: [],
+    section: /\/Adventures\//i.test(member) ? "Adventure" : "", files: [{ name: zip, local: path.join(dir, zip), members: [member, ...(bmp ? [bmp] : [])] }] };
+};
 const [want, chan] = opt._.split("/").reverse();
-const found = chan === "forum" ? [forumEntry(want.replace(/^t/, ""))] : discord.filter(x => x.slug === want && (!chan || x.channel === chan));
+const found = opt._.startsWith("pack:") ? [packEntry(opt._, true)] : chan === "forum" ? [forumEntry(want.replace(/^t/, ""))] : discord.filter(x => x.slug === want && (!chan || x.channel === chan));
 if (found.length !== 1) { console.error(found.length ? `ambiguous, use channel/slug: ${found.map(x => x.channel + "/" + x.slug).join(" ")}` : `not found: ${opt._}`); process.exit(1); }
 const e = found[0];
 // a Discord entry with links instead of attachments: use what tools/download-forum.js got for its row
@@ -44,15 +66,26 @@ if (!e.files.length && e.channel !== "forum") {
 if (opt.file) e.files = e.files.filter(f => f.name.toLowerCase().includes(String(opt.file).toLowerCase()));
 // --add <entry>[:<text>]: also the downloads of another entry (whose name has <text>), e.g. more maps of the same series
 // posted in another topic
+const ownFiles = e.files.length;
+// language of a pack's maps (--lang, first of the list), and a hash to tell maps apart by content
+const packLangs0 = String(opt.lang === true || !opt.lang ? "Italian" : opt.lang).split(",")[0].trim();
+const hashFile = f => require("crypto").createHash("md5").update(fs.readFileSync(f)).digest("hex");
 if (opt.add) {
-  const [spec, text = ""] = String(opt.add).split(/:(.*)/);
+  const [spec, text = ""] = String(opt.add).startsWith("pack:") ? [String(opt.add)] : String(opt.add).split(/:(.*)/);
   const [w, c] = spec.split("/").reverse();
-  const x = c === "forum" ? forumEntry(w.replace(/^t/, "")) : discord.find(d => d.slug === w && (!c || d.channel === c));
+  const x = spec.startsWith("pack:") ? packEntry(spec, false) : c === "forum" ? forumEntry(w.replace(/^t/, "")) : discord.find(d => d.slug === w && (!c || d.channel === c));
   if (!x) { console.error("--add: not found:", spec); process.exit(1); }
-  e.files.push(...x.files.filter(f => f.name.toLowerCase().includes(text.toLowerCase())));
+  // a pack's map added to an entry that has the same adventure in another language: an "edition" of it
+  // (only if the entry has files of its own: a dead download rescued from the pack is not an edition of anything)
+  e.files.push(...x.files.filter(f => f.name.toLowerCase().includes(text.toLowerCase())).map(f => spec.startsWith("pack:") && ownFiles ? { ...f, edition: packLangs0 } : f));
 }
 if (!e.files.length) { console.error("nothing downloaded for", opt._); process.exit(1); }
 const id = (e.channel === "saga-imperivm" ? "saga-" : "") + e.slug;
+// the md5 of the pack maps that are an "edition" (--add pack:...) of what the entry already has: told apart by content, because
+// file names and game.xml change below
+const editionMd5 = new Map();
+const editionVideos = new Set(); // videos unpacked for an edition: they never replace one the entry has (same name, another file)
+const editionKept = new Set(); // the ones placed so far (an own video of the same name, unpacked later, replaces them)
 // forum topics: decided after unpacking, from the title or game.xml game_type (0 = skirmish map, 1/2 = adventure)
 // --adventure: a single-player story map made as a normal map (game_type 0) whose post doesn't say so
 let isAdv = e.channel === "aventuras" || /AVENTURAS?|adventure/i.test(e.section) || /\[aventura\]/i.test(e.title) || !!opt.adventure;
@@ -152,7 +185,19 @@ fs.rmSync(out, { recursive: true, force: true });
 fs.mkdirSync(dest, { recursive: true });
 for (const f of e.files) {
   const src = path.join(ROOT, f.local);
-  if (/\.(rar|zip|7z)$/i.test(f.name)) execFileSync(process.env.BSDTAR || (process.platform === "linux" ? "bsdtar" : "tar"), ["-xf", src, "-C", dest]);
+  if (/\.(rar|zip|7z)$/i.test(f.name)) {
+    execFileSync(BSDTAR, ["-xf", src, "-C", dest, ...(f.members || [])], { maxBuffer: 1 << 28 });
+    if (f.edition) for (const m of f.members.filter(m => /\.bfhp$/i.test(m))) editionMd5.set(hashFile(path.join(dest, m)), f.edition);
+    if (f.members) { // the videos the unpacked maps play, if the pack has them
+      const have = execFileSync(BSDTAR, ["-tf", src], { encoding: "utf8", maxBuffer: 1 << 28 }).split("\n");
+      const names = new Set(fs.readdirSync(dest, { recursive: true }).filter(g => /\.bfhp$/i.test(g))
+        .flatMap(g => [...fs.readFileSync(path.join(dest, g), "latin1").matchAll(/PlayMovie\((?:Translate\()?"([^"]+\.avi)"/gi)].map(m => path.basename(m[1].replace(/\\+/g, "/")).toLowerCase())));
+      const vids = have.filter(n => names.has(path.basename(n).toLowerCase()));
+      for (const n of names) if (!vids.some(v => path.basename(v).toLowerCase() === n)) console.log(`  ⚠️ plays ${n}, which the pack does not have`);
+      if (vids.length) execFileSync(BSDTAR, ["-xf", src, "-C", dest, ...vids], { maxBuffer: 1 << 28 });
+      if (f.edition) for (const v of vids) editionVideos.add(v.replace(/\\/g, "/"));
+    }
+  }
   else fs.copyFileSync(src, path.join(dest, f.name));
 }
 // videos go where the maps' PlayMovie("…") looks for them ("Movies//Intro.avi", "Adventures/videohistoriakiller/x.avi"),
@@ -171,7 +216,14 @@ for (const f of fs.readdirSync(dest, { recursive: true })) {
   else if (/\.avi$/i.test(f)) {
     const to = path.join(out, played.get(path.basename(f).toLowerCase()) || path.join("movies", path.basename(f)));
     fs.mkdirSync(path.dirname(to), { recursive: true });
+    // two editions play the same file names: the entry's own video stays, whichever is unpacked first
+    const fromEdition = editionVideos.has(f.replace(/\\/g, "/"));
+    if (fromEdition && fs.existsSync(to) && !editionKept.has(to)) {
+      if (hashFile(to) !== hashFile(p)) console.log(`  ⚠️ kept the entry's ${path.basename(to)}: the pack's is another file with the same name`);
+      fs.rmSync(p); continue;
+    }
     fs.renameSync(p, to);
+    if (fromEdition) editionKept.add(to); else editionKept.delete(to);
   }
   else fs.rmSync(p);
 }
@@ -226,6 +278,7 @@ for (const f of maps) {
 if (!fs.readdirSync(dest).length) fs.rmdirSync(dest);
 const at = f => path.join(out, where[f], f);
 const has = k => Object.values(where).includes(k);
+const edOf = new Map(maps.map(f => [f, editionMd5.get(hashFile(at(f)))])); // before anything rewrites a map: language of the pack's editions
 // players: the human slots of the skirmish maps (an adventure or a conquest is played alone)
 const counts = maps.filter(f => where[f] === "scenarios").map(f => slots(at(f))).filter(Boolean);
 const used = hdClasses ? [...new Set(maps.flatMap(f => usedClasses(at(f))))] : null;
@@ -273,10 +326,26 @@ if (needs.includes("cgwar")) {
 // the saga: the maps and adventures of Imperivm I and II that came with the games, collected by Ferónidas on Discord
 const saga = e.channel === "saga-imperivm";
 // a saga entry with an author is a community remake of the original (e.g. OskaOtzuna's Imperivm II adventures)
-const author = saga ? e.author || "Haemimont Games" : e.author || "?";
+const credits = (saga ? e.author || "Haemimont Games" : opt.author || e.author || "?").split(";").map(s => s.trim()).filter(Boolean); // --author "A; B": a pack's maps carry several
+const author = credits.join(", ");
+// languages of the adventure's texts: a forum or Discord post is Spanish; a pack's maps are what --lang says (default Italian)
+const packLangs = String(opt.lang === true || !opt.lang ? "Italian" : opt.lang).split(",").map(s => s.trim());
+// (an entry with no download of its own, whose files all come from a pack, has the pack's language only)
+const langs = [...new Set([...(e.channel !== "pack" && ownFiles ? ["Spanish"] : []), ...(e.channel === "pack" || !ownFiles || e.files.some(f => f.edition) ? packLangs : [])])];
 const sagaGame = saga && (/ II$/.test(e.section) ? "Imperivm II" : "Imperivm I");
 // --title: the mod's name when the post's title is wrong (a typo: "Kilelrgoldfer" for Killergoldfer)
-const modName = (saga ? `${sagaGame}: ` : "") + titleCase(opt.title || e.title);
+// a pack's map has its real name in game.xml (typed by its author, with its own capitals); a post's title needs titleCase
+const nameOf = f => { // name= of a map's game.xml, as text
+  try {
+    const x = require("./hpfs.js")(fs.readFileSync(at(f))).find(x => /^game\.xml$/i.test(x.path));
+    const v = x && (x.read().toString("latin1").match(/\sname="([^"]*)"/) || [])[1];
+    return v ? Buffer.from(v, "latin1").toString("utf8").replace(/&(\w+);/g, (m, k) => XML[k] ?? m) : "";
+  } catch { return ""; }
+};
+const editionOf = f => edOf.get(f); // language of a pack edition, undefined for the entry's own maps
+const primary = maps.find(f => !editionOf(f)) || maps[0];
+const modName = (saga ? `${sagaGame}: ` : "") + (opt.title ? titleCase(opt.title) : e.channel === "pack" || (!ownFiles && e.files.some(f => f.members)) ? nameOf(primary) || titleCase(e.title) : titleCase(e.title));
+const LABEL = { Spanish: "Español", Italian: "Italiano", English: "English" };
 // the editor's defaults ("Mapa modelo", "Aventura modelo", "Autor desconocido", "Partida de estrategia") are what the game
 // lists: each map gets its real name (the mod's, or its file's when there are several) and author. game.xml is rewritten in
 // place: putting its attributes on one line makes room
@@ -292,11 +361,15 @@ for (const f of maps) {
   if (DEF_NAME.test(attr("name") ?? "-"))
     set.name = maps.length === 1 ? modName : f.replace(/\.bfhp$/i, "").replace(/ \([a-z0-9-]+\)$/, "").replace(/_/g, " ");
   if (DEF_AUTHOR.test(attr("author") ?? "-") && author !== "?") set.author = author;
+  if (editionMd5.size) { // the same adventure in two languages in one mod: both show in the game's list, so say which is which
+    const cur = set.name ?? Buffer.from(attr("name") ?? "", "latin1").toString("utf8");
+    set.name = `${cur} (${LABEL[editionOf(f) || "Spanish"] || editionOf(f)})`;
+  }
   if (opt.desc && maps.length === 1) set.description = opt.desc; // --desc: the post has none and the editor's default is shown
   else if (DEF_DESC.test(attr("description") ?? "-")) set.description = "";
   if (!Object.keys(set).length) continue;
   let t = g;
-  for (const [k, v] of Object.entries(set)) t = t.replace(new RegExp(`(\\s${k}=")[^"]*"`), (m, a) => a + Buffer.from(xmlEsc(v), "utf8").toString("latin1") + '"');
+  for (const [k, v] of Object.entries(set)) t = t.replace(new RegExp(`(\\s${k}=")[^"]*"`), (_m, a) => a + Buffer.from(xmlEsc(v), "utf8").toString("latin1") + '"');
   t = t.replace(/\r?\n\t*(?=[\w.]+=)/g, " ");
   const room = Math.ceil(g.length / 512) * 512; // HPFS pages are 512 bytes or more: growing within them is free
   if (t.length > room) { console.log(`  ⚠️ ${f}: no room for its name/description in game.xml (${t.length} > ${room})`); continue; }
@@ -304,7 +377,13 @@ for (const f of maps) {
   fs.writeFileSync(p, buf);
   renamed++;
 }
-const desc = opt.desc || e.desc || (maps.length === 1 ? mapDesc(at(maps[0])) : "");
+const desc = opt.desc || e.desc || (maps.length === 1 || editionMd5.size ? mapDesc(at(primary)) : "");
+// the map's own description is in the language of its texts (first of --lang, Spanish for a post): it goes on that language's card only
+const italian = langs.includes("Italian"); // a mod with Italian texts gets an Italian card too
+const descLang = e.channel === "pack" || !ownFiles ? packLangs[0] : "Spanish";
+const descIt = !italian ? "" : editionMd5.size ? mapDesc(at(maps.find(f => editionOf(f) === "Italian") || primary)) : descLang === "Italian" ? desc : "";
+const notEs = langs.length && !langs.includes("Spanish") ? "en " + langs.map(l => ({ Italian: "italiano", English: "inglés" }[l] || l)).join(" e ") : ""; // "en italiano"
+const notEn = langs.length && !langs.includes("English") && !langs.includes("Spanish") ? "in " + langs.join(" and ") : "";
 const meta = saga ? (e.author ? `versión mejorada de la aventura de ${sagaGame} de Haemimont Games, recopilada por Ferónidas` : `${sagaGame}, recopilado por Ferónidas`) : [e.year, e.base].filter(Boolean).join(", ");
 const metaEn = saga ? (e.author ? `improved version of the ${sagaGame} adventure by Haemimont Games, collected by Ferónidas` : `${sagaGame}, collected by Ferónidas`) : meta;
 // the main category: what most of it is (adventures over conquests over scenarios on a tie); the rest go as "Type: …" tags
@@ -317,14 +396,15 @@ const mod = {
   id,
   name: modName,
   version: "1.0",
-  authors: saga ? [...(e.author ? [e.author] : []), "Haemimont Games", "FX Interactive"] : [author, ...(greekWalls ? ["Villoh (port)"] : [])],
+  authors: saga ? [...(e.author ? [e.author] : []), "Haemimont Games", "FX Interactive"] : [...credits, ...(greekWalls ? ["Villoh (port)"] : [])],
   description: {
-    spanish: `${desc ? desc.replace(/([^.!?…])$/, "$1.") + " " : ""}${what} de ${author}${meta ? ` (${meta})` : ""}.${greekWalls ? " Piezas griegas del CGWAR (murallas, torres, puertas, aldeanos) adaptadas a Grecia como civilización propia." : ""}`,
-    english: `${{ Aventura: "Adventure", Conquista: "Conquest", Mapa: "Map" }[what] || maps.length + " maps"} by ${author}${metaEn ? ` (${metaEn})` : ""}.${greekWalls ? " The CGWAR's Greek pieces (walls, towers, gates, villagers), adapted to Greece as a civilization of its own." : ""}`,
+    ...(italian ? { italian: `${descIt ? descIt.replace(/([^.!?…])$/, "$1.") + " " : ""}${{ Aventura: "Avventura", Conquista: "Conquista", Mapa: "Mappa" }[what] || maps.length + " mappe"} di ${author}.` } : {}),
+    spanish: `${desc && descLang === "Spanish" ? desc.replace(/([^.!?…])$/, "$1.") + " " : ""}${what} de ${author}${[meta, notEs].filter(Boolean).length ? ` (${[meta, notEs].filter(Boolean).join(", ")})` : ""}.${greekWalls ? " Piezas griegas del CGWAR (murallas, torres, puertas, aldeanos) adaptadas a Grecia como civilización propia." : ""}`,
+    english: `${desc && descLang === "English" ? desc.replace(/([^.!?…])$/, "$1.") + " " : ""}${{ Aventura: "Adventure", Conquista: "Conquest", Mapa: "Map" }[what] || maps.length + " maps"} by ${author}${[metaEn, notEn].filter(Boolean).length ? ` (${[metaEn, notEn].filter(Boolean).join(", ")})` : ""}.${greekWalls ? " The CGWAR's Greek pieces (walls, towers, gates, villagers), adapted to Greece as a civilization of its own." : ""}`,
   },
   category: CATS[main],
   // Players only counts for scenarios and Language for adventures (the SDK's filters); every adventure here is in Spanish
-  tags: [...byCount.slice(1).map(k => `Type: ${CATS[k]}`), ...(has("scenarios") && players ? [players] : []), ...(has("adventures") ? ["Language: Spanish"] : [])],
+  tags: [...byCount.slice(1).map(k => `Type: ${CATS[k]}`), ...(has("scenarios") && players ? [players] : []), ...(has("adventures") ? langs.map(l => `Language: ${l}`) : [])],
   // requires means "all of these": with several candidates, take one (the most used first)
   ...(needs.length || extraTerrain ? { requires: [
     ...(needs.length ? [[...PREFER, ...needs].find(m => needs.includes(m))] : []),
@@ -338,7 +418,7 @@ fs.writeFileSync(path.join(out, "mod.json"), JSON.stringify(mod, null, 2) + "\n"
 // raw/ported.json: which entry each ported mod comes from (tools/sync-table.js uses it to update MODS.md)
 const SRC = path.join(ROOT, "raw", "ported.json");
 const src = (() => { try { return JSON.parse(fs.readFileSync(SRC, "utf8")); } catch { return {}; } })();
-src[id] = opt._ + (opt.file ? ` --file ${opt.file}` : "") + (opt.add ? ` --add ${opt.add}` : "") + (opt.adventure ? " --adventure" : "") + (opt.title ? ` --title ${opt.title}` : "") + (opt.desc ? ` --desc ${opt.desc}` : ""); // what to run to wrap it again
+src[id] = opt._ + (opt.file ? ` --file ${opt.file}` : "") + (opt.add ? ` --add ${opt.add}` : "") + (opt.author ? ` --author ${opt.author}` : "") + (opt.lang ? ` --lang ${opt.lang}` : "") + (opt.adventure ? " --adventure" : "") + (opt.title ? ` --title ${opt.title}` : "") + (opt.desc ? ` --desc ${opt.desc}` : ""); // what to run to wrap it again
 fs.writeFileSync(SRC, JSON.stringify(Object.fromEntries(Object.entries(src).sort()), null, 1) + "\n");
 console.log(`${out}\n  ${maps.join(", ")} -> ${[...new Set(maps.map(f => where[f]))].join(", ")}/\n  category ${mod.category}, tags ${JSON.stringify(mod.tags)}${counts.length < maps.filter(f => where[f] === "scenarios").length ? "  ⚠️ some scenario has no readable players" : ""}${has("scenarios") && !players ? "  ⚠️ no Players tag (one human slot, or --players)" : ""}${renamed ? `\n  🏷️ ${renamed} map(s): the editor's default name/author in game.xml replaced` : ""}${greekWalls ? `\n  🏛️ ${greekWalls} M* pieces (walls, towers, gates, villagers) -> K* (Greek): porter credited` : ""}`
   + (used === null ? "\n  ⚠️ compatibility not checked (no originals/game-data)" : unknown.length ? `\n  ❌ not in the HD game nor in a known mod: ${unknown.join(", ")}` : "")
