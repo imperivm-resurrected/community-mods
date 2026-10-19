@@ -1,0 +1,18 @@
+{
+  "id": "saga-mediterraneo",
+  "name": "Imperivm II: Mediterráneo",
+  "version": "1.0",
+  "authors": [
+    "Haemimont Games",
+    "FX Interactive"
+  ],
+  "description": {
+    "spanish": "Hispania, la Galia, Roma y Cartago compiten por el dominio del Mediterráneo. Mapa de Haemimont Games (Imperivm II, recopilado por Ferónidas).",
+    "english": "Map by Haemimont Games (Imperivm II, collected by Ferónidas)."
+  },
+  "category": "Maps",
+  "tags": [
+    "8 players"
+  ],
+  "redistributable": true
+}

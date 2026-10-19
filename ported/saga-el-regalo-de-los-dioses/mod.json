@@ -1,0 +1,18 @@
+{
+  "id": "saga-el-regalo-de-los-dioses",
+  "name": "Imperivm II: El Regalo de los Dioses",
+  "version": "1.0",
+  "authors": [
+    "Haemimont Games",
+    "FX Interactive"
+  ],
+  "description": {
+    "spanish": "El enfrentamiento de los dioses en estas tierras dejó huella en la orografía, generando un paisaje de extrañas y simbólicas montañas... Mapa de Haemimont Games (Imperivm II, recopilado por Ferónidas).",
+    "english": "Map by Haemimont Games (Imperivm II, collected by Ferónidas)."
+  },
+  "category": "Maps",
+  "tags": [
+    "8 players"
+  ],
+  "redistributable": true
+}

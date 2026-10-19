@@ -73,11 +73,16 @@ const mapDesc = f => {
 // are HD's minus the files its hidden.txt hides, plus its own. A map needs a mod ("requires") if only that mod has a
 // class it uses, and can't run with a mod ("incompatibleWith") if that mod hides a class it uses.
 const CLASS_ID = /<class\b[^>]*?\bid\s*=\s*"([^"]+)"/g;
+const CLASS_HEAD = /<class\b[^>]*>/g;
 const classFiles = dir => { // class id (lowercase) -> "data/classes/x.sc.xml"
   const r = {};
   if (!fs.existsSync(dir)) return r;
   for (const f of fs.readdirSync(dir, { recursive: true })) if (/\.sc\.xml$/i.test(f))
-    for (const m of fs.readFileSync(path.join(dir, f), "latin1").matchAll(CLASS_ID)) r[m[1].toLowerCase()] = ("data/" + f).replace(/\\/g, "/").toLowerCase();
+    for (const m of fs.readFileSync(path.join(dir, f), "latin1").matchAll(CLASS_HEAD)) {
+      const file = ("data/" + f).replace(/\\/g, "/").toLowerCase();
+      // altid: the old name the engine still accepts (RWallsN has altid="Rwalls2", the Imperivm II name)
+      for (const k of ["id", "altid"]) { const v = (m[0].match(new RegExp(`\\b${k}\\s*=\\s*"([^"]+)"`)) || [])[1]; if (v) r[v.toLowerCase()] = file; }
+    }
   return r;
 };
 const DATA = path.join(ROOT, "originals", "game-data", "DATA"), MODS = path.join(ROOT, "originals", "mods");
@@ -94,9 +99,12 @@ const bigMods = !hdFiles || !fs.existsSync(MODS) ? [] : fs.readdirSync(MODS).map
 // Classes a map uses: placed objects (class="X") and classes its scripts create or look up (Place("X"...)). Parts of the
 // .bfhp are LZ-compressed, which mangles some names ("GAxema718"): those show up once, a real unit several times, so an
 // unknown placed name only counts if seen at least twice.
+// extras/<id>/: files we add to a mod by hand (e.g. a class the map places under an old name), copied in as they are
+const EXTRAS = path.join(ROOT, "extras", id);
+const extraClasses = new Set(Object.keys(classFiles(path.join(EXTRAS, "data"))));
 const usedClasses = f => {
   const s = fs.readFileSync(f, "latin1");
-  const known = c => hdClasses.has(c.toLowerCase()) || bigMods.some(m => m.own.has(c.toLowerCase()));
+  const known = c => hdClasses.has(c.toLowerCase()) || extraClasses.has(c.toLowerCase()) || bigMods.some(m => m.own.has(c.toLowerCase()));
   const own = new Set([...s.matchAll(CLASS_ID)].map(m => m[1].toLowerCase())); // classes the map defines itself
   const seen = {};
   for (const m of s.matchAll(/\bclass="([A-Za-z_][\w.-]{0,60})"/g)) seen[m[1]] = (seen[m[1]] || 0) + 1;
@@ -152,9 +160,10 @@ if (e.channel === "forum" && !isAdv && maps.some(f => /<properties[^>]*?\sgame_t
   fs.renameSync(dest, path.join(out, "adventures"));
   dest = path.join(out, "adventures");
 }
-const counts = maps.map(f => slots(path.join(dest, f))).filter(Boolean);
+// Imperivm III takes 8 players at most; Imperivm II maps can have up to 12 slots
+const counts = maps.map(f => slots(path.join(dest, f))).filter(Boolean).map(n => Math.min(n, 8));
 const used = hdClasses ? [...new Set(maps.flatMap(f => usedClasses(path.join(dest, f))))] : null;
-const missing = used?.filter(c => !hdClasses.has(c.toLowerCase())) || []; // not in the HD game
+const missing = used?.filter(c => !hdClasses.has(c.toLowerCase()) && !extraClasses.has(c.toLowerCase())) || []; // not in the HD game or extras/
 // needs = the big mods that have every missing class; none -> the map needs a mod we don't have
 const needs = missing.length ? bigMods.filter(m => missing.every(c => m.classes.has(c.toLowerCase()))).map(m => m.mod) : [];
 const unknown = missing.length && !needs.length ? missing : [];
@@ -192,6 +201,7 @@ const mod = {
   ...(breaks.length ? { incompatibleWith: breaks.map(b => b.mod) } : {}),
   redistributable: !opt["no-redistributable"], // publishing on GameBanana already redistributes it; false only if the author asks
 };
+if (fs.existsSync(EXTRAS)) fs.cpSync(EXTRAS, out, { recursive: true });
 fs.writeFileSync(path.join(out, "mod.json"), JSON.stringify(mod, null, 2) + "\n");
 // raw/ported.json: which entry each ported mod comes from (tools/sync-table.js uses it to update MODS.md)
 const SRC = path.join(ROOT, "raw", "ported.json");

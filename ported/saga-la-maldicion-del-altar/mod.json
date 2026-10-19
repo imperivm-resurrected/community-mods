@@ -1,0 +1,18 @@
+{
+  "id": "saga-la-maldicion-del-altar",
+  "name": "Imperivm II: La Maldición del Altar",
+  "version": "1.0",
+  "authors": [
+    "Haemimont Games",
+    "FX Interactive"
+  ],
+  "description": {
+    "spanish": "Cuatro civilizaciones luchan por el control de la región. En el centro se erige un misterioso altar. Aquel que consiga entrar sufrirá la maldición, pero quizá consiga emplear los poderes del altar en su propio beneficio. . Mapa de Haemimont Games (Imperivm II, recopilado por Ferónidas).",
+    "english": "Map by Haemimont Games (Imperivm II, collected by Ferónidas)."
+  },
+  "category": "Maps",
+  "tags": [
+    "4 players"
+  ],
+  "redistributable": true
+}

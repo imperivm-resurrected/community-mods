@@ -1,0 +1,18 @@
+{
+  "id": "saga-hispania",
+  "name": "Imperivm II: Hispania",
+  "version": "1.0",
+  "authors": [
+    "Haemimont Games",
+    "FX Interactive"
+  ],
+  "description": {
+    "spanish": "La península Ibérica es el perfecto campo de batalla para jugadores expertos. Recomendado para cuatro equipos de dos jugadores. Mapa de Haemimont Games (Imperivm II, recopilado por Ferónidas).",
+    "english": "Map by Haemimont Games (Imperivm II, collected by Ferónidas)."
+  },
+  "category": "Maps",
+  "tags": [
+    "8 players"
+  ],
+  "redistributable": true
+}
