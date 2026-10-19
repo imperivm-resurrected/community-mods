@@ -160,27 +160,37 @@ const locEntries = s => { const m = new Map(); for (const e of s.matchAll(/<tran
 const hdLoc = idx(path.join(ROOT, "originals/game-data/local-spanish"));
 const decode = b => (b.subarray(0, 3).equals(Buffer.from([0xef, 0xbb, 0xbf])) || !/[\x80-\xff]/.test(b.toString("latin1")) ? b.toString("utf8") : (() => { const u = b.toString("utf8"); return u.includes("\ufffd") ? b.toString("latin1") : u; })());
 
-// A 4:3 BMP (16-bit 5-5-5 or 24-bit, same height) widened to `width` as 24-bit: the left half and a 24 px right border stay
-// as drawn, the band between them is stretched (linear). Old menu backgrounds put their figure on the left and a frame on
-// the right, with plain parchment in between.
-// ponytail: fixed layout (left half + 24 px border); a per-mod crop option if some background has its figure elsewhere
-function widenBmp(b, width) {
+// An old 4:3 BMP (16-bit 5-5-5 or 24-bit) fitted to width x height as 24-bit: scaled to the new height, then the left half
+// and a thin right border stay as drawn and the band between them is stretched to fill the width. Old menu backgrounds put
+// their figure on the left and a frame on the right, with plain parchment in between. Bilinear.
+// ponytail: fixed layout (left half + right border); a per-mod crop option if some background has its figure elsewhere
+function fitBmp(b, width, height) {
   const off = b.readUInt32LE(10), w = b.readInt32LE(18), hh = b.readInt32LE(22), h = Math.abs(hh), bpp = b.readUInt16LE(28);
-  if (b.readUInt32LE(30) !== 0 || (bpp !== 16 && bpp !== 24) || width <= w) return null;
-  const inStride = Math.ceil(w * bpp / 32) * 4, px = (x, y) => { const o = off + y * inStride + x * bpp / 8;
+  if (b.readUInt32LE(30) !== 0 || (bpp !== 16 && bpp !== 24)) return null;
+  const k = height / h, sw = w * k;                                   // scaled to the new height
+  if (sw > width + 1) return null;                                    // would need cropping: not this case
+  const inStride = Math.ceil(w * bpp / 32) * 4, px = (x, y) => { const o = off + (hh > 0 ? h - 1 - y : y) * inStride + x * bpp / 8;
     if (bpp === 24) return [b[o + 2], b[o + 1], b[o]];
     const v = b.readUInt16LE(o); return [(v >> 10 & 31) * 255 / 31, (v >> 5 & 31) * 255 / 31, (v & 31) * 255 / 31]; };
-  const left = Math.floor(w / 2), border = 24, band = w - left - border, newBand = width - left - border;
-  const srcX = x => (x < left ? x : x >= left + newBand ? x - newBand + band : left + (x - left) * (band - 1) / Math.max(newBand - 1, 1));
-  const outStride = Math.ceil(width * 3 / 4) * 4, out = Buffer.alloc(54 + outStride * h);
+  const left = Math.floor(sw / 2), border = Math.round(24 * k), band = sw - left - border, newBand = width - left - border;
+  const srcX = x => (x < left ? x : x >= left + newBand ? x - newBand + band : left + (x - left) * band / newBand) / k;
+  const outStride = Math.ceil(width * 3 / 4) * 4, out = Buffer.alloc(54 + outStride * height);
   out.write("BM", 0); out.writeUInt32LE(out.length, 2); out.writeUInt32LE(54, 10); out.writeUInt32LE(40, 14);
-  out.writeInt32LE(width, 18); out.writeInt32LE(hh, 22); out.writeUInt16LE(1, 26); out.writeUInt16LE(24, 28); out.writeUInt32LE(outStride * h, 34);
-  for (let y = 0; y < h; y++) for (let x = 0; x < width; x++) {
-    const sx = srcX(x), x0 = Math.floor(sx), t = sx - x0, p = px(x0, y), q = px(Math.min(x0 + 1, w - 1), y), o = 54 + y * outStride + x * 3;
-    for (let c = 0; c < 3; c++) out[o + 2 - c] = Math.round(p[c] + (q[c] - p[c]) * t);
+  out.writeInt32LE(width, 18); out.writeInt32LE(height, 22); out.writeUInt16LE(1, 26); out.writeUInt16LE(24, 28); out.writeUInt32LE(outStride * height, 34);
+  const xs = Array.from({ length: width }, (_, x) => Math.min(Math.max(srcX(x + 0.5) - 0.5, 0), w - 1));
+  for (let y = 0; y < height; y++) {
+    const sy = Math.min(Math.max((y + 0.5) / k - 0.5, 0), h - 1), y0 = Math.floor(sy), ty = sy - y0, y1 = Math.min(y0 + 1, h - 1);
+    const row = height - 1 - y;                                       // BMP rows are bottom-up
+    for (let x = 0; x < width; x++) {
+      const sx = xs[x], x0 = Math.floor(sx), tx = sx - x0, x1 = Math.min(x0 + 1, w - 1);
+      const p00 = px(x0, y0), p10 = px(x1, y0), p01 = px(x0, y1), p11 = px(x1, y1), o = 54 + row * outStride + x * 3;
+      for (let c = 0; c < 3; c++) out[o + 2 - c] = Math.round((p00[c] * (1 - tx) + p10[c] * tx) * (1 - ty) + (p01[c] * (1 - tx) + p11[c] * tx) * ty);
+    }
   }
   return out;
 }
+// the HD menu background comes in three sizes, picked by the game for the screen; a mod's must cover all three
+const MENU_SET = ["menubackground.bmp", "menu_16_9.bmp", "menu_4_3.bmp"];
 
 const locSeen = new Set();
 for (const f of fs.readdirSync(modDir, { recursive: true })) {
@@ -213,8 +223,9 @@ for (const f of fs.readdirSync(modDir, { recursive: true })) {
     const size = b => (b.toString("latin1", 0, 2) === "BM" ? [b.readInt32LE(18), Math.abs(b.readInt32LE(22))] : null);
     const a = size(data), h = g && size(fs.readFileSync(g));
     if (a && h && (a[0] !== h[0] || a[1] !== h[1])) {
-      const wide = a[1] === h[1] && widenBmp(data, h[0]);
-      if (wide) { write(rel, wide); count("screen image widened to HD"); continue; }
+      const set = MENU_SET.includes(inner.toLowerCase()) ? MENU_SET : [inner.toLowerCase()];
+      const fits = set.map(n => { const gg = hdLoc.get("currentlang/" + n), hs = gg && size(fs.readFileSync(gg)); return hs && [n, fitBmp(data, hs[0], hs[1])]; }).filter(x => x && x[1]);
+      if (fits.length === set.length) { for (const [n, img] of fits) write(path.join("CURRENTLANG", n.toUpperCase()), img); count(`screen image fitted to HD (${fits.length} sizes)`); continue; }
       count("low-res screen image (HD kept)"); report.push({ rel, note: `${a.join("x")} over HD's ${h.join("x")}: left out, HD's stays` }); continue;
     }
     write(/\.(xml|txt|ini)$/i.test(k) ? path.join("local/spanish", inner) : rel, data); count("language file");
