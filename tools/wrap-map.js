@@ -1,6 +1,6 @@
 // Wrap a Discord map/adventure (raw/discord-entries.json) or a forum topic (raw/forum-entries.json, downloaded by
 // tools/download-forum.js) as an Imperivm Resurrected mod in ported/<slug>/
-//   node tools/wrap-map.js [channel/]<slug> | forum/t<topic id> [--players "2-4"] [--file <text>] [--add <entry>[:<text>]] [--adventure] [--title <name>]
+//   node tools/wrap-map.js [channel/]<slug> | forum/t<topic id> [--players "2-4"] [--file <text>] [--add <entry>[:<text>]] [--adventure] [--title <name>] [--desc <text>]
 //                                                                 [--no-redistributable]
 // Nothing in the map changes, so the original author is the only author (no porter credit).
 // .rar/.zip are unpacked with bsdtar: it is the system `tar` on Windows 10+ and macOS; on Linux install it
@@ -292,17 +292,19 @@ for (const f of maps) {
   if (DEF_NAME.test(attr("name") ?? "-"))
     set.name = maps.length === 1 ? modName : f.replace(/\.bfhp$/i, "").replace(/ \([a-z0-9-]+\)$/, "").replace(/_/g, " ");
   if (DEF_AUTHOR.test(attr("author") ?? "-") && author !== "?") set.author = author;
-  if (DEF_DESC.test(attr("description") ?? "-")) set.description = "";
+  if (opt.desc && maps.length === 1) set.description = opt.desc; // --desc: the post has none and the editor's default is shown
+  else if (DEF_DESC.test(attr("description") ?? "-")) set.description = "";
   if (!Object.keys(set).length) continue;
   let t = g;
   for (const [k, v] of Object.entries(set)) t = t.replace(new RegExp(`(\\s${k}=")[^"]*"`), (m, a) => a + Buffer.from(xmlEsc(v), "utf8").toString("latin1") + '"');
   t = t.replace(/\r?\n\t*(?=[\w.]+=)/g, " ");
-  if (t.length > g.length) { console.log(`  ⚠️ ${f}: no room for its name in game.xml`); continue; }
-  x.write(Buffer.from(t + " ".repeat(g.length - t.length), "latin1"));
+  const room = Math.ceil(g.length / 512) * 512; // HPFS pages are 512 bytes or more: growing within them is free
+  if (t.length > room) { console.log(`  ⚠️ ${f}: no room for its name/description in game.xml (${t.length} > ${room})`); continue; }
+  try { x.write(Buffer.from(t, "latin1")); } catch (err) { console.log(`  ⚠️ ${f}: ${err.message}`); continue; }
   fs.writeFileSync(p, buf);
   renamed++;
 }
-const desc = e.desc || (maps.length === 1 ? mapDesc(at(maps[0])) : "");
+const desc = opt.desc || e.desc || (maps.length === 1 ? mapDesc(at(maps[0])) : "");
 const meta = saga ? (e.author ? `versión mejorada de la aventura de ${sagaGame} de Haemimont Games, recopilada por Ferónidas` : `${sagaGame}, recopilado por Ferónidas`) : [e.year, e.base].filter(Boolean).join(", ");
 const metaEn = saga ? (e.author ? `improved version of the ${sagaGame} adventure by Haemimont Games, collected by Ferónidas` : `${sagaGame}, collected by Ferónidas`) : meta;
 // the main category: what most of it is (adventures over conquests over scenarios on a tie); the rest go as "Type: …" tags
@@ -336,7 +338,7 @@ fs.writeFileSync(path.join(out, "mod.json"), JSON.stringify(mod, null, 2) + "\n"
 // raw/ported.json: which entry each ported mod comes from (tools/sync-table.js uses it to update MODS.md)
 const SRC = path.join(ROOT, "raw", "ported.json");
 const src = (() => { try { return JSON.parse(fs.readFileSync(SRC, "utf8")); } catch { return {}; } })();
-src[id] = opt._ + (opt.file ? ` --file ${opt.file}` : "") + (opt.add ? ` --add ${opt.add}` : "") + (opt.adventure ? " --adventure" : "") + (opt.title ? ` --title ${opt.title}` : ""); // what to run to wrap it again
+src[id] = opt._ + (opt.file ? ` --file ${opt.file}` : "") + (opt.add ? ` --add ${opt.add}` : "") + (opt.adventure ? " --adventure" : "") + (opt.title ? ` --title ${opt.title}` : "") + (opt.desc ? ` --desc ${opt.desc}` : ""); // what to run to wrap it again
 fs.writeFileSync(SRC, JSON.stringify(Object.fromEntries(Object.entries(src).sort()), null, 1) + "\n");
 console.log(`${out}\n  ${maps.join(", ")} -> ${[...new Set(maps.map(f => where[f]))].join(", ")}/\n  category ${mod.category}, tags ${JSON.stringify(mod.tags)}${counts.length < maps.filter(f => where[f] === "scenarios").length ? "  ⚠️ some scenario has no readable players" : ""}${has("scenarios") && !players ? "  ⚠️ no Players tag (one human slot, or --players)" : ""}${renamed ? `\n  🏷️ ${renamed} map(s): the editor's default name/author in game.xml replaced` : ""}${greekWalls ? `\n  🏛️ ${greekWalls} M* pieces (walls, towers, gates, villagers) -> K* (Greek): porter credited` : ""}`
   + (used === null ? "\n  ⚠️ compatibility not checked (no originals/game-data)" : unknown.length ? `\n  ❌ not in the HD game nor in a known mod: ${unknown.join(", ")}` : "")

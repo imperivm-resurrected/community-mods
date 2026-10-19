@@ -9,10 +9,13 @@ function hpfs(buf) {
   if (buf.toString("latin1", 0, 4) !== "HPFS") throw new Error("not an HPFS file");
   const page = buf.readUInt32LE(4), per = page / 4, entries = [];
   const word = (p, i) => buf.readUInt32LE(p * page + i * 4);
-  // read a file, or (data given, same length) write it back in place
+  // read a file, or (data given) write it back in place: any length that fills the same number of pages (the length is
+  // the first word of the file's root page; its data pages stay where they are)
   const read = (h, data) => {
-    const len = buf.readUInt32LE(h * page), depth = buf.readUInt16LE(h * page + 4), out = Buffer.alloc(len);
-    if (data && data.length !== len) throw new Error("in-place write needs the same length");
+    let len = buf.readUInt32LE(h * page);
+    const depth = buf.readUInt16LE(h * page + 4), out = Buffer.alloc(len);
+    if (data && Math.ceil(data.length / page) !== Math.ceil(len / page)) throw new Error(`in-place write: ${data.length} bytes don't fit the ${Math.ceil(len / page)} page(s) of ${len}`);
+    if (data) { buf.writeUInt32LE(data.length, h * page); len = data.length; }
     for (let p = 0; p * page < len; p++) {
       const idx = []; let q = p;
       for (let i = depth; i >= 1; i--) { idx[i] = q % per; q = Math.floor(q / per); }
