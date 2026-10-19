@@ -5,8 +5,8 @@
 //   - Greek classes: race="greece"; the Greek-drawn Imperial pieces (MWalls*, MGate*, MTower, MVillager…) become K*
 //     copies, since a mod civilization builds its city from the classes of its letter (KWallsN, KTavern2, KArena…)
 //   - Imperial Rome and the "Rome" merge (Republican Rome turning Republican or Imperial in the Arena) go: the M* classes,
-//     RArena/RBarracks/RBlacksmith, the AI scripts (the Greek AI is Imperial Rome's through alias in civs\greece.json),
-//     VERIFY_*, the official adventures and conquest it edited, the random map towns and the texts renaming both Romes
+//     RArena/RBarracks/RBlacksmith, VERIFY_*, the official adventures and conquest it edited, the random map towns and the texts renaming both Romes
+//   - the mod's AI settlement scripts run as GR_* for Greek settlements only (HD's hand over to them through a patch)
 //   - shared command files become patches that only add the Greek commands and sources
 //   - Greek interface: INFOBAR_GREEK.INI, CMDBARGREEK.INI and the frame in FRAMES.INI (internalName "Greek")
 const fs = require("fs"), path = require("path");
@@ -42,7 +42,34 @@ toK(rd(find(HD, "DATA/CLASSES/MGUARDPOSTSENTRY.SC.XML")), "KGuardPostSentry",
 for (const f of fs.readdirSync(CLASSES).filter(f => /^(M\w+|RARENA|RBARRACKS|RBLACKSMITH)\.SC\.XML$/i.test(f))) fs.rmSync(path.join(CLASSES, f));
 const WINTER = find(CLASSES, "WINTER");
 if (WINTER) { for (const f of fs.readdirSync(WINTER).filter(f => /^M/i.test(f))) fs.rmSync(path.join(WINTER, f)); if (!fs.readdirSync(WINTER).length) fs.rmdirSync(WINTER); }
-for (const r of ["DATA/AI", "DATA/SUBAI/Technology_of_Rome_Buildings.vs", "DATA/SUBAI/VERIFY_RESEARCH.VS", "DATA/SUBAI/VERIFY_TRAINEX.VS",
+// AI: the mod's settlement scripts assume "Imperial Rome = Greece", and a Greek AI does see ImperialRome (the base), so
+// they work as they are for Greece: each goes in as GR_<name>, and HD's own script hands a Greek settlement over to it.
+// Every other civilization keeps HD's AI.
+const AI = find(OUT, "DATA/AI"), HD_AI = find(HD, "DATA/AI");
+const aiIni = rd(path.join(HD_AI, "AI.INI"));
+const aiName = f => (aiIni.match(new RegExp(`^(${f.replace(/\.VS$/i, "")}\\.vs)\\s*=`, "im")) || [])[1];  // "ESH_BuildArmy.vs"
+const DECL = /^\s*(int|str|bool|point|Obj|ObjList|Settlement|Building|Unit|StrArray|IntArray|Hero|GAIKA|Squad|Item)\b[^(]*;\s*(\/\/.*)?$/;
+const greekAi = [];
+for (const f of fs.readdirSync(AI).filter(f => /\.vs$/i.test(f))) {
+  const hd = rd(path.join(HD_AI, f)).split(/\r?\n/), name = aiName(f);
+  if (!name || !/^\/\/\s*void,\s*Settlement set/i.test(hd[0]) || !/\b(ImperialRome|race\s*==\s*4)\b/.test(rd(path.join(AI, f)))) continue;
+  let i = 1; while (i < hd.length && (!hd[i].trim() || hd[i].trim().startsWith("//") || DECL.test(hd[i]))) i++; // first line of code
+  fs.renameSync(path.join(AI, f), path.join(AI, "GR_" + f));
+  wr(path.join(OUT, "patches", "DATA", "AI", f), `@before ${hd[i].trim()}\r\nif (Mod_TrueRace(set.GetCentralBuilding) == Greece)\r\n{\r\n\tset.AIRun("GR_${name}");\r\n\treturn;\r\n}\r\n`);
+  greekAi.push(name);
+}
+for (const f of ["CALCGAIKAPRIORITY.VS", "ESH_GOLDTRADE.VS"]) rm("DATA/AI/" + f); // only the Rome merge
+const modIni = rd(path.join(AI, "AI.INI")); rm("DATA/AI/AI.INI");
+const iniVal = (s, sec, k) => { const b = s.split(new RegExp(`^\\[${sec.replace(".", "\\.")}\\]`, "m"))[1]; return b && (b.split(/^\[/m)[0].match(new RegExp(`^${k}\\s*=\\s*(\\S+)`, "m")) || [])[1]; };
+const maxK = [...modIni.matchAll(/^(AIV_MaxK\w+)\s*=\s*(-?\d+)/gm)].map(m => `${m[1]} = ${m[2]}`);
+wr(path.join(OUT, "patches", "DATA", "AI", "AI.INI"), ["[Scripts]", ...greekAi.map(n => `GR_${n} = void, Settlement set`),
+  "[Vars.All]", ...maxK,
+  // the mod's economy tuning, for every AI as in the mod (HD has these keys twice in [Vars.All])
+  "-AIV_SquanderGoldAmount", "-AIV_SquanderFoolAmount", "-AIV_ExcessGold",
+  ...["AIV_SquanderGoldAmount", "AIV_SquanderFoolAmount", "AIV_ExcessGold"].map(k => `${k} = ${iniVal(modIni, "Vars.All", k)}`),
+  "[Vars.Hard]", ...["AIV_SquanderGoldAmount", "AIV_SquanderFoolAmount"].map(k => `${k} = ${iniVal(modIni, "Vars.Hard", k)}`), ""].join("\r\n"));
+
+for (const r of ["DATA/SUBAI/Technology_of_Rome_Buildings.vs", "DATA/SUBAI/VERIFY_RESEARCH.VS", "DATA/SUBAI/VERIFY_TRAINEX.VS",
   "Adventures/GreatBattles", "Adventures/GreatChallenges", "Conquests", "ConquestMaps", "DATA/INTERFACE/MENU/CONQUESTGAME.INI",
   "Packs/RandomMapSettlements.bfhp"]) rm(r);
 for (const d of ["Adventures", "Packs"]) { const p = find(OUT, d); if (p && !fs.readdirSync(p).length) fs.rmSync(p, { recursive: true }); }
