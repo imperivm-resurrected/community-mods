@@ -100,7 +100,7 @@ Built from the authors in `MODS.md` and a member search of the *Imperivm III Edi
 | jrojo96 | 1 | ? | — | [jrojo96](https://imperivmgbr.foroactivo.com/u4772) | — | Texturas automáticas: nueva herramienta para mods |  |  |
 | OlvidoGames | 1 | ? | — | [OlvidoGames](https://imperivmgbr.foroactivo.com/u5300) | — | Ayuda para aplicar los cambios |  |  |
 | Garrancha | 1 | ? | [garrancha.](https://discord.com/users/1047176130064560209) | [Garrancha](https://imperivmgbr.foroactivo.com/u5463) | — | Celtic Kings III: Adventures | 2026-10-18 (#chat-mapas) | 🕐 |
-| frikypani | 1 | 2010–2013 | [danimurcianico](https://discord.com/users/264761109901344768) ❓ (shown as *Frikypani*) | [frikypani](https://imperivmgbr.foroactivo.com/u120) | — | Mod Comunidad Imperivm (MCI) 9.0 (co-author) |  |  |
+| frikypani | 1 | 2010–2013 | [danimurcianico](https://discord.com/users/264761109901344768) (shown as *Frikypani*; talks about modding the game, and Ferónidas names Frikypani among the old MCI people in the server) | [frikypani](https://imperivmgbr.foroactivo.com/u120) | — | Mod Comunidad Imperivm (MCI) 9.0 (co-author) |  |  |
 | JNXF | 1 | 2010–2013 | — | [JNXF](https://imperivmgbr.foroactivo.com/u382) | — | Mod Comunidad Imperivm (MCI) 9.0 (co-author) |  |  |
 | Axaros | 1 | ? | `axaros74` (not looked up in the server yet) | [Axaros](https://imperivmgbr.foroactivo.com/u5464) | — | Greek Mod: terrenos extra (maintains Greek Mod 2.5.x, see GreekModTeam) |  |  |
 | zeloslaw C | 1 | 2009 | — (ModDB: [zelu](https://www.moddb.com/members/zelu)) | — | — | GBR Tactics 2.4 | 2026-10-19 (ModDB PM) | 🕐 |
@@ -110,5 +110,5 @@ Built from the authors in `MODS.md` and a member search of the *Imperivm III Edi
 | Luken_SOD | 1 | 2019–2026 | [luken8](https://discord.com/users/428292824534876213) ❓ (ModDB: [luken-sod](https://www.moddb.com/members/luken-sod)) | — | — | Celtic Kings Adventure (Larax, from Imperivm I) | 2026-10-19 (ModDB PM) | 🕐 |
 | OlvidoGX | 1 | 2024 | — (ModDB: [olvidogx](https://www.moddb.com/company/olvidogx)) ❓ same as OlvidoGames? | — | — | Imperivm 3 (adapted adventures) |  |  |
 | azangara | 1 | 2018 | — (ModDB: [azangara](https://www.moddb.com/members/azangara)) | — | — | Scenarios |  |  |
-| ENSOO | 1 | 2025 | [ensoo9789](https://discord.com/users/691330821742919721) ❓ (shown as *ENSOO*, in the Italian *Imperivm GBR* server) (ModDB: [ensoo](https://www.moddb.com/members/ensoo)) | — | — | Random Real World |  |  |
+| ENSOO | 1 | 2025 | [ensoo9789](https://discord.com/users/691330821742919721) (shown as *ENSOO*, in the Italian *Imperivm GBR* server, where he presents his real-world random maps) (ModDB: [ensoo](https://www.moddb.com/members/ensoo)) | — | — | Random Real World |  |  |
 | WARRIOR4444 | 1 | ? | `warrior4444.` (in the server, no messages to take the profile link from) | [WARRIOR4444](https://imperivmgbr.foroactivo.com/u2753) | — | CGWAR Greek Civilization Mod v6 (co-author) | 2026-10-19 (forum PM) | 🕐 |
