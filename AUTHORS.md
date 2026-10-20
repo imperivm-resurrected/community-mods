@@ -1,6 +1,6 @@
 # Authors to contact
 
-Built from the authors in `MODS.md` and a member search of the *Imperivm III Editores* Discord server: 33 of 87 found (2026-10-18). The ModDB authors come after, with their ModDB profile (it has private messages).
+Built from the authors in `MODS.md` and a member search of the *Imperivm III Editores* Discord server: 33 of 87 found (2026-10-18). Second pass on 2026-10-20 over both Discord servers (*Imperivm III Editores* and the Italian *Imperivm GBR*) and the member lists of both forums, for every author still missing there. The ModDB authors come after, with their ModDB profile (it has private messages).
 
 **Discord**: account found by name (the link opens the profile in Discord) · ❓ partial match, check it is the same person · — not found in the server (try the forum, by private message).
 **Forum (ES)**: profile on the [JVLIVS CAESAR forum](https://imperivmgbr.foroactivo.com), found in the scraped topics (`raw/forum.json`). It needs a forum login to open; use it to send a private message · ❓ partial match · — no posts in the scraped topics.
@@ -23,7 +23,7 @@ Built from the authors in `MODS.md` and a member search of the *Imperivm III Edi
 | OskaOtzuna | 6 | 2017 | [oskaotzuna](https://discord.com/users/352757324257034242) | [OskaOtzuna](https://imperivmgbr.foroactivo.com/u3266) | — | [AVENTURAS II] LAS CAMPAÑAS DE ANÍBAL (5 maps), [AVENTURAS II] LAS GUERRAS PÚNICAS (6 maps), INFIERNO EN IBERIA, … | 2026-10-18 (#chat-mapas) | 🕐 |
 | Jochi | 6 | 2012–2013 | — | [Jochi](https://imperivmgbr.foroactivo.com/u1218) | — | REFORMA, LABERINTO, CIUDADELA, … | 2026-10-18 (forum PM to Jochi) | 🕐 |
 | lusitano | 6 | 2015 | [lusitano3805](https://discord.com/users/482726756483334154) ❓ | [lusitano](https://imperivmgbr.foroactivo.com/u507) | — | ROMA V EGIPTO, BATALLA POR IBERIA, GUERRA DE LAS NACIONES, … | 2026-10-18 (#chat-mapas) | 🕐 |
-| moonson | 5 | 2010 | — | — | — | ITALIA, EL ASEDIO, [SIN DESCARGA] [Mapa] Mediterraneo distintas versiones, … |  |  |
+| moonson | 5 | 2010 | — | [\[moonson\]](https://imperivmgbr.foroactivo.com/u251) | — | ITALIA, EL ASEDIO, [SIN DESCARGA] [Mapa] Mediterraneo distintas versiones, … |  |  |
 | Hareld | 5 | 2016–2022 | — | [Hareld](https://imperivmgbr.foroactivo.com/u3542) | — | DEFENSORES DEL TÚMULO, DEFENDERS, DEFENDERS NIGHTMARE, … (his *Il popolo di Asclepio* is in the Greek Mod maps pack, Italian text by Giuseppe D'Addio) | 2026-10-18 (forum PM to Hareld) | 🕐 |
 | yito79 | 5 | 2019 | — | [yito79](https://imperivmgbr.foroactivo.com/u4785) | — | ROMPOLIS, ASTIGI, PARIX, … | 2026-10-18 (forum PM to yito79) | 🕐 |
 | Mietitore | 5 | 2020 | — | [Mietitore](https://imperivmgbr.foroactivo.com/u5051) | [Mietitore](https://imperivmeditor.forumcommunity.net/?act=Profile&MID=10765892) | LA DEFENSA DE ROMA, ESCIPIÓN A LAS PUERTAS DE CARTAGO, REBELIÓN DE ESPARTACO, … (signs `IL Mietitore` in some maps; the Greek Mod maps pack has the Italian editions of 3 of them) | 2026-10-18 (forum PM to Mietitore) | 🕐 |
@@ -63,7 +63,7 @@ Built from the authors in `MODS.md` and a member search of the *Imperivm III Edi
 | Avian98 | 1 | 2019 | — | [Avian98](https://imperivmgbr.foroactivo.com/u4543) | — | CONTRA LA GRAN ROMA | 2026-10-18 (forum PM to Avian98) | 🕐 |
 | Desconocido | 1 | 2020 | — | — | — | 3v3 TOURNAMENT MAP |  |  |
 | MDavidHC | 1 | 2021 | — | [MDavidHC](https://imperivmgbr.foroactivo.com/u4376) | — | TRAMÓREA | 2026-10-18 (forum PM to MDavidHC) | ✅ yes (2026-10-19) |
-| jclempire | 1 | 2021 | — | [jclempire](https://imperivmgbr.foroactivo.com/u5090) | — | PRIMERA GUERRA PÚNICA | 2026-10-18 (forum PM to jclempire) | ✅ yes (2026-10-19, forum + Discord); conditions: send him the GameBanana link, credit him and link the original forum post. May release a rebalanced update (fast speed, vs AI). Asks for an HD key if one turns up |
+| jclempire | 1 | 2021 | [jclempire](https://discord.com/users/479761158719406086) | [jclempire](https://imperivmgbr.foroactivo.com/u5090) | — | PRIMERA GUERRA PÚNICA | 2026-10-18 (forum PM to jclempire) | ✅ yes (2026-10-19, forum + Discord); conditions: send him the GameBanana link, credit him and link the original forum post. May release a rebalanced update (fast speed, vs AI). Asks for an HD key if one turns up |
 | Soundless Flow | 1 | 2021 | [soundless_flow](https://discord.com/users/463438025720856587) | — | — | BATALLA EN LOS ALPES | 2026-10-18 (#chat-mapas) | 🕐 |
 | Arkalix | 1 | 2023 | [arkalix.](https://discord.com/users/559135492067688458) | — | — | 4 REYES | 2026-10-18 (#chat-mapas) | 🕐 |
 | ruben.rdrgz | 1 | 2024 | [rubix09432](https://discord.com/users/384787462922436608) | — | — | BATALLA POR GERGOVIA | 2026-10-18 (#chat-mapas) | 🕐 |
@@ -100,7 +100,7 @@ Built from the authors in `MODS.md` and a member search of the *Imperivm III Edi
 | jrojo96 | 1 | ? | — | [jrojo96](https://imperivmgbr.foroactivo.com/u4772) | — | Texturas automáticas: nueva herramienta para mods |  |  |
 | OlvidoGames | 1 | ? | — | [OlvidoGames](https://imperivmgbr.foroactivo.com/u5300) | — | Ayuda para aplicar los cambios |  |  |
 | Garrancha | 1 | ? | [garrancha.](https://discord.com/users/1047176130064560209) | [Garrancha](https://imperivmgbr.foroactivo.com/u5463) | — | Celtic Kings III: Adventures | 2026-10-18 (#chat-mapas) | 🕐 |
-| frikypani | 1 | 2010–2013 | — | [frikypani](https://imperivmgbr.foroactivo.com/u120) | — | Mod Comunidad Imperivm (MCI) 9.0 (co-author) |  |  |
+| frikypani | 1 | 2010–2013 | [danimurcianico](https://discord.com/users/264761109901344768) ❓ (shown as *Frikypani*) | [frikypani](https://imperivmgbr.foroactivo.com/u120) | — | Mod Comunidad Imperivm (MCI) 9.0 (co-author) |  |  |
 | JNXF | 1 | 2010–2013 | — | [JNXF](https://imperivmgbr.foroactivo.com/u382) | — | Mod Comunidad Imperivm (MCI) 9.0 (co-author) |  |  |
 | Axaros | 1 | ? | `axaros74` (not looked up in the server yet) | [Axaros](https://imperivmgbr.foroactivo.com/u5464) | — | Greek Mod: terrenos extra (maintains Greek Mod 2.5.x, see GreekModTeam) |  |  |
 | zeloslaw C | 1 | 2009 | — (ModDB: [zelu](https://www.moddb.com/members/zelu)) | — | — | GBR Tactics 2.4 | 2026-10-19 (ModDB PM) | 🕐 |
@@ -110,5 +110,5 @@ Built from the authors in `MODS.md` and a member search of the *Imperivm III Edi
 | Luken_SOD | 1 | 2019–2026 | [luken8](https://discord.com/users/428292824534876213) ❓ (ModDB: [luken-sod](https://www.moddb.com/members/luken-sod)) | — | — | Celtic Kings Adventure (Larax, from Imperivm I) | 2026-10-19 (ModDB PM) | 🕐 |
 | OlvidoGX | 1 | 2024 | — (ModDB: [olvidogx](https://www.moddb.com/company/olvidogx)) ❓ same as OlvidoGames? | — | — | Imperivm 3 (adapted adventures) |  |  |
 | azangara | 1 | 2018 | — (ModDB: [azangara](https://www.moddb.com/members/azangara)) | — | — | Scenarios |  |  |
-| ENSOO | 1 | 2025 | — (ModDB: [ensoo](https://www.moddb.com/members/ensoo)) | — | — | Random Real World |  |  |
-| WARRIOR4444 | 1 | ? | — | [WARRIOR4444](https://imperivmgbr.foroactivo.com/u2753) | — | CGWAR Greek Civilization Mod v6 (co-author) | 2026-10-19 (forum PM) | 🕐 |
+| ENSOO | 1 | 2025 | [ensoo9789](https://discord.com/users/691330821742919721) ❓ (shown as *ENSOO*, in the Italian *Imperivm GBR* server) (ModDB: [ensoo](https://www.moddb.com/members/ensoo)) | — | — | Random Real World |  |  |
+| WARRIOR4444 | 1 | ? | `warrior4444.` (in the server, no messages to take the profile link from) | [WARRIOR4444](https://imperivmgbr.foroactivo.com/u2753) | — | CGWAR Greek Civilization Mod v6 (co-author) | 2026-10-19 (forum PM) | 🕐 |
