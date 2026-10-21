@@ -2778,5 +2778,134 @@
   "ok": true,
   "status": "moddb: downloaded with tools/download-forum.js",
   "checked": "2026-10-18"
+ },
+ "http://www.mediafire.com/?xj5mtnfubjt": {
+  "ok": false,
+  "status": "http 404",
+  "checked": "2026-10-21"
+ },
+ "http://www.mediafire.com/?3yugjmdn3jm": {
+  "ok": false,
+  "status": "http 404",
+  "checked": "2026-10-21"
+ },
+ "http://www.mediafire.com/?gynm4zwiemn": {
+  "ok": false,
+  "status": "http 404",
+  "checked": "2026-10-21"
+ },
+ "http://www.mediafire.com/?hm1g4nmuywm": {
+  "ok": true,
+  "status": "mediafire",
+  "checked": "2026-10-21"
+ },
+ "http://www.mediafire.com/?z4dizznwm0q": {
+  "ok": true,
+  "status": "mediafire",
+  "checked": "2026-10-21"
+ },
+ "http://www.fileserve.com/file/kFVF3Kx": {
+  "ok": false,
+  "status": "dead host",
+  "checked": "2026-10-21"
+ },
+ "http://www.megaupload.com/?d=ETZN9FHA": {
+  "ok": false,
+  "status": "dead host",
+  "checked": "2026-10-21"
+ },
+ "http://www.mediafire.com/download/drn6n7sqo0nay2u/Deshabilitar_Estructuras_Imperium_III.docx": {
+  "ok": true,
+  "status": "mediafire",
+  "checked": "2026-10-21"
+ },
+ "https://mega.nz/file/3jxGyKrR#qPoH4wOAcxwgwZuqR-F-nx4GD3h_8mHPvETKavOmpvg": {
+  "ok": true,
+  "status": "mega",
+  "size": 9181965,
+  "checked": "2026-10-21"
+ },
+ "https://mega.nz/file/3jxGyKrR#qPoH4wOAcxwgwZuqR-F-nx4GD3h_8mHPvETKavOmpvg ": {
+  "ok": true,
+  "status": "mega",
+  "size": 9181965,
+  "checked": "2026-10-21"
+ },
+ "https://mega.co.nz/#!3dtWyZrC!j3_CEcp0JikfWaxHIXyr6243vrP1g3toqanOqOeeHtQ": {
+  "ok": false,
+  "status": "mega -16",
+  "checked": "2026-10-21"
+ },
+ "http://adf.ly/246619/https://mega.co.nz/#!j0gHnZiY!KmTKCMSN1CT-ZQAJkmZ9O92GxPKuLUvY53EnrHD94Fw": {
+  "ok": false,
+  "status": "mega -16",
+  "checked": "2026-10-21"
+ },
+ "https://mega.co.nz/#!PZpD2KpK!WqpsynZ0AWF1uYRHI6lYI2H77VdZYnDkQ0bYeoiMSbQ": {
+  "ok": false,
+  "status": "mega -16",
+  "checked": "2026-10-21"
+ },
+ "https://mega.co.nz/#!loxgUBwK!F6-Y_gtKVTry3Qsx7LHOR-l6XjVIXW0MIOrH67qQeBw": {
+  "ok": false,
+  "status": "mega -9",
+  "checked": "2026-10-21"
+ },
+ "http://www.mediafire.com/download/zo1e0iyx3cjpni2/Tutorial%2C+Creaci%C3%B3n+para+el+Imperivm.zip": {
+  "ok": false,
+  "status": "http 404",
+  "checked": "2026-10-21"
+ },
+ "http://www.moddb.com/mods/gbr-tactics2": {
+  "ok": false,
+  "status": "http 403",
+  "checked": "2026-10-21"
+ },
+ "https://www.mediafire.com/file/oiurbcry26dfswh/Mod_-_Greek_civilization__v.1.rar/file": {
+  "ok": false,
+  "status": "http 404",
+  "checked": "2026-10-21"
+ },
+ "https://www.mediafire.com/file/tlgqrzc73jsv3s2/Mod_-_Greek_civilization__v.2.rar/file": {
+  "ok": false,
+  "status": "http 404",
+  "checked": "2026-10-21"
+ },
+ "http://www.mediafire.com/download/z2zob6jr4m6gb15/prueba_hechizos.zip": {
+  "ok": true,
+  "status": "mediafire",
+  "checked": "2026-10-21"
+ },
+ "http://www.mediafire.com/download/fcrz90d6uw4ylc5/Prueba_Objetos.zip": {
+  "ok": true,
+  "status": "mediafire",
+  "checked": "2026-10-21"
+ },
+ "https://mega.nz/#!PNtHjS4S!rpbjDJiN4D9qkio3u_awpkDID7IoXndoJliE0hbLaoc": {
+  "ok": false,
+  "status": "mega -9",
+  "checked": "2026-10-21"
+ },
+ "https://mega.nz/file/4BJTSCQK#b3IeZStG_F-JTDAHwO17ERWUw6E94RKhzUbhwA082dY": {
+  "ok": true,
+  "status": "mega",
+  "size": 27348271,
+  "checked": "2026-10-21"
+ },
+ "https://www.moddb.com/games/imperivm-great-battles-of-rome/addons": {
+  "ok": false,
+  "status": "http 403",
+  "checked": "2026-10-21"
+ },
+ "https://www.moddb.com/members/na4465497": {
+  "ok": false,
+  "status": "http 403",
+  "checked": "2026-10-21"
+ },
+ "https://mega.nz/file/4EI0kJoL#Z834UGRgFHC7WLWs14TVzQIyp_9bup9KesOcMmpS6QQ": {
+  "ok": true,
+  "status": "mega",
+  "size": 319539,
+  "checked": "2026-10-21"
  }
 }
