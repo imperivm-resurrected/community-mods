@@ -1,4 +1,36 @@
 {
+ "105": {
+  "id": 105,
+  "path": "/t105-para-todas-las-unidades-y-estructuras",
+  "title": "Para todas las unidades y estructuras",
+  "subforum": "f42-consultas-sugerencias-y-reporte-de-bugs",
+  "author": "Darth_Skaywalker",
+  "links": [
+   "http://imperiumjuliuscaesar.mforos.com/1812673/8789890-trucos-de-imperium/"
+  ]
+ },
+ "126": {
+  "id": 126,
+  "path": "/t126-nuevas-aventuras",
+  "title": "Nuevas aventuras",
+  "subforum": "f38-proyectos-preguntas-y-sugerencias",
+  "author": "Darth_Skaywalker",
+  "links": [
+   "http://clanlag.net76.net/modules.php?name=Downloads"
+  ]
+ },
+ "127": {
+  "id": 127,
+  "path": "/t127-modificacion-en-general",
+  "title": "Modificacion en general",
+  "subforum": "f42-consultas-sugerencias-y-reporte-de-bugs",
+  "author": "frikypani",
+  "links": [
+   "http://usuarios.multimania.es/frikypani/IMPERIVMIII/Formaciones_Imperivm_III_by_Frikypani.rar",
+   "http://www.mediafire.com/?xj5mtnfubjt",
+   "http://www.mediafire.com/?3yugjmdn3jm"
+  ]
+ },
  "136": {
   "id": 136,
   "path": "/t136-trucos-via-scritp",
@@ -7,6 +39,16 @@
   "author": "Darth_Skaywalker",
   "links": [
    "http://imperiumgbr.mforos.com/1812673/8789890-trucos-de-imperium/"
+  ]
+ },
+ "139": {
+  "id": 139,
+  "path": "/t139-patcher-imperivm-iii-by-frikypani",
+  "title": "Patcher Imperivm III by Frikypani",
+  "subforum": "f49-temas-generales",
+  "author": "frikypani",
+  "links": [
+   "http://www.mediafire.com/?gynm4zwiemn"
   ]
  },
  "146": {
@@ -96,6 +138,16 @@
    "http://www.mediafire.com/file/7afcs1d55bjccmk/MOD_LARECONQUISTA_2010.rar/file"
   ]
  },
+ "173": {
+  "id": 173,
+  "path": "/t173-torneo-del-mapa-mediterraneo",
+  "title": "Torneo del mapa mediterraneo.",
+  "subforum": "f38-proyectos-preguntas-y-sugerencias",
+  "author": "[moonson]",
+  "links": [
+   "http://www.megaupload.com/?d=DA40UK57"
+  ]
+ },
  "174": {
   "id": 174,
   "path": "/t174-mercenarios",
@@ -151,6 +203,19 @@
    "http://www.megaupload.com/?d=ZRM6QIBQ"
   ]
  },
+ "186": {
+  "id": 186,
+  "path": "/t186-launcher-mod-la-reconquista",
+  "title": "Launcher Mod la Reconquista",
+  "subforum": "f45-consultas-sugerencias-y-reporte-de-bugs",
+  "author": "frikypani",
+  "links": [
+   "http://es.kioskea.net/faq/3478-desactivar-el-control-de-cuentas-de-usuario-uac-de-windows-7",
+   "http://www.mediafire.com/?hm1g4nmuywm",
+   "http://www.mediafire.com/?z4dizznwm0q",
+   "http://www.mediafire.com/?o9dzdpb18xb18nn"
+  ]
+ },
  "190": {
   "id": 190,
   "path": "/t190-proyecto-mercenarios-ibero-galo",
@@ -159,6 +224,16 @@
   "author": "Poliko",
   "links": [
    "http://www.megaupload.com/?d=3MTZ2E2V"
+  ]
+ },
+ "197": {
+  "id": 197,
+  "path": "/t197-os-puedo-ayudar",
+  "title": "Os puedo ayudar",
+  "subforum": "f32-ayuda-con-el-editor-scripts-y-programacion",
+  "author": "El_Jüsticiero_Misteryoso",
+  "links": [
+   "http://www.imperivmymas.es.kz"
   ]
  },
  "200": {
@@ -179,6 +254,26 @@
   "author": "El_Jüsticiero_Misteryoso",
   "links": [
    "http://justicierom.webcindario.com/MONSTRUO_WALKRLE.bmp"
+  ]
+ },
+ "205": {
+  "id": 205,
+  "path": "/t205-imperivm-mods-i-aventuras",
+  "title": "imperivm + mods i aventuras",
+  "subforum": "f49-temas-generales",
+  "author": "wug-FlavioAeccio",
+  "links": [
+   "http://www.gratisjuegos.org/descargar/imperivm-la-saga-mods-y-extras-full-espanol-mu/"
+  ]
+ },
+ "206": {
+  "id": 206,
+  "path": "/t206-avneturas-in-mod",
+  "title": "Avneturas in mod",
+  "subforum": "f38-proyectos-preguntas-y-sugerencias",
+  "author": "El_Jüsticiero_Misteryoso",
+  "links": [
+   "http://www.historiasjusticiero.es.kz"
   ]
  },
  "217": {
@@ -280,6 +375,18 @@
    "http://www.mediafire.com/?5xa1rh787pr1s8f",
    "http://www.mediafire.com/?o9dzdpb18xb18nn",
    "http://www.mediafire.com/file/4nkoa46l7v0d6uv/MOD_Comunidad_Imperivm_9.0.zip/file"
+  ]
+ },
+ "266": {
+  "id": 266,
+  "path": "/t266-formacion-de-desplazamiento",
+  "title": "Formacion de desplazamiento.",
+  "subforum": "f42-consultas-sugerencias-y-reporte-de-bugs",
+  "author": "[moonson]",
+  "links": [
+   "http://2.bp.blogspot.com/_JK8mviw_3e4/Sv9q7mh2w6I/AAAAAAAAJTQ/701_Nn0heoY/s400/falagri4.jpg",
+   "http://home.comcast.net/~DiazStudents/GreecePhalanxSarissa.jpg",
+   "http://lh6.ggpht.com/_8WIjkzT4POU/TCCb1_wmNOI/AAAAAAAABPI/2zHEdi6T91Y/carros%20con%20guada%C3%B1as%20contra%20la%20falange%20-%20Gaugamela%20331%20a.C..JPG"
   ]
  },
  "271": {
@@ -420,6 +527,26 @@
    "http://www.megaupload.com/?d=WQHI54GG"
   ]
  },
+ "392": {
+  "id": 392,
+  "path": "/t392-web-de-imperivm",
+  "title": "Web de Imperivm",
+  "subforum": "f49-temas-generales",
+  "author": "Darth_Skaywalker",
+  "links": [
+   "http://editor-imperium.webcindario.com/"
+  ]
+ },
+ "430": {
+  "id": 430,
+  "path": "/t430-se-cierra-al-comenzar-la-partida",
+  "title": "Se cierra al comenzar la partida",
+  "subforum": "f42-consultas-sugerencias-y-reporte-de-bugs",
+  "author": "Adrvm",
+  "links": [
+   "http://www.palimpalem.com/2/Moonson_Imperium/index.html"
+  ]
+ },
  "461": {
   "id": 461,
   "path": "/t461-creacion-de-una-nueva-unidad-inmortal",
@@ -483,6 +610,16 @@
    "http://www.megaupload.com/?d=Q1P76HEA"
   ]
  },
+ "501": {
+  "id": 501,
+  "path": "/t501-importante-juntanza-para-el-mod",
+  "title": "IMPORTANTE: Juntanza para el mod",
+  "subforum": "f42-consultas-sugerencias-y-reporte-de-bugs",
+  "author": "El_Jüsticiero_Misteryoso",
+  "links": [
+   "http://imperivmplus.webcindario.com/CBox.php"
+  ]
+ },
  "506": {
   "id": 506,
   "path": "/t506-mapa-aleatorio-alma-errante-no-recuerdo-que-color-era-el-mio",
@@ -491,6 +628,17 @@
   "author": "El_Jüsticiero_Misteryoso",
   "links": [
    "http://www.megaupload.com/?d=Y8P34DAH"
+  ]
+ },
+ "513": {
+  "id": 513,
+  "path": "/t513-promocionar-el-mod-comunidad-v-8",
+  "title": "PROMOCIONAR EL MOD COMUNIDAD V.8",
+  "subforum": "f42-consultas-sugerencias-y-reporte-de-bugs",
+  "author": "Darkgcn-Lacrima",
+  "links": [
+   "http://darkengel.site90.net/index2.htm",
+   "http://interior101.uphero.com/"
   ]
  },
  "520": {
@@ -511,6 +659,17 @@
   "author": "Lucas_de_Escola",
   "links": [
    "http://www.gamefront.com/files/20757481/Guerra+en+el+rio+Anas.BFHP"
+  ]
+ },
+ "555": {
+  "id": 555,
+  "path": "/t555-para-que-imperium-3-no-se-salga-del-juego",
+  "title": "Para que imperium 3 no se salga del juego.",
+  "subforum": "f42-consultas-sugerencias-y-reporte-de-bugs",
+  "author": "cyraxnubio",
+  "links": [
+   "http://www.fileserve.com/file/kFVF3Kx",
+   "http://www.megaupload.com/?d=ETZN9FHA"
   ]
  },
  "588": {
@@ -594,6 +753,26 @@
   "links": [
    "https://mega.co.nz/#!5AcwRJpY!BLNHiXuRY08n3OP1_gK3tXdp4rFBoIJhwHhHEGIOh-E",
    "https://mega.co.nz/#!kB92gBDB!OBu1_Z-54BQ4BfhgnPVtBqv294zzY8rT_ctYg4u-r9E"
+  ]
+ },
+ "680": {
+  "id": 680,
+  "path": "/t680-imperium-4",
+  "title": "imperium 4",
+  "subforum": "f50-imperium-gbr-hd-steam",
+  "author": "Klarzack",
+  "links": [
+   "http://www.fxinteractive.com/contacto.htm"
+  ]
+ },
+ "681": {
+  "id": 681,
+  "path": "/t681-neccesito-scrips-avanzados",
+  "title": "¡Neccesito scrips avanzados!",
+  "subforum": "f32-ayuda-con-el-editor-scripts-y-programacion",
+  "author": "Elektro",
+  "links": [
+   "http://editor-imperivm-cartagines.es.tl/Scripts.htm"
   ]
  },
  "690": {
@@ -765,6 +944,18 @@
    "https://www.mediafire.com/file/4lf0k8njp0uqjvp/Tutorial%252C_Creaci%25C3%25B3n_para_el_Imperivm.rar/file"
   ]
  },
+ "715": {
+  "id": 715,
+  "path": "/t715-trucos-de-editor",
+  "title": "TRUCOS de EDITOR",
+  "subforum": "f32-ayuda-con-el-editor-scripts-y-programacion",
+  "author": "Gigoras",
+  "links": [
+   "http://www.mediafire.com/download/drn6n7sqo0nay2u/Deshabilitar_Estructuras_Imperium_III.docx",
+   "https://mega.nz/file/3jxGyKrR#qPoH4wOAcxwgwZuqR-F-nx4GD3h_8mHPvETKavOmpvg",
+   "https://mega.nz/file/3jxGyKrR#qPoH4wOAcxwgwZuqR-F-nx4GD3h_8mHPvETKavOmpvg "
+  ]
+ },
  "716": {
   "id": 716,
   "path": "/t716-descarga-nuevos-objetos-para-imperium-3-aqui",
@@ -820,6 +1011,26 @@
    "https://discordapp.com/invite/2hVGQyb"
   ]
  },
+ "739": {
+  "id": 739,
+  "path": "/t739-os-presento-mi-web",
+  "title": "Os presento mi web",
+  "subforum": "f49-temas-generales",
+  "author": "Darth_Skaywalker",
+  "links": [
+   "http://editor-imperium.webcindario.com/"
+  ]
+ },
+ "740": {
+  "id": 740,
+  "path": "/t740-mod-autoguardado",
+  "title": "MOD Autoguardado.",
+  "subforum": "f42-consultas-sugerencias-y-reporte-de-bugs",
+  "author": "LegiónBerciana",
+  "links": [
+   "https://mega.co.nz/#!3dtWyZrC!j3_CEcp0JikfWaxHIXyr6243vrP1g3toqanOqOeeHtQ"
+  ]
+ },
  "743": {
   "id": 743,
   "path": "/t743-nuevas-unidades-texturas-y-animaciones",
@@ -844,6 +1055,46 @@
    "http://www.gifss.com/banderas/italia/italia4.gif"
   ]
  },
+ "749": {
+  "id": 749,
+  "path": "/t749-web-para-subir-mapas",
+  "title": "Web para subir mapas",
+  "subforum": "f38-proyectos-preguntas-y-sugerencias",
+  "author": "Darth_Skaywalker",
+  "links": [
+   "http://editor-imperium.webcindario.com/descargas/"
+  ]
+ },
+ "751": {
+  "id": 751,
+  "path": "/t751-alguien-quiere-las-caras-de-asur",
+  "title": "¿Alguien quiere las caras de Asur?",
+  "subforum": "f32-ayuda-con-el-editor-scripts-y-programacion",
+  "author": "Gigoras",
+  "links": [
+   "http://adf.ly/246619/https://mega.co.nz/#!j0gHnZiY!KmTKCMSN1CT-ZQAJkmZ9O92GxPKuLUvY53EnrHD94Fw"
+  ]
+ },
+ "760": {
+  "id": 760,
+  "path": "/t760-problema-con-oleada",
+  "title": "¿Problema con oleada?",
+  "subforum": "f32-ayuda-con-el-editor-scripts-y-programacion",
+  "author": "Harenor",
+  "links": [
+   "https://mega.co.nz/#!PZpD2KpK!WqpsynZ0AWF1uYRHI6lYI2H77VdZYnDkQ0bYeoiMSbQ"
+  ]
+ },
+ "763": {
+  "id": 763,
+  "path": "/t763-codigos-de-comandos-de-estructuras",
+  "title": "Códigos de comandos de estructuras.",
+  "subforum": "f32-ayuda-con-el-editor-scripts-y-programacion",
+  "author": "Hareld",
+  "links": [
+   "http://imperivmplus.webcindario.com/"
+  ]
+ },
  "768": {
   "id": 768,
   "path": "/t768-sin-descarga-aventura-el-pueblo-de-asclepio",
@@ -852,6 +1103,47 @@
   "author": "Hareld",
   "links": [
    "https://mega.co.nz/#!34ZgkSIA!6cu3jlb-qCBQMjimth25eoBDyXfuqR-hTbHkL_vI4bE"
+  ]
+ },
+ "775": {
+  "id": 775,
+  "path": "/t775-la-aventura-de-nitirc",
+  "title": "La aventura de Nitirc",
+  "subforum": "f38-proyectos-preguntas-y-sugerencias",
+  "author": "Zhenrok",
+  "links": [
+   "https://mega.co.nz/#!loxgUBwK!F6-Y_gtKVTry3Qsx7LHOR-l6XjVIXW0MIOrH67qQeBw"
+  ]
+ },
+ "782": {
+  "id": 782,
+  "path": "/t782-sitios-de-interes-para-fans-de-imperium",
+  "title": "Sitios de interés para fans de Imperium",
+  "subforum": "f49-temas-generales",
+  "author": "Asur",
+  "links": [
+   "http://cronicasdelbaron2.blogspot.com.es/",
+   "http://datosdeimperiumiii.blogspot.com.es/",
+   "http://editor-imperium.webcindario.com/",
+   "http://editor-imperivm-cartagines.es.tl/",
+   "http://imperiumestrategias.blogspot.com.es/2013/09/unidades-cartaginesas.html",
+   "http://imperiumgbr.mforos.com/",
+   "http://imperivm-gbr.forumfree.it",
+   "http://imperivm-gbr.forumfree.it/",
+   "http://imperivm-retribution.blogspot.com.es/2014/02/el-mod.html",
+   "http://imperivm-world.forumcommunity.net/",
+   "http://imperivm-world.forumcommunity.net/?f=8558735",
+   "http://imperivm-world.forumcommunity.net/?f=8558737",
+   "http://imperivm-world.forumcommunity.net/?f=8902995",
+   "http://imperivm-world.forumcommunity.net/?t=59023641",
+   "http://imperivmplus.webcindario.com/index2.php",
+   "http://tutorial-imperivm.blogspot.com.es/",
+   "http://warmachine.moy.su/news/mci_full_version_is_here/2014-12-06-4",
+   "http://www.caballerosdecalradia.net/t3113-imperium-iii-mod-armorum",
+   "http://www.mediafire.com/download/zo1e0iyx3cjpni2/Tutorial%2C+Creaci%C3%B3n+para+el+Imperivm.zip",
+   "http://www.moddb.com/mods/asurmod",
+   "http://www.moddb.com/mods/gbr-tactics2",
+   "http://www.gsmboy.it/imperivm/Imperivm/it-IT/index.html"
   ]
  },
  "786": {
@@ -912,6 +1204,18 @@
    "http://www.mediafire.com/download/4o9838y5i42o1o5/paso_galo-hispano.BFHP"
   ]
  },
+ "799": {
+  "id": 799,
+  "path": "/t799-creacion-de-una-nueva-civilizacion-la-griega",
+  "title": "Creación de una nueva civilización , la \"Griega\"",
+  "subforum": "f8-consultas-sugerencias-y-reporte-de-bugs",
+  "author": "Camarada",
+  "links": [
+   "https://www.mediafire.com/file/4wyp1zz9z5b2i3r/Texturas_del_Mod_-_Greek_civilization.rar/file",
+   "https://www.mediafire.com/file/oiurbcry26dfswh/Mod_-_Greek_civilization__v.1.rar/file",
+   "https://www.mediafire.com/file/tlgqrzc73jsv3s2/Mod_-_Greek_civilization__v.2.rar/file"
+  ]
+ },
  "808": {
   "id": 808,
   "path": "/t808-modelo-basico-aporte",
@@ -952,6 +1256,26 @@
    "http://www.mediafire.com/download/1z7rp9k7od7kozp/mapas+gbr.rar"
   ]
  },
+ "820": {
+  "id": 820,
+  "path": "/t820-jugar-al-asurmod-partidas-on-line-por-servidor-tunngle",
+  "title": "JUGAR AL ASURMOD PARTIDAS ON-LINE POR SERVIDOR TUNNGLE.",
+  "subforum": "f48-consultas-sugerencias-y-reporte-de-bugs",
+  "author": "lusitano",
+  "links": [
+   "http://indalo71.wix.com/clan-reverendo"
+  ]
+ },
+ "821": {
+  "id": 821,
+  "path": "/t821-hechizos-para-todos",
+  "title": "Hechizos para todos",
+  "subforum": "f32-ayuda-con-el-editor-scripts-y-programacion",
+  "author": "molerotoni",
+  "links": [
+   "http://www.mediafire.com/download/z2zob6jr4m6gb15/prueba_hechizos.zip"
+  ]
+ },
  "824": {
   "id": 824,
   "path": "/t824-alterar-fortines-neutrales-que-hay-en-el-mapa-y-poner-mas-ruinas-en-mapa",
@@ -962,6 +1286,16 @@
    "http://reverendos.wix.com/clan-reverendo"
   ]
  },
+ "828": {
+  "id": 828,
+  "path": "/t828-imperivm-i-a-095",
+  "title": "Imperivm I a 0,95",
+  "subforum": "f49-temas-generales",
+  "author": "Darth_Skaywalker",
+  "links": [
+   "http://juegos.fxinteractive.com/game.php?id=35&Imperivm_La_Guerra_de_las_Galias"
+  ]
+ },
  "859": {
   "id": 859,
   "path": "/t859-hierro-totalemente-funcional",
@@ -970,6 +1304,16 @@
   "author": "Harenor",
   "links": [
    "https://mega.nz/#!vEZmxSyB!rhiZh3kC4itOdrsDQftD3ckTFRIlNOmENi250oOtvYo"
+  ]
+ },
+ "860": {
+  "id": 860,
+  "path": "/t860-coleccion-de-objetos",
+  "title": "Colección de objetos",
+  "subforum": "f32-ayuda-con-el-editor-scripts-y-programacion",
+  "author": "molerotoni",
+  "links": [
+   "http://www.mediafire.com/download/fcrz90d6uw4ylc5/Prueba_Objetos.zip"
   ]
  },
  "870": {
@@ -1016,6 +1360,16 @@
    "http://imperivmworld.altervista.org/files/nemesis.zip"
   ]
  },
+ "883": {
+  "id": 883,
+  "path": "/t883-crashing-while-swithcing-maps",
+  "title": "Crashing while swithcing maps",
+  "subforum": "f32-ayuda-con-el-editor-scripts-y-programacion",
+  "author": "vjeko1701",
+  "links": [
+   "http://imperivm-world.forumcommunity.net/"
+  ]
+ },
  "885": {
   "id": 885,
   "path": "/t885-desactualizado-mapa-plano-de-alesia",
@@ -1047,6 +1401,26 @@
    "http://www.mediafire.com/file/3b8qel3icsa7fz6/Aventura_en_Alesia.zip"
   ]
  },
+ "901": {
+  "id": 901,
+  "path": "/t901-anadir-mas-selecciones-crtl1-ctrl2-y-luego-las-seleccionas-con-12",
+  "title": "Añadir más selecciones (Crtl+1, ctrl+2... y luego las seleccionas con 1,2 ...)",
+  "subforum": "f42-consultas-sugerencias-y-reporte-de-bugs",
+  "author": "matahombres",
+  "links": [
+   "http://codepen.io/matahombres/pen/xRzKEq"
+  ]
+ },
+ "904": {
+  "id": 904,
+  "path": "/t904-torres-normandas",
+  "title": "!!! Torres Normandas !!!",
+  "subforum": "f42-consultas-sugerencias-y-reporte-de-bugs",
+  "author": "Gigoras",
+  "links": [
+   "https://www.google.es/search?q=Torre+Normanda&rlz=1C1AVNG_enES611ES611&espv=2&biw=1440&bih=770&tbm=isch&tbo=u&source=univ&sa=X&ved=0ahUKEwjhnN_98uLQAhXHWpAKHcuzC5QQsAQIJg"
+  ]
+ },
  "907": {
   "id": 907,
   "path": "/t907-editar-y-crear-file-pass",
@@ -1076,6 +1450,16 @@
   "author": "Asur",
   "links": [
    "https://mega.nz/file/a1Q1hTBC#53z9cJCo5QkGAVmrh8ia4W6mh0lb19F6ZiQiLrhnkno"
+  ]
+ },
+ "920": {
+  "id": 920,
+  "path": "/t920-creacion-de-mapas-para-varios-jugadores-en-tunngle",
+  "title": "Creacion de MAPAS para varios jugadores en Tunngle",
+  "subforum": "f38-proyectos-preguntas-y-sugerencias",
+  "author": "tonyhopper",
+  "links": [
+   "http://imperivm-world.forumcommunity.net/?t=59023641"
   ]
  },
  "935": {
@@ -1303,6 +1687,16 @@
    "https://mega.nz/#!EixDWJJL!kBh2EpGExkS3WPGZFbIyxBX3wpM0t6hAdw_ge15Qnjk"
   ]
  },
+ "1036": {
+  "id": 1036,
+  "path": "/t1036-fx-ha-movido-ficha-el-nuevo-imperivm-en-steam",
+  "title": "FX HA MOVIDO FICHA EL NUEVO IMPERIVM EN STEAM!!!",
+  "subforum": "f50-imperium-gbr-hd-steam",
+  "author": "tonyhopper",
+  "links": [
+   "http://www.fxgamestudio.com/docs/Changelog_Beta_privada_Imperivm_GBR_HD_v150"
+  ]
+ },
  "1044": {
   "id": 1044,
   "path": "/t1044-la-senda-del-cartagines-nueva-aventura",
@@ -1341,6 +1735,17 @@
   "author": "Elektro",
   "links": [
    "https://mega.nz/#!NeQ0GKaI!oFDq_lRwiGwGui4xcQdxJB9CUpzorXoNI3_EE82dL3w"
+  ]
+ },
+ "1060": {
+  "id": 1060,
+  "path": "/t1060-discord-especifico-para-editor",
+  "title": "DISCORD !!! Especifico para Editor !!!",
+  "subforum": "f32-ayuda-con-el-editor-scripts-y-programacion",
+  "author": "Gigoras",
+  "links": [
+   "https://discord.gg/24ycacN",
+   "https://discord.gg/Y4893Q6"
   ]
  },
  "1061": {
@@ -1404,6 +1809,18 @@
    "https://mega.nz/#!JvRmlCgB!nuptgqSpocu6-Jt6ebgxyTcgZydpMhKldx-8APvOMbg"
   ]
  },
+ "1072": {
+  "id": 1072,
+  "path": "/t1072-actualizaciones-de-imperivm",
+  "title": "Actualizaciones de Imperivm",
+  "subforum": "f49-temas-generales",
+  "author": "Camarada",
+  "links": [
+   "http://www.fxinteractive.com/p014/Impextras.htm",
+   "http://www.fxinteractive.com/p067/p067extras.htm",
+   "https://www.fxinteractive.com/p049/p049act.htm"
+  ]
+ },
  "1080": {
   "id": 1080,
   "path": "/t1080-los-espiritus-vivientes-2019",
@@ -1422,6 +1839,17 @@
   "author": "IMPERYUS",
   "links": [
    "https://mega.nz/#!M6IRmCgC!YJ6aybq4eeTCb8vrj0CPlTEFsPINYl_YmO1rw27taqU"
+  ]
+ },
+ "1095": {
+  "id": 1095,
+  "path": "/t1095-rattlesmake",
+  "title": "Rattlesmake",
+  "subforum": "f50-imperium-gbr-hd-steam",
+  "author": "Razor",
+  "links": [
+   "https://rattlesmake.github.io/",
+   "https://t.me/RattlesMake"
   ]
  },
  "1100": {
@@ -1476,6 +1904,16 @@
   "author": "IMPERYUS",
   "links": [
    "https://mega.nz/#!ZyJjGKYR!H4vHYgAmRCOQT1J35WyW9pvuyNSYlomDP1iy19YOkH0"
+  ]
+ },
+ "1124": {
+  "id": 1124,
+  "path": "/t1124-fx-busca-colaboradores",
+  "title": "FX busca colaboradores",
+  "subforum": "f50-imperium-gbr-hd-steam",
+  "author": "Ferónidas",
+  "links": [
+   "https://web.fxinteractive.com/docs/Selecci%C3%B3n_Freelance_FX_Convocatoria_2019?fbclid=IwAR1mwsm-8ikVS8tkYxwHRnLCDE5-4ETr55sjotIV3Dw8h2WsSm4vEomnAa4"
   ]
  },
  "1131": {
@@ -1595,6 +2033,16 @@
    "https://mega.nz/file/j9gziQSK#W95SXZ_pBxRVR1KF1jUQRgwIJ2Sge86V1camYZWqvMs"
   ]
  },
+ "1203": {
+  "id": 1203,
+  "path": "/t1203-condicion-que-una-unidad-este-dentro-de-una-estructura",
+  "title": "Condición: Que una unidad esté dentro de una estructura",
+  "subforum": "f32-ayuda-con-el-editor-scripts-y-programacion",
+  "author": "Ferónidas",
+  "links": [
+   "https://mega.nz/#!PNtHjS4S!rpbjDJiN4D9qkio3u_awpkDID7IoXndoJliE0hbLaoc"
+  ]
+ },
  "1204": {
   "id": 1204,
   "path": "/t1204-archivos-del-juego-descomprimidos-v1-40",
@@ -1613,6 +2061,16 @@
   "author": "Rattlesmake",
   "links": [
    "https://mega.nz/file/TJUFCIpD#H-5OMIwj1uLU7WtE0ho5yXsCL8QrT8bVwISFNBY-o50"
+  ]
+ },
+ "1208": {
+  "id": 1208,
+  "path": "/t1208-claves-imperivm-3-hd-steam-gratis",
+  "title": "CLAVES IMPERIVM 3 HD STEAM GRATIS",
+  "subforum": "f49-temas-generales",
+  "author": "tonyhopper",
+  "links": [
+   "http://bit.ly/2vQsH8Z"
   ]
  },
  "1212": {
@@ -1770,6 +2228,18 @@
    "https://github.com/david-campos/referencia_cks/raw/master/dist/impresion_a_pdf.pdf"
   ]
  },
+ "1286": {
+  "id": 1286,
+  "path": "/t1286-problema-con-mapa-aventuras",
+  "title": "Problema con Mapa Aventuras",
+  "subforum": "f32-ayuda-con-el-editor-scripts-y-programacion",
+  "author": "Falcata",
+  "links": [
+   "http://142.93.233.180/cks/#ClassPlayerAreaObjs:str_int_str",
+   "http://142.93.233.180/cks/#WaitNonEmptyQuery:Query_int",
+   "http://142.93.233.180/cks/#WaitQueryCountBetween:Query_int_int_int"
+  ]
+ },
  "1291": {
   "id": 1291,
   "path": "/t1291-historia-de-kilelrgoldfer-demo",
@@ -1866,6 +2336,19 @@
    "https://www.moddb.com/games/imperivm-great-battles-of-rome/addons/primeraguerrapunica-20"
   ]
  },
+ "1320": {
+  "id": 1320,
+  "path": "/t1320-https-imperivm-world-forumcommunity-net",
+  "title": "https://imperivm-world.forumcommunity.net/ ???",
+  "subforum": "f49-temas-generales",
+  "author": "Rain",
+  "links": [
+   "https://imperivm-world.forumcommunity.net",
+   "https://imperivm-world.forumcommunity.net/",
+   "https://www.moddb.com/games/imperivm-great-battles-of-rome/addons",
+   "https://www.moddb.com/members/na4465497"
+  ]
+ },
  "1326": {
   "id": 1326,
   "path": "/t1326-greek-mod-antioco-iii-el-grande",
@@ -1896,6 +2379,17 @@
   "author": "Survivor",
   "links": [
    "https://mega.nz/file/UMdRTaKJ#mL6YH3X3L_Znk0PyueR7KpHDoi5uQnVlZDFq7MWtLyQ"
+  ]
+ },
+ "1345": {
+  "id": 1345,
+  "path": "/t1345-kickstarter-imperivm-gbr-hd",
+  "title": "Kickstarter Imperivm GBR HD",
+  "subforum": "f50-imperium-gbr-hd-steam",
+  "author": "Ferónidas",
+  "links": [
+   "https://www.kickstarter.com/projects/imperivm-hd/imperivm-rtc-hd-edition-great-battles-of-rome?ref=discovery_category",
+   "https://as.com/meristation/2021/04/03/avances/1617434090_704962.html"
   ]
  },
  "1347": {
@@ -1940,6 +2434,26 @@
   "author": "OlvidoGames",
   "links": [
    "https://drive.google.com/file/d/1FoYl1FTJhJqgh-jiSQKF3u2-6vGh7dhH/view?usp=sharing"
+  ]
+ },
+ "1365": {
+  "id": 1365,
+  "path": "/t1365-conseguir-imperium-iii-gbr-para-steam-2021",
+  "title": "Conseguir Imperium III GBR para Steam (2021)",
+  "subforum": "f50-imperium-gbr-hd-steam",
+  "author": "Ferónidas",
+  "links": [
+   "https://juegos.fxinteractive.com/facs_fx_upgrade_20_aniversario.pdf"
+  ]
+ },
+ "1366": {
+  "id": 1366,
+  "path": "/t1366-imperivm-world-cup",
+  "title": "IMPERIVM WORLD CUP",
+  "subforum": "f50-imperium-gbr-hd-steam",
+  "author": "Ferónidas",
+  "links": [
+   "https://discord.gg/imperivmworld"
   ]
  },
  "1371": {
@@ -2155,6 +2669,16 @@
    "https://mega.nz/file/g7oyXBJB#qfpFbVjyxDhvx6g8EcS9YfzQNszMW_lgc-PdS-89vNw"
   ]
  },
+ "1449": {
+  "id": 1449,
+  "path": "/t1449-como-hacer-randommap",
+  "title": "Còmo hacer RANDOMMAP?",
+  "subforum": "f38-proyectos-preguntas-y-sugerencias",
+  "author": "Gaby Dobrev",
+  "links": [
+   "https://discord.gg/PtVuq6V7c7"
+  ]
+ },
  "1450": {
   "id": 1450,
   "path": "/t1450-sin-descarga-nuevo-mapa-de-estrategia-o-gb-ayuda-ia",
@@ -2174,6 +2698,17 @@
   "author": "ruben.rdrgz_",
   "links": [
    "https://www.mediafire.com/file/yhud667yu9pfchi/Batalla+por+Gergovia.BFHP/file"
+  ]
+ },
+ "1456": {
+  "id": 1456,
+  "path": "/t1456-invitacion-a-discord",
+  "title": "Invitación a Discord",
+  "subforum": "f9-nos-mudamos-a-discord",
+  "author": "Ferónidas",
+  "links": [
+   "https://discord.com/download",
+   "https://discord.gg/PtVuq6V7c7"
   ]
  },
  "1466": {

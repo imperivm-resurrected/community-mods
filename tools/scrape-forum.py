@@ -3,8 +3,8 @@
 Links are hidden from guests: export the browser's forum cookies as FORUM_COOKIE.
 Every external link of every post is kept with its poster, so later updates by the author are not lost."""
 import html
-import os
 import json
+import os
 import pathlib
 import re
 import time
@@ -16,7 +16,13 @@ SUBFORUMS = ["f37-descarga-de-mapas", "f24-modificacion-de-estructuras-tecnologi
              "f31-guias-y-recursos-para-el-editor", "f3-cgwar-greek-civilization-mod", "f6-descarga-e-informacion",
              "f4-rattlesmake-greek-civilization-mod", "f5-descarga-e-informacion", "f46-asvrmod-wrath-of-the-gods",
              "f47-descarga-e-informacion", "f40-mod-de-la-comunidad-imperivm-mci", "f41-descarga-e-informacion",
-             "f25-aportes-de-la-comunidad", "f43-imperium-iii-mod-la-reconquista", "f44-descarga-e-informacion"]
+             "f25-aportes-de-la-comunidad", "f43-imperium-iii-mod-la-reconquista", "f44-descarga-e-informacion",
+             # support and general sections (added 2026-10-21)
+             "f32-ayuda-con-el-editor-scripts-y-programacion", "f38-proyectos-preguntas-y-sugerencias",
+             "f42-consultas-sugerencias-y-reporte-de-bugs", "f45-consultas-sugerencias-y-reporte-de-bugs",
+             "f48-consultas-sugerencias-y-reporte-de-bugs", "f49-temas-generales", "f50-imperium-gbr-hd-steam",
+             "f7-consultas-sugerencias-y-reporte-de-bugs", "f8-consultas-sugerencias-y-reporte-de-bugs",
+             "f9-nos-mudamos-a-discord"]
 SKIP_HOSTS = re.compile(r"foroactivo|forumotion|servimg|2img\.net|ibb\.co|imgur|imageshack|photobucket|tinypic|postimg|"
                         r"consentframework|illipro|directorio-foros|gstatic|googleapis|facebook|twitter|phpbb9|youtube|youtu\.be", re.I)
 OUT = pathlib.Path(__file__).resolve().parent.parent / "raw" / "forum.json"
