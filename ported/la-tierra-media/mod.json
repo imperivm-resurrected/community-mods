@@ -1,7 +1,7 @@
 {
   "id": "la-tierra-media",
   "name": "La Tierra Media",
-  "version": "1.0",
+  "version": "1.1",
   "authors": [
     "Ferónidas"
   ],
@@ -15,6 +15,9 @@
   ],
   "requires": [
     "community-mod"
+  ],
+  "incompatibleWith": [
+    "caesar-mod"
   ],
   "redistributable": true
 }

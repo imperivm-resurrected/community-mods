@@ -2806,24 +2806,24 @@
   "section": "",
   "title": "LA TIERRA MEDIA",
   "author": "Ferónidas",
-  "discord": "https://discord.com/channels/479629904657514526/1413782299786608682/1422369584803217409",
+  "discord": "https://discord.com/channels/479629904657514526/1413782299786608682/1562501634200707123",
   "year": "2025",
   "base": "Imperivm HD vRelease 1.0",
   "links": [],
   "files": [
    {
     "name": "The_Middle-earth.BFHP",
-    "size": 4423092,
-    "url": "https://cdn.discordapp.com/attachments/1413782299786608682/1422369584517742602/The_Middle-earth.BFHP?ex=6ad4b227&is=6ad360a7&hm=0885baf7e6ec79b06609788ba9810be21a544293819fc8b6fd068b25b1936ab1&",
+    "size": 4424221,
+    "url": "https://cdn.discordapp.com/attachments/1413782299786608682/1562501633726746674/The_Middle-earth.BFHP?ex=6ada388b&is=6ad8e70b&hm=5c798482e284d55857f38104d5e9bbdacdc63c3d67f6349e1bca9cba1ab95208&",
     "local": "originals/discord/mapas/la-tierra-media/The_Middle-earth.BFHP"
    }
   ],
   "shots": [
    {
-    "name": "Captura_de_pantalla_1572.png",
-    "size": 2314848,
-    "url": "https://cdn.discordapp.com/attachments/1413782299786608682/1422369996016844831/Captura_de_pantalla_1572.png?ex=6ad4b289&is=6ad36109&hm=af62ee595fedfe459c3def90e3c4fe4a25bbf95594b8089239dca3a07223179f&",
-    "local": "originals/discord/mapas/la-tierra-media/screenshots/Captura_de_pantalla_1572.png"
+    "name": "TierraMedia.jpg",
+    "size": 2617104,
+    "url": "https://cdn.discordapp.com/attachments/1413782299786608682/1562501843698061382/TierraMedia.jpg?ex=6ada38bd&is=6ad8e73d&hm=38180171ae8984336467569a86bb74fbd871e39ded8a42b32080503fc408ae94&",
+    "local": "originals/discord/mapas/la-tierra-media/screenshots/TierraMedia.jpg"
    }
   ],
   "desc": "",

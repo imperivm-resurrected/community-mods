@@ -1,7 +1,7 @@
 // Wrap a Discord map/adventure (raw/discord-entries.json) or a forum topic (raw/forum-entries.json, downloaded by
 // tools/download-forum.js) as an Imperivm Resurrected mod in ported/<slug>/
 //   node tools/wrap-map.js [channel/]<slug> | forum/t<topic id> | pack:<pack>/<map> [--players "2-4"] [--file <text>] [--add <entry>[:<text>]] [--adventure] [--title <name>] [--desc <text>]
-//                                                                 [--author "A; B"] [--lang Italian] [--no-redistributable]
+//                                                                 [--author "A; B"] [--lang Italian] [--version 1.1] [--no-redistributable]
 // pack:<pack>/<map>: one map of a pack we downloaded (originals/forum/<pack>/files/*.zip, e.g. pack:greek-mod-maps-and-adventures-pack/Adventures/X.BFHP).
 // Only that map, its preview and the videos it plays are unpacked. A pack has no post to take the author from: --author is required
 // (several credits separated by ";"). --lang is the language of the pack's adventures ("Italian", "English,Italian"; default Italian).
@@ -406,7 +406,7 @@ const what = main === "adventures" ? "Aventura" : main === "conquests" ? "Conqui
 const mod = {
   id,
   name: modName,
-  version: "1.0",
+  version: typeof opt.version === "string" ? opt.version : "1.0", // --version 1.1 when the author reposts a map
   authors: saga ? [...(e.author ? [e.author] : []), "Haemimont Games", "FX Interactive"] : [...credits, ...(greekWalls ? ["Villoh (port)"] : [])],
   description: {
     ...(italian ? { italian: `${descIt ? descIt.replace(/([^.!?…])$/, "$1.") + " " : ""}${{ Aventura: "Avventura", Conquista: "Conquista", Mapa: "Mappa" }[what] || maps.length + " mappe"} di ${author}.` } : {}),
