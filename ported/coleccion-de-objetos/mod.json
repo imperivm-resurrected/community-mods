@@ -1,0 +1,15 @@
+{
+  "id": "coleccion-de-objetos",
+  "name": "Colección de Objetos",
+  "version": "1.0",
+  "authors": [
+    "molerotoni"
+  ],
+  "description": {
+    "spanish": "Mapa de molerotoni (2015).",
+    "english": "Map by molerotoni (2015)."
+  },
+  "category": "Scenarios",
+  "tags": [],
+  "redistributable": true
+}

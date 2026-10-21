@@ -730,5 +730,19 @@
   "files": [
    "originals/forum/greek-mod-maps-and-adventures-pack/files/Greek_MapsAdventures.zip"
   ]
+ },
+ "http://www.mediafire.com/download/z2zob6jr4m6gb15/prueba_hechizos.zip": {
+  "key": "t821",
+  "name": "Hechizos para todos",
+  "files": [
+   "originals/forum/t821/files/prueba hechizos.zip"
+  ]
+ },
+ "http://www.mediafire.com/download/fcrz90d6uw4ylc5/Prueba_Objetos.zip": {
+  "key": "t860",
+  "name": "Colección de objetos",
+  "files": [
+   "originals/forum/t860/files/pruebas.BFHP"
+  ]
  }
 }

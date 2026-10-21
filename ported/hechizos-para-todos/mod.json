@@ -1,0 +1,17 @@
+{
+  "id": "hechizos-para-todos",
+  "name": "Hechizos Para Todos",
+  "version": "1.0",
+  "authors": [
+    "molerotoni"
+  ],
+  "description": {
+    "spanish": "Aventura de molerotoni (2015).",
+    "english": "Adventure by molerotoni (2015)."
+  },
+  "category": "Adventures",
+  "tags": [
+    "Language: Spanish"
+  ],
+  "redistributable": true
+}
