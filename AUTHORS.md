@@ -23,7 +23,7 @@ Built from the authors in `MODS.md` and a member search of the *Imperivm III Edi
 | OskaOtzuna | 6 | 2017 | [oskaotzuna](https://discord.com/users/352757324257034242) | [OskaOtzuna](https://imperivmgbr.foroactivo.com/u3266) | — | [AVENTURAS II] LAS CAMPAÑAS DE ANÍBAL (5 maps), [AVENTURAS II] LAS GUERRAS PÚNICAS (6 maps), INFIERNO EN IBERIA, … | 2026-10-18 (#chat-mapas) | 🕐 |
 | Jochi | 6 | 2012–2013 | — | [Jochi](https://imperivmgbr.foroactivo.com/u1218) | — | REFORMA, LABERINTO, CIUDADELA, … | 2026-10-18 (forum PM to Jochi) | 🕐 |
 | lusitano | 6 | 2015 | [lusitano3805](https://discord.com/users/482726756483334154) ❓ | [lusitano](https://imperivmgbr.foroactivo.com/u507) | — | ROMA V EGIPTO, BATALLA POR IBERIA, GUERRA DE LAS NACIONES, … | 2026-10-18 (#chat-mapas) | 🕐 |
-| moonson | 5 | 2010 | — | [\[moonson\]](https://imperivmgbr.foroactivo.com/u251) | — | ITALIA, EL ASEDIO, [SIN DESCARGA] [Mapa] Mediterraneo distintas versiones, … |  |  |
+| moonson | 5 | 2010 | — | [\[moonson\]](https://imperivmgbr.foroactivo.com/u251) | — | ITALIA, EL ASEDIO, [SIN DESCARGA] [Mapa] Mediterraneo distintas versiones, … | 2026-10-21 (forum PM to [moonson]) | 🕐 |
 | Hareld | 5 | 2016–2022 | — | [Hareld](https://imperivmgbr.foroactivo.com/u3542) | — | DEFENSORES DEL TÚMULO, DEFENDERS, DEFENDERS NIGHTMARE, … (his *Il popolo di Asclepio* is in the Greek Mod maps pack, Italian text by Giuseppe D'Addio) | 2026-10-18 (forum PM to Hareld) | 🕐 |
 | yito79 | 5 | 2019 | — | [yito79](https://imperivmgbr.foroactivo.com/u4785) | — | ROMPOLIS, ASTIGI, PARIX, … | 2026-10-18 (forum PM to yito79) | 🕐 |
 | Mietitore | 5 | 2020 | — | [Mietitore](https://imperivmgbr.foroactivo.com/u5051) | [Mietitore](https://imperivmeditor.forumcommunity.net/?act=Profile&MID=10765892) | LA DEFENSA DE ROMA, ESCIPIÓN A LAS PUERTAS DE CARTAGO, REBELIÓN DE ESPARTACO, … (signs `IL Mietitore` in some maps; the Greek Mod maps pack has the Italian editions of 3 of them) | 2026-10-18 (forum PM to Mietitore) | 🕐 |
@@ -59,7 +59,7 @@ Built from the authors in `MODS.md` and a member search of the *Imperivm III Edi
 | Nicoghiro31 | 1 | ? | [nicoghiro](https://discord.com/users/468453125603328011) | — | — | Imperivm Legacy 2.4.1 | 2026-10-18 (#chat-mapas, DM 2026-10-19) | 🕐 |
 | Rattlesmake | 1 | ? | — | [Rattlesmake](https://imperivmgbr.foroactivo.com/u4902) | — | Greek Civilization Mod v1.8 (his name is also on the Punic Wars, Hannibal, Invaders and *Mare Nostrum* conquest maps inside it) |  |  |
 | Asvr | 1 | ? | [asvr](https://discord.com/users/470660226492792832) | — | — | AsvrMod VI: Wrath of the Gods | 2026-10-18 (#chat-mapas, DM) | ✅ (OK via Shaul R.) |
-| Marwan | 1 | 2010 | — | — | — | RESISTENCIA BRITANA |  |  |
+| Marwan | 1 | 2010 | — (not in Editores nor Imperivm GBR, searched 2026-10-21) | — | — | RESISTENCIA BRITANA |  |  |
 | Avian98 | 1 | 2019 | — | [Avian98](https://imperivmgbr.foroactivo.com/u4543) | — | CONTRA LA GRAN ROMA | 2026-10-18 (forum PM to Avian98) | 🕐 |
 | Desconocido | 1 | 2020 | — | — | — | 3v3 TOURNAMENT MAP |  |  |
 | MDavidHC | 1 | 2021 | — | [MDavidHC](https://imperivmgbr.foroactivo.com/u4376) | — | TRAMÓREA | 2026-10-18 (forum PM to MDavidHC) | ✅ yes (2026-10-19) |
@@ -69,10 +69,10 @@ Built from the authors in `MODS.md` and a member search of the *Imperivm III Edi
 | ruben.rdrgz | 1 | 2024 | [rubix09432](https://discord.com/users/384787462922436608) | — | — | BATALLA POR GERGOVIA | 2026-10-18 (#chat-mapas) | 🕐 |
 | Inu El Heredero | 1 | 2026 | [elheredero](https://discord.com/users/629767179704729602) | — | — | MINITORNEO | 2026-10-18 (#chat-mapas) | 🕐 |
 | Numida | 1 | 2026 | [supremobasadodebajmut](https://discord.com/users/485857238364454932) | — | — | MEDITERRÁNEO | 2026-10-18 (#chat-mapas) | 🕐 |
-| Zardof | 1 | 2017 | — | — | — | ATLÁNTIDA |  |  |
+| Zardof | 1 | 2017 | — (not in Editores nor Imperivm GBR, searched 2026-10-21) | — | — | ATLÁNTIDA |  |  |
 | Allwars | 1 | 2020 | — | [Allwars](https://imperivmgbr.foroactivo.com/u5028) | — | SEFIA, EL INICIO DE UNA LEYENDA | 2026-10-18 (forum PM to Allwars) | 🕐 |
 | Georgius | 1 | 2024 | [georgidas](https://discord.com/users/622712054855237632) | — | — | GERMÁNICO | 2026-10-18 (#chat-mapas) | 🕐 |
-| Turok7 | 1 | 2018 | — | — | [Turok7](https://imperivmeditor.forumcommunity.net/?act=Profile&MID=11216025) ❓ | LA BATALLA DE MINAS TIRITH |  |  |
+| Turok7 | 1 | 2018 | — (not in Editores nor Imperivm GBR, searched 2026-10-21) | — | [Turok7](https://imperivmeditor.forumcommunity.net/?act=Profile&MID=11216025) ❓ | LA BATALLA DE MINAS TIRITH |  |  |
 | matu_matu | 1 | ? | — | [matu_matu](https://imperivmgbr.foroactivo.com/u147) | — | [SIN DESCARGA] mis mapas para que los disfruten |  |  |
 | Egipto-Morte | 1 | ? | — | — | — | [SIN DESCARGA] Probad mis mapas |  |  |
 | equites10 | 1 | ? | — | [equites10](https://imperivmgbr.foroactivo.com/u1225) | — | [SIN DESCARGA] [Mapa] Britania |  |  |
