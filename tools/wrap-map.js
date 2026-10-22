@@ -62,7 +62,7 @@ const italianEntry = key => {
   const ported = (() => { try { return require("../raw/ported.json"); } catch { return {}; } })();
   // another mod already has this title: add the author, then the key
   const free = s => !fs.existsSync(path.join(ROOT, "ported", s)) || (ported[s] || "").split(" --")[0] === opt._; // the entry stores its options too
-  const slug = [slugify(title), slugify(`${title} ${row?.[3] || ""}`), key].find(free);
+  const slug = [slugify(title), slugify(`${title} ${row?.[3] || ""}`), key, `${key}-it`].find(free); // the last: the forum's own row of a title another source has
   return { channel: "pack", slug, title, verbatim: true, author: row?.[3]?.trim() || "", year: m?.[2] || "", base: "", desc: "", links: [], section: name, files };
 };
 const [want, chan] = opt._.split("/").reverse();

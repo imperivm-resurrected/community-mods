@@ -75,7 +75,7 @@
  "etruria": "aventuras/etruria",
  "etruria-libre": "mapas/etruria-libre",
  "europa-una-mappa-dalla-britannia-all-egitto": "it/europa-una-mappa-dalla-britannia-all-egitto",
- "extra": "it/extra-2017",
+ "extra-vallo": "it/extra-2017 --title Extra - Vallo",
  "follia-di-gaea": "it/follia-di-gaea-2017",
  "follia-teutonica": "it/follia-teutonica-2017",
  "forgia-il-tuo-impero-modificata": "it/versione-modificata-di-forgia-il-tuo-impero-2017 --title Forgia il tuo impero modificata",
@@ -117,6 +117,7 @@
  "l-unificazione-dell-italia-giuseppe-d-addio1": "it/l-unificazione-dell-italia",
  "l-unificazione-della-britannia": "pack:greek-mod-maps-and-adventures-pack/Adventures/L'Unificazione della Britannia.BFHP --author Giuseppe D'Addio",
  "l-unificazione-della-britannia-giuseppe-d-addio1": "it/l-unificazione-della-britannia-2017",
+ "l-unificazione-della-britannia-it": "it/l-unificazione-della-britannia",
  "l-unificazione-della-gallia": "pack:greek-mod-maps-and-adventures-pack/Adventures/L'unificazione della Gallia.BFHP --author Giuseppe D'Addio",
  "l-unificazione-della-germania": "pack:greek-mod-maps-and-adventures-pack/Adventures/L'unificazione della Germania.BFHP --author Giuseppe D'Addio",
  "l-unificazione-italica": "it/l-unificazione-italica-2018",
@@ -282,7 +283,6 @@
  "thehunter-mapa-de-estrategia": "forum/t1479",
  "tramorea": "mapas/tramorea",
  "tributo-imperium": "aventuras/tributo-imperium",
- "undefined": "it/l-unificazione-della-britannia",
  "uzia-by-x-cloud-x": "it/uzia-by-x-cloud-x-2016",
  "vanguardia-4v4": "mapas/vanguardia-4v4"
 }
