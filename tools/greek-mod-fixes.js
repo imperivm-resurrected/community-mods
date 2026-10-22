@@ -15,6 +15,12 @@
 // that replace their base in the lobby) and those scripts ask Mod_PlayerCiv instead; a civilization that is not one of them (a map that
 // fixes plain Rome) gets no branch, and the buttons at the town hall are still there as before.
 //
+// "1.56" horses. 00_Ludus_Martis (Ferónidas, made for a newer Community Mod than the v12 we have) has summon items whose scripts say
+// `if (EnvReadInt('horses 1.56') == 0) PlaceInHolder(cRScout, ...) else PlaceInHolder(cRScout56, ...)`. The game compiles both
+// branches, and no mod we have defines RScout56, GHorseman56, ICavalry56, CNumidianRider56, TTeutonRider56, TTeutonWolf56 or TValkyrie56
+// ("No matching function with name cRScout56"); the map then goes back to the menu. They are copies of the game's own horse classes (the
+// 1.56 values 4.2 and the Community Mod changed) under those ids.
+//
 // Misspelled class ids. HD names some classes with typos ("TValkyria", "CMacemen", "BHighlandar", "IDefendar", "GTridentWarriar",
 // "BaseBoilding") and 4.2 renames them and drops the old ones. The game's own scripts (TOutpost's defenders) and the maps made for HD place
 // the old ids, which no longer exist: "could not create an object of class 'TValkyria'". The renamed class takes the old id as its
@@ -63,3 +69,16 @@ for (const f of ["SUBAI/RTOWNHALL_ENABLE_OR_DISABLE_CMD.VS", "SUBAI/RTOWNHALL_CA
   rewired++;
 }
 console.log(`pre-lobby sentinel: ${rewired} scripts now ask Mod_PlayerCiv`);
+
+const HORSES56 = { RSCOUT: "RScout56", GHORSEMAN: "GHorseman56", ICAVALRY: "ICavalry56", CNUMIDIANRIDER: "CNumidianRider56", TTEUTONRIDER: "TTeutonRider56", TTEUTONWOLF: "TTeutonWolf56", TVALKYRIA: "TValkyrie56" };
+let horses = 0;
+const HD_CLASSES = path.join(__dirname, "..", "originals", "game-data", "paks", "DATA", "CLASSES");
+for (const [file, id] of Object.entries(HORSES56)) {
+  const src = path.join(HD_CLASSES, `${file}.SC.XML`);
+  if (!fs.existsSync(src)) { console.log(`  ${file}: not in the game data`); continue; }
+  // a new id: the copy does not take the original's altid (it has to be unique) and shows in the editor under its own name
+  const t = fs.readFileSync(src, "latin1").replace(/(<class\b[^>]*?\bid\s*=\s*")[^"]+"/, `$1${id}"`).replace(/\s+altid\s*=\s*"[^"]*"/, "");
+  fs.writeFileSync(path.join(CLASSES, `${id.toUpperCase()}.SC.XML`), t, "latin1");
+  horses++;
+}
+console.log(`1.56 horses: ${horses} classes`);
