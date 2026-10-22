@@ -31,7 +31,8 @@ async function http(url) {
     return { ok: null, status: "mediafire ?" };
   }
   if (/box\.com/.test(url) && /removed|not found|ha sido eliminado|no longer available/i.test(html)) return { ok: false, status: "box removed" };
-  if (/dropbox/.test(url) && /deleted|no longer|not found/i.test(html.slice(0, 20000))) return { ok: false, status: "dropbox removed" };
+  // a deleted file answers 200 with a page titled "Dropbox - Error"
+  if (/dropbox/.test(url) && (/<title>Dropbox - Error/i.test(html) || /deleted|no longer|not found/i.test(html.slice(0, 20000)))) return { ok: false, status: "dropbox removed" };
   if (/drive\.google/.test(url) && /not found|no existe|ServiceLogin/i.test(r.url + html.slice(0, 5000))) return { ok: false, status: "drive gone/private" };
   return { ok: true, status: `http ${r.status}` };
 }

@@ -209,11 +209,6 @@
   "status": "mediafire",
   "checked": "2026-10-18"
  },
- "http://dl.dropbox.com/u/42659963/Imperium/Bonus.zip": {
-  "ok": false,
-  "status": "http 404",
-  "checked": "2026-10-18"
- },
  "http://www.mediafire.com/?mv3ra56ux5k7z5a": {
   "ok": true,
   "status": "mediafire",
@@ -944,11 +939,6 @@
   "status": "mega -16",
   "checked": "2026-10-18"
  },
- "https://www.dropbox.com/s/11p0q3d9cpp7du5/Nimlundum.zip?dl=0": {
-  "ok": true,
-  "status": "http 200",
-  "checked": "2026-10-18"
- },
  "https://mega.nz/#!h7AECICb!KJUNyRi1ORCvACyqrRPROMx5CWdQl-4V4uyx_f4i710": {
   "ok": false,
   "status": "mega -16",
@@ -1032,11 +1022,6 @@
   "ok": true,
   "status": "mega",
   "size": 70744768,
-  "checked": "2026-10-18"
- },
- "https://www.dropbox.com/s/0b0sxrdjzqygbs2/KalindanSaga.zip?dl=0": {
-  "ok": true,
-  "status": "http 200",
   "checked": "2026-10-18"
  },
  "https://mega.nz/#!Bv5znIaZ!PlxWGaJC79SueKeaYRYd_yJeYEmLX-mIc69I3JhYKtw": {
@@ -1463,66 +1448,6 @@
  "https://mega.nz/file/UMdRTaKJ#mL6YH3X3L_Znk0PyueR7KpHDoi5uQnVlZDFq7MWtLyQ": {
   "ok": false,
   "status": "mega -16",
-  "checked": "2026-10-18"
- },
- "https://www.dropbox.com/s/45ljig6z9cq41xk/Le": {
-  "ok": true,
-  "status": "http 200",
-  "checked": "2026-10-18"
- },
- "https://www.dropbox.com/s/45ljig6z9cq41xk/Le%20campagne%20di%20Annibale.rar?dl=0": {
-  "ok": true,
-  "status": "http 200",
-  "checked": "2026-10-18"
- },
- "https://www.dropbox.com/s/922hk9n5x7h4q5i/Las": {
-  "ok": true,
-  "status": "http 200",
-  "checked": "2026-10-18"
- },
- "https://www.dropbox.com/s/922hk9n5x7h4q5i/Las%20Conquistas%20de%20Anibal.rar?dl=0": {
-  "ok": true,
-  "status": "http 200",
-  "checked": "2026-10-18"
- },
- "https://www.dropbox.com/s/janj0oh1tggizdu/Le": {
-  "ok": true,
-  "status": "http 200",
-  "checked": "2026-10-18"
- },
- "https://www.dropbox.com/s/janj0oh1tggizdu/Le%20Guerre%20Puniche.rar?dl=0": {
-  "ok": true,
-  "status": "http 200",
-  "checked": "2026-10-18"
- },
- "https://www.dropbox.com/s/ok7bcysalb6pj8h/Numantia.rar?dl=0": {
-  "ok": true,
-  "status": "http 200",
-  "checked": "2026-10-18"
- },
- "https://www.dropbox.com/s/pwwitk6zmw0ycrx/The": {
-  "ok": true,
-  "status": "http 200",
-  "checked": "2026-10-18"
- },
- "https://www.dropbox.com/s/pwwitk6zmw0ycrx/The%20Punic%20Wars.rar?dl=0": {
-  "ok": true,
-  "status": "http 200",
-  "checked": "2026-10-18"
- },
- "https://www.dropbox.com/s/r0n766001ecwihs/Hannibal%27s%20Campaigns.rar?dl=0": {
-  "ok": true,
-  "status": "http 200",
-  "checked": "2026-10-18"
- },
- "https://www.dropbox.com/s/tploy43yx6swjy2/Las": {
-  "ok": true,
-  "status": "http 200",
-  "checked": "2026-10-18"
- },
- "https://www.dropbox.com/s/tploy43yx6swjy2/Las%20Guerras%20P%C3%BAnicas.rar?dl=0": {
-  "ok": true,
-  "status": "http 200",
   "checked": "2026-10-18"
  },
  "https://www.mediafire.com/file/4wyp1zz9z5b2i3r/Texturas_del_Mod_-_Greek_civilization.rar/file": {
@@ -2310,11 +2235,6 @@
   "status": "error ENOTFOUND",
   "checked": "2026-10-18"
  },
- "https://www.dropbox.com/s/vkiv3aflax13xq2/Nimlundum.zip?dl=0": {
-  "ok": true,
-  "status": "http 200",
-  "checked": "2026-10-18"
- },
  "https://mega.nz/file/uZ12nZDQ#IJ5ijl2XowASAqa8JCx8MTNM3Hf7NanomtT81g4FmBE": {
   "ok": true,
   "status": "mega",
@@ -2355,11 +2275,6 @@
  "https://www.moddb.com/games/imperivm-great-battles-of-rome/addons/primeraguerrapunica-20": {
   "ok": null,
   "status": "moddb (blocks bots)",
-  "checked": "2026-10-18"
- },
- "https://www.dropbox.com/s/r0n766001ecwihs/Hannibal%27s": {
-  "ok": true,
-  "status": "http 200",
   "checked": "2026-10-18"
  },
  "https://drive.google.com/file/d/1FoYl1FTJhJqgh-jiSQKF3u2-6vGh7dhH/view?usp=sharing": {
@@ -3612,11 +3527,6 @@
   "status": "mega -16",
   "checked": "2026-10-22"
  },
- "https://www.dropbox.com/s/5le2g9kj34zlu49/textpatch_1.02.zip?dl=0": {
-  "ok": true,
-  "status": "http 200",
-  "checked": "2026-10-22"
- },
  "https://www.mediafire.com/file/0gkyb45kvjf...%28v0.14%29.zip": {
   "ok": false,
   "status": "http 404",
@@ -3652,11 +3562,6 @@
   "status": "mediafire",
   "checked": "2026-10-22"
  },
- "https://www.dropbox.com/s/hos3bc83z4hw13o/AssedioCentrale4guadi.BFHP?dl=1": {
-  "ok": true,
-  "status": "http 200",
-  "checked": "2026-10-22"
- },
  "http://www.mediafire.com/file/mj9ki6r5ph87...erivm+World.rar": {
   "ok": false,
   "status": "http 404",
@@ -3680,16 +3585,6 @@
  "https://mega.nz/#!FMtEHRIL!94CZkIUQ03yo5Va4c9I_GOMOPXP7pbfTkgj1AX7GupE": {
   "ok": false,
   "status": "mega -16",
-  "checked": "2026-10-22"
- },
- "https://www.dropbox.com/s/g4gczi4yrkysqzu/RomanUltraDefense_3p.BFHP?dl=1": {
-  "ok": true,
-  "status": "http 200",
-  "checked": "2026-10-22"
- },
- "https://www.dropbox.com/s/ljrpvdyigrbb7ak/RomanDefense_3p.BFHP?dl=1": {
-  "ok": true,
-  "status": "http 200",
   "checked": "2026-10-22"
  },
  "https://mega.nz/#!JFlzVSaD!7udDmtu...bf9Hp2aG748XgUk": {
@@ -4652,6 +4547,111 @@
  "http://www.mediafire.com/file/2pahr89qj150md8/Parte+1.docx": {
   "ok": false,
   "status": "http 404",
+  "checked": "2026-10-22"
+ },
+ "http://dl.dropbox.com/u/42659963/Imperium/Bonus.zip": {
+  "ok": false,
+  "status": "http 404",
+  "checked": "2026-10-22"
+ },
+ "https://www.dropbox.com/s/11p0q3d9cpp7du5/Nimlundum.zip?dl=0": {
+  "ok": true,
+  "status": "http 200",
+  "checked": "2026-10-22"
+ },
+ "https://www.dropbox.com/s/vkiv3aflax13xq2/Nimlundum.zip?dl=0": {
+  "ok": false,
+  "status": "dropbox removed",
+  "checked": "2026-10-22"
+ },
+ "https://www.dropbox.com/s/0b0sxrdjzqygbs2/KalindanSaga.zip?dl=0": {
+  "ok": true,
+  "status": "http 200",
+  "checked": "2026-10-22"
+ },
+ "https://www.dropbox.com/s/45ljig6z9cq41xk/Le": {
+  "ok": true,
+  "status": "http 200",
+  "checked": "2026-10-22"
+ },
+ "https://www.dropbox.com/s/45ljig6z9cq41xk/Le%20campagne%20di%20Annibale.rar?dl=0": {
+  "ok": true,
+  "status": "http 200",
+  "checked": "2026-10-22"
+ },
+ "https://www.dropbox.com/s/922hk9n5x7h4q5i/Las": {
+  "ok": true,
+  "status": "http 200",
+  "checked": "2026-10-22"
+ },
+ "https://www.dropbox.com/s/922hk9n5x7h4q5i/Las%20Conquistas%20de%20Anibal.rar?dl=0": {
+  "ok": true,
+  "status": "http 200",
+  "checked": "2026-10-22"
+ },
+ "https://www.dropbox.com/s/janj0oh1tggizdu/Le": {
+  "ok": true,
+  "status": "http 200",
+  "checked": "2026-10-22"
+ },
+ "https://www.dropbox.com/s/janj0oh1tggizdu/Le%20Guerre%20Puniche.rar?dl=0": {
+  "ok": true,
+  "status": "http 200",
+  "checked": "2026-10-22"
+ },
+ "https://www.dropbox.com/s/ok7bcysalb6pj8h/Numantia.rar?dl=0": {
+  "ok": true,
+  "status": "http 200",
+  "checked": "2026-10-22"
+ },
+ "https://www.dropbox.com/s/pwwitk6zmw0ycrx/The": {
+  "ok": true,
+  "status": "http 200",
+  "checked": "2026-10-22"
+ },
+ "https://www.dropbox.com/s/pwwitk6zmw0ycrx/The%20Punic%20Wars.rar?dl=0": {
+  "ok": true,
+  "status": "http 200",
+  "checked": "2026-10-22"
+ },
+ "https://www.dropbox.com/s/r0n766001ecwihs/Hannibal%27s": {
+  "ok": true,
+  "status": "http 200",
+  "checked": "2026-10-22"
+ },
+ "https://www.dropbox.com/s/r0n766001ecwihs/Hannibal%27s%20Campaigns.rar?dl=0": {
+  "ok": true,
+  "status": "http 200",
+  "checked": "2026-10-22"
+ },
+ "https://www.dropbox.com/s/tploy43yx6swjy2/Las": {
+  "ok": true,
+  "status": "http 200",
+  "checked": "2026-10-22"
+ },
+ "https://www.dropbox.com/s/tploy43yx6swjy2/Las%20Guerras%20P%C3%BAnicas.rar?dl=0": {
+  "ok": true,
+  "status": "http 200",
+  "checked": "2026-10-22"
+ },
+ "https://www.dropbox.com/s/5le2g9kj34zlu49/textpatch_1.02.zip?dl=0": {
+  "ok": false,
+  "status": "dropbox removed",
+  "checked": "2026-10-22"
+ },
+ "https://www.dropbox.com/s/hos3bc83z4hw13o/AssedioCentrale4guadi.BFHP?dl=1": {
+  "ok": true,
+  "status": "http 200",
+  "checked": "2026-10-22"
+ },
+ "https://www.dropbox.com/s/g4gczi4yrkysqzu/RomanUltraDefense_3p.BFHP?dl=1": {
+  "ok": true,
+  "status": "http 200",
+  "checked": "2026-10-22"
+ },
+ "https://www.dropbox.com/s/ljrpvdyigrbb7ak/RomanDefense_3p.BFHP?dl=1": {
+  "ok": true,
+  "status": "http 200",
   "checked": "2026-10-22"
  }
 }
