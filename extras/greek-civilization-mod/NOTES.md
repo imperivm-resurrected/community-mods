@@ -20,7 +20,7 @@ In 4.2 the Greek faction sits in the Imperial Rome slot: its classes have `race=
 
 ## Game modes (tools/greek-mod-fixes.js)
 
-4.2 replaced the game's five victory scripts with nine of its own (`1 VARIOS` … `9 CUSTOM`) and kept its edited copies of the old five inside `data.pak` as `.VX`, which nothing reads; the old pack also hid the game's. Most maps say `victory_condition="1 Elimination"` (228 of the 415 maps in `ported/`), so with that script hidden a map starts and goes back to the menu at once, with nothing in the log. After `shrink-mod.js` and the copy of this folder, `node tools/greek-mod-fixes.js` writes 4.2's five as `.VS` under the game's names and takes them out of `hidden.txt`; the lobby then lists them next to 4.2's nine.
+4.2 replaced the game's five victory scripts with nine of its own (`1 VARIOS` … `9 CUSTOM`), kept its edited copies of the old five inside `data.pak` as `.VX` (nothing reads them) and its old pack hid the game's. Most maps say `victory_condition="1 Elimination"` (228 of the 415 maps in `ported/`), so with that script hidden a map starts and goes back to the menu at once, with nothing in the log. `shrink-mod.js` carries over the hiding; `node tools/greek-mod-fixes.js` takes the five out of `hidden.txt` (the game's own scripts, as the maps were made for) and drops the `.VX`. The lobby lists them next to 4.2's nine.
 
 ## Rome's branches and Carthage's (civs/*.json, tools/greek-mod-fixes.js)
 
