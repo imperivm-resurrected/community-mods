@@ -12,5 +12,11 @@
   },
   "category": "Conquests",
   "tags": [],
+  "requires": [
+    "secuter-fun-mod"
+  ],
+  "incompatibleWith": [
+    "conquista-africana"
+  ],
   "redistributable": true
 }

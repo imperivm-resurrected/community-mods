@@ -1,0 +1,21 @@
+<conquestmap name="L'unificazione italica "
+	     data="ConquestMaps/8 - GBR Italia"
+	     owned_colorize="1" 
+	     enemy_colorize="1"
+	     disable_colorize="0"
+	     owned_hue="560"
+	     enemy_hue="0"
+	     disabled_hue="1000"
+	     owned_sat="1360"
+	     enemy_sat="1000"
+	     disabled_sat="1024">
+>
+  <territory id="Roma" index="2" state="1" neighbours="Etruria, Samnium, Lucania"/>
+  <territory id="Etruria" index="3" state="1" neighbours="Samnium, Roma, Veneti, Liguri"/>
+  <territory id="Samnium" index="4" state="1" neighbours="Etruria, Lucania, Roma"/>
+  <territory id="Carthago" index="5" state="1" neighbours="Syracusae, Lucania"/>
+  <territory id="Syracusae" index="6" state="1" neighbours="Carthago, Lucania"/>
+  <territory id="Veneti" index="7" state="1" neighbours="Liguri, Etruria"/>
+  <territory id="Liguri" index="8" state="1" neighbours="Veneti, Etruria"/>
+  <territory id="Lucania" index="9" state="1" neighbours="Carthago, Syracusae, Samnium, Roma"/>
+</conquestmap>

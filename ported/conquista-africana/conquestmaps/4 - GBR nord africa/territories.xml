@@ -1,0 +1,31 @@
+<conquestmap name="Africa "
+	     data="ConquestMaps/4 - GBR nord africa"
+	     owned_colorize="1" 
+	     enemy_colorize="1"
+	     disable_colorize="0"
+	     owned_hue="560"
+	     enemy_hue="0"
+	     disabled_hue="1000"
+	     owned_sat="2000"
+	     enemy_sat="1000"
+	     disabled_sat="1024">
+>
+  <territory id="Aegyptus"      index="2" state="1" neighbours="Nubia,Libya,Aksum"/>
+  <territory id="Carthago"      index="3" state="1" neighbours="Libya,Numidia"/>
+  <territory id="Libya"         index="4" state="1" neighbours="Carthago,Numidia,Aegyptus,Nubia"/>
+  <territory id="Numidia"       index="5" state="1" neighbours="Mauretania,Carthago,Libya,Nok"/>
+  <territory id="Aksum"         index="6" state="1" neighbours="Nubia,Aegyptus,Nok"/>
+  <territory id="Mauretania"    index="7" state="1" neighbours="Numidia,Nubia,Nok"/>
+  <territory id="Nubia"         index="8" state="1" neighbours="Libya,Aegyptus,Aksum,Nok"/>
+  <territory id="Nok"           index="9" state="1" neighbours="Numidia,Nubia,Mauretania"/>
+  
+  <territory id="Aegyptus2"      index="10" state="0" neighbours=""/>
+  <territory id="Carthago2"      index="11" state="0" neighbours=""/>
+  <territory id="Libya2"         index="12" state="0" neighbours=""/>
+  <territory id="Numidia2"       index="13" state="0" neighbours=""/>
+  <territory id="Aksum2"         index="14" state="0" neighbours=""/>
+  <territory id="Mauretania2"    index="15" state="0" neighbours=""/>
+  <territory id="Nubia2"         index="16" state="0" neighbours=""/>
+  <territory id="Nok2"           index="17" state="0" neighbours=""/>
+
+</conquestmap>

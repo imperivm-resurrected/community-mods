@@ -57,7 +57,7 @@ const italianEntry = key => {
   if (!rows.length) { console.error("nothing downloaded for", key); process.exit(1); }
   const files = [...new Set(rows.flatMap(v => v.files))].map(local => ({ name: path.basename(local), local }));
   const name = rows[0].name, m = name.match(/^(.*?)\s*\((\d{4})\)$/);
-  const title = m ? m[1] : name;
+  const title = (m ? m[1] : name).replace(/^./, c => c.toUpperCase()); // "versione modificata..." -> "Versione modificata..."
   const row = fs.readFileSync(path.join(ROOT, "MODS.md"), "utf8").split("\n").map(l => l.split("|")).find(c => c[2]?.trim() === name);
   const ported = (() => { try { return require("../raw/ported.json"); } catch { return {}; } })();
   // another mod already has this title: add the author, then the key
@@ -235,6 +235,21 @@ for (const f of fs.readdirSync(dest, { recursive: true }).filter(f => /\.bfhp$/i
     played.set(path.basename(rel).toLowerCase(), rel.replace(/^(\w+)\//, (_m, d) => d.toLowerCase() + "/"));
   }
 for (const [alt, n] of videoAlias) if (played.has(n)) played.set(alt, played.get(n));
+// A conquest's folder (territories.xml, territories.bmp, global.bmp, Shield<Name>.bmp...): the game reads it from
+// conquestmaps/<the folder name its .bfhp stores>, so it is kept whole, not flattened with the maps' previews. The same for the
+// UI/ pictures a map uses (UI/NOTEICONS/...): they keep their path.
+// the name as the .bfhp spells it ("2 - GBR Europe MOD"): the folder has to match it exactly, an archive may say "europe"
+const cmName = new Map();
+for (const f of fs.readdirSync(dest, { recursive: true }).filter(f => /\.bfhp$/i.test(f)))
+  for (const m of fs.readFileSync(path.join(dest, f), "latin1").matchAll(/ConquestMaps[\\/]([^"\0\r\n<>]+)/gi)) cmName.set(m[1].trim().toLowerCase(), m[1].trim());
+const cmDirs = new Set(fs.readdirSync(dest, { recursive: true }).filter(f => /(^|[\\/])(territories\.xml|global\.bmp)$/i.test(f) && path.dirname(f) !== ".").map(f => path.dirname(f)));
+for (const f of fs.readdirSync(dest, { recursive: true })) {
+  const p = path.join(dest, f);
+  if (!fs.existsSync(p) || fs.statSync(p).isDirectory()) continue;
+  const to = cmDirs.has(path.dirname(f)) ? path.join(out, "conquestmaps", cmName.get(path.basename(path.dirname(f)).toLowerCase()) || path.basename(path.dirname(f)), path.basename(f))
+    : /^ui[\\/]/i.test(f) ? path.join(out, "UI", f.slice(3)) : null;
+  if (to) { fs.mkdirSync(path.dirname(to), { recursive: true }); fs.renameSync(p, to); }
+}
 // flatten folders inside archives, keep only what the game reads next to a map
 for (const f of fs.readdirSync(dest, { recursive: true })) {
   const p = path.join(dest, f);
@@ -285,6 +300,8 @@ if (opt._.startsWith("it/")) {
   maps = fs.readdirSync(dest).filter(f => /\.bfhp$/i.test(f));
   if (!maps.length) { fs.rmSync(out, { recursive: true, force: true }); console.error("every map of this row is already in another mod"); process.exit(3); }
 }
+// a picture with no map of that name (a cover the author zipped, icons) is not read by the game: the previews are <map>.bmp
+for (const f of fs.readdirSync(dest)) if (/\.bmp$/i.test(f) && !maps.some(m => m.replace(/\.bfhp$/i, "").toLowerCase() === f.replace(/\.bmp$/i, "").toLowerCase())) fs.rmSync(path.join(dest, f));
 // a map the HD game already ships (same bytes; copy Scenarios/ and Adventures/ of the game to originals/game-data/):
 // nothing to port
 const md5 = f => require("crypto").createHash("md5").update(fs.readFileSync(f)).digest("hex");
@@ -455,6 +472,18 @@ const byCount = FOLDERS.filter(has).sort((a, b) => maps.filter(f => where[f] ===
 const main = byCount[0];
 isAdv = main === "adventures";
 const what = main === "adventures" ? "Aventura" : main === "conquests" ? "Conquista" : maps.length > 1 ? `${maps.length} mapas` : "Mapa";
+const cmClash = [];
+if (fs.existsSync(path.join(out, "conquestmaps"))) {
+  const mine = fs.readdirSync(path.join(out, "conquestmaps")).map(d => d.toLowerCase());
+  for (const m of fs.readdirSync(path.join(ROOT, "ported")).filter(m => m !== id)) {
+    const dir = path.join(ROOT, "ported", m, "conquestmaps");
+    if (fs.existsSync(dir) && fs.readdirSync(dir).some(d => mine.includes(d.toLowerCase()))) {
+      let modId = m;
+      try { modId = JSON.parse(fs.readFileSync(path.join(ROOT, "ported", m, "mod.json"), "utf8")).id || m; } catch { /* folder name */ }
+      cmClash.push(modId);
+    }
+  }
+}
 const mod = {
   id,
   name: modName,
@@ -473,7 +502,8 @@ const mod = {
     ...(cover.length ? cover : needs.length ? [[...PREFER, ...needs].find(m => needs.includes(m))] : []),
     ...(extraTerrain && !needs.some(m => TERRAIN_MODS.includes(m)) ? ["greek-mod-terrains"] : []),
   ] } : {}),
-  ...(breaks.length ? { incompatibleWith: breaks.map(b => b.mod) } : {}),
+  // two conquests that keep their images in the same conquestmaps/<folder> would overwrite each other
+  ...((cmClash.length || breaks.length) ? { incompatibleWith: [...breaks.map(b => b.mod), ...cmClash] } : {}),
   redistributable: !opt["no-redistributable"], // publishing on GameBanana already redistributes it; false only if the author asks
 };
 if (fs.existsSync(EXTRAS)) fs.cpSync(EXTRAS, out, { recursive: true });

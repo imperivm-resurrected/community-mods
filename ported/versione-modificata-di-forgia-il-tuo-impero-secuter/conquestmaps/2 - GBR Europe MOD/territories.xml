@@ -1,0 +1,20 @@
+<conquestmap name="Mediterranean2 "
+	     data="ConquestMaps/2 - GBR Europe MOD"
+	     owned_colorize="1" 
+	     enemy_colorize="1"
+	     disable_colorize="0"
+	     owned_hue="560"
+	     enemy_hue="0"
+	     disabled_hue="1000"
+	     owned_sat="1360"
+	     enemy_sat="1000"
+	     disabled_sat="1024">
+>
+  <territory id="Spain" index="3" state="1" neighbours="Gaul, Carthage, Italy"/>
+  <territory id="Britain" index="4" state="0" neighbours="Gaul, Germany, Spain"/>
+  <territory id="Gaul" index="8" state="0" neighbours="Britain, Spain, Germany, Italy"/>
+  <territory id="Italy" index="7" state="1" neighbours="Gaul, Carthage, Germany, Egypt"/>
+  <territory id="Carthage" index="6" state="0" neighbours="Italy, Spain, Egypt"/>
+  <territory id="Egypt" index="2" state="0" neighbours="Italy, Carthage, Spain"/>
+  <territory id="Germany" index="5" state="0" neighbours="Gaul, Italy, Britain"/>
+</conquestmap>

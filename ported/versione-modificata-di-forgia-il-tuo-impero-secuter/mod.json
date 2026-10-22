@@ -1,0 +1,16 @@
+{
+  "id": "versione-modificata-di-forgia-il-tuo-impero-secuter",
+  "name": "versione modificata di forgia il tuo impero",
+  "version": "1.0",
+  "authors": [
+    "Secuter"
+  ],
+  "description": {
+    "italian": "Scegli la tua civiltà preferita e trasformala in un impero. Nuova versione della conquista con missioni secondarie ed obbiettivi nella mappe, nuovi bonus per i popoli e altri cambiamenti! Conquista di Secuter.",
+    "spanish": "Conquista de Secuter (2017, en italiano).",
+    "english": "Conquest by Secuter (2017, in Italian)."
+  },
+  "category": "Conquests",
+  "tags": [],
+  "redistributable": true
+}

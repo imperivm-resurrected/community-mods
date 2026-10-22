@@ -16,5 +16,8 @@
     "caesar-mod",
     "imperivm1-legacy"
   ],
+  "incompatibleWith": [
+    "le-guerre-puniche-1-5-5"
+  ],
   "redistributable": true
 }

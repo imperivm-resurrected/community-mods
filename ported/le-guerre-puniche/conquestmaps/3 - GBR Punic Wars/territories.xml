@@ -1,0 +1,20 @@
+<conquestmap name="Punic Wars"
+	     data="ConquestMaps/3 - GBR Punic Wars"
+	     owned_colorize="1" 
+	     enemy_colorize="1"
+	     disable_colorize="0"
+	     owned_hue="560"
+	     enemy_hue="0"
+	     disabled_hue="1000"
+	     owned_sat="1360"
+	     enemy_sat="1000"
+	     disabled_sat="1024">
+>
+  <territory id="Italia" index="8" state="0" neighbours="Sicilia, Gallia"/>
+  <territory id="Gallia" index="5" state="0" neighbours="Italia, Hispania"/>
+  <territory id="Hispania" index="6" state="0" neighbours="Lusitania, Gallia"/>
+  <territory id="Lusitania" index="7" state="0" neighbours="Hispania"/>
+  <territory id="Sicilia" index="4" state="0" neighbours="Carthago, Italia"/>
+  <territory id="Carthago" index="3" state="0" neighbours="Numidia, Sicilia"/>
+  <territory id="Numidia" index="2" state="0" neighbours="Carthago, Hispania"/>
+</conquestmap>

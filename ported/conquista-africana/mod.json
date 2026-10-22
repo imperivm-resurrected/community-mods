@@ -12,5 +12,8 @@
   },
   "category": "Conquests",
   "tags": [],
+  "incompatibleWith": [
+    "conquista-africana-secuter"
+  ],
   "redistributable": true
 }

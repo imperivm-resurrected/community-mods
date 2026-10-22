@@ -15,5 +15,8 @@
   "requires": [
     "imperivm1-legacy"
   ],
+  "incompatibleWith": [
+    "le-guerre-puniche"
+  ],
   "redistributable": true
 }

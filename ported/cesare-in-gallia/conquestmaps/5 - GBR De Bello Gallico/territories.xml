@@ -1,0 +1,21 @@
+<conquestmap name="Cesare in Gallia "
+	     data="ConquestMaps/5 - GBR De Bello Gallico"
+	     owned_colorize="1" 
+	     enemy_colorize="1"
+	     disable_colorize="0"
+	     owned_hue="760"
+	     enemy_hue="0"
+	     disabled_hue="1200"
+	     owned_sat="1460"
+	     enemy_sat="1300"
+	     disabled_sat="1124">
+>
+  <territory id="Roma" index="1" state="1" neighbours="Aquitania, Celtica, Elvezia"/>
+  <territory id="Belgica" index="2" state="1" neighbours="Germania, Armorica, Celtica"/>
+  <territory id="Britannia" index="3" state="1" neighbours="Armorica, Belgica"/>
+  <territory id="Armorica" index="4" state="1" neighbours="Celtica, Britannia, Belgica"/>
+  <territory id="Celtica" index="5" state="1" neighbours="Roma, Elvezia, Aquitania, Armorica, Belgica"/>
+  <territory id="Aquitania" index="6" state="1" neighbours="Roma, Celtica"/>
+  <territory id="Elvezia" index="7" state="1" neighbours="Celtica, Roma, Germania"/>
+  <territory id="Germania" index="8" state="1" neighbours="Belgica, Celtica"/>
+</conquestmap>
