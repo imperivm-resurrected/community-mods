@@ -139,7 +139,8 @@ The same idea works for any old map: look for the class in an older `data.pak` (
 | Script | What it does |
 |---|---|
 | **Gathering** | |
-| [`scrape-forum.py`](tools/scrape-forum.py) | Forum → `raw/forum.json` (not in git: the full crawl holds unrelated messages; resumes if interrupted) |
+| [`scrape-forum.js`](tools/scrape-forum.js) | Spanish forum → `raw/forum.json` (not in git: the full crawl holds unrelated messages; resumes if interrupted). Needs `FORUM_COOKIE` |
+| [`scrape-forum-it.js`](tools/scrape-forum-it.js) | Italian forum → `raw/forum-it.json` (not in git) and its Downloads table → `raw/forum-it-downloads.json`. Needs `FORUM_IT_COOKIE` (shares [`scrape-common.js`](tools/scrape-common.js)) |
 | [`parse-forum.js`](tools/parse-forum.js) | `raw/forum.json` → `raw/forum-entries.json`: topics with the author's links |
 | [`parse-discord.js`](tools/parse-discord.js) | `raw/discord.json` (not in git, like `forum.json`) → `raw/discord-entries.json` |
 | [`scrape-moddb.js`](tools/scrape-moddb.js) | Everything on ModDB for the Imperivm games → `raw/moddb.json` |
