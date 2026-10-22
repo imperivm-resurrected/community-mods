@@ -1,0 +1,420 @@
+<commands>
+<!-- HERO COMMANDS -->
+
+<cmd name="stand_ground" priority="3"
+	offset="1"
+	method="stand_position"
+	button="Actions/Stand Ground.bmp"
+	key="s"
+	rollover="Stand ground"
+	description="Keeps army in battle formation (applies bonus)"
+	groupverifier=""
+	groupdispatch=""
+	voidgroupdispatch="1"
+	>
+</cmd>
+
+<cmd name="boardshiphero" priority="0"
+	key=""
+	cursor="do_something">
+
+	<cmdtext target="ShipL"
+		default-text="Right-click to board this ship"/>
+</cmd>
+
+<cmd name="form-line-menu" priority="1"
+	method="move"
+	button="States/line form.bmp"
+	key="f"
+	rollover="Select Formation"
+	param="Line"
+	groupverifier="data/subai/hero_formation_menu_verify.vs"
+	menu="1"
+	>
+
+	<src obj="Hero"/>
+</cmd>
+
+<cmd name="form-cucaracha-menu" priority="1"
+	method="move"
+	button="States/cucaracha form.bmp"
+	key="f"
+	rollover="Select Formation"
+	param="Stella"
+	groupverifier="data/subai/hero_formation_menu_verify.vs"
+	menu="1"
+	>
+
+	<src obj="Hero"/>
+</cmd>
+
+<cmd name="form-alasdelinfierno-menu" priority="1"
+	method="move"
+	button="States/alas del infierno form.bmp"
+	key="f"
+	rollover="Select Formation"
+	param="Ali infernali"
+	groupverifier="data/subai/hero_formation_menu_verify.vs"
+	menu="1"
+	>
+
+	<src obj="Hero"/>
+</cmd>
+
+<cmd name="form-front-menu" priority="1"
+	method="move"
+	button="States/front form.bmp"
+	key="f"
+	rollover="Select Formation"
+	param="Front"
+	groupverifier="data/subai/hero_formation_menu_verify.vs"
+	menu="1"
+	>
+
+	<src obj="Hero"/>
+</cmd>
+
+<cmd name="form-block-menu" priority="1"
+	method="move"
+	button="States/block form.bmp"
+	key="f"
+	rollover="Select Formation"
+	param="Block"
+	groupverifier="data/subai/hero_formation_menu_verify.vs"
+	menu="1"
+	>
+
+	<src obj="Hero"/>
+</cmd>
+
+<cmd name="form-ranged-menu" priority="1"
+	method="move"
+	button="states/ranged wings form.bmp"
+	key="f"
+	rollover="Select Formation"
+	param="Arcieri ai lati"
+	groupverifier="data/subai/hero_formation_menu_verify.vs"
+	menu="1"
+	>
+
+	<src obj="Hero"/>
+</cmd>
+
+<cmd name="form-hilera-menu" priority="1"
+	method="move"
+	button="states/hilera form.bmp"
+	key="f"
+	rollover="Select Formation"
+	param="Fila"
+	groupverifier="data/subai/hero_formation_menu_verify.vs"
+	menu="1"
+	>
+
+	<src obj="Hero"/>
+</cmd>
+
+<cmd name="form-retaguardia-menu" priority="1"
+	method="move"
+	button="states/retaguardia form.bmp"
+	key="f"
+	rollover="Select Formation"
+	param="Retroguardia"
+	groupverifier="data/subai/hero_formation_menu_verify.vs"
+	menu="1"
+	>
+
+	<src obj="Hero"/>
+</cmd>
+
+<cmd name="form-cavalry-menu" priority="1"
+	method="move"
+	button="states/horse wing form.bmp"
+	key="f"
+	rollover="Select Formation"
+	param="Cavalry core"
+	groupverifier="data/subai/hero_formation_menu_verify.vs"
+	menu="1"
+	>
+
+	<src obj="Hero"/>
+</cmd>
+
+<!-- scegli formazione -->
+
+<cmd name="form-line" priority="1"
+	method="formation"
+	button="States/line form.bmp"
+	immediate="yes"
+	key="l"
+	rollover="Select Line formation"
+	param="Line"
+	groupverifier="data/subai/hero_formation_verify.vs"
+	menu="1"
+	>
+
+	<src obj="Hero"/>
+</cmd>
+
+<cmd name="form-cucaracha" priority="1"
+	method="formation"
+	button="States/cucaracha form.bmp"
+	immediate="yes"
+	key="c"
+	rollover="Seleziona formazione a stella"
+	param="Stella"
+	groupverifier="data/subai/hero_formation_verify.vs"
+	menu="1"
+	>
+
+	<src obj="Hero"/>
+</cmd>
+
+<cmd name="form-alasdelinfierno" priority="1"
+	method="formation"
+	button="States/alas del infierno form.bmp"
+	immediate="yes"
+	key="a"
+	rollover="Seleziona formazione ali infernali"
+	param="Ali infernali"
+	groupverifier="data/subai/hero_formation_verify.vs"
+	menu="1"
+	>
+
+	<src obj="Hero"/>
+</cmd>
+
+<cmd name="form-front" priority="1"
+	method="formation"
+	button="States/front form.bmp"
+	immediate="yes"
+	key="f"
+	rollover="Select Front formation"
+	param="Front"
+	groupverifier="data/subai/hero_formation_verify.vs"
+	menu="1"
+	>
+
+	<src obj="Hero"/>
+</cmd>
+
+<cmd name="form-block" priority="1"
+	method="formation"
+	button="States/block form.bmp"
+	immediate="yes"
+	key="b"
+	rollover="Select Block formation"
+	param="Block"
+	groupverifier="data/subai/hero_formation_verify.vs"
+	menu="1"
+	>
+
+	<src obj="Hero"/>
+</cmd>
+
+<cmd name="form-ranged" priority="1"
+	method="formation"
+	button="states/ranged wings form.bmp"
+	immediate="yes"
+	key="r"
+	rollover="Seleziona formazione arcieri ai lati"
+	param="Arcieri ai lati"
+	groupverifier="data/subai/hero_formation_verify.vs"
+	menu="1"
+	>
+	<src obj="Hero"/>
+</cmd>
+
+<cmd name="form-hilera" priority="1"
+	method="formation"
+	button="states/hilera form.bmp"
+	immediate="yes"
+	key="h"
+	rollover="Seleziona formazione in fila"
+	param="Fila"
+	groupverifier="data/subai/hero_formation_verify.vs"
+	menu="1"
+	>
+	<src obj="Hero"/>
+</cmd>
+
+<cmd name="form-retaguardia" priority="1"
+	method="formation"
+	button="states/retaguardia form.bmp"
+	immediate="yes"
+	key="t"
+	rollover="Seleziona formazione retroguardia"
+	param="Retroguardia"
+	groupverifier="data/subai/hero_formation_verify.vs"
+	menu="1"
+	>
+    
+	<src obj="Hero"/>
+</cmd>
+
+<cmd name="form-cavalry" priority="1"
+	method="formation"
+	button="states/horse wing form.bmp"
+	immediate="yes"
+	key="w"
+	rollover="Select Cavalry core formation"
+	param="Cavalry core"
+	groupverifier="data/subai/hero_formation_verify.vs"
+	menu="1"
+	>
+	<src obj="Hero"/>
+</cmd>
+
+<cmd name="leavearmy" priority="6"
+	button="specials/Leave Army.bmp"
+	cursor=""
+	key="v"
+	rollover="Leave army"
+	description="Leaves the attached allies on their own">
+
+	<src obj="Hero"/>
+</cmd>
+
+<cmd name="moveinfight" priority="0"
+	offset="1"
+	key=""
+	cursor="move_in_fight">
+	<cmdtext target=""/>
+
+	<src obj="Hero" sticky="yes"/>
+</cmd>
+
+<cmd name="divine_grace" priority="10"
+	button="Skills/DivineGrace.bmp"
+	key="g"
+	rollover="Divine Grace"
+	description="Restores 100 of the hero's health"
+	coststamina = "4"
+	immediate="yes"
+	groupverifier="data/subai/verify_cmdcost_unit.vs">
+	<src obj="Hero"/>
+</cmd>
+<!-- Skills -->
+<!--
+<cmd name="skill_divine_grace" priority="50"
+	button="skills/DivineGrace.bmp"
+	rollover="Divine Grace"
+	description="Activates the divine grace skill"
+	coststamina = "4"
+	groupverifier="data/subai/verify_hero_skill.vs"
+	groupdispatch="data/subai/activate_hero_skill.vs"
+	voidgroupdispatch="1"
+	param="Divine grace">
+	<src obj="Hero"/>
+</cmd>
+-->
+<cmd name="skill_battle_cry" priority="51"
+	button="skills/BattleCry.bmp"
+	key="y"
+	rollover="Battle Cry"
+	description="Activates the Battle Cry skill"
+	coststamina = "6"
+	groupverifier="data/subai/verify_hero_skill.vs"
+	groupdispatch="data/subai/activate_hero_skill.vs"
+	voidgroupdispatch="1"
+	param="Battle cry">
+	<src obj="Hero"/>
+</cmd>
+
+<cmd name="skill_healing" priority="52"
+	button="skills/Healing.bmp"
+	key="h"
+	rollover="Healing"
+	description="Activates the Healing skill"
+	coststamina = "6"
+	groupverifier="data/subai/verify_hero_skill.vs"
+	groupdispatch="data/subai/activate_hero_skill.vs"
+	voidgroupdispatch="1"
+	param="Healing">
+	<src obj="Hero"/>
+</cmd>
+
+<cmd name="skill_ceasefire" priority="53"
+	button="skills/Ceasefire.bmp"
+	key="n"
+	rollover="Ceasefire"
+	description="Activates the Ceasefire skill"
+	coststamina = "6"
+	groupverifier="data/subai/verify_hero_skill.vs"
+	groupdispatch="data/subai/activate_hero_skill.vs"
+	voidgroupdispatch="1"
+	param="Ceasefire">
+	<src obj="Hero"/>
+</cmd>
+
+<cmd name="skill_frenzy" priority="54"
+	button="skills/Frenzy.bmp"
+	key="z"
+	rollover="Frenzy"
+	description="Activates the Frenzy skill"
+	coststamina = "6"
+	groupverifier="data/subai/verify_hero_skill.vs"
+	groupdispatch="data/subai/activate_hero_skill.vs"
+	voidgroupdispatch="1"
+	param="Frenzy">
+	<src obj="Hero"/>
+</cmd>
+
+<cmd name="skill_divine_rush" priority="55"
+	button="skills/Rush.bmp"
+	key="k"
+	rollover="Rush"
+	description="Activates the Rush skill"
+	coststamina = "4"
+	groupverifier="data/subai/verify_hero_skill.vs"
+	groupdispatch="data/subai/activate_hero_skill.vs"
+	voidgroupdispatch="1"
+	param="Rush">
+	<src obj="Hero"/>
+</cmd>
+
+<cmd name="skill_charge" priority="56"
+	button="skills/Charge.bmp"
+	key="j"
+	rollover="Charge"
+	description="Activates the Charge skill"
+	coststamina = "6"
+	groupverifier="data/subai/verify_hero_skill.vs"
+	groupdispatch="data/subai/activate_hero_skill.vs"
+	voidgroupdispatch="1"
+	param="Charge">
+	<src obj="Hero"/>
+</cmd>
+
+<cmd name="skill_assault" priority="57"
+	button="skills/Assault.bmp"
+	key="x"
+	rollover="Assault"
+	description="Activates the Assault skill"
+	coststamina = "6"
+	groupverifier="data/subai/verify_hero_skill.vs"
+	groupdispatch="data/subai/activate_hero_skill.vs"
+	voidgroupdispatch="1"
+	param="Assault">
+	<src obj="Hero"/>
+</cmd>
+
+<cmd name="skill_defensive_cry" priority="58"
+	button="skills/DefensiveCry.bmp"
+	key="o"
+	rollover="Defensive Cry"
+	description="Activates the Defensive Cry skill"
+	coststamina = "4"
+	groupverifier="data/subai/verify_hero_skill.vs"
+	groupdispatch="data/subai/activate_hero_skill.vs"
+	voidgroupdispatch="1"
+	param="Defensive cry">
+	<src obj="Hero"/>
+</cmd>
+
+<!-- this command is a hack -->
+<cmd name="hero_set_final_party_orientation"
+	method="hero_set_final_party_orientation">
+</cmd>
+
+
+</commands>

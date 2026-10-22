@@ -1,0 +1,14 @@
+<class id="RTent" cpp_class="CVXTownHall" parent="TTent"
+	entity="Buildings/RArena/RArena_as.ent.xml"
+	entity_winter="Buildings/RArena/RArena_w.ent.xml"
+>
+
+	<properties race="RepublicanRome"/>
+	<properties display_name="Accampamento romano"/>
+	<properties edittree_pos="Structures/Accampamenti/Accampamento romano"/>
+	<properties icon="gameres/icons/MArena.bmp"/>
+	<properties help="/contents/buildings/RArena"/>
+	<properties radius="360" selection_radius="365"/>
+	<properties description="Si tratta di insediamenti di gladiatori romani che attaccano ogni guerriero che si avvicina. Sono protetti da una guarnigione di 13 gladiatori e 13 liberatus"/>
+
+</class>

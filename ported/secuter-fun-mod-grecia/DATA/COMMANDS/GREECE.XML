@@ -1,0 +1,565 @@
+<commands>
+
+<!-- MYRMIDON COMMANDS
+
+<cmd name="change_weapon_sword" priority="0"
+	offset="1"
+	button="Actions/Parry Mode.bmp"
+	key="y"
+	rollover="Equip sword"
+	description="Myrmidon will fight with a sword"
+	groupverifier=""
+	groupdispatch=""
+	voidgroupdispatch="1">
+	<src obj="HMyrmidon_Javelin"/>
+</cmd>
+
+<cmd name="change_weapon_javelin" priority="0"
+	offset="1"
+	button="Actions/Parry Mode.bmp"
+	key="y"
+	rollover="Equip javelin"
+	description="Myrmidon will fight with a javelin"
+	groupverifier=""
+	groupdispatch=""
+	voidgroupdispatch="1">
+	<src obj="HMyrmidon_Sword"/>
+</cmd> -->
+
+<!-- GREEK BARRACKS -->
+
+<cmd name="trainHToxotes" priority="3"
+	button="actions/Train HToxotes.bmp"
+	queueicon="gameres/icons/HToxotes.bmp"
+	groupverifier="data/subai/barrack_train_verify.vs"
+	transpicon="1"
+	traincommand="yes"
+	key="t"
+	help="/contents/units/HToxotes"
+	costgold = "60"
+	costfood = "0"
+	costpop = "1"
+	execdelay = "9000"
+	rollover="Equip Toxotes"
+	method="train"
+	param="HToxotes, Greek Arrows"
+	sclass="HToxotes">
+	<src obj="HBarracks"/>
+</cmd>
+
+<cmd name="trainHHoplite" priority="4"
+	button="actions/train HHoplite.bmp"
+	queueicon="gameres/icons/HHoplite.bmp"
+	groupverifier="data/subai/barrack_train_verify.vs"
+	transpicon="1"
+	traincommand="yes"
+	key="o"
+	help="/contents/units/HHoplite"
+	costgold = "200"
+	costfood = "0"
+	costpop = "1"
+	execdelay = "11000"
+	rollover="Equip Hoplite"
+	method="train"
+	param="HHoplite, Greek Spears"
+	sclass="HHoplite">
+	<src obj="HBarracks"/>
+</cmd>
+
+<cmd name="trainHChariot" priority="5"
+	button="actions/Train HChariot.bmp"
+	queueicon="gameres/icons/HChariot.bmp"
+	groupverifier="data/subai/barrack_train_verify.vs"
+	transpicon="1"
+	traincommand="yes"
+	key="c"
+	help="/contents/units/HChariot"
+	costgold = "250"
+	costfood = "0"
+	costpop = "1"
+	execdelay = "14000"
+	rollover="Equip Chariot"
+	method="train"
+	param="HChariot, Greek Chariot Wheels"
+	sclass="HChariot">
+	<src obj="HBarracks"/>
+</cmd>
+
+<cmd name="trainHMyrmidon" priority="6"
+	button="actions/Train HMyrmidon.bmp"
+	queueicon="gameres/icons/HMyrmidon.bmp"
+	transpicon="1"
+	groupverifier="data/subai/verify_trainex.vs"
+	onaddremovescript="data/subai/trainex_onaddremove.vs"
+	traincommand="yes"
+	key="m"
+	help="/contents/units/HMyrmidon"
+	costgold = "200"
+	costfood = "0"
+	costpop = "1"
+	execdelay = "16000"
+	rollover="Equip Myrmidon"
+	method="trainex"
+	param="1, myrmidon, HMyrmidon_Javelin, HMyrmidon_Javelin, Forge Elite Equipment, Gymnasium">
+	<src obj="HBarracks"/>
+</cmd>
+
+<cmd name="trainHHypaspista" priority="7"
+	button="actions/Train HHypaspista.bmp"
+	queueicon="gameres/icons/HHypaspista.bmp"
+	groupverifier="data/subai/barrack_train_verify.vs"
+	transpicon="1"
+	traincommand="yes"
+	key="h"
+	help="/contents/units/HHypaspista"
+	costgold = "300"
+	costfood = "0"
+	costpop = "1"
+	execdelay = "18000"
+	rollover="Equip Hypaspista"
+	method="train"
+	param="HHypaspista, Greek Royal Armor"
+	sclass="HHypaspista">
+	<src obj="HBarracks"/>
+</cmd>
+
+<!-- GREEK BLACKSMITH COMMANDS -->
+
+<cmd name="Greek Archers" priority="0"
+	queueicon="gameres/icons/upgrades/Greek Arches.bmp"
+	button="Upgrades/Greek Arches.bmp"
+	key="a"
+	researchcommand="yes"
+	groupverifier="data/subai/verify_research.vs"
+	costgold = "200"
+	costfood = "0"
+	execdelay = "10000"
+	rollover="Arrows"
+	description="Allows Toxotai to be equipped in the Barracks"
+	method="research"
+	param="NameSet, Greek Arrows,default,NameSet, HToxotes,,">
+	<src obj="HBlacksmith"/>
+</cmd>
+
+<cmd name="Greek Spears" priority="1"
+	queueicon="gameres/icons/upgrades/Greek Spears.bmp"
+	button="Upgrades/Greek Spears.bmp"
+	key="s"
+	researchcommand="yes"
+	groupverifier="data/subai/verify_research.vs"
+	costgold = "1200"
+	costfood = "0"
+	execdelay = "30000"
+	rollover="Spears"
+	description="Allows Hoplites to be equipped in the Barracks"
+	method="research"
+	param="NameSet,Greek Spears,default, NameSet, HHoplite,">
+	<src obj="HBlacksmith"/>
+</cmd>
+
+<cmd name="Greek Chariot Wheels" priority="2"
+	queueicon="gameres/icons/upgrades/Greek chariot wheels.bmp"
+	key="c"
+	button="Upgrades/Greek chariot wheels.bmp"
+	researchcommand="yes"
+	groupverifier="data/subai/verify_research.vs"
+	costgold = "1200"
+	costfood = "0"
+	execdelay = "30000"
+	rollover="Chariot Wheels"
+	description="Allows Chariots to be built in the Barracks"
+	method="research"
+	param="NameSet,Greek Chariot Wheels,default, NameSet, HChariot,">
+	<src obj="HBlacksmith"/>
+</cmd>
+
+<cmd name="Greek Royal Armor" priority="3"
+	queueicon="gameres/icons/upgrades/Greek Royal Armor.bmp"
+	button="Upgrades/Greek Royal Armor.bmp"
+	key="r"
+	researchcommand="yes"
+	groupverifier="data/subai/verify_research.vs"
+	costgold = "2500"
+	costfood = "0"
+	execdelay = "30000"
+	rollover="Royal Armor"
+	description="Allows Hypaspistai to be equipped in the Barracks"
+	method="research"
+	param="NameSet,Greek Royal Armor,default, NameSet, HHypaspista,">
+	<src obj="HBlacksmith"/>
+</cmd>
+
+<!-- GREEK ARENA -->
+
+<cmd name="hireheroH" priority="1"
+	button="actions/hire heroH.bmp"
+	queueicon="gameres/icons/hire heroH.bmp"
+	groupverifier="data/subai/verify_cmdcost_building.vs"
+	traincommand="yes"
+	key="h"
+	costgold = "1000"
+	costfood = "0"
+	costpop = "0"
+	execdelay = "20000"
+	param = "GreekHero"
+	method="hirehero"
+	help="/contents/units/GHero"
+	rollover="Hire hero">
+	<src obj="HGymnasium"/>
+</cmd>
+
+<cmd name="Olympic Games" priority="2"
+	button="Upgrades/Olympic Games.bmp"
+	key="g"
+	queueicon="gameres/icons/upgrades/Olympic Games.bmp"
+	costgold = "2000"
+	costfood = "0"
+	execdelay = "30000"
+	groupverifier="data/subai/verify_research.vs"
+	description="All new warriors are level 5"
+	rollover="Olympic Games"
+	method="research"
+	researchcommand="yes"
+	param="NameSet, Olympic Games, default, SetsSet, levels/HMyrmidon_Javelin, 5">
+	<src obj="HGymnasium"/>
+</cmd>
+
+<cmd name="Spartan Training" priority="3"
+	button="Research/Spartan Training.bmp"
+	queueicon="gameres/icons/upgrades/Spartan Training.bmp"
+	key="t"
+	costgold = "2000"
+	costfood = "0"
+	execdelay = "20000"
+	groupverifier="data/subai/verify_research.vs"
+	rollover="Spartan Training"
+	description="Allows warriors to train to level 10"
+	method="research"
+	researchcommand="yes"
+	param="ReqSet, Olympic Games, default, SetsPlr, maxtrainlevel, 10, NamePlr, Spartan Training, default">
+	<src obj="HGymnasium"/>
+</cmd>
+
+<cmd name="Forge Elite Equipment" priority="4"
+	queueicon="gameres/icons/upgrades/Forge Elite Equipment.bmp"
+	key="f"
+	button="Upgrades/Forge Elite Equipment.bmp"
+	costgold="1500"
+	costfood="0"
+	execdelay="20000"
+	groupverifier="data/subai/myrmidons_verify.vs"
+	onaddremovescript="data/subai/myrmidons_school_onaddremove.vs"
+	rollover="Forge Elite Equipment"
+	description="Increases the number of Myrmidons you can have by 10 (Up to a maximum of 50)"
+	method="myrmidon_school"
+	researchcommand="yes">
+	<src obj="HGymnasium"/>
+</cmd>
+
+<cmd name="Democracy" priority="5"
+	button="Upgrades/Democracy.bmp"
+	queueicon="gameres/icons/upgrades/Democracy.bmp"
+	key="d"
+	costgold="1000"
+	costfood="0"
+	execdelay="10000"
+	groupverifier="data/subai/democracy_verify.vs"
+	rollover="Democracy"
+	onaddremovescript="data/subai/government_form_onaddremove.vs"
+	description="All warriors receive a Democracy Emblem give +100 extra health points (Not contemporary to Oligarchy)"
+	method="democracy"
+	researchcommand="yes">
+	<src obj="HGymnasium"/>
+</cmd>
+
+<cmd name="Oligarchy" priority="5"
+	button="Upgrades/Oligarchy.bmp"
+	queueicon="gameres/icons/upgrades/Oligarchy.bmp"
+	key="o"
+	costgold="1000"
+	costfood="0"
+	execdelay="10000"
+	groupverifier="data/subai/oligarchy_verify.vs"
+	rollover="Oligarchy"
+	onaddremovescript="data/subai/government_form_onaddremove.vs"
+	description="All warriors above level 10 receive an Oligarchy Emblem give +5 extra attack points (Not contemporary to Democracy)"
+	method="oligarchy"
+	researchcommand="yes">
+	<src obj="HGymnasium"/>
+</cmd>
+
+<cmd name="Military Preparation" priority="6"
+	button="Research/Military Preparation.bmp"
+	key="m"
+	queueicon="gameres/icons/upgrades/Military Preparation.bmp"
+	costgold = "4000"
+	costfood = "0"
+	execdelay = "25000"
+	groupverifier="data/subai/verify_research.vs"
+	rollover="Military preparation"
+	description="All new heroes are level 15"
+	method="research"
+	researchcommand="yes"
+	param="ReqSet, Olympic Games, default, SetsSet, levels/Hero, 15, NameSet, Military Preparation, default">
+	<src obj="HGymnasium"/>
+</cmd>
+
+<cmd name="Charm of Athena" priority="7"
+	button="Research/charm of athena.bmp"
+	key="o"
+	queueicon="gameres/icons/upgrades/charm of athena.bmp"
+	costgold = "2000"
+	costfood = "0"
+	execdelay = "25000"
+	groupverifier="data/subai/verify_research.vs"
+	rollover="Charm of Athena"
+	description="All warriors above level 10 receive a Speed charm (+40% base speed) at their first kill"
+	method="research"
+	researchcommand="yes"
+	param="ReqSet, Olympic Games, default, NamePlr, Charm of Athena, default">
+	<src obj="HGymnasium"/>
+</cmd>
+
+<cmd name="Charm of Aegle" priority="8"
+	button="Research/charm of aegle.bmp"
+	key="d"
+	queueicon="gameres/icons/upgrades/charm of aegle.bmp"
+	costgold = "2000"
+	costfood = "0"
+	execdelay = "25000"
+	groupverifier="data/subai/verify_research.vs"
+	rollover="Charm of Aegle"
+	description="All warriors above level 10 receive a Health charm (+10% health) at their first kill"
+	method="research"
+	researchcommand="yes"
+	param="ReqSet, Olympic Games, default, NamePlr, Charm of Aegle, default">
+	<src obj="HGymnasium"/>
+</cmd>
+
+<!-- GREEK PRIEST COMMANDS -->
+
+<!--<cmd name="centaur_summoning" priority="15"
+	button="actions/summon eagle.bmp"
+	key="c"
+	groupverifier="data/subai/centaur_isresearched_verify.vs"
+	rollover="Summon Centaur"
+	description="Summons a Centaur that could be controlled (sacrificing the priest's life)"
+	method="centaur_summoning">
+	<src obj="HPriest"/>
+</cmd> -->
+
+<cmd name="h_restoration" priority="16"
+	button="actions/restoration.bmp"
+	key="r"
+	groupverifier="data/subai/verify_isresearched.vs"
+	rollover="Restoration"
+	description="Restores the stamina of up to 5 nearby allies (sacrificing the priest's life)"
+	param="Restoration, Requires %s1 from Acropolis"
+	coststamina = "0"
+	>
+	<src obj="HPriest"/>
+</cmd>
+
+<!-- GREEK TEMPLE COMMANDS -->
+
+<cmd name="trainHPriest" priority="2"
+	button="actions/train HPriest.bmp"
+	queueicon="gameres/icons/HPriest.bmp"
+	groupverifier="data/subai/verify_cmdcost_building.vs"
+	traincommand="yes"
+	transpicon="1"
+	key="p"
+	help="/contents/units/HPriest"
+	costgold = "200"
+	costfood = "0"
+	costpop = "1"
+	execdelay = "20000"
+	rollover="Call Priest"
+	method="train"
+	param="HPriest"
+	sclass="HPriest">
+	<src obj="HTemple"/>
+</cmd>
+
+<cmd name="Offer to Gods" priority="3"
+	button="Research/Offer to gods.bmp"
+	key="o"
+	queueicon="gameres/icons/upgrades/Offer to gods.bmp"
+	costgold = "2000"
+	costfood = "0"
+	execdelay = "30000"
+	groupverifier="data/subai/verify_research.vs"
+	description="All new priests are level 5"
+	rollover="Offer to Gods"
+	method="research"
+	researchcommand="yes"
+	param="NameSet, Offer to Gods, default, SetsSet, levels/HPriest, 5">
+	<src obj="HTemple"/>
+</cmd>
+
+<cmd name="Protection of Apollo" priority="4"
+	button="Research/Apollo Protection.bmp"
+	key="i"
+	queueicon="gameres/icons/upgrades/Apollo Protection.bmp"
+	costgold = "2000"
+	costfood = "0"
+	immediate="yes"
+	groupverifier="data/subai/apollo_protection_verify.vs"
+	description="Stronghold walls become indestructible for 1 minute (once per game)"
+	rollover="Invoke the protection of Apollo"
+	method="apolloProtection">
+	<src obj="HTemple"/>
+</cmd>
+
+<!-- <cmd name="Centaur Summoning" priority="5"
+	queueicon="gameres/icons/upgrades/summon eagle.bmp"
+	button="actions/summon eagle.bmp"
+	key="m"
+	researchcommand="yes"
+	groupverifier="data/subai/verify_research.vs"
+	costgold="1800"
+	costfood="0"
+	execdelay="25000"
+	rollover="Centaur summoning"
+	description="Allows priests to sacrifice themselves and summon a Centaur (Up to maximum of 5 under your control)"
+	method="research"
+	param="ReqSet, Offer to Gods, default, NamePlr, Centaur Summoning, default">
+	<src obj="HTemple"/>
+</cmd> -->
+
+<cmd name="HRestoration" priority="6"
+	queueicon="gameres/icons/upgrades/restoration.bmp"
+	button="research/restoration.bmp"
+	key="m"
+	researchcommand="yes"
+	groupverifier="data/subai/verify_research.vs"
+	costgold = "1500"
+	costfood = "0"
+	execdelay = "20000"
+	rollover="Restoration"
+	description="Allows priests to sacrifice themselves to restore the stamina of 5 nearby allies"
+	method="research"
+	param="ReqSet, Offer to Gods, default, NamePlr, Restoration, default">
+	<src obj="HTemple"/>
+</cmd>
+
+<cmd name="Statue of Zeus" priority="7"
+	queueicon="gameres/icons/upgrades/statue of zeus.bmp"
+	button="research/statue of zeus.bmp"
+	key="e"
+	researchcommand="yes"
+	groupverifier="data/subai/verify_research.vs"
+	costgold = "2000"
+	costfood = "0"
+	execdelay = "30000"
+	rollover="Statue of Zeus"
+	description="All moribund warriors kill an enemy have 50% chance to fully recovering his health"
+	method="research"
+	param="ReqSet, Offer to Gods, default, NamePlr, Statue of Zeus, default">
+	<src obj="HTemple"/>
+</cmd>
+
+<cmd name="Favore di Zeus" priority="7"
+	button="research/Zeus.bmp"
+	queueicon="gameres/icons/upgrades/Zeus.bmp"
+	key="n"
+	researchcommand="yes"
+	groupverifier="data/subai/verify_research.vs"
+	costgold = "2500"
+	costfood = "0"
+	execdelay = "30000"
+	rollover="Favore di Zeus"
+	description="Consente ai sacerdoti di sacrificarsi per aumentare leggermente attacco e la difesa delle unit&#224; alleate per 6 secondi"
+	method="research"
+	param="ReqSet, Offer to Gods, default, NamePlr, Favore di Zeus, default">
+	<src obj="HTemple"/>
+</cmd>
+
+<!-- GREEK AGORA COMMANDS -->
+
+<cmd name="Trade Routes" priority="3"
+	button="Research/Trade Routes.bmp"
+	key="t"
+	queueicon="gameres/icons/upgrades/Trade Routes.bmp"
+	costgold = "3000"
+	costfood = "0"
+	execdelay = "45000"
+	groupverifier="data/subai/verify_research.vs"
+	description="Adds 1000 food units to each of your village"
+	rollover="Trade Routes"
+	method="research"
+	researchcommand="yes"
+	param="NameSet, Trade Routes, default">
+	<src obj="HAgora"/>
+</cmd>
+
+<cmd name="buyWarSlaves" priority="4"
+	queueicon="gameres/icons/upgrades/Buy War Slaves.bmp"
+	groupverifier="data/subai/verify_research.vs"
+	button="actions/Buy War Slaves.bmp"
+	cursor=""
+	key="b"
+	traincommand="yes"
+	costgold="400"
+	execdelay="15000"
+	method="buySlaves"
+	description="Increases the stronghold population by 20"
+	rollover="Buy war slaves"
+	param="ReqSet, Trade Routes, default">
+	<src obj="HAgora"/>
+</cmd>
+
+<cmd name="Supplies" priority="5"
+	queueicon="gameres/icons/upgrades/Supplies.bmp"
+	groupverifier="data/subai/verify_research.vs"
+	button="Research/Supplies.bmp"
+	key="r"
+	researchcommand="yes"
+	costgold="2000"
+	costfood="0"
+	execdelay="60000"
+	description="Warriors consume half of food"
+	rollover="Supplies"
+	method="research"
+	param="ReqSet, Trade Routes, default, NamePlr, Supplies, default">
+	<src obj="HAgora"/>
+</cmd>
+
+<cmd name="startStoringFood" priority="6"
+	button="Actions/Start Storing Food.bmp"
+	key="s"
+	immediate="yes"
+	costgold="800"
+	groupverifier="data/subai/start_storing_food_verify.vs"
+	description="Allows to deposit reusable food stocks in a separate storage"
+	rollover="Start to store Food">
+	<src obj="HAgora"/>
+</cmd>
+
+<cmd name="stopStoringFood" priority="6"
+	button="Actions/Stop Storing Food.bmp"
+	key="s"
+	immediate="yes"
+	groupverifier="data/subai/stop_storing_food_verify.vs"
+	description="Blocks the storing and gives you back all food supplies"
+	rollover="Stop to store Food">
+	<src obj="HAgora"/>
+</cmd>
+
+<cmd name="HReligiousFeast" priority="18"
+	queueicon="gameres/icons/upgrades/religious feast.bmp"
+	key="f"
+	button="research/religious feast.bmp"
+	groupverifier="data/subai/verify_research.vs"
+	cursor=""
+	researchcommand="yes"
+	costgold="1600"
+	execdelay="30000"
+	method="research"
+	param = "ReqSet, Trade Routes,default, NameSet, Religious Feast,default"
+	description="Heals the warriors around the townhall"
+	rollover="Religious Feast">
+	<src obj="HAgora"/>
+</cmd>
+
+</commands>

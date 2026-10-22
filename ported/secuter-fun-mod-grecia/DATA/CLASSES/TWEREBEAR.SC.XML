@@ -1,0 +1,21 @@
+<class id="TWereBear" cpp_class="CVXUnit" parent="MeleeAnimal" entity="units/Bear/Bear.ent.xml">
+	
+	<properties race="Germany"/>
+	<properties maxhealth="400"/>
+	<properties damage="40" armor_slash="16" armor_pierce="16"/>
+	<properties speed="60"/>
+	<properties unit_specials="Regeneration, Active"/>
+
+	<properties icon="gameres/icons/Bear.bmp"/>
+	<properties display_name="Bear" display_name_plural="Bears"/>
+	<properties help="contents/units/Bear"/>
+	<properties edittree_pos="Units/Germany/Orso (licantropo)"/>
+	<sounds 
+		attack="Sounds/animals/Bear/Bear_attack.wav"
+		die ="Sounds/animals/Bear/Bear_die.wav"
+		idle="BearIdle"
+	/>
+
+	<method sig="to_human" vs="data/subai/werebear_convert.vs"/>
+
+</class>

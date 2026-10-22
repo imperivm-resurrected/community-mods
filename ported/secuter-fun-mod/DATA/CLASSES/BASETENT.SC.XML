@@ -1,0 +1,44 @@
+<class id="TTent" altid="BaseTent" cpp_class="CVXTownHall" parent="Building" entity="">
+
+	<properties maxhealth="15000" sight="900"/>
+	<properties radius="190" selection_radius="195"/>
+	<properties interface="thumb,building,holder"/>
+	<properties help="/contents/buildings/TTent"/>
+
+	<behavior script="data/subai/ttent_behavior.vs"/>
+	<behavior script="data/subai/ttent_feeding_behavior.vs"/>
+	<method sig="createfoodmulesmall" vs="data/subai/create_food_mule_small.vs"/>
+	<method sig="createfoodmulebig"   vs="data/subai/create_food_mule_big.vs"/>
+	<method sig="creategoldmulebig"   vs="data/subai/create_gold_mule_big.vs"/>
+	<method sig="teutonProduction"    vs="data/subai/ttent_teuton_production.vs"/>
+
+	<properties
+		is_central_building="1"
+		is_single_building="1"
+		can_be_captured="1"
+		can_be_attacked="0"
+		produces_gold="0"
+		produces_food="0"
+		settlement_food="2400"
+		settlement_gold="0"
+		settlement_maxfood="100000000"
+		settlement_maxgold="0"
+		population="0"
+		efficiency="1"
+		max_population="0"
+		max_units="0"
+		settlement_icon_name=""
+		minimap_icon_type="color"
+	/>
+
+	<value0
+		icon="gameres/infobar/common/food ico.bmp"
+		script="return .AsBuilding.settlement.food;"
+		help=""
+		rollover="Ogni unit&#224; prodotta costa 400 viveri, il tempo necessario dipende dal tipo di unit&#224;"/>
+	/>
+
+	<defaultcmd target="">
+		<cmd name="unitsout"/>
+	</defaultcmd>
+</class>

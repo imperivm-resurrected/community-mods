@@ -1,0 +1,5 @@
+<class id="EBarracksAnim" cpp_class="CVXDecor" parent="Object" entity="Buildings/EBarracks/EBarracks_Anim.ent.xml">
+
+	<method sig="idle" vs="data/subai/anim.vs"/>
+
+</class>

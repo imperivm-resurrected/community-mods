@@ -1,0 +1,10 @@
+<class id="EgyptianHero" cpp_class="CVXHero" parent="HeroMounted" entity="">
+
+	<properties maxhealth="1200"/>
+	<properties damage="40" armor_slash="20" armor_pierce="20"/>
+	<properties race="Egypt"/>
+	<properties HeroSkills="Healing, Quick March, Recovery, Vigor, Survival"/>
+	<properties help="/contents/units/EHero"/>
+
+	<sounds command="data/sound entities/VoiceEHero.xml"/>
+</class>

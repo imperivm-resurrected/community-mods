@@ -1,0 +1,11 @@
+<class id="CTent" cpp_class="CVXTownHall" parent="TTent" entity="Buildings/CVillage/CVillage.ent.xml">
+
+	<properties race="Carthage"/>
+	<properties display_name="Accampamento numida"/>
+	<properties edittree_pos="Structures/Accampamenti/Accampamento numida"/>
+	<properties icon="gameres/icons/CStorage.bmp"/>
+	<properties help="/contents/buildings/CVillage"/>
+	<properties radius="230" selection_radius="250"/>
+	<properties description="Si tratta di insediamenti di nomadi che attaccano ogni guerriero che si avvicina. Sono protetti da una guarnigione di 36 tuareg"/>
+
+</class>

@@ -1,0 +1,5 @@
+<class id="BuffSpeed" cpp_class="CVXScriptObj" parent="BaseBuffObj" entity="">
+
+	<behavior script = "data/subai/druid_buff_speed.vs"/>
+	
+</class>

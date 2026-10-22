@@ -1,0 +1,156 @@
+<commands>
+
+<cmd name="RBarrack Level 3" priority="2"
+	researchcommand="yes"
+	groupverifier="data/subai/verify_research.vs"
+	queueicon="gameres/icons/upgrades/Barrack3.bmp"
+	button="upgrades/barrack3.bmp"
+	key="f"
+	rollover="Fastest warrior equipment"
+	description="Equips warriors eight times as fast"
+	costgold = "2000"
+	costfood = "0"
+	execdelay = "20000"
+	method="research"
+	param="ReqSet, Barrack Level 2, , ReqSet, Gladiator Shows, default, NameSet, Barrack Level 3, default, SetsSet, BarrackTrainTimeDecrease, 87">
+	<src obj="RBarracks"/>
+</cmd>
+
+<cmd name="trainRHastatus" priority="3"
+	button="actions/train RHastatus.bmp"
+	queueicon="gameres/icons/RHastatus.bmp"
+	groupverifier="data/subai/verify_cmdcost_building.vs"
+	transpicon="1"
+	traincommand="yes"
+	key="h"
+	help="/contents/units/RHastatus"
+	costgold = "100"
+	costfood = "0"
+	costpop = "1"
+	execdelay = "6000"
+	rollover="Equip Hastatus"
+	method="train"
+	param="RHastatus"
+	sclass="RHastatus">
+	<src obj="RBarracks"/>
+</cmd>
+
+<cmd name="trainRArcher" priority="4"
+	button="actions/train RArcher.bmp"
+	groupverifier="data/subai/barrack_train_verify.vs"
+	queueicon="gameres/icons/RArcher.bmp"
+	transpicon="1"
+	traincommand="yes"
+	key="a"
+	help="/contents/units/RArcher"
+	costgold = "80"
+	costfood = "0"
+	costpop = "1"
+	execdelay = "10000"
+	rollover="Equip Archer"
+	method="train"
+	param="RArcher,Arrows"
+	sclass="RArcher">
+
+	<src obj="RBarracks"/>
+</cmd>
+
+<cmd name="trainRGladiator" priority="5"
+	button="actions/train RGladiator.bmp"
+	queueicon="gameres/icons/RGladiator.bmp"
+	transpicon="1"
+	groupverifier="data/subai/barrack_train_verify.vs"
+	traincommand="yes"
+	key="g"
+	help="/contents/units/RGladiator"
+	costgold = "190"
+	costfood = "0"
+	costpop = "1"
+	execdelay = "10000"
+	rollover="Equip Gladiator"
+	method="train"
+	param="RGladiator, Gladiator Shows"
+	sclass="RGladiator">
+	<src obj="RBarracks"/>
+</cmd>
+
+<cmd name="trainRPrinciple" priority="6"
+	button="actions/train RPrinciple.bmp"
+	queueicon="gameres/icons/RPrinciple.bmp"
+	transpicon="1"
+	traincommand="yes"
+	groupverifier="data/subai/barrack_train_verify.vs"
+	key="p"
+	help="/contents/units/RPrinciple"
+	costgold = "180"
+	costfood = "0"
+	costpop = "1"
+	execdelay = "20000"
+	rollover="Equip Principle"
+	method="train"
+	param="RPrinciple,Pikes"
+	sclass="RPrinciple">
+
+	<src obj="RBarracks"/>
+</cmd>
+
+<cmd name="trainRScout" priority="7"
+	button="actions/train RScout.bmp"
+	queueicon="gameres/icons/RScout.bmp"
+	transpicon="1"
+	groupverifier="data/subai/barrack_train_verify.vs"
+	traincommand="yes"
+	key="s"
+	help="/contents/units/RScout"
+	costgold = "140"
+	costfood = "0"
+	costpop = "1"
+	execdelay = "10000"
+	rollover="Equip Scout"
+	method="train"
+	param="RScout,Horseshoes"
+	sclass="RScout">
+
+	<src obj="RBarracks"/>
+</cmd>
+
+<cmd name="trainRTribune" priority="8"
+	button="actions/train RTribune.bmp"
+	queueicon="gameres/icons/RTribune.bmp"
+	transpicon="1"
+	traincommand="yes"
+	groupverifier="data/subai/barrack_train_verify.vs"
+	key="t"
+	help="/contents/units/RTribune"
+	costgold = "300"
+	costfood = "0"
+	costpop = "1"
+	execdelay = "20000"
+	rollover="Equip Tribune"
+	method="train"
+	param="RTribune,Full Armor"
+	sclass="RTribune">
+	<src obj="RBarracks"/>
+</cmd>
+
+<cmd name="Equip Chariot" priority="10"
+	button="actions/hire RChariot.bmp"
+	queueicon="gameres/icons/RChariot.bmp"
+	transpicon="1"
+	groupverifier="data/subai/verify_trainex.vs"
+	onaddremovescript="data/subai/trainex_onaddremove.vs"
+	traincommand="yes"
+	key="c"
+	help="/contents/units/RChariot"
+	costgold = "300"
+	costfood = "0"
+	costpop = "1"
+	execdelay = "20000"
+ 	rollover="Equip Chariot"
+	method="trainex"
+	param="1, 20, RChariot, RChariot, Chariot Wheels, blacksmith">
+	<src obj="RBarracks"/>
+</cmd>
+
+
+</commands>

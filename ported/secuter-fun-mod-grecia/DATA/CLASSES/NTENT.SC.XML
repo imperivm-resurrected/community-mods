@@ -1,0 +1,11 @@
+<class id="NTent" cpp_class="CVXTownHall" parent="TTent" entity="Buildings/TVillage/TVillage.ent.xml">
+
+	<properties race="ImperialRome"/>
+	<properties display_name="Accampamento animali"/>
+	<properties edittree_pos="Structures/Accampamenti/Accampamento animali"/>
+	<properties icon="gameres/icons/TVillage.bmp"/>
+	<properties help="/contents/buildings/TVillage"/>
+	<properties radius="230" selection_radius="250"/>
+	<properties description="Si tratta di insediamenti di animali selvatici che attaccano ogni guerriero che si avvicina. Sono protetti da una guarnigione di 19 leoni e 19 leonesse"/>
+
+</class>

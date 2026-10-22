@@ -1,0 +1,136 @@
+<commands>
+
+<!-- TEMPLE COMMANDS -->
+<!-- NOTE : train command must have names like this:"trainClassName" -->
+<!--        where ClassName is the class of the unit to be trained -->
+
+<cmd name="repair Temple of Thor" priority="1"
+	method="repair"
+	button="actions/repair.bmp"
+	key="r"
+	queueicon="gameres/icons/upgrades/repair.bmp"
+	groupverifier="data/subai/verify_cmdcost_building.vs"
+	rollover="Repair"
+	costgold="100"
+	costfood="0"
+	execdelay="60000">
+	<src obj="BTempleOfThor"/>
+</cmd>
+
+<cmd name="trainBDruid" priority="1"
+	button="actions/train BDruid.bmp"
+	queueicon="gameres/icons/BDruid.bmp"
+	groupverifier="data/subai/verify_cmdcost_building.vs"
+	transpicon="1"
+	traincommand="yes"
+	key="d"
+	help="/contents/units/BDruid"
+	costgold = "180"
+	costfood = "0"
+	costpop = "1"
+	execdelay = "20000"
+	rollover="Call Druid"
+	method="train"
+	param="BDruid"
+	sclass="BDruid">
+	<src obj="BTempleOfThor"/>
+</cmd>
+
+<cmd name="Britain chamber" priority="2"
+	button="research/ritual chamber.bmp"
+	queueicon="gameres/icons/upgrades/ritual chamber.bmp"
+	researchcommand="yes"
+	groupverifier="data/subai/verify_research.vs"
+	key="r"
+	costgold = "1000"
+	costfood = "0"
+	execdelay = "40000"
+	rollover="Ritual Chamber"
+	description="Allows druids to gain experience by learning from warriors"
+	method="research"
+	param="NamePlr, Ritual Chamber, default,NameSet, Ritual Chamber, default">
+	<src obj="BTempleOfThor"/>
+</cmd>
+
+<!--cmd name="Britain Ghoul Summoning" priority="6"
+	queueicon="gameres/icons/upgrades/Ghost.bmp"
+	button="research/Ghost.bmp"
+	key="g"
+	help="/contents/units/Ghost"
+	researchcommand="yes"
+	groupverifier="data/subai/verify_research.vs"
+	costgold = "1600"
+	costfood = "0"
+	execdelay = "30000"
+	rollover="Ghoul summoning"
+	description="Allows druids to sacrifice themselves and summon a Ghoul, which drains the life of all enemies nearby for about 10 seconds"
+	method="research"
+	param="ReqSet, Ritual Chamber, default, NamePlr, Ghoul Summoning, default">
+	<src obj="BTempleOfThor"/>
+</cmd-->
+
+<cmd name="Wolf Summoning" priority="8"
+	queueicon="gameres/icons/upgrades/summon wolf.bmp"
+	button="actions/summon wolf.bmp"
+	key="w"
+	researchcommand="yes"
+	groupverifier="data/subai/verify_research.vs"
+	costgold = "400"
+	costfood = "0"
+	execdelay = "30000"
+	rollover="Wolf summoning"
+	description="Allows druids to sacrifice themselves and summon a wolf, which remains under your control for about 1 minutes"
+	method="research"
+	param="ReqSet, Ritual Chamber, default, NamePlr, Wolf Summoning, default">
+	<src obj="BTempleOfThor"/>
+</cmd>
+
+<cmd name="Britain Mass Heal" priority="9"
+	queueicon="gameres/icons/upgrades/Mass Healing.bmp"
+	button="research/Mass Healing.bmp"
+	key="m"
+	researchcommand="yes"
+	groupverifier="data/subai/verify_research.vs"
+	costgold = "1500"
+	costfood = "0"
+	execdelay = "20000"
+	rollover="Mass heal"
+	description="Allows druids to sacrifices themselves to heal nearby allies"
+	method="research"
+	param="ReqSet, Ritual Chamber, default, NamePlr, Mass Heal, default">
+	<src obj="BTempleOfThor"/>
+</cmd>
+
+<cmd name="Cover of Mercy" priority="10"
+	queueicon="gameres/icons/upgrades/cover of mercy.bmp"
+	button="research/cover of mercy.bmp"
+	key="c"
+	researchcommand="yes"
+	groupverifier="data/subai/verify_research.vs"
+	costgold = "2000"
+	costfood = "0"
+	execdelay = "20000"
+	rollover="Cover of Mercy"
+	description="Consente ai druidi di sacrificarsi per creare una nube che protegge gli alleati"
+	method="research"
+	param="ReqPlr, Ritual Chamber, default, NamePlr, Cover of Mercy, default">
+	<src obj="BTempleOfThor"/>
+</cmd>
+
+<cmd name="Vento del Nord" priority="9"
+	queueicon="gameres/icons/upgrades/druid relations.bmp"
+	button="research/druid relations.bmp"
+	key="v"
+	researchcommand="yes"
+	groupverifier="data/subai/verify_research.vs"
+	costgold = "2500"
+	costfood = "0"
+	execdelay = "30000"
+	rollover="Vento del Nord"
+	description="Consente ai druidi di sacrificarsi aumentare la velocit&#224; degli alleati per 6 secondi"
+	method="research"
+	param="ReqSet, Ritual Chamber, default, NamePlr, Vento del Nord, default">
+	<src obj="BTempleOfThor"/>
+</cmd>
+
+</commands>

@@ -1,0 +1,20 @@
+<class id="CJavelinThrower" cpp_class="CVXUnit" parent="MediumRanged" entity="Units/CJavelinThrower/CJavelinThrower.ent.xml">
+
+	<properties race="Carthage"/>
+	<properties maxhealth="180"/>
+	<properties damage="26" armor_slash="0" armor_pierce="0"/>
+	<properties speed="80"/>
+	<properties unit_specials="Penetration"/>
+
+	<properties projectile_class="Javelin"/>
+	<properties building_projectile_class="Javelin"/>
+
+	<properties icon="gameres/icons/CJavelinThrower.bmp"/>
+	<properties display_name="Numidian Javelin Thrower" display_name_plural="Numidian Javelin Throwers"/>
+	<properties help="contents/units/CJavelinThrower"/>
+	<properties edittree_pos="Units/Carthage/Javelin Thrower"/>
+	<sounds command="data/sound entities/VoiceCJavelinThrower.xml"/>
+
+	<method sig="ondie" vs="data/subai/cmercenary_ondie.vs"/>
+
+</class>

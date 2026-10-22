@@ -1,0 +1,11 @@
+<class id="NHero1" cpp_class="CVXHero" parent="GermanHero" entity="Units/NHero1/NHero1.ent.xml">
+
+	<properties race="Gaul"/>
+	<properties display_name="Heardred" display_name_plural="Heroes"/>
+	<properties icon="gameres/icons/NHero1.bmp"/>
+	<properties edittree_pos="Units/Heroes/Heardred (germanico)"/>
+
+	<properties HeroSkills="Battle cry, Defensive cry, Team attack, Concealment, Quick March"/>
+
+	<sounds command="data/sound entities/VoiceGHero.xml"/>
+</class>

@@ -1,0 +1,11 @@
+<class id="MCaesar" cpp_class="CVXHero" parent="ImperialRomanHero" entity="Units/Caesar/Caesar.ent.xml">
+
+	<properties race="ImperialRome"/>
+	<properties display_name="Cesare" display_name_plural="Heroes"/>
+	<properties icon="gameres/icons/Caesar.bmp"/>
+	<properties edittree_pos="Units/Heroes/Cesare (romano)"/>
+
+	<properties HeroSkills="Administration, Healing, Team attack, Team defense, Quick March"/>
+
+	<sounds command="data/sound entities/VoiceRImperialHero.xml"/>
+</class>

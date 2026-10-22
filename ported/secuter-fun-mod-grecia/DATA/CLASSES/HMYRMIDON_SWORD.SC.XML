@@ -1,0 +1,15 @@
+<class id="HMyrmidon_Sword" cpp_class="CVXUnit" parent="Melee" entity="Units/HMyrmidon/Javelin/HMyrmidon.ent.xml">
+
+	<properties race="ImperialRome"/>
+	<properties maxhealth="300"/>
+	<properties damage="30" armor_slash="4" armor_pierce="4"/>
+	<properties speed="85"/>
+	<properties unit_specials="Defense skill, Revenge"/>
+
+	<properties icon="gameres/icons/HMyrmidon.bmp"/>
+	<properties display_name="Myrmidon" display_name_plural="Myrmidons"/>
+	<properties help="contents/units/HMyrmidon"/>
+	<!-- script missing in Secuter's zip: <method sig="change_weapon_javelin" vs="data/subai/myrmidon_javelin.vs"/> -->
+	<sounds command="data/sound entities/VoiceMyrmidon.xml"/>
+
+</class>

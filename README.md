@@ -157,6 +157,8 @@ The same idea works for any old map: look for the class in an older `data.pak` (
 | **Porting** | |
 | [`wrap-map.js`](tools/wrap-map.js) | A map or adventure (a Discord post, a forum topic or one map of a pack) → `ported/<id>/` |
 | [`port-140.js`](tools/port-140.js) | A loose-file 1.40 mod → `ported/<id>/` |
+| [`merge-secuter-fun.js`](tools/merge-secuter-fun.js) | Secuter's Fun mod (rows 312): finishes what `port-140.js` left in conflict, keeping HD's changes and the mod's (see the comments for each decision) |
+| [`port-translation.js`](tools/port-translation.js) | A mod's translation for 1.40 (`GAME.LOC.XML`) → `loc/<language>.loc.xml` with only the texts it translated |
 | [`imperivm1.js`](tools/imperivm1.js) | Imperivm I classes → `ported/imperivm1-legacy/` |
 | [`cgwar-greece.js`](tools/cgwar-greece.js) | After `port-140.js`: the CGWAR's Greece as a new civilization |
 | [`greek-terrains.js`](tools/greek-terrains.js) | The Greek Mod's terrain layers 41-55 (from the Caesar Mod zip) → `ported/greek-mod-terrains/`; `wrap-map` makes maps painted with them require it |

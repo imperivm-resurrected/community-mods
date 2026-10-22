@@ -265,6 +265,8 @@
  "scenario-grecia-iberia": "it/scenario-grecia-iberia-2017",
  "se-como-un-dios": "aventuras/se-como-un-dios",
  "seconda-guerra-punica-fantasy": "it/seconda-guerra-punica-fantasy-2017",
+ "secuter-fun-mod": "it/fun-mod-civilta-personalizzate-2017",
+ "secuter-fun-mod-grecia": "it/fun-mod-civilta-personalizzate-2017 --file Grecia",
  "sefia-el-inicio-de-una-leyenda": "aventuras/sefia-el-inicio-de-una-leyenda",
  "serie-civilizacion-total": "mapas/serie-civilizacion-total",
  "serie-tres-fortalezas": "mapas/serie-tres-fortalezas",

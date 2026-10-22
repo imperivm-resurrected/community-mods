@@ -1,0 +1,19 @@
+<class id="BVikingHero" cpp_class="CVXHero" parent="SuperHero" entity="Units/BVikingLord/BVikingLord.ent.xml">
+
+	<properties race="Britain"/>
+	<properties maxhealth="2000"/>
+	<properties damage="160" armor_slash="12" armor_pierce="12"/>
+	<properties speed="80"/>
+	
+	<properties range="17" min_range="2"/>
+	<properties damage_type="slash"/>
+	
+	<properties max_army="100"/>
+	<properties HeroSkills="Charge, Assault, Leadership, Euphoria, Quick March, Epic armor, Epic attack"/>
+
+	<properties icon="gameres/icons/BVikingLord.bmp"/>
+	<properties display_name="Grande capo normanno" display_name_plural="Heroes"/>
+	<properties edittree_pos="Units/Britain/Grande capo normanno (generale)"/>
+	<sounds command="data/sound entities/VoiceBVikingLord.xml" attack="UnitHammerFight"/>
+
+</class>

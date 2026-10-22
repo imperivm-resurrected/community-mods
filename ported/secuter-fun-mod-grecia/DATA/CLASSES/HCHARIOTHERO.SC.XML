@@ -1,0 +1,21 @@
+<class id="HChariotHero" cpp_class="CVXUnit" parent="SuperHero" entity="units/HChariot/HChariot.ent.xml">
+
+	<properties race="ImperialRome"/>
+	<properties maxhealth="2000"/>
+	<properties range="400"/>
+	<properties damage="100" armor_slash="16" armor_pierce="16"/>
+	<properties speed="120"/>
+
+	<properties radius="40" selection_radius="60"/>
+	
+	<properties max_army="100"/>
+	<properties HeroSkills="Quick March, Team attack, Team defense, Epic attack, Battle cry, Ceasefire, Euphoria"/>
+	<properties HeroSkills="Healing, Charge, Quick March, Team defense, Recovery, Vigor, Survival"/>
+
+	<properties icon="gameres/icons/HChariot.bmp"/>
+	<properties display_name="Chariot" display_name_plural="Chariots"/>
+	<properties help="contents/units/HChariot"/>
+	<properties edittree_pos="Units/Greece/Stratega (Generale)"/>
+	<sounds command="data/sound entities/VoiceHChariot.xml"/>
+	
+</class>

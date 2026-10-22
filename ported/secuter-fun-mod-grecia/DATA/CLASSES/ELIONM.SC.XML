@@ -1,0 +1,19 @@
+<class id="ELionM" cpp_class="CVXUnit" parent="MeleeAnimal" entity="units/LionM/LionM.ent.xml">
+
+	<properties race="Egypt"/>
+	<properties maxhealth="400"/>
+	<properties damage="38" armor_slash="8" armor_pierce="8"/>
+	<properties speed="100"/>
+	<properties unit_specials="Attack skill, Ferocity"/>
+
+	<properties icon="gameres/icons/lionM.bmp"/>
+	<properties display_name="Lion" display_name_plural="Lions"/>
+	<properties help="contents/units/Lion"/>
+	<properties edittree_pos="Units/Egypt/Lion"/>
+
+	<sounds 
+		die="Sounds/animals/Lion/Lion_die.wav"
+		attack="Sounds/animals/Lion/Lion_attack.wav"
+		command="Sounds/animals/Lion/Lion_idle.wav"
+	/>
+</class>

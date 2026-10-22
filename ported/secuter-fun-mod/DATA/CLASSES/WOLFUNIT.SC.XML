@@ -1,0 +1,18 @@
+<class id="WolfUnit" cpp_class="CVXUnit" parent="Melee" entity="Units/Wolf/Wolf.ent.xml">
+
+	<properties race="Germany"/>
+	<properties maxhealth="240"/>
+	<properties damage="16" armor_slash="2" armor_pierce="2"/>
+	<properties speed="150"/>
+	<properties unit_specials="Drain"/>
+
+	<properties icon="gameres/icons/wolf.bmp"/>
+	<properties display_name="Wolf" display_name_plural="Wolves"/>
+	<properties help="contents/units/Wolf"/>
+	<properties edittree_pos="Units/Animals/Wolf"/>
+	<sounds 
+		die="Sounds/animals/wolf/wolf_die.wav"
+		attack="WolfAttack"
+		command="Sounds/animals/wolf/wolf_command.wav"
+	/>
+</class>

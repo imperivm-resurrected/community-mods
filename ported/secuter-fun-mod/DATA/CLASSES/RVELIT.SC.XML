@@ -1,0 +1,14 @@
+<class id="RVelit" cpp_class="CVXUnit" parent="ShortRanged" entity="Units/RVelit/RVelit.ent.xml">
+	<properties race="ImperialRome"/>
+	<properties maxhealth="220"/>
+	<properties damage="18" armor_slash="12" armor_pierce="12"/>
+	<properties speed="60"/>
+	<properties unit_specials="Offensive tactics"/>
+	<properties projectile_class="Javelin"/>
+	<properties building_projectile_class="Javelin"/>
+	<properties icon="gameres/icons/RVelit.bmp"/>
+	<properties display_name="Velit" display_name_plural="Velites"/>
+	<properties help="contents/units/RVelit"/>
+	<properties edittree_pos="Units/Roman/Velit"/>
+	<sounds command="data/sound entities/VoiceRVelit.xml"/>
+</class>

@@ -1,0 +1,16 @@
+<class id="ShipL" cpp_class="CVXShip" parent="ShipBattle" entity="Units/Ships/ShipL/ShipL.ent.xml">
+
+	<properties icon="gameres/icons/Ship.bmp"/>
+	<properties display_name="Ship" display_name_plural="Ships"/>
+	<properties help="/contents/units/Ship"/>
+	<properties edittree_pos="Units/Others/Ship"/>
+	
+	<properties maxhealth="6000"/>
+	<properties damage="20" armor_slash="15" armor_pierce="15"/>
+	<properties max_units_to_board="200"/>
+	<properties sight="600"/>
+	<properties range="500"/>
+	<properties speed="160"/>
+	<properties description="Trasporta max 200 unit&#224;"/>
+
+</class>

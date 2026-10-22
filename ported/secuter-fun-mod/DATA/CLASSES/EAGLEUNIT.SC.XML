@@ -1,0 +1,36 @@
+<class id="EagleUnit" cpp_class="CVXFlyingUnit" parent="Ranged" entity="Units/Eagle/Eagle.ent.xml">
+
+	<properties maxhealth="100"/>
+	<properties damage="10" armor_slash="0" armor_pierce="0"/>
+	<properties speed="180"/>
+	<properties unit_specials="Freedom"/>
+
+	<properties projectile_class="Fire_Arrow"/>
+	<properties building_projectile_class="Fire_Arrow"/>
+
+	<properties icon="gameres/icons/eagle.bmp"/>
+	<properties display_name="Eagle" display_name_plural="Eagles"/>
+	<properties help="contents/units/Eagle"/>
+	<properties edittree_pos="Units/Animals/Aquila Combattente"/>	
+	
+	<properties radius="20" selection_radius="20"/>
+
+	<properties sight="900" feeds="0"/>
+	<properties target_factor="-1"/>
+	<properties healthbaroffset="-30"/>
+	<properties initial_z="200"/>
+	<properties no_transparent_draw="1"/>
+	<properties healthbar_type="0"/>
+
+	<method sig="idle"  vs="data/subai/eagle_idle.vs"/>
+	<method sig="move"  vs="data/subai/eagle_move.vs"/>
+	<!--method sig="hover" vs="data/subai/eagle_hover.vs"/>
+	<method sig="lesser_hover" vs="data/subai/eagle_lesser_hover.vs"/-->
+
+	<sounds 
+		die="data/sound entities/eagle_death.xml"
+		walk="data/sound entities/eagle_idle.xml"
+		command="data/sound entities/eagle_command.xml"
+	/>
+
+</class>

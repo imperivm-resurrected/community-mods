@@ -1,0 +1,16 @@
+<class id="HHoplite" cpp_class="CVXUnit" parent="Melee" entity="Units/HHoplite/HHoplite.ent.xml">
+
+	<properties race="ImperialRome"/>
+	<properties maxhealth="300"/>
+	<properties damage="20" armor_slash="18" armor_pierce="18"/>
+	<properties speed="70"/>
+	<properties unit_specials="Deflection"/>
+	<properties formation_priority="1200"/>
+
+	<properties icon="gameres/icons/HHoplite.bmp"/>
+	<properties display_name="Hoplite" display_name_plural="Hoplites"/>
+	<properties help="contents/units/HHoplite"/>
+	<properties edittree_pos="Units/Greece/Hoplite"/>
+	<sounds attack="UnitPikeFight" command="data/sound entities/VoiceHHoplite.xml"/>
+
+</class>

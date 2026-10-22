@@ -1,0 +1,41 @@
+<class id="HPriest" cpp_class="CVXDruid" parent="BaseMage" entity="Units/HPriest/HPriest.ent.xml">
+
+	<properties race="ImperialRome"/>
+	<properties maxhealth="140"/>
+	<properties armor_slash="10" armor_pierce="10"/>
+	<properties speed="50"/>
+	<properties unit_specials="Healing, Active"/>
+
+	<properties icon="gameres/icons/HPriest.bmp"/>
+	<properties display_name="Priest" display_name_plural="Priests"/>
+	<properties help="contents/units/HPriest"/>
+	<properties edittree_pos="Units/Greece/Priest"/>
+	<sounds command="data/sound entities/VoiceHPriest.xml"/>
+
+	<method sig="stand_position"  vs="data/subai/rpriest_stand_position.vs"/>
+	<method sig="ondie"           vs="data/subai/druid_ondie.vs"/>
+	<method sig="advance"         vs="data/subai/rpriest_advance.vs"/>
+	<method sig="idle"            vs="data/subai/rpriest_idle.vs"/>
+	<method sig="learn"           vs="data/subai/druid_learn.vs"/>
+
+	<method sig="heal" 	      vs="data/subai/druid_heal.vs" verify="data/subai/druid_heal_verify.vs"/>
+	<method sig="heal" 	      vs="data/subai/druid_heal_ground.vs"/>
+	<!-- script missing in Secuter's zip: <method sig="centaur_summoning" vs="data/subai/centaur_summoning.vs"/> -->
+	<method sig="h_restoration"      vs="data/subai/druid_restoration.vs"/>
+	
+	<method sig="buff_balanced" vs="data/subai/druid_buff_balanced_call.vs"/>
+
+	<defaultcmd target="Unit">
+		<cmd name="heal"/>
+	</defaultcmd>
+
+	<defaultcmd target="Hero">
+		<cmd name="attach"/>
+	</defaultcmd>
+
+	<defaultcmd target="ShipBattle">
+		<cmd name="boardship"/>
+		<cmd name="approach"/>
+	</defaultcmd>
+
+</class>
