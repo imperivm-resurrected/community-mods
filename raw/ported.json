@@ -78,6 +78,7 @@
  "extra": "it/extra-2017",
  "follia-di-gaea": "it/follia-di-gaea-2017",
  "follia-teutonica": "it/follia-teutonica-2017",
+ "forgia-il-tuo-impero-modificata": "it/versione-modificata-di-forgia-il-tuo-impero-2017 --title Forgia il tuo impero modificata",
  "game-of-thrones": "mapas/game-of-thrones",
  "germanico": "aventuras/germanico",
  "germanos-al-ataque": "aventuras/germanos-al-ataque",
@@ -283,6 +284,5 @@
  "tributo-imperium": "aventuras/tributo-imperium",
  "undefined": "it/l-unificazione-della-britannia",
  "uzia-by-x-cloud-x": "it/uzia-by-x-cloud-x-2016",
- "vanguardia-4v4": "mapas/vanguardia-4v4",
- "versione-modificata-di-forgia-il-tuo-impero-secuter": "it/versione-modificata-di-forgia-il-tuo-impero-2017 --title Forgia il tuo impero modificata"
+ "vanguardia-4v4": "mapas/vanguardia-4v4"
 }
