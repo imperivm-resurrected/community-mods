@@ -1,0 +1,18 @@
+{
+  "id": "il-figlio-di-ankou",
+  "name": "Il figlio di Ankou",
+  "version": "1.0",
+  "authors": [
+    "CaptainHighlander"
+  ],
+  "description": {
+    "italian": "Ankou è il potente Dio britannico della morte, del male e della distruzione. Il figlio di Ankou sta arrivando: presto l'isola si troverà immersa nel caos. Avventura di CaptainHighlander.",
+    "spanish": "Aventura de CaptainHighlander (en italiano).",
+    "english": "Adventure by CaptainHighlander (in Italian)."
+  },
+  "category": "Adventures",
+  "tags": [
+    "Language: Italian"
+  ],
+  "redistributable": true
+}

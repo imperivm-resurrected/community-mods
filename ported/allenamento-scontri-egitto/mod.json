@@ -1,0 +1,18 @@
+{
+  "id": "allenamento-scontri-egitto",
+  "name": "Allenamento scontri egitto",
+  "version": "1.0",
+  "authors": [
+    "Nize"
+  ],
+  "description": {
+    "italian": "Mappa di Nize.",
+    "spanish": "Mapa de Nize (en italiano).",
+    "english": "Map by Nize (in Italian)."
+  },
+  "category": "Scenarios",
+  "tags": [
+    "Players: 2"
+  ],
+  "redistributable": true
+}

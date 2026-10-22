@@ -291,7 +291,8 @@ const md5 = f => require("crypto").createHash("md5").update(fs.readFileSync(f)).
 const HD = path.join(ROOT, "originals", "game-data");
 const shipped = maps.filter(f => ["Scenarios", "Adventures"].some(d => fs.existsSync(path.join(HD, d)) && fs.readdirSync(path.join(HD, d))
   .some(g => g.toLowerCase() === f.toLowerCase() && md5(path.join(HD, d, g)) === md5(path.join(dest, f)))));
-if (shipped.length === maps.length) { fs.rmSync(out, { recursive: true, force: true }); console.error(`already in the HD game: ${shipped.join(", ")}`); process.exit(3); }
+// --keep: port it anyway (the author's own copy is worth having in the mod list)
+if (shipped.length === maps.length && !opt.keep) { fs.rmSync(out, { recursive: true, force: true }); console.error(`already in the HD game: ${shipped.join(", ")}`); process.exit(3); }
 // same file name as in another ported mod: with both enabled one would hide the other, so rename ours
 const taken = new Set(fs.readdirSync(path.join(ROOT, "ported")).filter(m => m !== id)
   .flatMap(m => ["scenarios", "adventures"].flatMap(d => fs.existsSync(path.join(ROOT, "ported", m, d)) ? fs.readdirSync(path.join(ROOT, "ported", m, d)) : []))
@@ -480,7 +481,7 @@ fs.writeFileSync(path.join(out, "mod.json"), JSON.stringify(mod, null, 2) + "\n"
 // raw/ported.json: which entry each ported mod comes from (tools/sync-table.js uses it to update MODS.md)
 const SRC = path.join(ROOT, "raw", "ported.json");
 const src = (() => { try { return JSON.parse(fs.readFileSync(SRC, "utf8")); } catch { return {}; } })();
-src[id] = opt._ + (opt.file ? ` --file ${opt.file}` : "") + (opt.add ? ` --add ${opt.add}` : "") + (opt.author ? ` --author ${opt.author}` : "") + (opt.lang ? ` --lang ${opt.lang}` : "") + (opt.adventure ? " --adventure" : "") + (opt.title ? ` --title ${opt.title}` : "") + (opt.desc ? ` --desc ${opt.desc}` : ""); // what to run to wrap it again
+src[id] = opt._ + (opt.file ? ` --file ${opt.file}` : "") + (opt.add ? ` --add ${opt.add}` : "") + (opt.author ? ` --author ${opt.author}` : "") + (opt.lang ? ` --lang ${opt.lang}` : "") + (opt.adventure ? " --adventure" : "") + (opt.title ? ` --title ${opt.title}` : "") + (opt.desc ? ` --desc ${opt.desc}` : "") + (opt.keep ? " --keep" : ""); // what to run to wrap it again
 fs.writeFileSync(SRC, JSON.stringify(Object.fromEntries(Object.entries(src).sort()), null, 1) + "\n");
 console.log(`${out}\n  ${maps.join(", ")} -> ${[...new Set(maps.map(f => where[f]))].join(", ")}/\n  category ${mod.category}, tags ${JSON.stringify(mod.tags)}${counts.length < maps.filter(f => where[f] === "scenarios").length ? "  ⚠️ some scenario has no readable players" : ""}${has("scenarios") && !players ? "  ⚠️ no Players tag (one human slot, or --players)" : ""}${renamed ? `\n  🏷️ ${renamed} map(s): the editor's default name/author in game.xml replaced` : ""}${greekWalls ? `\n  🏛️ ${greekWalls} M* pieces (walls, towers, gates, villagers) -> K* (Greek): porter credited` : ""}`
   + (used === null ? "\n  ⚠️ compatibility not checked (no originals/game-data)" : unknown.length ? `\n  ❌ not in the HD game nor in a known mod: ${unknown.join(", ")}` : "")
