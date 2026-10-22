@@ -18,3 +18,6 @@ ported/cgwar/
 ported/greek-mod-terrains/
 ported/imperivm-legacy/
 ported/mediterranevm-alpha/
+
+# Greek Civilization Mod 4.2: rebuilt from the GameBanana zip + extras/greek-civilization-mod/ (shrink-mod.js, see its NOTES.md)
+ported/greek-civilization-mod/

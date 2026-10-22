@@ -1,0 +1,21 @@
+{
+  "id": "greek-civilization-mod",
+  "name": "Greek Civilization Mod",
+  "version": "4.2",
+  "authors": [
+    "Gabbo",
+    "Villoh (port)"
+  ],
+  "description": {
+    "spanish": "Greek Mod renueva Imperivm HD con nuevas unidades, una IA mejorada, doblajes inéditos y muchas novedades para batallas aún más apasionantes.",
+    "english": "The Greek Mod revamps Imperivm HD with new units, improved AI, new voiceovers, and plenty of fresh features for even more engaging battles.",
+    "italian": "Greek Mod rinnova Imperivm HD con nuove unità, un’IA migliorata, doppiaggi inediti e tante novità per battaglie ancora più coinvolgenti."
+  },
+  "category": "Civilizations",
+  "license": "CC-BY-NC-ND-4.0",
+  "redistributable": true,
+  "sources": {
+    "page": "https://gamebanana.com/mods/728851",
+    "gamebanana": 728851
+  }
+}
