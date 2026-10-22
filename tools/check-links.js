@@ -48,8 +48,11 @@ async function check(url) {
   try { done = JSON.parse(fs.readFileSync(OUT, "utf8")); } catch { /* first run */ }
   const forum = Object.values(require("../raw/forum-entries.json")).flatMap(t => t.links);
   const discord = require("../raw/discord-entries.json").flatMap(e => e.links);
+  // the Italian forum: every post's links (raw/forum-it.json is local only) and its Downloads table
+  const readJson = f => { try { return JSON.parse(fs.readFileSync(path.join(__dirname, "../raw", f), "utf8")); } catch { return null; } };
+  const italian = [...Object.values(readJson("forum-it.json") || {}).flatMap(t => t.posts.flatMap(p => p.links)), ...(readJson("forum-it-downloads.json") || []).map(r => r.link)];
   const isDownload = u => /mega|mediafire|box\.com|dropbox|drive\.google|moddb|megaupload|rapidshare|hotfile|fileserve|4shared|terabox|myairbridge|altervista|docs\.google/.test(u);
-  const urls = [...new Set([...forum, ...discord].filter(isDownload))].filter(u => !done[u] || process.argv.includes("--all"));
+  const urls = [...new Set([...forum, ...discord, ...italian].filter(isDownload))].filter(u => !done[u] || process.argv.includes("--all"));
   console.log(urls.length, "to check");
   for (const u of urls) {
     done[u] = { ...(await check(u)), checked: new Date().toISOString().slice(0, 10) };
