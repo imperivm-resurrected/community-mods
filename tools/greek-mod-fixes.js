@@ -15,10 +15,12 @@
 // that replace their base in the lobby) and those scripts ask Mod_PlayerCiv instead; a civilization that is not one of them (a map that
 // fixes plain Rome) gets no branch, and the buttons at the town hall are still there as before.
 //
-// 00_Ludus_Martis. 4.2's own scenario ("[CM]", Ferónidas) has summon items whose scripts place `cRScout56`, `cGHorseman56`, `cICavalry56`,
-// `cCNumidianRider56`, `cTTeutonRider56`, `cTTeutonWolf56` and `cTValkyrie56`, classes that exist in no mod we have (not in 4.2, the
-// Community Mod v12 or the Caesar Mod). It goes back to the menu at once: the same with 4.2's original package installed as a mod.
-// Adding the seven as copies of the game's horses did not change it. So it is left out.
+// 00_Ludus_Martis. 4.2's package carries an adapted build of Ferónidas's map (the Community Mod's "[CM] Ludus Martis") whose summon items
+// place `cRScout56`, `cGHorseman56`... (classes in no mod we have), and it goes back to the menu at once, also with 4.2's package installed
+// unchanged. The Community Mod's own build plays; it only needs three hero classes that mod adds on top of the game's, `CHero5` (Candecar),
+// `EHero4` (Menhotep) and `BHero4` (Calgacos): each a few lines over a game hero's entity. So the Community Mod's map and those three
+// classes go in, unmodified, from its v12 package (CC BY-NC-ND 4.0, author Ferónidas), instead of 4.2's build.
+//
 //
 // Misspelled class ids. HD names some classes with typos ("TValkyria", "CMacemen", "BHighlandar", "IDefendar", "GTridentWarriar",
 // "BaseBoilding") and 4.2 renames them and drops the old ones. The game's own scripts (TOutpost's defenders) and the maps made for HD place
@@ -69,5 +71,15 @@ for (const f of ["SUBAI/RTOWNHALL_ENABLE_OR_DISABLE_CMD.VS", "SUBAI/RTOWNHALL_CA
 }
 console.log(`pre-lobby sentinel: ${rewired} scripts now ask Mod_PlayerCiv`);
 
-for (const f of ["Scenarios/00_Ludus_Martis.BFHP", "Scenarios/00_Ludus_Martis.bmp"]) fs.rmSync(path.join(MOD, f), { force: true });
-console.log("00_Ludus_Martis left out");
+const CM = path.join(__dirname, "..", "originals", "gamebanana", "730058", "community_mod_v12.rar"), CMPRE = "Community Mod v12/Community Mod/";
+const take = (member, to) => {
+  const r = require("child_process").spawnSync("bsdtar", ["-xOf", CM, CMPRE + member], { maxBuffer: 1 << 28 });
+  if (r.status !== 0 || !r.stdout.length) { console.log(`  ${member}: not in ${path.basename(CM)}`); return false; }
+  fs.mkdirSync(path.dirname(path.join(MOD, to)), { recursive: true });
+  fs.writeFileSync(path.join(MOD, to), r.stdout);
+  return true;
+};
+let ludus = 0;
+if (take("Scenarios/00_Ludus_Martis.BFHP", "Scenarios/00_Ludus_Martis.BFHP")) ludus++;
+for (const c of ["CHero5", "EHero4", "BHero4"]) if (take(`DATA/CLASSES/${c.toUpperCase()}.SC.XML`, `DATA/CLASSES/${c.toUpperCase()}.SC.XML`)) ludus++;
+console.log(`00_Ludus_Martis: ${ludus} of 4 files from the Community Mod v12`);
