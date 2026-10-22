@@ -12,10 +12,10 @@
 // add puts the Imperivm I classes a map places (and the HD game lacks) into ported/imperivm1-legacy/: a copy of the HD
 // equivalent under the old id, or, for objects the HD game never had (cliffs, rocks, the warehouse), the original class with
 // its art rebuilt from the demo (each .rle.mmp + the demo's rle.mmp -> a standalone .rle). Maps that need it get
-// "requires": ["imperivm1-legacy"] from tools/wrap-map.js. Uses the SDK in ../imperivm-resurrected/sdk/en (SDK=<path>).
+// "requires": ["imperivm1-legacy"] from tools/wrap-map.js. Uses the SDK in ../imperivm-resurrected/sdk (SDK=<path>).
 const fs = require("fs"), path = require("path"), zlib = require("zlib"), { execFileSync } = require("child_process");
 const ROOT = path.join(__dirname, "..");
-const SDK = process.env.SDK || path.join(ROOT, "..", "imperivm-resurrected", "sdk", "en");
+const SDK = process.env.SDK || path.join(ROOT, "..", "imperivm-resurrected", "sdk");
 const rle = require(path.join(SDK, "tools", "lib", "rle.js"));
 const I1 = path.join(ROOT, "originals", "imperivm1"), HD = path.join(ROOT, "originals", "game-data", "DATA");
 const TABLE = path.join(ROOT, "raw", "imperivm1-equivalents.json");

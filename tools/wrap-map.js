@@ -142,7 +142,7 @@ const mapDesc = f => {
     .replace(/^(Partida de estrategia|Partida de aventura|Scenario Game)$/i, ""); // editor defaults, not the author's
 };
 // Compatibility: Resurrected runs on the HD game, so a 1.40/1.56 map (or one made for a mod) breaks if it uses a class
-// the HD data doesn't define. Needs originals/game-data (sdk/en: node tools/extract-data.js "<game>" originals/game-data).
+// the HD data doesn't define. Needs originals/game-data (sdk: node tools/extract-data.js "<game>" originals/game-data).
 // Big mods in originals/mods/<mod id>/ (their mod.json, hidden.txt and DATA/**/*.sc.xml) change that set: a mod's classes
 // are HD's minus the files its hidden.txt hides, plus its own. A map needs a mod ("requires") if only that mod has a
 // class it uses, and can't run with a mod ("incompatibleWith") if that mod hides a class it uses.

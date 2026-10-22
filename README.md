@@ -26,7 +26,7 @@ Every mod is published with full credit to its original author. Many of these mo
 
 ## Setup (once)
 
-The tools compare each mod with the game's data, so extract it first. `extract-data.js` is in the SDK, `imperivm-resurrected/sdk/en/tools/`; `<game>` is the HD game folder.
+The tools compare each mod with the game's data, so extract it first. `extract-data.js` is in the SDK, `imperivm-resurrected/sdk/tools/`; `<game>` is the HD game folder.
 
 | What | Command | Used by |
 |---|---|---|
@@ -162,7 +162,7 @@ The same idea works for any old map: look for the class in an older `data.pak` (
 | [`greek-terrains.js`](tools/greek-terrains.js) | The Greek Mod's terrain layers 41-55 (from the Caesar Mod zip) → `ported/greek-mod-terrains/`; `wrap-map` makes maps painted with them require it |
 | [`hpfs.js`](tools/hpfs.js) `<map.bfhp> [outDir]` | Lists or extracts a scenario/adventure `.bfhp` (HPFS); as a module, it also rewrites a file in place (any length within its pages) |
 
-The SDK tools (`extract-data.js`, `shrink-mod.js`, `validate-mod.js`, `read-rle.js`…) are in `imperivm-resurrected/sdk/en/tools/`.
+The SDK tools (`extract-data.js`, `shrink-mod.js`, `validate-mod.js`, `read-rle.js`…) are in `imperivm-resurrected/sdk/tools/`.
 
 ## Sources and license
 

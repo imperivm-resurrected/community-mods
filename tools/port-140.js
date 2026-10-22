@@ -22,10 +22,10 @@
 //   currentlang\*.loc.xml       only the entries that differ from the HD Spanish table -> loc\spanish.loc.xml
 //   currentlang\ other text     local\spanish\ (the mod's language); images stay in currentlang\
 //   Thumbs.db, *.bak            dropped
-// The report (what to check by hand) goes to raw/port-140/<id>.md. Uses the SDK in ../imperivm-resurrected/sdk/en (SDK=<path>).
+// The report (what to check by hand) goes to raw/port-140/<id>.md. Uses the SDK in ../imperivm-resurrected/sdk (SDK=<path>).
 const fs = require("fs"), path = require("path"), os = require("os"), crypto = require("crypto"), { spawnSync } = require("child_process");
 const ROOT = path.join(__dirname, "..");
-const SDK = process.env.SDK || path.join(ROOT, "..", "imperivm-resurrected", "sdk", "en");
+const SDK = process.env.SDK || path.join(ROOT, "..", "imperivm-resurrected", "sdk");
 const rle = require(path.join(SDK, "tools", "lib", "rle.js"));
 const GAME = process.env.GAME || path.join(os.homedir(), ".local/share/Steam/steamapps/common/Imperivm - Great Battles of Rome HD");
 const die = m => { console.error(m); process.exit(1); };
