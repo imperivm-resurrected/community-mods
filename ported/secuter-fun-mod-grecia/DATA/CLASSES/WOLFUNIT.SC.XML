@@ -2,14 +2,14 @@
 
 	<properties race="Germany"/>
 	<properties maxhealth="240"/>
-	<properties damage="16" armor_slash="2" armor_pierce="2"/>
+	<properties damage="18" armor_slash="2" armor_pierce="2"/>
 	<properties speed="150"/>
 	<properties unit_specials="Drain"/>
 
 	<properties icon="gameres/icons/wolf.bmp"/>
 	<properties display_name="Wolf" display_name_plural="Wolves"/>
 	<properties help="contents/units/Wolf"/>
-	<properties edittree_pos="Units/Animals/Wolf"/>
+	<properties edittree_pos="Units/Animali/Pacifici/Lupo"/>
 	<sounds 
 		die="Sounds/animals/wolf/wolf_die.wav"
 		attack="WolfAttack"

@@ -2,7 +2,7 @@
 
 	<properties display_name="Baraeco" display_name_plural="Heroes"/>
 	<properties icon="gameres/icons/IHero3.bmp"/>
-	<properties edittree_pos="Units/Iberia/Hero 3"/>
+	<properties edittree_pos="Units/Iberia/Eroe - Baraeco"/>
 	<properties HeroSkills="Healing, Charge, Team attack, Euphoria, Epic endurance"/>
 
 </class>

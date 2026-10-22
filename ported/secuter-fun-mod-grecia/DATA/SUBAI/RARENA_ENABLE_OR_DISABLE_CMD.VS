@@ -1,8 +1,32 @@
 // void, Obj This
 
 Building this;
+int nConfig;
 
 this = This.AsBuilding();
+nConfig = 0;
+if (EnvReadString(.settlement, "ChooseRepublicanRome") == "researched") nConfig = 1;
+else if (EnvReadString(.settlement, "ChooseImperialRome") == "researched") nConfig = 2;
+else if (EnvReadString(.settlement, "ChoosePunicRome") == "researched") nConfig = 3;
+if (EnvReadString(.settlement, "BothRome") == "enabled") nConfig += 10;
+if (EnvReadInt(.player, "ModeInverno") == 1) nConfig += 20;
+if (EnvReadInt(this, "RomeCmdConfigured") == 1)
+if (EnvReadInt(this, "RomeCmdConfig") == nConfig)
+if (EnvReadInt(this, "RomeCmdPlayer") == .player) {
+    if (nConfig % 10 == 0) Sleep(250);
+    else Sleep(30000 + rand(10001));
+    return;
+}
+
+// Imperivm 2: "Military Academy Imp2" e "Gladiator Shows Imp2" sono specifici di
+// questa modalita'; fuori Imperivm 2 restano sempre nascosti (in Imperivm 2 li
+// gestisce MODE_IMPERIVM2_ROME.VS).
+if (EnvReadInt(.player, "ModeInverno") != 1)
+{
+	.CmdDisable("Military Academy Imp2");
+	.CmdDisable("Gladiator Shows Imp2");
+	.CmdDisable("Rome Training 2 Imp2");
+}
 
 if( (EnvReadString(.settlement, "ChooseRepublicanRome") == "researched") || (EnvReadString(.settlement, "ChooseImperialRome") == "researched") )
 {

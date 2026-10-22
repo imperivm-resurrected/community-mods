@@ -8,7 +8,7 @@
 	<properties radius="345" selection_radius="350"/>
 	<properties edittree_pos="Structures/Outposts/Military post (Iberian)"/>
 	<properties help="/contents/buildings/ITrainingCamp"/>
-	<properties description="Gradually increases the experience of all warriors inside the outpost until they reach level 8"/>
+	<properties description="Slowly increases the experience of the warriors inside, up to level 18"/>
 	<properties
 		range = "1000"
 		settlement_food="1000"
@@ -26,5 +26,5 @@
 	    end_level_2     = "24"   
 	/>
 
-	<behavior script="data/subai/ioutpost_behavior.vs"/>
+	<behavior script="data/subai/ioutpost_training.vs"/>
 </class>

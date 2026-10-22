@@ -9,7 +9,7 @@
 	queueicon="gameres/icons/upgrades/repair.bmp"
 	groupverifier="data/subai/verify_cmdcost_building.vs"
 	rollover="Repair"
-	costgold="100"
+	costgold="500"
 	costfood="0"
 	execdelay = "60000">
 	<src obj="ITemple"/>
@@ -25,7 +25,7 @@
 	help="/contents/units/IEnchantress"
 	costgold = "200"
 	costfood = "1"
-	costpop = "0"
+	costpop = "1"
 	execdelay = "20000"
 	rollover="Call Enchantress"
 	method="train"
@@ -63,7 +63,7 @@
 	rollover="Ancestral Knowledge"
 	description="Increases the level to which enchantresses could teach friendly warriors from 4 to 8"
 	method="research"
-	param="ReqPlr, Code of Valor, default, NamePlr, Ancestral Knowledge, default">
+	param="NReqModeImp2, , , ReqPlr, Code of Valor, default, NamePlr, Ancestral Knowledge, default">
 	<src obj="ITemple"/>
 </cmd>
 
@@ -77,7 +77,7 @@
 	costfood = "0"
 	execdelay = "20000"
 	rollover="Cover of Mercy"
-	description="Allows enchantresses to sacrifice themselves to protect allies from damage"
+	description="Allows units to sacrifice themselves to protect allies from damage"
 	method="research"
 	param="ReqPlr, Code of Valor, default, NamePlr, Cover of Mercy, default">
 	<src obj="ITemple"/>

@@ -2,14 +2,14 @@
 
 	<properties race="Britain"/>
 	<properties maxhealth="600"/>
-	<properties damage="100" armor_slash="6" armor_pierce="6"/>
+	<properties damage="100" armor_slash="16" armor_pierce="16"/>
 	<properties speed="80"/>
 	<properties unit_specials="Life steal, Ferocity"/>
 
 	<properties icon="gameres/icons/BVikingLord.bmp"/>
 	<properties display_name="Viking Lord" display_name_plural="Viking Lords"/>
 	<properties help="contents/units/BVikingLord"/>
-	<properties edittree_pos="Units/Britain/Viking Lord"/>
+	<properties edittree_pos="Units/Britannia/Capo normanno"/>
 	<sounds command="data/sound entities/VoiceBVikingLord.xml" attack="UnitHammerFight"/>
 
 </class>

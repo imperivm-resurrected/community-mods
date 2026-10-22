@@ -1,12 +1,20 @@
 <class id="GArcher" cpp_class="CVXUnit" parent="Ranged" entity="Units/GArcher/GArcher.ent.xml">
 	<properties race="Gaul"/>
 	<properties maxhealth="140"/>
-	<properties damage="12" armor_slash="0" armor_pierce="0"/>
+	<properties damage="14" armor_slash="0" armor_pierce="0"/>
 	<properties speed="60"/>
 	<properties unit_specials="Attack skill"/>
 	<properties icon="gameres/icons/GArcher.bmp"/>
 	<properties display_name="Archer" display_name_plural="Archers"/>
 	<properties help="contents/units/GArcher"/>
-	<properties edittree_pos="Units/Gaul/Archer"/>
+	<properties edittree_pos="Units/Gallia/Arciere"/>
 	<sounds command="data/sound entities/VoiceGArcher.xml"/>
+	
+ <!--	<value4
+		icon="gameres/infobar/unit specials/resilient attack.bmp"
+		script="return .AsUnit.health + '/' + .AsUnit.maxhealth;"
+		help="/contents/stats/health"
+		rollover="Health | This unit have the special 'Hard Train' that add +1 damage and +10 max health every 5 levels. "/>
+	
+	<behavior script="data/subai/Hard_Train_behavior.vs"/> -->
 </class>

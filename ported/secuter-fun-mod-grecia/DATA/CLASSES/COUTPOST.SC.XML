@@ -8,7 +8,7 @@
 	<properties radius="333" selection_radius="350"/>
 	<properties edittree_pos="Structures/Outposts/Garrison"/>
 	<properties help="/contents/buildings/CForth"/>
-	<properties description="Converts villagers inside the outpost into a capable Macemen"/>
+	<properties description="Turns the peasants inside into Berber Mercenaries"/>
 	<properties
 		range = "1000"
 		settlement_food="2000"

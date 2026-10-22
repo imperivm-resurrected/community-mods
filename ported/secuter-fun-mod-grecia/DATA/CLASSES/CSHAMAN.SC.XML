@@ -9,8 +9,8 @@
 	<properties icon="gameres/icons/CShaman.bmp"/>
 	<properties display_name="Shaman" display_name_plural="Shamans"/>
 	<properties help="contents/units/CShaman"/>
-	<properties edittree_pos="Units/Carthage/Shaman"/>
-	<properties shaman_food_gain="5"/>
+	<properties edittree_pos="Units/Cartagine/Mauritana/Sciamano"/>
+	<properties shaman_food_gain="2"/>
 
 	<method sig="stand_position" vs="data/subai/shaman_stand_position.vs"/>
 	<method sig="ondie"          vs="data/subai/shaman_ondie.vs"/>

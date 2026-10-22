@@ -4,7 +4,7 @@
 	<properties sight="500"/>
 	<properties display_name="Keltill" display_name_plural="Heroes"/>
 	<properties icon="gameres/icons/Keltil.bmp"/>
-	<properties edittree_pos="Units/Heroes/Keltill (Gaul)"/>
+	<properties edittree_pos="Units/Scenari/Eroi/Keltill"/>
 	<properties HeroSkills="Defensive cry, Assault, Quick March, Leadership, Wisdom"/>
 
 	<sounds command="data/sound entities/VoiceGHero.xml"/>

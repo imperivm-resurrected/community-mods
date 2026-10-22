@@ -2,7 +2,7 @@
 
 	<properties display_name="Wuffa" display_name_plural="Heroes"/>
 	<properties icon="gameres/icons/BHero3.bmp"/>
-	<properties edittree_pos="Units/Britain/Hero 3"/>
+	<properties edittree_pos="Units/Britannia/Eroe - Lomhar"/>
 	<properties HeroSkills="Charge, Assault, Concealment, Team defense, Epic attack"/>
 
 </class>

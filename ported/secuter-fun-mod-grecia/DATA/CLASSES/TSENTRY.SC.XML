@@ -5,6 +5,6 @@
 	<properties damage="12" armor_slash="0" armor_pierce="0"/>
 	<properties icon="gameres/icons/TArcher.bmp"/>
 	<properties unit_specials="Attack skill, Active, Keen sight, Freedom"/>
-	<sounds command="data/sound entities/VoiceTArcher.xml"/>
+	<sounds die="data/sound entities/UNITDEATHFEMALE.xml" command="data/sound entities/VoiceTArcher.xml"/>
 
 </class>

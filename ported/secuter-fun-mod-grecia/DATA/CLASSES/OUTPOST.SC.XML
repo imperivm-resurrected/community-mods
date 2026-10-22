@@ -27,7 +27,10 @@
 	<behavior script="data/subai/outpost_behavior_guard.vs"/>
 	<behavior script="data/subai/outpost_behavior.vs"/>
 <!--	<behavior script="data/subai/outpost_feeding_behavior.vs"/>-->
-    <method sig="unitsout"            vs="data/subai/townhall_unitsout.vs"/>
+
+	<!-- AGGIUNTO DAL PRIMO SCRIPT -->
+	<method sig="unitsout" vs="data/subai/townhall_unitsout.vs"/>
+
 	<method sig="idle"                vs="data/subai/outpost_idle.vs"/>
 	<method sig="tribute"             vs="data/subai/village_tributefood.vs"/>
 	<method sig="tribute_default"     vs="data/subai/village_tributefood.vs"/>

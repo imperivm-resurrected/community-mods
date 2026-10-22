@@ -5,7 +5,7 @@ Unit newunit;
 str class, groupname;
 int number, maxnumber;
 int level, i;
-point ptExit;
+point ptExit, ptRally;
 Query qGroup;
 
 this = This.AsBuilding();
@@ -23,7 +23,7 @@ while(1)
 	
 	if(number == 0 || qGroup.GetObjList.count >= maxnumber)
 	{
-		if (class == "RLiberatus") {
+		if (class == "RLiberatus" || class == "RLiberatusOldSchool") {
 			// update the best liberatus level for our player
 			ObjList ol;
 			int i, l, max_level;
@@ -59,28 +59,70 @@ while(1)
 
 		ptExit = .GetExitPoint( .settlement.GetCentralBuilding.pos, false );
 		level = EnvReadInt(.settlement, "levels/" + class);
+		// La variante Old School con Liberta' condivide la progressione del
+		// Liberatus standard.
+		if (class == "RLiberatusOldSchool")
+			level = EnvReadInt(.settlement, "levels/RLiberatus");
 
 		// Shrine of Thor implementation
-		if (EnvReadString(.settlement, "Shrine of Thor") == "researched" && 
+		// Imperivm 2 (flag ModeInverno): la Gallia usa lo stesso Signore Vichingo
+		// ma SENZA tetto al livello 20 (richiesta utente). In Imperivm 2 solo la
+		// Gallia puo' avere Signori Vichinghi, quindi il guard su ModeInverno non
+		// tocca la Britannia (che nelle altre modalita' resta cappata a 20).
+		if (EnvReadString(.settlement, "Shrine of Thor") == "researched" &&
 			class == "BVikingLord"
 		) {
 			if (EnvReadInt(.player, "BVikingLordLevel") > level)
 				level = EnvReadInt(.player, "BVikingLordLevel");
-			if (level < 20)
+			if (level < 20 || EnvReadInt(.player, "ModeInverno") == 1)
 				{
 					EnvWriteInt(.settlement, "levels/BVikingLord", level + 2);
 					EnvWriteInt(.player, "BVikingLordLevel", level + 2);
-				}	
+				}
 		}
 
 		// Liberati guild implementation
 		if (EnvReadString(.settlement, "Liberati guild") == "researched" && 
-		  class == "RLiberatus" && number == 10
+		  (class == "RLiberatus" || class == "RLiberatusOldSchool") && number == 10
 		) {
 			level += 1;
 			if (EnvReadInt(.player, "BestLiberatus") > level)
 				level = EnvReadInt(.player, "BestLiberatus");
 			EnvWriteInt(.settlement, "levels/RLiberatus", level);
+		}
+		
+        // Call socii implementation
+        if (EnvReadString(.settlement, "Call Socii") == "researched" &&
+         class == "RExtrordina" && number == 10
+        ) {
+            level += 1;
+            if (EnvReadInt(.player, "BestExtrordinaLevel") > level)
+                level = EnvReadInt(.player, "BestExtrordinaLevel");
+            EnvWriteInt(.settlement, "levels/RExtrordina", level);
+        }
+
+		// Eredita' Achemenide (Mauritana): con l'upgrade "Achaemenids Training"
+		// del Colosseo, ogni nuovo gruppo di Guerrieri Achemenidi nasce un
+		// livello sopra il migliore raggiunto finora (pattern Valchirie/Liberati).
+		if (EnvReadString(.settlement, "Achaemenids Training") == "researched")
+		if (class == "CAchaemenidWarrior" && number == 10)
+		{
+			if (EnvReadInt(.player, "BestAchaemenid") > level)
+				level = EnvReadInt(.player, "BestAchaemenid");
+			level += 1;
+			EnvWriteInt(.settlement, "levels/CAchaemenidWarrior", level);
+		}
+
+		// Veterani della Tribu' (Mauritana): oltre 99 di popolazione le
+		// nuove unita' partono almeno al livello 6, oltre 125 almeno al 12
+		if (EnvReadString(.settlement, "Tribal Veterans") == "researched")
+		{
+			if (.settlement.population > 125) {
+				if (level < 12) level = 12;
+			}
+			else if (.settlement.population > 99) {
+				if (level < 6) level = 6;
+			}
 		}
 
 		// Legendary Valkyrie  implementation
@@ -104,7 +146,17 @@ while(1)
 				if (l > level) level = l;
 			}
 		}
-		
+		// New GHorse Tech  implementation
+		if (EnvReadString(.settlement, "Oath of Allegiance") == "researched" && 
+		  class == "GOathsworn" && number == 1){
+			if (EnvReadInt(.player, "BestOathswornLevel") > level)
+				level = EnvReadInt(.player, "BestOathswornLevel");
+			level=((level*2)/3);
+			if(level>1)
+				EnvWriteInt(.settlement, "levels/GOathsworn", level);
+			else
+				EnvWriteInt(.settlement, "levels/GOathsworn", 1);
+		}
 		// Standartization
 		{
 			int l2;
@@ -117,10 +169,17 @@ while(1)
 			newunit = Place(class, Point(0,0), this.player);
 			.settlement.AddUnit(newunit);
 			newunit.AddToGroup("Player" + .player + groupname);
-		} else 
+		} else
 		{
 			newunit = Place(class, ptExit, this.player);
-			newunit.SetCommand("enter", .settlement.GetCentralBuilding);
+			// Punto di raccolta (AsurMod): se impostato, l'unita' va li'
+			if (EnvReadInt(this, "Punto") == 0)
+				newunit.SetCommand("enter", .settlement.GetCentralBuilding);
+			else
+			{
+				ptRally = Point(EnvReadInt(this, "X"), EnvReadInt(this, "Y"));
+				newunit.SetCommand("move", ptRally);
+			}
 			newunit.AddToGroup("Player" + .player + groupname);
 		}
 		newunit.SetLevel(level);
@@ -137,6 +196,14 @@ while(1)
 				newunit.AddItem("God's Gift");
 			if (EnvReadInt(.settlement, "items/Veteran Guild") == 1)
 				newunit.AddItem("Veteran Guild");
+			// Doni Tribali (Mauritana): vedi BARRACK_TRAIN.VS
+			if (EnvReadInt(.settlement, "items/Ceremonial Blade") == 1)
+				newunit.AddItem("Ceremonial Blade");
+			if (EnvReadInt(.settlement, "items/Bone Shield") == 1)
+			{
+				newunit.AddItem("Bone Shield");
+				newunit.AddBonus(0, 5, 0, 0, 0);
+			}
 		  }
 		EnvWriteInt(this, "Build/" + class, number-1);
 		Sleep(1000);

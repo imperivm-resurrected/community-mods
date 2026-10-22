@@ -9,7 +9,7 @@
 	<properties icon="gameres/icons/RHastatus.bmp"/>
 	<properties display_name="Hastatus" display_name_plural="Hastati"/>
 	<properties help="contents/units/RHastatus"/>
-	<properties edittree_pos="Units/Roman/Hastatus"/>
+	<properties edittree_pos="Units/Roma/Imperiale/Legionario"/>
 	<sounds command="data/sound entities/VoiceRHastatus.xml"/>
-
+	
 </class>

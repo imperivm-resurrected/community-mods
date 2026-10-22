@@ -47,10 +47,29 @@
 	costfood = "0"
 	execdelay = "15000"
 	rollover="Altar of Jupiter"
-	description="All new priests are level 4"
+	description="All new priests are level 4. A priest joins the stronghold immediately"
 	method="research"
 	param="NameSet, Altar of Jupiter, default, SetsSet, levels/RPriest, 4">
 	<src obj="RTemple"/>
+</cmd>
+
+<!-- Roma, solo modalita' Liga (gate: rtemple_liga_gate.vs): i Sacerdoti
+     possono sacrificarsi per evocare un Lupo da guerra (RWarWolf). -->
+<cmd name="Roman Wolf Summoning" priority="8"
+	queueicon="gameres/icons/upgrades/summon wolf.bmp"
+	button="actions/summon wolf.bmp"
+	key="w"
+	researchcommand="yes"
+	groupverifier="data/subai/verify_research.vs"
+	costgold = "400"
+	costfood = "0"
+	execdelay = "30000"
+	rollover="Wolf summoning"
+	description="Allows priests to sacrifice themselves and summon a war wolf, which remains under your control for about 3 minutes"
+	method="research"
+	param="ReqSet, Altar of Jupiter, default, NamePlr, Wolf Summoning, default">
+	<src obj="RTemple"/>
+	<src obj="MTemple"/>
 </cmd>
 
 <cmd name="Cloud of Plague" priority="5"
@@ -66,6 +85,22 @@
 	description="Allows priests to sacrifice themselves to create a cloud of plague which damages all warriors it covers"
 	method="research"
 	param="ReqSet, Altar of Jupiter, default, NamePlr, Cloud of Plague, default">
+	<src obj="RTemple"/>
+</cmd>
+
+<cmd name="Corruption" priority="5"
+	queueicon="gameres/icons/upgrades/corruption.bmp"
+	button="research/corruption.bmp"
+	key="c"
+	researchcommand="yes"
+	groupverifier="data/subai/verify_research.vs"
+	costgold = "1000"
+	costfood = "0"
+	execdelay = "20000"
+	rollover="Corruption"
+	description="Allows priests to convert enemy units (Does not work on heroes or neutral units)"
+	method="research"
+	param="ReqSet, Altar of Jupiter, default, NamePlr, Corruption, default">
 	<src obj="RTemple"/>
 </cmd>
 
@@ -97,7 +132,7 @@
 	rollover="God's Gift"
 	description="All new warriors are equipped with a God's Gift artifact, which heals a warrior at his first kill and then disappears"
 	method="research"
-	param="ReqSet, Altar of Jupiter, default, NameSet, God's Gift, default, SetsSet, items/God's Gift, 1">
+	param="NReqModeImp2, , , ReqSet, Altar of Jupiter, default, NameSet, God's Gift, default, SetsSet, items/God's Gift, 1">
 	<src obj="RTemple"/>
 </cmd>
 

@@ -3,7 +3,7 @@
 	<properties icon="gameres/icons/ShipRome.bmp"/>
 	<properties display_name="Rome Ship" display_name_plural="Ships"/>
 	<properties help="/contents/units/ShipRome"/>
-	<properties edittree_pos="Units/Others/Rome Ship"/>
+	<properties edittree_pos="Units/Navi/Nave romana"/>
 	
 	<properties maxhealth="3000"/>
 	<properties damage="120" armor_slash="15" armor_pierce="15"/>

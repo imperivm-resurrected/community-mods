@@ -2,6 +2,63 @@
 
 <!-- BARRACKS COMMANDS -->
 
+<!-- I livelli della caserma sono uno per civilta': l'icona (button/queueicon) e'
+     un attributo del comando, quindi non puo' cambiare da <src> a <src>. Il nome
+     del comando resta pero' lo stesso per tutte ("Barrack Level 1/2/3"), cosi'
+     l'IA (ES_STRONGHOLD.VS, TS_*TACTIC.VS) e i CmdEnable/CmdDisable continuano a
+     trovarli col vecchio nome. Comandi omonimi con <src> disgiunti sono leciti
+     (vedi "Cover of Mercy" in GREECE.XML e SANCTUARY.XML).
+     Icone: R=Roma (3), B=Britannia, C=Cartagine, E=Egitto, H=Grecia (H+M),
+     I=Iberia, T=Germania, G=Gallia. -->
+
+<!-- Punto di raccolta (dalla AsurMod): le unita' appena addestrate raggiungono
+     il punto scelto dal giocatore invece del foro. method="punto" riceve il
+     click sulla mappa (firma "point pt" in punto.vs). -->
+<cmd name="Rally Point" priority="1"
+	researchcommand="yes"
+	method="punto"
+	button="actions/Punto.bmp"
+	key="e"
+	costgold="0"
+	execdelay="0"
+	queueicon="gameres/icons/upgrades/Punto.bmp"
+	rollover="Set rally point"
+	description="Newly trained warriors gather at the chosen point instead of the Forum"
+	param="ReqSet,NameSet">
+	<src obj="GBarracks"/>
+	<src obj="RBarracks"/>
+	<src obj="CBarracks"/>
+	<src obj="IBarracks"/>
+	<src obj="MBarracks"/>
+	<src obj="BBarracks"/>
+	<src obj="TBarracks"/>
+	<src obj="EBarracks"/>
+	<src obj="HBarracks"/>
+</cmd>
+
+<cmd name="Cancel Rally Point" priority="1"
+	researchcommand="yes"
+	method="anul_punto"
+	button="actions/Anular Punto.bmp"
+	groupverifier="data/subai/anular_punto_verify.vs"
+	key="p"
+	costgold="0"
+	execdelay="0"
+	queueicon="gameres/icons/upgrades/NoPunto.bmp"
+	rollover="Cancel rally point"
+	description="Removes the rally point: newly trained warriors go back to the Forum"
+	param="ReqSet,NameSet">
+	<src obj="GBarracks"/>
+	<src obj="RBarracks"/>
+	<src obj="CBarracks"/>
+	<src obj="IBarracks"/>
+	<src obj="MBarracks"/>
+	<src obj="BBarracks"/>
+	<src obj="TBarracks"/>
+	<src obj="EBarracks"/>
+	<src obj="HBarracks"/>
+</cmd>
+
 <cmd name="repair barracks" priority="1"
 	method="repair"
 	button="actions/repair.bmp"
@@ -23,11 +80,126 @@
 	<src obj="HBarracks"/>
 </cmd>
 
+<!-- ============================ LIVELLO 1 ============================ -->
+
 <cmd name="Barrack Level 1" priority="2"
 	researchcommand="yes"
 	groupverifier="data/subai/verify_research.vs"
-	queueicon="gameres/icons/upgrades/Barrack1.bmp"
-	button="upgrades/barrack1.bmp"
+	queueicon="gameres/icons/upgrades/RBarrack1.bmp"
+	button="upgrades/RBarrack1.bmp"
+	key="f"
+	rollover="Fast warrior equipment"
+	description="Equips warriors twice as fast"
+	costgold = "500"
+	costfood = "0"
+	execdelay = "20000"
+	method="research"
+	param="NameSet, Barrack Level 1, , SetsSet, BarrackTrainTimeDecrease, 50">
+	<src obj="RBarracks"/>
+</cmd>
+
+<cmd name="Barrack Level 1" priority="2"
+	researchcommand="yes"
+	groupverifier="data/subai/verify_research.vs"
+	queueicon="gameres/icons/upgrades/BBarrack1.bmp"
+	button="upgrades/BBarrack1.bmp"
+	key="f"
+	rollover="Fast warrior equipment"
+	description="Equips warriors twice as fast"
+	costgold = "500"
+	costfood = "0"
+	execdelay = "20000"
+	method="research"
+	param="NameSet, Barrack Level 1, , SetsSet, BarrackTrainTimeDecrease, 50">
+	<src obj="BBarracks"/>
+</cmd>
+
+<cmd name="Barrack Level 1" priority="2"
+	researchcommand="yes"
+	groupverifier="data/subai/verify_research.vs"
+	queueicon="gameres/icons/upgrades/CBarrack1.bmp"
+	button="upgrades/CBarrack1.bmp"
+	key="f"
+	rollover="Fast warrior equipment"
+	description="Equips warriors twice as fast"
+	costgold = "500"
+	costfood = "0"
+	execdelay = "20000"
+	method="research"
+	param="NameSet, Barrack Level 1, , SetsSet, BarrackTrainTimeDecrease, 50">
+	<src obj="CBarracks"/>
+</cmd>
+
+<cmd name="Barrack Level 1" priority="2"
+	researchcommand="yes"
+	groupverifier="data/subai/verify_research.vs"
+	queueicon="gameres/icons/upgrades/EBarrack1.bmp"
+	button="upgrades/EBarrack1.bmp"
+	key="f"
+	rollover="Fast warrior equipment"
+	description="Equips warriors twice as fast"
+	costgold = "500"
+	costfood = "0"
+	execdelay = "20000"
+	method="research"
+	param="NameSet, Barrack Level 1, , SetsSet, BarrackTrainTimeDecrease, 50">
+	<src obj="EBarracks"/>
+</cmd>
+
+<cmd name="Barrack Level 1" priority="2"
+	researchcommand="yes"
+	groupverifier="data/subai/verify_research.vs"
+	queueicon="gameres/icons/upgrades/HBarrack1.bmp"
+	button="upgrades/HBarrack1.bmp"
+	key="f"
+	rollover="Fast warrior equipment"
+	description="Equips warriors twice as fast"
+	costgold = "500"
+	costfood = "0"
+	execdelay = "20000"
+	method="research"
+	param="NameSet, Barrack Level 1, , SetsSet, BarrackTrainTimeDecrease, 50">
+	<src obj="HBarracks"/>
+	<src obj="MBarracks"/>
+</cmd>
+
+<cmd name="Barrack Level 1" priority="2"
+	researchcommand="yes"
+	groupverifier="data/subai/verify_research.vs"
+	queueicon="gameres/icons/upgrades/IBarrack1.bmp"
+	button="upgrades/IBarrack1.bmp"
+	key="f"
+	rollover="Fast warrior equipment"
+	description="Equips warriors twice as fast"
+	costgold = "500"
+	costfood = "0"
+	execdelay = "20000"
+	method="research"
+	param="NameSet, Barrack Level 1, , SetsSet, BarrackTrainTimeDecrease, 50">
+	<src obj="IBarracks"/>
+</cmd>
+
+<cmd name="TBarrack Level 1" priority="2"
+	researchcommand="yes"
+	groupverifier="data/subai/verify_research.vs"
+	queueicon="gameres/icons/upgrades/TBarrack1.bmp"
+	button="upgrades/TBarrack1.bmp"
+	key="f"
+	rollover="Fast warrior equipment"
+	description="Equips warriors twice as fast"
+	costgold = "0"
+	costfood = "500"
+	execdelay = "20000"
+	method="research"
+	param="NameSet, Barrack Level 1, , SetsSet, BarrackTrainTimeDecrease, 50">
+	<src obj="TBarracks"/>
+</cmd>
+
+<cmd name="Barrack Level 1" priority="2"
+	researchcommand="yes"
+	groupverifier="data/subai/verify_research.vs"
+	queueicon="gameres/icons/upgrades/GBarrack1.bmp"
+	button="upgrades/GBarrack1.bmp"
 	key="f"
 	rollover="Fast warrior equipment"
 	description="Equips warriors twice as fast"
@@ -37,21 +209,47 @@
 	method="research"
 	param="NameSet, Barrack Level 1, , SetsSet, BarrackTrainTimeDecrease, 50">
 	<src obj="GBarracks"/>
+</cmd>
+
+<!-- ============================ LIVELLO 2 ============================ -->
+
+<cmd name="Barrack Level 2 Standard" priority="2"
+	researchcommand="yes"
+	groupverifier="data/subai/verify_research.vs"
+	queueicon="gameres/icons/upgrades/RBarrack2.bmp"
+	button="upgrades/RBarrack2.bmp"
+	key="f"
+	rollover="Faster warrior equipment"
+	description="Equips warriors four times as fast"
+	costgold = "1000"
+	costfood = "0"
+	execdelay = "20000"
+	method="research"
+	param="NReqModeImp2, , , ReqSet, Barrack Level 1, , NameSet, Barrack Level 2, , SetsSet, BarrackTrainTimeDecrease, 75">
 	<src obj="RBarracks"/>
+</cmd>
+
+<cmd name="Barrack Level 2 Standard" priority="2"
+	researchcommand="yes"
+	groupverifier="data/subai/verify_research.vs"
+	queueicon="gameres/icons/upgrades/CBarrack2.bmp"
+	button="upgrades/CBarrack2.bmp"
+	key="f"
+	rollover="Faster warrior equipment"
+	description="Equips warriors four times as fast"
+	costgold = "1000"
+	costfood = "0"
+	execdelay = "20000"
+	method="research"
+	param="NReqModeImp2, , , ReqSet, Barrack Level 1, , NameSet, Barrack Level 2, , SetsSet, BarrackTrainTimeDecrease, 75">
 	<src obj="CBarracks"/>
-	<src obj="IBarracks"/>
-	<src obj="MBarracks"/>
-	<src obj="BBarracks"/>
-	<src obj="TBarracks"/>
-	<src obj="EBarracks"/>
-	<src obj="HBarracks"/>
 </cmd>
 
 <cmd name="Barrack Level 2" priority="2"
 	researchcommand="yes"
 	groupverifier="data/subai/verify_research.vs"
-	queueicon="gameres/icons/upgrades/Barrack2.bmp"
-	button="upgrades/barrack2.bmp"
+	queueicon="gameres/icons/upgrades/EBarrack2.bmp"
+	button="upgrades/EBarrack2.bmp"
 	key="f"
 	rollover="Faster warrior equipment"
 	description="Equips warriors four times as fast"
@@ -60,22 +258,81 @@
 	execdelay = "20000"
 	method="research"
 	param="ReqSet, Barrack Level 1, , NameSet, Barrack Level 2, , SetsSet, BarrackTrainTimeDecrease, 75">
-	<src obj="GBarracks"/>
-	<src obj="RBarracks"/>
-	<src obj="CBarracks"/>
-	<src obj="IBarracks"/>
-	<src obj="MBarracks"/>
-	<src obj="TBarracks"/>
 	<src obj="EBarracks"/>
-    <src obj="BBarracks"/>
-	<src obj="HBarracks"/>
 </cmd>
 
+<cmd name="Barrack Level 2" priority="2"
+	researchcommand="yes"
+	groupverifier="data/subai/verify_research.vs"
+	queueicon="gameres/icons/upgrades/HBarrack2.bmp"
+	button="upgrades/HBarrack2.bmp"
+	key="f"
+	rollover="Faster warrior equipment"
+	description="Equips warriors four times as fast"
+	costgold = "1000"
+	costfood = "0"
+	execdelay = "20000"
+	method="research"
+	param="ReqSet, Barrack Level 1, , NameSet, Barrack Level 2, , SetsSet, BarrackTrainTimeDecrease, 75">
+	<src obj="HBarracks"/>
+	<src obj="MBarracks"/>
+</cmd>
+
+<cmd name="Barrack Level 2 Standard" priority="2"
+	researchcommand="yes"
+	groupverifier="data/subai/verify_research.vs"
+	queueicon="gameres/icons/upgrades/IBarrack2.bmp"
+	button="upgrades/IBarrack2.bmp"
+	key="f"
+	rollover="Faster warrior equipment"
+	description="Equips warriors four times as fast"
+	costgold = "1000"
+	costfood = "0"
+	execdelay = "20000"
+	method="research"
+	param="NReqModeImp2, , , ReqSet, Barrack Level 1, , NameSet, Barrack Level 2, , SetsSet, BarrackTrainTimeDecrease, 75">
+	<src obj="IBarracks"/>
+</cmd>
+
+<cmd name="Barrack Level 2" priority="2"
+	researchcommand="yes"
+	groupverifier="data/subai/verify_research.vs"
+	queueicon="gameres/icons/upgrades/TBarrack2.bmp"
+	button="upgrades/TBarrack2.bmp"
+	key="f"
+	rollover="Faster warrior equipment"
+	description="Equips warriors four times as fast"
+	costgold = "0"
+	costfood = "1000"
+	execdelay = "20000"
+	method="research"
+	param="ReqSet, Barrack Level 1, , NameSet, Barrack Level 2, , SetsSet, BarrackTrainTimeDecrease, 75">
+	<src obj="TBarracks"/>
+    <src obj="BBarracks"/>
+</cmd>
+
+<cmd name="Barrack Level 2 Standard" priority="2"
+	researchcommand="yes"
+	groupverifier="data/subai/verify_research.vs"
+	queueicon="gameres/icons/upgrades/GBarrack2.bmp"
+	button="upgrades/GBarrack2.bmp"
+	key="f"
+	rollover="Faster warrior equipment"
+	description="Equips warriors four times as fast"
+	costgold = "1000"
+	costfood = "0"
+	execdelay = "20000"
+	method="research"
+	param="NReqModeImp2, , , ReqSet, Barrack Level 1, , NameSet, Barrack Level 2, , SetsSet, BarrackTrainTimeDecrease, 75">
+	<src obj="GBarracks"/>
+</cmd>
+
+<!-- Britannia tiene il nome "BBarrack Level 2": TS_BRITISHTACTIC.VS lo cerca cosi'. -->
 <cmd name="BBarrack Level 2" priority="2"
 	researchcommand="yes"
 	groupverifier="data/subai/verify_research.vs"
-	queueicon="gameres/icons/upgrades/Barrack2.bmp"
-	button="upgrades/barrack2.bmp"
+	queueicon="gameres/icons/upgrades/BBarrack2.bmp"
+	button="upgrades/BBarrack2.bmp"
 	key="f"
 	rollover="Faster warrior equipment"
 	description="Equips warriors four times as fast"
@@ -86,11 +343,16 @@
 	param="ReqSet, Barrack Level 1, , NameSet, Barrack Level 2, default, SetsSet, BarrackTrainTimeDecrease, 75">
 </cmd>
 
+<!-- ============================ LIVELLO 3 ============================ -->
+<!-- Roma, Gallia, Germania e Macedonia hanno il loro livello 3 in
+     RBARRACKS.XML / GBARRACKS.XML / TBARRACKS.XML / MBARRACKS.XML.
+     Britannia non ha il livello 3. -->
+
 <cmd name="Barrack Level 3" priority="2"
 	researchcommand="yes"
 	groupverifier="data/subai/verify_research.vs"
-	queueicon="gameres/icons/upgrades/Barrack3.bmp"
-	button="upgrades/barrack3.bmp"
+	queueicon="gameres/icons/upgrades/CBarrack3.bmp"
+	button="upgrades/CBarrack3.bmp"
 	key="f"
 	rollover="Fastest warrior equipment"
 	description="Equips warriors eight times as fast"
@@ -100,9 +362,119 @@
 	method="research"
 	param="ReqSet, Barrack Level 2, , NameSet, Barrack Level 3, default, SetsSet, BarrackTrainTimeDecrease, 87">
 	<src obj="CBarracks"/>
-	<src obj="IBarracks"/>
+</cmd>
+
+<cmd name="Barrack Level 3" priority="2"
+	researchcommand="yes"
+	groupverifier="data/subai/verify_research.vs"
+	queueicon="gameres/icons/upgrades/EBarrack3.bmp"
+	button="upgrades/EBarrack3.bmp"
+	key="f"
+	rollover="Fastest warrior equipment"
+	description="Equips warriors eight times as fast"
+	costgold = "2000"
+	costfood = "0"
+	execdelay = "20000"
+	method="research"
+	param="ReqSet, Barrack Level 2, , NameSet, Barrack Level 3, default, SetsSet, BarrackTrainTimeDecrease, 87">
 	<src obj="EBarracks"/>
+</cmd>
+
+<cmd name="Barrack Level 3" priority="2"
+	researchcommand="yes"
+	groupverifier="data/subai/verify_research.vs"
+	queueicon="gameres/icons/upgrades/HBarrack3.bmp"
+	button="upgrades/HBarrack3.bmp"
+	key="f"
+	rollover="Fastest warrior equipment"
+	description="Equips warriors eight times as fast"
+	costgold = "2000"
+	costfood = "0"
+	execdelay = "20000"
+	method="research"
+	param="ReqSet, Barrack Level 2, , NameSet, Barrack Level 3, default, SetsSet, BarrackTrainTimeDecrease, 87">
 	<src obj="HBarracks"/>
 </cmd>
 
+<cmd name="Barrack Level 3" priority="2"
+	researchcommand="yes"
+	groupverifier="data/subai/verify_research.vs"
+	queueicon="gameres/icons/upgrades/IBarrack3.bmp"
+	button="upgrades/IBarrack3.bmp"
+	key="f"
+	rollover="Fastest warrior equipment"
+	description="Equips warriors eight times as fast"
+	costgold = "2000"
+	costfood = "0"
+	execdelay = "20000"
+	method="research"
+	param="ReqSet, Barrack Level 2, , NameSet, Barrack Level 3, default, SetsSet, BarrackTrainTimeDecrease, 87">
+	<src obj="IBarracks"/>
+</cmd>
+
+
+<!-- ========== IMPERIVM 2 COST VARIANTS (mode-only) ========== -->
+<cmd name="Barrack Level 2 Imp2 Cost" priority="2"
+	researchcommand="yes"
+	groupverifier="data/subai/verify_research.vs"
+	queueicon="gameres/icons/upgrades/RBarrack2.bmp"
+	button="upgrades/RBarrack2.bmp"
+	key="f"
+	rollover="Faster warrior equipment"
+	description="Equips warriors four times as fast"
+	costgold = "500"
+	costfood = "0"
+	execdelay = "20000"
+	method="research"
+	param="ReqModeImp2, , , ReqSet, Barrack Level 1, , NameSet, Barrack Level 2, , SetsSet, BarrackTrainTimeDecrease, 75">
+	<src obj="RBarracks"/>
+</cmd>
+
+<cmd name="Barrack Level 2 Imp2 Cost" priority="2"
+	researchcommand="yes"
+	groupverifier="data/subai/verify_research.vs"
+	queueicon="gameres/icons/upgrades/CBarrack2.bmp"
+	button="upgrades/CBarrack2.bmp"
+	key="f"
+	rollover="Faster warrior equipment"
+	description="Equips warriors four times as fast"
+	costgold = "500"
+	costfood = "0"
+	execdelay = "20000"
+	method="research"
+	param="ReqModeImp2, , , ReqSet, Barrack Level 1, , NameSet, Barrack Level 2, , SetsSet, BarrackTrainTimeDecrease, 75">
+	<src obj="CBarracks"/>
+</cmd>
+
+<cmd name="Barrack Level 2 Imp2 Cost" priority="2"
+	researchcommand="yes"
+	groupverifier="data/subai/verify_research.vs"
+	queueicon="gameres/icons/upgrades/IBarrack2.bmp"
+	button="upgrades/IBarrack2.bmp"
+	key="f"
+	rollover="Faster warrior equipment"
+	description="Equips warriors four times as fast"
+	costgold = "500"
+	costfood = "0"
+	execdelay = "20000"
+	method="research"
+	param="ReqModeImp2, , , ReqSet, Barrack Level 1, , NameSet, Barrack Level 2, , SetsSet, BarrackTrainTimeDecrease, 75">
+	<src obj="IBarracks"/>
+</cmd>
+
+<cmd name="Barrack Level 2 Imp2 Cost" priority="2"
+	researchcommand="yes"
+	groupverifier="data/subai/verify_research.vs"
+	queueicon="gameres/icons/upgrades/GBarrack2.bmp"
+	button="upgrades/GBarrack2.bmp"
+	key="f"
+	rollover="Faster warrior equipment"
+	description="Equips warriors four times as fast"
+	costgold = "500"
+	costfood = "0"
+	execdelay = "20000"
+	method="research"
+	param="ReqModeImp2, , , ReqSet, Barrack Level 1, , NameSet, Barrack Level 2, , SetsSet, BarrackTrainTimeDecrease, 75">
+	<src obj="GBarracks"/>
+</cmd>
 </commands>

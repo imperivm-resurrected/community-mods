@@ -1,7 +1,16 @@
 <commands>
 
+
 <!-- VILLAGE COMMANDS -->
 
+<!-- used only by AI (since it cheats for the cost, this avoids the exploit where a human player with shared control stops the command to get free resources) -->
+<cmd name="repair village ai"
+		method="repopulate"
+		queueicon="gameres/icons/upgrades/repair.bmp"
+		execdelay="60000">
+		<src obj="BaseVillage" />
+</cmd>
+	
 <cmd name="repair village" priority="1"
 	method="repopulate"
 	button="actions/repair.bmp"
@@ -14,19 +23,6 @@
 	costfood = "0"
 	execdelay = "30000">
 	<src obj="BaseVillage"/>
-</cmd>
-
-<cmd name="repair guard post" priority="1"
-	method="repair"
-	button="actions/repair.bmp"
-	key="r"
-	queueicon="gameres/icons/upgrades/repair.bmp"
-	groupverifier="data/subai/verify_cmdcost_building.vs"
-	rollover="Repair"
-	costgold = "500"
-	costfood = "0"
-	execdelay = "60000">
-	<src obj="GGuardPost"/>
 </cmd>
 
 <cmd name="tribute" priority="2"
@@ -43,9 +39,6 @@
 	<cmdtext target="TTent"
 		text="Click on this Teuton Tent to start sending resources"
 		default-text=""/>
-	<cmdtext target="GGuardPost"
-		text=""
-		default-text=""/>
 	<cmdtext target="Outpost"
 		text="Click on this Outpost to start sending resources"
 		default-text=""/>
@@ -53,7 +46,6 @@
 		text="Click on this Village to start sending resources"
 		default-text=""/>
 	<src obj="BaseVillage"/>
-	<nsrc obj="GGuardPost"/>
 	<src obj="Outpost"/>
 	<src obj="BaseShipyard"/>
 </cmd>
@@ -61,13 +53,9 @@
 <cmd name="tribute_default" priority="2" 
 	immediate="yes"
 	cursor="do_something">
-	
 	<cmdtext target="BaseTownhall"
 		text=""
 		default-text="Right-click on this Townhall to start sending resources"/>
-	<cmdtext target="GGuardPost"
-		text=""
-		default-text=""/>
 	<cmdtext target="Outpost"
 		text=""
 		default-text="Right-click on this Outpost to start sending resources"/>
@@ -78,7 +66,6 @@
 		text=""
 		default-text="Right-click on this Teuton Tent to start sending resources"/>
 	<src obj="BaseVillage"/>
-	<nsrc obj="GGuardPost"/>
 	<src obj="Outpost"/>
 	<src obj="BaseShipyard"/>
 </cmd>
@@ -91,31 +78,16 @@
 	rollover="Supply"
 	description = "Stop sending resources">
 	<src obj="BaseVillage"/>
-	<nsrc obj="GGuardPost"/>
 	<src obj="Outpost"/>
 	<src obj="BaseShipyard"/>
 </cmd>
 
-<cmd name="buyfoodforgold" priority="6"
-	queueicon="gameres/icons/upgrades/buy food.bmp"
-	groupverifier="data/subai/verify_cmdcost_building.vs"
-	button="actions/buy food.bmp"
-	traincommand="yes"
-	key="f"
-	costgold = "500"
-	execdelay = "10000"
-	param = "800"
-	rollover="Buy 800 food">
     <src obj="RTavern"/>
-	<src obj="RTavern2"/>
-	<src obj="TTavern"/>
 	<src obj="CTavern"/>
 	<src obj="MTavern"/>
 	<src obj="ITavern"/>
 	<src obj="GTavern"/>
 	<src obj="BTavern"/>
-</cmd>
-
 <cmd name="trainpeasantr" priority="4"
 	button="actions/call RPeasants.bmp"
 	queueicon="gameres/icons/RPeasants.bmp"
@@ -276,9 +248,6 @@
 	sclass="RVillager">
 	<src obj="HVillage"/>
 </cmd>
-
-<!-- For now the following four work without an int parameter -->
-
 <cmd name="createfoodmule1" priority="6"
 	method="createfoodmulesmall"
 	groupverifier="data/subai/create_food_mule_verify.vs"
@@ -294,7 +263,7 @@
 	<src obj="BaseTownhall"/>
 	<src obj="Outpost"/>
 	<src obj="BaseShipyard"/>
-	<nsrc obj="GGuardPost"/>
+	<src obj="CTent"/>
 </cmd>
 
 <cmd name="createfoodmule2" priority="6"
@@ -312,7 +281,22 @@
 	<src obj="BaseTownhall"/>
 	<src obj="Outpost"/>
 	<src obj="BaseShipyard"/>
-	<nsrc obj="GGuardPost"/>
+	<src obj="CTent"/>
+</cmd>
+
+<!-- Mulo grande da 5000 viveri: solo al Foro (tutte le civilta'). -->
+<cmd name="createfoodmule3" priority="7"
+	method="createfoodmulehuge"
+	groupverifier="data/subai/create_food_mule_verify.vs"
+	mod="no"
+	button="actions/Create Mule 5000 Food.bmp"
+	queueicon="gameres/icons/wagon.bmp"
+	transpicon="1"
+	cursor=""
+	key="h"
+	immediate="yes"
+	rollover="Load a caravan with 5000 food">
+	<src obj="BaseTownhall"/>
 </cmd>
 
 <cmd name="creategoldmule1" priority="6"
@@ -349,31 +333,20 @@
 	<src obj="BaseShipyard"/>
 </cmd>
 
-<!-- 
-<cmd name="routpost_interest" priority="1"
-	button="states/trade.bmp"
+<!-- Mulo grande da 5000 oro: solo al Foro (tutte le civilta'). -->
+<cmd name="creategoldmule3" priority="8"
+	method="creategoldmulehuge"
+	groupverifier="data/subai/create_gold_mule_verify.vs"
+	mod="no"
+	button="actions/Create Mule 5000 Gold.bmp"
+	queueicon="gameres/icons/wagon.bmp"
+	transpicon="1"
+	cursor=""
+	key="j"
 	immediate="yes"
-	traincommand="no"
-	method="routpost_interest"
-	groupverifier="data/subai/group_routpost_interest_verifiy.vs"
-	param="yes"
-	rollover="Start trade"
-	costgold="500">
-	<src obj="ROutpost"/>
+	rollover="Load a caravan with 5000 gold">
+	<src obj="BaseTownhall"/>
 </cmd>
-
-<cmd name="routpost_no_interest" priority="1"
-	button="states/Stop Trade.bmp"
-	immediate="yes"
-	traincommand="no"
-	method="routpost_interest"
-	groupverifier="data/subai/group_routpost_no_interest_verifiy.vs"
-	param="no"
-	rollover="Stop trade">
-	<src obj="ROutpost"/>
-</cmd>
--->
-
 
 <!--
 <cmd name="callIScout" priority="4"
@@ -385,7 +358,7 @@
 	key="s"
 	costgold = "0"
 	costfood = "0"
-	costpop = "5"
+	costpop = "1"
 	execdelay = "1"
 	method = "trainIScout"
 	rollover="Call scout"
@@ -394,4 +367,30 @@
 	<src obj="IVillage"/>
 </cmd>
 -->
+
+<cmd name="Espansione del Villaggio" priority="12"
+	queueicon="gameres/icons/upgrades/Villaggio.bmp"
+	button="Upgrades/Villaggio.bmp"
+	key="e"
+	voidgroupdispatch="1"
+	groupverifier="data/subai/village_pop_gv.vs"
+	groupdispatch="data/subai/village_pop_gd.vs"
+	rollover="Village Expansion"
+	description="Increases this village's maximum population by 20 (1000 gold)">
+	<src obj="BVillage"/>
+	<src obj="TVillage"/>
+</cmd>
+
+<cmd name="Strade Romane" priority="13"
+	queueicon="gameres/icons/upgrades/Velocita Cavalli.bmp"
+	button="Upgrades/Velocita Cavalli.bmp"
+	key="u"
+	voidgroupdispatch="1"
+	groupverifier="data/subai/muli_rapidi_gv.vs"
+	groupdispatch="data/subai/muli_rapidi_gd.vs"
+	rollover="Roman Roads"
+	description="Mules created by this village are 25% faster (400 gold)">
+	<src obj="RVillage"/>
+</cmd>
+
 </commands>

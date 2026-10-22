@@ -9,6 +9,6 @@
 	<properties display_name="Tribune" display_name_plural="Tribunes"/>
 	<properties icon="gameres/icons/RTribune.bmp"/>
 	<properties help="contents/units/RTribune"/>
-	<properties edittree_pos="Units/Roman/Tribune"/>
+	<properties edittree_pos="Units/Roma/Repubblicana/Tribuno"/>
 	<sounds attack="UnitPikeFight" command="data/sound entities/VoiceRTribune.xml"/>
 </class>

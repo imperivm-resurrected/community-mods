@@ -9,7 +9,7 @@
 	<properties radius="345" selection_radius="350"/>
 	<properties edittree_pos="Structures/Outposts/Trade post (Gaul)"/>
 	<properties help="/contents/buildings/GOutpost"/>
-	<properties description="Sells the food stored in the outpost to acquire gold"/>
+	<properties description="Sells the food stored in the outpost to acquire gold or vice versa"/>
 	<properties
 		range = "1000"
 		settlement_food="1000"

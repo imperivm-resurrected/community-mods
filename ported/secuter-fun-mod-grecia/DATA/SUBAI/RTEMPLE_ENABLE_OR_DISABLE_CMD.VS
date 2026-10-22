@@ -1,8 +1,20 @@
 // void, Obj This
 
 Building this;
+int nConfig;
 
 this = This.AsBuilding();
+nConfig = 0;
+if (EnvReadString(.settlement, "ChooseRepublicanRome") == "researched") nConfig = 1;
+else if (EnvReadString(.settlement, "ChooseImperialRome") == "researched") nConfig = 2;
+else if (EnvReadString(.settlement, "ChoosePunicRome") == "researched") nConfig = 3;
+if (EnvReadInt(this, "RomeCmdConfigured") == 1)
+if (EnvReadInt(this, "RomeCmdConfig") == nConfig)
+if (EnvReadInt(this, "RomeCmdPlayer") == .player) {
+    if (nConfig % 10 == 0) Sleep(250);
+    else Sleep(30000 + rand(10001));
+    return;
+}
 
 if( (EnvReadString(.settlement, "ChooseRepublicanRome") == "researched") || (EnvReadString(.settlement, "ChooseImperialRome") == "researched") )
 {
@@ -38,4 +50,8 @@ else
 
 Sleep(1000);
 
-// Edit by Riccardo "Highlander" Tedesco (Alias Ricky1996, Ricky96Highlander)
+EnvWriteInt(this, "RomeCmdConfig", nConfig);
+EnvWriteInt(this, "RomeCmdPlayer", .player);
+EnvWriteInt(this, "RomeCmdConfigured", 1);
+if (nConfig % 10 == 0) Sleep(250);
+else Sleep(30000 + rand(10001));

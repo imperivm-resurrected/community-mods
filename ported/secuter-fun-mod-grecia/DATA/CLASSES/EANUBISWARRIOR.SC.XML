@@ -9,7 +9,7 @@
 	<properties icon="gameres/icons/EAnubisWarrior.bmp"/>
 	<properties display_name="Anubis Warrior" display_name_plural="Anubis Warriors"/>
 	<properties help="contents/units/EAnubisWarrior"/>
-	<properties edittree_pos="Units/Egypt/Anubis Warrior"/>
+	<properties edittree_pos="Units/Egitto/Guerriero di Anubis"/>
 	<sounds command="data/sound entities/VoiceEAnubisWarrior.xml"/>
 
 </class>

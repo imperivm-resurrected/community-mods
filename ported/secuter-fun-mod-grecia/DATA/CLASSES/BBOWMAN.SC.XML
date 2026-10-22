@@ -8,6 +8,6 @@
 	<properties icon="gameres/icons/BBowman.bmp"/>
 	<properties display_name="Bowman" display_name_plural="Bowmen"/>
 	<properties help="contents/units/BBowman"/>
-	<properties edittree_pos="Units/Britain/Bowman"/>
+	<properties edittree_pos="Units/Britannia/Arciere"/>
 	<sounds command="data/sound entities/VoiceBBowman.xml"/>
 </class>

@@ -37,6 +37,13 @@ else if (numparam == "mountaineer") {
 	if (maxnumber == 0)
 		maxnumber = 20;
 }
+else if (numparam == "berserker") {
+	// Berserker (Britannia, Tempio di Thor): limite 0 -> 10 -> 20 con
+	// "Berserker Horde I/II" (SetsPlr MaxNVAEL). Base 0 = non addestrabili.
+	// Senza questo ramo maxnumber=Str2Int("berserker")=0 e ARENA_BEHAVIOR
+	// vedrebbe il gruppo "gia' pieno" -> nessun berserker spawnato.
+	maxnumber = EnvReadInt(.player, "MaxNVAEL");
+}
 else {
 	maxnumber = Str2Int(numparam);
 }

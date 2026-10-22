@@ -8,4 +8,5 @@
 <properties icon="gameres/icons/Obelisk1.bmp"/>
 <properties help="/contents/buildings/Obelisk 1"/>
 	<properties respawn_item="Gemma dell'energia" respawn_time="1200000"/>
+	<behavior script="data/subai/holder_vessillo.vs"/>
 </class>

@@ -10,7 +10,7 @@
 	traincommand="yes"
 	key="m"
 	help="/contents/units/IMilitiaman"
-	costgold = "50"
+	costgold = "70"
 	costfood = "0"
 	costpop = "0"
 	execdelay = "6000"
@@ -29,7 +29,7 @@
 	traincommand="yes"
 	key="a"
 	help="/contents/units/IArcher"
-	costgold = "60"
+	costgold = "70"
 	costfood = "0"
 	costpop = "1"
 	execdelay = "10000"
@@ -88,7 +88,7 @@
 	traincommand="yes"
 	key="c"
 	help="/contents/units/ICavalry"
-	costgold = "140"
+	costgold = "180"
 	costfood = "0"
 	costpop = "1"
 	execdelay = "20000"
@@ -119,4 +119,83 @@
 	<src obj="IBarracks"/>
 </cmd>
 
+
+<!-- ========== IMPERIVM 2 COST VARIANTS (mode-only) ========== -->
+<cmd name="trainIMilitiaman Imp2 Cost" priority="3"
+	button="actions/train imilitiaman.bmp"
+	queueicon="gameres/icons/IMilitiaman.bmp"
+	groupverifier="data/subai/verify_cmdcost_building.vs"
+	transpicon="1"
+	traincommand="yes"
+	key="m"
+	help="/contents/units/IMilitiaman"
+	costgold = "50"
+	costfood = "0"
+	costpop = "1"
+	execdelay = "6000"
+	rollover="Equip Militiaman"
+	method="train"
+	param="ReqModeImp2, , , IMilitiaman"
+	sclass="IMilitiaman">
+	<src obj="IBarracks"/>
+</cmd>
+
+<cmd name="trainIArcher Imp2 Cost" priority="4"
+	button="actions/train iarcher.bmp"
+	queueicon="gameres/icons/IArcher.bmp"
+	groupverifier="data/subai/verify_cmdcost_building.vs"
+	transpicon="1"
+	traincommand="yes"
+	key="a"
+	help="/contents/units/IArcher"
+	costgold = "60"
+	costfood = "0"
+	costpop = "1"
+	execdelay = "10000"
+	rollover="Equip Archer"
+	method="train"
+	param="ReqModeImp2, , , IArcher"
+	sclass="IArcher">
+
+	<src obj="IBarracks"/>
+</cmd>
+
+<cmd name="trainICavalry Imp2 Cost" priority="7"
+	button="actions/train ICavalry.bmp"
+	queueicon="gameres/icons/ICavalry.bmp"
+	transpicon="1"
+	groupverifier="data/subai/barrack_train_verify.vs"
+	traincommand="yes"
+	key="c"
+	help="/contents/units/ICavalry"
+	costgold = "140"
+	costfood = "0"
+	costpop = "1"
+	execdelay = "20000"
+	rollover="Equip Cavalry"
+	method="train"
+	param="ReqModeImp2, , , ICavalry,Horseshoes"
+	sclass="ICavalry">
+
+	<src obj="IBarracks"/>
+</cmd>
+
+<cmd name="trainIEliteGuard Imp2 Cost" priority="8"
+	button="actions/train IEliteGuard.bmp"
+	queueicon="gameres/icons/IEliteGuard.bmp"
+	transpicon="1"
+	traincommand="yes"
+	groupverifier="data/subai/barrack_train_verify.vs"
+	key="g"
+	help="/contents/units/IEliteGuard"
+	costgold = "280"
+	costfood = "0"
+	costpop = "1"
+	execdelay = "20000"
+	rollover="Equip Elite Guard"
+	method="train"
+	param="ReqModeImp2, , , IEliteGuard,Battle Axes"
+	sclass="IEliteGuard">
+	<src obj="IBarracks"/>
+</cmd>
 </commands>

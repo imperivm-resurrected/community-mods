@@ -14,12 +14,24 @@ dest = cmdparam;
 numbertotrain = Str2Int(ParseStr(dest, dest));
 
 numparam = ParseStr(dest, dest);
+if (numparam == "ReqModeImp2")
+{
+	ParseStr(dest, dest);
+	if (EnvReadInt(objs[0].player, "ModeOldSchoolCostsV2") != 1)
+	{
+		reasonText = "";
+		return false;
+	}
+	numbertotrain = Str2Int(ParseStr(dest, dest));
+	numparam = ParseStr(dest, dest);
+}
 class = ParseStr(dest, dest);
 group = ParseStr(dest, dest);
 research = ParseStr(dest, dest);
 researchedfrom = ParseStr(dest, dest);
 
 build = EnvReadInt(this, "Build/"+class);
+
 
 if( numparam == "elephant" ) {
 	maxnumber = EnvReadInt(.player, "MaxElephants") + 1;
@@ -47,6 +59,16 @@ else if (numparam == "mountaineer") {
 else if (numparam == "mahout") {
 	maxnumber = 20;
 	researchedfrom = "";
+}
+else if (numparam == "achaemenid") {
+	// Guerrieri Achemenidi (Cartagine Mauritana): il limite parte da 0 e
+	// sale a 10/20/30 con "Achaemenid Legacy" I/II/III (SetsPlr).
+	maxnumber = EnvReadInt(.player, "MaxAchaemenids");
+}
+else if (numparam == "berserker") {
+	// Berserker (Britannia, Tempio di Thor): limite 0 -> 10 -> 20 con
+	// "Berserker Horde I/II" (SetsPlr MaxNVAEL). Base 0 = non addestrabili.
+	maxnumber = EnvReadInt(.player, "MaxNVAEL");
 }
 else {
 	maxnumber = Str2Int(numparam);

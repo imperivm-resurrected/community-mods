@@ -4,5 +4,6 @@
 	<properties icon="gameres/icons/Tombstone.bmp"/>
 	<properties radius="38" selection_radius="40"/>
 	<properties display_name="Tombstone"/>
-	<properties respawn_time="120000" respawn_item="Healing water"/>
+	<!-- respawn gestito da script: holder_acque_rapide.vs -->
+	<behavior script="data/subai/holder_acque_rapide.vs"/>
 </class>

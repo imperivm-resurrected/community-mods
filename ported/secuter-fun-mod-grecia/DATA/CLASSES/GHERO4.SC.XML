@@ -2,7 +2,7 @@
 
 	<properties display_name="Ercenberht" display_name_plural="Heroes"/>
 	<properties icon="gameres/icons/GHero4.bmp"/>
-	<properties edittree_pos="Units/Gaul/Hero 4"/>
+	<properties edittree_pos="Units/Gallia/Eroe - Ercenberht"/>
 	<properties HeroSkills="Defensive cry, Battle cry, Quick March, Epic attack, Epic endurance"/>
 
 </class>

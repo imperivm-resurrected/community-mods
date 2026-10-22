@@ -3,7 +3,7 @@
 	<properties race="ImperialRome"/>
 	<properties maxhealth="280"/>
 	<properties damage="20" armor_slash="6" armor_pierce="6"/>
-	<properties speed="70"/>
+	<properties speed="80"/>
 	<properties unit_specials="Offensive tactics"/>
 
 	<properties projectile_class="Javelin"/>
@@ -12,7 +12,7 @@
 	<properties icon="gameres/icons/HMyrmidon.bmp"/>
 	<properties display_name="Myrmidon" display_name_plural="Myrmidons"/>
 	<properties help="contents/units/HMyrmidon"/>
-	<properties edittree_pos="Units/Greece/Myrmidon"/>
+	<properties edittree_pos="Units/Grecia/Mirmidone"/>
 	<!-- script missing in Secuter's zip: <method sig="change_weapon_sword" vs="data/subai/myrmidon_sword.vs"/> -->
 
 	<sounds attack="MyrmidonFight" command="data/sound entities/VoiceHMyrmidon.xml"/>

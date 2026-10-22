@@ -42,6 +42,7 @@
   <ifdef id="teutontents"> <GameObj class="BTent"         min="1" max="1" inf-max="10" inf="60" benefit="30" mindist="2000"/> </ifdef>
   <ifdef id="teutontents"> <GameObj class="HTent"         min="1" max="1" inf-max="10" inf="60" benefit="30" mindist="2000"/> </ifdef>
 	
+  <ifdef id="teutontents"> <GameObj class="CTent"         min="1" max="1" inf-max="13" inf="60" benefit="30" mindist="4000" fade="4"/> </ifdef>
   <ifdef id="ruins">       <GameObj class="Ruins1"        min="0" max="1" inf-max="13" inf="30" benefit="20" fade="3" mindist="3000"/> </ifdef>
 
   <ifdef id="itemholders">
@@ -429,7 +430,7 @@
 		<RaceAlternative race="Britain" class="Area::"/>
 		<RaceAlternative race="Germany" class="Area::"/>
       <RaceAlternative race="Greece" class="Area::"/>
-	</GameObj>scSetPlayerSettRace
+	</GameObj>
 	<GameObj class="Area::sphinx" min="0" max="1" inf-max="16" inf="33" fade="2">
 		<RaceAlternative race="Gaul" class="Area::"/>
 		<RaceAlternative race="RepublicanRome" class="Area::"/>
@@ -473,6 +474,13 @@
 		<RaceAlternative race="Carthage" class="LionM"/>
 		<RaceAlternative race="Egypt" class="LionM"/>
 	</GameObj>
+</ifdef>
+<ifdef id="wildlife">    
+  <GameObj class="Snake" 
+		min="2" max="4" 
+		mindist="1500" inf-max="20" inf="0"
+		mingroup="2" maxgroup="3" groupdist="100">
+  </GameObj>
 </ifdef>
 <ifdef id="wildlife">    
   <GameObj class="Eagle" 
@@ -535,6 +543,7 @@
   <ifdef id="teutontents"> <GameObj class="BTent"         min="1" max="2" inf-max="10" inf="40" benefit="25" mindist="3000"/> </ifdef>
   <ifdef id="teutontents"> <GameObj class="HTent"         min="1" max="2" inf-max="10" inf="40" benefit="25" mindist="3000"/> </ifdef>
 	
+  <ifdef id="teutontents"> <GameObj class="CTent"         min="3" max="7" inf-max="8" inf="40" benefit="25" mindist="4000" fade="2"/> </ifdef>
   <ifdef id="ruins">       <GameObj class="Ruins1"        min="4" max="6" inf-max="8" inf="40" benefit="20" mindist="4000" fade="2"/> </ifdef>
   <ifdef id="teleports">   <GameObj class="Teleport_1"    min="1" max="2" inf-max="10" inf="43" fade="3"/> </ifdef>
   <ifdef id="teleports">   <GameObj class="Teleport_2"    min="0" max="1" inf-max="10" inf="43" fade="3"/> </ifdef>
@@ -961,6 +970,13 @@
 		<RaceAlternative race="Carthage" class="LionM"/>
 		<RaceAlternative race="Egypt" class="LionM"/>
  </GameObj>
+</ifdef>
+<ifdef id="wildlife">    
+  <GameObj class="Snake" 
+		min="4" max="8" 
+		mindist="1500" inf-max="16" inf="0"
+		mingroup="2" maxgroup="3" groupdist="100">
+  </GameObj>
 </ifdef>
 <ifdef id="wildlife">    
   <GameObj class="Fish" 
@@ -1439,6 +1455,7 @@
       <RaceAlternative race="Greece" class="Area::"/>
 	</GameObj>
 
+  <ifdef id="teutontents"> <GameObj class="CTent"         maxperplayer="3" inf-max="13" inf="30" benefit="30" mindist="4000"/> </ifdef>
 <ifdef id="wildlife">    
   <GameObj class="Crow" 
 	min="8" max="20" 
@@ -1479,6 +1496,13 @@
 		<RaceAlternative race="Carthage" class="LionM"/>
 		<RaceAlternative race="Egypt" class="LionM"/>
  </GameObj>
+</ifdef>
+<ifdef id="wildlife">    
+  <GameObj class="Snake" 
+		min="10" max="18" 
+		mindist="1500" inf-max="20" inf="0"
+		mingroup="2" maxgroup="3" groupdist="100">
+  </GameObj>
 </ifdef>
 <ifdef id="wildlife">    
   <GameObj class="Eagle" 

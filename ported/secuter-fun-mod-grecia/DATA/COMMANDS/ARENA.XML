@@ -25,10 +25,10 @@
 	execdelay = "30000"
 	researchcommand="yes"
 	groupverifier="data/subai/antic.vs"
-	description="New Swordsmen and Archers are level 4"
+	description="New Swordsmen and Archers are level 4. All heroes, the ones you already have and the new ones, become level 12"
 	rollover="Fights"
 	method="research"
-	param="SetsSet, levels/GSwordsman, 4, SetsSet, levels/GArcher, 4, NameSet, Fights, default,">
+	param="NReqModeImp2, , , SetsSet, levels/GSwordsman, 4, SetsSet, levels/GArcher, 4, NameSet, Fights, default,">
 	<src obj="GArena1"/>
 	<src obj="GArena2"/>
 </cmd>
@@ -54,6 +54,23 @@
 <cmd name="Torneo di Fand" priority="2"
 	button="Upgrades/Fights.bmp"
 	queueicon="gameres/icons/upgrades/Fights.bmp"
+	costgold = "2000"
+	costfood = "0"
+	execdelay = "30000"
+	researchcommand="yes"
+	groupverifier="data/subai/verify_research.vs"
+	description="Unlocks the arena upgrades"
+	rollover="Fights"
+	method="research"
+	param="ReqModeImp2, , , NameSet, Fights, default">
+	<src obj="GArena1"/>
+	<src obj="GArena2"/>
+</cmd>
+
+<cmd name="Britain Fights" priority="2"
+	button="Upgrades/BFights.bmp"
+	key="f"
+	queueicon="gameres/icons/upgrades/BFights.bmp"
 	costgold = "3000"
 	costfood = "0"
 	execdelay = "30000"
@@ -91,7 +108,7 @@
 	button="research/training.bmp"
 	key="t"
 	queueicon="gameres/icons/upgrades/btrain.bmp"
-	costgold = "1000"
+	costgold = "400"
 	costfood = "0"
 	execdelay = "10000"
 	groupverifier="data/subai/antic.vs"
@@ -99,15 +116,16 @@
 	description="Allows warriors to train to level 4"
 	method="research"
 	researchcommand="yes"
-	param="ReqSet, Fights, default, SetsPlr, maxtrainlevel, 4, NamePlr, Training, ">
+	param="NReqModeImp2, , , ReqSet, Fights, default, SetsPlr, maxtrainlevel, 4, NamePlr, Training, default">
 	<src obj="GArena1"/>
 	<src obj="GArena2"/>
 </cmd>
+
 <cmd name="Gaul Training 2" priority="3"
 	button="research/Advanced training.bmp"
 	key="t"
 	queueicon="gameres/icons/upgrades/atrain.bmp"
-	costgold = "1500"
+	costgold = "800"
 	costfood = "0"
 	execdelay = "20000"
 	groupverifier="data/subai/antic.vs"
@@ -115,7 +133,7 @@
 	description="Allows warriors to train to level 8"
 	method="research"
 	researchcommand="yes"
-	param="ReqSet, Fights, , ReqPlr, Training, , SetsPlr, maxtrainlevel, 8, NamePlr, Advanced Training, ">
+	param="NReqModeImp2, , , ReqSet, Fights, , ReqPlr, Training, , SetsPlr, maxtrainlevel, 8, NamePlr, Advanced Training, default">
 	<src obj="GArena1"/>
 	<src obj="GArena2"/>
 </cmd>
@@ -712,7 +730,7 @@
 	queueicon="gameres/icons/upgrades/Mahout School.bmp"
 	costgold = "3000"
 	costfood = "0"
-	execdelay = "30000"
+	execdelay = "25000"
 	groupverifier="data/subai/verify_research.vs"
 	description="Permette di reclutare il re degli elefanti"
 	rollover="Assemblea dei mahout"
@@ -833,7 +851,7 @@
 	key="e"
 	help="/contents/units/RLiberatus"
 	costgold = "0"
-	costfood = "1000"
+	costfood = "800"
 	costpop = "1"
 	execdelay = "10000"
 	rollover="Train War Elephant"
@@ -1102,7 +1120,7 @@
 	button="research/statue of isis.bmp"
 	key="i"
 	queueicon="gameres/icons/upgrades/statue of isis.bmp"
-	costgold = "2000"
+	costgold = "1000"
 	costfood = "0"
 	execdelay = "30000"
 	groupverifier="data/subai/antic.vs"
@@ -1118,7 +1136,7 @@
 	button="research/path of the dead 1.bmp"
 	key="p"
 	queueicon="gameres/icons/upgrades/path of the dead 1.bmp"
-	costgold = "500"
+	costgold = "400"
 	costfood = "0"
 	execdelay = "10000"
 	groupverifier="data/subai/antic.vs"
@@ -1133,7 +1151,7 @@
 	button="research/path of the dead 2.bmp"
 	key="p"
 	queueicon="gameres/icons/upgrades/path of the dead 2.bmp"
-	costgold = "1000"
+	costgold = "800"
 	costfood = "0"
 	execdelay = "20000"
 	groupverifier="data/subai/antic.vs"
@@ -1149,7 +1167,7 @@
 	button="research/path of the dead 3.bmp"
 	key="p"
 	queueicon="gameres/icons/upgrades/path of the dead 3.bmp"
-	costgold = "1500"
+	costgold = "1200"
 	costfood = "0"
 	execdelay = "30000"
 	groupverifier="data/subai/antic.vs"
@@ -1161,7 +1179,26 @@
 	<src obj="ETempleOfHorusAndAnubis"/>
 </cmd>
 
-<cmd name="Cult of Horus" priority="10"
+<cmd name="Desert Alliance" priority="10"
+	button="actions/hire CCamelRider.bmp"
+	key="a"
+	queueicon="gameres/icons/CCamelRider.bmp"
+	transpicon="1"
+	costgold = "1000"
+	costfood = "400"
+	costpop = "10"
+	execdelay = "20000"
+	groupverifier="data/subai/verify_trainex.vs"
+	onaddremovescript="data/subai/trainex_onaddremove.vs"
+	rollover="Desert Alliance"
+	description="Calls 10 Tuareg"
+	method="trainex"
+	traincommand="yes"
+	param="10, 50, CCamelRider, CCamelRider, Cult of Anubis">
+	<src obj="ETempleOfHorusAndAnubis"/>
+</cmd>
+
+<cmd name="Cult of Horus" priority="11"
 	button="upgrades/cult of horus.bmp"
 	key="r"
 	queueicon="gameres/icons/upgrades/cult of horus.bmp"
@@ -1177,7 +1214,7 @@
 	<src obj="ETempleOfHorusAndAnubis"/>
 </cmd>
 
-<cmd name="Statue of Osiris, father of Horus" priority="11"
+<cmd name="Statue of Osiris, father of Horus" priority="12"
 	button="research/statue of osiris.bmp"
 	key="o"
 	queueicon="gameres/icons/upgrades/statue of osiris.bmp"
@@ -1193,11 +1230,11 @@
 	<src obj="ETempleOfHorusAndAnubis"/>
 </cmd>
 
-<cmd name="Light of Horus I" priority="12"
+<cmd name="Light of Horus I" priority="13"
 	button="research/light of horus 1.bmp"
 	key="l"
 	queueicon="gameres/icons/upgrades/light of horus 1.bmp"
-	costgold = "500"
+	costgold = "200"
 	costfood = "0"
 	execdelay = "10000"
 	groupverifier="data/subai/antic.vs"
@@ -1205,14 +1242,14 @@
 	description="All new warriors are level 2"
 	method="research"
 	researchcommand="yes"
-	param="ReqSet, Cult of Horus, default, SetsSet, levels/ESwordsman, 2, SetsSet, levels/EArcher, 2,SetsSet, levels/EAxetrower, 2,SetsSet, levels/EAnubisWarrior, 2,SetsSet, levels/EHorusWarrior, 2,SetsSet, levels/EGuardian, 2,SetsSet, levels/EChariot, 2, NameSet, Light of Horus I,">
+	param="ReqSet, Cult of Horus, default, SetsSet, levels/ESwordsman, 2, SetsSet, levels/EArcher, 2,SetsSet, levels/EAxetrower, 2,SetsSet, levels/EAnubisWarrior, 2,SetsSet, levels/CCamelRider, 2, SetsSet, levels/EHorusWarrior, 2,SetsSet, levels/EGuardian, 2,SetsSet, levels/EChariot, 2, NameSet, Light of Horus I,">
 	<src obj="ETempleOfHorusAndAnubis"/>
 </cmd>
-<cmd name="Light of Horus II" priority="12"
+<cmd name="Light of Horus II" priority="13"
 	button="research/light of horus 2.bmp"
 	key="l"
 	queueicon="gameres/icons/upgrades/light of horus 2.bmp"
-	costgold = "1000"
+	costgold = "400"
 	costfood = "0"
 	execdelay = "20000"
 	groupverifier="data/subai/antic.vs"
@@ -1220,15 +1257,15 @@
 	description="All new warriors are level 4"
 	method="research"
 	researchcommand="yes"
-	param="ReqSet, Light of Horus I, ,SetsSet, levels/ESwordsman, 4, SetsSet, levels/EArcher, 4,SetsSet, levels/EAxetrower, 4,SetsSet, levels/EAnubisWarrior, 4,SetsSet, levels/EHorusWarrior, 4,SetsSet,levels/EGuardian, 4,SetsSet, levels/EChariot, 4, NameSet, Light of Horus II,">
+	param="ReqSet, Light of Horus I, ,SetsSet, levels/ESwordsman, 4, SetsSet, levels/EArcher, 4,SetsSet, levels/EAxetrower, 4,SetsSet, levels/EAnubisWarrior, 4,SetsSet, levels/CCamelRider, 4, SetsSet, levels/EHorusWarrior, 4,SetsSet,levels/EGuardian, 4,SetsSet, levels/EChariot, 4, NameSet, Light of Horus II,">
 	<src obj="ETempleOfHorusAndAnubis"/>
 </cmd>
 
-<cmd name="Light of Horus III" priority="12"
+<cmd name="Light of Horus III" priority="13"
 	button="research/light of horus 3.bmp"
 	key="l"
 	queueicon="gameres/icons/upgrades/light of horus 3.bmp"
-	costgold = "1500"
+	costgold = "600"
 	costfood = "0"
 	execdelay = "30000"
 	groupverifier="data/subai/antic.vs"
@@ -1236,11 +1273,11 @@
 	description="All new warriors are level 6"
 	method="research"
 	researchcommand="yes"
-	param="ReqSet, Light of Horus II, ,SetsSet, levels/ESwordsman, 6, SetsSet, levels/EArcher, 6,SetsSet, levels/EAxetrower, 6,SetsSet, levels/EAnubisWarrior, 6,SetsSet, levels/EHorusWarrior, 6, SetsSet,levels/EGuardian, 6,SetsSet, levels/EChariot, 6, NameSet, Light of Horus III, default">
+	param="ReqSet, Light of Horus II, ,SetsSet, levels/ESwordsman, 6, SetsSet, levels/EArcher, 6,SetsSet, levels/EAxetrower, 6,SetsSet, levels/EAnubisWarrior, 6,SetsSet, levels/CCamelRider, 6,SetsSet, levels/EHorusWarrior, 6, SetsSet,levels/EGuardian, 6,SetsSet, levels/EChariot, 6, NameSet, Light of Horus III, default">
 	<src obj="ETempleOfHorusAndAnubis"/>
 </cmd>
 
-<cmd name="Statue of Amon-Ra" priority="13"
+<cmd name="Statue of Amon-Ra" priority="14"
 	button="research/statue of amon-ra.bmp"
 	key="a"
 	queueicon="gameres/icons/upgrades/statue of amon-ra.bmp"
@@ -1279,12 +1316,12 @@
 	button="Upgrades/Fights.bmp"
 	key="f"
 	queueicon="gameres/icons/upgrades/Fights.bmp"
-	costgold = "2000"
-	costfood = "0"
+	costgold = "0"
+	costfood = "2000"
 	execdelay = "30000"
 	researchcommand="yes"
 	groupverifier="data/subai/antic.vs"
-	description="Gathers 2000 food (works only once)"
+	description="Gathers 2000 food and makes all Heroes, new and existing, level 10 (works only once)"
 	rollover="Fights"
 	method="research"
 	param="NameSet, Fights, default,">
@@ -1315,8 +1352,8 @@
 	button="research/Legendary Valkyries.bmp"
 	key="g"
 	queueicon="gameres/icons/upgrades/Legendary Valkyries.bmp"
-	costgold = "1200"
-	costfood = "0"
+	costgold = "0"
+	costfood = "1200"
 	execdelay = "20000"
 	groupverifier="data/subai/antic.vs"
 	rollover="Legendary Valkyries"
@@ -1364,8 +1401,8 @@
 	button="research/learning.bmp"
 	key="l"
 	queueicon="gameres/icons/upgrades/learning.bmp"
-	costgold = "2000"
-	costfood = "0"
+	costgold = "0"
+	costfood = "2000"
 	execdelay = "30000"
 	groupverifier="data/subai/antic.vs"
 	rollover="Learning"
@@ -1380,8 +1417,8 @@
 	button="research/attack Focus.bmp"
 	key="a"
 	queueicon="gameres/icons/upgrades/attack Focus.bmp"
-	costgold = "2000"
-	costfood = "0"
+	costgold = "0"
+	costfood = "2000"
 	execdelay = "30000"
 	groupverifier="data/subai/antic.vs"
 	rollover="Attack focus"
@@ -1396,12 +1433,12 @@
 	button="research/Teuton Master.bmp"
 	key="t"
 	queueicon="gameres/icons/upgrades/Teuton Master.bmp"
-	costgold = "1000"
-	costfood = "0"
+	costgold = "0"
+	costfood = "1000"
 	execdelay = "30000"
 	groupverifier="data/subai/antic.vs"
 	rollover="Teuton Master"
-	description="Allows Teuton Riders to change to Teuton Archers and vise versa"
+	description="Allows Teuton Riders to change to Teuton Archers or Teuton Raiders or Teuton Wolf and vice versa"
 	method="research"
 	researchcommand="yes"
 	param="ReqSet, Fights, default, NamePlr, Teuton Master, default">

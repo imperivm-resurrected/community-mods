@@ -8,6 +8,6 @@
 	<properties icon="gameres/icons/ICavalry.bmp"/>
 	<properties display_name="Cavalry" display_name_plural="Cavalry"/>
 	<properties help="contents/units/ICavalry"/>
-	<properties edittree_pos="Units/Iberia/Cavalry"/>
+	<properties edittree_pos="Units/Iberia/Cavaliere"/>
 	<sounds command="data/sound entities/VoiceICavalry.xml"/>
 </class>

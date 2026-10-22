@@ -24,7 +24,7 @@
 		text=""/>
 </cmd>
 
-<cmd name="autotrain_start_gr" priority="8"
+<cmd name="autotrain_start_gr" priority="9"
 	immediate="yes"
 	key="a"
 	method="autotrain_start"
@@ -38,7 +38,7 @@
 	<src obj="HTownhall"/>
 </cmd>
 
-<cmd name="autotrain_stop_gr" priority="8"
+<cmd name="autotrain_stop_gr" priority="9"
 	immediate="yes"
 	key="a"
 	method="autotrain_stop"
@@ -52,35 +52,15 @@
 	<src obj="HTownhall"/>
 </cmd>
 
-<cmd name="autotrain_start_cbet" priority="8"
-	immediate="yes"
-	key="a"
-	method="autotrain_start"
-	groupverifier="data/subai/autotrain_start_verify.vs"
-	button="actions/autotrainingStart.bmp"
-	description="Start automatic training of warriors in the stronghold"
-	rollover="Automatic training">
-	<src obj="CTownhall"/>
-	<src obj="BTownhall"/>
-	<src obj="ETownhall"/>
-	<src obj="TTownhall"/>
-</cmd>
+<!-- Automatic training RIMOSSO da Cartagine (C), Britannia (B), Egitto (E) e
+     Germania (T) su richiesta (rev.7): i comandi autotrain_start_cbet /
+     autotrain_stop_cbet erano gli unici che davano l'addestramento automatico
+     a queste 4 fazioni (src CTownhall/BTownhall/ETownhall/TTownhall) e sono
+     stati eliminati. Restano solo su Grecia/Rome (_gr), Iberia (_i) e l'IA
+     (autotrain_start/stop su BaseTownhall). -->
 
-<cmd name="autotrain_stop_cbet" priority="8"
-	immediate="yes"
-	key="a"
-	method="autotrain_stop"
-	groupverifier="data/subai/autotrain_stop_verify.vs"
-	button="actions/autotrainingStop.bmp"
-	description="Stop automatic training of warriors in the stronghold"
-	rollover="Stop automatic training">
-	<src obj="CTownhall"/>
-	<src obj="BTownhall"/>
-	<src obj="ETownhall"/>
-	<src obj="TTownhall"/>
-</cmd>
 
-<cmd name="autotrain_start_i" priority="8"
+<cmd name="autotrain_start_i" priority="9"
 	immediate="yes"
 	key="a"
 	method="autotrain_start"
@@ -91,7 +71,7 @@
 	<src obj="ITownhall"/>
 </cmd>
 
-<cmd name="autotrain_stop_i" priority="8"
+<cmd name="autotrain_stop_i" priority="9"
 	immediate="yes"
 	key="a"
 	method="autotrain_stop"
@@ -105,7 +85,7 @@
 <cmd name="refreshment" priority="10"
 	immediate="yes"
 	key="r"
-	costgold = "600"
+	costgold = "500"
 	costfood="0"
 	method="refreshment"
 	researchcommand="yes"
@@ -116,6 +96,10 @@
 	>
 	<src obj="BTownhall"/>
 </cmd>
+
+<!-- "Tribal Unification" si sblocca nel colosseo (BMorrigansMonument), non nel
+     foro: vedi COMMANDS/ARENA.XML. Gli Highlander compaiono comunque nel foro,
+     perche' ONFINISH_RESEARCH.VS li aggiunge con settlement.ForceAddUnit. -->
 
 <cmd name="healing" priority="10"
 	immediate="yes"
@@ -130,6 +114,7 @@
 	description = "Restores 2000 health between the friendly warriors around the townhall"
 	>
 	<src obj="ITownhall"/>
+	<src obj="HTownhall"/>
 </cmd>
 
 <!-- AI only -->
@@ -150,7 +135,7 @@
 	method="military_training"
 	key="m"
 	groupverifier="data/subai/verify_cmdcost_building.vs"
-	costgold="800"
+	costgold="500"
 	costfood="0"
 	button="actions/Military training.bmp"
 	rollover="Military training"
@@ -162,7 +147,58 @@
 	<src obj="RTownhall"/>
 	<src obj="MTownhall"/>
 	<src obj="CTownhall"/>
+</cmd>
+
+<!-- Germania: stesso addestramento, ma pagato in viveri invece che in oro. E' un
+     comando a parte perche' il costo sta sull'attributo del comando, quindi non si
+     puo' differenziare per singolo <src>. TTownhall e' stato tolto dal comando in
+     oro qui sopra, cosi' i Germani vedono solo questo. -->
+<cmd name="townhall_military_training_german" priority="10"
+	method="military_training"
+	key="m"
+	groupverifier="data/subai/verify_cmdcost_building.vs"
+	costgold="0"
+	costfood="500"
+	button="actions/MILITARY TRAINING FOOD.bmp"
+	rollover="Military training"
+	description="Adds 1 level to all allies around the townhall (up to level 10). Costs food"
+	immediate="yes"
+	researchcommand="yes"
+>
 	<src obj="TTownhall"/>
-	<src obj="HTownhall"/>
+</cmd>
+
+<cmd name="townhall_imperial_training" priority="10"
+	method="imperial_training"
+	key="i"
+	groupverifier="data/subai/verify_cmdcost_building.vs"
+	costgold="800"
+	costfood="0"
+	button="actions/Imperial training.bmp"
+	rollover="Imperial training"
+	description="Adds 1 level to all your units around the townhall (up to level 16)"
+	immediate="yes"
+	researchcommand="yes"
+>
+	<src obj="RTownhall"/>
+</cmd>
+
+<!-- ========== IMPERIVM 2 COST VARIANTS (mode-only) ========== -->
+<cmd name="townhall_military_training Imp2 Cost" priority="10"
+	method="military_training"
+	key="m"
+	groupverifier="data/subai/verify_cmdcost_building.vs"
+	param="ReqModeImp2, , ,"
+	costgold="1200"
+	costfood="0"
+	button="actions/Military training.bmp"
+	rollover="Military training"
+	description="Adds 1 level to all allies around the townhall (up to level 10)"
+	immediate="yes"
+	researchcommand="yes"
+>
+	<src obj="RTownhall"/>
+	<src obj="MTownhall"/>
+	<src obj="CTownhall"/>
 </cmd>
 </commands>

@@ -9,7 +9,7 @@
 	queueicon="gameres/icons/upgrades/repair.bmp"
 	groupverifier="data/subai/verify_cmdcost_building.vs"
 	rollover="Repair"
-	costgold="100"
+	costgold="500"
 	costfood="0"
 	execdelay = "60000">
 	<src obj="DruidHouse"/>
@@ -44,7 +44,7 @@
 	costfood = "0"
 	execdelay = "40000"
 	rollover="Ritual Chamber"
-	description="Allows druids to gain experience by learning from more experienced warriors"
+	description="Allows druids to gain experience by learning from more experienced warriors. A druid joins the stronghold immediately"
 	method="research"
 	param="NamePlr, Ritual Chamber, default,NameSet, Ritual Chamber, default">
 	<src obj="DruidHouse"/>
@@ -106,7 +106,7 @@
 	key="e"
 	researchcommand="yes"
 	groupverifier="data/subai/verify_research.vs"
-	costgold = "1200"
+	costgold = "400"
 	costfood = "0"
 	execdelay = "20000"
 	rollover="Eagle summoning"

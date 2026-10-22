@@ -9,9 +9,11 @@
 	<properties damage_type="slash"/>
 
 	<properties icon="gameres/icons/CLibyanFootman.bmp"/>
-	<properties display_name="Libyan Footman" display_name_plural="Libyan Footmen"/>
+	<!-- Cartagine Numidia: "Fante Numida". L'id CLibyanFootman non si tocca
+	     (comandi, Forge e script lo cercano per id). -->
+	<properties display_name="Numidian Footman" display_name_plural="Numidian Footmen"/>
 	<properties help="contents/units/CLibyanFootman"/>
-	<properties edittree_pos="Units/Carthage/Libyan Footman"/>
+	<properties edittree_pos="Units/Cartagine/Numida/Fante numida"/>
 	<sounds command="data/sound entities/VoiceCLibyanFootman.xml"/>
 
 	<method sig="ondie" vs="data/subai/cmercenary_ondie.vs"/>

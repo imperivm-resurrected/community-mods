@@ -11,5 +11,7 @@ entity="Buildings/CMarket/CMarket.ent.xml"
 	<method sig="heal" vs="data/subai/tavern_heal.vs"/>
 	<method sig="expedition" vs="data/subai/tavern_expedition.vs" onfinish="data/subai/tavern_onfinish_expedition.vs"/>
 
+	<behavior script="data/subai/ctavern_enable_or_disable_cmd.vs"/>
+
 	<method sig="calltoarms" vs="data/subai/ctavern_calltoarms.vs"/>
 </class>

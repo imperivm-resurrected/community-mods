@@ -4,13 +4,18 @@
 	<properties maxhealth="120"/>
 	<properties armor_slash="10" armor_pierce="10"/>
 	<properties speed="50"/>
-	<properties unit_specials="Healing, Active"/>
+	<properties unit_specials="Healing"/>
+	<properties range="400" min_range="0" sight="400"/>
 
 	<properties icon="gameres/icons/RPriest.bmp"/>
 	<properties display_name="Priest" display_name_plural="Priests"/>
 	<properties help="contents/units/RPriest"/>
-	<properties edittree_pos="Units/Roman/Priest"/>
+	<properties edittree_pos="Units/Roma/Comuni/Sacerdote"/>
 	<sounds command="data/sound entities/VoiceRPriest.xml"/>
+
+	<!-- Nasconde l'evocazione del Lupo (rwolf_summoning) fuori dalla modalita'
+	     Liga: stesso gate del Tempio (rtemple_liga_gate.vs), lato Sacerdote. -->
+	<behavior script="data/subai/rpriest_liga_gate.vs"/>
 
 	<method sig="stand_position"   vs="data/subai/rpriest_stand_position.vs"/>
 	<method sig="ondie"            vs="data/subai/priest_ondie.vs"/>
@@ -24,6 +29,9 @@
 	<method sig="wrath_of_jupiter" vs="data/subai/priest_jupiter_anger.vs"/>
 	
 	<method sig="buff_defence" vs="data/subai/druid_buff_defence_call.vs"/>
+    <method sig="wrath_of_jupiter" vs="data/subai/priest_jupiter_anger.vs"/>
+	<method sig="corruption" vs="data/subai/priest_corruption.vs" verify="data/subai/priest_corruption_verify.vs"/>
+	<method sig="rwolf_summoning" vs="data/subai/priest_wolf_summoning.vs"/>
 
 	<defaultcmd target="Unit">
 		<cmd name="heal"/>

@@ -3,7 +3,7 @@
 	<properties race="RepublicanRome"/>
 	<properties maxhealth="160"/>
 	<properties damage="20" armor_slash="0" armor_pierce="0"/>
-	<properties speed="80"/>
+	<properties speed="60"/>
 	<properties unit_specials="Defense skill"/>
 
 	<properties projectile_class="Arrow"/>
@@ -11,7 +11,7 @@
 	<properties icon="gameres/icons/RArcher.bmp"/>
 	<properties display_name="Archer" display_name_plural="Archers"/>
 	<properties help="contents/units/RArcher"/>
-	<properties edittree_pos="Units/Roman/Archer"/>
+	<properties edittree_pos="Units/Roma/Imperiale/Arciere"/>
 	<sounds command="data/sound entities/VoiceRArcher.xml"/>
 
 </class>

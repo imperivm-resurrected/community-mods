@@ -1,4 +1,19 @@
 <commands>
+<cmd name="Sell food" priority="4"
+	traincommand="yes"
+	groupverifier="data/subai/verify_isresearched.vs"
+	button="actions/sell food.bmp"
+	queueicon="gameres/icons/upgrades/Sell Food.bmp"
+	key="g"
+	costfood="1000"
+	rollover="Sell food"
+	execdelay="15000"
+	description="Sells 1000 food at the market for 500 gold"
+	method="sellfoodforgold"
+	param="Trade Routes">
+	<src obj="HAgora"/>
+</cmd>
+
 <!-- TAVERN COMMANDS -->
 <cmd name="GAddPop" priority="2"
 	queueicon="gameres/icons/upgrades/Add population.bmp"
@@ -7,7 +22,7 @@
 	cursor=""
 	key="p"
 	traincommand="yes"
-	costfood="400"
+	costfood="600"
 	execdelay="10000"
 	method="addpop"
 	description="Increases the stronghold population by 10"
@@ -71,6 +86,39 @@
 	rollover="Increase population">
 	<src obj="HAgora"/>
 </cmd>
+<cmd name="buyfoodforgold" priority="6"
+	queueicon="gameres/icons/upgrades/buy food.bmp"
+	groupverifier="data/subai/verify_cmdcost_building.vs"
+	button="actions/buy food.bmp"
+	traincommand="yes"
+	key="f"
+	costgold = "500"
+	execdelay = "10000"
+	param = "800"
+	rollover="Buy 800 food">
+	<src obj="RTavern"/>
+	<src obj="RTavern2"/>
+	<src obj="CTavern"/>
+	<src obj="TTavern"/>
+</cmd>
+
+<cmd name="buyWarSlaves" priority="9"
+	queueicon="gameres/icons/upgrades/Buy War Slaves.bmp"
+	groupverifier="data/subai/verify_research.vs"
+	button="actions/Buy War Slaves.bmp"
+	cursor=""
+	key="b"
+	traincommand="yes"
+	costgold="2000"
+	execdelay="15000"
+	method="buySlaves"
+	description="Increases the stronghold population by 20"
+	rollover="Buy war slaves"
+	param="ReqSet, Free Wine, default">
+	<src obj="RTavern"/>
+	<src obj="RTavern2"/>
+</cmd> 
+
 <cmd name="Free Beer" priority="8"
 	key="b"
 	queueicon="gameres/icons/upgrades/free beer.bmp"
@@ -80,7 +128,7 @@
 	execdelay="20000"
 	researchcommand="yes"
 	method="research"
-	param="NameSet, Free Beer, default"
+	param="NReqModeImp2, , , NameSet, Free Beer, default"
 	description="Attracts 20 population to the stronghold (works only once)"
 	rollover="Free beer"
 	>
@@ -91,23 +139,40 @@
 	queueicon="gameres/icons/upgrades/free wine.bmp"
 	groupverifier="data/subai/verify_research.vs"
 	button="research/free wine.bmp"
-	costgold="1600"
+	costgold="1000"
 	execdelay="20000"
 	researchcommand="yes"
 	method="research"
 	param="NameSet,Free Wine, default"
-	description="Explores a large area around the stronghold"
+	description="Increases the population of the stronghold by 10"
 	rollover="Free wine"
 	>
 	<src obj="RTavern"/>
 	<src obj="RTavern2"/>
 </cmd>
+<cmd name="Chariot Mastery" priority="10"
+	key="y"
+	queueicon="gameres/icons/upgrades/greek chariot wheels.bmp"
+	groupverifier="data/subai/verify_research.vs"
+	button="upgrades/Greek Chariot Wheels.bmp"
+	costgold="2000"
+	execdelay="25000"
+	researchcommand="yes"
+	method="research"
+	param="ReqSet, Free Wine, default, NameSet, Chariot Mastery, default, SetsSet, levels/RChariot, 18"
+	description="All Chariots, new and existing, permanently become level 18"
+	rollover="Chariot mastery"
+	>
+	<src obj="RTavern"/>
+	<src obj="RTavern2"/>
+</cmd>
+
 <cmd name="Free Trade" priority="8"
 	key="t"
 	queueicon="gameres/icons/upgrades/free trade.bmp"
 	groupverifier="data/subai/verify_research.vs"
 	button="research/free trade.bmp"
-	costgold="1500"
+	costgold="2000"
 	execdelay="20000"
 	researchcommand="yes"
 	method="research"
@@ -117,7 +182,7 @@
 	>
 	<src obj="CTavern"/>
 </cmd>
-<cmd name="Free Drinks" priority="8"
+<cmd name="Free Drinks" priority="3"
 	key="t"
 	queueicon="gameres/icons/upgrades/free drinks.bmp"
 	groupverifier="data/subai/verify_research.vs"
@@ -132,7 +197,7 @@
 	>
 	<src obj="ITavern"/>
 </cmd>
-<cmd name="Gambling" priority="8"
+<cmd name="Gambling" priority="4"
 	queueicon="gameres/icons/upgrades/gambling.bmp"
 	key="g"
 	groupverifier="data/subai/verify_research.vs"
@@ -142,12 +207,45 @@
 	researchcommand="yes"
 	method="research"
 	param="NameSet, Gambling, default"
-	description="Gives you 50% of chances to get 2500 of food and explores a large area around the stronghold"
+	description="Gives you 50% of chances to get 2500 of gold and explores a large area around the stronghold"
 	rollover="Gambling"
 	>
 	<src obj="BTavern"/>
 </cmd>
-<cmd name="Gambler's Day" priority="23"
+<!-- Food Gambling e' un comando d'azione cumulabile (come Add population /
+     Buy food), non una ricerca: si puo' accodare piu' volte di seguito. -->
+<cmd name="Food Gambling" priority="3"
+	queueicon="gameres/icons/upgrades/FoodGambling.bmp"
+	key="f"
+	groupverifier="data/subai/verify_cmdcost_building.vs"
+	button="research/FoodGambling.bmp"
+	traincommand="yes"
+	costgold="1000"
+	execdelay="30000"
+	method="food_gambling"
+	description="Gives you 50% of chances to get 1000 of food. Can be attempted again and again"
+	rollover="Food Gambling"
+	>
+	<src obj="BTavern"/>
+</cmd>
+
+<cmd name="Vision of Nodens" priority="5"
+	queueicon="gameres/icons/upgrades/GorgonEye.bmp"
+	key="n"
+	groupverifier="data/subai/verify_research.vs"
+	button="upgrades/GorgonEye.bmp"
+	costgold="500"
+	execdelay="20000"
+	researchcommand="yes"
+	method="research"
+	param="NameSet, Vision of Nodens, default"
+	description="Nodens reveals a part of the map hidden by the fog of war. Can be invoked again and again"
+	rollover="Vision of Nodens"
+	>
+	<src obj="BTavern"/>
+</cmd>
+
+<cmd name="Gambler's Day" priority="6"
 	groupverifier="data/subai/verify_research.vs"
 	key="d"
 	method="research"
@@ -161,7 +259,7 @@
 	param="ReqSet, Gambling, default, SetsPlr, GamblersDayChance, 50, NamePlr, Gambler's Day, default">
 	<src obj="BTavern"/>
 </cmd>
-<cmd name="Gambler's Test" priority="24"
+<cmd name="Gambler's Test" priority="7"
 	groupverifier="data/subai/verify_research.vs"
 	key="t"
 	method="research"
@@ -175,7 +273,7 @@
 	param="ReqSet, Gambling, default, SetsPlr, GamblersTestChance, 4, NamePlr, Gambler's Test, default">
 	<src obj="BTavern"/>
 </cmd>
-<cmd name="Gambler's Luck" priority="24"
+<cmd name="Gambler's Luck" priority="8"
 	groupverifier="data/subai/verify_research.vs"
 	key="l"
 	method="research"
@@ -189,18 +287,39 @@
 	param="ReqSet, Gambling, default, SetsPlr, GamblersLuckChance, 20, NamePlr, Gambler's Luck, default">
 	<src obj="BTavern"/>
 </cmd>
+
+<!-- La Grande Migrazione e' stata rimossa dalla taverna di Britannia. -->
+
 <cmd name="Import horses" priority="9"
 	key="h"
 	queueicon="gameres/icons/upgrades/Horses.bmp"
 	groupverifier="data/subai/verify_research.vs"
 	button="upgrades/Import horses.bmp"
-	costgold="1200"
+	costgold="1400"
 	execdelay="20000"
 	researchcommand="yes"
 	method="research"
-	param="NameSet, Import horses, default, SetsSet, levels/RScout, 10, ReqSet, Free Wine, default"
+	param="NReqModeImp2, , , NameSet, Import horses, default, SetsSet, levels/RCavaliere, 14, ReqSet, Free Wine, default"
 	rollover="Import horses"
-	description="All new scouts are level 10">
+	description="All new knights are level 14">
+	<src obj="RTavern"/>
+	<src obj="RTavern2"/>
+	<src obj="MTavern"/>
+	<src obj="MTavern2"/>
+</cmd>
+
+<cmd name="Import horses2" priority="9"
+	key="h"
+	queueicon="gameres/icons/upgrades/Horses.bmp"
+	groupverifier="data/subai/verify_research.vs"
+	button="upgrades/Import horses.bmp"
+	costgold="1400"
+	execdelay="20000"
+	researchcommand="yes"
+	method="research"
+	param="NameSet, Import horses, default, SetsSet, levels/RHorseman, 14, ReqSet, Free Wine, default"
+	rollover="Import horses"
+	description="All new scouts are level 14">
 	<src obj="RTavern"/>
 	<src obj="RTavern2"/>
 </cmd>
@@ -214,7 +333,7 @@
 	execdelay = "60000">
 	<src obj="BaseTavern"/>
 </cmd>
-<cmd name="Sell food" priority="13"
+<cmd name="Sell food" priority="4"
 	traincommand="yes"
 	groupverifier="data/subai/verify_isresearched.vs"
 	button="actions/sell food.bmp"
@@ -222,12 +341,29 @@
 	key="s"
 	costfood="1000"
 	rollover="Sell food"
-	execdelay="30000"
+	execdelay="15000"
 	description="Sells 1000 food at the market for 500 gold"
 	method="sellfoodforgold"
 	param="Free Drinks">
 	<src obj="ITavern"/>
 </cmd>
+<!-- Germania: stesso Sell food di Iberia, ma sbloccato da Grain Trade
+     (la ricerca commerciale della TTavern; Free Drinks e' solo iberica). -->
+<cmd name="TSellFood" priority="4"
+	traincommand="yes"
+	groupverifier="data/subai/verify_isresearched.vs"
+	button="actions/sell food.bmp"
+	queueicon="gameres/icons/upgrades/Sell Food.bmp"
+	key="s"
+	costfood="1000"
+	rollover="Sell food"
+	execdelay="15000"
+	description="Sells 1000 food at the market for 500 gold"
+	method="sellfoodforgold"
+	param="Grain Trade">
+	<src obj="TTavern"/>
+</cmd>
+
 <cmd name="Scout Area" priority="12"
 	groupverifier="data/subai/verify_isresearched.vs"
 	button="actions/scouts.bmp"
@@ -236,7 +372,7 @@
 	rollover="Scout area"
 	description="Temporarily removes the fog of war around a chosen point and reveals any hidden warriors there"
 	immediate="yes"
-	param="Free Wine">
+	param="ReqModeImp2, , , Free Wine">
 	<src obj="RTavern"/>
 	<src obj="RTavern2"/>
 </cmd>
@@ -269,6 +405,89 @@
 	param="ReqSet, Free Trade, default, NameSet, Expedition, default">
 	<src obj="CTavern"/>
 </cmd>
+<!-- Cartagine: "Phoenician Trade" rimosso dal mercato (CTavern) su richiesta.
+     L'implementazione in ONFINISH_RESEARCH.VS resta innocua: senza comando che
+     la avvii, la ricerca non parte piu'. -->
+<!-- Cartagine: Editto dei Mercenari. Spostato qui dal Tempio: ora sta nel
+     Mercato e si sblocca con il Libero Commercio (Free Trade). -->
+<cmd name="Mercenary Edict" priority="14"
+	button="Upgrades/Mercenary Edict.bmp"
+	queueicon="gameres/icons/upgrades/Mercenary Edict.bmp"
+	key="e"
+	researchcommand="yes"
+	groupverifier="data/subai/verify_research.vs"
+	costgold = "3000"
+	costfood = "0"
+	execdelay = "30000"
+	rollover="Mercenary Edict"
+	description="Every type of warrior you field in 200 or more gains 25 health and 10 attack"
+	method="research"
+	param="ReqSet, Free Trade, default, NamePlr, Mercenary Edict, default">
+	<src obj="CTavern"/>
+</cmd>
+
+<!-- "Punic Trade Networks" (ex "Libyan Levy") rimosso su richiesta il
+     2026-07-17: niente piu' sconto progressivo sui Lanceri libici. -->
+
+<!-- ======== Cartagine MAURITANA: Doni Tribali e Tradizione Mauritana ======== -->
+
+<!-- Doni Tribali (versione mauritana degli oggetti della Gallia): ogni nuovo
+     guerriero riceve l'oggetto. La Lama usa il bonus danno dell'oggetto; lo
+     Scudo d'Ossa applica l'armatura via AddBonus in BARRACK_TRAIN.VS /
+     ARENA_BEHAVIOR.VS (l'armatura degli oggetti non funziona sulle unita'
+     normali).
+     Catena a sblocco progressivo (schema Warriors' Wisdom -> Heroes' Wisdom):
+     Lama Cerimoniale -> Scudo d'Ossa -> Tradizione Mauritana. I primi due
+     scrivono un Env di settlement (NameSet -> ReqSet), la Tradizione un Env
+     di giocatore (NamePlr). -->
+<cmd name="Ceremonial Blade" priority="16"
+	method="research"
+	queueicon="gameres/icons/upgrades/CeremonialArmor.bmp"
+	button="upgrades/CeremonialArmor.bmp"
+	key="c"
+	rollover="Tribal gift: Ceremonial armor"
+	description="Equips all new warriors with a Ceremonial Blade (+5 attack)"
+	costgold="1500"
+	execdelay="30000"
+	researchcommand="yes"
+	groupverifier="data/subai/verify_research.vs"
+	param="ReqSet, Free Trade, default, NameSet, Ceremonial Blade, , SetsSet, items/Ceremonial Blade, 1">
+	<src obj="CTavern"/>
+</cmd>
+
+<cmd name="Bone Shield" priority="17"
+	method="research"
+	queueicon="gameres/icons/upgrades/SpikeShield.bmp"
+	button="upgrades/SpikeShield.bmp"
+	key="o"
+	rollover="Tribal gift: Ceremonial spike shield"
+	description="Equips all new warriors with a Bone Shield (+5 armor)"
+	costgold="1500"
+	execdelay="30000"
+	researchcommand="yes"
+	groupverifier="data/subai/verify_research.vs"
+	param="ReqSet, Ceremonial Blade, default, NameSet, Bone Shield, , SetsSet, items/Bone Shield, 1">
+	<src obj="CTavern"/>
+</cmd>
+
+<!-- Tradizione Mauritana: tutte le unita' del giocatore guadagnano velocita'
+     di movimento (player_mauritanian_tradition.vs, avviato da
+     ONFINISH_RESEARCH.VS). -->
+<cmd name="Mauritanian Tradition" priority="18"
+	method="research"
+	queueicon="gameres/icons/upgrades/MauritanianTradition.bmp"
+	button="upgrades/MauritanianTradition.bmp"
+	key="t"
+	rollover="Mauritanian Tradition"
+	description="All your warriors move faster"
+	costgold="2000"
+	execdelay="30000"
+	researchcommand="yes"
+	groupverifier="data/subai/verify_research.vs"
+	param="ReqSet, Free Trade, default, NamePlr, Mauritanian Tradition, default">
+	<src obj="CTavern"/>
+</cmd>
+
 <cmd name="investR" priority="14"
 	key="i"
 	execdelay="150000"
@@ -309,7 +528,7 @@
 	execdelay="40000"
 	researchcommand="yes"
 	groupverifier="data/subai/verify_research.vs"
-	param="ReqSet, Free Beer, default, NameSet, Nordic trade routes, , SetsSet, items/Bear teeth amulet, 1">
+	param="ReqSet, Free Beer, default, NameSet, Nordic trade routes, default, SetsSet, items/Bear teeth amulet, 1">
 	<src obj="GTavern"/>
 </cmd>
 <cmd name="Belts of Might" priority="21"
@@ -324,6 +543,22 @@
 	researchcommand="yes"
 	groupverifier="data/subai/verify_research.vs"
 	param="ReqSet, Nordic trade routes, , NameSet, Belts of Might, default, SetsSet, items/Belt of might, 1">
+	<src obj="GTavern"/>
+	<!-- param="ReqSet, Nordic trade routes, , NameSet, Belts of Might, default, SetsSet, items/Belt of might, 1"> -->
+</cmd>
+
+<cmd name="Druidic herbs" priority="21"
+	method="research"
+	queueicon="gameres/icons/upgrades/Herb amulets of luck.bmp"
+	button="upgrades/Herb amulets of luck.bmp"
+	key="h"
+	rollover="Druidic Herbs"
+	description="Equips all new warriors with Herb amulet (+40 max health)"
+	costgold="800"
+	execdelay="30000"
+	researchcommand="yes"
+	groupverifier="data/subai/verify_research.vs"
+	param="ReqSet, Belts of Might, , NameSet, Herb amulet of Luck, default, SetsSet, items/Herb amulet of luck, 1">
 	<src obj="GTavern"/>
 </cmd>
 <cmd name="getloan" priority="18"
@@ -351,6 +586,10 @@
 	param="ReqSet, Free Beer, default, SetsPlr, GamblersTestChance, 4, NamePlr, Gambler's Test, default">
 	<src obj="GTavern"/>
 </cmd>
+<!-- Gallia: il prestito in viveri ("Get Food Loan" / "Repay Food Loan") e' stato
+     rimosso su richiesta. La taverna gallica torna al solo prestito in oro:
+     "Get Loan" qui sopra e "Repay Loan" qui sotto (ereditato da BaseTavern). -->
+
 <cmd name="repayloan" priority="18"
 	method="repayloan"
 	button="actions/repay loan.bmp"
@@ -372,7 +611,7 @@
 	researchcommand="yes"
 	plrresearch="yes"
 	param="ReqSet, Free Beer, default, NamePlr, Tribute, default" 
-	description="Gathers %s1 gold in each outpost you own. The amount of gold increases by 500 every 10 minutes (though not over 2000)"
+	description="Gathers %s1 gold in each outpost you own (the amount increases by 500 every 10 minutes, up to 2000)"
 	rollover="Tribute (once per game)">
 	<src obj="GTavern"/>
 </cmd>
@@ -388,12 +627,12 @@
 	plrresearch="yes"
 	button="actions/tribute.bmp"
 	param="ReqSet, Free Wine, default, NamePlr, Tribute, default"
-	description="Gathers %s1 gold in each outpost you own. The amount of gold increases by 500 every 10 minutes (though not over 2000)"
+	description="Gathers %s1 gold in each outpost you own (the amount increases by 500 every 10 minutes, up to 2000)"
 	rollover="Tribute (once per game)">
 	<src obj="RTavern"/>
 	<src obj="RTavern2"/>
 </cmd>
-<cmd name="CTribute" priority="8"
+<cmd name="CTribute" priority="9"
 	queueicon="gameres/icons/upgrades/Tribute.bmp"
 	groupverifier="data/subai/verify_research.vs"
 	key="u"
@@ -405,11 +644,11 @@
 	plrresearch="yes"
 	button="actions/tribute.bmp"
 	param="ReqSet, Free Trade, default, NamePlr, Tribute, default"
-	description="Gathers %s1 gold in each outpost you own. The amount of gold increases by 500 every 10 minutes (though not over 2000)"
+	description="Gathers %s1 gold in each outpost you own (the amount increases by 500 every 10 minutes, up to 2000)"
 	rollover="Tribute (once per game)">
 <src obj="CTavern"/>
 </cmd>
-<cmd name="ITribute" priority="10"
+<cmd name="ITribute" priority="9"
 	queueicon="gameres/icons/upgrades/Tribute.bmp"
 	groupverifier="data/subai/verify_research.vs"
 	key="u"
@@ -421,40 +660,28 @@
 	plrresearch="yes"
 	button="actions/tribute.bmp"
 	param="ReqSet, Free Drinks, default, NamePlr, Tribute, default"
-	description="Gathers %s1 gold in each outpost you own. The amount of gold increases by 500 every 10 minutes (though not over 2000)"
+	description="Gathers %s1 gold in each outpost you own (the amount increases by 500 every 10 minutes, up to 2000)"
 	rollover="Tribute (once per game)">
 	<src obj="ITavern"/>
 </cmd>
-<cmd name="BTribute" priority="22"
-	queueicon="gameres/icons/upgrades/Tribute.bmp"
+<!-- Britannia non ha piu' il Tributo: "BTribute" e' stato rimosso dalla taverna
+     su richiesta. -->
+<!-- La Germania non ha piu' il Tributo: al suo posto usa le Razzie (TRaids). -->
+
+<cmd name="TRaids" priority="14"
+	queueicon="gameres/icons/upgrades/Raids.bmp"
 	groupverifier="data/subai/verify_research.vs"
-	key="u"
+	key="z"
 	method="research"
-	costgold="2000"
-	costfood="0"
-	execdelay="90000"
-	button="actions/tribute.bmp"
+	costgold="0"
+	costfood="2000"
+	execdelay="30000"
 	researchcommand="yes"
 	plrresearch="yes"
-	param="ReqSet, Gambling, default, NamePlr, Tribute, default" 
-	description="Gathers %s1 gold in each outpost you own. The amount of gold increases by 500 every 10 minutes (though not over 2000)"
-	rollover="Tribute (once per game)">
-	<src obj="BTavern"/>
-</cmd>
-<cmd name="TTribute" priority="13"
-	queueicon="gameres/icons/upgrades/Tribute.bmp"
-	groupverifier="data/subai/verify_research.vs"
-	key="u"
-	method="research"
-	costgold="2000"
-	costfood="0"
-	execdelay="90000"
-	researchcommand="yes"
-	plrresearch="yes"
-	button="actions/tribute.bmp"
-	param="ReqSet, Grain Trade, default, NamePlr, Tribute, default"
-	description="Gathers %s1 gold in each outpost you own. The amount of gold increases by 500 every 10 minutes (though not over 2000)"
-	rollover="Tribute (once per game)">
+	button="actions/raids.bmp"
+	param="ReqSet, Grain Trade, default, NamePlr, Raids, default"
+	description="Gathers %s1 food in each outpost you own (the amount increases by 500 every 10 minutes, up to 2000)"
+	rollover="Raids (once per game)">
 	<src obj="TTavern"/>
 </cmd>
 <cmd name="ETribute" priority="8"
@@ -469,7 +696,7 @@
 	plrresearch="yes"
 	button="actions/tribute.bmp"
 	param="ReqSet, Grain Trade, default, NamePlr, Tribute, default"
-	description="Gathers %s1 gold in each outpost you own. The amount of gold increases by 500 every 10 minutes (though not over 2000)"
+	description="Gathers %s1 gold in each outpost you own (the amount increases by 500 every 10 minutes, up to 2000)"
 	rollover="Tribute (once per game)">
 	<src obj="EMarket"/>
 </cmd>
@@ -489,7 +716,7 @@
 	rollover="Tribute (once per game)">
 	<src obj="HAgora"/>
 </cmd>
-<cmd name="Housing" priority="14"
+<cmd name="Housing" priority="8"
 	queueicon="gameres/icons/upgrades/Housing.bmp"
 	groupverifier="data/subai/verify_research.vs"
 	button="research/Housing.bmp"
@@ -517,6 +744,23 @@
 	rollover="Mercenary Pact">
 	<src obj="CTavern"/>
 </cmd>
+<!-- Imperivm 2 (Numida): "Guarisci" nel Mercato. 1000 oro -> 2000 hp distribuiti alle
+     unita' vicine al foro (metodo "heal" di CTavern -> tavern_heal.vs). Visibile solo
+     in Imperivm 2 (CTAVERN_ENABLE_OR_DISABLE_CMD.VS). -->
+<cmd name="Guarisci" priority="13"
+	immediate="yes"
+	key="g"
+	costgold="1000"
+	costfood="0"
+	method="heal"
+	researchcommand="yes"
+	groupverifier="data/subai/verify_cmdcost_building.vs"
+	button="actions/healing.bmp"
+	rollover="Heal"
+	description="Restores 2000 health to each friendly unit around the townhall">
+	<src obj="CTavern"/>
+</cmd>
+
 <cmd name="Slavery" priority="11"
 	queueicon="gameres/icons/upgrades/Slavery.bmp"
 	button="actions/Slavery.bmp"
@@ -546,7 +790,7 @@
 	rollover="Compra schiavi">
 	<src obj="CTavern"/>
 </cmd>
-<cmd name="Call to arms" priority="16"
+<cmd name="Call to arms" priority="10"
 	queueicon="gameres/icons/upgrades/call to arms.bmp"
 	button="actions/call to arms.bmp"
 	key="a"
@@ -572,12 +816,29 @@
 	costgold="0"
 	costfood="0"
 	costpop="50"
-	execdelay="20000"
+	execdelay="25000"
 	param="Free Drinks"
 	description="Drafts 50 peasants, making them Militiamen"
 	rollover="Call to arms">
 	<src obj="ITavern"/>
 </cmd>
+<cmd name="Call to elite arms" priority="11"
+    queueicon="gameres/icons/upgrades/call to elite army.bmp"
+    button="actions/call to elite army.bmp"
+    key="z"
+    researchcommand="yes"
+    groupverifier="data/subai/verify_research.vs"
+    method="research"
+    costgold="4000"
+    costfood="0"
+    costpop="20"
+    execdelay="20000"
+    param="ReqSet, Free Drinks, default, NamePlr, Call to elite arms, default"
+    description="Drafts 20 elites, works only once"
+    rollover="Call to elite arms">
+    <src obj="ITavern"/>
+</cmd>
+
 <!--             Egypt         -->
 <cmd name="BuySlaves" priority="2"
 	queueicon="gameres/icons/upgrades/buy slaves.bmp"
@@ -608,7 +869,7 @@
 	>
 	<src obj="EMarket"/>
 </cmd>
-<cmd name="ReligiousFeast" priority="18"
+<cmd name="ReligiousFeast" priority="4"
 	queueicon="gameres/icons/upgrades/religious feast.bmp"
 	key="r"
 	button="research/religious feast.bmp"
@@ -623,10 +884,10 @@
 	rollover="Religious Feast">
 	<src obj="EMarket"/>
 </cmd>
-<cmd name="Gossip" priority="12"
+<cmd name="Gossip" priority="5"
 	groupverifier="data/subai/verify_isresearched.vs"
 	button="actions/gossip.bmp"
-	key="s"
+	key="p"
 	costfood="1000"
 	rollover="Gossip"
 	description="Temporarily removes the fog of war around a chosen point and reveals any hidden warriors there"
@@ -634,7 +895,7 @@
 	param="Grain Trade">
 	<src obj="EMarket"/>
 </cmd>
-<cmd name="Hecatomb" priority="20"
+<cmd name="Hecatomb" priority="6"
 	queueicon="gameres/icons/upgrades/Hecatomb.bmp"
 	key="h"
 	groupverifier="data/subai/verify_research.vs"
@@ -664,6 +925,7 @@
 	description="Permette di addestrare leoni e leonesse nella caserma">
 	<src obj="EMarket"/>
 </cmd>
+
 <!--             Germany                   -->
 <cmd name="TAddPop" priority="2"
 	queueicon="gameres/icons/upgrades/Add population.bmp"
@@ -684,7 +946,8 @@
 	key="g"
 	groupverifier="data/subai/verify_research.vs"
 	button="research/grain trade.bmp"
-	costgold="2000"
+	costgold="0"
+	costfood = "2000"
 	execdelay="20000"
 	researchcommand="yes"
 	method="research"
@@ -699,7 +962,8 @@
 	key="t"
 	groupverifier="data/subai/verify_research.vs"
 	button="upgrades/food tax.bmp"
-	costgold="2000"
+	costgold="0"
+	costfood = "2000"
 	execdelay="20000"
 	researchcommand="yes"
 	method="research"
@@ -716,7 +980,8 @@
 	groupverifier="data/subai/verify_research.vs"
 	cursor=""
 	researchcommand="yes"
-	costgold="1600"
+	costgold="0"
+	costfood="1600"
 	execdelay="30000"
 	method="research"
 	param = "ReqSet, Grain Trade,default, NameSet, Religious Feast,default"
@@ -738,5 +1003,77 @@
 	method="research"
 	param="ReqSet, Free Beer, default, NamePlr, Razzia, default">
 	<src obj="GTavern"/>
+</cmd>
+<!-- Imperivm 2: variante "Import horses" ai valori dell'originale, ma per la
+     cavalleria della Roma Imperiale (RHorseman a livello 10, invece del RCavaliere 14
+     della Roma Punica). Abilitata solo in Imperivm 2 per la Roma Imperiale
+     (MODE_IMPERIVM2_ROME.VS). NameSet distinto da "Import horses". -->
+<cmd name="Import horses Imp2" priority="9"
+	key="h"
+	queueicon="gameres/icons/upgrades/Horses.bmp"
+	groupverifier="data/subai/verify_research.vs"
+	button="upgrades/Import horses.bmp"
+	costgold="1200"
+	execdelay="15000"
+	researchcommand="yes"
+	method="research"
+	param="ReqModeImp2, , , NameSet, Import horses Imp2, default, SetsSet, levels/RHorseman, 10, ReqSet, Free Wine, default"
+	rollover="Import horses"
+	description="All new scouts are level 10">
+	<src obj="RTavern"/>
+	<src obj="RTavern2"/>
+</cmd>
+
+
+<!-- ========== IMPERIVM 2 COST VARIANTS (mode-only) ========== -->
+<cmd name="Free Beer Imp2 Cost" priority="8"
+	key="b"
+	queueicon="gameres/icons/upgrades/free beer.bmp"
+	groupverifier="data/subai/verify_research.vs"
+	button="research/free beer.bmp"
+	costgold="1000"
+	execdelay="20000"
+	researchcommand="yes"
+	method="research"
+	param="ReqModeImp2, , , NameSet, Free Beer, default"
+	description="Attracts 20 population to the stronghold (works only once)"
+	rollover="Free beer"
+	>
+	<src obj="GTavern"/>
+</cmd>
+
+<cmd name="investR Imp2 Cost" priority="14"
+	key="i"
+	execdelay="130000"
+	costgold="4000"
+	button="actions/invest.bmp"
+	queueicon="gameres/icons/upgrades/Invest.bmp"
+	groupverifier="data/subai/verify_isresearched.vs"
+	rollover="Investment"
+	description="Returns gold to the stronghold"
+	method="invest"
+	traincommand="yes"
+	param="ReqModeImp2, , , Free Wine">
+	<src obj="RTavern"/>
+	<src obj="RTavern2"/>
+	<src obj="MTavern"/>
+	<src obj="MTavern2"/>
+</cmd>
+
+<cmd name="Call to arms Imp2 Cost" priority="10"
+	queueicon="gameres/icons/upgrades/call to arms.bmp"
+	button="actions/call to arms.bmp"
+	key="a"
+	researchcommand="yes"
+	groupverifier="data/subai/verify_isresearched.vs"
+	method="calltoarms"
+	costgold="800"
+	costfood="0"
+	costpop="50"
+	execdelay="25000"
+	param="ReqModeImp2, , , Free Drinks"
+	description="Drafts 50 peasants, making them Militiamen"
+	rollover="Call to arms">
+	<src obj="ITavern"/>
 </cmd>
 </commands>

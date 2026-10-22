@@ -3,7 +3,7 @@
 	<properties race="Germany"/>
 	<properties maxhealth="200"/>
 	<properties damage="12" armor_slash="0" armor_pierce="0"/>
-	<properties speed="80"/>
+	<properties speed="60"/>
 	<properties unit_specials="Attack skill, Active"/>
 
 	<properties projectile_class="Arrow"/>
@@ -11,7 +11,7 @@
 	<properties icon="gameres/icons/TArcher.bmp"/>
 	<properties display_name="Archer" display_name_plural="Archers"/>
 	<properties help="contents/units/TArcher"/>
-	<properties edittree_pos="Units/Germany/Archer"/>
-	<sounds command="data/sound entities/VoiceTArcher.xml"/>
+	<properties edittree_pos="Units/Germania/Arciera"/>
+	<sounds die="data/sound entities/UNITDEATHFEMALE.xml" command="data/sound entities/VoiceTArcher.xml"/>
 
 </class>

@@ -2,7 +2,7 @@
 
 	<properties display_name="Amalrich" display_name_plural="Heroes"/>
 	<properties icon="gameres/icons/THero3.bmp"/>
-	<properties edittree_pos="Units/Germany/Hero 3"/>
+	<properties edittree_pos="Units/Germania/Eroe - Amalrich"/>
 	<properties HeroSkills="Battle cry, Defensive cry, Team attack, Quick March, Euphoria"/>
 
 </class>

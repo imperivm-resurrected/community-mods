@@ -33,7 +33,9 @@
 	<method sig="creategoldmulebig"   vs="data/subai/create_gold_mule_big.vs"/>
 	<method sig="trainpeasant"        vs="data/subai/village_trainpeasant.vs"/>
 	<method sig="repopulate"          vs="data/subai/village_repopulate.vs"/>
+	<method sig="trainfisherman"      vs="data/subai/village_trainfisherman.vs"/>
 
+	<behavior script="data/subai/capture_handling_village.vs"/>
 	<behavior script="data/subai/settlement_behavior_ambient.vs"/>
 	<behavior script="data/subai/village_behavior_givefood.vs"/>
 	<behavior script="data/subai/village_behavior_supply.vs"/>
@@ -53,7 +55,11 @@
 	<defaultcmd target="TTent">
 		<cmd name="tribute_default"/>
 	</defaultcmd>
-
+	
+    <defaultcmd target="CTent">
+		<cmd name="tribute_default"/>
+	</defaultcmd>
+	
 	<defaultcmd target="BaseShipyard">
 		<cmd name="tribute_default"/>
 	</defaultcmd>

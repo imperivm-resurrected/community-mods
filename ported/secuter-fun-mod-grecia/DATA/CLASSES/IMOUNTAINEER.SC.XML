@@ -2,17 +2,17 @@
 
 	<properties race="Iberia"/>
 	<properties maxhealth="400"/>
-	<properties damage="50" armor_slash="14" armor_pierce="14"/>
-	<properties speed="80"/>
+	<properties damage="70" armor_slash="14" armor_pierce="14"/>
+	<properties speed="90"/>
 	<properties unit_specials="Sneak, Offensive tactics"/>
 	<properties feeds="0"/>
 
 	<properties icon="gameres/icons/IMountaineer.bmp"/>
 	<properties display_name="Mountaineer" display_name_plural="Mountaineers"/>
 	<properties help="contents/units/IMountaineer"/>
-	<properties edittree_pos="Units/Iberia/Mountaineer"/>
+	<properties edittree_pos="Units/Iberia/Guerrigliero"/>
 	<sounds command="data/sound entities/VoiceIMountaineer.xml" attack="UnitHammerFight"/>
 
 	<method sig="ondie" vs="data/subai/imountaineer_ondie.vs"/>
-    <behavior script="data/subai/sneak_behavior.vs"/>
+
 </class>

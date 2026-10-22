@@ -1,8 +1,8 @@
 <class id="GSwordsman" cpp_class="CVXUnit" parent="Melee" entity="Units/GSwordsman/GSwordsman.ent.xml">
 
 	<properties race="Gaul"/>
-	<properties maxhealth="200"/>
-	<properties damage="13" armor_slash="6" armor_pierce="6"/>
+	<properties maxhealth="220"/>
+	<properties damage="13" armor_slash="2" armor_pierce="2"/>
 	<properties speed="80"/>
 	<properties unit_specials="Penetration"/>
 
@@ -12,7 +12,7 @@
 	<properties icon="gameres/icons/GSwordsman.bmp"/>
 	<properties display_name="Swordsman" display_name_plural="Swordsmen"/>
 	<properties help="contents/units/GSwordsman"/>
-	<properties edittree_pos="Units/Gaul/Swordsman"/>
+	<properties edittree_pos="Units/Gallia/Guerriero"/>
 	<sounds command="data/sound entities/VoiceGSwordsman.xml"/>
 
 </class>

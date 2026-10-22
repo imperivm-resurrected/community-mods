@@ -86,8 +86,25 @@
 		default-text="Right-click to heal this ally"/>
 
 	<src obj="RPriest" sticky="yes"/>
-	<src obj="HPriest" sticky="yes"/>
 	<src obj="GDruid" sticky="yes"/>
+</cmd>
+
+<cmd name="revitalize" priority="11"
+	button="actions/revitalize.bmp"
+	key="r"
+	rollover="Revitalize"
+	description="Restore 4 stamina points to the target"
+	cursor="do_something"
+	coststamina = "1"
+	>
+	<cmdtext target="Unit"
+		text="Click to revitalize this ally"
+		default-text="Right-click to revitalize this ally"/>
+	<cmdtext target=""
+		text=""
+		default-text=""/>
+
+	<src obj="HPriest" sticky="yes"/>
 </cmd>
 
 <cmd name="cloud_of_plague" priority="14"
@@ -118,9 +135,41 @@
 	key="c"
 	groupverifier="data/subai/verify_isresearched.vs"
 	rollover="Create Cover of Mercy"
-	description="Creates a cloud that reduces all combat damage allies receive by half (sacrificing the enchantress' life)"
+	description="Creates a cloud that reduces all combat damage allies receive by half (sacrificing the units' life)"
 	param="Cover of Mercy, Requires %s1 from Sanctuary">
 	<src obj="IEnchantress" sticky="yes"/>
+</cmd>
+
+<cmd name="hcover_of_mercy" priority="14"
+	method="coverofmercy"
+	button="actions/CoverOfMercyX.bmp"
+	key="x"
+	groupverifier="data/subai/verify_isresearched.vs"
+	rollover="Create Cover of Mercy"
+	description="Creates a cloud that reduces all combat damage allies receive by half (sacrificing the units' life)"
+	param="Cover of Mercy, Requires %s1 from Acropolis">
+	<src obj="HPriest" sticky="yes"/>
+</cmd>
+
+<cmd name="corruption" priority="15"
+	method="corruption"
+	button="actions/corruption.bmp"
+	key="c"
+	groupverifier="data/subai/verify_isresearched.vs"
+	rollover="Corrupt unit"
+	description="Start converting the unit to your side"
+	cursor="do_something"
+	coststamina = "1"
+	param="Corruption, Requires %s1 from Temple"
+        >
+	<cmdtext target="Unit"
+		text="Click to corrupt this unit"
+		default-text="Right-click to corrupt this unit"/>
+	<cmdtext target=""
+		text=""
+		default-text=""/>
+
+	<src obj="RPriest" sticky="yes"/>
 </cmd>
 
 <cmd name="ghoul_summoning" priority="14"
@@ -176,6 +225,19 @@
 	param="Wolf Summoning, Requires %s1 from Temple of Thor"
 	>
 	<src obj="BDruid"/>
+</cmd>
+
+<!-- Roma (solo modalita' Liga): il Sacerdote si sacrifica ed evoca un Lupo
+     da guerra (RWarWolf, modello Perro della AsurMod). Ricerca al Tempio. -->
+<cmd name="rwolf_summoning" priority="15"
+	button="actions/summon wolf.bmp"
+	key="w"
+	groupverifier="data/subai/verify_isresearched.vs"
+	rollover="Summon War Wolf"
+	description="Summons a war wolf that could be controlled (sacrificing the priest's life)"
+	param="Wolf Summoning, Requires %s1 from Temple"
+	>
+	<src obj="RPriest"/>
 </cmd>
 
 <cmd name="twolf_summoning" priority="15"
@@ -235,13 +297,40 @@
 	<src obj="TEnchantress"/>
 </cmd>
 
+<!-- Sciamano Numida: la Guarigione tramite Sacrificio NON e' disponibile da
+     subito, va sbloccata con la ricerca dedicata "Rites of Sacrifice" del
+     Tempio (stesso schema del Mass Heal delle altre civilta': la ricerca
+     scrive l'Env, verify_isresearched.vs lo controlla). Prima dello sblocco
+     lo sciamano ha solo l'abilita' base, gli Spiriti del Deserto. -->
+<cmd name="c_mass_heal" priority="16"
+	button="actions/Mass Healing.bmp"
+	key="a"
+	groupverifier="data/subai/verify_isresearched.vs"
+	rollover="Sacrificial Healing"
+	description="Heals nearby allies (sacrificing the shaman's life)"
+	param="Rites of Sacrifice, Requires %s1 from Temple"
+	coststamina = "0"
+	>
+	<src obj="CShamanNumidian"/>
+</cmd>
+
+<cmd name="desert_spirits" priority="17"
+	button="actions/restoration.bmp"
+	key="d"
+	rollover="Desert Spirits"
+	description="Nearby allies gain armor and regeneration for 20 seconds (sacrificing the shaman's life)"
+	coststamina = "0"
+	>
+	<src obj="CShamanNumidian"/>
+</cmd>
+
 <cmd name="hide" priority="13"
 	button="actions/invisibility.bmp"
 	key="i"
 	rollover="Invisibility"
 	description="Hides the target from the eyes of all enemies"
 	cursor="do_something"
-	coststamina = "1"
+	coststamina = "4"
 	>
 	<cmdtext target="Unit"
 		text="Hides the target from the eyes of all enemies"
@@ -251,6 +340,50 @@
 		default-text=""/>
 
 	<src obj="BDruid" sticky="yes"/>
+</cmd>
+
+<!-- Invisibilita' del druido gallico (Imperivm 2): stessa meccanica di "hide"
+     (method="hide"), ma sbloccata dalla ricerca "Invisibility" della Casa dei
+     Druidi (verify_isresearched). Comando separato per non toccare "hide" della
+     Britannia. Visibilita' fuori modalita' gestita da GDRUID_IMPERIVM2_GATE.VS.
+     Richiede il unit_special Invisibility su GDruid (aggiunto in GDRUID.SC.XML). -->
+<cmd name="ghide" priority="13"
+	method="hide"
+	button="actions/invisibility.bmp"
+	key="i"
+	groupverifier="data/subai/verify_isresearched.vs"
+	rollover="Invisibility"
+	description="Hides the target from the eyes of all enemies"
+	cursor="do_something"
+	coststamina = "4"
+	param="Invisibility, Requires %s1 from Druid House"
+	>
+	<cmdtext target="Unit"
+		text="Hides the target from the eyes of all enemies"
+		default-text=""/>
+	<cmdtext target=""
+		text="Click to hide all allies around this position"
+		default-text=""/>
+
+	<src obj="GDruid" sticky="yes"/>
+</cmd>
+
+<!-- Guarigione di massa del druido gallico (Imperivm 2): come Iberia/Britannia, il
+     druido si sacrifica (method "mass_heal" -> druid_massheal.vs lo uccide) e
+     druid_ondie.vs cura gli alleati vicini (ramo abilitato per la Gallia). Sbloccata
+     dalla ricerca "Mass Heal" della Casa dei Druidi (verify_isresearched).
+     Visibilita' fuori modalita' gestita da GDRUID_IMPERIVM2_GATE.VS. -->
+<cmd name="g_mass_heal" priority="16"
+	method="mass_heal"
+	button="actions/Mass Healing.bmp"
+	key="a"
+	groupverifier="data/subai/verify_isresearched.vs"
+	rollover="Mass Heal"
+	description="Heals nearby allies (sacrificing the druid's life)"
+	param="Mass Heal, Requires %s1 from Druid House"
+	coststamina = "0"
+	>
+	<src obj="GDruid"/>
 </cmd>
 
 <cmd name="wrath_of_jupiter" priority="16"
@@ -283,6 +416,18 @@
 	coststamina = "1"
 	>
 	<src obj="EPriest" sticky="yes"/>
+</cmd>
+
+<!-- L'incantatrice ha gia' "curse" sul tasto c, quindi cripple le serve su un tasto libero -->
+<cmd name="tcripple" priority="11"
+	method="cripple"
+	button="actions/cripple.bmp"
+	key="r"
+	rollover="Cripple"
+	description="Drains all of the target's stamina"
+	coststamina = "1"
+	>
+	<src obj="TEnchantress" sticky="yes"/>
 </cmd>
 
 <cmd name="turn2zombie" priority="16"

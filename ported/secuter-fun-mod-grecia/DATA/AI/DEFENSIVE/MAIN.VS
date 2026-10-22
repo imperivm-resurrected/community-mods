@@ -1,12 +1,11 @@
-// void
+//void
 
-int i;
+int aiPlayer, gaikas, i;
 GAIKA g;
 
-//AIRun('AIStupidBuilder.vs');
-AIRun('Prioritize.vs' );
-AIRun('Recruiter.vs' );
-AIRun('GAIKAMonitor.vs' );
+AIRun('Prioritize.vs');
+AIRun('Recruiter.vs');
+AIRun('GAIKAMonitor.vs');
 AIRun('SquadMonitor.vs');
 AIRun('EconomyMonitor.vs');
 AIRun('TacticMonitor.vs');
@@ -16,21 +15,32 @@ AIRun('DruidSkills.vs');
 if (rand(100)<25)
 	SetAIVar(AIGetPlayer, AIV_MaxRPretorian, -1);
 
-Sleep(600000); Sleep(600000); // 20 min
 while (1) {
-	// Decide where to attack
-	for (i = 1; i < GAIKACount(); i += 1)	{
-		g = GetGAIKA(i);
-		if (g.ControlledNeighbors(AIGetPlayer)>0)
-			if (g.settlement.IsEnemy(AIGetPlayer))
-				if (rand(2)==1)
-					g.SetControlFlag(AIGetPlayer, true);
-	}
-	Sleep(600000); // 10 min
-	if (GetTime()>=3000000 || AllyMilEval(AIGetPlayer)>2*EnemyMilEval(AIGetPlayer)) // 50 min - time to become aggressive
-		for (i = 1; i < GAIKACount(); i += 1)	{
+	for (i = 1; i < gaikas; i += 1)//decide where to attack
+		if (rand(2) == 0) {
 			g = GetGAIKA(i);
-			if (g.settlement.IsStronghold)
-				g.SetControlFlag(AIGetPlayer, true);
+			if (g.ControlledNeighbors(aiPlayer) > 0)
+				if (g.settlement.IsValid)
+					if (g.settlement.IsEnemy(aiPlayer))
+						g.SetControlFlag(aiPlayer, true);
 		}
+
+	Sleep(300000);
+
+	if (GetTime() >= 2100000)//35 minutes - time to become aggressive
+		for (i = 1; i < gaikas; i += 1) {
+			g = GetGAIKA(i);
+			if (g.settlement.IsValid)
+				if (g.settlement.IsStronghold)
+					g.SetControlFlag(aiPlayer, true);
+		}
+	else if (AllyMilEval(aiPlayer) > 2 * EnemyMilEval(aiPlayer))//great advantage - time to become aggressive
+		for (i = 1; i < gaikas; i += 1) {
+			g = GetGAIKA(i);
+			if (g.settlement.IsValid)
+				if (g.settlement.IsStronghold)
+					g.SetControlFlag(aiPlayer, true);
+		}
+
+	Sleep(1000);
 }

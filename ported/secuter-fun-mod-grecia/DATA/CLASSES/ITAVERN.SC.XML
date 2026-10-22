@@ -13,4 +13,3 @@ entity="Buildings/ITavern/ITavern.ent.xml"
 	<method sig="calltoarms" vs="data/subai/itavern_calltoarms.vs"/>
 	
 </class>
-

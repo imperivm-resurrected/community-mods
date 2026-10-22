@@ -9,11 +9,12 @@
 	queueicon="gameres/icons/upgrades/repair.bmp"
 	groupverifier="data/subai/verify_cmdcost_building.vs"
 	rollover="Repair"
-	costgold="100"
+	costgold="500"
 	costfood="0"
 	execdelay = "60000">
 	<src obj="CTemple"/>
 </cmd>
+<!-- Sciamano base (Curse + Zombify): resta alla Cartagine MAURITANA. -->
 <cmd name="trainCShaman" priority="1"
 	button="actions/hire CShaman.bmp"
 	queueicon="gameres/icons/CShaman.bmp"
@@ -24,7 +25,7 @@
 	help="/contents/units/CShaman"
 	costgold = "200"
 	costfood = "1"
-	costpop = "0"
+	costpop = "1"
 	execdelay = "20000"
 	rollover="Call Shaman"
 	method="train"
@@ -32,6 +33,27 @@
 	sclass="CShaman">
 	<src obj="CTemple"/>
 </cmd>
+<!-- Sciamano Numida (Guarigione tramite Sacrificio + Spiriti del Deserto):
+     solo Cartagine NUMIDIA. -->
+<cmd name="trainCShamanNumidian" priority="1"
+	button="actions/hire CShaman.bmp"
+	queueicon="gameres/icons/CShaman.bmp"
+	groupverifier="data/subai/verify_cmdcost_building.vs"
+	traincommand="yes"
+	transpicon="1"
+	key="s"
+	help="/contents/units/CShaman"
+	costgold = "200"
+	costfood = "0"
+	costpop = "1"
+	execdelay = "20000"
+	rollover="Call Numidian Shaman"
+	method="train"
+	param="CShamanNumidian"
+	sclass="CShamanNumidian">
+	<src obj="CTemple"/>
+</cmd>
+
 <cmd name="Dark Rituals" priority="2"
 	button="research/dark rituals.bmp"
 	key="r"
@@ -42,8 +64,8 @@
 	costfood = "0"
 	costpop = "0"
 	execdelay = "40000"
-	rollover="Dark Rituals"
-	description="Allows a shaman to feed 5 nearby allies"
+	rollover="Raccolta"
+	description="Allows a shaman to feed 2 nearby allies. A shaman joins the stronghold immediately"
 	method="research"
 	param="NameSet, Dark Rituals, default, NamePlr, Foraging, default">
 	<src obj="CTemple"/>
@@ -54,13 +76,33 @@
 	key="z"
 	researchcommand="yes"
 	groupverifier="data/subai/verify_research.vs"
-	costgold = "2000"
+	costgold = "1000"
 	costfood = "0"
 	execdelay = "20000"
 	rollover="Zombify"
 	description="Allows shamans to transform to ghouls when they die in battle or sacrifice themselves"
 	method="research"
-	param="ReqSet, Dark Rituals, default, NamePlr, Zombify, default">
+	param="NReqModeImp2, , , ReqSet, Dark Rituals, default, NamePlr, Zombify, default">
+	<src obj="CTemple"/>
+</cmd>
+
+<!-- Cartagine NUMIDIA: sblocca la Guarigione tramite Sacrificio dello
+     Sciamano Numida (il comando c_mass_heal, gia' presente sull'unita' ma
+     bloccato da verify_isresearched.vs finche' questa ricerca manca).
+     Stesso schema del "Mass Heal" delle altre civilta'. -->
+<cmd name="Rites of Sacrifice" priority="4"
+	button="research/Mass Healing.bmp"
+	queueicon="gameres/icons/upgrades/Mass Healing.bmp"
+	key="g"
+	researchcommand="yes"
+	groupverifier="data/subai/verify_research.vs"
+	costgold = "1200"
+	costfood = "0"
+	execdelay = "25000"
+	rollover="Rites of Sacrifice"
+	description="Allows Numidian Shamans to sacrifice themselves to heal nearby allies"
+	method="research"
+	param="ReqSet, Dark Rituals, default, NamePlr, Rites of Sacrifice, default">
 	<src obj="CTemple"/>
 </cmd>
 <cmd name="Disidratazione" priority="5"
@@ -114,33 +156,22 @@
 	key="l"
 	researchcommand="yes"
 	groupverifier="data/subai/verify_research.vs"
-	costgold = "2000"
+	costgold = "3000"
 	costfood = "0"
 	execdelay = "30000"
 	rollover="Sacred Legion"
-	description="Allows Nobles to be equipped in the Temple"
+	description="Allows Nobles to be equipped in the Barracks"
 	method="research"
-	param="ReqSet, Dark Rituals, default, NameSet,Sacred Legion,default,NameSet, CNoble, ">
+	param="NReqModeImp2, , , ReqSet, Dark Rituals, default, NameSet,Sacred Legion,default,NameSet, CNoble, ">
 	<src obj="CTemple"/>
 </cmd>
-<cmd name="trainCNoble" priority="7"
-	button="actions/train CNoble.bmp"
-	queueicon="gameres/icons/CNoble.bmp"
-	groupverifier="data/subai/barrack_train_verify.vs"
-	transpicon="1"
-	traincommand="yes"
-	key="n"
-	help="/contents/units/CNoble"
+<!-- L'Editto dei Mercenari e' stato spostato nel Mercato (CTavern), dove si
+     sblocca con il Libero Commercio: vedi COMMANDS/TAVERN.XML. -->
 	costgold = "400"
-	costfood = "0"
-	costpop = "1"
 	execdelay = "10000"
-	rollover="Equip Noble"
-	method="train"
-	param="CNoble"
-	sclass="CNoble">
-	<src obj="CTemple"/>
-</cmd>
+<!-- trainCNoble spostato alla Caserma (CBARRACKS.XML): il Nobile e' l'unica
+     unita' di caserma che costa popolazione e non riceve sconti Fucina. -->
+
 <cmd name="Ferocity" priority="10"
 	queueicon="gameres/icons/upgrades/ferocity.bmp"
 	key="f"
@@ -154,6 +185,39 @@
 	description="Allows a warrior to restores 3 stamina each time he kills an enemy"
 	method="research"
 	param="ReqSet, Dark Rituals, default, NamePlr, Ferocity, default">
+	<src obj="CTemple"/>
+</cmd>
+
+<!-- ========== IMPERIVM 2 COST VARIANTS (mode-only) ========== -->
+<cmd name="Zombify Imp2 Cost" priority="5"
+	queueicon="gameres/icons/upgrades/Zombify.bmp"
+	button="research/zombify.bmp"
+	key="z"
+	researchcommand="yes"
+	groupverifier="data/subai/verify_research.vs"
+	costgold = "2000"
+	costfood = "0"
+	execdelay = "20000"
+	rollover="Zombify"
+	description="Allows shamans to transform to ghouls when they die in battle or sacrifice themselves"
+	method="research"
+	param="ReqModeImp2, , , ReqSet, Dark Rituals, default, NamePlr, Zombify, default">
+	<src obj="CTemple"/>
+</cmd>
+
+<cmd name="Sacred Legion Imp2 Cost" priority="6"
+	button="Upgrades/Sacred Legion.bmp"
+	queueicon="gameres/icons/upgrades/Sacred Legion.bmp"
+	key="l"
+	researchcommand="yes"
+	groupverifier="data/subai/verify_research.vs"
+	costgold = "4000"
+	costfood = "0"
+	execdelay = "30000"
+	rollover="Sacred Legion"
+	description="Allows Nobles to be equipped in the Barracks"
+	method="research"
+	param="ReqModeImp2, , , ReqSet, Dark Rituals, default, NameSet,Sacred Legion,default,NameSet, CNoble, ">
 	<src obj="CTemple"/>
 </cmd>
 </commands>

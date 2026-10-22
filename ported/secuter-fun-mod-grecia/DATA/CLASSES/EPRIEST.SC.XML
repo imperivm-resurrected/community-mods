@@ -9,7 +9,7 @@
 	<properties icon="gameres/icons/EPriest.bmp"/>
 	<properties display_name="Priest" display_name_plural="Priests"/>
 	<properties help="contents/units/EPriest"/>
-	<properties edittree_pos="Units/Egypt/Priest"/>
+	<properties edittree_pos="Units/Egitto/Sacerdote"/>
 
 	<method sig="stand_position" vs="data/subai/epriest_stand_position.vs"/>
 	<method sig="ondie"          vs="data/subai/epriest_ondie.vs"/>

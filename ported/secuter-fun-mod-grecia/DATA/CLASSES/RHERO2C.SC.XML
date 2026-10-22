@@ -1,4 +1,4 @@
-<class id="RHero2c" cpp_class="CVXHero" parent="RHero2" entity="Units/RHero2/RHero2.ent.xml">
+<class id="RHero2c" cpp_class="CVXHero" parent="RHero2" entity="Units/CAESAR/CAESAR.ENT.XML">
 
 	<properties display_name="Bellator" display_name_plural="Heroes"/>
 	<properties icon="gameres/icons/RHero2.bmp"/>

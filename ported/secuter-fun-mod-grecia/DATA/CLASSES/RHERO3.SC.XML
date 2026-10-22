@@ -2,7 +2,7 @@
 
 	<properties display_name="Dioges" display_name_plural="Heroes"/>
 	<properties icon="gameres/icons/RHero3.bmp"/>
-	<properties edittree_pos="Units/Roman/Hero (Republican) 3"/>
+	<properties edittree_pos="Units/Roma/Repubblicana/Eroe - Glario"/>
 	<properties HeroSkills="Administration, Team attack, Leadership, Quick March, Epic endurance"/>
 
 </class>

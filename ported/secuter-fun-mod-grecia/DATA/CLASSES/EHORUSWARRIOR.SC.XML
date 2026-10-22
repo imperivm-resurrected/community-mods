@@ -9,7 +9,7 @@
 	<properties icon="gameres/icons/EHorusWarrior.bmp"/>
 	<properties display_name="Horus Warrior" display_name_plural="Horus Warriors"/>
 	<properties help="contents/units/EHorusWarrior"/>
-	<properties edittree_pos="Units/Egypt/Horus Warrior"/>
+	<properties edittree_pos="Units/Egitto/Guerriero di Horus"/>
 	<sounds command="data/sound entities/VoiceEHorusWarrior.xml"/>
 
 </class>

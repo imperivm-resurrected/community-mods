@@ -66,10 +66,19 @@ if (nRace == Gaul)
 				}
 			}	
 		}	
-	}		
+	}
+	else if (EnvReadInt(AIPlayer, "ModeOldSchoolCostsV2") == 1)
+		strTech = "Fights Imp2";
+	if (EnvReadInt(AIPlayer, "ModeOldSchoolCostsV2") == 1)
+	{
+		if (strTech == "Gaul Training 1") strTech = "Gaul Training 1 Imp2 Cost";
+		else if (strTech == "Gaul Training 2") strTech = "Gaul Training 2 Imp2 Cost";
+		else if (strTech == "Gaul Training 3") strTech = "Gaul Training 3 Imp2 Cost";
+		else if (strTech == "Warrior Tales" || strTech == "Druidic herbs") strTech = "";
+	}
 }
 
-if (nRace == RepublicanRome)
+if( (nRace == RepublicanRome) && (EnvReadString(set, "ChooseRepublicanRome") == "researched") )
 {
 	strTech = "RGladiator Shows";
 	if (IsResearched(set, strTech))
@@ -120,14 +129,17 @@ if (nRace == RepublicanRome)
 	}
 }
 
-if (nRace == ImperialRome)
+if( (nRace == RepublicanRome) && (EnvReadString(set, "ChooseImperialRome") == "researched") )
 {
-	strTech = "MGladiator Shows";
-	if (IsResearched(set, strTech))	{
+	strTech = "RGladiator Shows2";
+	if (IsResearched(set, strTech))	
+	{
 		strTech = "Standartization I";
-		if (IsResearched(set, strTech))	{
+		if (IsResearched(set, strTech))	
+		{
 			strTech = "Standartization II";
-			if (IsResearched(set, strTech))	{
+			if (IsResearched(set, strTech))	
+			{
 				strTech = "Flexibility";
 				if (IsResearched(set, strTech))
 				{
@@ -144,8 +156,31 @@ if (nRace == ImperialRome)
 	}
 }
 
+if( (nRace == RepublicanRome) && (EnvReadString(set, "ChoosePunicRome") == "researched") )
+{
+	strTech = "RGladiator Shows2";
+	if (IsResearched(set, strTech))
+	{
+			strTech = "Rome Training 1";
+		if (IsResearched(set, strTech))	
+		{
+			strTech = "Rome Training 2";
+			if (IsResearched(set, strTech))	
+			{
+				strTech = "Veteran's guild";
+				if (IsResearched(set, strTech))
+					
+			    {
+				strTech = "Call Socii";
+				if (IsResearched(set, strTech))
+					strTech = "";
+			    }
+			}
+		}
+	}
+}
 // paralel research
-if (nRace == ImperialRome || nRace == RepublicanRome)
+if (nRace == RepublicanRome)
 if (strTech == "" || set.gold > AIVar(AIPlayer, AIV_SquanderGoldAmount))
 if (!IsResearched(set, "Import horses"))
 {
@@ -153,7 +188,8 @@ if (!IsResearched(set, "Import horses"))
 	if (IsResearched(set, strTech2))
 		strTech2 = "Import horses";
 	if (strTech == "") strTech = strTech2;
-	else {
+	else 
+	{
 		EnvWriteString(set, "strTech", strTech2);
 		set.AIRun("ESH_NeedTech.vs");
 	}
@@ -190,9 +226,11 @@ if (nRace == Carthage)
 if (nRace == Iberia)
 {
 	strTech = "Warriors' Wisdom";
-	if (IsResearched(AIPlayer, strTech)) {
+	if (IsResearched(AIPlayer, strTech)) 
+	{
 		strTech = "Ancestral Knowledge";
-		if (IsResearched(set, strTech)) {
+		if (IsResearched(set, strTech)) 
+		{
 			strTech = "";
 			if (set.gold >= AIVar(AIPlayer, AIV_ExcessGold))
 			if (!IsResearched(set, "Nobility"))
@@ -218,7 +256,8 @@ if (nRace == Iberia)
 		strTech2 = "Tournaments";
 		if (!IsResearched(set, strTech2))
 			strTech = strTech2;
-		else {
+		else 
+		{
 			strTech2 = "Heroes' Wisdom";
 			if (!IsResearched(AIPlayer, strTech2))
 				strTech = strTech2;
@@ -231,7 +270,7 @@ if (nRace == Britain)
 	strTech = "Britain Fights";
 	if (IsResearched(set, strTech))
 	{
-		strTech = "BNobility";
+		strTech = "Tribal Unification";
 		if (IsResearched(AIPlayer, strTech))
 		{
 			strTech = "Noble Offence";
@@ -243,7 +282,7 @@ if (nRace == Britain)
 			}
 		}		
 	}
-	if (strTech=="") // Gamblings from Tavern
+	if (strTech == "") // Gamblings from Tavern
 	{
 		strTech = "Gambling";
 		if (IsResearched(set, strTech))
@@ -260,7 +299,6 @@ if (nRace == Britain)
 				}
 			}
 		}
-		
 	}
 	if (strTech=="") // Recluta generale
 	{
@@ -294,6 +332,58 @@ if (nRace == Germany)
 		}		
 	}
 }
+
+if(nRace == Greece)
+{
+	strTech = "Olympic Games";
+	if(IsResearched(set, strTech) == true)
+	{
+		/* SCELTA DEL TIPO DI GOVERNO: */
+		if(EnvReadInt(set, "AI_ChooseGreekGovernment") == 0)
+		{
+			if(rand(2) == 0) 
+			{
+				strTech = "Democracy";
+			}	//Fine if.	
+			else
+			{
+				strTech = "Oligarchy";
+			}	//Fine else.	
+			
+			EnvWriteInt(set, "AI_ChooseGreekGovernment", 1);
+		}	//Fine if.
+		/* FINE SCELTA DEL TIPO DI GOVERNO. */
+		else
+		{
+			if(rand(2) == 0)
+			{
+				if(nMaxLevelTraining < 10)
+				{
+					strTech = "Spartan Training";
+				}	//Fine else if.
+				else
+				{
+					strTech = "Charm of Athena";
+					if(IsResearched(AIPlayer, strTech) == true)
+					{
+						strTech = "Charm of Aegle";
+						if (IsResearched(AIPlayer, strTech) == true)
+						{
+							strTech = "";
+						}	//Fine if.
+					}	//Fine if.	
+				}	//Fine else.
+			}	//Fine if.
+			else
+			{
+				if(set.gold > 2500 && EnvReadInt(AIPlayer, "MaxMyrmidons") < GetConst("MaxMyrmidonsValue"))
+				{
+					strTech = "Forge Elite Equipment";
+				}	//Fine if.
+			}	//Fine else.
+		}	//Fine else.
+	}	//Fine if.
+}	//Fine if.
 
 if (nRace == Egypt)
 {
@@ -366,7 +456,7 @@ if (strTech == "")
 else
 	EnvWriteInt(set, "ResearchTrainingComplete", 0);
 
-if (nRace == ImperialRome)
+if( (nRace == RepublicanRome) && (EnvReadString(set, "ChooseImperialRome") == "researched" || EnvReadString(set, "ChoosePunicRome") == "researched") )
 if (strTech == "") 
 if (!IsResearched(set, "Military Academy"))
 if ((rand(10) == 0 && nMaxLevelTraining >= 8) || set.gold >= AIVar(AIPlayer, AIV_ExcessGold))
@@ -460,7 +550,8 @@ if (strTech == "")
 		if (u.IsPeaceful) continue;
 		if (u.inherentlevel >= 10) continue;
 		nCount += 1;
-		if (nCount > nMinToRes) {
+		if (nCount > nMinToRes) 
+		{
 			strTech = "townhall_military_training";
 			break;
 		}

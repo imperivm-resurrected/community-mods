@@ -14,9 +14,9 @@
 	      sound="data/sound entities/ItemUse.xml"
 	      level="0"
 	      name="Herb amulet of luck"
-	      description="Adds 20 to armor"
+	      description="Adds 40 to max health"
 	      important="no">
-	  <bonus health="0" damage="0" armor_slash="20" armor_pierce="20" level="0" experience="0"/>
+	  <bonus health="40" damage="0" armor_slash="0" armor_pierce="0" level="0" experience="0"/>
 	</item>
 
 	<item id="Belt of might"
@@ -41,12 +41,13 @@
 	  <bonus health="0" damage="0" armor_slash="0" armor_pierce="0" level="0" experience="0"/>
 	</item>
 
-	<item id="Snake skin"
+<item id="Snake skin"
 	      image="gameres/icons/items/Snake skin.bmp"
 	      sound="data/sound entities/ItemUse.xml"
 	      level="0"
 	      name="Snake skin"
 	      description="Adds 10 to damage"
+	      equip_script="file://data/ItemScripts/belt of snakes condition.vs"
 	      important="yes">
 	  <bonus health="0" damage="10" armor_slash="0" armor_pierce="0" level="0" experience="0"/>
 	</item>
@@ -56,10 +57,13 @@
 	      sound="data/sound entities/ItemUse.xml"
 	      level="0"
 	      name="Belt of snakes"
-	      description="Adds 30 to damage"
+	      description="Adds 30 to damage or 60 if the bearer's health is less than 25%"
+	      equip_script="file://data/ItemScripts/belt of snakes.vs"
+	      remove_script="file://data/ItemScripts/belt of snakes remove.vs"
 	      important="yes">
 	  <bonus health="0" damage="30" armor_slash="0" armor_pierce="0" level="0" experience="0"/>
 	</item>
+
 
 	<item id="Eagle feather"
 	      image="gameres/icons/items/Eagle feather.bmp"
@@ -67,6 +71,7 @@
 	      level="0"
 	      name="Eagle feather"
 	      description="Adds 200 max health"
+	      equip_script="file://data/ItemScripts/feather amulet condition.vs"
 	      important="yes">
 	  <bonus health="200" damage="0" armor_slash="0" armor_pierce="0" level="0" experience="0"/>
 	</item>
@@ -76,9 +81,11 @@
 	      sound="data/sound entities/ItemUse.xml"
 	      level="0"
 	      name="Feather amulet"
-	      description="Adds 400 max health"
+	      description="Adds 600 max health and 10 to armor if the bearer's health is less than 25%"
+	      equip_script="file://data/ItemScripts/feather amulet.vs"
+	      remove_script="file://data/ItemScripts/feather amulet remove.vs"
 	      important="yes">
-	  <bonus health="400" damage="0" armor_slash="0" armor_pierce="0" level="0" experience="0"/>
+	  <bonus health="600" damage="0" armor_slash="0" armor_pierce="0" level="0" experience="0"/>
 	</item>
 
 	<item id="King's Belt"
@@ -153,7 +160,7 @@
 	      sound="data/sound entities/ItemUse.xml"
 	      level="0"
 	      name="Horn of victory"
-	      description="Damages 12 nearby enemies inflicting 50 damage"
+	      description="Damages 12 nearby enemies inflicting 60 damage"
 	      usecount="10"
 	      use_script="file://data/ItemScripts/horn of victory.vs"
 	      important="yes">
@@ -178,7 +185,7 @@
 	      level="0"
 	      name="Finger of death"
 	      description="Kills 3 nearby enemies. Does not affect heroes"
-	      usecount="5"
+	      usecount="6"
 	      use_script="file://data/ItemScripts/finger of death.vs"
 	      important="yes">
 	  <bonus health="0" damage="0" armor_slash="0" armor_pierce="0" level="0" experience="0"/>
@@ -201,11 +208,11 @@
 	      sound="data/sound entities/ItemUse.xml"
 	      level="0"
 	      name="Concentration stone"
-	      description="Adds 50 to damage. When used heals the bearer taking the health of an ally"
+	      description="Adds 60 to damage. When used heals the bearer taking the health of an ally"
 	      usecount="0"
 	      object_script="file://data/ItemScripts/concentration stone.vs"
 	      important="yes">
-	  <bonus health="0" damage="50" armor_slash="0" armor_pierce="0" level="0" experience="0"/>
+	  <bonus health="0" damage="60" armor_slash="0" armor_pierce="0" level="0" experience="0"/>
 	</item>
 
 	<item id="Bloodstone"
@@ -345,6 +352,73 @@
 	      description="Increases the bearer's health by 20%">
 	  <bonus health="0" health_percent="20" damage="0" armor_slash="0" armor_pierce="0" level="0" experience="0"/>
 	</item>
+	<item id="Blood of the Arena"
+	      image="gameres/icons/items/Blood of arena.bmp"
+	      sound="data/sound entities/ItemUse.xml"
+	      important="no"
+	      level="0"
+	      usecount="0"
+	      name="Blood of the Arena"
+	      description="Increases the bearer's health by 50 points">
+	  <bonus health="50" damage="0" armor_slash="0" armor_pierce="0" level="0" experience="0"/>
+	</item>
+	<item id="Testudo"
+	      image="gameres/icons/items/testuggine.bmp"
+	      sound="data/sound entities/ItemUse.xml"
+	      important="no"
+	      level="0"
+	      usecount="0"
+	      name="Testudo"
+	      description="Block formation: adds 6 armor and 4 levels">
+	  <bonus/>
+	</item>
+	<!-- Bonus dell'Editto dei Mercenari: lo mette e lo toglie PLAYER_MERCENARY_EDICT.VS
+	     a seconda che la classe abbia o no almeno 200 unita' in campo. -->
+	<item id="Mercenary Edict"
+	      image="gameres/icons/items/Noble Offence.bmp"
+	      sound="data/sound entities/ItemUse.xml"
+	      important="no"
+	      level="0"
+	      usecount="0"
+	      name="Mercenary Edict"
+	      description="200 or more warriors of this same type are in the field: adds 25 health and 10 attack">
+	  <bonus health="25" damage="10" armor_slash="0" armor_pierce="0" level="0" experience="0"/>
+	</item>
+	<!-- Aura passiva di un Guerriero di Fand di livello 12+ (vedi PLAYER_FAND_AURA.VS).
+	     Viene messo e tolto dallo script a seconda della distanza. -->
+	<item id="Blessing of Fand"
+	      image="gameres/icons/items/Noble Offence.bmp"
+	      sound="data/sound entities/ItemUse.xml"
+	      important="no"
+	      level="0"
+	      usecount="0"
+	      name="Blessing of Fand"
+	      description="Near a Warrior of Fand of level 12 or above: adds 20 attack and 100 health">
+	  <bonus health="100" damage="20" armor_slash="0" armor_pierce="0" level="0" experience="0"/>
+	</item>
+	<!-- Segnalino "ha fatto una kill": nessun bonus, serve solo a ricordarlo
+	     sulla singola unita' fino a quando entra in un forte (vedi
+	     PLAYER_PROMOTION.VS). -->
+	<item id="Promotion"
+	      image="gameres/icons/items/promozione.bmp"
+	      sound="data/sound entities/ItemUse.xml"
+	      important="no"
+	      level="0"
+	      usecount="0"
+	      name="Promotion"
+	      description="Ready for promotion: enter a fort to advance to the next rank">
+	  <bonus health="0" damage="0" armor_slash="0" armor_pierce="0" level="0" experience="0"/>
+	</item>
+	<item id="Phalanx"
+	      image="gameres/icons/items/falange.bmp"
+	      sound="data/sound entities/ItemUse.xml"
+	      important="no"
+	      level="0"
+	      usecount="0"
+	      name="Phalanx"
+	      description="Block formation: adds 20 attack">
+	  <bonus health="0" damage="20" armor_slash="0" armor_pierce="0" level="0" experience="0"/>
+	</item>
 	<item id="Noble Offence"
 	      image="gameres/icons/items/Noble Offence.bmp"
 	      sound="data/sound entities/ItemUse.xml"
@@ -413,6 +487,19 @@
 	      description="Adds 4 levels\nThe charm disappears after the bearer kills an enemy">
 	  <bonus health="0" damage="0" armor_slash="0"  armor_pierce="0"  armor_slash_percent="0"  armor_pierce_percent="0" level="4" experience="0"/>
 	</item>
+
+	<item id="All charms"
+	      image="gameres/icons/items/AllCharms.bmp"
+	      sound="data/sound entities/ItemUse.xml"
+	      level="0"
+	      important="no"
+	      usecount="0"
+	      cursed="1"
+	      name="All charms"
+	      description="Adds all half charms but it can be accumulated \nThe charm disappears after the bearer kills an enemy">
+	  <bonus health="20" damage="2" armor_slash="2"  armor_pierce="2"  armor_slash_percent="0"  armor_pierce_percent="0" level="2" experience="0"/>
+	</item>
+
 	<item id="Amulet of Triumph"
 	      image="gameres/icons/items/Amulet of Triumph.bmp"
 	      sound="data/sound entities/ItemUse.xml"
@@ -450,7 +537,7 @@
 	      sound="data/sound entities/ItemUse.xml"
 	      level="0"
 	      name="Gem of Wisdom"
-	      description="Every attached warrior that dies has a 40% chance of giving experience to the hero"
+	      description="Every attached warrior that dies has a 20% chance of giving experience to the hero"
 	      attacheddie_script="file://data/ItemScripts/gem of wisdom.vs"
 	      important="yes"
 	      cursed="0">

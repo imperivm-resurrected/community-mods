@@ -6,6 +6,17 @@ str dest,class, research;
 dest = cmdparam;
 
 class = ParseStr(dest, dest);
+if (class == "ReqModeImp2")
+{
+	ParseStr(dest, dest);
+	ParseStr(dest, dest);
+	if (EnvReadInt(objs[0].player, "ModeOldSchoolCostsV2") != 1)
+	{
+		reasonText = "";
+		return false;
+	}
+	class = ParseStr(dest, dest);
+}
 research = ParseStr(dest, dest);
 
 if(EnvReadString(objs[0].AsBuilding.settlement, class) == "researched")

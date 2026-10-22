@@ -61,41 +61,61 @@
           <value4
 		icon="gameres/infobar/common/health ico.bmp"
 		script="return .AsUnit.health + '/' + .AsUnit.maxhealth;"
-		help="/contents/stats/health"
+		help="/contents/health"
 		rollover="Health"/>
 	<value5
 		icon="gameres/infobar/common/food ico.bmp"
-		script="return .AsUnit.food + '/' + .AsUnit.maxfood + ' | ' +.AsUnit.sight;"
+		script="return .AsUnit.food + '/' + .AsUnit.maxfood;"
 		help="/contents/feeding"
 		rollover="Food | Range"/>
 	<defaultcmd target="">
-		<cmd name="moveinfight"/>
-		<cmd name="move"/>
-		<cmd name="advance" ctrl="1"/>
+		<cmd name="moveinfight" />
+		<cmd name="move" />
+		<cmd name="advance" ctrl="1" />
 	</defaultcmd>
 	<defaultcmd target="Inn">
-		<cmd name="transport"/>
-		<cmd name="approach"/>
+		<cmd name="transport" />
+		<cmd name="approach" />
+	</defaultcmd>
+	<defaultcmd target="Unit">
+		<cmd name="attack" />
+		<cmd name="approach" />
+		<cmd name="attack_unit_type" ctrl="1" />
+	</defaultcmd>
+	<defaultcmd target="Hero">
+		<cmd name="attach" />
+		<cmd name="attack" />
+		<cmd name="approach" />
 	</defaultcmd>
 	<defaultcmd target="ShipBattle">
-		<cmd name="boardshiphero"/>
-		<cmd name="approach"/>
+		<cmd name="boardshiphero" />
+		<cmd name="approach" />
+	</defaultcmd>
+	<defaultcmd target="Wagon">
+		<cmd name="capture" />
+	</defaultcmd>
+	<defaultcmd target="WildHorse">
+		<cmd name="capture" />
+	</defaultcmd>
+	<defaultcmd target="Peasant">
+		<cmd name="capture" />
 	</defaultcmd>
 	<!-- no capture for towers, gates and walls -->
 	<defaultcmd target="Tower">
-		<cmd name="attack"/>
-		<cmd name="enter"/>
-		<cmd name="approach"/>
+		<cmd name="attack" />
+		<cmd name="enter" />
+		<cmd name="approach" />
 	</defaultcmd>
 	<defaultcmd target="Gate">
-		<cmd name="attack"/>
-		<cmd name="enter"/>
-		<cmd name="approach"/>
+		<cmd name="attack" />
+		<cmd name="enter" />
+		<cmd name="approach" />		
 	</defaultcmd>
+
 	<defaultcmd target="Wall">
-		<cmd name="attack"/>
-		<cmd name="enter"/>
-		<cmd name="approach"/>
+		<cmd name="attack" />
+		<cmd name="enter" />
+		<cmd name="approach" />
 	</defaultcmd>
 	<defaultcmd target="TTent">
 		<cmd name="attack_independent"/>
@@ -127,7 +147,7 @@
 		<cmd name="stay_hidden"/>
 	</defaultcmd>
 	<defaultcmd target="ItemHolder">
-		<cmd name="getitems"/>
-		<cmd name="approach"/>
+		<cmd name="getitems" />
+		<cmd name="approach" />
 	</defaultcmd>
 </class>

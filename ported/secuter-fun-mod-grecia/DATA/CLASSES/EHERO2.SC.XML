@@ -2,7 +2,7 @@
 
 	<properties display_name="Nebnufer" display_name_plural="Heroes"/>
 	<properties icon="gameres/icons/EHero2.bmp"/>
-	<properties edittree_pos="Units/Egypt/Hero 2"/>
+	<properties edittree_pos="Units/Egitto/Eroe - Nebnufer"/>
 	<properties HeroSkills="Ceasefire, Quick March, Concealment, Vigor, Survival"/>
 
 </class>

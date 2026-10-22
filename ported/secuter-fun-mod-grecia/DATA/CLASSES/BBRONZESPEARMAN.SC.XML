@@ -1,7 +1,7 @@
-<class id="BBronzeSpearman" cpp_class="CVXUnit" parent="Melee" entity="Units/BBronzeSpearman/BBronzeSpearman.ent.xml">
+<class id="BBronzeSpearman" cpp_class="CVXUnit" parent="Spearman" entity="Units/BBronzeSpearman/BBronzeSpearman.ent.xml">
 
 	<properties race="Britain"/>
-	<properties maxhealth="200"/>
+	<properties maxhealth="240"/>
 	<properties damage="22" armor_slash="16" armor_pierce="16"/>
 	<properties speed="80"/>
 	<properties unit_specials="Deflection"/>
@@ -9,7 +9,7 @@
 	<properties icon="gameres/icons/BBronzeSpearman.bmp"/>
 	<properties display_name="Bronze Spearman" display_name_plural="Bronze Spearmen"/>
 	<properties help="contents/units/BBronzeSpearman"/>
-	<properties edittree_pos="Units/Britain/Bronze Spearman"/>
+	<properties edittree_pos="Units/Britannia/Lanciere"/>
 	<sounds command="data/sound entities/VoiceBBronzeSpearman.xml"/>
 
 </class>

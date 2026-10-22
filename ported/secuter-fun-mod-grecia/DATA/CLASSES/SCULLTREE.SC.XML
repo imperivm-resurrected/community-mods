@@ -5,4 +5,5 @@ entity="MapObjects/ItemHolders/Scull_tree.ent.xml">
 	<properties radius="28" selection_radius="30"/>
 	<properties display_name="Skull tree"/>
 	<properties respawn_item="--Feather amulet--" respawn_time="900000"/>
+	<behavior script="data/subai/holder_lente.vs"/>
 </class>

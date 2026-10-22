@@ -11,7 +11,8 @@
 	<properties maxhealth="5000" sight="900"/>
 	<properties auto_repair="yes" repair_rate="250"/>
 	<properties help="/contents/buildings/Shipyard"/>
-
+	<properties description="Produces battle ships and food by accommodating up to 20 fishermen"/>
+	
 	<properties
 		is_central_building="1"
 		can_be_captured="1"
@@ -19,7 +20,7 @@
 		produces_gold="0"
 		produces_food="0"
 		is_single_building="1"
-		settlement_food="150"
+		settlement_food="0"
 		settlement_gold="0"
 		settlement_maxfood="10000"
 		settlement_maxgold="10000"
@@ -27,35 +28,42 @@
 		efficiency="0"
 		max_population="0"
 		max_units="0"
-		snapdistance="64"
 	/>
+	
 	<properties minimap_icon_type="color"/>
 
-	<!--value0 icon="gameres/infobar/common/pop ico.bmp" script="Settlement set; set=.AsBuilding.settlement; return set.population + ' / ' + set.max_population;" flags="-1"/-->
+	<value0
+		icon="gameres/infobar/common/Fisherman.bmp"
+		script="return EnvReadInt(.AsBuilding().settlement(), 'Fisherman') + '/' + '20';"
+		flags="-1"
+		help="/contents/resources"
+		rollover= "Fishermen"/>
 	<value1
+		icon="gameres/infobar/common/loyality.bmp"
+		script="return .AsBuilding.settlement.loyalty;"
+		flags="-1"
+		help="/contents/capturing"
+		rollover = "Loyalty"/>
+	<value2
 		icon="gameres/infobar/common/gold ico.bmp"
 		script="return .AsBuilding.settlement.gold;"
 		flags="5"
 		help="/contents/resources"
 		rollover = "Gold"/>
-	<value2
-		icon="gameres/infobar/common/food ico.bmp"
+	<value3
+		icon="gameres/infobar/common/fish.bmp"
 		script="return .AsBuilding.settlement.food;"
 		flags="5"
 		help="/contents/resources"
-		rollover = "Food"/>
-	<value3
-		icon="gameres/infobar/common/Loyality.bmp"
-		script="return .AsBuilding.settlement.loyalty;"
-		flags="-1"
-		help="/contents/capturing"
-		rollover = "Loyalty"/>
-	<value5
+		rollover = "Fish"/>
+	<value4
 		icon="gameres/infobar/common/health ico.bmp"
 		script="return .health + '/' + .maxhealth;"
 		flags="-1"
 		help="/contents/stats/health"
-		rollover="Health"/>
+		rollover= "Health"/>
+		
+	<behavior script="data/subai/ShipyardFoodProduction.vs"/>
 
 	<method sig="idle"            vs="data/subai/shipyard_idle.vs"/>
 	<method sig="tribute"         vs="data/subai/village_tributefood.vs"/>
@@ -76,6 +84,8 @@
 	
 	<method sig="loadpaesants"    vs="data/subai/load_paesants.vs"/>
 
+	<behavior script="data/subai/shipyard_limit_of_fishermanenter.vs"/>	
+
 	<defaultcmd target="BaseTownhall">
 		<cmd name="tribute_default"/>
 	</defaultcmd>
@@ -88,8 +98,17 @@
 		<cmd name="tribute_default"/>
 	</defaultcmd>
 
+	<defaultcmd target="TTent">
+		<cmd name="tribute_default"/>
+	</defaultcmd>
+
+	<defaultcmd target="CTent">
+		<cmd name="tribute_default"/>
+	</defaultcmd>
+
 	<defaultcmd target="BaseShipyard">
 		<cmd name="tribute_default"/>
 	</defaultcmd>
+
 
 </class>

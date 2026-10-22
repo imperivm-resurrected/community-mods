@@ -27,12 +27,23 @@ nResearch   = AIVar(AIPlayer, AIV_Research);
 //SetAIVar(AIPlayer, AIV_DonateFood, 0);
 SetAIVar(AIPlayer, AIV_DonateGold, 0);
 //SetAIVar(AIPlayer, AIV_DonatePop,  0);
-SetAIVar(AIPlayer, AIV_BuildArmy,  0);
-SetAIVar(AIPlayer, AIV_Research,   0);
+// Mantieni attive produzione e ricerca generali durante l'apertura.
 
 // Set skills
 aSkills[0] = hsWisdom;    aSkillLevels[0] = 10;
 aSkills[1] = hsFrenzy;    aSkillLevels[1] = 10;
+
+// L'eroe ha priorita' sulle prime pattuglie: tenta per circa 30 secondi
+// prima di iniziare la restante apertura numida.
+{
+	int heroAttempts = 0;
+	while (!hero.IsValid && heroAttempts < 12) {
+		hero = set.TSRecruitHero();
+		heroAttempts += 1;
+		if (!hero.IsValid)
+			Sleep(2500);
+	}
+}
 
 // hire hero & forge pikes & barrack level 1
 {

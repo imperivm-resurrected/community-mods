@@ -3,28 +3,16 @@
 	
 	<FormationClass Name="Front"
 		Description="The warriors gather in massive array in front of the hero"
-		Width="2"
-		Height="1"
-		BonusLevel="4"
-		OffsetFrontLineByY="30"
-		OffsetWingsByX="0"
-		OffsetWingsByY="0">
-
+		Width="2" Height="1" BonusLevel="4"
+		OffsetFrontLineByY="30" OffsetWingsByX="0" OffsetWingsByY="0">
 		<Class Name="Unit" FrontLine="1"/>
 		<Class Name="Peasant" CentralBlock="1"/>
 	</FormationClass>
 
 	<FormationClass Name="Line"
 		Description="The line formation places all warriors at the front line. When standing on the ground all warriors have 50% attack bonus due to the clear sight they have"
-		Width="6"
-		Height="1"
-		BonusDamage="2"
-		BonusArmor="2"
-		BonusRange="20"
-		OffsetFrontLineByY="50"
-		OffsetWingsByX="0"
-		OffsetWingsByY="0">
-
+		Width="6" Height="1" BonusDamage="2" BonusArmor="2" BonusRange="20"
+		OffsetFrontLineByY="50" OffsetWingsByX="0" OffsetWingsByY="0">
 		<Class Name="Unit" FrontLine="1"/>
 		<Class Name="BaseMage" CentralBlock="1"/>
 		<Class Name="Peasant" CentralBlock="1"/>

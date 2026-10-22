@@ -3,8 +3,8 @@
 	<properties race="Gaul"/>
 	<properties display_name="Morgatha" display_name_plural="Heroes"/>
 	<properties icon="gameres/icons/GHeroWoman.bmp"/>
-	<properties edittree_pos="Units/Heroes/Morgatha (Gaul)"/>
+	<properties edittree_pos="Units/Scenari/Eroi/Morgatha"/>
 	<properties HeroSkills="Defensive cry, Assault, Quick March, Leadership, Wisdom"/>
 
-	<sounds command="data/sound entities/VoiceGFemaleHero.xml"/>
+	<sounds die="data/sound entities/UNITDEATHFEMALE.xml" command="data/sound entities/VoiceGFemaleHero.xml"/>
 </class>

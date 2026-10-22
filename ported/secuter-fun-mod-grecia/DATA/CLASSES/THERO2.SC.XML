@@ -2,7 +2,7 @@
 
 	<properties display_name="Eidhart" display_name_plural="Heroes"/>
 	<properties icon="gameres/icons/THero2.bmp"/>
-	<properties edittree_pos="Units/Germany/Hero 2"/>
+	<properties edittree_pos="Units/Germania/Eroe - Eidhart"/>
 	<properties HeroSkills="Assault, Defensive cry, Concealment, Quick March, Leadership"/>
 
 </class>

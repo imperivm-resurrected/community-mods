@@ -4,12 +4,16 @@
 	<properties maxhealth="120"/>
 	<properties armor_slash="2" armor_pierce="2"/>
 	<properties speed="50"/>
-	<properties unit_specials="Healing, Sneak, Active"/>
+	<!-- Invisibility aggiunto (Imperivm 2): druid_hide_unit.vs richiede
+	     HasSpecial(invisibility). L'abilita' vera e propria (ghide) e' comunque
+	     visibile solo in Imperivm 2 (GDRUID_IMPERIVM2_GATE.VS) e sbloccata dalla
+	     ricerca "Invisibility" della Casa dei Druidi. -->
+	<properties unit_specials="Healing, Sneak, Invisibility"/>
 
 	<properties icon="gameres/icons/GDruid.bmp"/>
 	<properties display_name="Druid" display_name_plural="Druids"/>
 	<properties help="contents/units/GDruid"/>
-	<properties edittree_pos="Units/Gaul/Druid"/>
+	<properties edittree_pos="Units/Gallia/Druido"/>
 	<sounds command="Sounds/entities/VoiceGDruid.xml"/>
 
 	<method sig="stand_position"  vs="data/subai/rpriest_stand_position.vs"/>
@@ -26,6 +30,13 @@
 	
 	<method sig="wrath_of_belenos" vs="data/subai/priest_jupiter_anger.vs"/>
 	<method sig="buff_attack" vs="data/subai/druid_buff_attack_call.vs"/>
+	<!-- Invisibilita' (Imperivm 2): stessi vs di BDruid; l'abilita' e' esposta via
+	     il comando "ghide" (DRUID.XML), gestito da GDRUID_IMPERIVM2_GATE.VS. -->
+	<method sig="hide"            vs="data/subai/druid_hide_unit.vs"/>
+	<method sig="hide"            vs="data/subai/druid_hide_ground.vs"/>
+	<!-- Guarigione di massa (Imperivm 2): il druido si sacrifica; l'effetto e' in
+	     druid_ondie.vs (ramo Gallia). Esposta dal comando "g_mass_heal" (DRUID.XML). -->
+	<method sig="mass_heal"       vs="data/subai/druid_massheal.vs"/>
 
 	<defaultcmd target="Unit">
 		<cmd name="heal"/>
@@ -41,5 +52,7 @@
 	</defaultcmd>
 
 	<behavior script="data/subai/sneak_behavior.vs"/>
+	<behavior script="data/subai/gdruid_varios_gate.vs"/>
+	<behavior script="data/subai/gdruid_imperivm2_gate.vs"/>
 
 </class>

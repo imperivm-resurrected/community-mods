@@ -4,10 +4,16 @@
 	<method sig="soothing" vs="data/subai/stonehenge_soothing.vs"/>
 	<method sig="wisdom" vs="data/subai/stonehenge_wisdom.vs"/>
 	<method sig="starvation" vs="data/subai/stonehenge_starvation.vs"/>
+	<method sig="vision of nature" vs="data/subai/stonehenge_nature.vs"/>
 	<method sig="sacrifice" vs="data/subai/stonehenge_sacrifice.vs"/>
+	<method sig="gold_rain" vs="data/subai/stonehenge_gold_rain.vs" />
+	<method sig="plague" vs="data/subai/stonehenge_plague.vs" />
+	<method sig="fatigue" vs="data/subai/stonehenge_fatigue.vs"/>
 	<method sig="bloodlust" vs="data/subai/stonehenge_bloodlust.vs"/>
 	<method sig="show" vs="data/subai/stonehenge_show.vs"/>
 	<method sig="ghost" vs="data/subai/stonehenge_ghost.vs"/>
+	<method sig="teuton_disaster" vs="data/subai/stonehenge_teuton_disaster.vs"/>
+	<method sig="sentry_purge" vs="data/subai/stonehenge_sentry_purge.vs"/>
 
 	<behavior script="data/subai/stonehenge_charge.vs"/>
 
@@ -16,6 +22,7 @@
 	<properties maxhealth="15000" sight="400"/>
 	<properties help="/contents/buildings/Stonehenge"/>
 	<properties description="Allows spells which have an effect on the entire map. In order to cast these spells a sage must be present near the Stonehenge, to ensure that it accumulates enough power for such rituals"/>
+	<properties minimap_icon_type="black"/>
 
 	<properties
 		is_central_building="1"
@@ -37,14 +44,6 @@
 
 
 	<properties hides_units="1"/>
-
-<!--
-	<method sig="wind_of_wisdom" vs="data/subai/stonehenge_wind_of_wisdom.vs"/>
-	<method sig="starvation" vs="data/subai/stonehenge_starvation.vs"/>
-	<method sig="golden_rain" vs="data/subai/stonehenge_golden_rain.vs"/>
-	<method sig="final_sacrifice" vs="data/subai/stonehenge_final_sacrifice.vs"/>
-	<method sig="bloodlust" vs="data/subai/stonehenge_bloodlust.vs"/>
--->
 
 	<value0
 		icon="gameres/infobar/common/Loyality.bmp"

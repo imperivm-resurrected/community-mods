@@ -12,7 +12,8 @@
 	<sounds attack="UnitArrowFight"/>
 	<value1
 		icon="gameres/infobar/common/piercing ico.bmp"
-		script="return .AsUnit.damage + ' | ' +.AsUnit.range;"
-		help="/contents/stats/rangedattack"
-		rollover="Ataque | Alcance"/>
+		script="return .AsUnit.damage+'|'+.AsUnit.range;"
+		help="/contents/stats/attack"
+		rollover="Damage|Range"/>
 </class>
+

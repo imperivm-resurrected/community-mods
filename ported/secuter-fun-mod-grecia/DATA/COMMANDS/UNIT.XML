@@ -2,18 +2,6 @@
 
 <!-- UNIT COMMANDS -->
 
-<cmd name="stand_position"
-	offset="1"
-	button="Actions/Stand Ground.bmp"
-	key="s"
-	rollover="Stand ground"
-	groupverifier=""
-	groupdispatch=""
-	voidgroupdispatch="1"
-	>
-	<src obj="Unit"/>
-</cmd>
-
 <cmd name="move" priority="0"
 	offset="1"
 	button="Actions/Move.bmp"
@@ -58,7 +46,12 @@
 
 	<src obj="Military" sticky="yes"/>
 	<src obj="AttackAnimal" sticky="yes"/>
+	<src obj="LionM" sticky="yes"/>
+	<src obj="LionF" sticky="yes"/>
+	<src obj="LionMUnit" sticky="yes"/>
+	<src obj="LionFUnit" sticky="yes"/>
 	<nsrc obj="Sentry"/>
+	<nsrc obj="Peasant"/>
 </cmd>
 
 <cmd name="attack_unit_type"
@@ -68,6 +61,7 @@
 		text="Click to attack this type of enemies"
 		default-text="Right-click to attack this type of enemies"/>
 	<src obj="Unit"/>
+	<nsrc obj="Peasant"/>
 </cmd>
 
 <cmd name="approach" priority="1"
@@ -91,9 +85,13 @@
 		text="Click to attack this building"
 		default-text="Right-click to attack this building"/>
 		/>
+	<cmdtext target="CTent"
+		text="Click to attack this building"
+		default-text="Right-click to attack this building"/>
+		/>
 </cmd>
 
-<cmd name="capture" priority="2"
+<cmd name="capture" priority="3"
 	offset="1"
 	button="Actions/capture.bmp"
 	key="u"
@@ -120,12 +118,12 @@
 		text="Click to advance to this position"/>
 
 	<src obj="Military" sticky="yes"/>
-	<nsrc obj="ShipBattle"/>
 	<nsrc obj="Sentry"/>
 	<nsrc obj="RamUnit"/>
+	<nsrc obj="BlackWolfUnit"/>
 </cmd>
 
-<cmd name="explore" priority="3"
+<cmd name="explore" priority="4"
 	offset="1"
 	button="Actions/explore.bmp"
 	rollover="Explore"
@@ -136,11 +134,12 @@
 		default-text=""/>
 
 	<src obj="Military" sticky="no"/>
+	<src obj="BaseExplorer" sticky="no"/>
 	<nsrc obj="Sentry"/>
 	<nsrc obj="RamUnit"/>
 </cmd>
 
-<cmd name="attach" priority="3"
+<cmd name="attach" priority="4"
 	rollover="Attach to hero"
 	cursor="do_something"
 >
@@ -156,7 +155,6 @@
 	<nsrc obj="Peasant"/>
 -->
 </cmd>
-
 
 <cmd name="teleport" priority="4"
 	cursor="do_something"
@@ -174,7 +172,7 @@
 		default-text="Right-click to enter this building"/>
 </cmd>
 
-<cmd name="advance" priority="5"
+<cmd name="advance" priority="4"
 	offset="1"
 	cursor="attack"
 >
@@ -184,6 +182,36 @@
 
 	<src obj="Military" sticky="yes"/>
 	<src obj="AttackAnimal" sticky="yes"/>
+	<nsrc obj="Sentry"/>
+	<nsrc obj="Peasant"/>
+</cmd>
+
+<cmd name="patrol" priority="5"
+	offset="1"
+	button="actions/patrol.bmp"
+	key="p"
+	rollover="Patrol"
+>
+	<cmdtext target=""
+		text="Click to patrol this position"/>
+
+	<src obj="Military" sticky="yes"/>
+	<src obj="BaseExplorer" sticky="yes"/>
+	<nsrc obj="Sentry"/>
+	<nsrc obj="RamUnit"/>
+	<nsrc obj="Peasant"/>
+</cmd>
+
+<cmd name="stand_position" priority="6"
+	offset="1"
+	button="Actions/Stand Ground.bmp"
+	key="s"
+	rollover="Stand ground"
+	groupverifier=""
+	groupdispatch=""
+	voidgroupdispatch="1"
+	>
+	<src obj="Unit"/>
 	<nsrc obj="Sentry"/>
 </cmd>
 
@@ -198,6 +226,9 @@
 	<nsrc obj="ShipBattle"/>
 	<nsrc obj="Sentry"/>
 	<nsrc obj="RamUnit"/>
+	<nsrc obj="BlackWolfUnit"/>
+	<nsrc obj="HeroShip"/>
+	<nsrc obj="Peasant"/>
 </cmd>
 
 <cmd name="detach" priority="7"
@@ -215,14 +246,11 @@
 	<nsrc obj="Wagon"/>
 	<nsrc obj="Peasant"/>
 	<nsrc obj="PeasantAmbient"/>
-	
 	<nsrc obj="SummoningUnit"/>
-
 	<nsrc obj="Hero"/>
-	
+	<nsrc obj="HeroShip"/>	
 	<nsrc obj="Sentry"/>
 	<nsrc obj="RamUnit"/>
-
 	<!--nsrc obj="BVikingLord"/>
 	<nsrc obj="CWarElephant"/>
 	<nsrc obj="EChariot"/>
@@ -230,22 +258,9 @@
 	<nsrc obj="IMountaineer"/>
 	<nsrc obj="RChariot"/>
 	<nsrc obj="RLiberatus"/-->
-
+	<nsrc obj="BlackWolfUnit"/>
+	<nsrc obj="BaseExplorer"/>
 </cmd>
-
-<cmd name="reveal" priority="8"
-	button="Actions/reveal.bmp"
-	groupverifier="data/subai/unit_reveals_verify.vs"
-	voidgroupdispatch="1"
-	groupdispatch="data/subai/unit_reveals.vs"
-	key="q"
-	rollover="Reveal"
-	description="Show this unit if hidden"
->
-
-	<src obj="Unit" sticky="yes"/>
-</cmd>
-
 
 <cmd name="getitems" priority="8"
 	button=""
@@ -255,20 +270,7 @@
 		text=""
 	default-text="Right-click to get all items"/>
 	<nsrc obj="RamUnit"/>
-</cmd>
-
-<cmd name="patrol" priority="8"
-	offset="1"
-	button="actions/patrol.bmp"
-	key="p"
-	rollover="Patrol"
->
-	<cmdtext target=""
-		text="Click to patrol this position"/>
-
-	<src obj="Military" sticky="yes"/>
-	<nsrc obj="Sentry"/>
-	<nsrc obj="RamUnit"/>
+	<nsrc obj="BaseMage"/>
 </cmd>
 
 <cmd name="build_catapult" priority="9"
@@ -288,6 +290,8 @@
 	<nsrc obj="ShipBattle"/>
 	<nsrc obj="Sentry"/>
 	<nsrc obj="RamUnit"/>
+	<nsrc obj="BlackWolfUnit"/>
+	<nsrc obj="Peasant"/>
 </cmd>
 
 <cmd name="convert2peasant" priority="10"
@@ -300,6 +304,16 @@
 	<src obj="IMilitiaman" sticky="no"/>
 </cmd>
 
+<cmd name="unequip" priority="10"
+	button="actions/unequip.bmp"
+	key="v"
+	rollover="Convert to peasant"
+	method="unequip"
+	description="Unequips a fisherman and converts him to a peasant"
+>
+	<src obj="Fisherman" sticky="no"/>
+</cmd>
+
 <cmd name="show" priority="10"
 	button="actions/Show.bmp"
 	key="k"
@@ -310,6 +324,18 @@
 	>
 </cmd>
 
+<cmd name="reveal" priority="10"
+	button="Actions/reveal.bmp"
+	groupverifier="data/subai/unit_reveals_verify.vs"
+	voidgroupdispatch="1"
+	groupdispatch="data/subai/unit_reveals.vs"
+	key="q"
+	rollover="Reveal"
+	description="Show this unit if hidden"
+>
+	<src obj="Unit" sticky="yes"/>
+</cmd>
+
 <cmd name="enter_parry_mode" priority="11"
 	button="actions/Parry Mode.bmp"
 	key="r"
@@ -318,22 +344,32 @@
 	rollover="Enter parry mode"
 	description="Put warrior in parry mode">
 	<src obj="Unit"/>
+	<nsrc obj="HeroShip"/>
+	<nsrc obj="ShipAdmiral"/>
 	<nsrc obj="Sentry"/>
+	<nsrc obj="Peasant"/>
 </cmd>
 
 <cmd name="leave_parry_mode" priority="12"
 	button="actions/Leave Parry Mode.bmp"
-	key="t"
+	key="r"
 	groupverifier="data/subai/unit_leave_parry_mode_verify.vs"
 	immediate="yes"
 	rollover="Leave parry mode"
 	description="Put warriors in normal mode">
 	<src obj="Unit"/>
+	<nsrc obj="HeroShip"/>
+	<nsrc obj="ShipAdmiral"/>
 	<nsrc obj="Sentry"/>
+	<nsrc obj="Peasant"/>
 </cmd>
 
+<!-- Teuton Master: i tre teutoni si scambiano tra loro in ogni direzione. Ogni
+     coppia ha il suo comando ("convert", "convert_wolf", "convert_aw") perche'
+     la classe di arrivo si ricava da quella di partenza. Tasti: x = prima
+     alternativa, z = seconda. -->
 <cmd name="to_teuton_rider" priority="13"
-	button="actions/train TTeutonRider.bmp"
+	button="actions/ToRider.bmp"
 	key="x"
 	voidgroupdispatch="1"
 	groupverifier="data/subai/teuton_archer_mutate_gv.vs"
@@ -343,8 +379,19 @@
 	<src obj="TTeutonArcher"/>
 </cmd>
 
+<cmd name="to_teuton_wolf_from_archer" priority="14"
+	button="actions/ToWolf.bmp"
+	key="z"
+	voidgroupdispatch="1"
+	groupverifier="data/subai/teuton_archer_mutate_gv.vs"
+	groupdispatch="data/subai/teuton_aw_mutate_gd.vs"
+	rollover="Convert to Teuton Raider"
+	param="Requires Teuton Master research from Sanctuary of Votan">
+	<src obj="TTeutonArcher"/>
+</cmd>
+
 <cmd name="to_teuton_archer" priority="13"
-	button="actions/train TTeutonArcher.bmp"
+	button="actions/ToArcher.bmp"
 	key="x"
 	voidgroupdispatch="1"
 	groupverifier="data/subai/teuton_rider_mutate_gv.vs"
@@ -354,6 +401,85 @@
 	<src obj="TTeutonRider"/>
 </cmd>
 
+<cmd name="to_teuton_wolf" priority="14"
+	button="actions/ToWolf.bmp"
+	key="z"
+	voidgroupdispatch="1"
+	groupverifier="data/subai/teuton_rider_mutate_gv.vs"
+	groupdispatch="data/subai/teuton_wolf_mutate_gd.vs"
+	rollover="Convert to Teuton Raider"
+	param="Requires Teuton Master research from Sanctuary of Votan">
+	<src obj="TTeutonRider"/>
+</cmd>
+
+<cmd name="to_teuton_rider_from_wolf" priority="13"
+	button="actions/ToRider.bmp"
+	key="x"
+	voidgroupdispatch="1"
+	groupverifier="data/subai/teuton_wolf_mutate_gv.vs"
+	groupdispatch="data/subai/teuton_wolf_mutate_gd.vs"
+	rollover="Convert to Teuton Rider"
+	param="Requires Teuton Master research from Sanctuary of Votan">
+	<src obj="TTeutonWolf"/>
+</cmd>
+
+<cmd name="to_teuton_archer_from_wolf" priority="14"
+	button="actions/ToArcher.bmp"
+	key="z"
+	voidgroupdispatch="1"
+	groupverifier="data/subai/teuton_wolf_mutate_gv.vs"
+	groupdispatch="data/subai/teuton_aw_mutate_gd.vs"
+	rollover="Convert to Teuton Archer"
+	param="Requires Teuton Master research from Sanctuary of Votan">
+	<src obj="TTeutonWolf"/>
+</cmd>
+
+<!-- Il <src> e' commentato (comando disattivato), ma il groupverifier puntava a
+     data/subai/gtridentwarrior_teach_verify.vs, che NON esiste: il motore lo
+     segnalava a ogni avvio con "Group verifier not found". Rimosso l'attributo:
+     il comando resta inerte, ma vxlog.log torna pulito. Per riattivare la
+     funzione servono sia lo script verifier sia il <src>. -->
+<cmd name="trident_warrior_teach" priority="13"
+	button="actions/Trident Teach.bmp"
+	key="h"
+	rollover="Teach an ally"
+	description="Teach an allied warrior, granting it 1 level (the Trident Warrior loses 1 level)"
+	param="Requires Trident Warrior Experience III research from the Arena"
+	>
+	<cmdtext target="Unit"
+		text="Click to teach ally"
+		default-text="Right-click to teach ally"/>
+	<cmdtext target=""
+		text=""
+		default-text=""/>
+	<!-- rimosso dal Guerriero di Fand: <src obj="GTridentWarrior"/> -->
+</cmd>
+
+<!-- "Select Freedom units" rimosso da tutte le unita' con Liberta'.
+     Il comando puntava a data/subai/select_freedom_units.vs, che non esiste:
+     il motore lo segnalava come "Group dispatch not found" e il pulsante era
+     una dispatch nulla. -->
+
+
+<cmd name="convert_to_melee" priority="13"
+	button="actions/TRAIN ARESGUARD_C.bmp"
+	key="d"
+	voidgroupdispatch="1"
+	groupverifier=""
+	groupdispatch="data/subai/ARESGUARD_MUTATE.vs"
+	rollover="Switch to melee">
+	<src obj="KAresGuard_A"/>
+</cmd>
+
+<cmd name="convert_to_ranged" priority="13"
+	button="actions/TRAIN ARESGUARD_A.bmp"
+	key="d"
+	voidgroupdispatch="1"
+	groupverifier=""
+	groupdispatch="data/subai/ARESGUARD_MUTATE.vs"
+	rollover="Switch to ranged">
+	<src obj="KAresGuard_C"/>
+</cmd>
 
 <cmd name="to_wolf" priority="13"
 	button="actions/summon wolf.bmp"

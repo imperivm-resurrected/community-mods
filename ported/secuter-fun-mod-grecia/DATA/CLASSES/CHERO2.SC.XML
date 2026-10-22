@@ -2,7 +2,7 @@
 
 	<properties display_name="Hamack" display_name_plural="Heroes"/>
 	<properties icon="gameres/icons/CHero2.bmp"/>
-	<properties edittree_pos="Units/Carthage/Hero 2"/>
+	<properties edittree_pos="Units/Cartagine/Numida/Eroe - Kadom"/>
 	<properties HeroSkills="Frenzy, Rush, Quick March, Team attack, Wisdom"/>
 
 </class>

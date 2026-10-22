@@ -1,7 +1,7 @@
 <class id="CJavelinThrower" cpp_class="CVXUnit" parent="MediumRanged" entity="Units/CJavelinThrower/CJavelinThrower.ent.xml">
 
 	<properties race="Carthage"/>
-	<properties maxhealth="180"/>
+	<properties maxhealth="150"/>
 	<properties damage="26" armor_slash="0" armor_pierce="0"/>
 	<properties speed="80"/>
 	<properties unit_specials="Penetration"/>
@@ -10,10 +10,13 @@
 	<properties building_projectile_class="Javelin"/>
 
 	<properties icon="gameres/icons/CJavelinThrower.bmp"/>
-	<properties display_name="Numidian Javelin Thrower" display_name_plural="Numidian Javelin Throwers"/>
+	<!-- Cartagine Numidia: "Lanciatore Libico" (unita' scontata dalle Reti
+	     Mercantili Puniche). L'id CJavelinThrower non si tocca. -->
+	<properties display_name="Libyan Javelin Thrower" display_name_plural="Libyan Javelin Throwers"/>
 	<properties help="contents/units/CJavelinThrower"/>
-	<properties edittree_pos="Units/Carthage/Javelin Thrower"/>
-	<sounds command="data/sound entities/VoiceCJavelinThrower.xml"/>
+	<properties edittree_pos="Units/Cartagine/Numida/Lanciere libico"/>
+	<sounds command="data/sound entities/VoiceCJavelinThrower.xml"
+			attack="MyrmidonFight"/>
 
 	<method sig="ondie" vs="data/subai/cmercenary_ondie.vs"/>
 

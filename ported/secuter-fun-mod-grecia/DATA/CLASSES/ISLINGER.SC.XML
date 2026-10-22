@@ -5,6 +5,7 @@
 	<properties damage="40" armor_slash="0" armor_pierce="0"/>
 	<properties speed="80"/>
 	<properties unit_specials="Expertise, Toughness"/>
+	<properties sight="600" range="400"/>
 
 	<properties projectile_class="Slingstone"/>
 	<properties building_projectile_class="Slingstone"/>
@@ -12,7 +13,9 @@
 	<properties icon="gameres/icons/ISlinger.bmp"/>
 	<properties display_name="Slinger" display_name_plural="Slingers"/>
 	<properties help="contents/units/ISlinger"/>
-	<properties edittree_pos="Units/Iberia/Slinger"/>
+	<properties edittree_pos="Units/Iberia/Fromboliere"/>
+	
 	<sounds command="data/sound entities/VoiceISlinger.xml"/>
-
+	<sounds attack="UNITSSLINGSTONEFIGHT"/>
+	
 </class>

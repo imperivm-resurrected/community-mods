@@ -8,12 +8,12 @@
 	<properties radius="345" selection_radius="350"/>
 	<properties edittree_pos="Structures/Outposts/Trade post (German)"/>
 	<properties help="/contents/buildings/TOutpost"/>
-	<properties description="Sells the food stored in the outpost to acquire gold"/>
+	<properties description="Sells the food stored in the outpost to acquire gold or vice versa"/>
 	<properties
 		range = "1000"
 		settlement_food="1000"
 		settlement_gold="1000"
-	    defender_cls_1  = "TValkyria"	
+	    defender_cls_1  = "TValkyrie"	
 	    defenders_max_1 = "4"
 	    defenders_out_1 = "2"
 	    start_level_1   = "8"

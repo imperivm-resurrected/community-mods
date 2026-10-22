@@ -11,7 +11,7 @@
 	queueicon="gameres/icons/upgrades/repair.bmp"
 	groupverifier="data/subai/verify_cmdcost_building.vs"
 	rollover="Repair"
-	costgold="100"
+	costgold="500"
 	costfood="0"
 	execdelay="60000">
 	<src obj="BTempleOfThor"/>
@@ -36,7 +36,31 @@
 	<src obj="BTempleOfThor"/>
 </cmd>
 
-<cmd name="Britain chamber" priority="2"
+<!-- Berserker: reclutamento a cap HARD (come Achemenidi/Mountaineer) via -->
+<!-- method="trainex". Il limite (MaxNVAEL) conta anche la coda (QueuedBuild) -->
+<!-- in trainex_onaddremove.vs, quindi non si puo' sforare accodando. -->
+<!-- param: numbertotrain, numparam, classe, gruppo, research, researchedfrom. -->
+<!-- Ramo "berserker" -> MaxNVAEL in verify_trainex/barrack_train_ex/onaddremove. -->
+<cmd name="trainNVael" priority="11"
+	button="actions/Berserker.bmp"
+	queueicon="gameres/icons/BERSERKER.bmp"
+	groupverifier="data/subai/verify_trainex.vs"
+	onaddremovescript="data/subai/trainex_onaddremove.vs"
+	transpicon="1"
+	traincommand="yes"
+	key="b"
+	costgold = "250"
+	costfood = "0"
+	costpop = "1"
+	execdelay = "20000"
+	rollover="Call Berserker"
+	description="Summons a Berserker: Rage, Life steal and Sneak"
+	method="trainex"
+	param="1, berserker, NVAEL, Berserkers, Berserker Horde I, Temple of Thor">
+	<src obj="BTempleOfThor"/>
+</cmd>
+
+<cmd name="Britain Chamber" priority="2"
 	button="research/ritual chamber.bmp"
 	queueicon="gameres/icons/upgrades/ritual chamber.bmp"
 	researchcommand="yes"
@@ -45,10 +69,10 @@
 	costgold = "1000"
 	costfood = "0"
 	execdelay = "40000"
-	rollover="Ritual Chamber"
-	description="Allows druids to gain experience by learning from warriors"
+	rollover="Britain Chamber"
+	description="Allows druids to gain experience by learning from warriors. A druid joins the stronghold immediately"
 	method="research"
-	param="NamePlr, Ritual Chamber, default,NameSet, Ritual Chamber, default">
+	param="NamePlr, Britain Chamber, default,NameSet, Britain Chamber, default">
 	<src obj="BTempleOfThor"/>
 </cmd>
 
@@ -65,7 +89,7 @@
 	rollover="Ghoul summoning"
 	description="Allows druids to sacrifice themselves and summon a Ghoul, which drains the life of all enemies nearby for about 10 seconds"
 	method="research"
-	param="ReqSet, Ritual Chamber, default, NamePlr, Ghoul Summoning, default">
+	param="ReqSet, Britain Chamber, default, NamePlr, Ghoul Summoning, default">
 	<src obj="BTempleOfThor"/>
 </cmd-->
 
@@ -81,7 +105,7 @@
 	rollover="Wolf summoning"
 	description="Allows druids to sacrifice themselves and summon a wolf, which remains under your control for about 1 minutes"
 	method="research"
-	param="ReqSet, Ritual Chamber, default, NamePlr, Wolf Summoning, default">
+	param="ReqSet, Britain Chamber, default, NamePlr, Wolf Summoning, default">
 	<src obj="BTempleOfThor"/>
 </cmd>
 
@@ -97,7 +121,7 @@
 	rollover="Mass heal"
 	description="Allows druids to sacrifices themselves to heal nearby allies"
 	method="research"
-	param="ReqSet, Ritual Chamber, default, NamePlr, Mass Heal, default">
+	param="ReqSet, Britain Chamber, default, NamePlr, Mass Heal, default">
 	<src obj="BTempleOfThor"/>
 </cmd>
 

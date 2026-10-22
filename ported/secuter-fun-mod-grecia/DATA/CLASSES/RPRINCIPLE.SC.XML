@@ -1,12 +1,22 @@
-<class id="RPrinciple" altid="RSpearman" cpp_class="CVXUnit" parent="Melee" entity="Units/RPrinciple/RPrinciple.ent.xml">
+<!-- RPrinciple = il PRINCEPS di Roma IMPERIALE (scelta utente rev.6): usa il
+     MODELLO ORIGINALE del Princep (Units/RPRINCIPLE) e si chiama "Princeps".
+     Reclutato da trainRPrinciple (RBarracks, Roma Imperiale), sbloccato dalla Fucina imperiale
+     "Roman Principle"/Pikes (NameSet RPrinciple). Il Veterano repubblicano e'
+     ora la classe separata MPrinciple (modello Falangita). L'id RPrinciple NON
+     va toccato: comandi, AI e script lo cercano per id. -->
+<class id="RPrinciple" altid="RSpearman" cpp_class="CVXUnit" parent="Spearman" entity="Units/RPRINCIPLE/RPRINCIPLE.ent.xml">
 	<properties race="RepublicanRome"/>
 	<properties maxhealth="300"/>
-	<properties damage="20" armor_slash="16" armor_pierce="16"/>
-	<properties speed="80"/>
+	<properties damage="24" armor_slash="16" armor_pierce="20"/>
+	<properties speed="70"/>
 	<properties unit_specials="Attack skill, Combat skill"/>
-	<properties icon="gameres/icons/RPrinciple.bmp"/>
+	<!-- Icona = ritratto del Princep (RPRINCIPLE.bmp), non piu' l'oplita greco.
+	     display_name "Principle" perche' la loc ha gia' la voce
+	     "Principle@RPrinciple class name" -> "Princep" (IT): con "Princeps" non
+	     c'era match esatto e ripiegava sulla prima voce di contesto = "Veteran". -->
+	<properties icon="gameres/icons/RPRINCIPLE.bmp"/>
 	<properties display_name="Principle" display_name_plural="Principles"/>
 	<properties help="contents/units/RPrinciple"/>
-	<properties edittree_pos="Units/Roman/Principle"/>
+	<properties edittree_pos="Units/Roma/Imperiale/Princep"/>
 	<sounds attack="UnitPikeFight" command="data/sound entities/VoiceRPrinciple.xml"/>
 </class>

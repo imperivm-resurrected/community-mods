@@ -9,7 +9,7 @@
 	<properties icon="gameres/icons/BHighlander.bmp"/>
 	<properties display_name="Highlander" display_name_plural="Highlanders"/>
 	<properties help="contents/units/BHighlander"/>
-	<properties edittree_pos="Units/Britain/Highlander"/>
+	<properties edittree_pos="Units/Britannia/Highlander"/>
 	<sounds command="data/sound entities/VoiceBHighlander.xml"/>
 
 </class>

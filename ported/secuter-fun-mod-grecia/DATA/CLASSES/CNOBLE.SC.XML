@@ -9,6 +9,6 @@
 	<properties icon="gameres/icons/CNoble.bmp"/>
 	<properties display_name="Noble" display_name_plural="Nobles"/>
 	<properties help="contents/units/CNoble"/>
-	<properties edittree_pos="Units/Carthage/Noble"/>
+	<properties edittree_pos="Units/Cartagine/Numida/Nobile"/>
 	<sounds attack="UnitPikeFight" command="data/sound entities/VoiceCNoble.xml"/>
 </class>

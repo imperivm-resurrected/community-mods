@@ -2,7 +2,7 @@
 
 	<properties display_name="Dumnorix" display_name_plural="Heroes"/>
 	<properties icon="gameres/icons/GHero3.bmp"/>
-	<properties edittree_pos="Units/Gaul/Hero 3"/>
+	<properties edittree_pos="Units/Gallia/Eroe - Dumnorix"/>
 	<properties HeroSkills="Defensive cry, Battle cry, Quick March, Team attack, Epic endurance"/>
 
 </class>

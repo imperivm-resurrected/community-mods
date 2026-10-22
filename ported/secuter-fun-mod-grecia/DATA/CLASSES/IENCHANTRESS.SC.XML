@@ -9,8 +9,8 @@
 	<properties icon="gameres/icons/IEnchantress.bmp"/>
 	<properties display_name="Enchantress" display_name_plural="Enchantresses"/>
 	<properties help="contents/units/IEnchantress"/>
-	<properties edittree_pos="Units/Iberia/Enchantress"/>
-	<sounds command="Sounds/entities/VoiceIEnchantress.xml"/>
+	<properties edittree_pos="Units/Iberia/Sacerdotessa"/>
+	<sounds die="data/sound entities/UNITDEATHFEMALE.xml" command="Sounds/entities/VoiceIEnchantress.xml"/>
 
 	<method sig="stand_position" vs="data/subai/enchantress_stand_position.vs"/>
 	<method sig="ondie"          vs="data/subai/enchantress_ondie.vs"/>

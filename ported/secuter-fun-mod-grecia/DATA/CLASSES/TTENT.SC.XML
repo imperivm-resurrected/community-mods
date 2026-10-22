@@ -11,4 +11,9 @@
 	<properties radius="190" selection_radius="195"/>
 	<properties description="Keeps up to 40 Teuton Riders and Archers that attack any enemy in sight"/>
 
+	<behavior script="data/subai/tent_feeding_behavior.vs"/>
+
+	<method sig="unitsout"            vs="data/subai/townhall_unitsout.vs"/>
+
+
 </class>

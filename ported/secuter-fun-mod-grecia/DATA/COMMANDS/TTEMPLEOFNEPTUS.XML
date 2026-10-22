@@ -11,8 +11,8 @@
 	queueicon="gameres/icons/upgrades/repair.bmp"
 	groupverifier="data/subai/verify_cmdcost_building.vs"
 	rollover="Repair"
-	costgold="100"
-	costfood="0"
+	costgold="0"
+	costfood="500"
 	execdelay = "60000">
 	<src obj="TTempleOfNeptus"/>
 </cmd>
@@ -25,8 +25,8 @@
 	transpicon="1"
 	key="s"
 	help="/contents/units/TEnchantress"
-	costgold = "100"
-	costfood = "0"
+	costgold = "0"
+	costfood = "200"
 	costpop = "1"
 	execdelay = "20000"
 	rollover="Call Enchantress"
@@ -36,19 +36,19 @@
 	<src obj="TTempleOfNeptus"/>
 </cmd>
 
-<cmd name="German chamber" priority="2"
+<cmd name="German Chamber" priority="2"
 	key="r"
 	button="research/ritual chamber.bmp"
 	queueicon="gameres/icons/upgrades/ritual chamber.bmp"
 	researchcommand="yes"
 	groupverifier="data/subai/verify_research.vs"
-	costgold = "1000"
-	costfood = "0"
+	costgold = "0"
+	costfood = "1000"
 	execdelay = "40000"
-	rollover="Ritual Chamber"
-	description="Allows enchantresses to gain experience by learning from more experienced warriors"
+	rollover="German Chamber"
+	description="Allows enchantresses to gain experience by learning from more experienced warriors. An enchantress joins the stronghold immediately"
 	method="research"
-	param="NamePlr, Ritual Chamber, default, NameSet, Ritual Chamber, default">
+	param="NamePlr, German Chamber, default, NameSet, German Chamber, default">
 	<src obj="TTempleOfNeptus"/>
 </cmd>
 
@@ -58,13 +58,13 @@
 	key="w"
 	researchcommand="yes"
 	groupverifier="data/subai/verify_research.vs"
-	costgold = "400"
-	costfood = "0"
+	costgold = "0"
+	costfood = "400"
 	execdelay = "30000"
 	rollover="Wolf summoning"
 	description="Allows enchantresses to sacrifice themselves and summon a wolf, which is under your control for about 1 minute"
 	method="research"
-	param="ReqSet, Ritual Chamber, default, NamePlr, Wolf Summoning, default">
+	param="ReqSet, German Chamber, default, NamePlr, Wolf Summoning, default">
 	<src obj="TTempleOfNeptus"/>
 </cmd>
 <cmd name="German Eagle Summoning" priority="5"
@@ -73,13 +73,13 @@
 	key="e"
 	researchcommand="yes"
 	groupverifier="data/subai/verify_research.vs"
-	costgold = "1200"
-	costfood = "0"
+	costgold = "0"
+	costfood = "400"
 	execdelay = "20000"
 	rollover="Eagle summoning"
         description="Allows enchantresses to sacrifice themselves and summon an eagle, which is under your control for about 2 minutes"
 	method="research"
-	param="ReqSet, Ritual Chamber, default, NamePlr, Eagle Summoning, default">
+	param="ReqSet, German Chamber, default, NamePlr, Eagle Summoning, default">
 	<src obj="TTempleOfNeptus"/>
 </cmd>
 
@@ -89,13 +89,32 @@
 	key="h"
 	researchcommand="yes"
 	groupverifier="data/subai/verify_research.vs"
-	costgold = "1500"
-	costfood = "0"
+	costgold = "0"
+	costfood = "1500"
 	execdelay = "20000"
 	rollover="Mass Heal"
 	description="Allows enchantresses to sacrifice themselves to heal nearby allies"
 	method="research"
-	param="ReqSet, Ritual Chamber, default, NamePlr, Mass Heal, default">
+	param="ReqSet, German Chamber, default, NamePlr, Mass Heal, default">
+	<src obj="TTempleOfNeptus"/>
+</cmd>
+
+<!-- Germania: Zombify, sbloccato dalla Camera Germanica come le altre ricerche di
+     questo tempio. Costa viveri come il Mass Heal, non oro. L'effetto e' nel ramo
+     "race == Germany" di DRUID_ONDIE.VS (l'ondie dell'Incantatrice). -->
+<cmd name="German Zombify" priority="7"
+	queueicon="gameres/icons/upgrades/Zombify.bmp"
+	button="research/zombify.bmp"
+	key="z"
+	researchcommand="yes"
+	groupverifier="data/subai/verify_research.vs"
+	costgold = "0"
+	costfood = "1500"
+	execdelay = "20000"
+	rollover="Zombify"
+	description="Allows enchantresses to rise again as ghosts when they die in battle"
+	method="research"
+	param="ReqSet, German Chamber, default, NamePlr, Zombify, default">
 	<src obj="TTempleOfNeptus"/>
 </cmd>
 

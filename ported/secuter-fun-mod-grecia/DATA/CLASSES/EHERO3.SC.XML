@@ -2,7 +2,7 @@
 
 	<properties display_name="Imhotep" display_name_plural="Heroes"/>
 	<properties icon="gameres/icons/EHero3.bmp"/>
-	<properties edittree_pos="Units/Egypt/Hero 3"/>
+	<properties edittree_pos="Units/Egitto/Eroe - Imhotep"/>
 	<properties HeroSkills="Healing, Quick March, Team defense, Vigor, Survival"/>
 
 </class>

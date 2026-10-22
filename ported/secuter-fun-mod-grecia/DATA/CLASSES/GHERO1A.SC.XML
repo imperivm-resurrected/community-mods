@@ -1,6 +1,6 @@
-<class id="GHero1a" cpp_class="CVXHero" parent="GHero1" entity="Units/GHero1/GHero1.ent.xml">
+<class id="GHero1a" cpp_class="CVXHero" parent="GHero1" entity="Units/Larax/Larax.ent.xml">
 
 	<properties display_name="Hengest" display_name_plural="Heroes"/>
-	<properties icon="gameres/icons/GHero1.bmp"/>
+	<properties icon="gameres/icons/Larax.bmp"/>
 
 </class>

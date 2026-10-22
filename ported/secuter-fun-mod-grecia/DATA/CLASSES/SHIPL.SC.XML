@@ -3,7 +3,7 @@
 	<properties icon="gameres/icons/Ship.bmp"/>
 	<properties display_name="Ship" display_name_plural="Ships"/>
 	<properties help="/contents/units/Ship"/>
-	<properties edittree_pos="Units/Others/Ship"/>
+	<properties edittree_pos="Units/Navi/Nave da guerra"/>
 	
 	<properties maxhealth="6000"/>
 	<properties damage="20" armor_slash="15" armor_pierce="15"/>

@@ -8,4 +8,5 @@
 <properties icon="gameres/icons/Obelisk2.bmp"/>
 <properties help="/contents/buildings/Obelisk 2"/>
 	<properties respawn_item="Gemma della furia" respawn_time="1200000"/>
+	<behavior script="data/subai/holder_vessillo.vs"/>
 </class>
