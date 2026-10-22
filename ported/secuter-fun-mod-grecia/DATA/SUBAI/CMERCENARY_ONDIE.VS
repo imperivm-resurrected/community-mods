@@ -1,26 +1,18 @@
 //void, Obj THIS
 
 Unit this;
+Building bld;
+Settlement sett;
+Hero h;
+Item item;
+int gold;
 
-this = THIS.AsUnit();
-
-if (.IsValid) {
-	int player;
-
-	//this is to avoid damaging units with trample and constantly creating useless visual effects
-	.SetSpecial(revenge, false);
-	.SetSpecial(spike_armor, false);
-	.SetSpecial(defense_skill, false);
-	.SetSpecial(defensive_tactics, false);
-	.SetSpecial(deflection, false);
-	.SetSpecial(determination, false);
-
-	.SetNoAIFlag(true);
-
-	player = .player;
-
-	if (IsResearched(player, "Mercenary pact")) {
-		Hero h;
+this = THIS.AsUnit;
+if (.IsValid) 
+{
+	if (!.IsMilitary()) return;	
+	if (EnvReadString(.player, "Mercenary pact")=="researched")
+	{
 		h = .hero;
 		if (!h.IsValid) return;
 		gold = GetConst("MercenaryPactGold");
@@ -41,4 +33,5 @@ if (.IsValid) {
 				item.SetUseCount(gold);					   
 			}
 	}
+		
 }

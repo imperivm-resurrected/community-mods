@@ -1,6 +1,23 @@
-//void, Obj THIS
+// void, Obj THIS
 
 Unit this;
+Unit u;
+ObjList ol;
+int exp, i;
+int bestHeroLevel,level;
+
+this = THIS.AsUnit;
+
+//Mumification
+if (THIS.AsHero)
+  {
+	bestHeroLevel = EnvReadInt(.player, "BestHeroLevel");
+	level = THIS.AsHero.inherentlevel;
+	if ( level > bestHeroLevel)
+	{
+		EnvWriteInt(.player, "BestHeroLevel", level);
+	}
+  }
 
 //Warior Tales
 exp = 1; // level to add

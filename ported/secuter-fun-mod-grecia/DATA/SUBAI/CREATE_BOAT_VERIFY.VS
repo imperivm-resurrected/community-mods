@@ -1,25 +1,10 @@
 //bool, ObjList objs, str OUT reasonText
 
-Building this;
-
-this = objs[0].AsBuilding();
-
-if (.IsValid) {
-	int race;
-
-	race = GetPlayerRace(.player);
-
-	if (race == RepublicanRome) {
-		if (cmdparam != "ShipRome")
-			return false;
-	}
-	else if (race == Egypt) {
-		if (cmdparam != "ShipEgypt")
-			return false;
-	}
-	else if (cmdparam != "ShipL")
-		return false;
-
+if(objs.count)
+{
+	Building bld;
+	bld = objs[0].AsBuilding();
+	if(bld.IsValid)
 	{
 		int nRace;
 		Settlement this;
@@ -35,5 +20,4 @@ if (.IsValid) {
 		}
 	}
 }
-
-return false;
+return true;

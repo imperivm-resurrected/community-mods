@@ -1,11 +1,11 @@
 //void, Obj this, Settlement sett
+int money;
+int gold;
+Item item;
+int i;
 
-if (.IsValid)
-	if (.AsUnit().IsValid)
-		if (sett.IsValid)
-			if (sett.max_gold > 0) {//exclude catapults, ruins, teleports and tents
-				Item item;
-				int i;
+if (!sett.IsValid)
+	return;
 
 //if (sett.GetCentralBuilding.AsCatapult) return;
 

@@ -1,8 +1,22 @@
-//void, Obj This
+// void, Obj This
 
 Building this;
+Query qSight, qEnemies, qFriends;
+ObjList olAll1,olAll2, olTeutonsOut, olOurTeutons;
+int i;
+point p;
+rect rc;
+int exp_gain, old_exp_gain;
+int delay;
 
-Sleep(rand(1000) + 500);
+//constants
+int nArmy,			//how much units to spawn at max
+	nActiveArmy,	//how much units to keep outside if an enemy comes
+	nUnitSpawnRate;	//how often a new unit appears if nobody is around
+
+int nTimeFromLastSpawn;
+int nGroupSpawn;
+int old_player;
 
 // truppe per le diverse tipologie di accampamento
 str TroopA, TroopB;
@@ -30,38 +44,28 @@ nUnitSpawnRate = BaseSpawnRate / nArmy;
 TroopA = TroopClsA[.race];
 TroopB = TroopClsB[.race];
 
-if (.class != "TTent") // blocca il comportamento automatico per CTent e altri
-    while (1)
-        Sleep(3600000);
-else {
-    Settlement set;
-    ObjList all_teutons, teutons_1, teutons_2, teutons_out, enemies, garrison;
-    Unit u;
-    Hero h;
-    point pos, pt1, pt2;
-    rect rc;
-    int i, j, sight, player, initial_army, active_army, spawn_rate, last_spawn_time, delay, exp_gain, old_exp_gain;
-    int eff_rate;
-    bool freeprod;
-    bool first_time_independent;
-    bool release;
+rc = GetMapRect();
 
-    set = .settlement;
+.settlement.SetLoyalty(100); //will not be able to capture it the normal way
 
-    set.SetLoyalty(100); // impossibile catturare fino a quando la guarnigione non viene sconfitta
+Sleep(rand(1000) + 500);
 
-    rc = GetMapRect();
+nGroupSpawn = 2;
+nTimeFromLastSpawn = nUnitSpawnRate * nArmy ; // this will cause respawn of half the army in the beggining
 
-    sight = .sight;
-    pos = .pos;
+qSight = VisibleObjsInSight(this, "Unit");
+qEnemies = Intersect(qSight, Union(EnemyObjs(.player, "Military"),EnemyObjs(.player, "BaseMage")));
+qFriends = Intersect(qSight, ClassPlayerObjs("Military", .player));
+old_player = .player;
 
-    initial_army = GetConst("TTentInitialArmy");
-    active_army = GetConst("TTentActiveArmy");
-    spawn_rate = GetConst("TTentUnitSpawnRate");
+//---------------[ main loop ]------------------------------------
 
-    last_spawn_time = spawn_rate * initial_army / 2; // spawn di metà esercito all’inizio
-    delay = 0;
-    first_time_independent = set.IsIndependent;
+old_exp_gain = 0;
+while (1) {
+	bool bCanSpawn;
+	bool bHasFood;
+	bool bIsIndependent;
+	int foodcost;
 
 	exp_gain = GetTime() / 120000 - 5;
 	if (exp_gain < 0)
@@ -253,20 +257,13 @@ else {
 			ObjList list1;
 			int newplayer, k;
 
-        // PRODUZIONE MANUALE CONTINUA
-        delay += 1000;
-        // Imperivm 2: produzione gratuita a 60s per QUALSIASI proprietario (non solo
-        // Germania); + default della produzione (Teutone) se non impostata.
-        freeprod = (GetPlayerRace(player) == Germany) || (EnvReadInt(player, "ModeInverno") == 1);
-        eff_rate = spawn_rate;
-        if (freeprod)
-            eff_rate = 60000;
-        if (delay >= eff_rate) {
-            str class_prod;
-            if (EnvReadInt(player, "ModeInverno") == 1)
-                if (EnvReadString(set, "ENV_TProd") == "" || EnvReadString(set, "ENV_TProd") == "Nothing")
-                    EnvWriteString(set, "ENV_TProd", "TTeutonRider");
-            class_prod = EnvReadString(set, "ENV_TProd");
+			list1 = .settlement.Units();
+			for (k = list1.count - 1; k >= 0; k -= 1) {
+				if (list1[k].IsAlive())
+				if (list1[k].IsVisible())
+					break;
+			}
+			if (k >= 0) break;
 
 			list1 = qEnemies.GetObjList();
 			for (k = list1.count - 1; k >= 0; k -= 1) {
@@ -308,17 +305,99 @@ else {
 			
 			.SetPlayer(qEnemies.GetObjList()[0].player);
 
-                    u = Place(class_prod, pos, player);
-                    u.SetFood(u.maxfood);
-                    u.SetFeeding(false);
-                    set.ForceAddUnit(u);
-                    u.SetExperience(old_exp_gain);
-                    all_teutons.Add(u);
-
-                    delay = 0; // reset delay per il prossimo ciclo di produzione
+			// redefine enemies and friends
+  		qSight = VisibleObjsInSight(this, "Unit");
+  		qEnemies = Intersect(qSight, Union(EnemyObjs(.player, "Military"),EnemyObjs(.player, "BaseMage")));
+	  	qFriends = Intersect(qSight, ClassPlayerObjs("Military", .player));
+			old_player = .player;
+			break;
+		}
+		if (old_player != .player) 
+		{
+			// redefine enemies and friends
+			qSight = VisibleObjsInSight(this, "Unit");
+			qEnemies = Intersect(qSight, Union(EnemyObjs(.player, "Military"),EnemyObjs(.player, "BaseMage")));
+			qFriends = Intersect(qSight, ClassPlayerObjs("Military", .player));
+			old_player = .player;
+		}
+	}
+ 	// SetFeeding of commanded teutons
+ 	if (!.settlement.IsIndependent())
+ 	{
+ 		olAll1.ClearDead();
+ 		olAll2.ClearDead();
+ 		for(i=0; i<olAll1.count;i+=1)
+ 		{
+ 			Unit u;
+ 			u = olAll1[i];
+ 			if (u.IsValid)
+ 			if (u.AsUnit().GetCommanded())
+ 			{
+ 				u.SetFeeding(true);
+ 				olAll1.Remove(u);
+ 			}
+ 		}
+ 		for(i=0; i<olAll2.count;i+=1)
+ 		{
+ 			Unit u;
+ 			u = olAll2[i];
+ 			if (u.IsValid)
+ 			if (u.AsUnit().GetCommanded())
+ 			{
+ 				u.SetFeeding(true);
+ 				olAll2.Remove(u);
+ 			}
+ 		}
+ 	}
+	
+	nTimeFromLastSpawn += 1000;
+	Sleep(1000);  
+    
+    }
+    
+    else {
+        
+        while (delay <= nUnitSpawnRate){     
+            
+            if (delay == nUnitSpawnRate){
+                if (.settlement.food >= 400 && (EnvReadString(.settlement, "ENV_TProd") == "TTeutonRider" || EnvReadString(.settlement, "ENV_TProd") == "TTeutonArcher")){
+                    Unit teuton;
+                    .settlement.SetFood(.settlement.food - 400);
+                    teuton = Place(EnvReadString(.settlement, "ENV_TProd"), .pos, .player);
+                    teuton.SetFood(teuton.maxfood);
+                    teuton.SetFeeding(false);
+                    .settlement.ForceAddUnit(teuton);
+                    teuton.SetExperience(old_exp_gain);
+                    delay=0;
                 }
-                // Se non c'è abbastanza cibo, la produzione si ferma momentaneamente,
-                // ma non viene disattivata, quindi quando il cibo è sufficiente, riprenderà.
+                if (.settlement.food >= 500 && EnvReadString(.settlement, "ENV_TProd") == "TTeutonWolf"){
+                    Unit teuton;
+                    .settlement.SetFood(.settlement.food - 500);
+                    teuton = Place(EnvReadString(.settlement, "ENV_TProd"), .pos, .player);
+                    teuton.SetFood(teuton.maxfood);
+                    teuton.SetFeeding(false);
+                    .settlement.ForceAddUnit(teuton);
+                    teuton.SetExperience(old_exp_gain);
+                    delay=0;
+                }
+               
+            }
+            
+            olTeutonsOut.ClearDead();
+            // clear the teutons that were commanded from our list
+            for (i = olTeutonsOut.count - 1; i >= 0; i -= 1)
+                if (olTeutonsOut[i].AsUnit().GetCommanded())
+                    olTeutonsOut.Remove(olTeutonsOut[i]);
+            //increase experience
+            if ((exp_gain != 0) && (exp_gain > old_exp_gain)) {
+                Unit u;
+                olOurTeutons = olTeutonsOut;
+                olOurTeutons.AddList(.settlement.Units());
+                for (i = olOurTeutons.count() - 1; i >= 0; i -= 1) {
+                    u = olOurTeutons[i];
+                    u.SetExperience(u.experience + exp_gain - old_exp_gain);
+                }
+                old_exp_gain = exp_gain;
             }
             if (qEnemies.IsEmpty()) { // no threat around
                 // command all that are out to come back in
@@ -487,99 +566,46 @@ else {
                     old_player = .player;
                 }
             }
-        }
-
-        // Aumento esperienza
-        if (exp_gain > 0)
-            if (exp_gain > old_exp_gain) {
-                for (i = all_teutons.count - 1; i >= 0; i -= 1) {
-                    u = all_teutons[i].AsUnit();
+            // SetFeeding of commanded teutons
+            if (!.settlement.IsIndependent())
+            {
+                olAll1.ClearDead();
+                olAll2.ClearDead();
+                for(i=0; i<olAll1.count;i+=1)
+                {
+                    Unit u;
+                    u = olAll1[i];
                     if (u.IsValid)
-                        u.SetExperience(u.experience + exp_gain - old_exp_gain);
+                    if (u.AsUnit().GetCommanded())
+                    {
+                        u.SetFeeding(true);
+                        olAll1.Remove(u);
+                    }
                 }
-                old_exp_gain = exp_gain;
-            }
-
-        // Controllo minacce intorno
-        teutons_out.ClearDead();
-        enemies = Intersect(
-            VisibleObjsInSight(this, "Unit"),
-            Subtract(
-                Union(EnemyObjs(player, "Military"), EnemyObjs(player, "BaseMage")),
-                EnemyObjs(player, "Sentry")
-            )
-        ).GetObjList();
-        enemies.ClearDead();
-        if (enemies.count <= 0) {
-            teutons_out.SetCommand("enter_tent", this);
-            teutons_out.Clear();
-        }
-        else {
-            for (i = 0; i < teutons_out.count; i += 1) {
-                u = teutons_out[i].AsUnit();
-                if (.DistTo(u) > sight) {
-                    pt1 = u.pos - pos;
-                    pt1.SetLen(sight / 2);
-                    pt2 = pt1 + pos;
-                    pt2.IntoRect(rc);
-                    u.SetCommand("move", pt2);
-                    for (j = 0; j < 4; j += 1) {
-                        pt1.Rot(90);
-                        pt2 = pt1 + pos;
-                        pt2.IntoRect(rc);
-                        u.AddCommand(false, "patrol", pt2);
+                for(i=0; i<olAll2.count;i+=1)
+                {
+                    Unit u;
+                    u = olAll2[i];
+                    if (u.IsValid)
+                    if (u.AsUnit().GetCommanded())
+                    {
+                        u.SetFeeding(true);
+                        olAll2.Remove(u);
                     }
                 }
             }
-
-            while (teutons_out.count < active_army && set.UnitsCount() > 0) {
-                u = set.Units()[0];
-                teutons_out.Add(u);
-                pt1.Set(0, sight / 2);
-                pt1.Rot(rand(360));
-                pt2 = pt1 + pos;
-                pt2.IntoRect(rc);
-                u.SetCommand("advance", pt2);
-                for (j = 0; j < 4; j += 1) {
-                    pt1.Rot(90);
-                    pt2 = pt1 + pos;
-                    pt2.IntoRect(rc);
-                    u.AddCommand(false, "patrol", pt2);
-                }
+            
+            
+            
+            if (delay<nUnitSpawnRate){
+                delay=delay+1000;
             }
-
-            all_teutons.ClearDead();
-            if (all_teutons.count <= 0) {
-                enemies.ClearDead();
-                i = enemies.count;
-                if (i > 0)
-                    if (Intersect(VisibleObjsInSight(this, "Unit"), FriendlyObjs(player, "Military")).IsEmpty()) {
-                        j = enemies[rand(i)].player;
-                        .SetPlayer(j);
-                        if (first_time_independent)
-                            if (!set.IsIndependent) {
-                                int t;
-                                t = 3; // richiesta: la tenda teutonica consegna 3 cavalieri + 3 arcieri alla conquista (la tenda numidica resta al const TTentCapturedArmy)
-                                for (i = 0; i < t; i += 1) {
-                                    u = Place("TTeutonRider", pos, j);
-                                    u.SetFood(u.maxfood);
-                                    u.SetFeeding(false);
-                                    set.ForceAddUnit(u);
-                                    u.SetExperience(old_exp_gain);
-                                    all_teutons.Add(u);
-                                    u = Place("TTeutonArcher", pos, j);
-                                    u.SetFood(u.maxfood);
-                                    u.SetFeeding(false);
-                                    set.ForceAddUnit(u);
-                                    u.SetExperience(old_exp_gain);
-                                    all_teutons.Add(u);
-                                }
-                                set.SetFood(set.food + 1200);
-                                first_time_independent = false;
-                            }
-                    }
+            else {
+                delay=0;
             }
+            Sleep(1000);
         }
-        Sleep(1000);
+        
     }
+
 }

@@ -178,7 +178,7 @@ if (hero.IsAlive)
 	bool bSpoilsOfWar = false;
 	bool bPeoplesAssembly = false;
 	bool bCHeroLevel8 = false;
-	while (!bSpoilsOfWar || !bPeoplesAssembly || !bCHeroLevel8))
+	while (!bSpoilsOfWar || !bPeoplesAssembly || !bCHeroLevel8)
 	{
 		if (!bPeoplesAssembly)
 			bPeoplesAssembly = set.TSResearch("People's Assembly");

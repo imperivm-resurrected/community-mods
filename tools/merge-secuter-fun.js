@@ -142,3 +142,12 @@ take("COMMANDS/UNIT.XML", "mod");
   fs.writeFileSync(path.join(outDir, "DATA/COMMANDS/ARENA.XML"), text, "latin1");
   console.log(`  COMMANDS/ARENA.XML: ${hdOnly} commands only HD changed, ${both} both changed, ${extra.length} added from HD`);
 }
+
+// TS_CarthageTactic2.vs: the mod's while condition has a stray ")", which the 1.40 compiler took and the game's does not
+{
+  const p = path.join(outDir, "DATA/AI/TS_CarthageTactic2.vs");
+  if (fs.existsSync(p)) {
+    const s = fs.readFileSync(p, "latin1"), t = s.replace(/(while \(!bSpoilsOfWar \|\| !bPeoplesAssembly \|\| !bCHeroLevel8\))\)/, "$1");
+    if (t !== s) { fs.writeFileSync(p, t, "latin1"); console.log("  AI/TS_CarthageTactic2.vs: stray ) removed"); }
+  }
+}

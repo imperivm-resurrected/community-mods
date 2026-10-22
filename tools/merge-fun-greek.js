@@ -112,6 +112,13 @@ const merge3 = (rel, base, notes) => {
     (_m, f, b, g) => decide(split(f), split(b), split(g), notes).join("\n") + "\n");
 };
 
+const DECL = /^\s*(?:int|str|bool|point|Obj|ObjList|Settlement|Building|Unit|StrArray|IntArray|Hero|GAIKA|Squad|Item|Player|float)\s+([\w\s,\[\]="]+?);/gm;
+const declared = s => { const r = new Set(); for (const m of s.matchAll(DECL)) for (const n of m[1].split(",")) { const x = /^\s*(\w+)/.exec(n); if (x) r.add(x[1]); } return r; };
+const code = s => s.replace(/\/\/.*/g, "").replace(/"(\\.|[^"\\])*"/g, " ");
+const lostDecls = (merged, sources) => {
+  const have = declared(merged), body = code(merged);
+  return [...new Set(sources.flatMap(s => [...declared(s)]))].filter(n => !have.has(n) && new RegExp(`\\b${n}\\b`).test(body));
+};
 fs.mkdirSync(outDir, { recursive: true });
 fs.cpSync(funDir, outDir, { recursive: true });
 const report = [], stats = { kept: 0, dropped: 0, merged: 0, greek: 0 };
@@ -137,6 +144,12 @@ for (const rel of [...fun.keys()].sort()) {
     if (wellFormed(text)) break;
   }
   if (isXml && !wellFormed(text)) { stats.kept++; report.push(`- \`${rel}\`: **not merged** (no merge came out as valid XML): the Fun mod's file kept as it was`); continue; }
+  // scripts declare their variables at the top and a line-level mix can lose one ("No matching function with name gold" when the
+  // game compiles it): a merged script has to declare every name either side declares and uses, else the Fun mod's file is kept whole
+  if (/\.vs$/i.test(rel)) {
+    const lost = lostDecls(text, [rd(fun.get(rel)), rd(greek.get(rel))]);
+    if (lost.length) { stats.kept++; report.push(`- \`${rel}\`: **not merged** (the merge lost the declaration of ${lost.slice(0, 4).join(", ")}): the Fun mod's file kept as it was, the Greek Mod 4.2's changes in it are not applied`); continue; }
+  }
   const eol = rd(fun.get(rel)).includes("\r\n") ? "\r\n" : "\n";
   if (text === lf(rd(greek.get(rel)))) { drop("the merge is the Greek Mod's: left out"); continue; }
   fs.writeFileSync(outPath(rel), text.replace(/\n/g, eol), "latin1");
@@ -144,6 +157,33 @@ for (const rel of [...fun.keys()].sort()) {
   const count = n => notes.filter(x => x === n).length;
   if (notes.length) report.push(`- \`${rel}\` (base ${baseName}): ${count("both added: both kept")} added by both and kept, ${count("the Fun mod's side")} conflicts where the Fun mod's side won${notes.includes("(fun)") ? " (the Fun mod's side for every conflict: no finer merge was valid XML)" : notes.includes("(attr)") ? " (attribute by attribute only: the line-level mix was not valid XML)" : ""}`);
   void rest;
+}
+// Fixes the game's script compiler needs and the Fun mod's scripts (made for 1.40 and the Greek Mod 1.8) don't meet:
+// - TS_CarthageTactic2.vs has a stray ')' in a while condition (also in the normal Fun mod)
+// - a script that uses `Greece` without declaring it: in 1.8 the engine had it; 4.2's own scripts declare `int Greece;` and
+//   `Greece = ImperialRome;` ("Greece's race is the old Imperial Rome") before using it
+for (const f of fs.readdirSync(outDir, { recursive: true }).filter(f => /\.vs$/i.test(f))) {
+  const p = path.join(outDir, f);
+  let s = rd(p);
+  const eol = s.includes("\r\n") ? "\r\n" : "\n";
+  let t = s;
+  if (/TS_CarthageTactic2\.vs$/i.test(f)) t = t.replace(/(while \(!bSpoilsOfWar \|\| !bPeoplesAssembly \|\| !bCHeroLevel8\))\)/, "$1");
+  if (/\bGreece\b/.test(code(t)) && !/\bint\s+[^;]*\bGreece\b/.test(t)) {
+    const lines = t.split(/\r?\n/);
+    let last = -1, first = -1;
+    for (let i = 1; i < lines.length; i++) {
+      const l = lines[i].trim();
+      if (!l || l.startsWith("//")) continue;
+      if (/^(int|str|bool|point|Obj|ObjList|Settlement|Building|Unit|StrArray|IntArray|Hero|GAIKA|Squad|Item|Player|float)\b[^(]*;/.test(l)) last = i; else { first = i; break; }
+    }
+    if (first > 0) {
+      lines.splice(first, 0, "// Greece: the old Imperial Rome", "Greece = ImperialRome;", "");
+      lines.splice(last + 1, 0, "int Greece;");
+      t = lines.join(eol);
+      report.push(`- \`${f.toLowerCase().replace(/\\/g, "/")}\`: uses \`Greece\` without declaring it, \`int Greece; Greece = ImperialRome;\` added like the Greek Mod's scripts`);
+    }
+  }
+  if (t !== s) fs.writeFileSync(p, t, "latin1");
 }
 const md = `# Fun mod Greece version over Greek Mod 4.2
 
