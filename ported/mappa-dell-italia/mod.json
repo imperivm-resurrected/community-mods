@@ -1,0 +1,16 @@
+{
+  "id": "mappa-dell-italia",
+  "name": "Mappa dell'Italia",
+  "version": "1.0",
+  "authors": [
+    "Giuseppe D'addio1"
+  ],
+  "description": {
+    "italian": "Partita di strategia. Mappa di Giuseppe D'addio1.",
+    "spanish": "Mapa de Giuseppe D'addio1 (2018, en italiano).",
+    "english": "Map by Giuseppe D'addio1 (2018, in Italian)."
+  },
+  "category": "Scenarios",
+  "tags": [],
+  "redistributable": true
+}

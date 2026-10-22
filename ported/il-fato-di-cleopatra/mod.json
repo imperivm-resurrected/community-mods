@@ -1,0 +1,18 @@
+{
+  "id": "il-fato-di-cleopatra",
+  "name": "Il fato di Cleopatra",
+  "version": "1.0",
+  "authors": [
+    "MrDuck"
+  ],
+  "description": {
+    "italian": "Anno 32 a.C. Marco Antonio e Cleopatra, re e regina d'Egitto, regnano in una serenità apparente nella loro Alessandria. L'antico amico di Marco Antonio, Ottaviano, ha però convinto il Senato a lasciargli invadere l'Egitto e portare Cleopatra stessa in catene, e il Senato, dato che Roma prende la pace in Egitto come un fastidio, ha accolto la proposta. Avventura di MrDuck.",
+    "spanish": "Aventura de MrDuck (2018, en italiano).",
+    "english": "Adventure by MrDuck (2018, in Italian)."
+  },
+  "category": "Adventures",
+  "tags": [
+    "Language: Italian"
+  ],
+  "redistributable": true
+}

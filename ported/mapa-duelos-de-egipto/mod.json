@@ -1,0 +1,17 @@
+{
+  "id": "mapa-duelos-de-egipto",
+  "name": "Mapa Duelos de Egipto",
+  "version": "1.0",
+  "authors": [
+    "Knight00"
+  ],
+  "description": {
+    "spanish": "Mapa para jugar partidas en pequeño de Egipto. Mapa de Knight00.",
+    "english": "Map by Knight00."
+  },
+  "category": "Scenarios",
+  "tags": [
+    "Players: 2"
+  ],
+  "redistributable": true
+}

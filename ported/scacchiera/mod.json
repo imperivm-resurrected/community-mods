@@ -1,0 +1,18 @@
+{
+  "id": "scacchiera",
+  "name": "SCACCHIERA",
+  "version": "1.0",
+  "authors": [
+    "Nucl3arW1nter"
+  ],
+  "description": {
+    "italian": "Gli eserciti rivali si alleano fra loro per sovrastare il nemico più temuto! Ricorda: Chi è nemico di un mio nemico è un mio alleato! Mappa di Nucl3arW1nter.",
+    "spanish": "Mapa de Nucl3arW1nter (2017, en italiano).",
+    "english": "Map by Nucl3arW1nter (2017, in Italian)."
+  },
+  "category": "Scenarios",
+  "tags": [
+    "Players: 4"
+  ],
+  "redistributable": true
+}

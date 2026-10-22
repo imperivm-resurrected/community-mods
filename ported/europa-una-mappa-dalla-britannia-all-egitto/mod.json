@@ -1,0 +1,22 @@
+{
+  "id": "europa-una-mappa-dalla-britannia-all-egitto",
+  "name": "EUROPA , Una mappa dalla Britannia all Egitto",
+  "version": "1.0",
+  "authors": [
+    "Musica69"
+  ],
+  "description": {
+    "italian": "Partita di strategia. Mappa di Musica69.",
+    "spanish": "Mapa de Musica69 (en italiano).",
+    "english": "Map by Musica69 (in Italian)."
+  },
+  "category": "Scenarios",
+  "tags": [],
+  "requires": [
+    "greek-civilization-mod"
+  ],
+  "incompatibleWith": [
+    "community-mod"
+  ],
+  "redistributable": true
+}

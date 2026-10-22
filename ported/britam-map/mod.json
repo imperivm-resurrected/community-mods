@@ -1,0 +1,16 @@
+{
+  "id": "britam-map",
+  "name": "Britam map",
+  "version": "1.0",
+  "authors": [
+    "Punic"
+  ],
+  "description": {
+    "italian": "Mappa di Punic.",
+    "spanish": "Mapa de Punic (2017, en italiano).",
+    "english": "Map by Punic (2017, in Italian)."
+  },
+  "category": "Scenarios",
+  "tags": [],
+  "redistributable": true
+}

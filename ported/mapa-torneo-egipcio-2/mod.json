@@ -1,0 +1,18 @@
+{
+  "id": "mapa-torneo-egipcio-2",
+  "name": "mapa torneo egipcio(2)",
+  "version": "1.0",
+  "authors": [
+    "Killove"
+  ],
+  "description": {
+    "italian": "mapa para jugar 1vs1 egipto. Mappa di Killove.",
+    "spanish": "Mapa de Killove (en italiano).",
+    "english": "Map by Killove (in Italian)."
+  },
+  "category": "Scenarios",
+  "tags": [
+    "Players: 2"
+  ],
+  "redistributable": true
+}

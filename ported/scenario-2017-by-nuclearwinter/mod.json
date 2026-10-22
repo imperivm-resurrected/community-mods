@@ -1,0 +1,18 @@
+{
+  "id": "scenario-2017-by-nuclearwinter",
+  "name": "Scenario 2017 by NuclearWinter",
+  "version": "1.0",
+  "authors": [
+    "Nucl3arW1nter"
+  ],
+  "description": {
+    "italian": "2 mappe di Nucl3arW1nter.",
+    "spanish": "2 mapas de Nucl3arW1nter (2017, en italiano).",
+    "english": "2 maps by Nucl3arW1nter (2017, in Italian)."
+  },
+  "category": "Scenarios",
+  "tags": [
+    "Players: 2-8"
+  ],
+  "redistributable": true
+}

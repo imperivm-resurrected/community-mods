@@ -1,0 +1,17 @@
+{
+  "id": "aventuras-guigoras-imperium-3",
+  "name": "Aventuras Guigoras Imperium 3",
+  "version": "1.0",
+  "authors": [
+    "Guigoras"
+  ],
+  "description": {
+    "spanish": "1-Cartago,2-Roma,3-Iberia,4-Iberia. Elige todo lo demas!!! Aventura de Guigoras (2015).",
+    "english": "Adventure by Guigoras (2015)."
+  },
+  "category": "Adventures",
+  "tags": [
+    "Language: Spanish"
+  ],
+  "redistributable": true
+}

@@ -1,0 +1,19 @@
+{
+  "id": "l-unificazione-italica",
+  "name": "L'unificazione italica",
+  "version": "1.0",
+  "authors": [
+    "Giuseppe D'addio1"
+  ],
+  "description": {
+    "italian": "ATTENZIONE: PER GIOCARE A QUESTA CONQUISTA È NECESSARIA LA MOD GREEK CIVILIZATION. TUTTI I DIRITTI SONO RISERVATI.  Scegli la tua fazione, e domina la penisola italica! Conquista di Giuseppe D'addio1.",
+    "spanish": "Conquista de Giuseppe D'addio1 (2018, en italiano).",
+    "english": "Conquest by Giuseppe D'addio1 (2018, in Italian)."
+  },
+  "category": "Conquests",
+  "tags": [],
+  "requires": [
+    "greek-civilization-mod"
+  ],
+  "redistributable": true
+}

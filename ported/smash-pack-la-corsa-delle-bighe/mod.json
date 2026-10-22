@@ -1,0 +1,18 @@
+{
+  "id": "smash-pack-la-corsa-delle-bighe",
+  "name": "Smash Pack - La corsa delle bighe",
+  "version": "1.0",
+  "authors": [
+    "Giuseppe D'addio1"
+  ],
+  "description": {
+    "italian": "7 mappe di Giuseppe D'addio1.",
+    "spanish": "7 mapas de Giuseppe D'addio1 (2017, en italiano).",
+    "english": "7 maps by Giuseppe D'addio1 (2017, in Italian)."
+  },
+  "category": "Scenarios",
+  "tags": [
+    "Players: 2-8"
+  ],
+  "redistributable": true
+}

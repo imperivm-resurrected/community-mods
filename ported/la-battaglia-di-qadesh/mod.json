@@ -1,0 +1,18 @@
+{
+  "id": "la-battaglia-di-qadesh",
+  "name": "La battaglia di Qadesh",
+  "version": "1.0",
+  "authors": [
+    "Giuseppe D'addio1"
+  ],
+  "description": {
+    "italian": "Tardo maggio del 1274 a.C. Il Faraone d'Egitto, Ramses II, intrapende una nuova campagna per la conquista della Siria, e per farlo, si scontrerà con l'impero ittita di Muwattali III. La sua determinazione porterà lui e il suo esercito in una lotta senza quartiere, dove il Faraone dovrà usare tutte le sue strategie e tutto il suo coraggio per vincere la sua disperata battaglia... Avventura di Giuseppe D'addio1.",
+    "spanish": "Aventura de Giuseppe D'addio1 (en italiano).",
+    "english": "Adventure by Giuseppe D'addio1 (in Italian)."
+  },
+  "category": "Adventures",
+  "tags": [
+    "Language: Italian"
+  ],
+  "redistributable": true
+}

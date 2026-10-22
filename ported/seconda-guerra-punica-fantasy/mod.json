@@ -1,0 +1,16 @@
+{
+  "id": "seconda-guerra-punica-fantasy",
+  "name": "Seconda Guerra Punica (Fantasy)",
+  "version": "1.0",
+  "authors": [
+    "Bhais"
+  ],
+  "description": {
+    "italian": "4 mappe di Bhais.",
+    "spanish": "4 mapas de Bhais (2017, en italiano).",
+    "english": "4 maps by Bhais (2017, in Italian)."
+  },
+  "category": "Scenarios",
+  "tags": [],
+  "redistributable": true
+}

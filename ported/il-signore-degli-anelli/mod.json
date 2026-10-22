@@ -1,0 +1,18 @@
+{
+  "id": "il-signore-degli-anelli",
+  "name": "Il Signore Degli Anelli",
+  "version": "1.0",
+  "authors": [
+    "Skarbrand95"
+  ],
+  "description": {
+    "italian": "Partita di strategia. Mappa di Skarbrand95.",
+    "spanish": "Mapa de Skarbrand95 (2018, en italiano).",
+    "english": "Map by Skarbrand95 (2018, in Italian)."
+  },
+  "category": "Scenarios",
+  "tags": [
+    "Players: 8"
+  ],
+  "redistributable": true
+}

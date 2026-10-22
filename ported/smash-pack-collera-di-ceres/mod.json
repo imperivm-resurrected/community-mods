@@ -1,0 +1,18 @@
+{
+  "id": "smash-pack-collera-di-ceres",
+  "name": "Smash Pack - Collera di Ceres",
+  "version": "1.0",
+  "authors": [
+    "Giuseppe D'addio1"
+  ],
+  "description": {
+    "italian": "4 mappe di Giuseppe D'addio1.",
+    "spanish": "4 mapas de Giuseppe D'addio1 (2017, en italiano).",
+    "english": "4 maps by Giuseppe D'addio1 (2017, in Italian)."
+  },
+  "category": "Scenarios",
+  "tags": [
+    "Players: 2-8"
+  ],
+  "redistributable": true
+}

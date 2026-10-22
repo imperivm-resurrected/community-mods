@@ -1,0 +1,18 @@
+{
+  "id": "follia-teutonica",
+  "name": "Follia teutonica",
+  "version": "1.0",
+  "authors": [
+    "Giuseppe D'addio1"
+  ],
+  "description": {
+    "italian": "Non c'è niente di meglio che passeggiare nelle foreste della Gallia... al contrario, non c'è niente di peggio che ritrovarsi di fronte i terribili guerrieri teutonici che infestano la zona. I loro accampamenti, disseminati ovunque, sono così numerosi che la vittoria contro il nemico principale rappresenta solo un male minore. Mappa di Giuseppe D'addio1.",
+    "spanish": "Mapa de Giuseppe D'addio1 (2017, en italiano).",
+    "english": "Map by Giuseppe D'addio1 (2017, in Italian)."
+  },
+  "category": "Scenarios",
+  "tags": [
+    "Players: 2"
+  ],
+  "redistributable": true
+}

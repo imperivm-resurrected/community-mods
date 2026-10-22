@@ -1,0 +1,18 @@
+{
+  "id": "i-guerrieri-leggendari",
+  "name": "I guerrieri leggendari",
+  "version": "1.0",
+  "authors": [
+    "Aleilguerriero"
+  ],
+  "description": {
+    "italian": "Riuscirai a sconfiggere tutti i guerrieri leggendari? Mappa di Aleilguerriero.",
+    "spanish": "Mapa de Aleilguerriero (2016, en italiano).",
+    "english": "Map by Aleilguerriero (2016, in Italian)."
+  },
+  "category": "Scenarios",
+  "tags": [
+    "Players: 4"
+  ],
+  "redistributable": true
+}

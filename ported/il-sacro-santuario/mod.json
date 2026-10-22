@@ -1,0 +1,18 @@
+{
+  "id": "il-sacro-santuario",
+  "name": "Il Sacro Santuario",
+  "version": "1.0",
+  "authors": [
+    "t7897"
+  ],
+  "description": {
+    "italian": "Un antico santuario germanico è in pericolo. Un misterioso alleato ad oriente si fa avanti. Il nemico avanza da sud. Sarai in grado di proteggere la sacralità di quel posto e respingere le orde distruttrici? Mappa di t7897.",
+    "spanish": "Mapa de t7897 (2018, en italiano).",
+    "english": "Map by t7897 (2018, in Italian)."
+  },
+  "category": "Scenarios",
+  "tags": [
+    "Players: 5"
+  ],
+  "redistributable": true
+}

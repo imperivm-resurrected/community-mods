@@ -1,0 +1,18 @@
+{
+  "id": "la-battaglia-del-lago-regillo-giuseppe-d-addio1",
+  "name": "La battaglia del Lago Regillo",
+  "version": "1.0",
+  "authors": [
+    "Giuseppe D'addio1"
+  ],
+  "description": {
+    "italian": "È l'anno 496 a.C. Tarquinio il Superbo, ultimo re di Roma, è stato esiliato dalla sua stessa città, ma non è disposto a rinunciare al trono. Determinato a prendersi la sua rivincita, il tiranno etrusco si rivolge ai Latini, che nel frattempo hanno formato una coalizione di 30 città, unite dall'odio contro Roma.. Avventura di Giuseppe D'addio1.",
+    "spanish": "Aventura de Giuseppe D'addio1 (en italiano).",
+    "english": "Adventure by Giuseppe D'addio1 (in Italian)."
+  },
+  "category": "Adventures",
+  "tags": [
+    "Language: Italian"
+  ],
+  "redistributable": true
+}

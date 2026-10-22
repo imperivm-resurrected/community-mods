@@ -1,0 +1,20 @@
+{
+  "id": "mappe-europa-e-singole-nazioni",
+  "name": "Mappe Europa e Singole Nazioni",
+  "version": "1.0",
+  "authors": [
+    "x[CLOUD]x"
+  ],
+  "description": {
+    "italian": "9 mappe di x[CLOUD]x.",
+    "spanish": "9 mapas de x[CLOUD]x (2016, en italiano).",
+    "english": "9 maps by x[CLOUD]x (2016, in Italian)."
+  },
+  "category": "Scenarios",
+  "tags": [
+    "Type: Adventures",
+    "Players: 2",
+    "Language: Italian"
+  ],
+  "redistributable": true
+}

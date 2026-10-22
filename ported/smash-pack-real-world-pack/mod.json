@@ -1,0 +1,18 @@
+{
+  "id": "smash-pack-real-world-pack",
+  "name": "Smash Pack - Real World Pack",
+  "version": "1.0",
+  "authors": [
+    "Giuseppe D'addio1"
+  ],
+  "description": {
+    "italian": "6 mappe di Giuseppe D'addio1.",
+    "spanish": "6 mapas de Giuseppe D'addio1 (en italiano).",
+    "english": "6 maps by Giuseppe D'addio1 (in Italian)."
+  },
+  "category": "Scenarios",
+  "tags": [
+    "Players: 8"
+  ],
+  "redistributable": true
+}

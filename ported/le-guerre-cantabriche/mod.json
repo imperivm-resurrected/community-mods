@@ -1,0 +1,18 @@
+{
+  "id": "le-guerre-cantabriche",
+  "name": "Le guerre cantabriche",
+  "version": "1.0",
+  "authors": [
+    "Giuseppe D'addio1"
+  ],
+  "description": {
+    "italian": "Anno 29 a.C. È passato un anno da quando Roma è cessata di essere una Repubblica, dalle cui ceneri è nato il suo impero per merito di Ottaviano Augusto. Adesso, in questi primi anni del suo principato, i Romani hanno un conto in sospeso con gli Iberi, popolazione pacifica ma testarda, da sempre riottosa ad arrendersi all'invasore. Avventura di Giuseppe D'addio1.",
+    "spanish": "Aventura de Giuseppe D'addio1 (en italiano).",
+    "english": "Adventure by Giuseppe D'addio1 (in Italian)."
+  },
+  "category": "Adventures",
+  "tags": [
+    "Language: Italian"
+  ],
+  "redistributable": true
+}

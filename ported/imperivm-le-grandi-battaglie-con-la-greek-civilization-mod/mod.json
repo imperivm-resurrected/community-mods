@@ -1,0 +1,18 @@
+{
+  "id": "imperivm-le-grandi-battaglie-con-la-greek-civilization-mod",
+  "name": "Imperivm: Le Grandi Battaglie con la Greek Civilization Mod!",
+  "version": "1.0",
+  "authors": [
+    "Giuseppe D'addio1"
+  ],
+  "description": {
+    "italian": "Avventura di Giuseppe D'addio1.",
+    "spanish": "Aventura de Giuseppe D'addio1 (2018, en italiano).",
+    "english": "Adventure by Giuseppe D'addio1 (2018, in Italian)."
+  },
+  "category": "Adventures",
+  "tags": [
+    "Language: Italian"
+  ],
+  "redistributable": true
+}

@@ -1,0 +1,21 @@
+{
+  "id": "l-unificazione-dell-italia-giuseppe-d-addio1",
+  "name": "L'unificazione dell'Italia",
+  "version": "1.0",
+  "authors": [
+    "Giuseppe D'addio1"
+  ],
+  "description": {
+    "italian": "Anno 367 a.C Roma è una piccola città dalle grandi smanie di grandezza, e si sta liberando dal pesante giogo degli Etruschi antichi rivali, nonostante la vittoria romana nella Guerra Latina. Roma, però, è circondata da numerosi nemici: oltre agli Etruschi, infatti, vi sono i Sanniti, i Greci, i Galli, gli Illiri e i Cartaginesi. Avventura di Giuseppe D'addio1.",
+    "spanish": "Aventura de Giuseppe D'addio1 (en italiano).",
+    "english": "Adventure by Giuseppe D'addio1 (in Italian)."
+  },
+  "category": "Adventures",
+  "tags": [
+    "Language: Italian"
+  ],
+  "requires": [
+    "greek-civilization-mod"
+  ],
+  "redistributable": true
+}

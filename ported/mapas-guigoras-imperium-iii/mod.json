@@ -1,0 +1,17 @@
+{
+  "id": "mapas-guigoras-imperium-iii",
+  "name": "Mapas Guigoras Imperium III",
+  "version": "1.0",
+  "authors": [
+    "Guigoras"
+  ],
+  "description": {
+    "spanish": "Incluso un superhéroe tiene un resbalon... Larax no iba a ser menos Y entonces hay que estar preparado. ¿ Tu lo estas? ¡¡¡ Cuantos mas muertos tengas en el armario mas tendrás que saltar!!! Anche un supereroe ha un lapsus... Larax non sarebbe meno E allora dobbiamo essere preparati. La vostra cosa questi? Il più morto avere nell'armadio, ma deve passare!!! Aventura de Guigoras (2014).",
+    "english": "Adventure by Guigoras (2014)."
+  },
+  "category": "Adventures",
+  "tags": [
+    "Language: Spanish"
+  ],
+  "redistributable": true
+}

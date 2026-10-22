@@ -1,0 +1,16 @@
+{
+  "id": "la-capitale",
+  "name": "\"LA CAPITALE\"",
+  "version": "1.0",
+  "authors": [
+    "x[CLOUD]x"
+  ],
+  "description": {
+    "italian": "Una potente capitale ha da ormai troppo tempo il dominio della regione, e impone tasse ingiuste a tutti i suoi cittadini e sudditi.. Costituisci le legioni, riforma le centurie, recluta il tuo esercito e... INSORGI! Mappa di x[CLOUD]x.",
+    "spanish": "Mapa de x[CLOUD]x (2017, en italiano).",
+    "english": "Map by x[CLOUD]x (2017, in Italian)."
+  },
+  "category": "Scenarios",
+  "tags": [],
+  "redistributable": true
+}

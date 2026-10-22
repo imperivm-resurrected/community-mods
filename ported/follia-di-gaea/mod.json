@@ -1,0 +1,18 @@
+{
+  "id": "follia-di-gaea",
+  "name": "Follia di Gaea",
+  "version": "1.0",
+  "authors": [
+    "Giuseppe D'addio1"
+  ],
+  "description": {
+    "italian": "Non ci è dato sapere che cosa si era presa Gaia, dea della terra. Quel che è sicuro è che l'intero clima della regione è nel caos! Paludi, deserti, terreno, erba, neve, tutti i generi di terreni possibili sono disseminati ovunque! Gli Dèi hanno pertanto deciso di che i perdenti di questa nuova guerra dovranno pregare Gaia per mesi affinché le cose ritornino al loro posto. Mappa di Giuseppe D'addio1.",
+    "spanish": "Mapa de Giuseppe D'addio1 (2017, en italiano).",
+    "english": "Map by Giuseppe D'addio1 (2017, in Italian)."
+  },
+  "category": "Scenarios",
+  "tags": [
+    "Players: 4"
+  ],
+  "redistributable": true
+}

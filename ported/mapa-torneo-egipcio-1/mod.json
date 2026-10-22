@@ -1,0 +1,18 @@
+{
+  "id": "mapa-torneo-egipcio-1",
+  "name": "mapa torneo egipcio(1)",
+  "version": "1.0",
+  "authors": [
+    "Factor"
+  ],
+  "description": {
+    "italian": "mapa para jugar 1vs1 egipto. Mappa di Factor.",
+    "spanish": "Mapa de Factor (en italiano).",
+    "english": "Map by Factor (in Italian)."
+  },
+  "category": "Scenarios",
+  "tags": [
+    "Players: 2"
+  ],
+  "redistributable": true
+}

@@ -1,0 +1,21 @@
+{
+  "id": "la-valle-abbandonata",
+  "name": "La Valle Abbandonata",
+  "version": "1.0",
+  "authors": [
+    "Nucl3arW1nter"
+  ],
+  "description": {
+    "italian": "Antica valle dai mille segreti oscuri...  1vs1vs1 / popolo a scelta (i primi 3)   ImperivmWorld - NuclearWinter. Mappa di Nucl3arW1nter.",
+    "spanish": "Mapa de Nucl3arW1nter (2017, en italiano).",
+    "english": "Map by Nucl3arW1nter (2017, in Italian)."
+  },
+  "category": "Scenarios",
+  "tags": [
+    "Players: 8"
+  ],
+  "incompatibleWith": [
+    "community-mod"
+  ],
+  "redistributable": true
+}

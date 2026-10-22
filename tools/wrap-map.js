@@ -1,6 +1,6 @@
 // Wrap a Discord map/adventure (raw/discord-entries.json) or a forum topic (raw/forum-entries.json, downloaded by
 // tools/download-forum.js) as an Imperivm Resurrected mod in ported/<slug>/
-//   node tools/wrap-map.js [channel/]<slug> | forum/t<topic id> | pack:<pack>/<map> [--players "2-4"] [--file <text>] [--add <entry>[:<text>]] [--adventure] [--title <name>] [--desc <text>]
+//   node tools/wrap-map.js [channel/]<slug> | forum/t<topic id> | it/<key> | pack:<pack>/<map> [--players "2-4"] [--file <text>] [--add <entry>[:<text>]] [--adventure] [--title <name>] [--desc <text>]
 //                                                                 [--author "A; B"] [--lang Italian] [--version 1.1] [--no-redistributable]
 // pack:<pack>/<map>: one map of a pack we downloaded (originals/forum/<pack>/files/*.zip, e.g. pack:greek-mod-maps-and-adventures-pack/Adventures/X.BFHP).
 // Only that map, its preview and the videos it plays are unpacked. A pack has no post to take the author from: --author is required
@@ -42,15 +42,31 @@ const packEntry = (spec, primary) => {
   if (!zip) { console.error(`no archive in ${dir}`); process.exit(1); }
   if (primary && !opt.author) { console.error("a pack has no post: give the author with --author"); process.exit(1); }
   const list = execFileSync(BSDTAR, ["-tf", path.join(ROOT, dir, zip)], { encoding: "utf8", maxBuffer: 1 << 28 }).split("\n").filter(Boolean);
-  const member = list.find(n => n.toLowerCase().endsWith("/" + m[2].toLowerCase()));
+  const member = list.find(n => n.toLowerCase().endsWith("/" + m[2].toLowerCase()) || n.toLowerCase() === m[2].toLowerCase()); // at the root of the archive too
   if (!member) { console.error(`not in ${zip}: ${m[2]}`); process.exit(1); }
   const bmp = list.find(n => n.toLowerCase() === member.replace(/\.[^./]+$/, "").toLowerCase() + ".bmp");
   const title = path.basename(member).replace(/\.[^.]+$/, "").replace(/_/g, " ").replace(/\s+/g, " ").trim();
   return { channel: "pack", slug: slugify(primary && opt.title ? opt.title : title), title, author: opt.author || "", year: "", base: "", desc: "", links: [],
     section: /\/Adventures\//i.test(member) ? "Adventure" : "", files: [{ name: zip, local: path.join(dir, zip), members: [member, ...(bmp ? [bmp] : [])] }] };
 };
+// it/<key>: a row of the Italian forum section of MODS.md (no forum topic file of its own). <key> is the folder tools/download-forum.js
+// made in originals/forum/ (the row's name, slugged); the title, year and author come from the row. Italian texts, like a pack.
+const italianEntry = key => {
+  const dl = (() => { try { return require("../raw/download-log.json"); } catch { return {}; } })();
+  const rows = Object.values(dl).filter(v => v.key === key);
+  if (!rows.length) { console.error("nothing downloaded for", key); process.exit(1); }
+  const files = [...new Set(rows.flatMap(v => v.files))].map(local => ({ name: path.basename(local), local }));
+  const name = rows[0].name, m = name.match(/^(.*?)\s*\((\d{4})\)$/);
+  const title = m ? m[1] : name;
+  const row = fs.readFileSync(path.join(ROOT, "MODS.md"), "utf8").split("\n").map(l => l.split("|")).find(c => c[2]?.trim() === name);
+  const ported = (() => { try { return require("../raw/ported.json"); } catch { return {}; } })();
+  // another mod already has this title: add the author, then the key
+  const free = s => !fs.existsSync(path.join(ROOT, "ported", s)) || ported[s] === opt._;
+  const slug = [slugify(title), slugify(`${title} ${row?.[3] || ""}`), key].find(free);
+  return { channel: "pack", slug, title, verbatim: true, author: row?.[3]?.trim() || "", year: m?.[2] || "", base: "", desc: "", links: [], section: name, files };
+};
 const [want, chan] = opt._.split("/").reverse();
-const found = opt._.startsWith("pack:") ? [packEntry(opt._, true)] : chan === "forum" ? [forumEntry(want.replace(/^t/, ""))] : discord.filter(x => x.slug === want && (!chan || x.channel === chan));
+const found = opt._.startsWith("pack:") ? [packEntry(opt._, true)] : opt._.startsWith("it/") ? [italianEntry(opt._.slice(3))] : chan === "forum" ? [forumEntry(want.replace(/^t/, ""))] : discord.filter(x => x.slug === want && (!chan || x.channel === chan));
 if (found.length !== 1) { console.error(found.length ? `ambiguous, use channel/slug: ${found.map(x => x.channel + "/" + x.slug).join(" ")}` : `not found: ${opt._}`); process.exit(1); }
 const e = found[0];
 // a Discord entry with links instead of attachments: use what tools/download-forum.js got for its row
@@ -249,6 +265,26 @@ for (const f of fs.readdirSync(dest)) {
 }
 let maps = fs.readdirSync(dest).filter(f => /\.bfhp$/i.test(f));
 if (!maps.length) { console.error("no .bfhp in", e.files.map(f => f.name)); process.exit(1); }
+// an Italian row often repeats maps we have from the Discord, the Greek Mod pack or another row: leave out what is byte for byte
+// in another mod's folder or in a download of another row
+if (opt._.startsWith("it/")) {
+  const mine = path.join("originals", "forum", opt._.slice(3)), hashes = new Set();
+  const scan = d => { if (fs.existsSync(d)) for (const f of fs.readdirSync(d, { recursive: true })) if (/\.bfhp$/i.test(f)) hashes.add(hashFile(path.join(d, f))); };
+  scan(path.join(ROOT, "originals", "discord"));
+  for (const d of fs.readdirSync(path.join(ROOT, "originals", "forum"))) if (d !== path.basename(mine)) scan(path.join(ROOT, "originals", "forum", d));
+  for (const m of fs.readdirSync(path.join(ROOT, "ported")).filter(m => m !== id)) scan(path.join(ROOT, "ported", m));
+  const seen = new Set();
+  for (const f of maps) {
+    const h = hashFile(path.join(dest, f));
+    if (hashes.has(h) || seen.has(h)) { // seen: the same map twice in this row
+      console.log(`  = ${f} is already in another mod: left out`);
+      for (const b of fs.readdirSync(dest).filter(b => b.replace(/\.\w+$/, "").toLowerCase() === f.replace(/\.bfhp$/i, "").toLowerCase())) fs.rmSync(path.join(dest, b));
+    }
+    seen.add(h);
+  }
+  maps = fs.readdirSync(dest).filter(f => /\.bfhp$/i.test(f));
+  if (!maps.length) { fs.rmSync(out, { recursive: true, force: true }); console.error("every map of this row is already in another mod"); process.exit(3); }
+}
 // a map the HD game already ships (same bytes; copy Scenarios/ and Adventures/ of the game to originals/game-data/):
 // nothing to port
 const md5 = f => require("crypto").createHash("md5").update(fs.readFileSync(f)).digest("hex");
@@ -355,7 +391,7 @@ const nameOf = f => { // name= of a map's game.xml, as text
 };
 const editionOf = f => edOf.get(f); // language of a pack edition, undefined for the entry's own maps
 const primary = maps.find(f => !editionOf(f)) || maps[0];
-const modName = (saga ? `${sagaGame}: ` : "") + (opt.title ? titleCase(opt.title) : e.channel === "pack" || (!ownFiles && e.files.some(f => f.members)) ? nameOf(primary) || titleCase(e.title) : titleCase(e.title));
+const modName = (saga ? `${sagaGame}: ` : "") + (e.verbatim ? e.title : opt.title ? titleCase(opt.title) : e.channel === "pack" || (!ownFiles && e.files.some(f => f.members)) ? nameOf(primary) || titleCase(e.title) : titleCase(e.title));
 const LABEL = { Spanish: "Español", Italian: "Italiano", English: "English" };
 // the editor's defaults ("Mapa modelo", "Aventura modelo", "Autor desconocido", "Partida de estrategia") are what the game
 // lists: each map gets its real name (the mod's, or its file's when there are several) and author. game.xml is rewritten in

@@ -1,0 +1,18 @@
+{
+  "id": "il-potere-della-terra-di-mezzo",
+  "name": "Il Potere Della Terra di Mezzo",
+  "version": "1.0",
+  "authors": [
+    "Nucl3arW1nter"
+  ],
+  "description": {
+    "italian": "5 mappe di Nucl3arW1nter.",
+    "spanish": "5 mapas de Nucl3arW1nter (2017, en italiano).",
+    "english": "5 maps by Nucl3arW1nter (2017, in Italian)."
+  },
+  "category": "Scenarios",
+  "tags": [
+    "Players: 4-6"
+  ],
+  "redistributable": true
+}

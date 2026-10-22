@@ -1,0 +1,18 @@
+{
+  "id": "la-corsa-delle-bighe-italia",
+  "name": "La corsa delle bighe - Italia",
+  "version": "1.0",
+  "authors": [
+    "Giuseppe D'addio1"
+  ],
+  "description": {
+    "italian": "È ora di correre! Il Giro d'Italia è cominciato! Chi avrà la gloria di diventare il campione e vincere i cuori della plebe d'Italia?  La mappa non è giocabile in giocatore singolo, perciò è richiesto un minimo di due giocatori per giocare. I giocatori che non partecipano saranno considerati spettatori. Mappa di Giuseppe D'addio1.",
+    "spanish": "Mapa de Giuseppe D'addio1 (2017, en italiano).",
+    "english": "Map by Giuseppe D'addio1 (2017, in Italian)."
+  },
+  "category": "Scenarios",
+  "tags": [
+    "Players: 8"
+  ],
+  "redistributable": true
+}

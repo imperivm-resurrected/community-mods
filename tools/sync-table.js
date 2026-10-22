@@ -5,6 +5,7 @@ const fs = require("fs"), path = require("path");
 const ROOT = path.join(__dirname, "..");
 const NAME = { "community-mod": "Community Mod", "caesar-mod": "Caesar Mod", "greek-civilization-mod": "Greek Mod 4.2", "gamebanana-729311": "AsvrMod VII", "imperivm1-legacy": "Imperivm I legacy" };
 const nm = id => NAME[id] || id;
+const slug = s => s.normalize("NFD").replace(/[\u0300-\u036f]/g, "").toLowerCase().replace(/[^a-z0-9]+/g, "-").replace(/^-|-$/g, "");
 const readJson = f => { try { return JSON.parse(fs.readFileSync(f, "utf8")); } catch (err) { console.error(`${f}: ${err.message}`); process.exit(1); } };
 const ported = readJson(path.join(ROOT, "raw", "ported.json"));
 const discord = require("../raw/discord-entries.json");
@@ -24,7 +25,8 @@ for (const file of ["MODS.md", "MISSING.md"]) {
     const T = H.indexOf("Type"), S = H.indexOf("Status"), SRC = H.indexOf("Source");
     const d = (c[SRC].match(/\((https:\/\/discord\.com\/channels\/[^)]+)\)/) || [])[1];
     const t = (c[SRC].match(/foroactivo\.com\/t(\d+)-/) || [])[1];
-    const arg = d ? byDiscord[d] : t ? `forum/t${t}` : null;
+    // Italian forum rows (tools/wrap-map.js it/<key>): the key is the row's name, slugged, like the folder in originals/forum/
+    const arg = d ? byDiscord[d] : t ? `forum/t${t}` : /forumcommunity\.net/.test(c[SRC]) ? `it/${slug(c[2].trim())}` : null;
     // a row with no post of its own (a map of a pack, a mod we made) names its ported/ folder in parentheses: "... (imperivm1-legacy)"
     const own = (c[2].match(/\(([a-z0-9-]+)\)\s*$/) || [])[1];
     const id = (arg && bySource[arg]) || (own && ported[own] ? own : null);

@@ -1,0 +1,24 @@
+{
+  "id": "l-inverno-e-alle-porte-isentieri",
+  "name": "L'inverno è alle porte + iSentieri",
+  "version": "1.0",
+  "authors": [
+    "Nucl3arW1nter"
+  ],
+  "description": {
+    "italian": "3 mappe di Nucl3arW1nter.",
+    "spanish": "3 mapas de Nucl3arW1nter (2017, en italiano).",
+    "english": "3 maps by Nucl3arW1nter (2017, in Italian)."
+  },
+  "category": "Scenarios",
+  "tags": [
+    "Players: 2-6"
+  ],
+  "requires": [
+    "greek-civilization-mod"
+  ],
+  "incompatibleWith": [
+    "community-mod"
+  ],
+  "redistributable": true
+}

@@ -1,0 +1,16 @@
+{
+  "id": "mappa-dell-indocina",
+  "name": "Mappa dell'Indocina",
+  "version": "1.0",
+  "authors": [
+    "Giuseppe D'addio1"
+  ],
+  "description": {
+    "italian": "Partita di strategia. Mappa di Giuseppe D'addio1.",
+    "spanish": "Mapa de Giuseppe D'addio1 (2017, en italiano).",
+    "english": "Map by Giuseppe D'addio1 (2017, in Italian)."
+  },
+  "category": "Scenarios",
+  "tags": [],
+  "redistributable": true
+}

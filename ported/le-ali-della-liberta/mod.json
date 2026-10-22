@@ -1,0 +1,16 @@
+{
+  "id": "le-ali-della-liberta",
+  "name": "Le ali della libertà",
+  "version": "1.0",
+  "authors": [
+    "spárviero"
+  ],
+  "description": {
+    "italian": "Il foro è esposto solo il più veloce a difenderlo si salverà. Mappa di spárviero.",
+    "spanish": "Mapa de spárviero (2017, en italiano).",
+    "english": "Map by spárviero (2017, in Italian)."
+  },
+  "category": "Scenarios",
+  "tags": [],
+  "redistributable": true
+}

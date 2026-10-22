@@ -1,0 +1,18 @@
+{
+  "id": "scenari-by-nuclearwinter",
+  "name": "Scenari by NuclearWinter",
+  "version": "1.0",
+  "authors": [
+    "Nucl3arW1nter"
+  ],
+  "description": {
+    "italian": "Partita di strategia. Mappa di Nucl3arW1nter.",
+    "spanish": "Mapa de Nucl3arW1nter (2016, en italiano).",
+    "english": "Map by Nucl3arW1nter (2016, in Italian)."
+  },
+  "category": "Scenarios",
+  "tags": [
+    "Players: 2"
+  ],
+  "redistributable": true
+}

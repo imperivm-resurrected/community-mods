@@ -1,0 +1,16 @@
+{
+  "id": "extra",
+  "name": "EXTRA",
+  "version": "1.0",
+  "authors": [
+    "x[CLOUD]x"
+  ],
+  "description": {
+    "italian": "Partita di strategia. Mappa di x[CLOUD]x.",
+    "spanish": "Mapa de x[CLOUD]x (2017, en italiano).",
+    "english": "Map by x[CLOUD]x (2017, in Italian)."
+  },
+  "category": "Scenarios",
+  "tags": [],
+  "redistributable": true
+}

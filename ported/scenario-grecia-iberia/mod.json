@@ -1,0 +1,24 @@
+{
+  "id": "scenario-grecia-iberia",
+  "name": "Scenario Grecia&Iberia",
+  "version": "1.0",
+  "authors": [
+    "Razor"
+  ],
+  "description": {
+    "italian": "3 mappe di Razor.",
+    "spanish": "3 mapas de Razor (2017, en italiano).",
+    "english": "3 maps by Razor (2017, in Italian)."
+  },
+  "category": "Scenarios",
+  "tags": [
+    "Players: 8"
+  ],
+  "requires": [
+    "greek-civilization-mod"
+  ],
+  "incompatibleWith": [
+    "community-mod"
+  ],
+  "redistributable": true
+}

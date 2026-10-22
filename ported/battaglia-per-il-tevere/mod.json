@@ -1,0 +1,21 @@
+{
+  "id": "battaglia-per-il-tevere",
+  "name": "Battaglia per il Tevere",
+  "version": "1.0",
+  "authors": [
+    "Giuseppe D'addio1"
+  ],
+  "description": {
+    "italian": "Roma combatte contro la città etrusca di Veio per il controllo del bacino del fiume Tevere, ma intanto deve cavarsela con due accampamenti di tribù italiche che vorranno approfittare della situazione. Mappa di Giuseppe D'addio1.",
+    "spanish": "Mapa de Giuseppe D'addio1 (2024, en italiano).",
+    "english": "Map by Giuseppe D'addio1 (2024, in Italian)."
+  },
+  "category": "Scenarios",
+  "tags": [
+    "Players: 2"
+  ],
+  "requires": [
+    "greek-civilization-mod"
+  ],
+  "redistributable": true
+}

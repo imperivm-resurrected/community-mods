@@ -1,0 +1,18 @@
+{
+  "id": "roman-defense",
+  "name": "Roman Defense",
+  "version": "1.0",
+  "authors": [
+    "#Alexander#"
+  ],
+  "description": {
+    "italian": "2 mappe di #Alexander#.",
+    "spanish": "2 mapas de #Alexander# (2017, en italiano).",
+    "english": "2 maps by #Alexander# (2017, in Italian)."
+  },
+  "category": "Scenarios",
+  "tags": [
+    "Players: 8"
+  ],
+  "redistributable": true
+}

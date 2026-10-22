@@ -1,0 +1,18 @@
+{
+  "id": "uzia-by-x-cloud-x",
+  "name": "Uzia (By x[CLOUD]x)",
+  "version": "1.0",
+  "authors": [
+    "x[CLOUD]x"
+  ],
+  "description": {
+    "italian": "Sei al comando del generale Flavio Aquila, e devi porre fine alla prepotenza di Uzia, la più grande città e forza militare della regione. Avventura di x[CLOUD]x.",
+    "spanish": "Aventura de x[CLOUD]x (2016, en italiano).",
+    "english": "Adventure by x[CLOUD]x (2016, in Italian)."
+  },
+  "category": "Adventures",
+  "tags": [
+    "Language: Italian"
+  ],
+  "redistributable": true
+}

@@ -1572,8 +1572,32 @@
  "https://drive.google.com/drive/folders/12CsBB2nF0uyIAstjUHyKiBGH54WmgsRP?usp=sharing": {
   "key": "l-eroe-d-egitto-parte-1-2019",
   "name": "L'eroe d'Egitto (Parte 1) (2019)",
-  "files": [],
-  "error": "spawnSync gdown ENOENT"
+  "files": [
+   "originals/forum/l-eroe-d-egitto-parte-1-2019/files/L'eroe d'Egitto (parte 1).BFHP",
+   "originals/forum/l-eroe-d-egitto-parte-1-2019/files/L'eroe d'Egitto (parte 1).bmp",
+   "originals/forum/l-eroe-d-egitto-parte-1-2019/files/L'eroe d'Egitto.avi",
+   "originals/forum/l-eroe-d-egitto-parte-1-2019/files/Thumbs.db",
+   "originals/forum/l-eroe-d-egitto-parte-1-2019/files/musiche/Across.ogg",
+   "originals/forum/l-eroe-d-egitto-parte-1-2019/files/musiche/Ancient.ogg",
+   "originals/forum/l-eroe-d-egitto-parte-1-2019/files/musiche/Bayek.ogg",
+   "originals/forum/l-eroe-d-egitto-parte-1-2019/files/musiche/Buccaneers.ogg",
+   "originals/forum/l-eroe-d-egitto-parte-1-2019/files/musiche/Conspiracy.ogg",
+   "originals/forum/l-eroe-d-egitto-parte-1-2019/files/musiche/Egyptian.ogg",
+   "originals/forum/l-eroe-d-egitto-parte-1-2019/files/musiche/Ezios.ogg",
+   "originals/forum/l-eroe-d-egitto-parte-1-2019/files/musiche/Invasion.ogg",
+   "originals/forum/l-eroe-d-egitto-parte-1-2019/files/musiche/Invincible.ogg",
+   "originals/forum/l-eroe-d-egitto-parte-1-2019/files/musiche/Legions.ogg",
+   "originals/forum/l-eroe-d-egitto-parte-1-2019/files/musiche/Nile.ogg",
+   "originals/forum/l-eroe-d-egitto-parte-1-2019/files/musiche/Origins.ogg",
+   "originals/forum/l-eroe-d-egitto-parte-1-2019/files/musiche/Pleiad.ogg",
+   "originals/forum/l-eroe-d-egitto-parte-1-2019/files/musiche/Pyramids.ogg",
+   "originals/forum/l-eroe-d-egitto-parte-1-2019/files/musiche/Return.ogg",
+   "originals/forum/l-eroe-d-egitto-parte-1-2019/files/musiche/The Battle.ogg",
+   "originals/forum/l-eroe-d-egitto-parte-1-2019/files/musiche/The Cracked.ogg",
+   "originals/forum/l-eroe-d-egitto-parte-1-2019/files/musiche/The Order.ogg",
+   "originals/forum/l-eroe-d-egitto-parte-1-2019/files/musiche/The Pointy.ogg",
+   "originals/forum/l-eroe-d-egitto-parte-1-2019/files/musiche/The Wrath.ogg"
+  ]
  },
  "https://www.mediafire.com/file/gtvx1mzho62hblk/4MapasImperivmI.rar/file": {
   "key": "4-mapas-imperivm-i-2019",
@@ -1790,6 +1814,49 @@
   "name": "english.pak",
   "files": [
    "originals/forum/english-pak/files/english.pak"
+  ]
+ },
+ "https://mega.nz/#F!JVFFALTC!GmAJVCCjZ7vGMxSPsvMB6Q": {
+  "key": "icone-mod-greca-2017",
+  "name": "Icone Mod Greca (2017)",
+  "files": []
+ },
+ "https://mega.nz/#F!lIFGlC5T!T6A5dwZsRKlksM6IbKYFEQ": {
+  "key": "conquista-europea-con-la-grecia-2018",
+  "name": "Conquista europea con la grecia (2018)",
+  "files": []
+ },
+ "https://www.moddb.com/games/celtic-kings-rage-of-war/downloads/patch-1-16-5": {
+  "key": "imperivm-i-clases-clasicas-imperivm1-legacy",
+  "name": "Imperivm I: clases clásicas (imperivm1-legacy)",
+  "files": [],
+  "error": "browser: ✗ Auto-launch failed: Chrome exited early (exit code: 127) without writing DevToolsActivePort\n(also tried parsing stderr) Chrome exited before providing DevTools URL\nChrome stderr:\n  /home/mi"
+ },
+ "https://www.moddb.com/games/celtic-kings-rage-of-war/downloads/celtic-kings-rage-of-war-demo": {
+  "key": "imperivm-i-clases-clasicas-imperivm1-legacy",
+  "name": "Imperivm I: clases clásicas (imperivm1-legacy)",
+  "files": [],
+  "error": "browser: ✗ Auto-launch failed: Chrome exited early (exit code: 127) without writing DevToolsActivePort\n(also tried parsing stderr) Chrome exited before providing DevTools URL\nChrome stderr:\n  /home/mi"
+ },
+ "https://mega.nz/#!K8Yh2SzA!KrVSSSv8q5Vu7S7wkY05UHRkHHACV8VqDWxJyODeSSw": {
+  "key": "mci-mod-2017",
+  "name": "MCI MOD (2017)",
+  "files": [
+   "originals/forum/mci-mod-2017/files/MCI 9.0 Completo.rar"
+  ]
+ },
+ "https://mega.nz/#!F9gGCADa!qvD5LzEZV75aT4oMyBuJ7T4YouTo9rURiq4aqIIXBIA": {
+  "key": "centinelas-en-grecia-2017",
+  "name": "Centinelas en Grecia (2017)",
+  "files": [
+   "originals/forum/centinelas-en-grecia-2017/files/Centinelas en Grecia.rar"
+  ]
+ },
+ "https://mega.nz/file/cCUHgL4R#1sZyuaMoIf4TWSFG96CtjpzH3L0843OVyDUJoYmdKNI": {
+  "key": "battaglia-per-il-tevere-2024",
+  "name": "Battaglia per il Tevere (2024)",
+  "files": [
+   "originals/forum/battaglia-per-il-tevere-2024/files/BattagliaPerIlTevere (Giuseppe D'Addio).zip"
   ]
  }
 }

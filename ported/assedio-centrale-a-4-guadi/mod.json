@@ -1,0 +1,18 @@
+{
+  "id": "assedio-centrale-a-4-guadi",
+  "name": "Assedio Centrale a 4 guadi",
+  "version": "1.0",
+  "authors": [
+    "#Alexander#"
+  ],
+  "description": {
+    "italian": "Partita di strategia. 3 giocatori presidiano un isolotto centrale con 4 punti di accesso, tanti quanti i giocatori agli angoli della mappa che portano avanti l'assedio. Mappa di #Alexander#.",
+    "spanish": "Mapa de #Alexander# (2017, en italiano).",
+    "english": "Map by #Alexander# (2017, in Italian)."
+  },
+  "category": "Scenarios",
+  "tags": [
+    "Players: 7"
+  ],
+  "redistributable": true
+}

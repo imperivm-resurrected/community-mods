@@ -1,0 +1,16 @@
+{
+  "id": "cesare-in-gallia",
+  "name": "Cesare in Gallia",
+  "version": "1.0",
+  "authors": [
+    "Giuseppe D'addio1"
+  ],
+  "description": {
+    "italian": "\\'La Gallia nel suo insieme è divisa in tre parti: una è abitata dai Belgi, un'altra dagli Aquitani, la terza da quelli che nella loro lingua si chiamano Celti e nella nostra Galli.\\'  - Giulio Cesare, De bello gallico, I, 1. Conquista di Giuseppe D'addio1.",
+    "spanish": "Conquista de Giuseppe D'addio1 (en italiano).",
+    "english": "Conquest by Giuseppe D'addio1 (in Italian)."
+  },
+  "category": "Conquests",
+  "tags": [],
+  "redistributable": true
+}

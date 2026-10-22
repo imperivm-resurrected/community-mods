@@ -1,0 +1,18 @@
+{
+  "id": "la-conquista-di-alessandria",
+  "name": "La Conquista di Alessandria",
+  "version": "1.0",
+  "authors": [
+    "x[CLOUD]x"
+  ],
+  "description": {
+    "italian": "Conquista la città di Alessandria ed elimina Marco Antonio e la sua consorte Cleopatra!  L'assedio di Alessandria si risolse il 31 luglio 30 a.C. tra le forze di Ottaviano e quelle di Marco Antonio e Cleopatra nel corso della Guerra civile romana. Nonostante i molti uomini di Marco Antonio disertarono, Ottaviano riuscì faticosamente a vincere la battaglia. Avventura di x[CLOUD]x.",
+    "spanish": "Aventura de x[CLOUD]x (2017, en italiano).",
+    "english": "Adventure by x[CLOUD]x (2017, in Italian)."
+  },
+  "category": "Adventures",
+  "tags": [
+    "Language: Italian"
+  ],
+  "redistributable": true
+}

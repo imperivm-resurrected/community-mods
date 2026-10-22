@@ -1,0 +1,16 @@
+{
+  "id": "la-mitica-fortezza",
+  "name": "La mitica Fortezza",
+  "version": "1.0",
+  "authors": [
+    "t7897"
+  ],
+  "description": {
+    "italian": "2 mappe di t7897.",
+    "spanish": "2 mapas de t7897 (2018, en italiano).",
+    "english": "2 maps by t7897 (2018, in Italian)."
+  },
+  "category": "Scenarios",
+  "tags": [],
+  "redistributable": true
+}

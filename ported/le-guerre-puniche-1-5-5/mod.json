@@ -1,0 +1,19 @@
+{
+  "id": "le-guerre-puniche-1-5-5",
+  "name": "Le Guerre Puniche 1.5.5",
+  "version": "1.0",
+  "authors": [
+    "Giuseppe D'addio1"
+  ],
+  "description": {
+    "italian": "Anno 264 a.C. Roma invade la Sicilia, primo passo per la creazione di un Impero, ma Cartagine non è disposta ad accettarlo: si scatenano le Guerre Puniche. Il Mediterraneo si trasforma in un immenso campo di battaglia nel quale brilleranno la genialità di Annibale e il coraggio di Scipione l'Africano, ma anche il coraggio delle tribù della Gallia, della Spagna e della Numidia. Conquista di Giuseppe D'addio1.",
+    "spanish": "Conquista de Giuseppe D'addio1 (en italiano).",
+    "english": "Conquest by Giuseppe D'addio1 (in Italian)."
+  },
+  "category": "Conquests",
+  "tags": [],
+  "requires": [
+    "imperivm1-legacy"
+  ],
+  "redistributable": true
+}

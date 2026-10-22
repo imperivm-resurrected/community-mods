@@ -1,0 +1,18 @@
+{
+  "id": "le-fiamme-della-guerra",
+  "name": "Le Fiamme della Guerra",
+  "version": "1.0",
+  "authors": [
+    "t7897"
+  ],
+  "description": {
+    "italian": "Avventura di t7897.",
+    "spanish": "Aventura de t7897 (2018, en italiano).",
+    "english": "Adventure by t7897 (2018, in Italian)."
+  },
+  "category": "Adventures",
+  "tags": [
+    "Language: Italian"
+  ],
+  "redistributable": true
+}

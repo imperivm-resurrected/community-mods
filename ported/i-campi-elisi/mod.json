@@ -1,0 +1,18 @@
+{
+  "id": "i-campi-elisi",
+  "name": "I Campi Elisi",
+  "version": "1.0",
+  "authors": [
+    "Giuseppe D'addio1"
+  ],
+  "description": {
+    "italian": "Quando un guerriero muore, la sua anima ascende nel regno dei giusti, i Campi Elisi, non importa la sua nazionalità. Qui, le anime dei guerrieri degunti avranno la possibilità di risfoderare le loro spade e dimostrare la loro supremazia tra queste otto fazioni.  Non ci sono grotte nè animali selvatici. Mappa di Giuseppe D'addio1.",
+    "spanish": "Mapa de Giuseppe D'addio1 (en italiano).",
+    "english": "Map by Giuseppe D'addio1 (in Italian)."
+  },
+  "category": "Scenarios",
+  "tags": [
+    "Players: 8"
+  ],
+  "redistributable": true
+}

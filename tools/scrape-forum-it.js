@@ -62,7 +62,7 @@ async function postsOf(topic) {
       const body = ch.match(/<table class="color"[^>]*>(.*?)(?=<div class="signature|<tr class="title2 bottom"|$)/s)?.[1] || "";
       const plain = text(body.replace(/<br\s*\/?>/g, "\n")).replace(/[ \t]+/g, " ");
       const found = [...body.matchAll(/href="(https?:\/\/[^"]+)"/g)].map(m => unescape(m[1]))
-        .concat((plain.match(/https?:\/\/[\w\-.~:/?#[\]@!$&'()*+,;=%]+/g) || []).map(u => unescape(u).replace(/[.,;)\]]+$/, "")));
+        .concat((plain.match(/https?:\/\/[\w\-.~:/?#[\]@!$&'()*+,;=%]+/g) || []).filter(u => !u.includes("...")).map(u => unescape(u).replace(/[.,;)\]]+$/, ""))); // the forum shortens long link texts with "...": only hrefs are whole
       const links = [...new Set(found.filter(u => !SKIP_HOSTS.test(u) && !IMG.test(u)))].sort();
       const shots = [...new Set([...body.matchAll(/<img[^>]*src="(https?:\/\/[^"]+)"/g)].map(m => m[1])
         .filter(u => IMG.test(u) && !SKIP_HOSTS.test(u) && !u.includes("/emoji/")))].sort();
