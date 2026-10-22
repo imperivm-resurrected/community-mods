@@ -1,0 +1,17 @@
+<class id="UMaceman" cpp_class="CVXUnit" parent="Melee" entity="Units/CMaceman/CMaceman.ent.xml">
+
+	<properties race="Carthage"/>
+	<properties maxhealth="400"/>
+	<properties damage="20" armor_slash="0" armor_pierce="0"/>
+	<properties speed="60"/>
+	<properties unit_specials="Bleeding attack"/>
+
+	<properties icon="gameres/icons/CMaceman.bmp"/>
+	<properties display_name="Uruk-hai con mazza" display_name_plural="Uruk-hai con mazza"/>
+	<properties help="contents/units/CMaceman"/>
+	<properties edittree_pos="Units/Terra di mezzo/Uruk-hai/Uruk-hai con mazza"/>
+	<sounds attack="UnitPikeFight" command="data/sound entities/VoiceCMaceman.xml"/>
+
+	<method sig="ondie" vs="data/subai/CMercenary_ondie.vs"/>
+
+</class>

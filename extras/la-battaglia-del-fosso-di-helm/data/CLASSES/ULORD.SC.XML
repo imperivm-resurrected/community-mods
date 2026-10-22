@@ -1,0 +1,19 @@
+<class id="ULord" cpp_class="CVXHero" parent="Hero" entity="Units/BVikingLord/BVikingLord.ent.xml">
+
+	<properties race="Carthage"/>
+	<properties maxhealth="1200"/>
+	<properties damage="120" armor_slash="6" armor_pierce="6"/>
+	<properties speed="60"/>
+
+	<properties range="17" min_range="2"/>
+	<properties damage_type="slash"/>
+
+	<properties max_army="50"/>
+	<properties HeroSkills="Administration, Vigor, Recovery, Battle cry, Defensive cry"/>
+
+	<properties icon="gameres/icons/BVikingLord.bmp"/>
+	<properties display_name="Comandante Uruk-hai" display_name_plural="Heroes"/>
+	<properties edittree_pos="Units/Terra di mezzo/Uruk-hai/Eroe"/>
+	<sounds command="data/sound entities/VoiceBVikingLord.xml" attack="UnitHammerFight"/>
+
+</class>

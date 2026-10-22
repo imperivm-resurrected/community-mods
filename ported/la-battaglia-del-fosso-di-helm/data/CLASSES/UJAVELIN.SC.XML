@@ -1,0 +1,20 @@
+<class id="UJavelin" cpp_class="CVXUnit" parent="MediumRanged" entity="Units/CJavelinThrower/CJavelinThrower.ent.xml">
+
+	<properties race="Carthage"/>
+	<properties maxhealth="180"/>
+	<properties damage="26" armor_slash="0" armor_pierce="0"/>
+	<properties speed="60"/>
+	<properties unit_specials="Penetration"/>
+
+	<properties projectile_class="Javelin"/>
+	<properties building_projectile_class="Javelin"/>
+
+	<properties icon="gameres/icons/CJavelinThrower.bmp"/>
+	<properties display_name="Lanciere Uruk-hai" display_name_plural="Lancieri Uruk-hai"/>
+	<properties help="contents/units/CJavelinThrower"/>
+	<properties edittree_pos="Units/Terra di mezzo/Uruk-hai/Laciere Uruk-hai"/>
+	<sounds command="data/sound entities/VoiceCJavelinThrower.xml"/>
+
+	<method sig="ondie" vs="data/subai/cmercenary_ondie.vs"/>
+
+</class>

@@ -1,0 +1,19 @@
+<class id="ElfCavalry" cpp_class="CVXUnit" parent="Horse" entity="Units/BHero3/BHero3.ent.xml">
+
+	<properties race="Germany"/>
+	<properties maxhealth="300"/>
+	<properties damage="20" armor_slash="0" armor_pierce="0"/>
+	<properties speed="160"/>
+	<properties unit_specials="Attack skill, Active, Toughness"/>
+	<properties healthbar_type="3"/>
+
+	<properties formation_radius="35"/>
+	<properties radius="30" selection_radius="32"/>
+	
+	<properties icon="gameres/icons/BHero3.bmp"/>
+	<properties display_name="Cavalry" display_name_plural="Cavalry"/>
+	<properties help="contents/units/ICavalry"/>
+	<properties edittree_pos="Units/Terra di mezzo/Elfi/Cavalry"/>
+	<sounds command="data/sound entities/VoiceICavalry.xml"/>
+
+</class>

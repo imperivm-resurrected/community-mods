@@ -1,0 +1,160 @@
+<commands>
+
+<cmd name="repair blacksmith" priority="1"
+	method="repair"
+	button="actions/repair.bmp"
+	key="r"
+	queueicon="gameres/icons/upgrades/repair.bmp"
+	groupverifier="data/subai/verify_cmdcost_building.vs"
+	rollover="Repair"
+	costgold = "500"
+	costfood = "0"
+	execdelay = "60000">
+	<src obj="ABlacksmith"/>
+</cmd>
+
+<cmd name="Strenghten Stronghold Defences I" priority="10"
+	queueicon="gameres/icons/upgrades/Stronghold Defense.bmp"
+	key="d"
+	button="research/Stronghold Defense.bmp"
+	researchcommand="yes"
+	groupverifier="data/subai/verify_research.vs"
+	costgold = "1000"
+	costfood = "0"
+	execdelay = "20000"
+	rollover="Strengthen Stronghold Defenses I"
+	description="Makes the defenders at the stronghold walls level 12"
+	method="research"
+	param="NameSet,Strenghten Stronghold Defences I,,SetsSet,SentriesLevel,12">
+	<src obj="ABlacksmith"/>
+</cmd>
+
+<cmd name="Strenghten Stronghold Defences II" priority="10"
+	queueicon="gameres/icons/upgrades/Stronghold Defense2.bmp"
+	key="d"
+	button="research/Stronghold Defense2.bmp"
+	researchcommand="yes"
+	groupverifier="data/subai/verify_research.vs"
+	costgold = "2000"
+	costfood = "0"
+	execdelay = "30000"
+	rollover="Strengthen Stronghold Defenses II"
+	description="Makes the defenders at the stronghold walls level 24"
+	method="research"
+	param="ReqSet,Strenghten Stronghold Defences I,,NameSet,Strenghten Stronghold Defences II,,SetsSet,SentriesLevel,24">
+	<src obj="ABlacksmith"/>
+</cmd>
+
+<cmd name="Strenghten Stronghold Defences III" priority="10"
+	queueicon="gameres/icons/upgrades/Stronghold Defense3.bmp"
+	key="d"
+	button="research/Stronghold Defense3.bmp"
+	researchcommand="yes"
+	groupverifier="data/subai/verify_research.vs"
+	costgold = "4000"
+	costfood = "0"
+	execdelay = "40000"
+	rollover="Potenzia le difese dalla fortezza III"
+	description="Rende i difensori delle mura di livello 36"
+	method="research"
+	param="ReqSet,Strenghten Stronghold Defences II,,NameSet,Strenghten Stronghold Defences III,default,SetsSet,SentriesLevel,36">
+	<src obj="ABlacksmith"/>
+</cmd>
+
+<cmd name="Strengthen Stronghold Gates" priority="11"
+	queueicon="gameres/icons/upgrades/Stronghold Walls.bmp"
+	key="m"
+	button="Upgrades/Stronghold Walls.bmp"
+	researchcommand="yes"
+	groupverifier="data/subai/verify_research.vs"
+	costgold = "2000"
+	costfood = "0"
+	execdelay = "30000"
+	rollover="Strengthen Stronghold Gates"
+	description="Makes the stronghold walls more resistant to damage"
+	method="research"
+	param="NameSet,Strengthen Stronghold Gates,default">
+	<src obj="ABlacksmith"/>
+</cmd>
+
+<cmd name="Roman Velit" priority="1"
+	queueicon="gameres/icons/upgrades/throwing spears.bmp"
+	button="upgrades/throwing spears.bmp"
+	key="v"
+	researchcommand="yes"
+	groupverifier="data/subai/verify_research.vs"
+	costgold = "1200"
+	costfood = "0"
+	execdelay = "30000"
+	rollover="Throwing Spears"
+	description="Consente di equipaggiare i lancieri nella caserma"
+	method="research"
+	param="NameSet,Throwing Spears,default, NameSet, AVelit,">
+	<src obj="ABlacksmith"/>
+</cmd>
+
+<cmd name="Greek Spears" priority="2"
+	queueicon="gameres/icons/upgrades/Greek Spears.bmp"
+	button="Upgrades/Greek Spears.bmp"
+	key="s"
+	researchcommand="yes"
+	groupverifier="data/subai/verify_research.vs"
+	costgold = "1200"
+	costfood = "0"
+	execdelay = "30000"
+	rollover="Spears"
+	description="Allows Hoplites to be equipped in the Barracks"
+	method="research"
+	param="NameSet,Greek Spears,default, NameSet, AHoplite,">
+	<src obj="ABlacksmith"/>
+</cmd>
+
+<cmd name="Roman Scout" priority="3"
+	queueicon="gameres/icons/upgrades/Horseshoes.bmp"
+	button="upgrades/Horseshoes.bmp"
+	key="c"
+	researchcommand="yes"
+	groupverifier="data/subai/verify_research.vs"
+	costgold = "600"
+	costfood = "0"
+	execdelay = "30000"
+	rollover="Horseshoes"
+	description="Consente di equipaggiare i cavalieri nella caserma"
+	method="research"
+	param="NameSet,Horseshoes,default, NameSet, AScout,">
+	<src obj="ABlacksmith"/>
+</cmd>
+
+<cmd name="Roman Full Armor" priority="4"
+	queueicon="gameres/icons/upgrades/full armor.bmp"
+	key="f"
+	button="upgrades/full armor.bmp"
+	researchcommand="yes"
+	groupverifier="data/subai/verify_research.vs"
+	costgold = "4000"
+	costfood = "0"
+	execdelay = "30000"
+	rollover="Full Armor"
+	description="Allows Tribunes to be equipped in the Barracks"
+	method="research"
+	param="NameSet, Full Armor, , NameSet, ATribune,">
+	<src obj="ABlacksmith"/>
+</cmd>
+
+<cmd name="Greek Chariot Wheels" priority="5"
+	queueicon="gameres/icons/upgrades/Greek chariot wheels.bmp"
+	key="w"
+	button="Upgrades/Greek chariot wheels.bmp"
+	researchcommand="yes"
+	groupverifier="data/subai/verify_research.vs"
+	costgold = "3000"
+	costfood = "0"
+	execdelay = "30000"
+	rollover="Chariot Wheels"
+	description="Allows Chariots to be built in the Barracks"
+	method="research"
+	param="NameSet,Greek Chariot Wheels,default, NameSet, AChariot,">
+	<src obj="ABlacksmith"/>
+</cmd>
+
+</commands>

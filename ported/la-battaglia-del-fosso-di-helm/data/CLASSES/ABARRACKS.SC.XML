@@ -1,0 +1,12 @@
+<class id="ABarracks" cpp_class="CVXBarrack" parent="BaseBarracks" entity="Buildings/IBarracks/IBarracks.ent.xml">
+
+	<properties race="Iberia"/>
+	<properties icon="gameres/icons/IBarracks.bmp"/>
+	<properties display_name="Barracks" display_name_plural="Barracks"/>
+	<properties radius="190" selection_radius="220"/>
+	<properties help="/contents/buildings/IBarracks"/>
+
+	<properties edittree_pos="Structures/Fortezza del fosso di Helm/Barracks"/>
+	<properties auto_repair="no"/>
+
+</class>

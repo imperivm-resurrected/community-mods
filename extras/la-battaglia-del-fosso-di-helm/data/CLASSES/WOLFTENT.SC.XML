@@ -1,0 +1,52 @@
+<class id="WolfTent" cpp_class="CVXTownHall" parent="Building"
+	entity="Buildings/Teuton_camp/Teuton_camp_as.ent.xml"
+	entity_winter="Buildings/Teuton_camp/Teuton_camp_w.ent.xml"
+>
+
+	<properties race="Germany"/>
+	<properties display_name="Accampamento dei cavalcalupi"/>
+	<properties edittree_pos="Structures/Fortezza del fosso di Helm/Accampamento dei cavalcalupi (orchi)"/>
+	<properties icon="gameres/icons/TTent.bmp"/>
+	<properties help="/contents/buildings/TTent"/>
+	<properties radius="190" selection_radius="195"/>
+	<properties description="Difeso da 40 orchi cavalcalupi"/>
+	
+	<properties maxhealth="15000" sight="900"/>
+	<properties radius="190" selection_radius="195"/>
+	<properties interface="thumb,building,holder"/>
+	<properties help="/contents/buildings/TTent"/>
+
+	<behavior script="data/subai/wolftent_behavior.vs"/>
+	<behavior script="data/subai/ttent_feeding_behavior.vs"/>
+
+	<properties
+		is_central_building="1"
+		is_single_building="1"
+		can_be_captured="1"
+		can_be_attacked="0"
+		produces_gold="0"
+		produces_food="0"
+		settlement_food="0"
+		settlement_gold="0"
+		settlement_maxfood="100000000"
+		settlement_maxgold="100000000"
+		population="0"
+		efficiency="1"
+		max_population="0"
+		max_units="0"
+		settlement_icon_name=""
+		minimap_icon_type="color"
+	/>
+
+	<value0
+		icon="gameres/infobar/common/food ico.bmp"
+		script="return .AsBuilding.settlement.food;"
+		help=""
+		rollover="Ogni cavalcalupi prodotto costa 400 viveri"
+	/>
+
+	<defaultcmd target="">
+		<cmd name="unitsout"/>
+	</defaultcmd>
+
+</class>

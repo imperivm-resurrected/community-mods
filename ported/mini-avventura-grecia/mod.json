@@ -1,0 +1,24 @@
+{
+  "id": "mini-avventura-grecia",
+  "name": "Mini-avventura Grecia",
+  "version": "1.0",
+  "authors": [
+    "Secuter"
+  ],
+  "description": {
+    "italian": "Mini avventura in cui i popoli di Imperium scoprono la Grecia e cercano di conquistarla. Hai il controllo di una città greca e devi conquistare la regione, anche superando le Sfide delle divinità greche che ti consentono di ottenere utili premi. Avventura di Secuter.",
+    "spanish": "Aventura de Secuter (2017, en italiano).",
+    "english": "Adventure by Secuter (2017, in Italian)."
+  },
+  "category": "Adventures",
+  "tags": [
+    "Language: Italian"
+  ],
+  "requires": [
+    "greek-civilization-mod"
+  ],
+  "incompatibleWith": [
+    "community-mod"
+  ],
+  "redistributable": true
+}

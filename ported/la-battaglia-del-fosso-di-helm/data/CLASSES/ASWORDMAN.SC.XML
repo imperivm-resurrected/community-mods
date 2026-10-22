@@ -1,0 +1,15 @@
+<class id="ASwordman" cpp_class="CVXUnit" parent="Melee" entity="Units/HHypaspista/HHypaspista.ent.xml">
+
+	<properties race="ImperialRome"/>
+	<properties maxhealth="200"/>
+	<properties damage="20" armor_slash="12" armor_pierce="12"/>
+	<properties speed="80"/>
+	<properties unit_specials="Defense skill"/>
+
+	<properties icon="gameres/icons/HHypaspista.bmp"/>
+	<properties display_name="Soldato" display_name_plural="Soldati"/>
+	<properties help="contents/units/HHypaspista"/>
+	<properties edittree_pos="Units/Terra di mezzo/Difensori/Soldato"/>
+	<sounds command="data/sound entities/VoiceHHypaspista.xml"/>
+
+</class>

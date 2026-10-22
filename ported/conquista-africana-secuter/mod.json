@@ -1,0 +1,16 @@
+{
+  "id": "conquista-africana-secuter",
+  "name": "Conquista africana",
+  "version": "1.0",
+  "authors": [
+    "Secuter"
+  ],
+  "description": {
+    "italian": "Richiede la mia 'Fun mod - Civiltà personalizzate' per far funzionare i nuovi edifici aggiunti, se non l'avete crashera irrimediabilmente... Modalità conquista in versione africana, potrai scegliere fra 8 diverse civiltà africane ognuna con specialità differenti e conquistare tutti i territori del continente. Ogni civiltà avrà un bonus attivo per tutta la partità. Conquista di Secuter.",
+    "spanish": "Conquista de Secuter (2017, en italiano).",
+    "english": "Conquest by Secuter (2017, in Italian)."
+  },
+  "category": "Conquests",
+  "tags": [],
+  "redistributable": true
+}

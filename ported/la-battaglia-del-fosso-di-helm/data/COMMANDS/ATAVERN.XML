@@ -1,0 +1,95 @@
+<commands>
+    
+<cmd name="AddPop" priority="2"
+	queueicon="gameres/icons/upgrades/Add population.bmp"
+	groupverifier="data/subai/verify_cmdcost_building.vs"
+	button="actions/Add population.bmp"
+	cursor=""
+	key="p"
+	traincommand="yes"
+	costgold="300"
+	execdelay="10000"
+	method="addpop"
+	description="Increases the stronghold population by 10"
+	rollover="Increase population">
+	<src obj="ATavern"/>
+</cmd>
+
+<cmd name="Celebra festa di Manwe" priority="3"
+	key="w"
+	queueicon="gameres/icons/upgrades/free wine.bmp"
+	groupverifier="data/subai/verify_research.vs"
+	button="research/free wine.bmp"
+	costgold="1000"
+	execdelay="20000"
+	researchcommand="yes"
+	method="research"
+	param="NameSet, Celebra festa di Manwe, default"
+	description="Attira 20 unit&#224; di popolazione nella fortezza (funziona solo una volta)"
+	rollover="Free Wine">
+	<src obj="ATavern"/>
+</cmd>
+
+<cmd name="Supplies" priority="4"
+	queueicon="gameres/icons/upgrades/Supplies.bmp"
+	groupverifier="data/subai/verify_research.vs"
+	button="Research/Supplies.bmp"
+	key="r"
+	researchcommand="yes"
+	costgold="4000"
+	costfood="0"
+	execdelay="60000"
+	description="Warriors consume half of food"
+	rollover="Supplies"
+	method="research"
+	param="ReqSet, Celebra festa di Manwe, default, NamePlr, Supplies, default">
+	<src obj="ATavern"/>
+</cmd>
+
+<cmd name="Housing" priority="5"
+	queueicon="gameres/icons/upgrades/Housing.bmp"
+	groupverifier="data/subai/verify_research.vs"
+	button="research/Housing.bmp"
+	key="h"
+	costgold="1000"
+	rollover="Housing"
+	execdelay="30000"
+	description="Increases the maximum population of the stronghold by 20"
+	method="research"
+	param="ReqSet, Celebra festa di Manwe, default, NameSet, Housing, default">
+    <src obj="ATavern"/>
+</cmd>
+
+<cmd name="Hecatomb" priority="6"
+	queueicon="gameres/icons/upgrades/Hecatomb.bmp"
+	key="h"
+	groupverifier="data/subai/verify_research.vs"
+	button="actions/Hecatomb.bmp"
+	cursor=""
+	traincommand="yes"
+	costfood="1000"
+	execdelay="30000"
+	method="buyslaves"
+	param = "ReqSet, Celebra festa di Manwe, default"
+	description="Increases the stronghold population to maximum"
+	rollover="Hecatomb">
+    <src obj="ATavern"/>
+</cmd>
+
+<cmd name="ReligiousFeast" priority="7"
+	queueicon="gameres/icons/upgrades/religious feast.bmp"
+	key="f"
+	button="research/religious feast.bmp"
+	groupverifier="data/subai/verify_research.vs"
+	cursor=""
+	researchcommand="yes"
+	costgold="2000"
+	execdelay="30000"
+	method="research"
+	param = "ReqSet, Celebra festa di Manwe, default, NameSet, Religious Feast, default"
+	description="Heals the warriors around the townhall"
+	rollover="Religious Feast">
+	<src obj="ATavern"/>
+</cmd>
+    
+</commands>

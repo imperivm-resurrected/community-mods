@@ -1,0 +1,18 @@
+<class id="AArena" cpp_class="CVXBuilding" parent="BaseArena" entity="Buildings/TSanctuaryOfVotan/TSanctuaryOfVotan.ent.xml">
+
+	<properties race="Iberia"/>
+	<properties display_name="Sala dei Rohirrim"/>
+	<properties radius="165" selection_radius="170"/>
+	<properties edittree_pos="Structures/Fortezza del fosso di Helm/Sala dei Rohirrim"/>
+
+	<properties auto_repair="no"/>
+	<properties icon="gameres/icons/TSanctuaryOfVotan.bmp"/>
+	<properties help="/contents/buildings/TArena"/>
+
+	<sounds select="Sounds/selection/German_SanctuaryOfVotan.wav"/>
+
+	<method sig="democracy" vs="data/subai/democracy.vs"/>
+	<method sig="oligarchy" vs="data/subai/oligarchy.vs"/>
+	<behavior script="data/subai/government_form.vs"/>
+
+</class>

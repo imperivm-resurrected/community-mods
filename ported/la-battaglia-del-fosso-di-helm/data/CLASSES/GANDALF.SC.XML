@@ -1,0 +1,25 @@
+<class id="Gandalf" cpp_class="CVXHero" parent="Hero" entity="Units/DLleldoryn/DLleldoryn.ent.xml">
+
+	<properties race="Gaul"/>
+	<properties maxhealth="1200"/>
+	<properties damage="30" armor_slash="0" armor_pierce="0"/>
+	<properties speed="80"/>
+	
+	<properties range="17" min_range="2"/>
+	<properties damage_type="slash"/>
+	
+	<properties max_army="50"/>
+	<properties unit_specials="Active"/>
+	<properties HeroSkills="Healing, Ceasefire, Leadership, Assault, Charge"/>
+
+	<properties icon="gameres/icons/Lleo.bmp"/>
+	<properties display_name="Gandalf" display_name_plural="Heroes"/>
+	<properties edittree_pos="Units/Terra di mezzo/Gandalf"/>
+	<sounds command="data/sound entities/VoiceGDruid.xml"/>
+
+	<defaultcmd target="ShipBattle">
+		<cmd name="boardship"/>
+		<cmd name="approach"/>
+	</defaultcmd>
+
+</class>

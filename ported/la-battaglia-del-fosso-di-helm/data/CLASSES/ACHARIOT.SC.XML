@@ -1,0 +1,16 @@
+<class id="AChariot" cpp_class="CVXUnit" parent="Melee" entity="units/HChariot/HChariot.ent.xml">
+
+	<properties race="ImperialRome"/>
+	<properties maxhealth="400"/>
+	<properties damage="30" armor_slash="12" armor_pierce="12"/>
+	<properties speed="120"/>
+	<properties unit_specials="Triple strike"/>
+	<properties radius="60" selection_radius="80"/>
+
+	<properties icon="gameres/icons/HChariot.bmp"/>
+	<properties display_name="Chariot" display_name_plural="Chariots"/>
+	<properties help="contents/units/HChariot"/>
+	<properties edittree_pos="Units/Terra di mezzo/Difensori/Chariot"/>
+	<sounds command="data/sound entities/VoiceHChariot.xml"/>
+	
+</class>

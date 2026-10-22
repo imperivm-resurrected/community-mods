@@ -1,0 +1,21 @@
+{
+  "id": "la-battaglia-del-fosso-di-helm",
+  "name": "La battaglia del Fosso di Helm",
+  "version": "1.0",
+  "authors": [
+    "Secuter"
+  ],
+  "description": {
+    "italian": "Difendi il Fosso di Helm dalle orde di orhetti e Uruk-hai inviati da Saruman! Avrai 30 minuti per far rifugiare i civili nella fortezza e per potenziare le tue difese prima dell'inizio degli assalti. Nella seconda fase dovrai resistere per 30 minuti a tutte le ondate di nemici provenienti dall'accampamento orchesco, scaduti i quali arriveranno i rinforzi è sarà il vosto turno di attaccare! Avventura di Secuter.",
+    "spanish": "Aventura de Secuter (en italiano).",
+    "english": "Adventure by Secuter (in Italian)."
+  },
+  "category": "Adventures",
+  "tags": [
+    "Language: Italian"
+  ],
+  "requires": [
+    "greek-civilization-mod"
+  ],
+  "redistributable": true
+}

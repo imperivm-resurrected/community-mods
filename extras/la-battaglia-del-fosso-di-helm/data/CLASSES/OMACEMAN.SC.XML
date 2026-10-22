@@ -1,0 +1,15 @@
+<class id="OMaceman" cpp_class="CVXUnit" parent="Melee" entity="Units/TMaceman/TMaceman.ent.xml">
+
+	<properties race="Germany"/>
+	<properties maxhealth="600"/>
+	<properties damage="40" armor_slash="0" armor_pierce="0"/>
+	<properties speed="80"/>
+	<properties unit_specials="Rage, Ferocity, Regeneration"/>
+
+	<properties icon="gameres/icons/TMaceman.bmp"/>
+	<properties display_name="Orco con mazza" display_name_plural="Orchi con mazza"/>
+	<properties help="contents/units/TMaceman"/>
+	<properties edittree_pos="Units/Terra di mezzo/Orchi/Orco con mazza"/>
+	<sounds command="data/sound entities/VoiceTMaceman.xml"/>
+        <sounds attack="UnitHammerFight" />
+</class>

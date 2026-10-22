@@ -1,0 +1,21 @@
+{
+  "id": "l-avventura-di-maximus",
+  "name": "L'avventura di Maximus",
+  "version": "1.0",
+  "authors": [
+    "Giuseppe D'addio1"
+  ],
+  "description": {
+    "italian": "The adventure of the great Maximus. Avventura di Giuseppe D'addio1.",
+    "spanish": "Aventura de Giuseppe D'addio1 (2017, en italiano).",
+    "english": "Adventure by Giuseppe D'addio1 (2017, in Italian)."
+  },
+  "category": "Adventures",
+  "tags": [
+    "Language: Italian"
+  ],
+  "requires": [
+    "imperivm1-legacy"
+  ],
+  "redistributable": true
+}

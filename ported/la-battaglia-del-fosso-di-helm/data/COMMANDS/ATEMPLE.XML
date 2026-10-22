@@ -1,0 +1,97 @@
+<commands>
+
+<cmd name="repair temple" priority="1"
+	method="repair"
+	button="actions/repair.bmp"
+	key="r"
+	queueicon="gameres/icons/upgrades/repair.bmp"
+	groupverifier="data/subai/verify_cmdcost_building.vs"
+	rollover="Repair"
+	costgold="500"
+	costfood="0"
+	execdelay = "60000">
+	<src obj="ATemple"/>
+</cmd>
+
+<cmd name="trainRPriest" priority="1"
+	button="actions/train RPriest.bmp"
+	queueicon="gameres/icons/RPriest.bmp"
+	groupverifier="data/subai/verify_cmdcost_building.vs"
+	traincommand="yes"
+	transpicon="1"
+	key="p"
+	help="/contents/units/RPriest"
+	costgold = "200"
+	costfood = "0"
+	costpop = "0"
+	execdelay = "20000"
+	rollover="Call Priest"
+	method="train"
+	param="RPriest"
+	sclass="RPriest">
+	<src obj="ATemple"/>
+</cmd>
+
+<cmd name="Offer to Gods" priority="2"
+	button="research/priest enlightment.bmp"
+	key="a"
+	queueicon="gameres/icons/upgrades/Priest Enlighment.bmp"
+	researchcommand="yes"
+	groupverifier="data/subai/verify_research.vs"
+	costgold = "1000"
+	costfood = "0"
+	execdelay = "15000"
+	rollover="Offer to Gods"
+	description="All new priests are level 5"
+	method="research"
+	param="NameSet, Offer to Gods, default, SetsSet, levels/RPriest, 5">
+	<src obj="ATemple"/>
+</cmd>
+
+<cmd name="Cloud of Plague" priority="3"
+	queueicon="gameres/icons/upgrades/mist.bmp"
+	button="research/mist.bmp"
+	key="c"
+	researchcommand="yes"
+	groupverifier="data/subai/verify_research.vs"
+	costgold = "2000"
+	costfood = "0"
+	execdelay = "20000"
+	rollover="Cloud of Plague"
+	description="Allows priests to sacrifice themselves to create a cloud of plague which damages all warriors it covers"
+	method="research"
+	param="ReqSet, Offer to Gods, default, NamePlr, Cloud of Plague, default">
+	<src obj="ATemple"/>
+</cmd>
+
+<cmd name="Wrath of Jupiter" priority="4"
+	button="research/Jupiter.bmp"
+	queueicon="gameres/icons/upgrades/Jupiter.bmp"
+	key="j"
+	researchcommand="yes"
+	groupverifier="data/subai/verify_research.vs"
+	costgold = "2000"
+	costfood = "0"
+	execdelay = "20000"
+	rollover="Wrath of Jupiter"
+	description="Strikes a nearby enemy with lightning every time a priest dies"
+	method="research"
+	param="ReqSet, Offer to Gods, default, NamePlr, Wrath of Jupiter, default">
+	<src obj="ATemple"/>
+</cmd>
+
+<cmd name="Protection of Apollo" priority="5"
+	button="Research/Apollo Protection.bmp"
+	key="i"
+	queueicon="gameres/icons/upgrades/Apollo Protection.bmp"
+	costgold = "2000"
+	costfood = "0"
+	immediate="yes"
+	groupverifier="data/subai/apollo_protection_verify.vs"
+	description="Stronghold walls become indestructible for 1 minute (once per game)"
+	rollover="Invoke the protection of Apollo"
+	method="apolloProtection">
+	<src obj="ATemple"/>
+</cmd>
+    
+</commands>

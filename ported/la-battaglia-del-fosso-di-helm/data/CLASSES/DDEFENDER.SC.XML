@@ -1,0 +1,15 @@
+<class id="DDefender" cpp_class="CVXUnit" parent="Melee" entity="Units/IDefender/IDefender.ent.xml">
+
+	<properties race="Iberia"/>
+	<properties maxhealth="200"/>
+	<properties damage="16" armor_slash="20" armor_pierce="20"/>
+	<properties speed="80"/>
+	<properties unit_specials="Deflection"/>
+
+	<properties icon="gameres/icons/IDefender.bmp"/>
+	<properties display_name="Spearman" display_name_plural="Spearmen"/>
+	<properties help="contents/units/IDefender"/>
+	<properties edittree_pos="Units/Terra di mezzo/Dunland/Spearman"/>
+	<sounds attack="UnitPikeFight" command="data/sound entities/VoiceIDefender.xml"/>
+
+</class>

@@ -1,0 +1,196 @@
+<commands>
+    <cmd name="repair barracks" priority="1"
+        method="repair"
+        button="actions/repair.bmp"
+        key="r"
+        queueicon="gameres/icons/upgrades/repair.bmp"
+        rollover="Repair"
+        costgold = "500"
+        costfood = "0"
+        groupverifier="data/subai/verify_cmdcost_building.vs"
+        execdelay = "60000">
+        <src obj="ABarracks"/>
+    </cmd>
+    
+    <cmd name="Barrack Level 1" priority="2"
+        researchcommand="yes"
+        groupverifier="data/subai/verify_research.vs"
+        queueicon="gameres/icons/upgrades/Barrack1.bmp"
+        button="upgrades/barrack1.bmp"
+        key="f"
+        rollover="Fast warrior equipment"
+        description="Equips warriors twice as fast"
+        costgold = "500"
+        costfood = "0"
+        execdelay = "20000"
+        method="research"
+        param="NameSet, Barrack Level 1, , SetsSet, BarrackTrainTimeDecrease, 50">
+        <src obj="ABarracks"/>
+    </cmd>
+    
+    <cmd name="Barrack Level 2" priority="2"
+        researchcommand="yes"
+        groupverifier="data/subai/verify_research.vs"
+        queueicon="gameres/icons/upgrades/Barrack2.bmp"
+        button="upgrades/barrack2.bmp"
+        key="f"
+        rollover="Faster warrior equipment"
+        description="Equips warriors four times as fast"
+        costgold = "1000"
+        costfood = "0"
+        execdelay = "20000"
+        method="research"
+        param="ReqSet, Barrack Level 1, , NameSet, Barrack Level 2, , SetsSet, BarrackTrainTimeDecrease, 75">
+        <src obj="ABarracks"/>
+    </cmd>
+    
+    <cmd name="Barrack Level 3" priority="2"
+        researchcommand="yes"
+        groupverifier="data/subai/verify_research.vs"
+        queueicon="gameres/icons/upgrades/Barrack3.bmp"
+        button="upgrades/barrack3.bmp"
+        key="f"
+        rollover="Fastest warrior equipment"
+        description="Equips warriors eight times as fast"
+        costgold = "2000"
+        costfood = "0"
+        execdelay = "20000"
+        method="research"
+        param="ReqSet, Barrack Level 2, , NameSet, Barrack Level 3, default, SetsSet, BarrackTrainTimeDecrease, 87">
+        <src obj="ABarracks"/>
+    </cmd>
+    
+    <cmd name="trainAHypaspista" priority="3"
+        button="actions/Train HHypaspista.bmp"
+        queueicon="gameres/icons/HHypaspista.bmp"
+	groupverifier="data/subai/verify_cmdcost_building.vs"
+        transpicon="1"
+        traincommand="yes"
+        key="h"
+        help="/contents/units/HHypaspista"
+        costgold = "110"
+        costfood = "0"
+        costpop = "1"
+        execdelay = "10000"
+        rollover="Addestra soldato"
+        method="train"
+        param="ASwordman"
+        sclass="ASwordman">
+        <src obj="ABarracks"/>
+    </cmd>
+    
+    <cmd name="trainAToxotes" priority="4"
+        button="actions/Train HToxotes.bmp"
+        queueicon="gameres/icons/HToxotes.bmp"
+	groupverifier="data/subai/verify_cmdcost_building.vs"
+        transpicon="1"
+        traincommand="yes"
+        key="a"
+        help="/contents/units/HToxotes"
+        costgold = "50"
+        costfood = "0"
+        costpop = "1"
+        execdelay = "8000"
+        rollover="Addestra arciere"
+        method="train"
+        param="AToxotes"
+        sclass="AToxotes">
+        <src obj="ABarracks"/>
+    </cmd>
+
+    <cmd name="trainAVelit" priority="5"
+        button="actions/train RVelit.bmp"
+        queueicon="gameres/icons/RVelit.bmp"
+        groupverifier="data/subai/barrack_train_verify.vs"
+        transpicon="1"
+        traincommand="yes"
+        key="v"
+        help="/contents/units/RVelit"
+        costgold = "150"
+        costfood = "0"
+        costpop = "1"
+        execdelay = "14000"
+        rollover="Addestra lanciere"
+        method="train"
+        param="AVelit, Throwing Spears"
+        sclass="AVelit">
+        <src obj="ABarracks"/>
+    </cmd>
+    
+    <cmd name="trainAHoplite" priority="6"
+        button="actions/train HHoplite.bmp"
+        queueicon="gameres/icons/HHoplite.bmp"
+        groupverifier="data/subai/barrack_train_verify.vs"
+        transpicon="1"
+        traincommand="yes"
+        key="o"
+        help="/contents/units/HHoplite"
+        costgold = "200"
+        costfood = "0"
+        costpop = "1"
+        execdelay = "16000"
+        rollover="Equip Hoplite"
+        method="train"
+        param="AHoplite, Greek Spears"
+        sclass="AHoplite">
+        <src obj="ABarracks"/>
+    </cmd>
+    
+    <cmd name="trainAScout" priority="7"
+        button="actions/train RScout.bmp"
+        queueicon="gameres/icons/RScout.bmp"
+        transpicon="1"
+        groupverifier="data/subai/barrack_train_verify.vs"
+        traincommand="yes"
+        key="c"
+        help="/contents/units/RScout"
+        costgold = "140"
+        costfood = "0"
+        costpop = "1"
+        execdelay = "12000"
+        rollover="Equip Cavalry"
+        method="train"
+        param="AScout, Horseshoes"
+        sclass="AScout">
+        <src obj="ABarracks"/>
+    </cmd>
+    
+    <cmd name="trainATribune" priority="8"
+        button="actions/train RTribune.bmp"
+        queueicon="gameres/icons/RTribune.bmp"
+        transpicon="1"
+        traincommand="yes"
+        groupverifier="data/subai/barrack_train_verify.vs"
+        key="t"
+        help="/contents/units/RTribune"
+        costgold = "300"
+        costfood = "0"
+        costpop = "1"
+        execdelay = "20000"
+        rollover="Equip Tribune"
+        method="train"
+        param="ATribune, Full Armor"
+        sclass="ATribune">
+        <src obj="ABarracks"/>
+    </cmd>
+    
+    <cmd name="trainAChariot" priority="9"
+        button="actions/Train HChariot.bmp"
+        queueicon="gameres/icons/HChariot.bmp"
+        groupverifier="data/subai/barrack_train_verify.vs"
+        transpicon="1"
+        traincommand="yes"
+        key="c"
+        help="/contents/units/HChariot"
+        costgold = "300"
+        costfood = "0"
+        costpop = "1"
+        execdelay = "20000"
+        rollover="Equip Chariot"
+        method="train"
+        param="AChariot, Greek Chariot Wheels"
+        sclass="HChariot">
+        <src obj="ABarracks"/>
+    </cmd>
+    
+</commands>

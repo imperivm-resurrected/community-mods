@@ -1,0 +1,15 @@
+<class id="OSpearman" cpp_class="CVXUnit" parent="Melee" entity="Units/GSpearman/GSpearman.ent.xml">
+
+	<properties race="Germany"/>
+	<properties maxhealth="200"/>
+	<properties damage="20" armor_slash="12" armor_pierce="12"/>
+	<properties speed="80"/>
+	<properties unit_specials="Deflection"/>
+
+	<properties icon="gameres/icons/GSpearman.bmp"/>
+	<properties display_name="Orco lanciere" display_name_plural="Orchi lancieri"/>
+	<properties help="contents/units/GSpearman"/>
+	<properties edittree_pos="Units/Terra di mezzo/Orchi/Orco lanciere"/>
+	<sounds attack="UnitPikeFight" command="data/sound entities/VoiceGSpearman.xml"/>
+
+</class>

@@ -1,0 +1,18 @@
+<class id="OSwordman" cpp_class="CVXUnit" parent="Melee" entity="Units/GSwordsman/GSwordsman.ent.xml">
+
+	<properties race="Germany"/>
+	<properties maxhealth="200"/>
+	<properties damage="16" armor_slash="6" armor_pierce="6"/>
+	<properties speed="80"/>
+	<properties unit_specials="Penetration"/>
+
+	<properties formation_priority="1200"/>
+	<properties formation_radius="26"/>
+
+	<properties icon="gameres/icons/GSwordsman.bmp"/>
+	<properties display_name="Orchetto" display_name_plural="Orchetti"/>
+	<properties help="contents/units/GSwordsman"/>
+	<properties edittree_pos="Units/Terra di mezzo/Orchi/Orchetto"/>
+	<sounds command="data/sound entities/VoiceGSwordsman.xml"/>
+
+</class>

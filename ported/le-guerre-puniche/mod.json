@@ -1,0 +1,20 @@
+{
+  "id": "le-guerre-puniche",
+  "name": "Le Guerre Puniche",
+  "version": "1.0",
+  "authors": [
+    "Giuseppe D'addio1"
+  ],
+  "description": {
+    "italian": "Conquista di Giuseppe D'addio1.",
+    "spanish": "Conquista de Giuseppe D'addio1 (2017, en italiano).",
+    "english": "Conquest by Giuseppe D'addio1 (2017, in Italian)."
+  },
+  "category": "Conquests",
+  "tags": [],
+  "requires": [
+    "caesar-mod",
+    "imperivm1-legacy"
+  ],
+  "redistributable": true
+}

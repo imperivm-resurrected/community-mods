@@ -1,0 +1,16 @@
+<class id="ATavern" cpp_class="CVXTavern" parent="BaseTavern" entity="Buildings/ITavern/ITavern.ent.xml">
+
+	<properties race="Iberia"/>
+	<properties display_name="Birreria"/>
+	<properties radius="170" selection_radius="180"/>
+	<properties edittree_pos="Structures/Fortezza del fosso di Helm/Birreria"/>
+	
+	<properties auto_repair="no"/>
+	<properties icon="gameres/icons/ITavern.bmp"/>
+	<properties help="/contents/buildings/ITavern"/>
+
+	<method sig="sellfoodforgold" vs="data/subai/itavern_sell_food.vs"/>
+	<method sig="calltoarms" vs="data/subai/itavern_calltoarms.vs"/>
+	
+</class>
+

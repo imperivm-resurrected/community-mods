@@ -1,0 +1,24 @@
+<class id="Saruman" cpp_class="CVXHero" parent="Hero" entity="Units/GDruid/GDruid.ent.xml">
+
+	<properties race="Gaul"/>
+	<properties maxhealth="1200"/>
+	<properties damage="30" armor_slash="0" armor_pierce="0"/>
+	<properties speed="80"/>
+	
+	<properties range="17" min_range="2"/>
+	<properties damage_type="slash"/>
+	
+	<properties max_army="50"/>
+	<properties unit_specials="Active"/>
+	<properties HeroSkills="Healing, Egoism, Leadership, Assault, Charge"/>
+
+	<properties icon="gameres/icons/GDruid.bmp"/>
+	<properties display_name="Saruman" display_name_plural="Heroes"/>
+	<properties edittree_pos="Units/Terra di mezzo/Saruman"/>
+	<sounds command="Sounds/entities/VoiceGDruid.xml"/>
+
+	<defaultcmd target="ShipBattle">
+		<cmd name="boardship"/>
+		<cmd name="approach"/>
+	</defaultcmd>
+</class>

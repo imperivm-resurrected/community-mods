@@ -1,0 +1,180 @@
+<commands>
+
+<cmd name="hireheroH" priority="1"
+	button="actions/hire heroH.bmp"
+	queueicon="gameres/icons/hire heroH.bmp"
+	groupverifier="data/subai/verify_cmdcost_building.vs"
+	traincommand="yes"
+	key="h"
+	costgold = "1000"
+	costfood = "0"
+	costpop = "0"
+	execdelay = "20000"
+	param = "GreekHero"
+	method="hirehero"
+	help="/contents/units/GHero"
+	rollover="Hire hero">
+	<src obj="AArena"/>
+</cmd>
+
+<cmd name="Fights" priority="2"
+	button="Upgrades/Fights.bmp"
+	key="f"
+	queueicon="gameres/icons/upgrades/Fights.bmp"
+	costgold = "2000"
+	costfood = "0"
+	execdelay = "30000"
+	researchcommand="yes"
+	groupverifier="data/subai/verify_research.vs"
+	description="All new warriors are level 5"
+	rollover="Fights"
+	method="research"
+	param="NameSet, Olympic Games, default">
+	<src obj="AArena"/>
+</cmd>
+
+<cmd name="Training" priority="3"
+	button="research/training.bmp"
+	key="t"
+	queueicon="gameres/icons/upgrades/btrain.bmp"
+	costgold = "1000"
+	costfood = "0"
+	execdelay = "25000"
+	groupverifier="data/subai/verify_research.vs"
+	rollover="Training"
+	description="Allows warriors to train to level 8"
+	method="research"
+	researchcommand="yes"
+	param="ReqSet, Olympic Games, , SetsPlr, maxtrainlevel, 8, NamePlr, Training, ">
+	<src obj="AArena"/>
+</cmd>
+
+<cmd name="Training 2" priority="3"
+	button="research/Advanced training.bmp"
+	key="t"
+	queueicon="gameres/icons/upgrades/atrain.bmp"
+	costgold = "2000"
+	costfood = "0"
+	execdelay = "25000"
+	groupverifier="data/subai/verify_research.vs"
+	rollover="Advanced training"
+	description="Allows warriors to train to level 12"
+	method="research"
+	researchcommand="yes"
+	param="ReqSet, Olympic Games, , ReqPlr, Training, ,SetsPlr, maxtrainlevel, 12, NamePlr, Advanced Training, default">
+	<src obj="AArena"/>
+</cmd>
+
+<cmd name="Democracy" priority="5"
+	button="Upgrades/Democracy.bmp"
+	queueicon="gameres/icons/upgrades/Democracy.bmp"
+	key="d"
+	costgold="1000"
+	costfood="0"
+	execdelay="10000"
+	groupverifier="data/subai/democracy_verify.vs"
+	rollover="Democracy"
+	onaddremovescript="data/subai/government_form_onaddremove.vs"
+	description="All warriors receive a Democracy Emblem give +100 extra health points (Not contemporary to Oligarchy)"
+	method="democracy"
+	researchcommand="yes">
+	<src obj="AArena"/>
+</cmd>
+
+<cmd name="Oligarchy" priority="5"
+	button="Upgrades/Oligarchy.bmp"
+	queueicon="gameres/icons/upgrades/Oligarchy.bmp"
+	key="o"
+	costgold="1000"
+	costfood="0"
+	execdelay="10000"
+	groupverifier="data/subai/oligarchy_verify.vs"
+	rollover="Oligarchy"
+	onaddremovescript="data/subai/government_form_onaddremove.vs"
+	description="All warriors above level 10 receive an Oligarchy Emblem give +5 extra attack points (Not contemporary to Democracy)"
+	method="oligarchy"
+	researchcommand="yes">
+	<src obj="AArena"/>
+</cmd>
+
+<cmd name="Heroes Training" priority="6"
+	button="upgrades/Military academy.bmp"
+	key="a"
+	queueicon="gameres/icons/upgrades/Military academy.bmp"
+	costgold = "3000"
+	costfood = "0"
+	execdelay = "25000"
+	groupverifier="data/subai/verify_research.vs"
+	rollover="Addestramento eroi avanzato"
+	description="All new heroes are level 12"
+	method="research"
+	researchcommand="yes"
+	param="ReqSet, Olympic Games, default, SetsSet, levels/Hero, 12, NameSet, Military Preparation, default">
+	<src obj="AArena"/>
+</cmd>
+
+<cmd name="Charm of Athena" priority="7"
+	button="Research/charm of athena.bmp"
+	key="o"
+	queueicon="gameres/icons/upgrades/charm of athena.bmp"
+	costgold = "2000"
+	costfood = "0"
+	execdelay = "25000"
+	groupverifier="data/subai/verify_research.vs"
+	rollover="Charm of Athena"
+	description="All warriors above level 10 receive a Speed charm (+40% base speed) at their first kill"
+	method="research"
+	researchcommand="yes"
+	param="ReqSet, Olympic Games, default, NamePlr, Charm of Athena, default">
+	<src obj="AArena"/>
+</cmd>
+
+<cmd name="Veteran Offence" priority="8"
+	button="research/veteran offence.bmp"
+	key="o"
+	queueicon="gameres/icons/upgrades/veteran offence.bmp"
+	costgold = "3000"
+	costfood = "0"
+	execdelay = "30000"
+	groupverifier="data/subai/verify_research.vs"
+	rollover="Veteran Offense"
+	description="Warriors receive a Veteran Offense medal (+20% damage) at their first kill"
+	method="research"
+	researchcommand="yes"
+	param="ReqSet, Olympic Games, default, NamePlr, Veteran Offence, default">
+	<src obj="AArena"/>
+</cmd>
+
+<cmd name="Veteran Defence" priority="9"
+	button="research/veteran defence.bmp"
+	key="d"
+	queueicon="gameres/icons/upgrades/veteran defence.bmp"
+	costgold = "3000"
+	costfood = "0"
+	execdelay = "30000"
+	groupverifier="data/subai/verify_research.vs"
+	rollover="Veteran Defense"
+	description="Warriors receive a Veteran Defense medal (+20% armor) at their first kill"
+	method="research"
+	researchcommand="yes"
+	param="ReqSet, Olympic Games, default, NamePlr, Veteran Defence, default">
+	<src obj="AArena"/>
+</cmd>
+
+<cmd name="Veteran Health" priority="10"
+	button="research/veteran health.bmp"
+	key="e"
+	queueicon="gameres/icons/upgrades/veteran health.bmp"
+	costgold = "3000"
+	costfood = "0"
+	execdelay = "30000"
+	groupverifier="data/subai/verify_research.vs"
+	rollover="Veteran Health"
+	description="Warriors receive a Veteran Health medal (+20% health) at their first kill"
+	method="research"
+	researchcommand="yes"
+	param="ReqSet, Olympic Games, default, NamePlr, Veteran Health, default">
+	<src obj="AArena"/>
+</cmd>
+
+</commands>

@@ -337,13 +337,28 @@ const kOf = c => /^M/.test(c) && !hdClasses?.has(c.toLowerCase()) && kIds.has("K
 const missing = used?.map(kOf).filter(c => !hdClasses.has(c.toLowerCase()) && !extraClasses.has(c.toLowerCase())) || []; // not in the HD game or extras/
 // needs = the big mods that have every missing class; none -> the map needs a mod we don't have
 const needs = missing.length ? bigMods.filter(m => missing.every(c => m.classes.has(c.toLowerCase()))).map(m => m.mod) : [];
+// no single mod has them all (a Greek Mod map that also places Imperivm I classes): the ported mods that together do, most classes first.
+// Then the map requires every one of them, not one of several
+const PREFER = ["community-mod", "greek-civilization-mod", "caesar-mod"];
+const cover = [];
+if (missing.length && !needs.length) {
+  let left = [...missing];
+  while (left.length) {
+    const best = bigMods.filter(m => m.ported && !cover.includes(m.mod))
+      .map(m => ({ mod: m.mod, got: left.filter(c => m.classes.has(c.toLowerCase())) }))
+      .sort((a, b) => b.got.length - a.got.length || PREFER.indexOf(b.mod) - PREFER.indexOf(a.mod))[0];
+    if (!best || !best.got.length) break;
+    cover.push(best.mod);
+    left = left.filter(c => !best.got.includes(c));
+  }
+  if (!left.length) needs.push(...cover); else cover.length = 0;
+}
 const unknown = missing.length && !needs.length ? missing : [];
 const waits = needs.length && !needs.some(m => bigMods.find(b => b.mod === m).ported) ? needs : []; // only unported mods have them
 if (!waits.length) needs.splice(0, needs.length, ...needs.filter(m => bigMods.find(b => b.mod === m).ported));
 // incompatible = big mods that hide (hidden.txt) a class of the HD game the map uses
 const breaks = used ? bigMods.filter(m => !needs.includes(m.mod))
   .map(m => ({ mod: m.mod, lost: used.filter(c => hdClasses.has(c.toLowerCase()) && !m.classes.has(c.toLowerCase())) })).filter(x => x.lost.length) : [];
-const PREFER = ["community-mod", "greek-civilization-mod", "caesar-mod"];
 // terrain layers past HD's 40 (the Greek Mod's, painted with it or the Caesar Mod): HD crashes drawing them, so the map
 // requires ported/greek-mod-terrains (tools/greek-terrains.js) unless it already requires a mod that has them
 const TERRAIN_MODS = ["greek-civilization-mod", "caesar-mod"];
@@ -454,7 +469,7 @@ const mod = {
   tags: [...byCount.slice(1).map(k => `Type: ${CATS[k]}`), ...(has("scenarios") && players ? [players] : []), ...(has("adventures") ? langs.map(l => `Language: ${l}`) : [])],
   // requires means "all of these": with several candidates, take one (the most used first)
   ...(needs.length || extraTerrain ? { requires: [
-    ...(needs.length ? [[...PREFER, ...needs].find(m => needs.includes(m))] : []),
+    ...(cover.length ? cover : needs.length ? [[...PREFER, ...needs].find(m => needs.includes(m))] : []),
     ...(extraTerrain && !needs.some(m => TERRAIN_MODS.includes(m)) ? ["greek-mod-terrains"] : []),
   ] } : {}),
   ...(breaks.length ? { incompatibleWith: breaks.map(b => b.mod) } : {}),
@@ -469,7 +484,7 @@ src[id] = opt._ + (opt.file ? ` --file ${opt.file}` : "") + (opt.add ? ` --add $
 fs.writeFileSync(SRC, JSON.stringify(Object.fromEntries(Object.entries(src).sort()), null, 1) + "\n");
 console.log(`${out}\n  ${maps.join(", ")} -> ${[...new Set(maps.map(f => where[f]))].join(", ")}/\n  category ${mod.category}, tags ${JSON.stringify(mod.tags)}${counts.length < maps.filter(f => where[f] === "scenarios").length ? "  ⚠️ some scenario has no readable players" : ""}${has("scenarios") && !players ? "  ⚠️ no Players tag (one human slot, or --players)" : ""}${renamed ? `\n  🏷️ ${renamed} map(s): the editor's default name/author in game.xml replaced` : ""}${greekWalls ? `\n  🏛️ ${greekWalls} M* pieces (walls, towers, gates, villagers) -> K* (Greek): porter credited` : ""}`
   + (used === null ? "\n  ⚠️ compatibility not checked (no originals/game-data)" : unknown.length ? `\n  ❌ not in the HD game nor in a known mod: ${unknown.join(", ")}` : "")
-  + (waits.length ? `\n  ⏳ blocked: needs ${waits.join(" or ")}, not ported to Resurrected yet (${missing.join(", ")})` : needs.length ? `\n  🧩 needs ${needs.join(" or ")} (${missing.join(", ")})${needs.length > 1 ? " -> requires " + mod.requires[0] : ""}` : "")
+  + (waits.length ? `\n  ⏳ blocked: needs ${waits.join(" or ")}, not ported to Resurrected yet (${missing.join(", ")})` : needs.length ? `\n  🧩 needs ${needs.join(" or ")} (${missing.join(", ")})${cover.length ? " -> requires all of them" : needs.length > 1 ? " -> requires " + mod.requires[0] : ""}` : "")
   + breaks.map(b => `\n  🚫 incompatible with ${b.mod} (hides ${b.lost.join(", ")})`).join(""));
 // blocked (needs a mod not ported yet) or uses classes nobody has: report it, but leave nothing in ported/
 if (waits.length || unknown.length) {

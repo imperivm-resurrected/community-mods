@@ -1,0 +1,17 @@
+<class id="ElfArcher" cpp_class="CVXUnit" parent="Ranged" entity="Units/TArcher/TArcher.ent.xml">
+
+	<properties race="Britain"/>
+	<properties maxhealth="200"/>
+	<properties damage="12" armor_slash="0" armor_pierce="0"/>
+	<properties speed="80"/>
+	<properties unit_specials="Attack skill, Active"/>
+
+	<properties projectile_class="Arrow"/>
+
+	<properties icon="gameres/icons/TArcher.bmp"/>
+	<properties display_name="Archer" display_name_plural="Archers"/>
+	<properties help="contents/units/TArcher"/>
+	<properties edittree_pos="Units/Terra di mezzo/Elfi/Archer"/>
+	<sounds command="data/sound entities/VoiceTArcher.xml"/>
+
+</class>

@@ -1,0 +1,8 @@
+<!-- Imperivm II class IHero02: copy of the HD IHero2 under the old name the map places -->
+<class id="IHero02" cpp_class="CVXHero" parent="IberianHero" entity="Units/IHero2/IHero2.ent.xml">
+
+	<properties display_name="Caraunio" display_name_plural="Heroes"/>
+	<properties icon="gameres/icons/IHero2.bmp"/>
+	<properties edittree_pos="Units/Iberia/Hero 2"/>
+
+</class>

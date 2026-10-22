@@ -1,0 +1,21 @@
+<class id="OMountaineerHero" cpp_class="CVXHero" parent="Hero" entity="Units/IMountaineer/IMountaineer.ent.xml">
+
+	<properties race="Iberia"/>
+	<properties maxhealth="1000"/>
+	<properties damage="50" armor_slash="14" armor_pierce="14"/>
+	<properties speed="80"/>
+	<properties unit_specials="Sneak"/>
+	
+	<properties max_army="50"/>
+	<properties HeroSkills="Defensive cry, Team defense, Concealment, Recovery, Vigor"/>
+
+	<properties icon="gameres/icons/IMountaineer.bmp"/>
+	<properties display_name="Cacciatore orchesco" display_name_plural="Heroes"/>
+	<properties help="contents/units/IMountaineer"/>
+	<properties edittree_pos="Units/Terra di mezzo/Cacciatore capo"/>
+	<sounds command="data/sound entities/VoiceIMountaineer.xml" attack="UnitHammerFight"/>
+
+	<method sig="ondie" vs="data/subai/imountaineer_ondie.vs"/>
+	<behavior script="data/subai/sneak_behavior.vs"/>
+
+</class>
