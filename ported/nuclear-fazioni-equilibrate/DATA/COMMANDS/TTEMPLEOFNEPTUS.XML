@@ -1,0 +1,95 @@
+<commands>
+<!-- TEMPLE COMMANDS -->
+<!-- NOTE : train command must have names like this:"trainClassName" -->
+<!--        where ClassName is the class of the unit to be trained -->
+<cmd name="repairTTempleOfNeptus" priority="1"
+	method="repair"
+	button="actions/repair.bmp"
+	key="r"
+	queueicon="gameres/icons/upgrades/repair.bmp"
+	groupverifier="data/subai/verify_cmdcost_building.vs"
+	rollover="Repair"
+	costgold="100"
+	costfood="0"
+	execdelay = "60000">
+	<src obj="TTempleOfNeptus"/>
+</cmd>
+<cmd name="trainTEnchantress" priority="1"
+	button="actions/train TEnchantress.bmp"
+	queueicon="gameres/icons/TEnchantress.bmp"
+	groupverifier="data/subai/verify_cmdcost_building.vs"
+	traincommand="yes"
+	transpicon="1"
+	key="s"
+	help="/contents/units/TEnchantress"
+	costgold = "150"
+	costfood = "0"
+	costpop = "0"
+	execdelay = "20000"
+	rollover="Call Enchantress"
+	method="train"
+	param="TEnchantress"
+	sclass="TEnchantress">
+	<src obj="TTempleOfNeptus"/>
+</cmd>
+<cmd name="German chamber" priority="2"
+	key="r"
+	button="research/ritual chamber.bmp"
+	queueicon="gameres/icons/upgrades/ritual chamber.bmp"
+	researchcommand="yes"
+	groupverifier="data/subai/verify_research.vs"
+	costgold = "1000"
+	costfood = "0"
+	execdelay = "40000"
+	rollover="Ritual Chamber"
+	description="Allows enchantresses to gain experience by learning from more experienced warriors"
+	method="research"
+	param="NamePlr, Ritual Chamber, default, NameSet, Ritual Chamber, default">
+	<src obj="TTempleOfNeptus"/>
+</cmd>
+<cmd name="German Wolf Summoning" priority="4"
+	queueicon="gameres/icons/upgrades/summon wolf.bmp"
+	button="actions/summon wolf.bmp"
+	key="w"
+	researchcommand="yes"
+	groupverifier="data/subai/verify_research.vs"
+	costgold = "400"
+	costfood = "0"
+	execdelay = "30000"
+	rollover="Wolf summoning"
+	description="Allows enchantresses to sacrifice themselves and summon a wolf, which is under your control for about 3 minutes"
+	method="research"
+	param="ReqSet, Ritual Chamber, default, NamePlr, Wolf Summoning, default">
+	<src obj="TTempleOfNeptus"/>
+</cmd>
+<cmd name="German Eagle Summoning" priority="5"
+	queueicon="gameres/icons/upgrades/summon eagle.bmp"
+	button="actions/summon eagle.bmp"
+	key="e"
+	researchcommand="yes"
+	groupverifier="data/subai/verify_research.vs"
+	costgold = "1200"
+	costfood = "0"
+	execdelay = "20000"
+	rollover="Eagle summoning"
+        description="Allows enchantresses to sacrifice themselves and summon an eagle, which is under your control for about 2 minutes"
+	method="research"
+	param="ReqSet, Ritual Chamber, default, NamePlr, Eagle Summoning, default">
+	<src obj="TTempleOfNeptus"/>
+</cmd>
+<cmd name="German Mass Heal" priority="6"
+	queueicon="gameres/icons/upgrades/Mass Healing.bmp"
+	button="research/Mass Healing.bmp"
+	key="h"
+	researchcommand="yes"
+	groupverifier="data/subai/verify_research.vs"
+	costgold = "1500"
+	costfood = "0"
+	execdelay = "20000"
+	rollover="Mass Heal"
+	description="Allows enchantresses to sacrifice themselves to heal nearby allies"
+	method="research"
+	param="ReqSet, Ritual Chamber, default, NamePlr, Mass Heal, default">
+	<src obj="TTempleOfNeptus"/>
+</cmd>
+</commands>

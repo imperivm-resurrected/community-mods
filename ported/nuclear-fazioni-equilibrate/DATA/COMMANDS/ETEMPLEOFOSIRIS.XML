@@ -1,0 +1,116 @@
+<commands>
+
+<!-- TEMPLE COMMANDS -->
+<!-- NOTE : train command must have names like this:"trainClassName" -->
+<!--        where ClassName is the class of the unit to be trained -->
+
+<cmd name="repairETemple" priority="1"
+	method="repair"
+	button="actions/repair.bmp"
+	key="r"
+	queueicon="gameres/icons/upgrades/repair.bmp"
+	groupverifier="data/subai/verify_cmdcost_building.vs"
+	rollover="Repair"
+	costgold="100"
+	costfood="0"
+	execdelay = "60000">
+	<src obj="ETempleOfOsiris"/>
+</cmd>
+
+<cmd name="trainEPriest" priority="1"
+	button="actions/train EPriest.bmp"
+	queueicon="gameres/icons/EPriest.bmp"
+	groupverifier="data/subai/verify_cmdcost_building.vs"
+	traincommand="yes"
+	transpicon="1"
+	key="p"
+	help="/contents/units/EPriest"
+	costgold = "200"
+	costfood = "0"
+	costpop = "0"
+	execdelay = "10000"
+	rollover="Call Priest"
+	method="train"
+	param="EPriest"
+	sclass="EPriest">
+	<src obj="ETempleOfOsiris"/>
+</cmd>
+
+<cmd name="Cult of Osiris" priority="2"
+	button="research/cult of osiris.bmp"
+	key="o"
+	queueicon="gameres/icons/upgrades/cult of osiris.bmp"
+	researchcommand="yes"
+	groupverifier="data/subai/verify_research.vs"
+	costgold = "2000"
+	costfood = "0"
+	execdelay = "40000"
+	rollover="Cult of Osiris"
+	description="Allows construction of chariots in the Temple of Osiris"
+	method="research"
+	param="NameSet, Cult of Osiris, default">
+	<src obj="ETempleOfOsiris"/>
+</cmd>
+
+<cmd name="EZombify" priority="3"
+	queueicon="gameres/icons/upgrades/Zombify.bmp"
+	button="research/zombify.bmp"
+	key="z"
+	researchcommand="yes"
+	groupverifier="data/subai/verify_research.vs"
+	costgold = "2000"
+	costfood = "0"
+	execdelay = "20000"
+    rollover="Zombify"
+	description="Allows priests to transform into ghouls when they die in battle or sacrifice themselves"
+	method="research"
+	param="ReqSet, Cult of Osiris, default, NamePlr, Zombify, default">
+	<src obj="ETempleOfOsiris"/>
+</cmd>
+<cmd name="ECloud of Plague" priority="4"
+	queueicon="gameres/icons/upgrades/mist.bmp"
+	button="research/mist.bmp"
+	key="c"
+	researchcommand="yes"
+	groupverifier="data/subai/verify_research.vs"
+	costgold = "2000"
+	costfood = "0"
+	execdelay = "20000"
+	rollover="Cloud of Plague"
+	description = "Allows priests to sacrifice themselves to create a cloud of plague which damages all warriors it covers"
+	method="research"
+	param="ReqSet, Cult of Osiris, default, NamePlr, Cloud of Plague, default">
+	<src obj="ETempleOfOsiris"/>
+</cmd>
+
+<cmd name="Mumification" priority="5"
+	queueicon="gameres/icons/upgrades/mumification.bmp"
+	key="m"
+	button="research/mumification.bmp"
+	researchcommand="yes"
+	groupverifier="data/subai/verify_research.vs"
+	costgold = "2000"
+	costfood = "0"
+	execdelay = "30000"
+	rollover="Mummification"
+	description = "New heroes are hired with 2/3 the level of the best hero you've had"
+	method="research"
+	param="ReqSet, Cult of Osiris, default, NameSet, Mumification, default">
+	<src obj="ETempleOfOsiris"/>
+</cmd>
+<cmd name="Chariot of Osiris" priority="6"
+	button="actions/chariot of osiris.bmp"
+	key="r"
+	queueicon="gameres/icons/chariot of osiris.bmp"
+	transpicon="1"
+	groupverifier="data/subai/verify_trainex.vs"
+	onaddremovescript="data/subai/trainex_onaddremove.vs"
+	traincommand="yes"
+	costgold = "600"
+	execdelay = "30000"
+ 	rollover="Chariot of Osiris"
+	method="trainex"
+	param="1, 10, EChariot,  EChariot, Cult of Osiris">
+	<src obj="ETempleOfOsiris"/>
+</cmd>
+</commands>

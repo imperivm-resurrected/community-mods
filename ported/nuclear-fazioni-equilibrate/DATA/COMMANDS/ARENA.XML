@@ -1,0 +1,1104 @@
+<commands>
+<!-- ARENA COMMANDS -->
+<cmd name="repair arena" priority="1"
+	method="repair"
+	button="actions/repair.bmp"
+	key="r"
+	queueicon="gameres/icons/upgrades/repair.bmp"
+	groupverifier="data/subai/verify_cmdcost_building.vs"
+	rollover="Repair"
+	costgold="100"
+	execdelay = "60000">
+	<src obj="BaseArena"/>
+</cmd>
+<cmd name="Fights" priority="2"
+	button="Upgrades/Fights.bmp"
+	key="f"
+	queueicon="gameres/icons/upgrades/Fights.bmp"
+	costgold = "2000"
+	costfood = "0"
+	execdelay = "30000"
+	researchcommand="yes"
+	groupverifier="data/subai/antic.vs"
+	description="New Swordsmen and Archers are level 4"
+	rollover="Fights"
+	method="research"
+	param="SetsSet, levels/GSwordsman, 4, SetsSet, levels/GArcher, 4, NameSet, Fights, default,">
+	<src obj="GArena1"/>
+	<src obj="GArena2"/>
+</cmd>
+<cmd name="CHero level 8" priority="7"
+	button="Upgrades/Military academy.bmp"
+	key="a"
+	queueicon="gameres/icons/upgrades/Military academy.bmp"
+	costgold = "2000"
+	costfood = "0"
+	execdelay = "25000"
+	groupverifier="data/subai/verify_research.vs"
+	rollover="Eroi di livello 8"
+	description="Tutti i nuovi eroi sono di livello 8"
+	method="research"
+	researchcommand="yes"
+	param="ReqSet, People's Assembly, default, SetsSet, levels/Hero, 8, NameSet, CHero level 8, default">
+	<src obj="CArena"/>
+</cmd>
+<cmd name="Britain Fights" priority="2"
+	button="Upgrades/Fights.bmp"
+	key="f"
+	queueicon="gameres/icons/upgrades/Fights.bmp"
+	costgold = "2000"
+	costfood = "0"
+	execdelay = "30000"
+	researchcommand="yes"
+	groupverifier="data/subai/antic.vs"
+	description="All new warriors and heroes are level 4"
+	rollover="Fights"
+	method="research"
+	param="SetsSet, levels/Hero, 4, SetsSet, levels/BSwordsman, 4, SetsSet, levels/BBowman, 4, SetsSet, levels/BBronzeSpearman, 4, SetsSet,levels/BShieldBearer, 4, SetsSet,levels/BJavelineer, 4,SetsSet,levels/BHighlander, 4,NameSet, Fights, default,">
+	<src obj="BMorrigansMonument"/>
+</cmd>
+<cmd name="MGladiator Shows" priority="2"
+	button="Upgrades/Gladiator Show.bmp"
+	key="s"
+	queueicon="gameres/icons/upgrades/Gladiator Show.bmp"
+	costgold = "2000"
+	costfood = "0"
+	execdelay = "25000"
+	groupverifier="data/subai/antic.vs"
+	description="Allows Liberati to be hired. New heroes are level 4."
+	rollover="Gladiator shows"
+	method="research"
+	researchcommand="yes"
+	param="SetsSet, levels/Hero, 4, NameSet, Gladiator Shows, default">
+	<src obj="MArena"/>
+</cmd>
+<cmd name="RGladiator Shows" priority="2"
+	button="Upgrades/Gladiator Show.bmp"
+	key="s"
+	queueicon="gameres/icons/upgrades/Gladiator Show.bmp"
+	costgold = "2000"
+	costfood = "0"
+	execdelay = "25000"
+	groupverifier="data/subai/antic.vs"
+	description="Allows Gladiators to be hired and all new heroes are level 4"
+	rollover="Gladiator shows"
+	method="research"
+	researchcommand="yes"
+	param="SetsSet, levels/Hero, 4, NameSet, Gladiator Shows, default, NameSet, RGladiator, default">
+	<src obj="RArena"/>
+</cmd>
+<cmd name="People's Assembly" priority="2"
+	button="Upgrades/Peoples assembly.bmp"
+	key="a"
+	queueicon="gameres/icons/upgrades/peoples assembly.bmp"
+	costgold = "2000"
+	costfood = "0"
+	execdelay = "25000"
+	groupverifier="data/subai/antic.vs"
+	description="Allows the training of War Elephants"
+	rollover="People's Assembly"
+	method="research"
+	researchcommand="yes"
+	param="NameSet, People's Assembly, default">
+	<src obj="CArena"/>
+</cmd>
+<cmd name="Tournaments" priority="2"
+	button="Upgrades/Tournaments.bmp"
+	key="t"
+	queueicon="gameres/icons/upgrades/Tournaments.bmp"
+	costgold = "2000"
+	costfood = "0"
+	execdelay = "30000"
+	groupverifier="data/subai/antic.vs"
+	description="Allows Mountaineers to be hired"
+	rollover="Tournaments"
+	method="research"
+	researchcommand="yes"
+	param="NameSet, Tournaments, default">
+	<src obj="IArena"/>
+</cmd>
+<cmd name="Gaul Training 1" priority="3"
+	button="research/training.bmp"
+	key="t"
+	queueicon="gameres/icons/upgrades/btrain.bmp"
+	costgold = "1000"
+	costfood = "0"
+	execdelay = "20000"
+	groupverifier="data/subai/antic.vs"
+	rollover="Training"
+	description="Allows warriors to train to level 4"
+	method="research"
+	researchcommand="yes"
+	param="ReqSet, Fights, default, SetsPlr, maxtrainlevel, 4, NamePlr, Training, ">
+	<src obj="GArena1"/>
+	<src obj="GArena2"/>
+</cmd>
+<cmd name="Rome Training 1" priority="3"
+	button="research/training.bmp"
+	key="t"
+	queueicon="gameres/icons/upgrades/btrain.bmp"
+	costgold = "1000"
+	costfood = "0"
+	execdelay = "25000"
+	groupverifier="data/subai/antic.vs"
+	rollover="Training"
+	description="Allows warriors to train to level 4"
+	method="research"
+	researchcommand="yes"
+	param="ReqSet, Gladiator Shows, default, SetsPlr, maxtrainlevel, 4, NamePlr, Training, ">
+	<src obj="RArena"/>
+</cmd>
+<cmd name="Gaul Training 2" priority="3"
+	button="research/Advanced training.bmp"
+	key="t"
+	queueicon="gameres/icons/upgrades/atrain.bmp"
+	costgold = "1500"
+	costfood = "0"
+	execdelay = "20000"
+	groupverifier="data/subai/antic.vs"
+	rollover="Advanced training"
+	description="Allows warriors to train to level 8"
+	method="research"
+	researchcommand="yes"
+	param="ReqSet, Fights, , ReqPlr, Training, , SetsPlr, maxtrainlevel, 8, NamePlr, Advanced Training, ">
+	<src obj="GArena1"/>
+	<src obj="GArena2"/>
+</cmd>
+<cmd name="Rome Training 2" priority="3"
+	button="research/Advanced training.bmp"
+	key="t"
+	queueicon="gameres/icons/upgrades/atrain.bmp"
+	costgold = "2000"
+	costfood = "0"
+	execdelay = "25000"
+	groupverifier="data/subai/antic.vs"
+	rollover="Advanced training"
+	description="Allows warriors to train to level 8"
+	method="research"
+	researchcommand="yes"
+	param="ReqSet, Gladiator Shows, , ReqPlr, Training, ,SetsPlr, maxtrainlevel, 8, NamePlr, Advanced Training, default">
+	<src obj="RArena"/>
+</cmd>
+<cmd name="Veteran Offence" priority="4"
+	button="research/veteran offence.bmp"
+	key="o"
+	queueicon="gameres/icons/upgrades/veteran offence.bmp"
+	costgold = "2000"
+	costfood = "0"
+	execdelay = "30000"
+	groupverifier="data/subai/antic.vs"
+	rollover="Veteran Offense"
+	description="Warriors receive a Veteran Offense medal (+20% damage) at their first kill"
+	method="research"
+	researchcommand="yes"
+	param="ReqSet, Gladiator Shows, default,NamePlr, Veteran Offence, default">
+	<src obj="RArena"/>
+</cmd>
+<cmd name="Veteran Defence" priority="5"
+	button="research/veteran defence.bmp"
+	key="d"
+	queueicon="gameres/icons/upgrades/veteran defence.bmp"
+	costgold = "2000"
+	costfood = "0"
+	execdelay = "30000"
+	groupverifier="data/subai/antic.vs"
+	rollover="Veteran Defense"
+	description="Warriors receive a Veteran Defense medal (+20% armor) at their first kill"
+	method="research"
+	researchcommand="yes"
+	param="ReqSet, Gladiator Shows, default,NamePlr, Veteran Defence, default">
+	<src obj="RArena"/>
+</cmd>
+<cmd name="Veteran Health" priority="6"
+	button="research/veteran health.bmp"
+	key="e"
+	queueicon="gameres/icons/upgrades/veteran health.bmp"
+	costgold = "2000"
+	costfood = "0"
+	execdelay = "30000"
+	groupverifier="data/subai/antic.vs"
+	rollover="Veteran Health"
+	description="Warriors receive a Veteran Health medal (+20% health) at their first kill"
+	method="research"
+	researchcommand="yes"
+	param="ReqSet, Gladiator Shows,default ,NamePlr, Veteran Health, default">
+	<src obj="RArena"/>
+</cmd>
+<cmd name="Gaul Training 3" priority="3"
+	button="research/maser training.bmp"
+	queueicon="gameres/icons/upgrades/mtrain.bmp"
+	key="t"
+	costgold = "2000"
+	costfood = "0"
+	execdelay = "20000"
+	groupverifier="data/subai/antic.vs"
+	rollover="Special training"
+	description="Allows warriors to train to level 12"
+	method="research"
+	researchcommand="yes"
+	param="ReqSet, Fights, , ReqPlr, Advanced Training, ,SetsPlr, maxtrainlevel, 12, NamePlr, Special training, default">
+	<src obj="GArena1"/>
+	<src obj="GArena2"/>
+</cmd>
+<cmd name="Shared Strength" priority="3"
+	button="research/shared strength.bmp"
+	key="s"
+	queueicon="gameres/icons/upgrades/Shared Strength.bmp"
+	costgold = "1000"
+	costfood = "0"
+	execdelay = "30000"
+	groupverifier="data/subai/antic.vs"
+	rollover="Shared Strength"
+	description="If you have over 12 warriors of a type the new ones you hire are level 6"
+	method="research"
+	researchcommand="yes"
+	param = "ReqSet, People's Assembly, default, NameSet, Shared Strength, "
+	>
+	<src obj="CArena"/>
+</cmd>
+<cmd name="Shared Triumph" priority="3"
+	button="research/shared triumph.bmp"
+	key="s"
+	queueicon="gameres/icons/upgrades/Shared Triumph.bmp"
+	costgold = "1000"
+	costfood = "0"
+	execdelay = "30000"
+	groupverifier="data/subai/antic.vs"
+	rollover="Shared Triumph"
+	description="If you have over 24 warriors of a type the new ones you hire are level 12"
+	method="research"
+	researchcommand="yes"
+	param = "ReqSet, Shared Strength, , NameSet, Shared Triumph, default"
+	>
+	<src obj="CArena"/>
+</cmd>
+<cmd name="Heroes' Wisdom" priority="3"
+	button="upgrades/heroes wisdom.bmp"
+	key="w"
+	queueicon="gameres/icons/upgrades/Heroes Wisdom.bmp"
+	costgold = "2000"
+	costfood = "0"
+	execdelay = "30000"
+	groupverifier="data/subai/antic.vs"
+	rollover="Heroes' Wisdom"
+	description="Increases heroes' experience with time"
+	method="research"
+	researchcommand="yes"
+	param = "ReqSet, Tournaments, default, NamePlr, Heroes' Wisdom, "
+	>
+	<src obj="IArena"/>
+</cmd>
+<cmd name="Warriors' Wisdom" priority="3"
+	button="upgrades/warriors wisdom.bmp"
+	key="w"
+	queueicon="gameres/icons/upgrades/Warriors Wisdom.bmp"
+	costgold = "2000"
+	costfood = "0"
+	execdelay = "30000"
+	groupverifier="data/subai/antic.vs"
+	rollover="Warriors' Wisdom"
+	description="Increases warriors' experience with time until they reach level 12"
+	method="research"
+	researchcommand="yes"
+	param = "ReqSet, Tournaments, , ReqPlr, Heroes' Wisdom, , NamePlr, Warriors' Wisdom, default "
+	>
+	<src obj="IArena"/>
+</cmd>
+<cmd name="Mahout School" priority="3"
+	button="upgrades/Mahout school.bmp"
+	key="t"
+	queueicon="gameres/icons/upgrades/Mahout School.bmp"
+	costgold = "500"
+	costfood = "0"
+	execdelay = "30000"
+	groupverifier="data/subai/mahout_verify.vs"
+	rollover="Mahout School"
+	description="Increases the number of elephants you can support by 1"
+	method="mahout_school"
+	traincommand="yes"
+	param = "People's Assembly"
+	>
+	<src obj="CArena"/>
+</cmd>
+<cmd name="hireheroR" priority="1"
+	button="actions/hire heroR.bmp"
+	queueicon="gameres/icons/hire heroR.bmp"
+	groupverifier="data/subai/verify_cmdcost_building.vs"
+	traincommand="yes"
+	key="h"
+	costgold = "800"
+	costfood = "0"
+	costpop = "0"
+	execdelay = "20000"
+	param = "RepublicanRomanHero"
+	method="hirehero"
+	help="/contents/units/RHero"
+	rollover="Hire hero">
+	<src obj="RArena"/>
+</cmd>
+<cmd name="hireheroM" priority="1"
+	button="actions/hire heroR.bmp"
+	queueicon="gameres/icons/hire heroR.bmp"
+	groupverifier="data/subai/verify_cmdcost_building.vs"
+	traincommand="yes"
+	key="h"
+	costgold = "600"
+	costfood = "0"
+	costpop = "0"
+	execdelay = "20000"
+	param = "ImperialRomanHero"
+	method="hirehero"
+	help="/contents/units/MHero"
+	rollover="Hire hero">
+	<src obj="MArena"/>
+</cmd>
+<cmd name="hireheroG" priority="1"
+	button="actions/hire heroG.bmp"
+	queueicon="gameres/icons/hire heroG.bmp"
+	groupverifier="data/subai/verify_cmdcost_building.vs"
+	traincommand="yes"
+	key="h"
+	costgold = "1000"
+	costfood = "0"
+	costpop = "0"
+	execdelay = "20000"
+	param = "GaulHero"
+	method="hirehero"
+	help="/contents/units/GHero"
+	rollover="Hire hero">
+	<src obj="GArena1"/>
+	<src obj="GArena2"/>
+</cmd>
+<cmd name="hireheroC" priority="1"
+	button="actions/hire heroC.bmp"
+	queueicon="gameres/icons/hire heroC.bmp"
+	groupverifier="data/subai/verify_cmdcost_building.vs"
+	traincommand="yes"
+	key="h"
+	costgold = "800"
+	costfood = "0"
+	costpop = "0"
+	execdelay = "20000"
+	param = "CarthaginianHero"
+	method="hirehero"
+	help="/contents/units/CHero"
+	rollover="Hire hero">
+	<src obj="CArena"/>
+</cmd>
+<cmd name="hireheroI" priority="1"
+	button="actions/hire heroI.bmp"
+	queueicon="gameres/icons/hire heroI.bmp"
+	groupverifier="data/subai/verify_cmdcost_building.vs"
+	traincommand="yes"
+	key="h"
+	costgold = "800"
+	costfood = "0"
+	costpop = "0"
+	execdelay = "20000"
+	param = "IberianHero"
+	method="hirehero"
+	help="/contents/units/IHero"
+	rollover="Hire hero">
+	<src obj="IArena"/>
+</cmd>
+<cmd name="hireheroE" priority="1"
+	button="actions/hire heroE.bmp"
+	queueicon="gameres/icons/hire heroE.bmp"
+	groupverifier="data/subai/verify_cmdcost_building.vs"
+	traincommand="yes"
+	key="h"
+	costgold = "800"
+	costfood = "0"
+	costpop = "0"
+	execdelay = "20000"
+	param = "EgyptianHero"
+	method="hirehero"
+	help="/contents/units/EHero"
+	rollover="Hire hero">
+	<src obj="ETempleOfHorusAndAnubis"/>
+</cmd>
+<cmd name="hireheroB" priority="1"
+	button="actions/hire heroB.bmp"
+	queueicon="gameres/icons/hire heroB.bmp"
+	groupverifier="data/subai/verify_cmdcost_building.vs"
+	traincommand="yes"
+	key="h"
+	costgold = "600"
+	costfood = "0"
+	costpop = "0"
+	execdelay = "20000"
+	param = "BritonHero"
+	method="hirehero"
+	help="/contents/units/BHero"
+	rollover="Hire hero">
+	<src obj="BMorrigansMonument"/>
+</cmd>
+<cmd name="hireheroT" priority="1"
+	button="actions/hire heroT.bmp"
+	queueicon="gameres/icons/hire heroT.bmp"
+	groupverifier="data/subai/verify_cmdcost_building.vs"
+	traincommand="yes"
+	key="h"
+	costgold = "1000"
+	costfood = "0"
+	costpop = "0"
+	execdelay = "20000"
+	param = "GermanHero"
+	method="hirehero"
+	help="/contents/units/GHero"
+	rollover="Hire hero">
+	<src obj="TSanctuaryOfVotan"/>
+</cmd>
+<cmd name="Hire Trident warrior" priority="4"
+	button="actions/hire TridentWarrior.bmp"
+	queueicon="gameres/icons/GTridentWarrior.bmp"
+	transpicon="1"
+	groupverifier="data/subai/verify_trainex.vs"
+	onaddremovescript="data/subai/trainex_onaddremove.vs"
+	traincommand="yes"
+	key="v"
+	help="/contents/units/GTridentWarrior"
+	costgold = "1000"
+	costfood = "0"
+	costpop = "0"
+	execdelay = "20000"
+	rollover="Hire Trident Warrior"
+	description="Hires a Trident Warrior"
+	method="trainex"
+	param="1, 4, GTridentWarrior, GTridentWarrior, Fights">
+	<src obj="GArena1"/>
+	<src obj="GArena2"/>
+</cmd>
+<cmd name="Trident Warrior Exp1" priority="5"
+	button="research/trident warrior exp 1.bmp"
+	key="e"
+	queueicon="gameres/icons/upgrades/trident warrior exp 1.bmp"
+	costgold = "800"
+	costfood = "0"
+	execdelay = "20000"
+	groupverifier="data/subai/antic.vs"
+	rollover="Trident Warrior Experience I"
+	description="All new Trident Warriors are level 12"
+	researchcommand="yes"
+	method="research"
+	param="ReqSet, Fights,default, NameSet, TridentWarrierExp1, ,SetsSet, levels/GTridentWarrior, 12">
+	<src obj="GArena1"/>
+	<src obj="GArena2"/>
+</cmd>
+<cmd name="Trident Warrior Exp2" priority="5"
+	button="research/trident warrior exp 2.bmp"
+	key="e"
+	queueicon="gameres/icons/upgrades/trident warrior exp 2.bmp"
+	costgold = "1000"
+	costfood = "0"
+	execdelay = "20000"
+	groupverifier="data/subai/antic.vs"
+	rollover="Trident Warrior Experience II"
+	description="All new Trident Warriors are level 18"
+	researchcommand="yes"
+	method="research"
+	param="ReqSet, TridentWarrierExp1, , NameSet, TridentWarrierExp2, ,SetsSet, levels/GTridentWarrior, 18">
+	<src obj="GArena1"/>
+	<src obj="GArena2"/>
+</cmd>
+<cmd name="Trident Warrior Exp3" priority="5"
+	button="research/trident warrior exp 3.bmp"
+	key="e"
+	queueicon="gameres/icons/upgrades/trident warrior exp 3.bmp"
+	costgold = "1200"
+	costfood = "0"
+	execdelay = "20000"
+	groupverifier="data/subai/antic.vs"
+	rollover="Trident Warrior Experience III"
+	description="All new Trident Warriors are level 24"
+	researchcommand="yes"
+	method="research"
+	param="ReqSet, TridentWarrierExp2, ,NameSet, TridentWarrierExp3, default,SetsSet, levels/GTridentWarrior, 24">
+	<src obj="GArena1"/>
+	<src obj="GArena2"/>
+</cmd>
+<cmd name="Warrior Tales" priority="6"
+	button="research/warriortales.bmp"
+	key="w"
+	queueicon="gameres/icons/upgrades/warriortales.bmp"
+	costgold = "1000"
+	costfood = "0"
+	execdelay = "30000"
+	groupverifier="data/subai/antic.vs"
+	rollover="Warrior Tales"
+	description="When a warrior dies he gives 1 level to a nearby ally (though not to a hero)"
+	researchcommand="yes"
+	method="research"
+	param="ReqSet, Fights, default, NamePlr, Warrior Tales, default">
+	<src obj="GArena1"/>
+	<src obj="GArena2"/>
+</cmd>
+<cmd name="Hire Viking Lord" priority="10"
+	button="actions/hire BVikingLord.bmp"
+	queueicon="gameres/icons/BVikingLord.bmp"
+	transpicon="1"
+	groupverifier="data/subai/verify_trainex.vs"
+	onaddremovescript="data/subai/trainex_onaddremove.vs"
+	traincommand="yes"
+	key="v"
+	help="/contents/units/GVikingLord"
+	costgold = "1000"
+	costfood = "0"
+	costpop = "0"
+	execdelay = "20000"
+	rollover="Hire Viking Lord"
+	description="Hires a Viking Lord"
+	method="trainex"
+	param="1, 4, BVikingLord, BVikingLord, Fights">
+	<src obj="BMorrigansMonument"/>
+</cmd>
+<cmd name="Shrine of Thor" priority="11"
+	queueicon="gameres/icons/upgrades/Shrine of Thor.bmp"
+	button="upgrades/Shrine of Thor.bmp"
+	groupverifier="data/subai/antic.vs"
+	researchcommand="yes"
+	key="s"
+	costgold = "2000"
+	costfood = "0"
+	costpop = "0"
+	execdelay = "20000"
+	rollover="Shrine of Thor"
+	description="Each new Viking Lord is 2 levels more experienced than the last (though not over level 20)"
+	method="research"
+	param="ReqSet, Fights, default, NameSet, Shrine of Thor, default, SetsSet, levels/BVikingLord, 4">
+	<src obj="BMorrigansMonument"/>
+</cmd>
+<cmd name="Hire Liberati" priority="4"
+	button="actions/hire RLiberati.bmp"
+	queueicon="gameres/icons/RLiberatus.bmp"
+	transpicon="1"
+	groupverifier="data/subai/verify_trainex.vs"
+	onaddremovescript="data/subai/trainex_onaddremove.vs"
+	traincommand="yes"
+	key="l"
+	help="/contents/units/RLiberatus"
+	costgold = "2500"
+	costfood = "0"
+	costpop = "0"
+	execdelay = "20000"
+	rollover="Hire Liberati"
+	description="Hires a group of 10 Liberati"
+	method="trainex"
+	param="10, 20, RLiberatus, Liberati, Gladiator Shows">
+	<src obj="MArena"/>
+</cmd>
+<cmd name="Mountain Clan" priority="4"
+	button="upgrades/mountain clan.bmp"
+	key="c"
+	queueicon="gameres/icons/upgrades/mountain clan.bmp"
+	costgold = "1000"
+	costfood = "0"
+	execdelay = "40000"
+	groupverifier="data/subai/antic.vs"
+	rollover="Mountain Clan"
+	description="Increases the limit of Mountaineers you can have to 20"
+	method="research"
+	researchcommand="yes"
+	param = "ReqSet, Tournaments, default, NamePlr, Mountain Clan, , SetsPlr, MaxMountaineers, 20"
+	>
+	<src obj="IArena"/>
+</cmd>
+<cmd name="Call Mountaineer" priority="3"
+	button="actions/train IMountaineer.bmp"
+	queueicon="gameres/icons/IMountaineer.bmp"
+	transpicon="1"
+	groupverifier="data/subai/verify_trainex.vs"
+	onaddremovescript="data/subai/trainex_onaddremove.vs"
+	traincommand="yes"
+	key="m"
+	help="/contents/units/IMountaineer"
+	costgold = "250"
+	costfood = "0"
+	costpop = "0"
+	execdelay = "20000"
+	rollover="Hire Mountaineer"
+	description="Hires a Mountaineer"
+	method="trainex"
+	param="1, mountaineer, IMountaineer, Mountaineer, Tournaments">
+	<src obj="IArena"/>
+</cmd>
+<cmd name="Train War Elephant" priority="4"
+	button="actions/hire CWarElephant.bmp"
+	queueicon="gameres/icons/CWarElephant.bmp"
+	transpicon="1"
+	groupverifier="data/subai/verify_trainex.vs"
+	onaddremovescript="data/subai/trainex_onaddremove.vs"
+	traincommand="yes"
+	key="e"
+	help="/contents/units/RLiberatus"
+	costgold = "0"
+	costfood = "1000"
+	costpop = "0"
+	execdelay = "20000"
+	rollover="Train War Elephant"
+	description=""
+	method="trainex"
+	param="1, elephant, CWarElephant, War Elephant, People's Assembly">
+	<src obj="CArena"/>
+</cmd>
+<cmd name="Spoils of war" priority="5"
+	queueicon="gameres/icons/upgrades/spoils of war.bmp"
+	button="upgrades/spoils of war.bmp"
+	groupverifier="data/subai/antic.vs"
+	researchcommand="yes"
+	key="w"
+	costgold = "3000"
+	costfood = "0"
+	costpop = "0"
+	execdelay = "20000"
+	rollover="Spoils of war"
+	description="Allows warriors to collect spoils of war worth 100 gold from each enemy they've killed "
+	method="research"
+	param="ReqSet, People's Assembly, default, NamePlr, Spoils of war, default">
+	<src obj="CArena"/>
+</cmd>
+<cmd name="Liberati guild" priority="5"
+	button="research/Super champions.bmp"
+	key="g"
+	queueicon="gameres/icons/upgrades/Super champions.bmp"
+	costgold = "1600"
+	costfood = "0"
+	execdelay = "25000"
+	groupverifier="data/subai/antic.vs"
+	rollover="Liberati guild"
+	description="All new Liberati are one level better than the best Liberatus you've had"
+	method="research"
+	researchcommand="yes"
+	param="ReqSet, Gladiator Shows, default, NameSet, Liberati guild, default, SetsSet, levels/RLiberatus, 3">
+	<src obj="MArena"/>
+</cmd>
+<cmd name="Military Academy" priority="6"
+	button="upgrades/Military academy.bmp"
+	key="a"
+	queueicon="gameres/icons/upgrades/Military academy.bmp"
+	costgold = "2400"
+	costfood = "0"
+	execdelay = "25000"
+	groupverifier="data/subai/antic.vs"
+	rollover="Military academy"
+	description="All new heroes are level 12"
+	method="research"
+	researchcommand="yes"
+	param="ReqSet, Gladiator Shows, default, SetsSet, levels/Hero, 12, NameSet, Military Academy, default">
+	<src obj="MArena"/>
+</cmd>
+<cmd name="Mountain Clan Legacy" priority="3"
+	button="upgrades/mountain clan legacy.bmp"
+	key="c"
+	queueicon="gameres/icons/upgrades/mountain clan legacy.bmp"
+	costgold = "1500"
+	costfood = "0"
+	execdelay = "30000"
+	groupverifier="data/subai/antic.vs"
+	rollover="Mountain Clan Legacy"
+	description="New Mountaineers have the experience of the best Mountaineer you've had"
+	method="research"
+	researchcommand="yes"
+	param="ReqSet, Tournaments, ,ReqPlr, Mountain Clan, , NamePlr, Mountain Clan Legacy, default">
+	<src obj="IArena"/>
+</cmd>
+<cmd name="Battle tactics" priority="8"
+	button="research/Battle Library.bmp"
+	key="b"
+	queueicon="gameres/icons/upgrades/Battle Library.bmp"
+	costgold = "3000"
+	costfood = "0"
+	execdelay = "30000"
+	groupverifier="data/subai/antic.vs"
+	rollover="Battle tactics"
+	description="Doubles the experience your army receives in battle"
+	method="research"
+	researchcommand="yes"
+	param="ReqSet, Fights, default, NamePlr, Battle tactics, default">
+	<src obj="GArena1"/>
+	<src obj="GArena2"/>
+</cmd>
+<cmd name="Nobility" priority="6"
+	button="upgrades/nobility.bmp"
+	key="n"
+	queueicon="gameres/icons/upgrades/nobility.bmp"
+	costgold = "3000"
+	costfood = "0"
+	execdelay = "60000"
+	groupverifier="data/subai/antic.vs"
+	rollover="Nobility"
+	description="All warriors who reach level 8 become level 12"
+	method="research"
+	researchcommand="yes"
+	param="ReqSet, Tournaments, default, NamePlr, Nobility, default">
+	<src obj="IArena"/>
+</cmd>
+<cmd name="BNobility" priority="6"
+	button="upgrades/nobility.bmp"
+	key="n"
+	queueicon="gameres/icons/upgrades/nobility.bmp"
+	costgold = "3000"
+	costfood = "0"
+	execdelay = "60000"
+	groupverifier="data/subai/antic.vs"
+	rollover="Nobility"
+	description="All warriors who reach level 8 become level 12"
+	method="research"
+	researchcommand="yes"
+	param="ReqSet, Fights, default, NamePlr, Nobility, default">
+	<src obj="BMorrigansMonument"/>
+</cmd>
+<cmd name="RNobility" priority="7"
+	button="upgrades/nobility.bmp"
+	key="n"
+	queueicon="gameres/icons/upgrades/nobility.bmp"
+	costgold = "3000"
+	costfood = "0"
+	execdelay = "60000"
+	groupverifier="data/subai/antic.vs"
+	rollover="Nobility"
+	description="All warriors who reach level 8 become level 12"
+	method="research"
+	researchcommand="yes"
+	param="ReqSet, Gladiator Shows, default, NamePlr, Nobility, default">
+	<src obj="RArena"/>
+</cmd>
+<cmd name="Noble Offence" priority="7"
+	button="research/noble offence.bmp"
+	key="o"
+	queueicon="gameres/icons/upgrades/noble offence.bmp"
+	costgold = "1200"
+	costfood = "0"
+	execdelay = "30000"
+	groupverifier="data/subai/antic.vs"
+	rollover="Noble Offense"
+	description="All warriors above level 3 receive a Noble Offense artifact (+4 damage) at their first kill"
+	method="research"
+	researchcommand="yes"
+	param="ReqSet, Fights, default, NamePlr, Noble Offence, default">
+	<src obj="BMorrigansMonument"/>
+</cmd>
+<cmd name="Noble Defence" priority="8"
+	button="research/noble defence.bmp"
+	key="d"
+	queueicon="gameres/icons/upgrades/noble defence.bmp"
+	costgold = "600"
+	costfood = "0"
+	execdelay = "30000"
+	groupverifier="data/subai/antic.vs"
+	rollover="Noble Defense"
+	description="All warriors above level 3 receive a Noble Defense artifact (+4 armor) at their first kill"
+	method="research"
+	researchcommand="yes"
+	param="ReqSet, Fights, default, NamePlr, Noble Defence, default">
+	<src obj="BMorrigansMonument"/>
+</cmd>
+<cmd name="Standartization I" priority="2"
+	button="Upgrades/standartization 1.bmp"
+	key="i"
+	queueicon="gameres/icons/upgrades/standartization 1.bmp"
+	costgold = "1000"
+	costfood = "0"
+	execdelay = "30000"
+	groupverifier="data/subai/antic.vs"
+	description="All new warriors are level 4 but cannot gain more experience"
+	rollover="Standardization I"
+	method="research"
+	researchcommand="yes"
+	param="ReqSet, Gladiator Shows, default, SetsPlr, max_battle_level, 4, SetsPlr, standard_spawn_level, 4, NamePlr, Standartization I">
+	<src obj="MArena"/>
+</cmd>
+<cmd name="Standartization II" priority="2"
+	button="Upgrades/standartization 2.bmp"
+	key="i"
+	queueicon="gameres/icons/upgrades/standartization 2.bmp"
+	costgold = "2000"
+	costfood = "0"
+	execdelay = "25000"
+	groupverifier="data/subai/antic.vs"
+	description="All new warriors are level 8 but cannot gain more experience"
+	rollover="Standardization II"
+	method="research"
+	researchcommand="yes"
+	param="ReqPlr, Standartization I, , SetsPlr, max_battle_level, 8, SetsPlr, standard_spawn_level, 8, NamePlr, Standartization II">
+	<src obj="MArena"/>
+</cmd>
+<cmd name="Standartization III" priority="2"
+	button="Upgrades/flexibility.bmp"
+	key="i"
+	queueicon="gameres/icons/upgrades/Flexibility.bmp"
+	costgold = "3000"
+	costfood = "0"
+	execdelay = "30000"
+	groupverifier="data/subai/antic.vs"
+	description="All new warriors are level 12 and can gain more experience"
+	rollover="Standardization III"
+	method="research"
+	researchcommand="yes"
+	param="ReqPlr, Standartization II, , SetsPlr, max_battle_level, 0, SetsPlr, standard_spawn_level, 12, NamePlr, Standartization III, default">
+	<src obj="MArena"/>
+</cmd>
+<!-- Egypt -->
+<cmd name="Cult of Anubis" priority="2"
+	button="upgrades/cult of anubis.bmp"
+	key="n"
+	queueicon="gameres/icons/upgrades/cult of anubis.bmp"
+	costgold = "1500"
+	costfood = "0"
+	execdelay = "25000"
+	groupverifier="data/subai/antic.vs"
+	rollover="Cult of Anubis"
+	description="Allows training of Anubis warriors"
+	method="research"
+	researchcommand="yes"
+	param = "NameSet, Cult of Anubis, default, NameSet,EAnubisWarrior,"
+	>
+	<src obj="ETempleOfHorusAndAnubis"/>
+</cmd>
+<cmd name="Statue of Isis, mother of Anubis" priority="3"
+	button="research/statue of isis.bmp"
+	key="i"
+	queueicon="gameres/icons/upgrades/statue of isis.bmp"
+	costgold = "2000"
+	costfood = "0"
+	execdelay = "30000"
+	groupverifier="data/subai/antic.vs"
+	rollover="Statue of Isis, mother of Anubis"
+	description="Warriors heal twice as fast"
+	method="research"
+	researchcommand="yes"
+	param="ReqSet, Cult of Anubis, default, NamePlr, Statue of Isis, default">
+	<src obj="ETempleOfHorusAndAnubis"/>
+</cmd>
+<cmd name="Path of the dead I" priority="4"
+	button="research/path of the dead 1.bmp"
+	key="p"
+	queueicon="gameres/icons/upgrades/path of the dead 1.bmp"
+	costgold = "500"
+	costfood = "0"
+	execdelay = "20000"
+	groupverifier="data/subai/antic.vs"
+	rollover="Path of the dead I"
+	description="Allows a warrior to become at least level 4 upon killing an enemy"
+	method="research"
+	researchcommand="yes"
+	param="ReqSet, Cult of Anubis, default, NamePlr, Path of the dead I, ,NameSet, Path of the dead I,">
+	<src obj="ETempleOfHorusAndAnubis"/>
+</cmd>
+<cmd name="Path of the dead II" priority="4"
+	button="research/path of the dead 2.bmp"
+	key="p"
+	queueicon="gameres/icons/upgrades/path of the dead 2.bmp"
+	costgold = "1000"
+	costfood = "0"
+	execdelay = "20000"
+	groupverifier="data/subai/antic.vs"
+	rollover="Path of the dead II"
+	description="Allows a warrior to become at least level 8 upon killing an enemy"
+	method="research"
+	researchcommand="yes"
+	param="ReqSet, Path of the dead I, , NamePlr, Path of the dead II, ,NameSet, Path of the dead II,">
+	<src obj="ETempleOfHorusAndAnubis"/>
+</cmd>
+<cmd name="Path of the dead III" priority="4"
+	button="research/path of the dead 3.bmp"
+	key="p"
+	queueicon="gameres/icons/upgrades/path of the dead 3.bmp"
+	costgold = "1500"
+	costfood = "0"
+	execdelay = "20000"
+	groupverifier="data/subai/antic.vs"
+	rollover="Path of the dead III"
+	description="Allows a warrior to become at least level 12 upon killing an enemy"
+	method="research"
+	researchcommand="yes"
+	param="ReqSet, Path of the dead II, , NamePlr, Path of the dead III, default">
+	<src obj="ETempleOfHorusAndAnubis"/>
+</cmd>
+<cmd name="Cult of Horus" priority="10"
+	button="upgrades/cult of horus.bmp"
+	key="r"
+	queueicon="gameres/icons/upgrades/cult of horus.bmp"
+	costgold = "1500"
+	costfood = "0"
+	execdelay = "25000"
+	groupverifier="data/subai/antic.vs"
+	rollover="Cult of Horus"
+	description="Allows training of Horus warriors"
+	method="research"
+	researchcommand="yes"
+	param = "NameSet, Cult of Horus,default,NameSet,EHorusWarrior"
+	>
+	<src obj="ETempleOfHorusAndAnubis"/>
+</cmd>
+<cmd name="Statue of Osiris, father of Horus" priority="11"
+	button="research/statue of osiris.bmp"
+	key="o"
+	queueicon="gameres/icons/upgrades/statue of osiris.bmp"
+	costgold = "2000"
+	costfood = "0"
+	execdelay = "30000"
+	groupverifier="data/subai/antic.vs"
+	rollover="Statue of Osiris, father of Horus"
+	description="Warriors restore stamina twice as fast"
+	method="research"
+	researchcommand="yes"
+	param="ReqSet, Cult of Horus, default, NamePlr, Statue of Osiris, default">
+	<src obj="ETempleOfHorusAndAnubis"/>
+</cmd>
+<cmd name="Light of Horus I" priority="12"
+	button="research/light of horus 1.bmp"
+	key="l"
+	queueicon="gameres/icons/upgrades/light of horus 1.bmp"
+	costgold = "500"
+	costfood = "0"
+	execdelay = "20000"
+	groupverifier="data/subai/antic.vs"
+	rollover="Light of Horus I"
+	description="All new warriors are level 2"
+	method="research"
+	researchcommand="yes"
+	param="ReqSet, Cult of Horus, default, SetsSet, levels/ESwordsman, 2, SetsSet, levels/EArcher, 2,SetsSet, levels/EAxetrower, 2,SetsSet, levels/EAnubisWarrior, 2,SetsSet, levels/EHorusWarrior, 2,SetsSet, levels/EGuardian, 2,SetsSet, levels/EChariot, 2, NameSet, Light of Horus I,">
+	<src obj="ETempleOfHorusAndAnubis"/>
+</cmd>
+<cmd name="Light of Horus II" priority="12"
+	button="research/light of horus 2.bmp"
+	key="l"
+	queueicon="gameres/icons/upgrades/light of horus 2.bmp"
+	costgold = "1000"
+	costfood = "0"
+	execdelay = "20000"
+	groupverifier="data/subai/antic.vs"
+	rollover="Light of Horus II"
+	description="All new warriors are level 4"
+	method="research"
+	researchcommand="yes"
+	param="ReqSet, Light of Horus I, ,SetsSet, levels/ESwordsman, 4, SetsSet, levels/EArcher, 4,SetsSet, levels/EAxetrower, 4,SetsSet, levels/EAnubisWarrior, 4,SetsSet, levels/EHorusWarrior, 4,SetsSet,levels/EGuardian, 4,SetsSet, levels/EChariot, 4, NameSet, Light of Horus II,">
+	<src obj="ETempleOfHorusAndAnubis"/>
+</cmd>
+<cmd name="Light of Horus III" priority="12"
+	button="research/light of horus 3.bmp"
+	key="l"
+	queueicon="gameres/icons/upgrades/light of horus 3.bmp"
+	costgold = "1500"
+	costfood = "0"
+	execdelay = "20000"
+	groupverifier="data/subai/antic.vs"
+	rollover="Light of Horus III"
+	description="All new warriors are level 6"
+	method="research"
+	researchcommand="yes"
+	param="ReqSet, Light of Horus II, ,SetsSet, levels/ESwordsman, 6, SetsSet, levels/EArcher, 6,SetsSet, levels/EAxetrower, 6,SetsSet, levels/EAnubisWarrior, 6,SetsSet, levels/EHorusWarrior, 6, SetsSet,levels/EGuardian, 6,SetsSet, levels/EChariot, 6, NameSet, Light of Horus III, default">
+	<src obj="ETempleOfHorusAndAnubis"/>
+</cmd>
+<cmd name="Statue of Amon-Ra" priority="13"
+	button="research/statue of amon-ra.bmp"
+	key="a"
+	queueicon="gameres/icons/upgrades/statue of amon-ra.bmp"
+	costgold = "2000"
+	costfood = "0"
+	execdelay = "30000"
+	groupverifier="data/subai/antic.vs"
+	rollover="Statue of Amon-Ra"
+	description="Warriors get 5 additional health points with every level"
+	method="research"
+	researchcommand="yes"
+	param=" NamePlr, Statue of Amon-Ra, default,ReqSet,Cult of Anubis, default, ReqSet,Cult of Horus, default,">
+	<src obj="ETempleOfHorusAndAnubis"/>
+</cmd>
+<!--             Germany   -->
+<cmd name="TFights" priority="2"
+	button="Upgrades/Fights.bmp"
+	key="f"
+	queueicon="gameres/icons/upgrades/Fights.bmp"
+	costgold = "2000"
+	costfood = "0"
+	execdelay = "30000"
+	researchcommand="yes"
+	groupverifier="data/subai/antic.vs"
+	description="Gathers 2000 food (works only once)"
+	rollover="Fights"
+	method="research"
+	param="NameSet, Fights, default,">
+	<src obj="TSanctuaryOfVotan"/>
+</cmd>
+<cmd name="Call Valkyries" priority="3"
+	button="actions/hire TValkyrie.bmp"
+	key="v"
+	queueicon="gameres/icons/TValkyrie.bmp"
+	transpicon="1"
+	groupverifier="data/subai/verify_trainex.vs"
+	onaddremovescript="data/subai/trainex_onaddremove.vs"
+	traincommand="yes"
+	help="/contents/units/RLiberatus"
+	costgold = "1000"
+	costfood = "0"
+	costpop = "0"
+	execdelay = "20000"
+	rollover="Call Valkyries"
+	description="Calls 5 Valkyries"
+	method="trainex"
+	param="5, 10, TValkyrie, TValkyrie,Fights">
+	<src obj="TSanctuaryOfVotan"/>
+</cmd>
+<cmd name="Legendary Valkyries" priority="4"
+	button="research/Legendary Valkyries.bmp"
+	key="g"
+	queueicon="gameres/icons/upgrades/Legendary Valkyries.bmp"
+	costgold = "1200"
+	costfood = "0"
+	execdelay = "20000"
+	groupverifier="data/subai/antic.vs"
+	rollover="Legendary Valkyries"
+	description="All new Valkyries are one level better than the best Valkyries you've had"
+	method="research"
+	researchcommand="yes"
+	param="ReqSet, Fights, default, NameSet, Legendary Valkyries, default">
+	<src obj="TSanctuaryOfVotan"/>
+</cmd>
+<cmd name="Learning" priority="5"
+	button="research/learning.bmp"
+	key="l"
+	queueicon="gameres/icons/upgrades/learning.bmp"
+	costgold = "2000"
+	costfood = "0"
+	execdelay = "30000"
+	groupverifier="data/subai/antic.vs"
+	rollover="Learning"
+	description="All warriors gain 1 experience for every successful attack against a more experienced enemy"
+	method="research"
+	researchcommand="yes"
+	param="ReqSet, Fights, default, NamePlr, Learning, default">
+	<src obj="TSanctuaryOfVotan"/>
+</cmd>
+<cmd name="Attack focus" priority="6"
+	button="research/attack Focus.bmp"
+	key="a"
+	queueicon="gameres/icons/upgrades/attack Focus.bmp"
+	costgold = "2000"
+	costfood = "0"
+	execdelay = "30000"
+	groupverifier="data/subai/antic.vs"
+	rollover="Attack focus"
+	description="The warriors' damage is not reduced when fighting more experienced enemies"
+	method="research"
+	researchcommand="yes"
+	param="ReqSet, Fights, default, NamePlr, Attack focus, default">
+	<src obj="TSanctuaryOfVotan"/>
+</cmd>
+<cmd name="Teuton Master" priority="7"
+	button="research/Teuton Master.bmp"
+	key="t"
+	queueicon="gameres/icons/upgrades/Teuton Master.bmp"
+	costgold = "1000"
+	costfood = "0"
+	execdelay = "30000"
+	groupverifier="data/subai/antic.vs"
+	rollover="Teuton Master"
+	description="Allows Teuton Riders to change to Teuton Archers and vise versa"
+	method="research"
+	researchcommand="yes"
+	param="ReqSet, Fights, default, NamePlr, Teuton Master, default">
+	<src obj="TSanctuaryOfVotan"/>
+</cmd>
+</commands>
