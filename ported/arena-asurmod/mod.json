@@ -1,0 +1,22 @@
+{
+  "id": "arena-asurmod",
+  "name": "Arena (AsurMOD)",
+  "version": "1.0",
+  "authors": [
+    "Nucl3arW1nter",
+    "Asur"
+  ],
+  "description": {
+    "italian": "Mappa di Nucl3arW1nter, Asur.",
+    "spanish": "Mapa de Nucl3arW1nter, Asur (2016, en italiano).",
+    "english": "Map by Nucl3arW1nter, Asur (2016, in Italian)."
+  },
+  "category": "Scenarios",
+  "tags": [
+    "Players: 2"
+  ],
+  "requires": [
+    "gamebanana-729311"
+  ],
+  "redistributable": true
+}

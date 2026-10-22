@@ -1,0 +1,20 @@
+{
+  "id": "cesare-e-le-7-mogli-asurmod",
+  "name": "Cesare e le 7 mogli (AsurMOD)",
+  "version": "1.0",
+  "authors": [
+    "_marcolino_",
+    "Asur"
+  ],
+  "description": {
+    "italian": "Mappa di _marcolino_, Asur.",
+    "spanish": "Mapa de _marcolino_, Asur (2017, en italiano).",
+    "english": "Map by _marcolino_, Asur (2017, in Italian)."
+  },
+  "category": "Scenarios",
+  "tags": [],
+  "requires": [
+    "gamebanana-729311"
+  ],
+  "redistributable": true
+}

@@ -1,0 +1,22 @@
+<class id="GDoncella" cpp_class="CVXUnit" parent="GWomanWarrior" entity="Units/GWomanWarrior/GWomanWarrior.ent.xml">
+
+	<properties race="Gaul"/>
+	<properties maxhealth="400"/>
+	<properties damage="40" armor_slash="18" armor_pierce="18"/>
+	<properties speed="90"/>
+	<properties unit_specials="Expertise, Determination"/>
+
+	<properties formation_priority="1000"/>
+	<properties formation_radius="26"/>
+
+	<properties icon="gameres/icons/GWCampeon.bmp"/>
+	<properties display_name="Doncella" display_name_plural="Doncellas"/>
+	<properties help="contents/units/GWWarrior"/>
+	<properties edittree_pos="Units/Gaul/Doncella"/>
+	<properties description="Inmune al miedo."/>
+	<sounds command="data/sound entities/VoiceGWomanWarrior.xml"/>
+
+	<behavior script="data/subai/valor.vs"/>
+
+</class>
+

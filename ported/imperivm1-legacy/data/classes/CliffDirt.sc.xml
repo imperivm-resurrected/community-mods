@@ -1,0 +1,6 @@
+<!-- Imperivm I class CliffDirt with its original art (from the Celtic Kings demo) -->
+<class id="CliffDirt" cpp_class="CVXDecor" parent="Object"
+entity="MapObjects/Decors/tobj25/tobj25.ent.xml">
+
+  <properties edittree_pos="Structures/Others/Cliff (dirt)"/>
+</class>

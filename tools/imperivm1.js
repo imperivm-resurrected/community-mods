@@ -125,8 +125,9 @@ function writeTable() {
 }
 
 // --- art: an Imperivm I entity (.ent.xml + .rle.mmp + .pass) rebuilt from the demo into the mod ---
-const demoFile = rel => { // case-insensitive lookup under originals/imperivm1/demo-pak/ENTITIES
-  let dir = path.join(I1, "demo-pak", "ENTITIES");
+// Entities live in ENTITIES/ (assets/entities/...); the ground decor objects (dirt cliffs, fields) in DECORS/ (assets/decors/...)
+const demoFile = (rel, base = "ENTITIES") => { // case-insensitive lookup under originals/imperivm1/demo-pak/<base>
+  let dir = path.join(I1, "demo-pak", base);
   for (const part of rel.split(/[\\/]/)) {
     const hit = fs.existsSync(dir) && fs.readdirSync(dir).find(n => n.toLowerCase() === part.toLowerCase());
     if (!hit) return null;
@@ -134,26 +135,27 @@ const demoFile = rel => { // case-insensitive lookup under originals/imperivm1/d
   }
   return dir;
 };
-function copyEntity(entity) { // entity="assets/entities/MapObjects/Cliffs1/Clifs1_as.ent.xml" -> mod MapObjects/Cliffs1/...
-  const rel = entity.replace(/^assets[\\/]entities[\\/]/i, "");
-  const src = demoFile(rel);
+function copyEntity(entity) { // entity="assets/entities/MapObjects/Cliffs1/Clifs1_as.ent.xml" -> mod MapObjects/Cliffs1/...; assets/decors/X -> MapObjects/Decors/X
+  const decor = /^assets[\\/]decors[\\/]/i.test(entity), base = decor ? "DECORS" : "ENTITIES";
+  const rel = entity.replace(decor ? /^assets[\\/]decors[\\/]/i : /^assets[\\/]entities[\\/]/i, "");
+  const src = demoFile(rel, base);
   if (!src) return `${rel} is not in the demo`;
-  const outDir = path.join(MOD, path.dirname(rel));
+  const outDir = path.join(MOD, decor ? "MapObjects/Decors" : "", path.dirname(rel));
   const xml = fs.readFileSync(src, "latin1");
   // every image first, so a missing one leaves nothing behind
   const names = [...xml.matchAll(/<image\b[^>]*\bfile="([^"]+)"/g)].map(m => m[1].replace(/\.rle$/i, ""));
-  const missing = names.find(n => !demoFile(path.join(path.dirname(rel), n + ".rle.mmp")));
+  const missing = names.find(n => !demoFile(path.join(path.dirname(rel), n + ".rle.mmp"), base));
   if (missing) return `${missing}.rle.mmp of ${rel} is not in the demo`;
   fs.mkdirSync(outDir, { recursive: true });
   fs.writeFileSync(path.join(outDir, path.basename(rel)), xml, "latin1");
   const fd = fs.openSync(path.join(I1, "rle.mmp"), "r");
   for (const name of names) {
-    const sheet = rle.parse(fs.readFileSync(demoFile(path.join(path.dirname(rel), name + ".rle.mmp"))));
+    const sheet = rle.parse(fs.readFileSync(demoFile(path.join(path.dirname(rel), name + ".rle.mmp"), base)));
     rle.resolveMmp(sheet, fd);
     fs.writeFileSync(path.join(outDir, name + ".rle"), rle.write(sheet));
   }
   fs.closeSync(fd);
-  const pass = (xml.match(/\bpass_file="([^"]+)"/) || [])[1], passSrc = pass && demoFile(path.join(path.dirname(rel), pass));
+  const pass = (xml.match(/\bpass_file="([^"]+)"/) || [])[1], passSrc = pass && demoFile(path.join(path.dirname(rel), pass), base);
   if (passSrc) fs.copyFileSync(passSrc, path.join(outDir, pass));
   return null;
 }
@@ -191,7 +193,7 @@ function add(args) {
       const e = copyEntity(m[2]);
       if (e) { text = text.replace(m[0], ""); notes.push(`no ${m[1]} (${e})`); }
     }
-    text = text.replace(/(\bentity(?:_\w+)?\s*=\s*")assets[\\/]entities[\\/]/gi, "$1");
+    text = text.replace(/(\bentity(?:_\w+)?\s*=\s*")assets[\\/]entities[\\/]/gi, "$1").replace(/(\bentity(?:_\w+)?\s*=\s*")assets[\\/]decors[\\/]/gi, "$1MapObjects/Decors/");
     text = text.replace(/(<class\b[^>]*?)\s+altid\s*=\s*"[^"]+"/, "$1"); // a generic alias ("Warehouse") could clash with another mod
     fs.writeFileSync(out, `<!-- Imperivm I class ${id} with its original art (from the Celtic Kings demo) -->\n${text}\n`, "latin1");
     report.push(`${id}: original class + art${notes.length ? " — " + notes.join("; ") : ""}`);

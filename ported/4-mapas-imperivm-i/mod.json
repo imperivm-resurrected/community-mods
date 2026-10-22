@@ -1,0 +1,22 @@
+{
+  "id": "4-mapas-imperivm-i",
+  "name": "4 Mapas IMPERIVM I",
+  "version": "1.0",
+  "authors": [
+    "Guigoras"
+  ],
+  "description": {
+    "italian": "4 mappe di Guigoras.",
+    "spanish": "4 mapas de Guigoras (2019, en italiano).",
+    "english": "4 maps by Guigoras (2019, in Italian)."
+  },
+  "category": "Scenarios",
+  "tags": [
+    "Players: 3-4"
+  ],
+  "requires": [
+    "imperivm1-legacy",
+    "greek-mod-terrains"
+  ],
+  "redistributable": true
+}

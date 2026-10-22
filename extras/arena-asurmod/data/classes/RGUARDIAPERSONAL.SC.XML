@@ -1,0 +1,22 @@
+<class id="RGuardiaPersonal" cpp_class="CVXUnit" parent="RPraetorian" entity="Units/RPraetorian/RPraetorian.ent.xml">
+
+	<properties race="RepublicanRome"/>
+	<properties maxhealth="500"/>
+	<properties damage="60" armor_slash="25" armor_pierce="25"/>
+	<properties speed="60"/>
+	<properties unit_specials="Triumph, Deflection"/>
+
+	<properties formation_priority="1000"/>
+	<properties formation_radius="26"/>
+
+	<properties icon="gameres/icons/RICampeon.bmp"/>
+	<properties display_name="Guardia del Cesar" display_name_plural="Guardias del Cesar"/>
+	<properties help="contents/units/RPraetorian"/>
+	<properties edittree_pos="Units/Roman/Guardia del Cesar"/>
+	<properties description="Bonus de ataque contra jinetes, carros y elefantes."/>
+	<sounds attack="UnitPikeFight" command="data/sound entities/VoiceRPraetorian.xml"/>
+
+	<behavior script="data/subai/contracaballeria.vs"/>
+	<behavior script="data/subai/contraelefantes.vs"/>
+
+</class>

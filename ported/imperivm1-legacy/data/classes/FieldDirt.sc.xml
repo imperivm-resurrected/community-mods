@@ -1,0 +1,6 @@
+<!-- Imperivm I class FieldDirt with its original art (from the Celtic Kings demo) -->
+<class id="FieldDirt" cpp_class="CVXDecor" parent="Object"
+entity="MapObjects/Decors/nivag1/nivag1_asw.ent.xml">
+
+  <properties edittree_pos="Structures/Others/Field (dirt)"/>
+</class>

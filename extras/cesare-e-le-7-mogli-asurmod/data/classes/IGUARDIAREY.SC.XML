@@ -1,0 +1,18 @@
+<class id="IGuardiaRey" cpp_class="CVXUnit" parent="IEliteGuard" entity="Units/IEliteGuard/IEliteGuard.ent.xml">
+
+	<properties race="Iberia"/>
+	<properties maxhealth="500"/>
+	<properties damage="50" armor_slash="16" armor_pierce="20"/>
+	<properties speed="80"/>
+	<properties unit_specials="Triple strike, Combat skill"/>
+
+	<properties formation_priority="1000"/>
+	<properties formation_radius="26"/>
+
+	<properties icon="gameres/icons/ICampeon.bmp"/>
+	<properties display_name="Guardia real" display_name_plural="Guardias reales"/>
+	<properties help="contents/units/IEliteGuard"/>
+	<properties edittree_pos="Units/Iberia/Guardia real"/>
+	<sounds command="data/sound entities/VoiceIEliteGuard.xml"/>
+
+</class>

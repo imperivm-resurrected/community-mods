@@ -1,0 +1,15 @@
+<class id="BGuardia" cpp_class="CVXUnit" parent="BShieldBearer" entity="units/BShieldBearer/BShieldBearer.ent.xml">
+
+	<properties race="Britain"/>
+	<properties maxhealth="600"/>
+	<properties damage="40" armor_slash="20" armor_pierce="40"/>
+	<properties speed="60"/>
+	<properties unit_specials="Deflection, Determination"/>
+
+	<properties icon="gameres/icons/BCampeon.bmp"/>
+	<properties display_name="Escolta real" display_name_plural="Escolta real"/>
+	<properties help="contents/units/BShieldBearer"/>
+	<properties edittree_pos="Units/Britain/Escolta real"/>
+	<sounds command="data/sound entities/VoiceBShieldBearer.xml"/>
+
+</class>
