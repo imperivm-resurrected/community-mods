@@ -1,0 +1,9 @@
+{
+  "id": "greece",
+  "index": 31,
+  "base": "ImperialRome",
+  "name": {"spanish": "Grecia", "english": "Greece", "italian": "Grecia"},
+  "letter": "H",
+  "template": "Greek",
+  "replacesBase": true
+}
