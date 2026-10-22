@@ -1,0 +1,14 @@
+{
+  "id": "oggetti-in-tutte-le-strutture",
+  "name": {"spanish": "Objetos en todas las estructuras", "english": "Oggetti in tutte le strutture", "italian": "Oggetti in tutte le strutture"},
+  "version": "1.0",
+  "authors": ["Secuter", "Villoh (port)"],
+  "description": {
+    "spanish": "Añade objetos a las estructuras que no los tenían (columnas, trono del león, obeliscos, pozo, cofre…): amuletos, agua curativa, 1000 de oro y tres objetos nuevos (Cráneo del héroe, Gema de energía, Gema de furia). Reaparecen cada 5-20 minutos. Sube de 10 000 a 100 000 lo que cabe en un fuerte o aldea y de 1000 a 5000 en un carro. Versión de Secuter sin los cambios a los fuertes.",
+    "english": "Adds items to the structures that had none (pillars, lion throne, obelisks, well, chest…): amulets, healing water, 1000 gold and three new items (Hero's skull, Energy gem, Fury gem). They respawn every 5-20 minutes. Raises what a fort or village holds from 10,000 to 100,000 and a wagon from 1000 to 5000. Secuter's version without the fort changes."
+  },
+  "category": "Gameplay & Balance",
+  "tags": ["Type: Units & Heroes"],
+  "incompatibleWith": ["oggetti-in-tutte-le-strutture-e-forti-bilanciati"],
+  "redistributable": true
+}

@@ -1,0 +1,14 @@
+{
+  "id": "oggetti-in-tutte-le-strutture-e-forti-bilanciati",
+  "name": {"spanish": "Objetos en todas las estructuras y fuertes equilibrados", "english": "Oggetti in tutte le strutture e forti bilanciati", "italian": "Oggetti in tutte le strutture e forti bilanciati"},
+  "version": "1.0",
+  "authors": ["Secuter", "Villoh (port)"],
+  "description": {
+    "spanish": "Todo lo de «Objetos en todas las estructuras» y además los fuertes: todos tienen hasta 4 tipos de unidades de nivel 8 (hasta el 24), con fuerza y recursos parejos, y el fuerte egipcio de oro también está defendido. Los campamentos teutones no cambian.",
+    "english": "Everything in «Items in every structure» plus the forts: all of them hold up to 4 unit types from level 8 (up to 24), evenly matched in strength and resources, and the Egyptian gold fort is defended too. Teutonic camps are unchanged."
+  },
+  "category": "Gameplay & Balance",
+  "tags": ["Type: Units & Heroes"],
+  "incompatibleWith": ["oggetti-in-tutte-le-strutture"],
+  "redistributable": true
+}
