@@ -1,0 +1,19 @@
+{
+  "id": "asvrmod-vii-traduzione-italiana",
+  "name": {
+    "spanish": "AsvrMod VII: traducción al italiano",
+    "english": "AsvrMod VII: Italian translation",
+    "italian": "AsvrMod VII: traduzione italiana"
+  },
+  "version": "0.14",
+  "authors": ["sentinel452", "Asur"],
+  "description": {
+    "spanish": "Traducción al italiano de los textos de AsvrMod VII: Ancient Generals (objetos, unidades, generales y habilidades). Hecha por sentinel452 sobre la versión a0.7; traduce 3474 de los 3887 textos del mod, el resto sale en el idioma base. Requiere AsvrMod VII.",
+    "english": "Italian translation of the texts of AsvrMod VII: Ancient Generals (items, units, generals and abilities). By sentinel452, made on version a0.7; it translates 3474 of the mod's 3887 texts, the rest shows in the base language. Requires AsvrMod VII.",
+    "italian": "Traduzione italiana dei testi di AsvrMod VII: Ancient Generals (oggetti, unità, generali e abilità). Di sentinel452, fatta sulla versione a0.7; traduce 3474 dei 3887 testi della mod, il resto appare nella lingua di base. Richiede AsvrMod VII."
+  },
+  "category": "Translations",
+  "tags": ["Language: Italian"],
+  "requires": ["gamebanana-729311"],
+  "redistributable": true
+}
