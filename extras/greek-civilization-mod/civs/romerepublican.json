@@ -1,0 +1,12 @@
+{
+  "id": "RomeRepublican",
+  "index": 21,
+  "base": "RepublicanRome",
+  "name": {
+    "spanish": "Roma republicana",
+    "english": "Republican Rome",
+    "italian": "Roma repubblicana"
+  },
+  "variant": true,
+  "replacesBase": true
+}

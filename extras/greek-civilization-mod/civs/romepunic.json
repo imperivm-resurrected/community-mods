@@ -1,0 +1,12 @@
+{
+  "id": "RomePunic",
+  "index": 23,
+  "base": "RepublicanRome",
+  "name": {
+    "spanish": "Roma púnica",
+    "english": "Punic Rome",
+    "italian": "Roma punica"
+  },
+  "variant": true,
+  "replacesBase": true
+}

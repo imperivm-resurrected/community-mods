@@ -21,3 +21,9 @@ In 4.2 the Greek faction sits in the Imperial Rome slot: its classes have `race=
 ## Game modes (tools/greek-mod-fixes.js)
 
 4.2 replaced the game's five victory scripts with nine of its own (`1 VARIOS` … `9 CUSTOM`) and kept its edited copies of the old five inside `data.pak` as `.VX`, which nothing reads; the old pack also hid the game's. Most maps say `victory_condition="1 Elimination"` (228 of the 415 maps in `ported/`), so with that script hidden a map starts and goes back to the menu at once, with nothing in the log. After `shrink-mod.js` and the copy of this folder, `node tools/greek-mod-fixes.js` writes 4.2's five as `.VS` under the game's names and takes them out of `hidden.txt`; the lobby then lists them next to 4.2's nine.
+
+## Rome's branches and Carthage's (civs/*.json, tools/greek-mod-fixes.js)
+
+In 4.2 Rome (Republican, Imperial, Punic) and Carthage (Numidian, Mauritanian) are picked before the lobby: Gabbo's engine hook leaves the choice in the sentinel `rand(776 + player)`, which five scripts read to research the branch's `ChooseXxx` at the start. Here they are lobby civilizations, variants (`variant`, `replacesBase`) of Republican Rome and Carthage: `RomeRepublican` 21, `RomeImperial` 22, `RomePunic` 23, `CarthageNumidian` 24, `CarthageMauritanian` 25 (Greece is 31). The five scripts ask `Mod_PlayerCiv(player)` instead of the sentinel (`greek-mod-fixes.js` rewrites them). A civilization that is not one of them (a map that fixes plain Rome or Carthage) gets no branch, as before, and the buttons at the town hall are still there.
+
+The same script gives the renamed classes their old HD id as `altid` (HD misspells `TValkyria`, `CMacemen`, `BHighlandar`, `IDefendar`, `GTridentWarriar`, `BaseBoilding`; 4.2 fixes them and drops the old ones, so HD's scripts and maps could not create them).

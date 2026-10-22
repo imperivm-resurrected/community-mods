@@ -1,0 +1,12 @@
+{
+  "id": "CarthageMauritanian",
+  "index": 25,
+  "base": "Carthage",
+  "name": {
+    "spanish": "Cartago mauritana",
+    "english": "Mauritanian Carthage",
+    "italian": "Cartagine mauritana"
+  },
+  "variant": true,
+  "replacesBase": true
+}

@@ -1,0 +1,12 @@
+{
+  "id": "CarthageNumidian",
+  "index": 24,
+  "base": "Carthage",
+  "name": {
+    "spanish": "Cartago númida",
+    "english": "Numidian Carthage",
+    "italian": "Cartagine numida"
+  },
+  "variant": true,
+  "replacesBase": true
+}

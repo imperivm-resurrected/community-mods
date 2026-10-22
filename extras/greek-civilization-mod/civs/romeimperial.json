@@ -1,0 +1,12 @@
+{
+  "id": "RomeImperial",
+  "index": 22,
+  "base": "RepublicanRome",
+  "name": {
+    "spanish": "Roma imperial",
+    "english": "Imperial Rome",
+    "italian": "Roma imperiale"
+  },
+  "variant": true,
+  "replacesBase": true
+}
