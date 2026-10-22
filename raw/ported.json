@@ -205,7 +205,7 @@
  "mappe-europa-e-singole-nazioni": "it/mappe-europa-e-singole-nazioni-2016",
  "marsella": "aventuras/marsella",
  "marsella-2": "aventuras/marsella-2",
- "mini-avventura-grecia": "it/mini-avventura-grecia-2017",
+ "mini-avventura-grecia": "it/mini-avventura-grecia-2017 --requires greek-civilization-mod,secuter-fun-mod-grecia",
  "minitorneo": "mapas/minitorneo",
  "nuclear-fazioni-equilibrate": "it/fazioni-equilibrate-mod-v-ufficiale-2017",
  "nuevo-mapa-marenostrum": "forum/t1469",

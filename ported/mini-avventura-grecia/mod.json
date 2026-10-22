@@ -15,8 +15,8 @@
     "Language: Italian"
   ],
   "requires": [
-    "caesar-mod",
-    "secuter-fun-mod"
+    "greek-civilization-mod",
+    "secuter-fun-mod-grecia"
   ],
   "incompatibleWith": [
     "community-mod"

@@ -358,13 +358,13 @@ const needs = missing.length ? bigMods.filter(m => missing.every(c => m.classes.
 // no single mod has them all (a Greek Mod map that also places Imperivm I classes): the ported mods that together do, most classes first.
 // Then the map requires every one of them, not one of several
 const PREFER = ["community-mod", "greek-civilization-mod", "caesar-mod"];
-const cover = [];
+const cover = [], rank = m => PREFER.includes(m) ? PREFER.indexOf(m) : PREFER.length;
 if (missing.length && !needs.length) {
   let left = [...missing];
   while (left.length) {
     const best = bigMods.filter(m => m.ported && !cover.includes(m.mod))
       .map(m => ({ mod: m.mod, got: left.filter(c => m.classes.has(c.toLowerCase())) }))
-      .sort((a, b) => b.got.length - a.got.length || PREFER.indexOf(b.mod) - PREFER.indexOf(a.mod))[0];
+      .sort((a, b) => b.got.length - a.got.length || rank(a.mod) - rank(b.mod))[0]; // a tie: the one PREFER lists first, like the single-mod case below
     if (!best || !best.got.length) break;
     cover.push(best.mod);
     left = left.filter(c => !best.got.includes(c));
@@ -498,7 +498,8 @@ const mod = {
   // Players only counts for scenarios and Language for adventures (the SDK's filters); every adventure here is in Spanish
   tags: [...byCount.slice(1).map(k => `Type: ${CATS[k]}`), ...(has("scenarios") && players ? [players] : []), ...(has("adventures") ? langs.map(l => `Language: ${l}`) : [])],
   // requires means "all of these": with several candidates, take one (the most used first)
-  ...(needs.length || extraTerrain ? { requires: [
+  // --requires a,b: the mods the author played it with, when they are not the ones the classes alone point to
+  ...(typeof opt.requires === "string" ? { requires: opt.requires.split(",").map(s => s.trim()) } : needs.length || extraTerrain ? { requires: [
     ...(cover.length ? cover : needs.length ? [[...PREFER, ...needs].find(m => needs.includes(m))] : []),
     ...(extraTerrain && !needs.some(m => TERRAIN_MODS.includes(m)) ? ["greek-mod-terrains"] : []),
   ] } : {}),
@@ -511,7 +512,7 @@ fs.writeFileSync(path.join(out, "mod.json"), JSON.stringify(mod, null, 2) + "\n"
 // raw/ported.json: which entry each ported mod comes from (tools/sync-table.js uses it to update MODS.md)
 const SRC = path.join(ROOT, "raw", "ported.json");
 const src = (() => { try { return JSON.parse(fs.readFileSync(SRC, "utf8")); } catch { return {}; } })();
-src[id] = opt._ + (opt.file ? ` --file ${opt.file}` : "") + (opt.add ? ` --add ${opt.add}` : "") + (opt.author ? ` --author ${opt.author}` : "") + (opt.lang ? ` --lang ${opt.lang}` : "") + (opt.adventure ? " --adventure" : "") + (opt.title ? ` --title ${opt.title}` : "") + (opt.desc ? ` --desc ${opt.desc}` : "") + (opt.keep ? " --keep" : ""); // what to run to wrap it again
+src[id] = opt._ + (opt.file ? ` --file ${opt.file}` : "") + (opt.add ? ` --add ${opt.add}` : "") + (opt.author ? ` --author ${opt.author}` : "") + (opt.lang ? ` --lang ${opt.lang}` : "") + (opt.adventure ? " --adventure" : "") + (opt.title ? ` --title ${opt.title}` : "") + (opt.desc ? ` --desc ${opt.desc}` : "") + (opt.keep ? " --keep" : "") + (typeof opt.requires === "string" ? ` --requires ${opt.requires}` : ""); // what to run to wrap it again
 fs.writeFileSync(SRC, JSON.stringify(Object.fromEntries(Object.entries(src).sort()), null, 1) + "\n");
 console.log(`${out}\n  ${maps.join(", ")} -> ${[...new Set(maps.map(f => where[f]))].join(", ")}/\n  category ${mod.category}, tags ${JSON.stringify(mod.tags)}${counts.length < maps.filter(f => where[f] === "scenarios").length ? "  ⚠️ some scenario has no readable players" : ""}${has("scenarios") && !players ? "  ⚠️ no Players tag (one human slot, or --players)" : ""}${renamed ? `\n  🏷️ ${renamed} map(s): the editor's default name/author in game.xml replaced` : ""}${greekWalls ? `\n  🏛️ ${greekWalls} M* pieces (walls, towers, gates, villagers) -> K* (Greek): porter credited` : ""}`
   + (used === null ? "\n  ⚠️ compatibility not checked (no originals/game-data)" : unknown.length ? `\n  ❌ not in the HD game nor in a known mod: ${unknown.join(", ")}` : "")
