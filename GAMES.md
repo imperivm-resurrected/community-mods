@@ -1,7 +1,7 @@
 # The games: where to get them, their patches, and running them on Linux
 
 Notes on the Haemimont/FX real-time conquest games (Imperivm I, II and III) that many ported mods and maps
-come from or depend on. Tested on NixOS + Hyprland with GE-Proton, October 2026.
+come from or depend on, and how to run them on Linux.
 
 > The games belong to their owners (Haemimont Games, FX Interactive, Strategy First, Enlight).
 > This file does not link to copies of the games. The patches it links were given away for free by their publishers.
@@ -61,12 +61,15 @@ The patches are 7-Zip self-extractors that run `patch.exe`. To check one was app
 ### Patch traps
 
 - **Celtic Kings**: 1.16 needs 1.10 first. Without it the patch says it needs a more recent version. Apply 1.10, then 1.16.
-- **Nemesis**: the patch looks for `HKLM\SOFTWARE\Wow6432Node\Haemimont Games\The Punic Wars`, which Enlight's installer does not create.
+- **Nemesis**: the patch looks for `HKLM\SOFTWARE\Wow6432Node\Haemimont Games\The Punic Wars`, which Enlight's installer did not create under Wine (not checked on Windows).
   Without it, it says "The Punic Wars is not installed!". Create it with `InstallPath` (the path to `tpw.exe`) and `Version=0x10000`.
 - **Nemesis, installer**: run `SETUP.EXE`. `NESETUP.EXE` is only a launcher and exits without installing.
-- The DirectX error at the end of the installers ("this version of DirectX is not compatible") can be ignored: Proton ships its own.
 
-## Installing with umu-run (GE-Proton)
+## Linux (GE-Proton)
+
+Tested on NixOS + Hyprland with GE-Proton 11-7, October 2026. Everything here is about Wine/Proton.
+
+### Installing with umu-run
 
 One prefix per game, each one isolated, as Steam and Lutris do.
 
@@ -79,6 +82,7 @@ umu-run /path/to/the/disc/SETUP.EXE             # Celtic Kings and Nemesis
 - `PROTONPATH=GE-Proton` downloads the latest version. On NixOS you can point it at `pkgs.proton-ge-bin.steamcompattool`.
 - Run the installer from a folder with the disc's contents (extract the ISO, e.g. with `bsdtar`).
 - The prefix is created on first launch.
+- The DirectX error at the end of the installers ("this version of DirectX is not compatible") can be ignored: Proton ships its own.
 
 ### The game asks for the CD
 
@@ -97,25 +101,19 @@ A "virtual CD" in the prefix solves it:
 | Celtic Kings | `Celtic Kings` |
 | Nemesis | `NEW` |
 
-## Playing from Steam
+### Playing from Steam
 
 Add the installed `.exe` as a non-Steam game and force GE-Proton under *Properties → Compatibility*.
 If the prefix is already made, copy it to `~/.local/share/Steam/steamapps/compatdata/<appid>/` and use that `appid`
 (Steam then manages it as its own). Do it with Steam closed, and keep a copy of `shortcuts.vdf` and `config.vdf`.
 
-### Screen on Hyprland
+### Screen on Hyprland (gamescope)
 
 Imperivm II opens in a tiled window and, forced to fullscreen, it is drawn cut off and duplicated
 (the game cannot resize). `gamescope` fixes it. Launch options:
 
-```
+```text
 gamescope -f -w 1024 -h 768 -W 1920 -H 1080 -S fit -- %command%
 ```
 
 Set `-W` and `-H` to your monitor. `-S fit` keeps the 4:3 with black bars. Imperivm I looked fine without it.
-
-## Online mode (Liga Imperivm)
-
-*Imperivm III* ships the **Liga Imperivm**: 1v1 and 2v2 duels with ranks earned by wins (48 ranks, 8 civilizations × 6 levels,
-from `RANKS.XML`). It relied on GameSpy, which no longer exists. The art and screens are in the game (`ob_lobby.ini`,
-`ob_halloffame.ini`, `PROFILEICONS`), but I have not checked whether it works today with community servers.
