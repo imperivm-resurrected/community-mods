@@ -85,7 +85,7 @@ Letters and indices are unique across all the ports (the SDK allows indices 10-9
 | 24-25 | `CarthageNumidian`, `CarthageMauritanian` | (base's) | Carthage | 4.2 | Same |
 | 30 | `greece` | `K` | ImperialRome | CGWAR | Own race; shares 16 files with the 1.8 |
 | 31 | `greek` | `H` | ImperialRome, replaces it | 4.2 | Not independent (takes Imperial Rome's slot) |
-| 32 | `greek` | `H` | ImperialRome, replaces it | 1.8 | Not independent; **same `id` and letter as the 4.2's** |
+| 32 | `greek18` | `Q` | ImperialRome (own race) | 1.8 | Greece independent of the game's and of the 4.2/CGWAR classes; still shares neutral content (fisherman, scripts, music) with the 4.2, Imperivm Legacy and the MCI |
 
 This table is the plan's starting point, not the end state: see *Pending: independence* in each mod's `NOTES.md`.
 
@@ -174,6 +174,8 @@ The same idea works for any old map: look for the class in an older `data.pak` (
 | [`wrap-map.js`](tools/wrap-map.js) | A map or adventure (a Discord post, a forum topic or one map of a pack) → `ported/<id>/` |
 | [`port-140.js`](tools/port-140.js) | A loose-file 1.40 mod → `ported/<id>/` |
 | [`flatten-paks.js`](tools/flatten-paks.js) | A 1.40 mod that is a full game copy (whole `.pak` packages) → loose files, for `port-140.js` (the Greek Mod 1.8) |
+| [`greek-1-8.js`](tools/greek-1-8.js) | After `port-140.js`: the Greek Mod 1.8's Greece as an independent civilization (`greek18`, letter `Q`): renames, patches, AI as `GR18_*` |
+| [`shared-paths.js`](tools/shared-paths.js) `<ported id>` | Files, class ids and entity folders a port shares with the game and with the other ports (the independence check) |
 | [`merge-secuter-fun.js`](tools/merge-secuter-fun.js) | Secuter's Fun mod (rows 312): finishes what `port-140.js` left in conflict, keeping HD's changes and the mod's (see the comments for each decision) |
 | [`port-translation.js`](tools/port-translation.js) | A mod's translation for 1.40 (`GAME.LOC.XML`) → `loc/<language>.loc.xml` with only the texts it translated |
 | [`imperivm1.js`](tools/imperivm1.js) | Imperivm I classes → `ported/imperivm1-legacy/` |

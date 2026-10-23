@@ -2,6 +2,8 @@
 
 Row 4. `GreekMod_1.8.rar` (2.7 GB, forum t1207) is a full copy of the game (1.40 base): `Packs\*.pak` (17, with `zGreek.pak` over `data.pak`), `Local\{czech,english,italian,spanish}.pak`, its own `rle.mmp` (438 MB), `Movies`, `Music`, `Scenarios`, `Adventures`, `Conquests`, plus `gbr.exe`, the launcher and DLLs.
 
+**This port is Greece as a civilization of its own** (AGENTS.md, *Civilizations are independent*), with the maps, adventures, videos, music and menu skin of the mod. The game's 8 civilizations are untouched. What the mod did to them is listed under *Left out*.
+
 ## Rebuild
 
 ```bash
@@ -9,51 +11,60 @@ mkdir originals/greek-mod-1.8-full && bsdtar -xf originals/forum/t1207/files/Gre
 node tools/flatten-paks.js originals/greek-mod-1.8-full/GreekMod_1.8 originals/greek-mod-1.8-flat
 ln -s $PWD/originals/greek-mod-1.8-full/GreekMod_1.8/rle.mmp originals/greek-mod-1.8-flat/rle.mmp
 node tools/port-140.js originals/greek-mod-1.8-flat ported/greek-mod-1-8 --id greek-mod-1-8 --name "Greek Civilization Mod 1.8" --version 1.8 --category Civilizations
+node tools/greek-1-8.js
 ```
 
-`shrink-mod.js` is not used: it compares against the HD game and would undo its fixes (this mod is 1.40: of the 1797 files in its `data.pak`, 1536 are identical to 1.40 and HD's version stays). `port-140.js` wants loose files, so `tools/flatten-paks.js` unpacks the packages in name order (the greater name wins, as in the game) and lays the mod's loose files over them. Result: 2.9 GB, 4447 files; the rest was the game's.
+`shrink-mod.js` is not used: it compares against the HD game and would undo its fixes (this mod is 1.40). `tools/flatten-paks.js` unpacks the packages in name order (the greater name wins, as in the game) and lays the mod's loose files over them. `port-140.js` merges with HD. `tools/greek-1-8.js` then makes Greece independent (below). `ported/greek-mod-1-8/` is not in git. It needs `originals/game-data/paks/` with every HD pack extracted (README, *Setup*), `Minimap.pak` and `Fonts.pak` included.
 
-`ported/greek-mod-1-8/` is not in git (it is mostly the author's files).
+## What `tools/greek-1-8.js` does
 
-## What was changed by hand (this folder)
+- **Own names.** Greece in 1.8 sat in Imperial Rome's slot with the letter `H`. Here it is `greek18` (`civs/greek18.json`, index 32, letter `Q`, `internalName` `Greek18`, template `Greek Rattlesmake`, `ai: true`). 129 names change one letter for another: classes (`HHoplite` → `QHoplite`, `HeroHHoplite` → `HeroQHoplite`, `GreekHero` → `QGreekHero`), commands (`trainHHoplite` → `trainQHoplite`, `hireheroH` → `hireheroQ`, `trainpeasanth` → `trainpeasantq`), entity folders and sprites (`Units/HHOPLITE` → `Units/QHOPLITE`), icons, voices and sound entities. The engine builds names from the letter (`GetRaceStrPref`), so a literal `"H"` in a script is changed too. The classes have `race="greek18"`.
+- **Base classes.** The 1.8 edited the game's `Melee`, `Ranged`, `Hero`, `Horse`, `Unit`, `BaseVillage`…, which every civilization inherits. Those edits are written **inside each Greek class** (`<!-- changes the 1.8 made to its base classes -->`, 149 elements); the game's base classes stay as they are.
+- **The Greek walls, gates and tower** the mod drew over Imperial Rome's `M*` ids are `Q*` classes (`QWallsN`, `QGate0`, `QTower`); Imperial Rome keeps the game's. `QTavern`, `QTavern2` and `QArena` (the city builder asks for them by letter) are copies of the Agora and the Gymnasium.
+- **Commands**: the Greek ones in `DATA/COMMANDS/GREEK18.XML`; what the 1.8 added to the game's command files (a Greek barracks source, a research…) is a patch that adds only that `<src>`.
+- **Game files it edited**: Greek behavior in `ONFINISH_RESEARCH.vs` and `UNIT_ON_KILL.vs` (Supplies, Charm of Athena, Charm of Aegle, Statue of Zeus), the Greek items and formations, and the Greek hero names are **patches** that add; hero names are `QName00x` in `const.ini`.
+- **AI variables**: `AIV_MaxQHoplite`, `AIV_MaxQMyrmidon`… (per difficulty) and `AIV_TimeStrenghtenStrongholdGates` are declared in the `AI.INI` patch. A script that reads one that is not declared does not compile.
+- **AI recruiting**: `extras/greek-mod-1-8/patches/DATA/AI/TSH_RECRUITARMY.vs` (by hand): a Greek settlement asks for `trainQHoplite`… and the Greek researches; every other civilization takes the game's branch. It is a patch because the game calls this helper from its tactics, not through `AIRun`.
+- **AI**: the 11 helper scripts and the main loop (`ES_Stronghold`) the mod rewrote for "Greece = Imperial Rome" run as `GR18_*` for Greek settlements only: a patch at the top of each game helper hands a Greek settlement over with `AIRun` (as the CGWAR does); `ES_Stronghold`, which `Sleep()`s and crashes inside `AIRun`, goes in `[EconomyScripts]` and `GetEconomyScript.vs` picks it. Every other civilization keeps HD's AI.
+- **Interface**: `INFOBAR_GREEK18.INI`, `CMDBARGREEK18.INI` and the frame in `FRAMES.INI` (a patch) are what the game looks up by `internalName`.
+- **Maps** (`Scenarios`, `Adventures`, `Conquests`, `ConquestMaps`, `Movies`: 124 `.bfhp`): kept. 10 of them place Greek classes; they are rewritten inside the HPFS container (1111 names, one letter for another, in place), so they place `QHoplite`, not `HHoplite`. **Open: the Greek players of those maps have race 4 (Imperial Rome), which in 1.8 *was* Greece; now it is the game's Imperial Rome.** A human can still play them (the commands come from the classes); an AI in a Greek slot plays as Imperial Rome. Needs a decision on how a map names a mod civilization.
+- **Menu skin** (`CURRENTLANG/*` and, by hand, `DATA/INTERFACE/MENU/MAINMENU.INI` and `TEMPLATE.INI`, 1920x1080): kept. It is the one thing that is a whole file at the game's path, on purpose: it is cosmetic and only one skin can show at a time. It is also what tells the player that the mod is loaded.
+- **Random map**: the mod's own Greek towns and villages (`Packs/RandomMapSettlements.bfhp`) are `Greek Rattlesmake Town N` / `Village N`, with the renamed classes, as a patch of `randommapsettlements`.
+- References to 24 scripts the mod never shipped (`hero_gives_double_items`, `return_range_unit`, `centaur_summoning`, `paeceful_idle`…) are removed from the classes: the game could not run them, and the validator reports them as errors.
 
-- `mod.json`: credits (Rattlesmake; the port is Villoh's), description, and `incompatibleWith` the Greek Civilization Mod 4.2 and the CGWAR. **That is temporary, see *Pending: independence*.**
-- `civs/greek.json`: Greece in the lobby, as in 4.2 (see its NOTES): base `ImperialRome`, letter `H`, `template: Greek`, `replacesBase`, index **32** (31 is 4.2's, 30 CGWAR's). The classes keep `race="ImperialRome"`, and the scripts say `Greece = ImperialRome`, so nothing else changes.
-- `DATA/INTERFACE/MENU/TEMPLATE.INI`: the mod's, with `Larghezza`/`Altezza` 1920x1080 instead of 1024x768 (the menus are laid out from them; at 1024x768 the whole menu was drawn small in the middle of the screen).
-- `DATA/INTERFACE/MENU/MAINMENU.INI`: the mod's, with `ButtonXStart = 1430` and `ButtonYStart = 185` in `[MainMenu Params]` (the values the 4.2 uses; the template's `%ScreenRight% - 272` put the buttons in the top right corner, under the FPS counter). **The other menus (`MPMENU`, `MPGAMEMENU`, `ADVENTUREMENU`, `PROFILE`, `OB_*`) still have the mod's 1024x768 positions and have not been looked at.**
-- Rome's branches: 1.8 picks Republican/Imperial/Punic in game, with a town hall command (`RHT_SCELTA_ROMA.XML`, `ChooseImperialRome`…). Kept as it is (not tried in game); unlike 4.2 there is no lobby sentinel (`776` appears in no script), so no variant civilizations here.
+## Left out (and what happens to it)
 
-## Left out (a mod cannot carry it)
-
-`gbr.exe` (332 bytes different from the HD one), `ImperivmLauncher-Greek 1.8.exe`, `Inizio del Gioco.exe`, `Uninstall.exe`, the DLLs (`NAudio`, `Newtonsoft.Json`, WPF and `Dirapi`, `Iml32`… in `Data\`), `Settings.ini`, `config.ini`, `update.xml` (a saved web page), RetroSpy files (the launcher's multiplayer: AGPL-3.0, not ported), `profiles/`, `hof/`, `Logs/`, `Xtras/`, `package/`, `currentadv.bfhp`. The 332 bytes of `gbr.exe` have not been read: see `extras/greek-mod-2-6-1/NOTES.md` for what the later ones change.
-
-## Pending: independence (AGENTS.md, *Civilizations are independent*)
-
-Not independent yet: the port is `incompatibleWith` the 4.2 and the CGWAR, and Greece takes Imperial Rome's slot. Target: **the game's 8 civilizations untouched, and every civilization the mod adds or changes as its own, next to the game's.** Measured on the mod (what it changed from 1.40, class files with different parameters):
-
-| Civilization | Classes it changes | Plan |
-|---|---|---|
-| Greece (new) | 97 `H*` classes, `GreekHero`, 131 units + 93 buildings of its own art | Own `id`, `index`, `letter`, `race`; every `H*` name renamed (entities, commands, scripts, sprites folders) |
-| Gauls / Britain / Carthage / Egypt / Germany / Iberia | 9 / 6 / 8 / 2 / 9 / 7 | Each as "<civ> (Greek Mod 1.8)": cloned from HD (`clone-civilization.js`) with the mod's changes on top |
-| Republican Rome | 14 (`RScout` 200 → 250 hp, `RPrinciple` damage 20 → 24, heroes, new behaviors) | Same: "Rome (Greek Mod 1.8)" |
-| Imperial Rome | 1 real change; the `M*` walls, gates and tower are Greek art under Imperial Rome's ids | The Greek pieces go to Greece's own classes; Imperial Rome stays HD's |
-| Shared base classes (`Hero`, `Melee`, `Ranged`, `BaseVillage`, `Horse`…: 14 changed) | The changes go inside each copy's classes, never into HD's |
-| Not a civilization's (`const.ini`, `items.xml`, `formations.xml`, game scripts, `terrains.xml`, interface) | Only as patches that add its part |
-
-Not ported: the Republican/Imperial/Punic choice at the town hall (`RHT_SCELTA_ROMA.XML`, `*_Enable_Or_Disable_Cmd.vs`, `ChooseXxxRome`): a patch for the 1.40 engine. The civilizations are chosen in the lobby.
-
-What overlaps today (measured on `ported/`, 2026-10-23):
-
-| With | Shared |
+| What | Why / next |
 |---|---|
-| 4.2 (`greek-civilization-mod`) | 129 class ids, 277 files in the same path in `DATA` (216 differ), the Imperial Rome slot with letter `H`, `Greek Town N` templates |
-| CGWAR | 16 files in `DATA` (`const.ini`, `items.xml`, `copyrights.txt`, `classes/greekhero.sc.xml`, `commands/greece.xml`, `randommap/placeobjects.xml`, `subai/{horse_idle,onfinish_research,unit_attach,unit_attack,unit_on_kill,unit_stand_position,village_trainpeasant}.vs`, `interface/menu/mainmenu.ini`, `interface/editor/combo/{itemicons,uniticons}.ini`), 3 in `units`, 4 in `ui`, class `GreekHero`, the `Greek` template name |
+| The game's other civilizations as the mod changed them (Gauls 9 classes, Britain 6, Carthage 8, Egypt 2, Germany 9, Iberia 7, Republican Rome 14) | Each becomes its own civilization, "<civ> (Greek Mod 1.8)", cloned from HD with the mod's changes on top. Not done |
+| The Republican/Imperial/Punic choice at the town hall (`RHT_SCELTA_ROMA.XML`, `R*_Enable_Or_Disable_Cmd.vs`, `ChooseXxxRome`) | A patch for the 1.40 engine: not ported (AGENTS.md) |
+| The mod's AI for the other civilizations (`GetTacticScript.vs`, `TSH_*`, the `ESH_*` parts about Rome) | Part of the other civilizations above. The Greek AI uses the `GR18_*` copies |
+| Game-wide edits: `const.ini` values, game scripts (kills and losses statistics), `terrains.xml`, `vxnotifications.xml`, interface menus, `MAINMENU.INI`, `TEMPLATE.INI` | Not a civilization's: a mod that replaces them hides every other one's. They come back only as patches if a decision says so |
+| 122 sounds, animations and decorations whose path is the game's, with other bytes (death, fight and selection sounds…) | They would replace the game's for every civilization |
+| `music/` (43 tracks) is kept, except where a track has the game's path | See *Pending: independence* |
+| `gbr.exe` (332 bytes different from the HD one), the launcher, the DLLs, `Settings.ini`, `config.ini`, RetroSpy (AGPL-3.0), `profiles/`, `hof/`, `Logs/`, `package/`, `update.xml` | A mod cannot carry them. The 332 bytes of the exe have not been read: see `extras/greek-mod-2-6-1/NOTES.md` for what the later ones change |
 
-Open: maps that place the 1.8's classes (and, through `wrap-map.js`, the ones that `require` the 4.2) must keep working after the rename; see AGENTS.md.
+## Pending: independence
+
+**Only Greece is independent so far.** The game's civilizations the mod changed (Gauls, Republican Rome, Carthage, Iberia, Britain, Egypt, Germany) show in the lobby as the game's, without the mod's parameters: each has to be a civilization of its own, "<civ> (Greek Mod 1.8)" (see *Left out*).
+
+The port declares `incompatibleWith` the 4.2 and the CGWAR; `node tools/shared-paths.js greek-mod-1-8` says why it still has to (checked 2026-10-23, after the build):
+
+- **CGWAR**: `data/commands/greece.xml` (both name their commands file `GREECE`: this port's is `GREEK18.XML` now, so it should have gone; check), `ui/cmdbar/frames/greek_frame.bmp`, `ui/cmdbar/research/imperial.bmp`, `ui/{cmdbar,icons}/upgrades/olympic games.bmp`.
+- **4.2** (it comes from the same line): 16 class ids (`Fisherman`, `Poseidon`, `Thermae`, `Spartacus1/2`, `WildHen`, the Apollonia villagers, the Roman flags…), 78 files in the same path with other bytes (`data/subai/*.vs`: government forms, democracy, myrmidons school…, mapobjects, sounds, music, icons).
+- **Imperivm Legacy, MCI, Mediterranevm alpha**: the fisherman, 34 sounds, 8 music tracks, a few icons.
+
+These are neutral things the 1.8 added (not Greece's): a fisherman, decorations, music, government scripts. By the rule each mod must have them under names of its own; the method is the one used for Greece (a one-letter or prefix swap in the file and in what refers to it). Not done.
 
 ## To check
 
-- `validate-mod.js --game`: 0 errors fixed by the port, **4 errors that are the mod's own**: `hero_gives_double_items.vs`, `centaur_summoning.vs`, `return_range_unit.vs` and `paeceful_idle.vs` are referenced by `HERO`, `HPRIEST`, `RANGED` and `WILD_HEN` but are in neither the mod, 1.40, HD, nor 4.2. Kept as the original has them, like the MCI's. 144 warnings (animation frames/rows of the heroes and `HTOXOTES`), also the original's.
-- 23 conflicts with HD, where the mod's side was used (`raw/port-140/greek-mod-1-8.md`): `GETTACTICSCRIPT.vs` (the AI's Roman branch choice, 100 lines), `ONFINISH_RESEARCH.vs`, `UNIT_*.vs`, the Roman voices, `COMMANDS/ARENA.XML` and `VILLAGE.XML`, the HD sneak behaviour lost in `IMOUNTAINEER` and `THUNTRESS`. Not reviewed one by one yet.
-- Game modes: the mod's 4 victory scripts are HD's with the kills/deaths statistics added; `5 ALTERNATIVE.VS` is HD's. Not the 4.2 case (no scripts hidden), but untried.
-- **In game (2026-10-23, Linux, 1920x1080):** the main menu loads with the mod's background, logo and version text, and the buttons sit on the right (after the `TEMPLATE.INI` and `MAINMENU.INI` fixes above; the first try drew the menu at 1024x768 in the middle of the screen). `imperivm-mod.log` registered `greek` (index 32, base ImperialRome, letter H, replaces ImperialRome) and added it to the room dropdowns, no errors. **Not tried yet:** a game against the AI with Greece, Rome's branch choice, the other menus (multiplayer, adventures, profile), the mod's adventures and scenarios, voices and music.
+- `validate-mod.js --game`: 0 errors, 98 warnings (animation frames/rows of the heroes and `QTOXOTES`, odd extensions, decoration frames), all the original's.
+- 23 conflicts with HD where the mod's side was used by `port-140.js` (`raw/port-140/greek-mod-1-8.md`) are mostly files this port no longer ships (Roman voices, `GETTACTICSCRIPT.vs`…); the ones left are in `SUBAI` (`ONFINISH_RESEARCH`, `UNIT_ON_KILL`). Two hunks that edit the game's own lines (`ExploreCircle(…, 6000)` for 4500, `inherentlevel >= 12`) were left out: they are the game's, not Greece's.
+- **In game, 2026-10-23, Linux, 1920x1080.**
+  - First independent build (no maps, no menu skin), `Crossroads` skirmish with Greece, Republican Rome, Imperial Rome and Greece: Greece in the lobby, the Greek town templates picked, **then the game hung** (`HANG`, main thread inside `CVXScriptObj::StartCurrentCommand` → `StartScriptSlot` → `CInterpreter::Start` → `CMallocPtrPool::Alloc`: a command's script being started again and again, or the pool exhausted). 3 Greek AI scripts did not compile at that point (`AIV_MaxHMyrmidon`, `AIV_MaxHToxotes`, `AIV_TimeStrenghtenStrongholdGates` were not declared); fixed, and the hang was still there on the second build (the AI variables and `TSH_RECRUITARMY` patch included). The `TS_BritishTactic.vs` `nSpearmen` error in the log is the game's own (imperivm-resurrected#12).
+  - The first build (Greece in Imperial Rome's slot, letter `H`; kept in `originals/old-installed-greek-mod-1-8-*`) starts and plays. Its `unit_on_kill.vs` has a compile error of its own (`Closing } without corresponding opening`, a bad merge).
+  - A player judges a build first by the menu: without the mod's background and logo it is not credible. That is why the menu skin is back.
+  - **Cause of the hang (found and confirmed in game, 2026-10-23):** `DATA/SUBAI/TOWNHALL_BUILDINGSBEHAVIOR_H.VS`, attached to the Greek town hall, began with `if (This.AsBuilding.race != ImperialRome) return;`. In the 1.8 Greece *was* Imperial Rome, so it never returned. With Greece on a race of its own the test is true, the script returns at once, and the engine, which restarts a behavior script every time it ends (the game's own end with `Sleep(n)` for that reason, and the keensight one says "prevent behavior script from terminating (this will lockup the game)"), starts it again at once, forever, on the game's one thread. The HANG stacks (`CVXThreadManager::UnlinkThread` ← `DeleteThread` ← `RunScriptThread`; `StartScriptSlot`) are that loop. The test is removed (the script is only attached to Greek classes), and `tools/greek-1-8.js` reports any behavior script of a Greek class that can return before its first `Sleep`. Builds E and F from before the fix hung; E2 (full) and F2 (no Greek AI) have the fix and **start and play**: Greece in the lobby, its town with the Greek buildings, the bars.
+  - The interface is the base's (`INFOBAR_GREEK18.INI`, `CMDBARGREEK18.INI` and the `FRAMES.INI` patch do nothing: the log says "bars and menus of civilization 32: with the interface of its base (4)"; the SDK says so too).
+- **Menu buttons:** the first build with the menu skin showed the game's own buttons: the mod's are `UI/MENU/BUTTON*.BMP` (`ImgButton200..202` in its `TEMPLATE.INI`), which this tool removed as "replaces the game's own". `UI/MENU/` is part of the skin and stays.
+- **Not tried yet:** the Greek AI as an opponent for long, a hero, a hero, the Greek researches, the voices and sounds, the maps and adventures with the renamed classes.

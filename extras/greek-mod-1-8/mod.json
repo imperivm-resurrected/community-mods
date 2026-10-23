@@ -7,9 +7,9 @@
     "Villoh (port)"
   ],
   "description": {
-    "spanish": "Añade Grecia como civilización nueva (hoplita, hipaspista, mirmidón, toxotes, carro, héroes, agora, gimnasio…), mezcla Roma republicana e imperial, con IA para Roma y Grecia, Grecia en modo conquista y nuevas aventuras y escenarios. La última versión (1.8) del primer Greek Mod de Rattlesmake.",
-    "english": "Adds Greece as a new civilization (hoplite, hypaspist, myrmidon, toxotes, chariot, heroes, agora, gymnasium…), blends Republican and Imperial Rome, with AI for Rome and Greece, Greece in conquest mode and new adventures and scenarios. The last release (1.8) of Rattlesmake's first Greek Mod.",
-    "italian": "Aggiunge la Grecia come nuova civiltà (oplita, ipaspista, mirmidone, toxotes, carro, eroi, agorà, ginnasio…), unisce Roma repubblicana e imperiale, con IA per Roma e Grecia, la Grecia in modalità conquista e nuove avventure e scenari. L'ultima versione (1.8) del primo Greek Mod di Rattlesmake."
+    "spanish": "Añade Grecia como civilización propia (hoplita, hipaspista, mirmidón, toxotes, carro, héroes, ágora, gimnasio…), con su IA, sus objetos, formaciones y su ciudad y aldeas en el mapa aleatorio. Es la última versión (1.8) del primer Greek Mod de Rattlesmake, adaptada para convivir con las civilizaciones del juego: no modifica ninguna.",
+    "english": "Adds Greece as a civilization of its own (hoplite, hypaspist, myrmidon, toxotes, chariot, heroes, agora, gymnasium…), with its AI, items, formations and its city and villages on the random map. The last release (1.8) of Rattlesmake's first Greek Mod, adapted to live next to the game's civilizations: it changes none of them.",
+    "italian": "Aggiunge la Grecia come civiltà a sé (oplita, ipaspista, mirmidone, toxotes, carro, eroi, agorà, ginnasio…), con la sua IA, i suoi oggetti, le formazioni e la sua città e i villaggi nella mappa casuale. L'ultima versione (1.8) del primo Greek Mod di Rattlesmake, adattata per convivere con le civiltà del gioco: non ne modifica nessuna."
   },
   "category": "Civilizations",
   "redistributable": true,
