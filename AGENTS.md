@@ -36,6 +36,17 @@ Conventional Commits, in English, imperative mood, lowercase after the type, no 
 - Validate with `validate-mod.js --game`, then try it in the game and read `Logs\imperivm\imperivm-mod.log`. Say in the notes what was tried in-game and what was not. A comparison of files does not prove a mod works.
 - A mod cannot ship executables or DLLs. Say in the notes what the original did through its `.exe` or `winmm.dll` that the port cannot carry.
 
+## Civilizations are independent
+
+A mod that adds a civilization (Greece, a Rome branch, a new people) must work **on its own and next to any other civilization mod, 100%**. Two civilizations from two mods are two civilizations in the lobby, never one that replaces or overwrites the other.
+
+- Each civilization mod has its own `civs/<id>.json` (own `id`, `index`, `letter`, `race`), its own class ids, entity folders, commands and scripts. Nothing is shared with another mod by name or by path.
+- No file in the same path as another mod's. What a mod needs to change in a game file (shared commands, AI helpers, `unit_attack.vs`, `items.xml`, `const.ini`…) goes as a **patch** that adds only its own part (as CGWAR does), never as a full replacement. Patches from several mods must add up.
+- If two mods use the same names (the same `H*` classes, `Greek Town N` templates, `GreekHero`), the one being ported is renamed, as `tools/cgwar-greece.js` did for CGWAR (`M*` → `K*`). Do not rename or touch the other mod's files.
+- `incompatibleWith` is **not** a solution. It is accepted only as a temporary state for a port that is not finished, and it goes in the mod's `NOTES.md` under *Pending* with what overlaps. A civilization mod is not done while it needs it.
+- Check it before saying a port is complete: list the paths and class ids shared with every other civilization mod in `ported/` (`ids` and same-path files) and keep the list in `NOTES.md`. Then test two of them active together.
+- Currently pending: `greek-civilization-mod` (4.2), `cgwar` and `greek-mod-1-8` are marked incompatible with each other.
+
 ## Credits and permissions
 
 - `"authors"` in `mod.json` is the original author. Add `"<name> (port)"` only for real adaptation work (*reduce*, *rewrite*), not for *wrap*.
