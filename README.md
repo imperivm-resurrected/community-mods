@@ -87,6 +87,12 @@ Letters and indices are unique across all the ports (the SDK allows indices 10-9
 | 31 | `greek` | `H` | ImperialRome, replaces it | 4.2 | Not independent (takes Imperial Rome's slot) |
 | 32 | `greek18` | `Q` | ImperialRome (own race) | 1.8 | Greece independent of the game's and of the 4.2/CGWAR classes; still shares neutral content (fisherman, scripts, music) with the 4.2, Imperivm Legacy and the MCI |
 | 33 | `rome18` | `J` | RepublicanRome | 1.8 | Republican Rome with the 1.8's stats and costs, cloned from HD (`tools/greek-1-8-civs.js`); the other civilizations of the 1.8 follow |
+| 34 | `gaul18` | `L` | Gaul | 1.8 | Gaul with the 1.8's stats and barracks costs |
+| 35 | `carthage18` | `P` | Carthage | 1.8 | Same (elephant, javelin thrower, noble; barracks and temple costs) |
+| 36 | `britain18` | `O` | Britain | 1.8 | Same (shield bearer, bronze spearman, bowman, hero) |
+| 37 | `iberia18` | `U` | Iberia | 1.8 | Same (archer, slinger, cavalry speeds) |
+| 38 | `egypt18` | `V` | Egypt | 1.8 | Same (outpost) |
+| 39 | `germany18` | `F` | Germany | 1.8 | Same (axeman; barracks, Temple of Neptune and tent commands) |
 
 This table is the plan's starting point, not the end state: see *Pending: independence* in each mod's `NOTES.md`.
 

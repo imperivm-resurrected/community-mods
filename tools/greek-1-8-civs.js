@@ -17,8 +17,15 @@ const SUFFIX = "Greek Mod 1.8", LABEL = "Greek 1.8";                // the lobby
 const CIVS = [
   { base: "RepublicanRome", baseLetter: "R", hero: "RepublicanRomanHero", letter: "J", id: "rome18", index: 33,
     name: { spanish: "Roma rep.", english: "Rep. Rome", italian: "Roma rep." },   // short: the dropdown cuts long names
-    dropBehavior: /_Enable_Or_Disable_Cmd\.vs$/i, dropCmd: /^trainM/ },
+    dropCmd: /^trainM/ },                                                          // the Imperial units in the Republican barracks: the Rome branch
+  { base: "Gaul", baseLetter: "G", hero: "GaulHero", letter: "L", id: "gaul18", index: 34, name: { spanish: "Galos", english: "Gaul", italian: "Galli" } },
+  { base: "Carthage", baseLetter: "C", hero: "CarthaginianHero", letter: "P", id: "carthage18", index: 35, name: { spanish: "Cartago", english: "Carthage", italian: "Cartagine" } },
+  { base: "Britain", baseLetter: "B", hero: "BritonHero", letter: "O", id: "britain18", index: 36, name: { spanish: "Britania", english: "Britain", italian: "Britannia" } },
+  { base: "Iberia", baseLetter: "I", hero: "IberianHero", letter: "U", id: "iberia18", index: 37, name: { spanish: "Iberia", english: "Iberia", italian: "Iberia" } },
+  { base: "Egypt", baseLetter: "E", hero: "EgyptianHero", letter: "V", id: "egypt18", index: 38, name: { spanish: "Egipto", english: "Egypt", italian: "Egitto" } },
+  { base: "Germany", baseLetter: "T", hero: "GermanHero", letter: "F", id: "germany18", index: 39, name: { spanish: "Germania", english: "Germany", italian: "Germania" } },
 ];
+const DROP_BEHAVIOR = /_Enable_Or_Disable_Cmd\.vs$/i, NEVER = /(?!)/;
 const rd = f => fs.readFileSync(f, "latin1"), wr = (f, s) => { fs.mkdirSync(path.dirname(f), { recursive: true }); fs.writeFileSync(f, s, "latin1"); };
 const classOf = s => (s.match(/<class\b[^>]*?\bid\s*=\s*"([^"]+)"/) || [])[1];
 const parentAttr = s => (s.match(/<class\b[^>]*?\bparent\s*=\s*"([^"]+)"/) || [])[1];
@@ -44,7 +51,7 @@ for (const civ of CIVS.filter(c => !want.length || want.includes(c.id))) {
   fs.mkdirSync(SC); fs.mkdirSync(SM);
   for (const f of files(HD_CLASSES, /\.sc\.xml$/i)) fs.copyFileSync(path.join(HD_CLASSES, f), path.join(SC, f));
   for (const f of files(HD_COMMANDS, /\.xml$/i)) fs.copyFileSync(path.join(HD_COMMANDS, f), path.join(SM, f));
-  const stripBehavior = s => s.replace(/^[ \t]*<behavior\b[^>]*\bscript\s*=\s*"([^"]+)"[^>]*\/>[ \t]*\r?\n?/gim, (m, v) => civ.dropBehavior.test(v) ? "" : m);
+  const stripBehavior = s => s.replace(/^[ \t]*<behavior\b[^>]*\bscript\s*=\s*"([^"]+)"[^>]*\/>[ \t]*\r?\n?/gim, (m, v) => DROP_BEHAVIOR.test(v) ? "" : m);
   let overlaid = 0;
   for (const f of files(path.join(MERGED, "classes"), /\.sc\.xml$/i)) {
     const s = rd(path.join(MERGED, "classes", f)), id = classOf(s);
@@ -54,10 +61,15 @@ for (const civ of CIVS.filter(c => !want.length || want.includes(c.id))) {
     const s = rd(path.join(PORT_CLASSES, f)), id = classOf(s);
     if (id && OWN.test(id) && !fs.existsSync(path.join(SC, f))) { wr(path.join(SC, f), stripBehavior(s)); overlaid++; }
   }
-  const dropCmds = s => s.replace(/<cmd\b[^>]*?\bname\s*=\s*"([^"]*)"[\s\S]*?<\/cmd>[ \t]*\r?\n?/g, (m, n) => civ.dropCmd.test(n) ? (report.push(`command ${n} (Rome branch) not ported`), "") : m);
-  const barracks = ci(path.join(MERGED, "commands"), `${bl}BARRACKS.XML`);
-  if (barracks) wr(path.join(SM, ci(SM, barracks) || barracks), dropCmds(rd(path.join(MERGED, "commands", barracks))));
-  console.log(`${civ.id}: ${overlaid} classes and ${barracks || "no barracks commands"} from the mod over HD's`);
+  const dropCmds = s => s.replace(/<cmd\b[^>]*?\bname\s*=\s*"([^"]*)"[\s\S]*?<\/cmd>[ \t]*\r?\n?/g, (m, n) => (civ.dropCmd || NEVER).test(n) ? (report.push(`command ${n} (Rome branch) not ported`), "") : m);
+  // the merged command files that are the civilization's alone (every source is one of its classes): its barracks, temples...
+  const ownCmds = [];
+  for (const f of files(path.join(MERGED, "commands"), /\.xml$/i)) {
+    const t = rd(path.join(MERGED, "commands", f)), srcs = [...t.replace(/<!--[\s\S]*?-->/g, "").matchAll(/<src\s+obj\s*=\s*"([^"]*)"/g)].map(m => m[1]);
+    if (/SCELTA/i.test(f)) continue;                                      // RHT_SCELTA_ROMA: the Rome branch choice, not ported
+    if (srcs.length && srcs.every(x => OWN.test(x))) { wr(path.join(SM, ci(SM, f) || f), dropCmds(t)); ownCmds.push(f); }
+  }
+  console.log(`${civ.id}: ${overlaid} classes and ${ownCmds.join(", ") || "no commands"} from the mod over HD's`);
 
   // clone it
   const out = fs.mkdtempSync(path.join(os.tmpdir(), `clone-${civ.id}-`));
@@ -102,6 +114,22 @@ for (const civ of CIVS.filter(c => !want.length || want.includes(c.id))) {
   for (const f of heroes) fs.rmSync(f);
   for (const [o] of rename) { const hit = ci(PORT_CLASSES, `${o}.SC.XML`); if (hit) { const id = classOf(rd(path.join(PORT_CLASSES, hit))); if (id === o) fs.rmSync(path.join(PORT_CLASSES, hit)); } }
 
+  // the mod's own new classes that its maps place (RVillager_Apollonia...): the maps name the copies
+  {
+    const hdIds = new Set(files(HD_CLASSES, /\.sc\.xml$/i).map(f => (classOf(rd(path.join(HD_CLASSES, f))) || "").toLowerCase()));
+    const fresh = [...rename].filter(([o]) => !hdIds.has(o.toLowerCase()));
+    if (fresh.length) {
+      const hpfs = require("./hpfs.js"), re = new RegExp(`(?<![A-Za-z0-9])(${fresh.map(([o]) => o).join("|")})(?![A-Za-z0-9])`, "g"), to = Object.fromEntries(fresh);
+      let touched = 0;
+      for (const f of walk(PORT).filter(f => /^(scenarios|adventures|conquests)\/.*\.bfhp$/i.test(f))) {
+        const p = path.join(PORT, f), buf = fs.readFileSync(p); let dirty = false;
+        try { for (const e of hpfs(buf)) { if (!/\.(xml|vs)$/i.test(e.path)) continue; const t = e.read().toString("latin1"), n = t.replace(re, m => to[m]); if (n !== t) { e.write(Buffer.from(n, "latin1")); dirty = true; } } }
+        catch (err) { report.push(`${f}: ${err.message}`); continue; }
+        if (dirty) { fs.writeFileSync(p, buf); touched++; }
+      }
+      console.log(`${civ.id}: ${fresh.length} classes of the mod's own (${fresh.map(x => x[0]).join(", ")}) renamed in ${touched} maps`);
+    }
+  }
   // 4. commands and patches
   const cmdFile = path.join(out, "data", "commands", `${Id}.xml`);
   wr(path.join(PORT, "DATA", "COMMANDS", `${Id.toUpperCase()}.XML`), rd(cmdFile));

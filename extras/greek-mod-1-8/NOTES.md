@@ -47,10 +47,12 @@ node tools/greek-1-8-civs.js
 
 ## What `tools/greek-1-8-civs.js` does: the game's civilizations as the mod changed them
 
-One civilization per row of its table (today `rome18`). It runs after `greek-1-8.js`, which keeps what `port-140.js` merged for the game's classes and commands (HD + the 1.8's changes) in `originals/greek-1-8-merged`.
+One civilization per row of its table: `rome18` (letter `J`), `gaul18` (`L`), `carthage18` (`P`), `britain18` (`O`), `iberia18` (`U`), `egypt18` (`V`), `germany18` (`F`); indices 33-39. Letters chosen among the ones no game or mod class starts with. It runs after `greek-1-8.js`, which keeps what `port-140.js` merged for the game's classes and commands (HD + the 1.8's changes) in `originals/greek-1-8-merged`.
 
 - **Clone, from the mod's version.** The SDK's `clone-civilization.js` clones the base from a staged DATA: HD's classes and commands with the mod's version of the civilization's own classes and of its barracks commands over them. So the copy has the 1.8's stats and costs.
 - **Base classes inside the copy.** What the 1.8 changed in `Ranged`, `Hero`, `Catapult`... (`base-changes.json`) is written inside each copy, as for Greece (50 elements for Rome). A copy whose parent is a copy has it through the parent.
+- **The mod's own new classes that its maps place** (`RVillager_Apollonia`, `GVillager_Apollonia`...) become the copy's (`JVillager_Apollonia`) and the map is rewritten inside (HPFS), as for Greece.
+- **Command files that are the civilization's alone** (every source one of its classes: `GBARRACKS`, `CBARRACKS`, `CTEMPLE`, `TBARRACKS`, `TTEMPLEOFNEPTUS`, `TTENT`) are staged too, so the copy has the 1.8's costs.
 - **Not ported.** The Rome branch (`R*_Enable_Or_Disable_Cmd.vs`, `trainMVelit`, `trainMPraetorian`), references to scripts the mod never shipped (36).
 - **The mod's `Hero<unit>` classes** (unmounted heroes for the editor: `HeroRVelit`...) become `Hero<letter><unit>` (`HeroJVelit`), with the civilization's race (the mod's `HeroRVelit` had `ImperialRome`: a mistake of the mod).
 - **Republican Rome (`rome18`, letter `J`, index 33)**: 78 classes, 20 commands, 30 shared commands patched (merged with the Greek patch files of the same name), `Rome18Hero` (the generic hero), `RScout` 250 health, `RPrinciple` damage 24, `RChariot` 500 health, `RLiberatus` Freedom/Learning...; trainable-unit costs of `RBARRACKS.XML` as the mod has them.
@@ -60,7 +62,7 @@ Still pending for these civilizations: the mod's changes to the shared research 
 
 ## Pending: independence
 
-**Only Greece is independent so far.** The game's civilizations the mod changed (Gauls, Republican Rome, Carthage, Iberia, Britain, Egypt, Germany) show in the lobby as the game's, without the mod's parameters: each has to be a civilization of its own, "<civ> (Greek Mod 1.8)" (see *Left out*).
+**Greece and the game's seven others (as the mod changed them) are independent civilizations now** (`greek18` and `rome18`...`germany18`). The classes the mod added with a game race and that no map of the mod needs renamed are left as the mod had them: `Spartacus1`, `Spartacus2` (race `RepublicanRome`).
 
 The port declares `incompatibleWith` the 4.2 and the CGWAR; `node tools/shared-paths.js greek-mod-1-8` says why it still has to (checked 2026-10-23, after the build):
 
