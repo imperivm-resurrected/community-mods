@@ -15,9 +15,5 @@
   "redistributable": true,
   "sources": {
     "page": "https://imperivmgbr.foroactivo.com/t1207-greek-civilization-mod-v1-8-by-rattlesmake"
-  },
-  "incompatibleWith": [
-    "greek-civilization-mod",
-    "cgwar"
-  ]
+  }
 }

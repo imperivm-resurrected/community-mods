@@ -131,7 +131,7 @@ for (const [file, list] of Object.entries(hdFiles)) for (const c of list) {
   if (c.src.includes("KTavern")) addSrc(file, c.name, "KTavern2");
   if (c.src.includes("GOutpost")) addSrc(file, c.name, "KOutpost");                                // the Greek outpost sells food and gold
 }
-wr(path.join(MOD_CMDS, "GREECE.XML"), `<commands>\n\n${own.join("\n\n")}\n\n</commands>\n`);
+wr(path.join(MOD_CMDS, "GREECE_CGWAR.XML"), `<commands>\n\n${own.join("\n\n")}\n\n</commands>\n`);
 for (const [file, list] of Object.entries(ops)) wr(path.join(OUT, "patches", "DATA", "COMMANDS", file), `<patch>\n${list.join("\n")}\n</patch>\n`);
 
 // --- 6. Greek interface: files the game looks up by the civilization's internalName ---

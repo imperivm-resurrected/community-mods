@@ -243,28 +243,8 @@ console.log(`${own.length} Greek commands, ${Object.values(ops).reduce((a, l) =>
 // line diff of two scripts -> script patch directives (@after/@before/@bottom); only the pure insertions whose text passes `keep`
 // (the Greek part: what the mod changed for the game's civilizations is not here). An anchor is a line of the original that holds
 // text no earlier line holds; if the line the insertion follows or precedes is not one, it is reported and left out
-function vsPatch(hdText, modText, keep, label) {
-  const tmp = fs.mkdtempSync(path.join(os.tmpdir(), "g18-")), a = path.join(tmp, "a"), b = path.join(tmp, "b");
-  const A = hdText.replace(/\r/g, "").split("\n"), B = modText.replace(/\r/g, "").split("\n");
-  fs.writeFileSync(a, A.join("\n")); fs.writeFileSync(b, B.join("\n"));
-  const d = cp.spawnSync("diff", ["-U0", a, b], { encoding: "utf8" }).stdout; fs.rmSync(tmp, { recursive: true });
-  const safe = i => i >= 1 && i <= A.length && A[i - 1].trim().length >= 6 && A.findIndex(l => l.includes(A[i - 1].trim())) === i - 1;
-  const out = [];
-  for (const h of d.split(/^(?=@@ )/m).slice(1)) {
-    const m = h.match(/^@@ -(\d+)(?:,(\d+))? \+(\d+)(?:,(\d+))? @@/), at = +m[1];
-    const lines = h.split("\n").slice(1).filter(l => l !== "\\ No newline at end of file"), delAll = lines.filter(l => l.startsWith("-")).map(l => l.slice(1).trim());
-    const insAll = lines.filter(l => l.startsWith("+")).map(l => l.slice(1));
-    // lines the mod only re-indented (or whose end of file changed) are not edits: what is new is the insertion
-    const del = delAll.filter(l => l && !insAll.some(x => x.trim() === l)), ins = insAll.filter(l => !delAll.includes(l.trim()) || !l.trim());
-    const text = ins.join("\n"), first = ins.find(l => l.trim()) || "";
-    if (del.length || !keep(text)) { report.push(`${label}: hunk at line ${at} left out (${del.length ? "it edits the game's lines" : "not Greek"}): ${first.trim().slice(0, 60)}`); continue; }
-    if (at >= A.length) out.push("@bottom", ...ins);
-    else if (safe(at)) out.push(`@after ${A[at - 1].trim()}`, ...ins);
-    else if (safe(at + 1)) out.push(`@before ${A[at].trim()}`, ...ins);
-    else report.push(`${label}: no safe anchor at line ${at}: ${first.trim().slice(0, 60)}`);
-  }
-  return out.length ? out.join("\r\n") + "\r\n" : null;
-}
+const { vsPatch: vsp, xmlAdded, tagFiles } = require("./lib/ported-patch.js");
+const vsPatch = (hd, mod, keep, label) => vsp(hd, mod, keep, label, report);
 const hdRel = rel => find(HD, rel);
 const patches = [];
 // 4a. the scripts with Greek behavior: the Greek insertions as patches. The recruiting helpers (TSH_*) decide with "Greece = ImperialRome",
@@ -278,13 +258,9 @@ for (const rel of ["DATA/SUBAI/ONFINISH_RESEARCH.VS", "DATA/SUBAI/UNIT_ON_KILL.V
 // 4b. items, formations and random map objects the mod only added to: the added elements as a patch
 const xmlAddPatch = (rel, root) => {
   const mp = find(OUT, rel), hp = hdRel(rel); if (!mp || !hp) return;
-  const A = rd(hp).replace(/\r/g, ""), B = rd(mp).replace(/\r/g, "");
-  const el = s => [...s.replace(/<!--[\s\S]*?-->/g, "").matchAll(/<([A-Za-z_][\w-]*)\b[^>]*?(\/>|>[\s\S]*?<\/\1>)/g)].map(m => m[0]);
-  const body = s => s.replace(/^[\s\S]*?<[A-Za-z_][\w-]*\b[^>]*>/, "");
-  const ha = new Set(el(body(A)).map(x => x.replace(/\s+/g, " "))), added = el(body(B)).filter(x => !ha.has(x.replace(/\s+/g, " ")));
-  fs.rmSync(mp);
-  if (!added.length) return;
-  wr(path.join(OUT, "patches", rel), `<patch>\n  <add select="/${root}">\n${added.join("\n")}\n  </add>\n</patch>\n`); patches.push(`${rel} (${added.length} elements)`);
+  const r = xmlAdded(rd(hp), rd(mp), root, report, rel); fs.rmSync(mp);
+  if (!r) return;
+  wr(path.join(OUT, "patches", rel), r.xml); patches.push(`${rel} (${r.count} elements)`);
 };
 xmlAddPatch("DATA/ITEMS.XML", "items"); xmlAddPatch("DATA/FORMATIONS.XML", "formations");
 // 4c. const.ini: the Greek names for heroes (MName00x -> QName00x)
@@ -292,7 +268,7 @@ xmlAddPatch("DATA/ITEMS.XML", "items"); xmlAddPatch("DATA/FORMATIONS.XML", "form
   const mp = find(OUT, "DATA/CONST.INI"), hp = hdRel("DATA/CONST.INI");
   if (mp && hp) {
     const get = s => new Map([...s.matchAll(/^\s*(MName00\d)\s*=\s*(.+?)\s*$/gm)].map(m => [m[1], m[2]]));
-    const A = get(rd(hp)), B = get(rd(mp)), lines = [`[Names]`];
+    const A = get(rd(hp)), B = get(rd(mp)), lines = [`[GamePlay]`];                  // the section the game's own MName00x are in
     for (const [k, v] of B) if (A.get(k) !== v) lines.push(`${LETTER}${k.slice(1)} = ${v}`);
     fs.rmSync(mp);
     if (lines.length > 1) { wr(path.join(OUT, "patches", "DATA", "CONST.INI"), lines.join("\r\n") + "\r\n"); patches.push("DATA/CONST.INI (hero names)"); }
@@ -366,13 +342,15 @@ console.log(`${left} more files that were edits of the game's own left out`);
   prune(OUT);
   report.push(`${swapped} files that replaced the game's own (sounds, animations, menu skin) left out`);
 }
+// art with the name of another mod's (the Greek icons all the Greek mods draw): the mod's own names
+tagFiles(OUT, ["UI/CMDBAR/FRAMES/greek_frame.bmp", "UI/CMDBAR/RESEARCH/imperial.bmp", "UI/CMDBAR/UPGRADES/olympic games.bmp", "UI/ICONS/UPGRADES/olympic games.bmp"], "g18");
 for (const f of walk(OUT)) if (/\.(py|generated|orig)$|\.ini\.(generated|orig)$/i.test(f) || /^DATA\/SUBAI\/R(ARENA|BARRACKS|BLACKSMITH|TAVERN|TEMPLE|TOWNHALL)_ENABLE_OR_DISABLE_CMD\.VS$/i.test(f) || /^DATA\/COMMANDS\/RHT_SCELTA_ROMA\.XML$/i.test(f)) { fs.rmSync(path.join(OUT, f)); left++; }
 // ---- 8. the civilization -------------------------------------------------------------------------------------------------------
 const alias = {};                                          // what the game's AI asks for in Imperial Rome -> the Greek class
 const map = { MTownhall: "QTownhall", MBarracks: "QBarracks", MBlacksmith: "QBlacksmith", MTemple: "QTemple", MTavern: "QTavern", MTavern2: "QTavern2", MArena: "QArena", MTower: "QTower", MSentry: "QSentry", MSentry1: "QSentry1", MGuardPostSentry: "QGuardPostSentry" };
 for (const g of ["MGate0", "MGate1", "MGate2", "MGate3", "MGate4", "MGate5", "MGate6", "MGate7", "MWallsE", "MWallsN", "MWallsNE", "MWallsNW", "MWallsS", "MWallsSE", "MWallsSW", "MWallsW"]) map[g] = LETTER + g.slice(1);
 for (const [k, v] of Object.entries(map)) if (fs.existsSync(path.join(CLASSES, `${v.toUpperCase()}.SC.XML`))) alias[k] = v;
-const civ = { id: RACE, index: INDEX, base: "ImperialRome", name: { spanish: "Grecia (Greek 1.8)", english: "Greece (Greek 1.8)", italian: "Grecia (Greek 1.8)" },
+const civ = { id: RACE, index: INDEX, base: "ImperialRome", name: { spanish: "Grecia (Rattlesmake)", english: "Greece (Rattlesmake)", italian: "Grecia (Greek 1.8)" },
   letter: LETTER, internalName: INTERNAL, template: TEMPLATE, ai: true, alias: { classes: alias, commands: {} } };
 wr(path.join(OUT, "civs", `${RACE}.json`), JSON.stringify(civ, null, 2) + "\n");
 fs.rmSync(path.join(OUT, "civs", "greek.json"), { force: true });
@@ -401,4 +379,5 @@ fs.rmSync(path.join(OUT, "civs", "greek.json"), { force: true });
 
 // ---- 10. hand fixes of this mod (extras/greek-mod-1-8/) ------------------------------------------------------------------------
 if (fs.existsSync(EXTRAS)) for (const f of walk(EXTRAS)) { if (f === "NOTES.md") continue; const p = path.join(EXTRAS, f); const dst = path.join(OUT, f); fs.mkdirSync(path.dirname(dst), { recursive: true }); fs.copyFileSync(p, dst); }
+console.log(`menu skin: ${require("./lib/menu-skin.js").skinToPatches({ OUT, HD: path.join(ROOT, "originals", "game-data", "paks") })} layout files became patches of the keys they changed`);
 if (report.length) console.log(`to check:\n  ${report.join("\n  ")}`);

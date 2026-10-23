@@ -15,8 +15,5 @@
     "english": "Adds Greece as a new civilization: cities, villages, outposts, units (hoplite, peltast, toxotai, hypaspist, cataphract, chariot, Ares guard…), heroes and technologies of its own, with its AI. New items, a free village and extra units for the editor (myrmidon, slinger, Vael and Secuaz). Adapted to the HD game keeping its fixes."
   },
   "tags": [],
-  "redistributable": true,
-  "incompatibleWith": [
-    "greek-civilization-mod"
-  ]
+  "redistributable": true
 }

@@ -38,7 +38,7 @@ node tools/greek-1-8-civs.js
 | What | Why / next |
 |---|---|
 | The game's other civilizations as the mod changed them (Gauls 9 classes, Britain 6, Carthage 8, Egypt 2, Germany 9, Iberia 7, Republican Rome 14) | Each becomes its own civilization, "<civ> (Greek Mod 1.8)", cloned from HD with the mod's changes on top. Not done |
-| The Republican/Imperial/Punic choice at the town hall (`RHT_SCELTA_ROMA.XML`, `R*_Enable_Or_Disable_Cmd.vs`, `ChooseXxxRome`) | A patch for the 1.40 engine: not ported (AGENTS.md) |
+| The Republican/Imperial/Punic choice at the town hall (`RHT_SCELTA_ROMA.XML`, `R*_Enable_Or_Disable_Cmd.vs`, `ChooseXxxRome`) | The choosing is not ported, **the content behind it is still to port**: one civilization per branch, with its commands built in (AGENTS.md, *What a civilization is, it is from the start*). Today only the Republican one exists (`rome18`), without the Imperial and Punic units |
 | The mod's AI for the other civilizations (`GetTacticScript.vs`, `TSH_*`, the `ESH_*` parts about Rome) | Part of the other civilizations above. The Greek AI uses the `GR18_*` copies |
 | Game-wide edits: `const.ini` values, game scripts (kills and losses statistics), `terrains.xml`, `vxnotifications.xml`, interface menus, `MAINMENU.INI`, `TEMPLATE.INI` | Not a civilization's: a mod that replaces them hides every other one's. They come back only as patches if a decision says so |
 | 122 sounds, animations and decorations whose path is the game's, with other bytes (death, fight and selection sounds…) | They would replace the game's for every civilization |

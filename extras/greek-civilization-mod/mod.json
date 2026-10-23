@@ -17,8 +17,5 @@
   "sources": {
     "page": "https://gamebanana.com/mods/728851",
     "gamebanana": 728851
-  },
-  "incompatibleWith": [
-    "cgwar"
-  ]
+  }
 }

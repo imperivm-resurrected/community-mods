@@ -3,9 +3,9 @@
   "index": 30,
   "base": "ImperialRome",
   "name": {
-    "spanish": "Grecia",
-    "english": "Greece",
-    "italian": "Grecia"
+    "spanish": "Grecia (CGWAR)",
+    "english": "Greece (CGWAR)",
+    "italian": "Grecia (CGWAR)"
   },
   "letter": "K",
   "internalName": "Greek",

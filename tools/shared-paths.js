@@ -20,7 +20,7 @@ for (const [name, m] of others) {
   }
   const ids = [...classIds(m)].filter(([c]) => myIds.has(c)).map(([c]) => c);
   if (diff.length || ids.length || rest.includes("--all")) console.log(`\n${name}: ${diff.length} files in the same path with other bytes${same.length ? `, ${same.length} identical` : ""}, ${ids.length} class ids in common`);
-  if (diff.length) console.log("  " + diff.slice(0, 25).join("\n  ") + (diff.length > 25 ? `\n  … ${diff.length - 25} more` : ""));
+  if (diff.length) console.log("  " + diff.slice(0, +process.env.SP_MAX || 25).join("\n  ") + (diff.length > (+process.env.SP_MAX || 25) ? `\n  … ${diff.length - 25} more` : ""));
   if (ids.length) console.log("  ids: " + ids.slice(0, 30).join(" "));
   if (rest.includes("--all") && same.length) console.log("  identical: " + same.slice(0, 10).join(", ") + (same.length > 10 ? " …" : ""));
   bad += diff.length + ids.length;
