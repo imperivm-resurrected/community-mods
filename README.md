@@ -12,6 +12,7 @@ and publish them on [GameBanana](https://gamebanana.com/games/26069), crediting 
 | [`DEAD-LINKS.md`](DEAD-LINKS.md) | Dead links of rows that stay in `MODS.md` (they have another working one) |
 | [`PENDING.md`](PENDING.md) | What is left to port, grouped by what holds it back, with where its files are. Generated: don't edit |
 | [`SOURCES.md`](SOURCES.md) | Forums, Discord servers, Telegram and sites (Spanish, Italian, English) where more mods can be found, with their state and what is already scraped |
+| [`GAMES.md`](GAMES.md) | Where to get the original games and their patches, which name is which, and how to run them on Linux with GE-Proton |
 | [`AUTHORS.md`](AUTHORS.md) | Modders and editors, with their Discord account and forum profile when found, to contact them |
 | [`ported/`](ported/) | Each ported mod, with its `mod.json`. Third-party binaries (`.bfhp`, `.bmp`, `.pak`, `.avi`) and the folders rebuilt by `port-140.js` aren't in git |
 | [`extras/`](extras/) | Our own changes to a mod: hand-resolved files, fixes, preview images, `mod.json` with credits. The tools copy them into `ported/<id>/` |
