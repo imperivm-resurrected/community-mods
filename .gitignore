@@ -19,5 +19,8 @@ ported/greek-mod-terrains/
 ported/imperivm-legacy/
 ported/mediterranevm-alpha/
 
+# Greek Civilization Mod 1.8 (full game copy, 2.8 GB): rebuilt from the forum rar + extras/greek-mod-1-8/ (see its NOTES.md)
+ported/greek-mod-1-8/
+
 # Greek Civilization Mod 4.2: rebuilt from the GameBanana zip + extras/greek-civilization-mod/ (shrink-mod.js, see its NOTES.md)
 ported/greek-civilization-mod/

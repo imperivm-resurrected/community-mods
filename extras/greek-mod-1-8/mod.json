@@ -1,0 +1,23 @@
+{
+  "id": "greek-mod-1-8",
+  "name": "Greek Civilization Mod 1.8",
+  "version": "1.8",
+  "authors": [
+    "Rattlesmake",
+    "Villoh (port)"
+  ],
+  "description": {
+    "spanish": "Añade Grecia como civilización nueva (hoplita, hipaspista, mirmidón, toxotes, carro, héroes, agora, gimnasio…), mezcla Roma republicana e imperial, con IA para Roma y Grecia, Grecia en modo conquista y nuevas aventuras y escenarios. La última versión (1.8) del primer Greek Mod de Rattlesmake.",
+    "english": "Adds Greece as a new civilization (hoplite, hypaspist, myrmidon, toxotes, chariot, heroes, agora, gymnasium…), blends Republican and Imperial Rome, with AI for Rome and Greece, Greece in conquest mode and new adventures and scenarios. The last release (1.8) of Rattlesmake's first Greek Mod.",
+    "italian": "Aggiunge la Grecia come nuova civiltà (oplita, ipaspista, mirmidone, toxotes, carro, eroi, agorà, ginnasio…), unisce Roma repubblicana e imperiale, con IA per Roma e Grecia, la Grecia in modalità conquista e nuove avventure e scenari. L'ultima versione (1.8) del primo Greek Mod di Rattlesmake."
+  },
+  "category": "Civilizations",
+  "redistributable": true,
+  "sources": {
+    "page": "https://imperivmgbr.foroactivo.com/t1207-greek-civilization-mod-v1-8-by-rattlesmake"
+  },
+  "incompatibleWith": [
+    "greek-civilization-mod",
+    "cgwar"
+  ]
+}
