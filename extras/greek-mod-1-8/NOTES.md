@@ -12,6 +12,7 @@ node tools/flatten-paks.js originals/greek-mod-1.8-full/GreekMod_1.8 originals/g
 ln -s $PWD/originals/greek-mod-1.8-full/GreekMod_1.8/rle.mmp originals/greek-mod-1.8-flat/rle.mmp
 node tools/port-140.js originals/greek-mod-1.8-flat ported/greek-mod-1-8 --id greek-mod-1-8 --name "Greek Civilization Mod 1.8" --version 1.8 --category Civilizations
 node tools/greek-1-8.js
+node tools/greek-1-8-civs.js
 ```
 
 `shrink-mod.js` is not used: it compares against the HD game and would undo its fixes (this mod is 1.40). `tools/flatten-paks.js` unpacks the packages in name order (the greater name wins, as in the game) and lays the mod's loose files over them. `port-140.js` merges with HD. `tools/greek-1-8.js` then makes Greece independent (below). `ported/greek-mod-1-8/` is not in git. It needs `originals/game-data/paks/` with every HD pack extracted (README, *Setup*), `Minimap.pak` and `Fonts.pak` included.
@@ -43,6 +44,19 @@ node tools/greek-1-8.js
 | 122 sounds, animations and decorations whose path is the game's, with other bytes (death, fight and selection sounds…) | They would replace the game's for every civilization |
 | `music/` (43 tracks) is kept, except where a track has the game's path | See *Pending: independence* |
 | `gbr.exe` (332 bytes different from the HD one), the launcher, the DLLs, `Settings.ini`, `config.ini`, RetroSpy (AGPL-3.0), `profiles/`, `hof/`, `Logs/`, `package/`, `update.xml` | A mod cannot carry them. The 332 bytes of the exe have not been read: see `extras/greek-mod-2-6-1/NOTES.md` for what the later ones change |
+
+## What `tools/greek-1-8-civs.js` does: the game's civilizations as the mod changed them
+
+One civilization per row of its table (today `rome18`). It runs after `greek-1-8.js`, which keeps what `port-140.js` merged for the game's classes and commands (HD + the 1.8's changes) in `originals/greek-1-8-merged`.
+
+- **Clone, from the mod's version.** The SDK's `clone-civilization.js` clones the base from a staged DATA: HD's classes and commands with the mod's version of the civilization's own classes and of its barracks commands over them. So the copy has the 1.8's stats and costs.
+- **Base classes inside the copy.** What the 1.8 changed in `Ranged`, `Hero`, `Catapult`... (`base-changes.json`) is written inside each copy, as for Greece (50 elements for Rome). A copy whose parent is a copy has it through the parent.
+- **Not ported.** The Rome branch (`R*_Enable_Or_Disable_Cmd.vs`, `trainMVelit`, `trainMPraetorian`), references to scripts the mod never shipped (36).
+- **The mod's `Hero<unit>` classes** (unmounted heroes for the editor: `HeroRVelit`...) become `Hero<letter><unit>` (`HeroJVelit`), with the civilization's race (the mod's `HeroRVelit` had `ImperialRome`: a mistake of the mod).
+- **Republican Rome (`rome18`, letter `J`, index 33)**: 78 classes, 20 commands, 30 shared commands patched (merged with the Greek patch files of the same name), `Rome18Hero` (the generic hero), `RScout` 250 health, `RPrinciple` damage 24, `RChariot` 500 health, `RLiberatus` Freedom/Learning...; trainable-unit costs of `RBARRACKS.XML` as the mod has them.
+- **SDK fix.** `clone-civilization.js` had the wrong class id for the generic hero of 6 civilizations (`RomeHero`, `ImperialHero`, `CarthageHero`, `IberiaHero`, `BritainHero`, `EgyptHero`): the hero stayed the base's and the copy's heroes played as the base. Fixed in the SDK.
+
+Still pending for these civilizations: the mod's changes to the shared research commands (`ARENA.XML`, `BLACKSMITH.XML`, `TEMPLE.XML`, `TAVERN.XML`: costs and texts; they are the same command for every civilization), the winter variants of the buildings (`RBarracksWinter`...: the clone tool reads the top folder of `classes` only), the mod's maps (they place the game's `R*` classes), and `unit_specials.ini`/`skills.ini` (global).
 
 ## Pending: independence
 

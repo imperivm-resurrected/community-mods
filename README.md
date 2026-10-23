@@ -86,6 +86,7 @@ Letters and indices are unique across all the ports (the SDK allows indices 10-9
 | 30 | `greece` | `K` | ImperialRome | CGWAR | Own race; shares 16 files with the 1.8 |
 | 31 | `greek` | `H` | ImperialRome, replaces it | 4.2 | Not independent (takes Imperial Rome's slot) |
 | 32 | `greek18` | `Q` | ImperialRome (own race) | 1.8 | Greece independent of the game's and of the 4.2/CGWAR classes; still shares neutral content (fisherman, scripts, music) with the 4.2, Imperivm Legacy and the MCI |
+| 33 | `rome18` | `J` | RepublicanRome | 1.8 | Republican Rome with the 1.8's stats and costs, cloned from HD (`tools/greek-1-8-civs.js`); the other civilizations of the 1.8 follow |
 
 This table is the plan's starting point, not the end state: see *Pending: independence* in each mod's `NOTES.md`.
 

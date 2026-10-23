@@ -19,6 +19,10 @@ const ROOT = path.join(__dirname, ".."), OUT = path.join(ROOT, "ported", "greek-
 const HD = path.join(ROOT, "originals", "game-data", "paks"), MOD140 = path.join(ROOT, "originals", "greek-mod-1.8-flat");
 const LETTER = "Q", RACE = "greek18", INDEX = 32, INTERNAL = "Greek18", TEMPLATE = "Greek Rattlesmake";   // a template name is letters and spaces only
 const dry = process.argv.includes("--dry");
+// What port-140.js merged for the game's own classes and commands (HD + the mod's changes) is kept here before this script drops it:
+// tools/greek-1-8-civs.js reads it to give each of the game's civilizations the changes the 1.8 made to it
+const MERGED = path.join(ROOT, "originals", "greek-1-8-merged");
+fs.rmSync(MERGED, { recursive: true, force: true });
 const rd = f => fs.readFileSync(f, "latin1"), wr = (f, s) => { fs.mkdirSync(path.dirname(f), { recursive: true }); fs.writeFileSync(f, s, "latin1"); };
 const classOf = s => (s.match(/<class\b[^>]*?\bid\s*=\s*"([^"]+)"/) || [])[1];
 const walk = (d, base = d, out = []) => { if (!fs.existsSync(d)) return out; for (const e of fs.readdirSync(d, { withFileTypes: true })) { const p = path.join(d, e.name); if (e.isDirectory()) walk(p, base, out); else out.push(path.relative(base, p).replace(/\\/g, "/")); } return out; };
@@ -127,6 +131,7 @@ for (const f of walk(CLASSES).filter(f => /\.sc\.xml$/i.test(f))) {
   const hdEls = new Set(elements(rd(h)).map(e => e.norm)), mine = elements(s).filter(e => !hdEls.has(e.norm) && !/^<properties\b[^>]*\b(edittree_pos|display_name)\b/.test(e.norm));
   if (mine.length) BASE_CHANGES.set(id.toLowerCase(), mine);
 }
+wr(path.join(MERGED, "base-changes.json"), JSON.stringify(Object.fromEntries([...BASE_CHANGES].map(([k, v]) => [k, v.map(e => e.text)])), null, 1));
 // 2b. the classes the mod defines and the game does not, and the chain of parents of each
 const parentOf = new Map(), modClasses = new Map();
 for (const dir of [HDCLASS, CLASSES]) for (const f of fs.readdirSync(dir, { recursive: true }).filter(f => /\.sc\.xml$/i.test(f))) {
@@ -163,7 +168,7 @@ copyAs("QAgora", "QTavern"); copyAs("QAgora", "QTavern2"); copyAs("QGymnasium", 
 let dropped = 0;
 for (const f of fs.readdirSync(CLASSES, { recursive: true }).filter(f => /\.sc\.xml$/i.test(f))) {
   const p = path.join(CLASSES, f), id = classOf(rd(p));
-  if (id && hdClass.has(id.toLowerCase())) { fs.rmSync(p); dropped++; }
+  if (id && hdClass.has(id.toLowerCase())) { if (!/[\\/]/.test(f)) wr(path.join(MERGED, "classes", f), rd(p)); fs.rmSync(p); dropped++; }   // (the clone tool reads the top folder only: WINTER/ has same-named files)
 }
 for (const d of fs.readdirSync(CLASSES, { withFileTypes: true }).filter(e => e.isDirectory())) { const p = path.join(CLASSES, d.name); if (!fs.readdirSync(p).length) fs.rmdirSync(p); }
 console.log(`${pieces} Q* pieces; ${dropped} classes of the game's civilizations left out`);
@@ -223,6 +228,7 @@ for (const f of fs.readdirSync(MOD_CMDS).filter(f => /\.xml$/i.test(f))) {
       else if (!ownNames.has(c.name)) { own.push(c.text); ownNames.add(c.name); }
     } else if (!ownNames.has(c.name) && c.src.some(isModClass)) { own.push(c.text); ownNames.add(c.name); }
   }
+  wr(path.join(MERGED, "commands", f), rd(path.join(MOD_CMDS, f)));
   fs.rmSync(path.join(MOD_CMDS, f));                       // its Greek commands are in GREEK18.XML now
 }
 // the Greek pieces that stand for the game's: the commands of the building they copy
@@ -366,7 +372,7 @@ const alias = {};                                          // what the game's AI
 const map = { MTownhall: "QTownhall", MBarracks: "QBarracks", MBlacksmith: "QBlacksmith", MTemple: "QTemple", MTavern: "QTavern", MTavern2: "QTavern2", MArena: "QArena", MTower: "QTower", MSentry: "QSentry", MSentry1: "QSentry1", MGuardPostSentry: "QGuardPostSentry" };
 for (const g of ["MGate0", "MGate1", "MGate2", "MGate3", "MGate4", "MGate5", "MGate6", "MGate7", "MWallsE", "MWallsN", "MWallsNE", "MWallsNW", "MWallsS", "MWallsSE", "MWallsSW", "MWallsW"]) map[g] = LETTER + g.slice(1);
 for (const [k, v] of Object.entries(map)) if (fs.existsSync(path.join(CLASSES, `${v.toUpperCase()}.SC.XML`))) alias[k] = v;
-const civ = { id: RACE, index: INDEX, base: "ImperialRome", name: { spanish: "Grecia (Greek Mod 1.8)", english: "Greece (Greek Mod 1.8)", italian: "Grecia (Greek Mod 1.8)" },
+const civ = { id: RACE, index: INDEX, base: "ImperialRome", name: { spanish: "Grecia (Greek 1.8)", english: "Greece (Greek 1.8)", italian: "Grecia (Greek 1.8)" },
   letter: LETTER, internalName: INTERNAL, template: TEMPLATE, ai: true, alias: { classes: alias, commands: {} } };
 wr(path.join(OUT, "civs", `${RACE}.json`), JSON.stringify(civ, null, 2) + "\n");
 fs.rmSync(path.join(OUT, "civs", "greek.json"), { force: true });
