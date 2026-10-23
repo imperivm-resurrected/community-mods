@@ -38,14 +38,19 @@ Conventional Commits, in English, imperative mood, lowercase after the type, no 
 
 ## Civilizations are independent
 
-A mod that adds a civilization (Greece, a Rome branch, a new people) must work **on its own and next to any other civilization mod, 100%**. Two civilizations from two mods are two civilizations in the lobby, never one that replaces or overwrites the other.
+**The game's 8 civilizations are never modified by a mod.** A mod that adds or changes a civilization ships it as **its own civilization, next to the game's**, and it must work on its own and together with any other civilization mod, 100%. The player activates the mods they want and each civilization is one more in the lobby: "Gauls" stays HD's, "Gauls (Greek Mod 1.8)" is the mod's.
 
-- Each civilization mod has its own `civs/<id>.json` (own `id`, `index`, `letter`, `race`), its own class ids, entity folders, commands and scripts. Nothing is shared with another mod by name or by path.
-- No file in the same path as another mod's. What a mod needs to change in a game file (shared commands, AI helpers, `unit_attack.vs`, `items.xml`, `const.ini`…) goes as a **patch** that adds only its own part (as CGWAR does), never as a full replacement. Patches from several mods must add up.
-- If two mods use the same names (the same `H*` classes, `Greek Town N` templates, `GreekHero`), the one being ported is renamed, as `tools/cgwar-greece.js` did for CGWAR (`M*` → `K*`). Do not rename or touch the other mod's files.
-- `incompatibleWith` is **not** a solution. It is accepted only as a temporary state for a port that is not finished, and it goes in the mod's `NOTES.md` under *Pending* with what overlaps. A civilization mod is not done while it needs it.
-- Check it before saying a port is complete: list the paths and class ids shared with every other civilization mod in `ported/` (`ids` and same-path files) and keep the list in `NOTES.md`. Then test two of them active together.
-- Currently pending: `greek-civilization-mod` (4.2), `cgwar` and `greek-mod-1-8` are marked incompatible with each other.
+- **New civilization (Greece)**: its own `civs/<id>.json` (`id`, `index`, `letter`, `race`), class ids, entity folders, commands and scripts. Nothing is shared with another mod by name or by path.
+- **A game civilization the mod changes** (stats, sprites, sounds, behaviors, commands: anything that differs from HD in what it does): the mod ships it as **another civilization**, cloned from HD (`clone-civilization.js` in the SDK) with the mod's changes on top, with its own `id` (`<civ>-<mod>`), `index`, `letter`, `race` and class ids. HD's civilization stays as it is.
+- **Shared base classes** (`Hero`, `Melee`, `Ranged`, `BaseBarracks`…): a mod's change to them is applied **inside the copies' own classes**, never to HD's base class, which every other civilization inherits.
+- **What is not a civilization's** (`const.ini`, `items.xml`, `formations.xml`, game scripts, interface): only as a **patch** that adds its own part (`patches/`, as CGWAR does for commands), never as a whole file in the same path as the game's or another mod's. Patches from several mods add up. If the change only existed to make the old civilizations work, it is not ported.
+- **Old engine tricks are not ported**: picking Republican/Imperial/Punic Rome from the town hall, the `rand(776+player)` sentinel, the launcher and its `gbr.exe`. They were patches to fit several civilizations in a 1.40 game with no mods. Here each one is a civilization of its own (the lobby is the choice).
+- **Names and paths**: if two mods use the same class ids, entity folders, templates (`Greek Town N`) or script names, the one being ported is renamed (as `tools/cgwar-greece.js` did for CGWAR). Never touch another mod's files.
+- **Letters and indices are unique** across all the mods in `ported/`: see the table in the README. A new port takes the next free ones and adds its row. Ports "not uploaded" can still change theirs.
+- `incompatibleWith` is **not** a solution. It is accepted only as a temporary state for a port that is not finished, and it goes in the mod's `NOTES.md` under *Pending: independence* with what overlaps. A civilization mod is not done while it needs it.
+- **Check before saying a port is complete**: list the class ids, entity folders and file paths it shares with every other civilization mod in `ported/` (there must be none outside `patches/`), and keep the result in `NOTES.md`. Then test two of them active together.
+- **Open**: maps that place a mod's classes (`wrap-map.js` `requires`) must keep working when the classes are renamed. A renamed class can keep its old id as `altid`, but two mods cannot share an `altid`. Decide per case and write it in `NOTES.md`.
+- Currently pending: `greek-civilization-mod` (4.2), `cgwar` and `greek-mod-1-8` are not independent yet (marked incompatible with each other).
 
 ## Credits and permissions
 

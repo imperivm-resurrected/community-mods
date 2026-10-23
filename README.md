@@ -55,7 +55,7 @@ The tools compare each mod with the game's data, so extract it first. `extract-d
    | *wrap · requires imperivm1-legacy* | A map with Imperivm I classes | `node tools/imperivm1.js add <map.bfhp>`, then `wrap-map.js` |
 
 4. **`mod.json`**: `"authors": ["<Original author>"]`; add `"<your name> (port)"` only for real adaptation work (*reduce*, *rewrite*). Plus `category` (`Scenarios`, `Adventures`, `Conquests`… as on GameBanana), `tags` in the SDK's form (`Players: 2-4` for scenarios, 2 to 8; `Language: Spanish` for adventures; `Type: <category>` for anything else the mod also is) and `"redistributable": true` (the room host can send it; `--no-redistributable` if the author asks not to).
-   **A mod that adds a civilization is independent, 100%:** its own `civs/<id>.json` (`id`, `index`, `letter`, `race`), its own class, entity, command and script names, and no file in the same path as another mod's (what it changes in a game file goes as a patch that adds only its part). `incompatibleWith` between civilization mods is only a temporary state for an unfinished port, never the goal. Rules and the check to run: [AGENTS.md](AGENTS.md#civilizations-are-independent).
+   **Civilizations are independent, 100%.** The game's 8 are never modified: a mod that adds a civilization, or changes one (stats, sprites, sounds, behaviors, commands), ships it as **its own civilization next to the game's** ("Gauls" is HD's, "Gauls (Greek Mod 1.8)" the mod's), with its own `civs/<id>.json` (`id`, `index`, `letter`, `race`) and its own class, entity, command and script names. What is not a civilization's (`const.ini`, `items.xml`, game scripts…) goes as a patch that adds only its part, never as a file in the same path as another mod's. So any civilization mods can be combined. `incompatibleWith` between them is only a temporary state for an unfinished port. Rules and the check to run: [AGENTS.md](AGENTS.md#civilizations-are-independent); letters and indices in use: [Civilization mods](#civilization-mods).
 5. **Validate** (from the SDK): `node validate-mod.js <folder> --game "<game>" --data originals/game-data/DATA`.
 6. **Test** in the game (`mods\`, Additional content) and check `Logs\imperivm\imperivm-mod.log`. `LogFiles=1` under `[Debug]` in `imperivm-mod.ini` logs every file the game opens.
 7. **Publish**: zip the folder, *Add → Mod* on GameBanana, same category, tags and version. Under **Credits**, the author as *Original Creator*; you as *Porter* only for *reduce*/*rewrite* mods (for *wrap*, being the submitter is enough). Link the original thread.
@@ -74,6 +74,20 @@ Resurrected runs on the HD game, so a map made for 1.40, 1.56, a mod or an older
 - files in `extras/<id>/` are copied into the mod, and their classes count as known.
 
 Nothing in the map changes, so the original author is the only author (no porter credit). Saga entries are credited to Haemimont Games and FX Interactive. `--players` overrides the players tag; `--file <text>` keeps only the downloads whose name has it. A GameBanana mod with no `mod.json` gets the id `gamebanana-<id>` in the game.
+
+## Civilization mods
+
+Letters and indices are unique across all the ports (the SDK allows indices 10-99; a letter prefixes the civilization's classes and commands). A new port takes the next free ones and adds its row here. Ports that are not uploaded can still change theirs.
+
+| Index | `id` | Letter | Base | Mod | State |
+|---|---|---|---|---|---|
+| 21-23 | `RomeRepublican`, `RomeImperial`, `RomePunic` | (base's) | RepublicanRome | 4.2 | Old-engine trick (variants that replace the base): to be replaced by independent civilizations |
+| 24-25 | `CarthageNumidian`, `CarthageMauritanian` | (base's) | Carthage | 4.2 | Same |
+| 30 | `greece` | `K` | ImperialRome | CGWAR | Own race; shares 16 files with the 1.8 |
+| 31 | `greek` | `H` | ImperialRome, replaces it | 4.2 | Not independent (takes Imperial Rome's slot) |
+| 32 | `greek` | `H` | ImperialRome, replaces it | 1.8 | Not independent; **same `id` and letter as the 4.2's** |
+
+This table is the plan's starting point, not the end state: see *Pending: independence* in each mod's `NOTES.md`.
 
 ## Mods made for 1.40
 

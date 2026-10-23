@@ -29,14 +29,27 @@ node tools/port-140.js originals/greek-mod-1.8-flat ported/greek-mod-1-8 --id gr
 
 ## Pending: independence (AGENTS.md, *Civilizations are independent*)
 
-The goal is a Greece that works on its own and next to the 4.2 and the CGWAR, each its own civilization in the lobby. Not done: the port is `incompatibleWith` both. What overlaps (measured on `ported/`, 2026-10-23):
+Not independent yet: the port is `incompatibleWith` the 4.2 and the CGWAR, and Greece takes Imperial Rome's slot. Target: **the game's 8 civilizations untouched, and every civilization the mod adds or changes as its own, next to the game's.** Measured on the mod (what it changed from 1.40, class files with different parameters):
+
+| Civilization | Classes it changes | Plan |
+|---|---|---|
+| Greece (new) | 97 `H*` classes, `GreekHero`, 131 units + 93 buildings of its own art | Own `id`, `index`, `letter`, `race`; every `H*` name renamed (entities, commands, scripts, sprites folders) |
+| Gauls / Britain / Carthage / Egypt / Germany / Iberia | 9 / 6 / 8 / 2 / 9 / 7 | Each as "<civ> (Greek Mod 1.8)": cloned from HD (`clone-civilization.js`) with the mod's changes on top |
+| Republican Rome | 14 (`RScout` 200 → 250 hp, `RPrinciple` damage 20 → 24, heroes, new behaviors) | Same: "Rome (Greek Mod 1.8)" |
+| Imperial Rome | 1 real change; the `M*` walls, gates and tower are Greek art under Imperial Rome's ids | The Greek pieces go to Greece's own classes; Imperial Rome stays HD's |
+| Shared base classes (`Hero`, `Melee`, `Ranged`, `BaseVillage`, `Horse`…: 14 changed) | The changes go inside each copy's classes, never into HD's |
+| Not a civilization's (`const.ini`, `items.xml`, `formations.xml`, game scripts, `terrains.xml`, interface) | Only as patches that add its part |
+
+Not ported: the Republican/Imperial/Punic choice at the town hall (`RHT_SCELTA_ROMA.XML`, `*_Enable_Or_Disable_Cmd.vs`, `ChooseXxxRome`): a patch for the 1.40 engine. The civilizations are chosen in the lobby.
+
+What overlaps today (measured on `ported/`, 2026-10-23):
 
 | With | Shared |
 |---|---|
-| 4.2 (`greek-civilization-mod`) | 129 class ids (`HBarracks`, `HChariot`, `GreekHero`…), 277 files in the same path in `DATA` (216 differ), the Imperial Rome slot with letter `H`, `Greek Town N` templates |
+| 4.2 (`greek-civilization-mod`) | 129 class ids, 277 files in the same path in `DATA` (216 differ), the Imperial Rome slot with letter `H`, `Greek Town N` templates |
 | CGWAR | 16 files in `DATA` (`const.ini`, `items.xml`, `copyrights.txt`, `classes/greekhero.sc.xml`, `commands/greece.xml`, `randommap/placeobjects.xml`, `subai/{horse_idle,onfinish_research,unit_attach,unit_attack,unit_on_kill,unit_stand_position,village_trainpeasant}.vs`, `interface/menu/mainmenu.ini`, `interface/editor/combo/{itemicons,uniticons}.ini`), 3 in `units`, 4 in `ui`, class `GreekHero`, the `Greek` template name |
 
-To do: own race, letter and names for the 1.8 (as `tools/cgwar-greece.js` did for CGWAR), its changes to game files as patches, and a test with two of them active. Starts after the 1.8 is tried alone.
+Open: maps that place the 1.8's classes (and, through `wrap-map.js`, the ones that `require` the 4.2) must keep working after the rename; see AGENTS.md.
 
 ## To check
 
