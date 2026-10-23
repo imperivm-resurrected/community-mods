@@ -30,7 +30,7 @@ Places that host, or hosted, Imperivm III (*Great Battles of Rome*) mods, maps a
 
 | Place | State | What is there | Scraped |
 |---|---|---|---|
-| [ModDB, *Imperium: Great Battles of Rome*](https://www.moddb.com/games/imperivm-great-battles-of-rome) (mods, [downloads](https://www.moddb.com/games/imperivm-great-battles-of-rome/downloads), addons) | live, Cloudflare (needs a browser) | Legacy 2.4.1 (ENG, ESP, ITA), Mediterranevm alpha, GBR Plus, Epic Battle Music, AsvrMod patch, Mietitore's adventures (addons). Its [Greek Civilization MOD](https://www.moddb.com/mods/greek-civilization-mod) page has 396 comments with news and dead links | Yes, `tools/scrape-moddb.js` → `raw/moddb.json`. Re-run it for new uploads |
+| [ModDB, *Imperium: Great Battles of Rome*](https://www.moddb.com/games/imperivm-great-battles-of-rome) (mods, [downloads](https://www.moddb.com/games/imperivm-great-battles-of-rome/downloads), addons) | live, Cloudflare (needs a browser) | Legacy 2.4.1 (ENG, ESP, ITA), Mediterranevm alpha, **Mediterranevm Mod 3.6** (ENG, ES, ITA: the mod's page is deleted but the files are still served) and **Greek Mod 2.1, 2.2 and 2.3** (its Files tab is empty today; the 2.3 is still served), GBR Plus, Epic Battle Music, AsvrMod patch, Mietitore's adventures (addons). Its [Greek Civilization MOD](https://www.moddb.com/mods/greek-civilization-mod) page has 396 comments with news and dead links | Yes, `tools/scrape-moddb.js` → `raw/moddb.json`. Re-run it for new uploads |
 | [GameBanana, *Imperivm Hub*](https://gamebanana.com/games/26069) | live | Where we publish. Others upload there too: check it before porting something, to avoid duplicates | Partly (our own rows) |
 | Steam Community ([app 752580](https://steamcommunity.com/app/752580)) | live | Discussions ("Install mods/maps and use them online", Axaros's Greek Mod thread, Sep 2025) and guides in English, Spanish and Italian. The Workshop shows no items | No |
 | [GreekModTeam on itch.io](https://greekmodteam.itch.io) | live | Greek Mod 2.5.3 installer (649 MB) | Yes, row 257 |
@@ -43,6 +43,8 @@ Places that host, or hosted, Imperivm III (*Great Battles of Rome*) mods, maps a
 
 `megaupload`, `rapidshare`, `hotfile`, `4shared`, `box.com` and old Mega links. They are in [DEAD-LINKS.md](DEAD-LINKS.md) and [MISSING.md](MISSING.md);
 the Wayback copy of the page that held the link is worth trying before giving up on a row.
+
+**ModDB files that look gone are often still served.** When a mod page is deleted or its Files tab is empty, the Wayback capture of the files page and of each file's page (`web.archive.org/web/2024/<url>`) still lists the file ids, sizes and MD5s, and `https://www.moddb.com/downloads/start/<id>` → `/downloads/mirror/<id>/<server>/<hash>` still answers with a signed redirect that `curl` follows. That is how Mediterranevm Mod 3.6 and Greek Mod 2.3 were recovered (rows 385 and 386; always check the MD5 against the capture). Cloudflare only lets `agent-browser --headed` with the repository profile through; `curl` alone gets the challenge page.
 
 ## What to do next
 
