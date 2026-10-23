@@ -7,11 +7,12 @@ const byLink = Object.fromEntries(discord.map(e => [e.discord, e]));
 const slug = s => s.normalize("NFD").replace(/[\u0300-\u036f]/g, "").toLowerCase().replace(/[^a-z0-9]+/g, "-").replace(/^-|-$/g, "");
 
 // where the downloaded files of a row are, if any
-const localOf = (name, source) => {
+const localOf = (name, source, download = "") => {
+  const listed = (download.match(/originals\/[^`)\s]+/) || [])[0]?.replace(/\/$/, "");
   const topic = (source.match(/foroactivo\.com\/t(\d+)-/) || [])[1];
   const e = byLink[(source.match(/\((https:\/\/discord\.com\/channels\/[^)]+)\)/) || [])[1]];
   const dirs = [e && e.files.length && `originals/discord/${e.channel}/${e.slug}`, topic && `originals/forum/t${topic}/files`,
-    `originals/forum/${slug(name)}/files`].filter(Boolean);
+    `originals/forum/${slug(name)}/files`, listed && `${listed}/files`, listed].filter(Boolean);
   const hit = dirs.find(d => fs.existsSync(path.join(ROOT, d)));
   if (!hit) return "—";
   const n = fs.readdirSync(path.join(ROOT, hit), { recursive: true }).filter(f => fs.statSync(path.join(ROOT, hit, f)).isFile()).length;
@@ -41,7 +42,7 @@ for (const file of ["MODS.md", "MISSING.md"]) {
     if (file === "MISSING.md") { missing++; continue; }
     const get = k => c[H.indexOf(k)];
     rows.push({ file, n: c[1], name: get("Name"), author: get("Author(s)"), base: get("Base"), type: get("Type"), source: get("Source"),
-      dl: get("Download").split("<br>").filter(p => /^[✅⚠️]/u.test(p)).length, local: localOf(get("Name"), get("Source")) });
+      dl: get("Download").split("<br>").filter(p => /^[✅⚠️]/u.test(p)).length, local: localOf(get("Name"), get("Source"), get("Download")) });
   }
 }
 const left = [...rows];
