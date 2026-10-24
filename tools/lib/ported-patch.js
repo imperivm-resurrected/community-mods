@@ -88,7 +88,10 @@ function tagFiles(root, rels, tag) {
 //   a .bfhp                     <name> (<tag>).bfhp (nothing refers to a map by its file name)
 //   anything else               <name>_<tag>.<ext> and every reference to the name follows
 // Returns what it renamed.
-function tagCollisions({ OUT, others, tag, skip, dropMapsOf = [], mapLabel }) {
+// `gameDirs`: folders of the game's own packs. A file the mod adds inside a folder the game has (a sentry's .ent.xml next to the game's archer art,
+// whose images it names without a path) is renamed alone: renaming the folder would cut it off from the game's art, and the references to the
+// game's folder in every class of the port would follow it.
+function tagCollisions({ OUT, others, tag, skip, dropMapsOf = [], mapLabel, gameDirs = [] }) {
   if (skip) skip = new RegExp(skip.source, "i");                // the folders of a port are upper or lower case
   const crypto = require("crypto");
   const walk = (d, out = []) => { if (!fs.existsSync(d)) return out; for (const e of fs.readdirSync(d, { withFileTypes: true })) { const p = path.join(d, e.name); e.isDirectory() ? walk(p, out) : out.push(p); } return out; };
@@ -109,6 +112,7 @@ function tagCollisions({ OUT, others, tag, skip, dropMapsOf = [], mapLabel }) {
   for (const r of hits) {
     const parts = r.split("/");
     if (/^data\/classes\/[^/]+\.sc\.xml$/i.test(r)) { const id = (fs.readFileSync(path.join(OUT, r), "latin1").match(/<class\b[^>]*?\bid\s*=\s*"([^"]+)"/) || [])[1]; if (id) ids.set(id, `${id}_${tag}`); }
+    else if (/^(units|buildings|mapobjects)$/i.test(parts[0]) && parts.length >= 3 && gameDirs.some(g => fs.existsSync(path.join(g, parts[0])) && fs.readdirSync(path.join(g, parts[0])).some(x => x.toLowerCase() === parts[1].toLowerCase()))) names.set(parts[parts.length - 1].toLowerCase(), r);
     else if (/^(units|buildings|mapobjects)$/i.test(parts[0]) && parts.length >= 3) folders.add(`${parts[0]}/${parts[1]}`);
     else if (/\.bfhp$/i.test(r)) {
       // a map the game itself ships (an official adventure the mod edited): the game's stays, the mod's copy is not needed

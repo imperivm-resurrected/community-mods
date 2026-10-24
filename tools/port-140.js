@@ -226,9 +226,11 @@ for (const f of fs.readdirSync(modDir, { recursive: true })) {
   const rel = f.replace(/\\/g, "/").replace(/ǭ/g, "á"), k = rel.toLowerCase(), top = k.split("/")[0];
   if (/(^|\/)thumbs\.db$|\.bak$/.test(k) || k === "rle.mmp" || k === "mod.json") { count("dropped (junk/rle.mmp)"); continue; }
   if (/\.rle\.mmp$/.test(k)) {
+    const g = HD.get(k);
+    // a mod with no rle.mmp of its own (La Reconquista 2010) ships headers of the game's sprites: same bytes as HD's, nothing to rebuild
+    if (!modMmp && g && md5(fs.readFileSync(g)) === md5(fs.readFileSync(p))) { count("sprite header same as HD (the mod ships no rle.mmp)"); continue; }
     if (!modMmp) die(`${rel}: a .rle.mmp needs the mod's rle.mmp`);
     const data = sheet(p, modMmp), out = rel.replace(/\.mmp$/i, "");
-    const g = HD.get(k);
     if (g && md5(sheet(g, gameMmp)) === md5(data)) { count("sprite same as HD"); continue; }
     if (g) report.push({ rel, note: "changes an HD sprite: a mod cannot replace it (the game keeps its own); needs a new unit folder" });
     write(out, data); count(g ? "sprite changed (not applied!)" : "sprite new");
