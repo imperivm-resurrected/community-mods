@@ -24,3 +24,6 @@ ported/greek-mod-1-8/
 
 # Greek Civilization Mod 4.2: rebuilt from the GameBanana zip + extras/greek-civilization-mod/ (shrink-mod.js, see its NOTES.md)
 ported/greek-civilization-mod/
+
+# La Reconquista 2010: rebuilt from the forum rar + extras/la-reconquista-2010/ (tools/port-140.js, reconquista-2010.js; see its NOTES.md)
+ported/la-reconquista-2010/
