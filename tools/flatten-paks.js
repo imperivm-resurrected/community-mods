@@ -7,9 +7,10 @@
 // order, so the greater name wins (zGreek.pak over data.pak), and the loose files of the mod win over the packages.
 // Local\spanish.pak goes to CURRENTLANG (port-140.js only knows the Spanish table). Left out: executables, DLLs,
 // installers, launcher files, logs, profiles, the mod's rle.mmp (port-140.js reads it from <mod folder>).
-// Uses the SDK's extract-data.js (SDK=<path>).
+// A package stored LZIS-compressed (tools/lib/lzis.js) is decoded first. Uses the SDK's extract-data.js (SDK=<path>).
 const fs = require("fs"), path = require("path"), os = require("os"), { spawnSync } = require("child_process");
 const SDK = process.env.SDK || path.join(__dirname, "..", "..", "imperivm-resurrected", "sdk");
+const lzis = require("./lib/lzis.js");
 const [modDir, outDir] = process.argv.slice(2);
 if (!modDir || !outDir) { console.error("usage: node tools/flatten-paks.js <mod folder> <output folder>"); process.exit(1); }
 if (fs.existsSync(outDir) && fs.readdirSync(outDir).length) { console.error("the output folder has to be empty: " + outDir); process.exit(1); }
@@ -34,7 +35,15 @@ const unpack = (gameDir, pak, out) => {
 
 const packs = ci(modDir, "Packs");
 const paks = fs.readdirSync(path.join(modDir, packs)).filter(f => /\.pak$/i.test(f)).sort((a, b) => (a.toLowerCase() < b.toLowerCase() ? -1 : 1));
-for (const pak of paks) { const out = path.join(tmp, pak); unpack(modDir, pak, out); overlay(out); console.log(pak); }
+for (const pak of paks) {
+  const out = path.join(tmp, pak); let gameDir = modDir;
+  const raw = fs.readFileSync(path.join(modDir, packs, pak));
+  if (lzis.isLzis(raw)) { // a package the engine reads LZIS-compressed (GBR Tactics' Z-RandomMap.pak): decode it first
+    gameDir = path.join(tmp, "lzis-" + pak); fs.mkdirSync(path.join(gameDir, "Packs"), { recursive: true });
+    fs.writeFileSync(path.join(gameDir, "Packs", pak), lzis.decode(raw));
+  }
+  unpack(gameDir, pak, out); overlay(out); console.log(pak);
+}
 
 const local = ci(modDir, "Local");
 const sp = local && ci(path.join(modDir, local), "spanish.pak");
