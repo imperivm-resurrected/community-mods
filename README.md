@@ -104,6 +104,8 @@ Letters and indices are unique across all the ports (the SDK allows indices 10-9
 | 48 | `carthnum42` | `7` | Carthage | 4.2 | Numidian Carthage |
 | 49 | `carthmau42` | `8` | Carthage | 4.2 | Mauritanian Carthage (Mauritanian hero) |
 
+GBR Tactics' eight civilizations (`<civ>_gbrt`) have no row: their prefixes are derived from the id (`Gau`, `Rep`, `Imp`, `Car`, `Bri`, `Ibe`, `Egy`, `Ger`) and their indices are assigned by the engine.
+
 The three Greek mods are independent of the game and of each other (checked with `tools/shared-paths.js` and the content manager); what is left is in each mod's `NOTES.md`, *Pending*.
 
 ## Mods made for 1.40
@@ -132,6 +134,8 @@ node tools/port-140.js <old mod folder> ported/<id> --id <id> --name "<Name>" --
 The MCI ([extras/mci/](extras/mci/)) is the first one: 1104 files from the 9.0 zip, 123 merged with HD, 30 resolved or fixed by hand (the HD guard post, gold selling, AI-only parry mode, kill statistics and sentry guards kept alongside the MCI's tributes, stances and veterans). Its own bugs from 1.40 are kept as they were (scripts it references but never shipped), except where HD would break: `GreatTavern`, a class that doesn't exist, is dropped from the random map (it would hang), and `beh_punto.vs` calls `CreateFeedback` instead of `PlaceFeedback`, which no game version has.
 
 The CGWAR ([extras/cgwar/](extras/cgwar/)) put Greece in place of Imperial Rome; here it is a new civilization (`civs/greece.json`, index 30, letter `K`) and Imperial Rome stays HD's. After `port-140.js`, [`tools/cgwar-greece.js`](tools/cgwar-greece.js) makes the change: Greek classes get `race="greece"`, the Imperial pieces the mod redrew (walls, gates, tower, peasants) become `K*` copies so the city builder finds them by letter, the "Rome" merge (Republican Rome turning Republican or Imperial in the Arena), its AI scripts and the official adventures, conquest and random map towns it edited go, and the shared commands become patches that only add the Greek sources (the Greek-only commands go to `DATA/COMMANDS/GREECE.XML`). The mod's AI settlement scripts assume "Imperial Rome = Greece", and a Greek AI does see its base, Imperial Rome: they go in as `GR_*.vs`, so every other civilization keeps HD's AI. A patch on each HD helper (`ESH_*`) hands Greek settlements over with `AIRun`; the two main loops (`ES_Stronghold`, `ES_Village`) `Sleep()`, which crashes inside `AIRun`, so they go in `[EconomyScripts]` and a `GetEconomyScript.vs` patch picks them. Greece starts the random map in the mod's own Greek towns: `extras/cgwar/patches/randommapsettlements/` was made with the SDK's `create-template.js --base "Imperial Roman"` from an in-game dump (`Dump=randommapsettlements/maps/1/map.obj.xml`) with the mod's `RandomMapSettlements.bfhp`, where the Imperial Roman towns are the Greek ones, and their `M*` walls made `K*`. The maps made for it place `MWalls*`/`MTower`/`MGate*`, Roman again here: `wrap-map.js` switches them to `K*` in maps that need the CGWAR, which makes them *rewrite* (porter credited).
+
+GBR Tactics 2.4 ([extras/gbr-tactics/](extras/gbr-tactics/)) has no Greece: it is the game's eight civilizations as the mod has them, each its own next to the game's (`tools/gbr-tactics.js`). Its installer is a Gentee SFX that neither bsdtar nor 7z opens: it runs with no window under wine, so it is run once in a throwaway prefix and its files taken from there (steps in its `NOTES.md`). One of its packages is LZIS-compressed (`tools/lib/lzis.js`), and the game's compiler and loader refuse things 1.40's accepted (undeclared variables, text after `</class>`): the fixes are in the tool.
 
 ## Big mods made for HD
 
@@ -198,7 +202,9 @@ The same idea works for any old map: look for the class in an older `data.pak` (
 | [`imperivm1.js`](tools/imperivm1.js) | Imperivm I classes → `ported/imperivm1-legacy/` |
 | [`cgwar-greece.js`](tools/cgwar-greece.js) | After `port-140.js`: the CGWAR's Greece as a new civilization |
 | [`cgwar-independent.js`](tools/cgwar-independent.js) | After `cgwar-greece.js`: the game's files it replaced become patches of what is Greek; the rest is left out |
+| [`gbr-tactics.js`](tools/gbr-tactics.js) | After `port-140.js`: GBR Tactics 2.4's eight civilizations as civilizations of their own (ids `<civ>_gbrt`, derived prefixes), its new items as patches; the mod's scripts the game's compiler refuses are fixed (see `extras/gbr-tactics/NOTES.md`) |
 | [`greek-4-2.js`](tools/greek-4-2.js) | The Greek Mod 4.2 as its own civilizations (and Rome's and Carthage's branches); `tools/lib/` has what it shares with the others |
+| [`lib/lzis.js`](tools/lib/lzis.js) | Decodes a package the engine stores LZIS-compressed (GBR Tactics' `Z-RandomMap.pak`); `flatten-paks.js` uses it |
 | [`compare-mods.js`](tools/compare-mods.js) | the Greek mods side by side, to stdout (`> GREEK-MODS.md`, git-ignored) |
 | [`mod-class-diff.js`](tools/mod-class-diff.js) | What a 1.40 mod changed in the game's classes, by civilization, against the official 1.40 |
 | [`greek-terrains.js`](tools/greek-terrains.js) | The Greek Mod's terrain layers 41-55 (from the Caesar Mod zip) → `ported/greek-mod-terrains/`; `wrap-map` makes maps painted with them require it |
