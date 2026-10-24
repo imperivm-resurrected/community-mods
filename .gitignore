@@ -28,3 +28,6 @@ ported/greek-civilization-mod/
 # La Reconquista 2010: rebuilt from the forum rar + extras/la-reconquista-2010/ (tools/port-140.js, reconquista-2010.js; see its NOTES.md)
 ported/la-reconquista-2010/
 GREEK-MODS.md
+
+# GBR Tactics 2.4: rebuilt from the ModDB installer + extras/gbr-tactics/ (wine, flatten-paks.js, port-140.js, gbr-tactics.js; see its NOTES.md)
+ported/gbr-tactics/
