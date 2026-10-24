@@ -1,4 +1,4 @@
-// Tables of what the ported civilization mods have and how they differ (GREEK-MODS.md):
+// Tables of what the ported civilization mods have and how they differ (redirect to the git-ignored GREEK-MODS.md):
 //   node tools/compare-mods.js > GREEK-MODS.md
 // Every figure comes from the ported mods (ported/<id>/DATA/CLASSES, civs/) and from the game's own classes: nothing is typed by hand.
 const fs = require("fs"), path = require("path");
