@@ -1,0 +1,19 @@
+{
+  "id": "la-reconquista-2010",
+  "name": "La Reconquista 2010",
+  "version": "2010",
+  "category": "Gameplay & Balance",
+  "authors": [
+    "JVLIVS CAESAR",
+    "Villoh (port)"
+  ],
+  "description": {
+    "spanish": "El Mod La Reconquista (2010) de JVLIVS CAESAR, que sirvió de base al MCI: reequilibra las civilizaciones del juego (unidades, héroes, costes, fortines) y añade arqueros de arco largo, guardias de fortín, capitanes, barcos propios de cada pueblo y rangos de héroe. Cada civilización del mod va aparte, junto a la del juego (\"Galos (Reconq.)\", \"Roma rep. (Reconq.)\"…): la del juego no se modifica.",
+    "english": "JVLIVS CAESAR's La Reconquista mod (2010), the base of the MCI: it rebalances the game's civilizations (units, heroes, costs, outposts) and adds longbowmen, outpost guards, captains, a navy of its own for each people and hero ranks. Each civilization of the mod is its own, next to the game's (\"Gaul (Reconq.)\", \"Rep. Rome (Reconq.)\"…): the game's ones are not changed."
+  },
+  "license": "Copyleft (k) 2010 JVLIVS CAESAR (DATA/COPYRIGHTS.TXT of the mod)",
+  "redistributable": true,
+  "sources": {
+    "page": "https://imperivmgbr.foroactivo.com/t172-descarga-mod-la-reconquista-2010"
+  }
+}
