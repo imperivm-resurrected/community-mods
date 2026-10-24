@@ -1,0 +1,22 @@
+{
+  "id": "gbr-tactics",
+  "name": "GBR Tactics",
+  "version": "2.4",
+  "category": "Civilizations",
+  "authors": [
+    "zeloslaw",
+    "Villoh (port)"
+  ],
+  "description": {
+    "spanish": "El balance de GBR Tactics 2.4 como ocho civilizaciones propias, junto a las del juego (\"Galos (GBRT)\", \"Britania (GBRT)\"…): estadísticas y habilidades nuevas, arqueros de arco largo, guardias, capitanes, barcos de transporte, nuevos héroes, objetos y la mina de hierro. Las civilizaciones del juego no cambian.",
+    "english": "The balance of GBR Tactics 2.4 as eight civilizations of their own, next to the game's (\"Gaul (GBRT)\", \"Britain (GBRT)\"…): new stats and abilities, long bow archers, guards, captains, transport ships, new heroes, items and the iron mine. The game's civilizations do not change.",
+    "italian": "Il bilanciamento di GBR Tactics 2.4 come otto civiltà a sé, accanto a quelle del gioco (\"Galli (GBRT)\", \"Britannia (GBRT)\"…): nuove statistiche e abilità, arcieri con arco lungo, guardie, capitani, navi da trasporto, nuovi eroi, oggetti e la miniera di ferro. Le civiltà del gioco non cambiano."
+  },
+  "tags": [
+    "Type: Gameplay & Balance"
+  ],
+  "redistributable": true,
+  "sources": {
+    "page": "https://www.moddb.com/mods/gbr-tactics2"
+  }
+}
