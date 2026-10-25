@@ -85,6 +85,21 @@ for (const f of branchScripts) fs0.rmSync(path.join(DST, f), { force: true });
   if (r.problems.length) console.log("conquests, to check:\n  " + r.problems.join("\n  "));
 }
 
+// the Greece territory of its conquests is played as Greece: the interface of a <territory> (inside the .bfhp) is the race of the player, 4 (ImperialRome)
+// in the original. A civilization of a mod is its index; it needs an Imperivm Resurrected build that accepts it (imperivm-resurrected#44, #45): the
+// release 1.0 only reads 0-7 and ignores it, and the player then keeps the race of the room.
+{
+  const fs = require("fs"), hpfs = require("./hpfs.js"), dir = path.join(ROOT, "ported", "greek-mod-1-8", "Conquests");
+  const index = JSON.parse(fs.readFileSync(path.join(ROOT, "ported", "greek-mod-1-8", "civs", "greek18.json"), "utf8")).index;
+  for (const f of fs.readdirSync(dir).filter(x => /\.bfhp$/i.test(x))) {
+    const bfhp = path.join(dir, f), buf = fs.readFileSync(bfhp), e = hpfs(buf).find(x => /^territories\.xml$/i.test(x.path)), raw = e && e.read().toString("latin1");
+    const out = raw && raw.replace(/(\bid="Greece"[\s\S]*?\binterface=")\d+"/, (_m, a) => `${a}${index}"`);
+    if (!out || out === raw) continue;
+    try { e.write(Buffer.from(out, "latin1")); fs.rmSync(bfhp); fs.writeFileSync(bfhp, buf); console.log(`conquest ${f}: Greece plays as greek18 (interface ${index})`); }
+    catch (err) { console.log(`conquest ${f}: Greece interface not set (${err.message})`); }
+  }
+}
+
 // names the CGWAR (built first) already has with other bytes, or that are the same gameplay file: this port's are renamed (tools/lib/ported-patch.js)
 {
   const fs = require("fs"), { tagCollisions } = require("./lib/ported-patch.js"), G = path.join(ROOT, "originals", "game-data");
