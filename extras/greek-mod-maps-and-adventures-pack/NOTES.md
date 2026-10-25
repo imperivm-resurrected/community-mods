@@ -59,7 +59,7 @@ our own sources; **probable** = a name that matches, nothing else; **unknown** =
 
 ## Ported (2026-10-19)
 
-`node tools/wrap-map.js "pack:greek-mod-maps-and-adventures-pack/Adventures/<file>" --author "…"` (see the README). The exact command of each is in `raw/ported.json`.
+`node tools/wrap-map.js "pack:greek-mod-maps-and-adventures-pack/Adventures/<file>" --author "…"` (see docs/PORTING.md). The exact command of each is in `raw/ported.json`.
 
 | | Mods | Notes |
 |---|---|---|

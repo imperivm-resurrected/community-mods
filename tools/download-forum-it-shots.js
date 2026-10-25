@@ -5,7 +5,7 @@
 //   FORUM_IT_COOKIE=... node tools/download-forum-it-shots.js
 const fs = require("fs"), path = require("path");
 const ROOT = path.join(__dirname, ".."), BASE = "https://imperivmeditor.forumcommunity.net";
-const LIST = path.join(ROOT, "raw", "forum-it-shots.json"), MODS = path.join(ROOT, "MODS.md");
+const LIST = path.join(ROOT, "raw", "forum-it-shots.json"), MODS = path.join(ROOT, "docs", "MODS.md");
 const slug = s => s.normalize("NFD").replace(/[\u0300-\u036f]/g, "").toLowerCase().replace(/[^a-z0-9]+/g, "-").replace(/^-|-$/g, "");
 const sleep = ms => new Promise(r => setTimeout(r, ms));
 // the forum's own pictures: smileys, buttons, rank badges, the "download" banner

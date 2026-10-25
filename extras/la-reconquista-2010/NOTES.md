@@ -13,7 +13,7 @@ node tools/port-140.js originals/la-reconquista-2010 ported/la-reconquista-2010 
 node tools/reconquista-2010.js
 ```
 
-`ported/la-reconquista-2010/` is not in git (`.gitignore`). It needs `originals/game-data/` and `originals/game-140/` (README, *Setup*). `tools/reconquista-2010.js` is not idempotent: it works on the output of `port-140.js`, so rebuild from the first command.
+`ported/la-reconquista-2010/` is not in git (`.gitignore`). It needs `originals/game-data/` and `originals/game-140/` (docs/SETUP.md). `tools/reconquista-2010.js` is not idempotent: it works on the output of `port-140.js`, so rebuild from the first command.
 
 ## The civilizations
 

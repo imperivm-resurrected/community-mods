@@ -16,7 +16,7 @@ for (const [id, arg] of Object.entries(ported)) bySource[arg.split(" --")[0]] = 
 const stale = [];
 let changed = 0;
 for (const file of ["MODS.md", "MISSING.md"]) {
-  const lines = fs.readFileSync(path.join(ROOT, file), "utf8").split("\n");
+  const lines = fs.readFileSync(path.join(ROOT, "docs", file), "utf8").split("\n");
   let H = null;
   const out = lines.map(l => {
     if (l.startsWith("| # |")) H = l.split("|").map(s => s.trim());
@@ -43,7 +43,7 @@ for (const file of ["MODS.md", "MISSING.md"]) {
     c[T] = type; c[S] = status; changed++;
     return c.join("|");
   });
-  fs.writeFileSync(path.join(ROOT, file), out.join("\n"));
+  fs.writeFileSync(path.join(ROOT, "docs", file), out.join("\n"));
 }
 console.log(`${changed} rows updated`);
 if (stale.length) console.log(`marked 🔧 but nothing in ported/ (fix by hand):\n  ${stale.join("\n  ")}`);

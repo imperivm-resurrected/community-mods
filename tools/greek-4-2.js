@@ -20,7 +20,7 @@ const find = (base, rel) => { let p = base; for (const part of rel.split("/")) {
 const want = process.argv.slice(2);
 if (!fs.existsSync(PRISTINE)) { console.error("no " + PRISTINE + ": it is the port of the 4.2 before this script (see extras/greek-civilization-mod/NOTES.md)"); process.exit(1); }
 
-// the civilizations: letters and indices in the README's table (a digit is a letter too: 26 run out)
+// the civilizations: letters and indices in the table of docs/CIVILIZATIONS.md (a digit is a letter too: 26 run out)
 const CIVS = [
   { base: "Gaul", baseLetter: "G", hero: "GaulHero", letter: "X", id: "gaul42", index: 40, name: { spanish: "Galos", english: "Gaul", italian: "Galli" } },
   { base: "Britain", baseLetter: "B", hero: "BritonHero", letter: "Y", id: "britain42", index: 41, name: { spanish: "Britania", english: "Britain", italian: "Britannia" } },

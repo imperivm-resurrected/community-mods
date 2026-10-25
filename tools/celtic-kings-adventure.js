@@ -1,7 +1,7 @@
 // Celtic Kings Adventure (Larax, from Imperivm I) by Luken_SOD, MODS.md row 202 -> ported/celtic-kings-adventure/
 //   node tools/celtic-kings-adventure.js
 // Needs originals/forum/celtic-kings-adventure-larax-from-imperivm-i/files/ (the three ModDB zips), originals/game-data (HD data, and
-// local-spanish / local-italian: the game's texts, see the README's Setup) and bsdtar. Same result every run. Reasons in extras/celtic-kings-adventure/NOTES.md.
+// local-spanish / local-italian: the game's texts, see docs/SETUP.md) and bsdtar. Same result every run. Reasons in extras/celtic-kings-adventure/NOTES.md.
 //
 // The mod is one adventure in three editions (English, Spanish, Italian: each its own .bfhp with its own texts and voices) plus the
 // classes, commands and items the adventure needs. The original changed HD's own Larax, DLleldoryn and Stonehenge classes, commands

@@ -26,7 +26,7 @@ const fileId = u => (u.match(/dropbox\.com\/s\/(\w+)/) || u.match(/mega(?:\.co)?
 const slug = s => s.normalize("NFD").replace(/[\u0300-\u036f]/g, "").toLowerCase().replace(/[^a-z0-9]+/g, "-").replace(/^-|-$/g, "");
 // rows -> targets
 const targets = [], seenIds = new Set();
-for (const l of fs.readFileSync(path.join(ROOT, "MODS.md"), "utf8").split("\n")) {
+for (const l of fs.readFileSync(path.join(ROOT, "docs", "MODS.md"), "utf8").split("\n")) {
   const c = l.split("|");
   if (c.length < 11 || !/^\s*\d+\s*$/.test(c[1]) || /✅/.test(c[9])) continue; // already on GameBanana
   const topic = (c[6].match(/foroactivo\.com\/t(\d+)-/) || [])[1];

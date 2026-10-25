@@ -1,7 +1,7 @@
 // raw/*.json -> MODS.md + MISSING.md (first draft). After you start editing them by hand, don't re-run without --force.
 const fs = require("fs"), path = require("path");
 const ROOT = path.join(__dirname, "..");
-const OUT = path.join(ROOT, "MODS.md");
+const OUT = path.join(ROOT, "docs", "MODS.md");
 if (fs.existsSync(OUT) && !process.argv.includes("--force")) { console.error("MODS.md already exists; use --force to overwrite it"); process.exit(1); }
 
 const entries = require("../raw/discord-entries.json");
@@ -82,7 +82,7 @@ for (const [key, title] of Object.entries(SECT)) {
 }
 
 fs.writeFileSync(OUT, out.join("\n"));
-fs.rmSync(path.join(ROOT, "MISSING.md"), { force: true }); // regenerated from scratch, not merged
+fs.rmSync(path.join(ROOT, "docs", "MISSING.md"), { force: true }); // regenerated from scratch, not merged
 require("./split-missing")();
 const s = Object.values(links);
 console.log(`${n} rows · links alive ${s.filter(x => x.ok).length}, dead ${s.filter(x => x.ok === false).length}, doubtful ${s.filter(x => x.ok === null).length}`);

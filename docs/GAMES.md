@@ -1,5 +1,7 @@
 # The games: where to get them, their patches, and running them on Linux
 
+**English** · [Español](es/GAMES.md)
+
 Notes on the Haemimont/FX real-time conquest games (Imperivm I, II and III) that many ported mods and maps
 come from or depend on, and how to run them on Linux.
 

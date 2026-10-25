@@ -58,7 +58,7 @@ const italianEntry = key => {
   const files = [...new Set(rows.flatMap(v => v.files))].map(local => ({ name: path.basename(local), local }));
   const name = rows[0].name, m = name.match(/^(.*?)\s*\((\d{4})\)$/);
   const title = typeof opt.title === "string" ? opt.title : (m ? m[1] : name).replace(/^./, c => c.toUpperCase()); // --title, or the row's name with a capital
-  const row = fs.readFileSync(path.join(ROOT, "MODS.md"), "utf8").split("\n").map(l => l.split("|")).find(c => c[2]?.trim() === name);
+  const row = fs.readFileSync(path.join(ROOT, "docs", "MODS.md"), "utf8").split("\n").map(l => l.split("|")).find(c => c[2]?.trim() === name);
   const ported = (() => { try { return require("../raw/ported.json"); } catch { return {}; } })();
   // another mod already has this title: add the author, then the key
   const free = s => !fs.existsSync(path.join(ROOT, "ported", s)) || (ported[s] || "").split(" --")[0] === opt._; // the entry stores its options too
