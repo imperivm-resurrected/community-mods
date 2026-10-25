@@ -46,6 +46,36 @@ require("./lib/clone-civs.js")({
 });
 for (const f of branchScripts) fs0.rmSync(path.join(DST, f), { force: true });
 
+// The mod's text tables (loc/spanish.loc.xml, loc/italian.loc.xml) also CHANGE the game's own texts for everybody (the name of Republican Rome, the
+// menu, the unit specials...). The game's are never modified (AGENTS.md): an entry whose key (text + context) HD's table already has with another
+// result is dropped. When its context is the name of a command a civilization cloned (investR -> investJ, Noble Offence -> Noble Offence Rome18...),
+// the same text is kept for each clone's command, which is the civilization's own.
+{
+  const fs = require("fs"), HDL = lang => path.join(ROOT, "originals", "game-data", "local-" + lang, "CURRENTLANG");
+  const alias = new Map();                                              // old command name -> new names
+  for (const f of fs.readdirSync(path.join(PORT, "civs"))) for (const [o, n] of Object.entries(JSON.parse(fs.readFileSync(path.join(PORT, "civs", f), "utf8")).alias.commands || {})) (alias.get(o) || alias.set(o, []).get(o)).push(n);
+  const decode = b => { const u = b.toString("utf8"); return u.includes("\ufffd") ? b.toString("latin1") : u; };
+  const entry = e => ({ line: e, text: (e.match(/\btext="([^"]*)"/) || [])[1], ctx: (e.match(/\bcontext="([^"]*)"/) || [])[1] || "", res: (e.match(/\bresult="([^"]*)"/) || [])[1] });
+  for (const lang of ["spanish", "italian"]) {
+    const file = path.join(PORT, "loc", lang + ".loc.xml"); if (!fs.existsSync(file)) continue;
+    const hd = new Map();
+    for (const f of ["GAME.LOC.XML", "TRANSLATION.LOC.XML"]) if (fs.existsSync(path.join(HDL(lang), f)))
+      for (const m of decode(fs.readFileSync(path.join(HDL(lang), f))).matchAll(/<translationtableentry\b[^>]*?\/>/g)) { const e = entry(m[0]); if (e.text != null) hd.set(e.text + "\0" + e.ctx, e.res); }
+    const keep = [], seen = new Set(); let dropped = 0, moved = 0;
+    for (const m of decode(fs.readFileSync(file)).matchAll(/<translationtableentry\b[^>]*?\/>/g)) {
+      const e = entry(m[0]); if (e.text == null) continue;
+      if (!hd.has(e.text + "\0" + e.ctx) || hd.get(e.text + "\0" + e.ctx) === e.res) { keep.push(e.line); continue; }
+      dropped++;
+      for (const n of alias.get(e.ctx) || []) {                         // the clone's command carries the mod's text
+        const key = e.text.split("@")[0] + "@" + n; if (seen.has(key)) continue; seen.add(key); moved++;
+        keep.push(e.line.replace(/\btext="[^"]*"/, () => `text="${key}"`).replace(/\bcontext="[^"]*"/, () => `context="${n}"`));
+      }
+    }
+    fs.writeFileSync(file, "\ufeff<translationtable>\n" + keep.join("\n") + "\n</translationtable>\n", "utf8");
+    console.log(`${lang}: ${dropped} texts that changed the game's own left out, ${moved} kept for the clones' commands, ${keep.length} entries`);
+  }
+}
+
 // names the CGWAR (built first) already has with other bytes, or that are the same gameplay file: this port's are renamed (tools/lib/ported-patch.js)
 {
   const fs = require("fs"), { tagCollisions } = require("./lib/ported-patch.js"), G = path.join(ROOT, "originals", "game-data");
