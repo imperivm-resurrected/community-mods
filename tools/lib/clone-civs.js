@@ -113,7 +113,8 @@ module.exports = function cloneCivs({ PORT, MERGED, SUFFIX, LABEL, CIVS, cloneAl
     // the hire order of its own hero takes the name the game asks for (hirehero<letter>)
     if (civ.branch) {
       const hidden = new Set();
-      for (const f of files(path.join(PORT, "DATA", "SUBAI"), civ.branch.scripts)) {
+      for (const n of civ.branch.hide || []) hidden.add(n);        // names a mod's own branch script spells out (CGWAR's Technology_of_Rome_Buildings.vs): no `scripts` then
+      for (const f of files(path.join(PORT, "DATA", "SUBAI"), civ.branch.scripts || NEVER)) {
         const r = hiddenBy(rd(path.join(PORT, "DATA", "SUBAI", f)), { researched: [civ.branch.flag] });
         for (const n of r.disabled) hidden.add(n);
       }
