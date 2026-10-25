@@ -5,7 +5,7 @@
 //   - Greek classes: race="greece"; the Greek-drawn Imperial pieces (MWalls*, MGate*, MTower, MVillager…) become K*
 //     copies, since a mod civilization builds its city from the classes of its letter (KWallsN, KTavern2, KArena…)
 //   - Imperial Rome and the "Rome" merge (Republican Rome turning Republican or Imperial in the Arena) go: the M* classes,
-//     RArena/RBarracks/RBlacksmith, VERIFY_*, the official adventures and conquest it edited, the random map towns and the texts renaming both Romes
+//     RArena/RBarracks/RBlacksmith, VERIFY_*, the official adventures it edited (its conquest stays: cgwar-independent.js), the random map towns and the texts renaming both Romes
 //   - the mod's AI settlement scripts run as GR_* for Greek settlements only (HD's hand over to them through a patch)
 //   - shared command files become patches that only add the Greek commands and sources
 //   - Greek interface: INFOBAR_GREEK.INI, CMDBARGREEK.INI and the frame in FRAMES.INI (internalName "Greek")
@@ -80,7 +80,7 @@ wr(path.join(OUT, "patches", "DATA", "AI", "AI.INI"), ["[EconomyScripts]", ...gr
 // classes with one id; HD's is kept
 for (const r of ["DATA/CLASSES/WILDHORSE.SC.XML", "UNITS/WILDHORSE", "UI/ICONS/WILDHORSE.bmp"]) rm(r);
 for (const r of ["DATA/SUBAI/Technology_of_Rome_Buildings.vs", "DATA/SUBAI/VERIFY_RESEARCH.VS", "DATA/SUBAI/VERIFY_TRAINEX.VS",
-  "Adventures/GreatBattles", "Adventures/GreatChallenges", "Conquests", "ConquestMaps", "DATA/INTERFACE/MENU/CONQUESTGAME.INI",
+  "Adventures/GreatBattles", "Adventures/GreatChallenges", "DATA/INTERFACE/MENU/CONQUESTGAME.INI",       // the conquest stays (cgwar-independent.js gives it a name of its own); its menu file is a patch by hand in extras/
   "Packs/RandomMapSettlements.bfhp"]) rm(r);
 for (const d of ["Adventures", "Packs"]) { const p = find(OUT, d); if (p && !fs.readdirSync(p).length) fs.rmSync(p, { recursive: true }); }
 

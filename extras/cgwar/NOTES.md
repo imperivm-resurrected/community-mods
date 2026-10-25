@@ -51,6 +51,18 @@ The other branch of the same choice, `civs/cgwarrepublic.json` ("Rep. Rome (CGWA
 - Log notes: `gameres/cmdbar/corners/imperialrome0-3.rle` are looked up and do not exist when Greece is the human player. They are optional corner decorations; HD ships only `GAUL1.RLE` and `GAUL3.RLE`, the original CGWAR has none, and the name is the base race's (`imperialrome`), so it cannot be fixed for Greece alone without a file at a path the game's Imperial Rome shares. Left as it is.
 - **Not tried in game**: each command of Imperial and Republican Rome (CGWAR) one by one beyond what the maintainer saw (hire hero, Liberati, Military Academy, Velit/Praetorian; Gladiator Shows, Veteran, Rome Training); a long game, to see that the AI of the two Romes (it runs the game's Republican Rome scripts for the units: they do not know Velites, Praetorians or Liberati) does not stall; the relics in a game (a hero carrying one, with an army); save/load; rooms with two sets and the set filter (#38); the Greek AI against Greece (4.2) and Greece (CGWAR) in a full game; the three Greek mods together (#3, #4).
 
+## Conquest (`tools/cgwar-independent.js`, step 1c)
+
+The mod shipped `Conquests/mediterranean.BFHP` and `ConquestMaps/1 - GBR europe/` at the **same paths as the game's**, with other bytes: with the mod on, the game's Mediterranean was replaced. It is the game's seven territories plus an eighth, **Greece** (`Maps/11`, 152 `K*` objects and 110 Greek walls, towers and gates, `ShieldGraecia.bmp`). Now it is a conquest of its own next to the game's:
+
+- `tools/lib/conquests.js` (the same file as the 1.8's, from `greek-mod-1-8`'s branch) renames it `Conquests/mediterranean (cgwar).BFHP`, its folder `ConquestMaps/1 - GBR Europe (cgwar)` and its name in the menu `Forja tu imperio (CGWAR)`. The game's stays as it is.
+- The mod's `ConquestMaps` folder was only what it changed (4 files); the game's has the shields of the other territories. The 8 files it lacks are copied from the game's into the renamed folder.
+- The Greek walls, towers and gates were `MWalls*`, `MTower`, `MGate*` (Greece was Imperial Rome, which the mod redrew): 110 are `K*` in `Maps/11`. All 388 classes the conquest places exist in the game or in this port.
+- `patches/DATA/INTERFACE/MENU/CONQUESTGAME.INI` (by hand, from `extras/`) adds the button of the eighth shield; the rest of the mod's file is the 1.40 layout and is not ported.
+- **Not the port's to fix: the Greece territory plays as Rome**, like the 1.8's (imperivm-resurrected#44): the engine takes the race of a territory's player from the territory, not from the map. Its town is made of the mod's `K*` classes.
+- **Not tried in game.**
+- The 8 adventures the mod also shipped (3 of the game's Great Battles and 5 of its Great Challenges) have no Greek content: they are the game's with Roman towns edited for the mod's Rome merge. They stay out.
+
 ## Languages
 
 The game has three: Spanish, English and Italian. The original CGWAR was made for the Spanish game; its texts are English keys with a Spanish translation, so:

@@ -44,6 +44,41 @@ const GREEK = /Ares|Greece|Greek|Circe|Hecate|Free_Village|Combative Spirit|Olym
   }
 }
 
+// 1c. the mod's conquest (Conquests/mediterranean.BFHP, a Greece territory in Maps/11 on top of the game's seven) shares its path with the game's
+// Mediterranean: it becomes a conquest of its own next to it (tools/lib/conquests.js, as the 1.8's). Its Greek walls, tower and gates are the M*
+// ids the 1.40 mod redrew (Greece was Imperial Rome): K* here, as wrap-map.js does in the maps that need the CGWAR. Its ConquestMaps folder is only
+// what the mod changed (the game's has the shields of the other civilizations): the renamed folder is completed from the game's.
+{
+  const G = path.join(ROOT, "originals", "game-data"), PORTED = path.join(ROOT, "ported");
+  const cDir = fs.existsSync(path.join(OUT, "Conquests")) ? path.join(OUT, "Conquests") : null;
+  if (cDir) {
+    const hpfs = require("./hpfs.js");
+    let walls = 0;
+    for (const f of fs.readdirSync(cDir).filter(f => /\.bfhp$/i.test(f))) {
+      const p = path.join(cDir, f), buf = fs.readFileSync(p);
+      for (const x of hpfs(buf).filter(x => /^Maps\/\d+\/map\.obj\.xml$/i.test(x.path))) {
+        let n = 0;
+        const s = x.read().toString("latin1").replace(/class="M(Walls\w*|Tower|Gate\d)"/g, (_m, c) => (n++, `class="K${c}"`));
+        if (n) { x.write(Buffer.from(s, "latin1")); walls += n; }
+      }
+      fs.rmSync(p); fs.writeFileSync(p, buf);
+    }
+    const others = [G, ...fs.readdirSync(PORTED).filter(d => d !== "cgwar").map(d => path.join(PORTED, d))].filter(d => fs.existsSync(d) && fs.statSync(d).isDirectory());
+    const r = require("./lib/conquests.js")({ OUT, others, tag: "cgwar", label: "CGWAR" });
+    for (const c of r.done) {
+      console.log(`conquest ${c.from} -> ${c.to} (${c.folder}); ${walls} Greek walls, towers and gates M* -> K*`);
+      const m = /^(.*) -> (.*)$/.exec(c.folder);
+      if (m) {                                              // the renamed folder has only the mod's files: the game's shields and the rest come from the game's
+        const from = path.join(G, "ConquestMaps", fs.readdirSync(path.join(G, "ConquestMaps")).find(d => d.toLowerCase() === m[1].toLowerCase())), to = path.join(OUT, "ConquestMaps", m[2]);
+        let n = 0;
+        for (const f of fs.readdirSync(from)) if (!fs.readdirSync(to).some(x => x.toLowerCase() === f.toLowerCase())) { fs.copyFileSync(path.join(from, f), path.join(to, f)); n++; }
+        console.log(`  ${n} files of the game's ${m[1]} copied into ${m[2]}`);
+      }
+    }
+    if (r.problems.length) console.log("conquests, to check:\n  " + r.problems.join("\n  "));
+  }
+}
+
 // 2. the files at the game's paths (tools/lib/independent.js)
 const { report, patches, dropped } = gameFilesToPatches({ OUT, HD, GREEK, keep: /^currentlang\// });
 
