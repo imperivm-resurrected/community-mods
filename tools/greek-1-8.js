@@ -138,31 +138,6 @@ console.log(`${list.length} Greek names: ${swapped} text files rewritten, ${move
         try { e.write(Buffer.from(n, "latin1")); dirty = true; names += (text.match(RE) || []).length; }
         catch (err) { failed++; report.push(`${f}: ${e.path}: ${err.message}`); }
       }
-      // The 1.8 put Greece in Imperial Rome's race: a player of race ImperialRome who owns a Greek town is Greece. The walls, towers and gates the mod
-      // drew over Imperial Rome's M* ids (MWallsN, MTower, MGate0...) are the Q* classes now (same length, in place) for that player. Its race stays
-      // ImperialRome: the engine's DLL only reads race= of a map's playerdata to show it (src/game/mapinfo.cpp); the game (the exe) takes the 8 names
-      // and nothing in the DLL hooks that, so race="greek18" is not known to work (untried: see NOTES.md, Maps)
-      {
-        const ents = hpfs(buf), objs = ents.filter(e => /maps\/\d+\/map\.obj\.xml$/i.test(e.path)), owners = new Set(), isGreek = new Set(), town = new RegExp(`^${LETTER}(Townhall|Barracks)$`);
-        for (const e of objs) for (const m of e.read().toString("latin1").matchAll(/<scriptobj\b[\s\S]*?\/>/g)) {
-          const c = /\bclass="([^"]*)"/.exec(m[0]), p = /\bplayer="(\d+)"/.exec(m[0]); if (c && p && town.test(c[1])) owners.add(p[1]);
-        }
-        for (const e of ents) {
-          const m = /^player(\d+)\.xml$/i.exec(e.path); if (!m || !owners.has(m[1])) continue;
-          if (/\brace="ImperialRome"/.test(e.read().toString("latin1"))) isGreek.add(m[1]);
-        }
-        if (isGreek.size) {
-          let pieces = 0;
-          for (const e of objs) {
-            const t = e.read().toString("latin1"), n = t.replace(/<scriptobj\b[\s\S]*?\/>/g, o => {
-              const p = /\bplayer="(\d+)"/.exec(o);
-              return p && isGreek.has(p[1]) ? o.replace(/\bclass="M(Tower|Walls[NSEW]+|Gate\d)"/, (_m, k) => { pieces++; return `class="${LETTER}${k}"`; }) : o;
-            });
-            if (n !== t) try { e.write(Buffer.from(n, "latin1")); dirty = true; } catch (err) { report.push(`${f}: ${e.path}: ${err.message}`); }
-          }
-          console.log(`${f}: players ${[...isGreek].join(", ")} (race ImperialRome, Greek town): ${pieces} walls, towers and gates are ${LETTER}* now`);
-        }
-      }
     } catch (err) { report.push(`${f}: not read as HPFS (${err.message})`); continue; }
     if (dirty) { fs.writeFileSync(p, buf); touched++; }
   }
