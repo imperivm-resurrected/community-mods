@@ -9,7 +9,7 @@ Las letras y los índices son únicos en todos los ports (el SDK admite índices
 | Índice | `id` | Letra | Base | Mod | Estado |
 |---|---|---|---|---|---|
 | 30 | `greece` | `K` | ImperialRome | CGWAR | Raza propia; independiente del juego, de la 1.8 y de la 4.2 (`tools/cgwar-independent.js`; `tools/shared-paths.js` no encuentra ids de clase en común) |
-| 31 | `greek` | `H` | ImperialRome (raza propia) | 4.2 | Grecia de la 4.2, en el hueco de nadie (`tools/greek-4-2.js`) |
+| 31 | `greek` | `H` | ImperialRome (raza propia) | 4.2 | Grecia de la 4.2, en el hueco de nadie (`tools/greek-4-2.js`); el set de la 4.2 en la sala se llama como el mod, *Greek Civilization Mod 4.2* |
 | 32 | `greek18` | `Q` | ImperialRome (raza propia) | 1.8 | Grecia independiente de la del juego y de las clases de la 4.2/CGWAR; aún comparte contenido neutral (pescador, scripts, música) con la 4.2, Imperivm Legacy y el MCI |
 | 33 | `rome18` | `J` | RepublicanRome | 1.8 | Roma Republicana con las estadísticas, costes y rama de la 1.8, clonada de HD (`tools/greek-1-8-civs.js`) |
 | 34 | `gaul18` | `L` | Gaul | 1.8 | Galia con las estadísticas de la 1.8 y los costes de los barracones |
