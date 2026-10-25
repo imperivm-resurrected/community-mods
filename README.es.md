@@ -1,5 +1,8 @@
 <p align="center">
-  <img src="assets/banner.webp" alt="Imperivm Community Mods" width="640">
+  <picture>
+    <source media="(prefers-color-scheme: dark)" srcset="assets/banner-dark.webp">
+    <img src="assets/banner-light.webp" alt="Imperivm Community Mods" width="640">
+  </picture>
 </p>
 
 <p align="center"><a href="README.md">English</a> · <b>Español</b></p>
