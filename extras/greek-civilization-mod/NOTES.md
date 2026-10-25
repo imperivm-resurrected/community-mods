@@ -34,7 +34,7 @@ In 4.2 the Greek faction sits in the Imperial Rome slot: its classes have `race=
 
 Tried in game (2026-10-23, Linux, 1920x1080): the lobby with the three Greek mods active (all the civilizations show, no patch errors, the content manager shows no problem), a skirmish with several civilizations that hung because of script patches of the CGWAR that did not compile (fixed, see its NOTES). **Not tried**: a game with every civilization of the 4.2, the Greek AI, the Roman branches' barracks, heroes.
 
-Left out, to port later: the game modes' rules for the clones (Imperivm 2, Liga), the AI scripts the engine calls by name (see *The mod's AI*), `Spartacus`, `Fisherman`... (neutral, renamed).
+Left out, to port later: the game modes' rules for the clones (see *Game modes*), the AI scripts the engine calls by name (see *The mod's AI*), `Spartacus`, `Fisherman`... (neutral, renamed).
 
 ## The mod's versions of the game's scripts (tools/lib/own-scripts.js)
 
@@ -54,6 +54,18 @@ The AI of the mod runs only for the mod's civilizations: every script is a copy 
 - **AI variables**: only the ones the game does not have are declared (`AIV_Max*` of the mod's units, `AIV_WaitTactic`...). Before, the patch also set `AIV_MaxMilUnits` (game: -1, mod: 120) and `AIV_MaxAttentionPoints` on Hard for **everybody**: gone, a variable the game has keeps its value.
 - **Not copied: what the engine calls by name** (`CalcGAIKAPriority`, `GetArmyNeed`, `EvalRecruit`, `SendSquad`, `CalcMaxTake`, the `TSH_*` helpers behind `set.TSRecruitHero()`...), the group scripts (`GS_*`), `SquadMonitor`, `Recruiter`, `Main` and the `AI HELPERS` (siege, guard): there is one of each for all the AI players and the engine looks for it by that name, so a copy would not be called and replacing it would change every AI. The mod's versions of these are the game's here. Its tactics were written for them, so how closely the clones' AI plays like the 4.2's is **not tried**.
 - **Tried in game** (2026-10-25, profile with only this mod, after the scripts and the AI above): the maintainer played and reported that it works ("parece que funciona bien"). Not itemised: which civilizations, how closely the AI plays like the 4.2's, the log was not read line by line here.
+
+## Game modes (tools/greek-4-2.js, 3c)
+
+The mod's nine modes (`1 VARIOS` ... `9 CUSTOM`) are modes of this mod: what they do to a civilization is for the mod's civilizations only. What touched the game's civilizations (found by reading what each script disables and on which class):
+
+- **`1 Varios`** → `mode_varios_disable_upgrades.vs`: disabled Eagle/Wolf Summoning, Scout Area, Expedition and Gossip (all seven orders exist in the game) in the game's `RTavern`, `RTavern2`, `MTavern`, `MTavern2`, `CTavern`, `BTempleOfThor`, `EMarket` and `TTempleOfNeptus`.
+- **`5 Old school`** (Imperivm 2): `mode_imperivm2_costs/rome/gaul/iberia.vs` and `mode_inverno_rules.vs` disabled 50+ of the game's orders in 22 of the game's buildings, and the "Imp2 Cost" orders that replaced them are not shipped, so a game Carthage lost its maceman for good. It also let the game's Rome, Gaul, Iberia and Carthage in.
+- `mode_hide_imperivm2_costs.vs` (Varios, Liga, Punic, Custom...) names 22 of the game's classes but its 51 orders do not exist in the game: no effect.
+- The Liga gates (`rtemple_liga_gate_*`) are attached only to the Roman clones' classes.
+- Starting resources (`bldForce.race == Germany`, 8 modes) is the same rule as the game's.
+
+Now Varios' rule is asked of the mod's civilizations only, and Old school lets in only Gaul 4.2, Iberia 4.2, Imperial Rome 4.2 and Numidian Carthage (the mod's four equivalents); every other player, the game's civilizations included, is out as the mode already did with the rest. **What is not done**: those rules name the game's classes and orders (`ClassPlayerObjs("CBarracks")`, "Barrack Level 2 Imp2 Cost"...), so for the mod's civilizations they find nothing: Imperivm 2's costs and kits, and Varios' hiding of the Liga upgrades, are not applied to the clones. Doing it means a script per civilization with the clone's class and order names (the clone tool's rename table is not exported) and the ~170 "Imp2 Cost" orders cloned for each of them.
 
 ## Rome's branches and Carthage's (tools/greek-4-2.js, tools/greek-mod-fixes.js)
 

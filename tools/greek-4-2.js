@@ -190,6 +190,21 @@ console.log(`menu skin: ${require("./lib/menu-skin.js").skinToPatches({ OUT, HD 
   fs.writeFileSync(path.join(ROOT, "raw", "greek-4-2-own-scripts.txt"), r.copied.map(c => `${c.from} -> ${c.to}  (${c.users.slice(0, 4).join(", ")}${c.users.length > 4 ? ", ..." : ""})`).join("\n") + "\n\nnot copied:\n" + r.skipped.map(s => `${s.name}: ${s.why}`).join("\n") + "\n");
 }
 
+// 3c. the mod's game modes (data/gamescripts/1 VARIOS ... 9 CUSTOM) are modes of the mod: their rules for a civilization reach only the mod's civilizations.
+// "1 Varios" took Eagle/Wolf Summoning, Scout Area, Expedition and Gossip from the game's civilizations' buildings (RTavern, MTavern, CTavern, EMarket,
+// BTempleOfThor, TTempleOfNeptus...); "5 Old school" (Imperivm 2) disabled the game's orders of 22 of the game's buildings, with no replacement (its
+// "Imp2 Cost" orders are not shipped), and let the game's Rome, Gaul, Iberia and Carthage in. Now Varios' rule is asked of the mod's civilizations only, and
+// Old school lets in the mod's four equivalents (Gaul 4.2, Iberia 4.2, Imperial Rome 4.2, Numidian Carthage): the others, the game's included, are out as it
+// already did with the rest. The rules themselves name the game's classes: for the mod's civilizations they find nothing yet (NOTES.md, *Game modes*).
+{
+  const GM = find(OUT, "DATA/GAMESCRIPTS"), mine = ["Greek", "Gaul42", "Britain42", "Iberia42", "Egypt42", "Germany42", "Romerep42", "Romeimp42", "Romepun42", "Carthnum42", "Carthmau42"];
+  const is = list => list.map(c => `Mod_PlayerCiv(player) == ${c}`).join(" || ");
+  const edit = (file, from, to) => { const p = path.join(GM, find(GM, file) ? path.basename(find(GM, file)) : file); if (!fs.existsSync(p)) return console.log(`  game mode ${file}: not in the port`); const t = rd(p); if (!from.test(t)) return console.log(`  game mode ${file}: ${from} not found`); wr(p, t.replace(from, to)); console.log(`game mode ${file}: rules of the mod's civilizations only`); };
+  edit("1 VARIOS.VS", /^([ \t]*)StartPlayerScript\(player, "data\/subai\/mode_varios_disable_upgrades\.vs"\);/m, `$1if (${is(mine)})\n$1\tStartPlayerScript(player, "data/subai/mode_varios_disable_upgrades.vs");`);
+  edit("5 Old school.VS", /if \(nRace != RepublicanRome && nRace != Gaul && nRace != Iberia && nRace != Carthage\)/, `if (!(${is(["Gaul42", "Iberia42", "Romeimp42", "Carthnum42"])}))`);
+  edit("5 Old school.VS", /Translate\("Old school: only Rome, Gaul, Iberia and Numidian Carthage are allowed"\)/, 'Translate("Old school: only Gaul 4.2, Iberia 4.2, Imperial Rome 4.2 and Numidian Carthage (Greek Mod 4.2) are allowed")');
+}
+
 // 4. the game's files the mod replaced: only what is Greek, as patches; the rest, and what the mod hid, goes
 {
   fs.rmSync(path.join(OUT, "hidden.txt"), { force: true });
