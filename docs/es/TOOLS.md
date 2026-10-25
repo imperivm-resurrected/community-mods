@@ -25,6 +25,7 @@
 | [`port-140.js`](../../tools/port-140.js) | Un mod de 1.40 con archivos sueltos → `ported/<id>/` |
 | [`flatten-paks.js`](../../tools/flatten-paks.js) | Un mod de 1.40 que es una copia completa del juego (paquetes `.pak` enteros) → archivos sueltos, para `port-140.js` (el Greek Mod 1.8) |
 | [`greek-1-8.js`](../../tools/greek-1-8.js) | Después de `port-140.js`: la Grecia del Greek Mod 1.8 como civilización independiente (`greek18`, letra `Q`): renombrados, parches, IA como `GR18_*` |
+| [`greek-1-8-scripts.js`](../../tools/greek-1-8-scripts.js) | Último paso del Greek Mod 1.8: las ediciones del mod a los scripts de comportamiento del juego (`MILITARY_ONDIE`...) como copias `*_G18.VS` (el script de HD más las ediciones del mod, `git merge-file`) a las que apuntan las clases de sus civilizaciones; los scripts del juego no cambian |
 | [`shared-paths.js`](../../tools/shared-paths.js) `<ported id>` | Archivos, ids de clase y carpetas de entidades que un port comparte con el juego y con los demás ports (la comprobación de independencia) |
 | [`merge-secuter-fun.js`](../../tools/merge-secuter-fun.js) | El mod Fun de Secuter (filas 312): termina lo que `port-140.js` dejó en conflicto, conservando los cambios de HD y los del mod (las decisiones, en los comentarios) |
 | [`port-translation.js`](../../tools/port-translation.js) | La traducción de un mod para 1.40 (`GAME.LOC.XML`) → `loc/<language>.loc.xml` solo con los textos que tradujo |

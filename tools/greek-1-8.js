@@ -300,6 +300,8 @@ xmlAddPatch("DATA/ITEMS.XML", "items"); xmlAddPatch("DATA/FORMATIONS.XML", "form
     const get = s => new Map([...s.matchAll(/^\s*(MName00\d)\s*=\s*(.+?)\s*$/gm)].map(m => [m[1], m[2]]));
     const A = get(rd(hp)), B = get(rd(mp)), lines = [`[GamePlay]`];                  // the section the game's own MName00x are in
     for (const [k, v] of B) if (A.get(k) !== v) lines.push(`${LETTER}${k.slice(1)} = ${v}`);
+    const mm = rd(mp).match(/^\s*MaxMyrmidonsValue\s*=\s*(\d+)/m);             // a key HD does not have: the Myrmidon scripts read it with GetConst
+    if (mm && !/^\s*MaxMyrmidonsValue\s*=/m.test(rd(hp))) lines.push(`MaxMyrmidonsValue = ${mm[1]}`);
     fs.rmSync(mp);
     if (lines.length > 1) { wr(path.join(OUT, "patches", "DATA", "CONST.INI"), lines.join("\r\n") + "\r\n"); patches.push("DATA/CONST.INI (hero names)"); }
   }
@@ -319,17 +321,25 @@ mvTo("DATA/INTERFACE/CMDBAR/CMDBARIROME.INI", `CMDBAR${INTERNAL.toUpperCase()}.I
 const AI = find(OUT, "DATA/AI"), HD_AI = find(HD, "DATA/AI"), aiIni = rd(path.join(HD_AI, "AI.INI"));
 const aiName = f => (aiIni.match(new RegExp(`^(${f.replace(/\.VS$/i, "")}\\.vs)\\s*=`, "im")) || [])[1];
 const DECL = /^\s*(int|str|bool|point|Obj|ObjList|Settlement|Building|Unit|StrArray|IntArray|Hero|GAIKA|Squad|Item)\b[^(]*;\s*(\/\/.*)?$/;
-const greekAi = [];
+const greekAi = [], romeAi = new Set();
+// The three Romes (rome18, empire18, punic18) see the AI as RepublicanRome (their base): the mod's scripts that choose by the branch flags
+// (ChooseRepublicanRome...) work for them as they are, once the flag is on the settlement. So the scripts that have those flags also run, with the
+// flag set by the civilization, for the Romes; nothing about Rome is copied. The flags are written only on settlements of these civilizations.
+const GREEK = RACE[0].toUpperCase() + RACE.slice(1), ROMES = [["Rome18", "ChooseRepublicanRome"], ["Empire18", "ChooseImperialRome"], ["Punic18", "ChoosePunicRome"]];
+const TRUE = "Mod_TrueRace(set.GetCentralBuilding)";
+const ROME_TEST = ROMES.map(([c]) => `${TRUE} == ${c}`).join(" || ");
+const FLAGS = ROMES.map(([c, f]) => `if (${TRUE} == ${c})\r\n\tEnvWriteString(set, "${f}", "researched");\r\n`).join("");
 for (const f of fs.readdirSync(AI).filter(f => /\.vs$/i.test(f))) {
-  const hd = rd(path.join(HD_AI, f)).split(/\r?\n/), name = aiName(f);
-  if (!name || !/^\/\/\s*void,\s*Settlement set\s*$/i.test(hd[0]) || !/\b(ImperialRome|race\s*==\s*4)\b/.test(rd(path.join(AI, f)))) continue;
+  const hd = rd(path.join(HD_AI, f)).split(/\r?\n/), name = aiName(f), text = rd(path.join(AI, f));
+  if (!name || !/^\/\/\s*void,\s*Settlement set\s*$/i.test(hd[0]) || !/\b(ImperialRome|race\s*==\s*4)\b/.test(text)) continue;
   let i = 1; while (i < hd.length && (!hd[i].trim() || hd[i].trim().startsWith("//") || DECL.test(hd[i]))) i++;
   fs.renameSync(path.join(AI, f), path.join(AI, "GR18_" + f));
-  if (!/^ES_/i.test(name)) wr(path.join(OUT, "patches", "DATA", "AI", f), `@before ${hd[i].trim()}\r\nif (Mod_TrueRace(set.GetCentralBuilding) == ${RACE[0].toUpperCase() + RACE.slice(1)})\r\n{\r\n\tset.AIRun("GR18_${name}");\r\n\treturn;\r\n}\r\n`);
+  const rome = /Choose(Republican|Imperial|Punic)Rome/.test(text); if (rome) romeAi.add(name);
+  if (!/^ES_/i.test(name)) wr(path.join(OUT, "patches", "DATA", "AI", f), `@before ${hd[i].trim()}\r\nif (${TRUE} == ${GREEK}${rome ? " || " + ROME_TEST : ""})\r\n{\r\n\tset.AIRun("GR18_${name}");\r\n\treturn;\r\n}\r\n`);
   greekAi.push(name);
 }
 const loops = greekAi.filter(n => /^ES_/i.test(n)).map(n => "GR18_" + n.replace(/\.vs$/i, ""));
-wr(path.join(OUT, "patches", "DATA", "AI", "GETECONOMYSCRIPT.VS"), `@before if (set.IsVillage)\r\nif (Mod_TrueRace(set.GetCentralBuilding) == ${RACE[0].toUpperCase() + RACE.slice(1)})\r\n{\r\n`
+wr(path.join(OUT, "patches", "DATA", "AI", "GETECONOMYSCRIPT.VS"), `@before if (set.IsVillage)\r\n${FLAGS}if (${TRUE} == ${GREEK}${[...romeAi].some(n => /^ES_/i.test(n)) ? " || " + ROME_TEST : ""})\r\n{\r\n`
   + loops.map(n => `\tif (set.Is${/village/i.test(n) ? "Village" : "Stronghold"})\r\n\t\treturn ${n};\r\n`).join("") + "}\r\n");
 // the AI variables the mod added for Greece (AIV_MaxQHoplite... per difficulty, AIV_TimeStrenghtenStrongholdGates): a script that reads one
 // that is not declared in AI.INI does not compile ("No matching function with name AIV_Max...")

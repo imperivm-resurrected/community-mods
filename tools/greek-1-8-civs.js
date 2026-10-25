@@ -45,6 +45,15 @@ require("./lib/clone-civs.js")({
   CIVS, cloneAllOrders: true, want: process.argv.slice(2),
 });
 for (const f of branchScripts) fs0.rmSync(path.join(DST, f), { force: true });
+// The mod's AI asks the Punic branch for "RGladiator Shows2" (the Imperial research) in some scripts; Punic's is "RGladiator Shows" (the mod's
+// Arena script leaves Shows2 off for it), so the AI of punic18 gets that one when it asks for the other.
+{
+  const f = path.join(PORT, "civs", "punic18.json");
+  if (fs0.existsSync(f)) {
+    const j = JSON.parse(fs0.readFileSync(f, "utf8")), a = j.alias && j.alias.commands;
+    if (a && a["RGladiator Shows"] && !a["RGladiator Shows2"]) { a["RGladiator Shows2"] = a["RGladiator Shows"]; fs0.writeFileSync(f, JSON.stringify(j, null, 2) + "\n"); }
+  }
+}
 
 // The mod's text tables (loc/spanish.loc.xml, loc/italian.loc.xml) also CHANGE the game's own texts for everybody (the name of Republican Rome, the
 // menu, the unit specials...). The game's are never modified (AGENTS.md): an entry whose key (text + context) HD's table already has with another
