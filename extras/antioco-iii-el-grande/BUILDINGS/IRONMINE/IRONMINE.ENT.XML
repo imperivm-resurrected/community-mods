@@ -1,0 +1,55 @@
+<?xml version="1.0"?>
+<?xml-stylesheet type="text/xsl" href="../entity.xsl"?>
+
+<entity name="IRONMINE" type="vx/building" variations="1" pass_file="IRONMINE.pass">
+<images>
+<image idx="1" file="shadow" drawmode="player_color" remaping="none" rows="4" columns="1"/>
+<image idx="2" file="layer1.rle" drawmode="player_color" remaping="none" rows="4" columns="1"/>
+<image idx="3" file="layer1b.rle" drawmode="player_color" remaping="none" rows="4" columns="1"/>
+<image idx="4" file="layer1c.rle" drawmode="player_color" remaping="none" rows="4" columns="1"/>
+<image idx="5" file="layer1d.rle" drawmode="player_color" remaping="none" rows="4" columns="1"/>
+<image idx="6" file="layer2.rle" drawmode="player_color" remaping="none" rows="4" columns="1"/>
+<image idx="7" file="layer2b.rle" drawmode="player_color" remaping="none" rows="4" columns="1"/>
+<image idx="8" file="layer3.rle" drawmode="player_color" remaping="none" rows="4" columns="1"/>
+<image idx="9" file="layer3b.rle" drawmode="player_color" remaping="none" rows="4" columns="1"/>
+<image idx="10" file="layer3c.rle" drawmode="player_color" remaping="none" rows="4" columns="1"/>
+
+</images>
+<points>
+<point idx="1" type="10" x="-97" y="75"/>
+<point idx="2" type="16" x="113" y="5"/>
+<point idx="3" type="16" x="-137" y="5"/>
+<point idx="4" type="16" x="-99" y="-247"/>
+<point idx="5" type="16" x="-198" y="-128"/>
+<point idx="6" type="4" x="54" y="-106"/>
+<point idx="7" type="4" x="-110" y="35"/>
+<point idx="8" type="2" x="-88" y="25"/>
+<point idx="9" type="1" x="-89" y="24"/>
+<point idx="10" type="12" x="-88" y="26"/>
+</points>
+<layers>
+<layer idx="1" name="shadow" image="1" z="800" offsetx="-287" offsety="-274" sortoffsetx="0" sortoffsety="0" xray="0"/>
+<layer idx="2" name="layer1" image="2" z="1000" offsetx="-287" offsety="60" sortoffsetx="0" sortoffsety="0" xray="0"/>
+<layer idx="3" name="layer1b" image="3" z="1000" offsetx="-287" offsety="-55" sortoffsetx="0" sortoffsety="0" xray="0"/>
+<layer idx="4" name="layer1c" image="4" z="1000" offsetx="-287" offsety="-165" sortoffsetx="0" sortoffsety="0" xray="0"/>
+<layer idx="5" name="layer1d" image="5" z="1000" offsetx="-287" offsety="-274" sortoffsetx="0" sortoffsety="0" xray="0"/>
+<layer idx="6" name="layer2" image="6" z="1000" offsetx="-229" offsety="39" sortoffsetx="16" sortoffsety="106" xray="1000"/>
+<layer idx="7" name="layer2b" image="7" z="1000" offsetx="-229" offsety="-50" sortoffsetx="16" sortoffsety="106" xray="0"/>
+<layer idx="8" name="layer3" image="8" z="500" offsetx="-287" offsety="60" sortoffsetx="16" sortoffsety="106" xray="0"/>
+<layer idx="9" name="layer3b" image="9" z="500" offsetx="-288" offsety="-57" sortoffsetx="16" sortoffsety="106" xray="0"/>
+<layer idx="10" name="layer3c" image="10" z="500" offsetx="-289" offsety="-152" sortoffsetx="16" sortoffsety="106" xray="0"/>
+
+</layers>
+<states>
+<state idx="1" name="0" image_idx="0" image_row="0" offsetx="0" offsety="0" anim_idx="65536" anim_frame="65536"/>
+<state idx="2" name="1" image_idx="0" image_row="0" offsetx="0" offsety="0" anim_idx="65536" anim_frame="65536"/>
+<state idx="3" name="2" image_idx="0" image_row="0" offsetx="0" offsety="0" anim_idx="65536" anim_frame="65536"/>
+<state idx="4" name="3" image_idx="0" image_row="0" offsetx="0" offsety="0" anim_idx="65536" anim_frame="65536"/>
+<state idx="5" name="4" image_idx="0" image_row="0" offsetx="0" offsety="0" anim_idx="65536" anim_frame="65536"/>
+<state idx="6" name="5" image_idx="0" image_row="0" offsetx="0" offsety="0" anim_idx="65536" anim_frame="65536"/>
+<state idx="7" name="6" image_idx="0" image_row="0" offsetx="0" offsety="0" anim_idx="65536" anim_frame="65536"/>
+<state idx="8" name="7" image_idx="0" image_row="0" offsetx="0" offsety="0" anim_idx="65536" anim_frame="65536"/>
+</states>
+<anims>
+</anims>
+</entity>

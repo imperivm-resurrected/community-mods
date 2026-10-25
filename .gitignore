@@ -34,3 +34,6 @@ GREEK-MODS.md
 
 # GBR Tactics 2.4: rebuilt from the ModDB installer + extras/gbr-tactics/ (wine, flatten-paks.js, port-140.js, gbr-tactics.js; see its NOTES.md)
 ported/gbr-tactics/
+
+# Antíoco III el Grande (Falcata): rebuilt from the forum zip + extras/antioco-iii-el-grande/ (tools/port-140.js + tools/antioco-iii.js, see its NOTES.md)
+ported/antioco-iii-el-grande/

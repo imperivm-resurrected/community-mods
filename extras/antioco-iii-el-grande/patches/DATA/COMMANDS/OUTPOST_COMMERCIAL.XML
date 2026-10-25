@@ -1,0 +1,5 @@
+<patch>
+  <!-- Falcata's trade post (KOutpost, renamed KOutpost_ant) sells food like the game's commercial outposts; his village.xml had the order -->
+  <add select="/commands/cmd[@name='goutpost_sellfood']"><src obj="KOutpost_ant"/></add>
+  <add select="/commands/cmd[@name='goutpost_no_sellfood']"><src obj="KOutpost_ant"/></add>
+</patch>
