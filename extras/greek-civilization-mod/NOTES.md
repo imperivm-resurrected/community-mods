@@ -34,7 +34,7 @@ In 4.2 the Greek faction sits in the Imperial Rome slot: its classes have `race=
 
 Tried in game (2026-10-23, Linux, 1920x1080): the lobby with the three Greek mods active (all the civilizations show, no patch errors, the content manager shows no problem), a skirmish with several civilizations that hung because of script patches of the CGWAR that did not compile (fixed, see its NOTES). **Not tried**: a game with every civilization of the 4.2, the Greek AI, the Roman branches' barracks, heroes.
 
-Left out, to port later: the mod's AI for the game's civilizations (they use HD's), the game modes' rules for the clones (Imperivm 2, Liga), `Spartacus`, `Fisherman`... (neutral, renamed).
+Left out, to port later: the game modes' rules for the clones (Imperivm 2, Liga), the AI scripts the engine calls by name (see *The mod's AI*), `Spartacus`, `Fisherman`... (neutral, renamed).
 
 ## The mod's versions of the game's scripts (tools/lib/own-scripts.js)
 
@@ -44,6 +44,16 @@ The clones and Greece played in the 4.2 with the mod's edits of the game's behav
 - **Class ids written as text** in a shared script (`Place("EPriest")`, `Mutate("CMERCENARIO")`) are the game's or the mod's old ids, not the clone's: they place the game's class (or none: `CMERCENARIO` of Carthage's outpost, `BHorseman` of the Iberian scout, which the mod's own script misspells). Same as the game's script did.
 - **const.ini**: the keys the game does not have (23: `MaxMyrmidonsValue`, `Stonehenge*`, `AntiRonda*`, `LastRoarRadius`, `DesertSpiritsRadius`, `RaidsTimes`, `RaidsFood`, `RaidsDuration`, the Carthage outpost's) are in a patch now: only the mod's scripts read them, and without them `GetConst` of the Myrmidons' school and the Stonehenge spells found nothing. A key the game has keeps the game's value.
 - **`StaminaBoostSound`** (a feedback class nobody declares) is `StaminaBoost` in every script of the port. The Greek priest names `druid_revitalize*_g42.vs`.
+
+## The mod's AI (tools/lib/greek-ai.js)
+
+The AI of the mod runs only for the mod's civilizations: every script is a copy of its own (`GR42_*`) and the game's AI scripts are only handed over by patches that ask `Mod_TrueRace(set.GetCentralBuilding)`, so the game's civilizations keep the game's AI.
+
+- **Economy and helpers** (`GR42_ES_Stronghold`, `GR42_ES_Village`, `GR42_ESH_*`, 12 scripts): for Greece, Gaul, Britain, Iberia, Egypt and Germany (`greek`, `gaul42`, `britain42`, `iberia42`, `egypt42`, `germany42`). They used to be Greece's only. Not for Rome's three branches and Carthage's two: those scripts read the old `ChooseXxx` flags, which no longer exist, so those five keep the game's economy.
+- **Tactics** (new): the mod's `GetTacticScript` for each civilization, as the SDK says to give a civilization its own tactic (`sdk/civilizations.md`, *The AI*). `GR42_TS_*` (13 scripts, with `TS_AttackAtWill` they start) are declared in `AI.INI` and a patch of `GetTacticScript.vs` picks them in the first 2 seconds as the mod did: Greece, Gaul, Britain, Iberia, Germany 30% the first and 60% the second, Egypt 100%, Numidian Carthage 100% `TS_CarthageTactic`; Gaul none in Old School mode; Rome's three branches and the Mauritanian Carthage none (`TS_NONE`), as the mod gives them.
+- **AI variables**: only the ones the game does not have are declared (`AIV_Max*` of the mod's units, `AIV_WaitTactic`...). Before, the patch also set `AIV_MaxMilUnits` (game: -1, mod: 120) and `AIV_MaxAttentionPoints` on Hard for **everybody**: gone, a variable the game has keeps its value.
+- **Not copied: what the engine calls by name** (`CalcGAIKAPriority`, `GetArmyNeed`, `EvalRecruit`, `SendSquad`, `CalcMaxTake`, the `TSH_*` helpers behind `set.TSRecruitHero()`...), the group scripts (`GS_*`), `SquadMonitor`, `Recruiter`, `Main` and the `AI HELPERS` (siege, guard): there is one of each for all the AI players and the engine looks for it by that name, so a copy would not be called and replacing it would change every AI. The mod's versions of these are the game's here. Its tactics were written for them, so how closely the clones' AI plays like the 4.2's is **not tried**.
+- **Not tried in game**: nothing of the AI above.
 
 ## Rome's branches and Carthage's (tools/greek-4-2.js, tools/greek-mod-fixes.js)
 

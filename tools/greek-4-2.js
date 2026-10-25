@@ -165,7 +165,16 @@ console.log(`Greece: ${greekIds.size} classes with race "${GREEK_RACE}" (${piece
 
 // its AI (the mod's settlement scripts that treat Imperial Rome as Greece) runs only for Greek settlements
 {
-  const r = require("./lib/greek-ai.js")({ OUT, HD, prefix: "GR42_", constName: "Greek", varRe: /^AIV_(Max[A-Z]|Time)/ });
+  // the civilizations the mod's economy runs for: not Rome's and Carthage's branches (their scripts read the old ChooseXxx flags); the tactics are the
+  // mod's GetTacticScript (originals/greek-4-2-pristine/DATA/AI/GETTACTICSCRIPT.VS: 30% / 60% of the first roll, the Rome branches and the
+  // Mauritanian Carthage none, Numidian Carthage 100%). Gaul in Old School mode has none (its tactic is not asked for there)
+  const TACT = (a, b) => [[30, a], [90, b]];
+  const r = require("./lib/greek-ai.js")({ OUT, HD, prefix: "GR42_", constName: "Greek", varRe: /^AIV_(Max[A-Z]|Time)/,
+    civs: ["Greek", "Gaul42", "Britain42", "Iberia42", "Egypt42", "Germany42"],
+    tactics: { Greek: TACT("TS_GreekTactic", "TS_GreekTactic2"), Gaul42: TACT("TS_GaulTactic", "TS_GaulTactic2"), Britain42: TACT("TS_BritishTactic", "TS_BritishTactic2"),
+      Iberia42: TACT("TS_IberianTactic", "TS_IberianTactic2"), Germany42: TACT("TS_GermanyTactic", "TS_GermanyTactic2"), Egypt42: [[100, "TS_EgyptTactic"]],
+      Carthnum42: [[100, "TS_CarthageTactic"]], Carthmau42: [], Romerep42: [], Romeimp42: [], Romepun42: [] },
+    guards: { Gaul42: 'EnvReadInt(idPlayer, "ModeOldSchoolCostsV2") == 1' } });
   console.log(`AI: ${r.names.length} scripts run as GR42_* (${r.loops.join(", ")})`);
 }
 
