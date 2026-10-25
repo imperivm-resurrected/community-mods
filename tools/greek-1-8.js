@@ -34,6 +34,36 @@ const report = [];
 // ---- 0. what is not in the mod ---------------------------------------------------------------------------------------
 // (nothing is left out here: the maps, adventures, conquests and videos of the mod stay in it)
 
+// ---- 0b. the mod's Italian texts ---------------------------------------------------------------------------------------
+// port-140.js only knows the Spanish table (flatten-paks.js unpacks only Local\spanish.pak). The mod also ships Local\italian.pak: what its
+// tables say that HD's Italian ones do not goes to loc/italian.loc.xml, the same rule as loc/spanish.loc.xml (new keys and changed ones), and it
+// is renamed with the rest of the text files below. English has 4 entries (no Greek text: the keys are English); Czech is a whole translation of
+// the game, a language HD does not have, and is not ported. CREDITS.TXT goes to local/italian as the Spanish one goes to local/spanish.
+{
+  const pak = path.join(ROOT, "originals", "greek-mod-1.8-full", "GreekMod_1.8", "Local", "italian.pak"), HDL = path.join(ROOT, "originals", "game-data", "local-italian", "CURRENTLANG");
+  if (fs.existsSync(pak) && fs.existsSync(HDL)) {
+    const tmp = fs.mkdtempSync(path.join(os.tmpdir(), "it-")), g = path.join(tmp, "game");     // extract-data.js reads the Packs\ of a game folder
+    fs.mkdirSync(path.join(g, "Packs"), { recursive: true }); fs.copyFileSync(pak, path.join(g, "Packs", "italian.pak"));
+    const r = cp.spawnSync("node", [path.join(process.env.SDK || path.join(ROOT, "..", "imperivm-resurrected", "sdk"), "tools", "extract-data.js"), g, path.join(tmp, "out"), "italian.pak"], { encoding: "utf8" });
+    if (r.status) { console.error(r.stderr || r.stdout); process.exit(1); }
+    const decode = b => { const u = b.toString("utf8"); return u.includes("\ufffd") ? b.toString("latin1") : u; };
+    const entries = f => { const m = new Map(); if (fs.existsSync(f)) for (const e of decode(fs.readFileSync(f)).matchAll(/<translationtableentry\b[^>]*?\/>/g)) {
+      const t = (e[0].match(/\btext="([^"]*)"/) || [])[1], c = (e[0].match(/\bcontext="([^"]*)"/) || [])[1] || "", res = (e[0].match(/\bresult="([^"]*)"/) || [])[1];
+      if (t != null) m.set(t + "\0" + c, { res, line: e[0] }); } return m; };
+    const out = new Map(), CL = find(path.join(tmp, "out"), "CURRENTLANG");
+    for (const f of ["GAME.LOC.XML", "TRANSLATION.LOC.XML"]) {
+      const mine = entries(find(CL, f) || path.join(CL, f)), hd = entries(path.join(HDL, f));
+      for (const [k, e] of mine) if ((!hd.has(k) || hd.get(k).res !== e.res) && !out.has(k)) out.set(k, e.line);
+    }
+    fs.mkdirSync(path.join(OUT, "loc"), { recursive: true });
+    fs.writeFileSync(path.join(OUT, "loc", "italian.loc.xml"), "\ufeff<translationtable>\n" + [...out.values()].join("\n") + "\n</translationtable>\n", "utf8");
+    const cr = find(CL, "CREDITS.TXT");
+    if (cr) { fs.mkdirSync(path.join(OUT, "local", "italian"), { recursive: true }); fs.copyFileSync(cr, path.join(OUT, "local", "italian", "CREDITS.TXT")); }
+    fs.rmSync(tmp, { recursive: true, force: true });
+    console.log(`${out.size} Italian texts (loc/italian.loc.xml)`);
+  } else report.push("no Local\\italian.pak or HD Italian texts: loc/italian.loc.xml not written");
+}
+
 // ---- 1. the Greek names: what the mod defines and the game does not ----------------------------------------------------
 const files = walk(OUT);
 const names = new Map();                                   // lowercase old name -> { old, at } (at: index of the letter in it)
