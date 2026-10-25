@@ -11,7 +11,7 @@ Las letras y los índices son únicos en todos los ports (el SDK admite índices
 | 30 | `greece` | `K` | ImperialRome | CGWAR | Raza propia; independiente del juego, de la 1.8 y de la 4.2 (`tools/cgwar-independent.js`; `tools/shared-paths.js` no encuentra ids de clase en común) |
 | 31 | `greek` | `H` | ImperialRome (raza propia) | 4.2 | Grecia de la 4.2, en el hueco de nadie (`tools/greek-4-2.js`) |
 | 32 | `greek18` | `Q` | ImperialRome (raza propia) | 1.8 | Grecia independiente de la del juego y de las clases de la 4.2/CGWAR; aún comparte contenido neutral (pescador, scripts, música) con la 4.2, Imperivm Legacy y el MCI |
-| 33 | `rome18` | `J` | RepublicanRome | 1.8 | Roma Republicana con las estadísticas y costes de la 1.8, clonada de HD (`tools/greek-1-8-civs.js`); las demás civilizaciones de la 1.8 vienen después |
+| 33 | `rome18` | `J` | RepublicanRome | 1.8 | Roma Republicana con las estadísticas, costes y rama de la 1.8, clonada de HD (`tools/greek-1-8-civs.js`) |
 | 34 | `gaul18` | `L` | Gaul | 1.8 | Galia con las estadísticas de la 1.8 y los costes de los barracones |
 | 35 | `carthage18` | `P` | Carthage | 1.8 | Igual (elefante, lanzador de jabalina, noble; costes de barracones y templo) |
 | 36 | `britain18` | `O` | Britain | 1.8 | Igual (portaescudo, lancero de bronce, arquero, héroe) |
@@ -48,5 +48,7 @@ Las letras y los índices son únicos en todos los ports (el SDK admite índices
 | (motor) | `imperial2010` | `Imp` (derivado) | ImperialRome | La Reconquista 2010 | `tools/reconquista-2010.js` |
 
 Una civilización sin `letter` (prefijo derivado: las 3 primeras letras del `id`, imperivm-resurrected#37) ni `index` (lo asigna el motor) no reserva nada en esta tabla; sus filas dicen `(motor)` y están para detectar choques. **Dos ports no pueden estar activos a la vez si comparten un prefijo derivado: el motor ignora la segunda civilización.** Ahora mismo chocan GBR Tactics y La Reconquista 2010 en `Gau`, `Bri`, `Car`, `Egy`, `Ger`, `Ibe` e `Imp`.
+
+Igual la Roma imperial y la púnica de la 1.8 (`empire18`, `punic18`): prefijos `Emp` y `Pun` derivados del id, índices asignados por el motor.
 
 Los tres Greek mods son independientes del juego y entre sí (comprobado con `tools/shared-paths.js` y el gestor de contenido); lo que queda pendiente está en el `NOTES.md` de cada mod, apartado *Pending*.
