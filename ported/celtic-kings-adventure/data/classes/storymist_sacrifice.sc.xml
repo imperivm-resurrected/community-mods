@@ -1,0 +1,8 @@
+<class id="Storymist_sacrifice" cpp_class="CVXSacrifice" parent="Sacrifice" entity="Visuals/fogs/fogs.ent.xml">
+
+	<properties radius="100"/>
+	<properties range="200"/>
+
+	<method sig="idle" vs="data/subai/storymist_idle.vs"/>
+
+</class>

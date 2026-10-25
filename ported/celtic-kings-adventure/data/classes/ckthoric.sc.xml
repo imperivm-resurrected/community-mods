@@ -1,0 +1,15 @@
+<class id="CKThoric" cpp_class="CVXUnit" parent="Melee" entity="Units/BVikingLord/BVikingLord.ent.xml">
+
+	<properties race="Britain"/>
+	<properties maxhealth="1200"/>
+	<properties damage="120" armor_slash="6" armor_pierce="6"/>
+	<properties speed="80"/>
+	<properties unit_specials="Life steal, Ferocity, Toughness"/>
+
+	<properties icon="gameres/icons/thorik.bmp"/>
+	<properties display_name="Thoric" display_name_plural="Viking Lords"/>
+	<properties help="contents/units/BVikingLord"/>
+	<properties edittree_pos="Units/Heroes/Thoric (Adventure)"/>
+	<sounds command="data/sound entities/VoiceBVikingLord.xml" attack="UnitHammerFight"/>
+
+</class>

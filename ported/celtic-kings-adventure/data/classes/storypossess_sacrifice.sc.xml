@@ -1,0 +1,8 @@
+<class id="Storypossess_sacrifice" cpp_class="CVXSacrifice" parent="Sacrifice" entity="">
+
+	<properties radius="100"/>
+	<properties range="200"/>
+
+	<method sig="idle" vs="data/subai/storypossess_idle.vs"/>
+
+</class>

@@ -1,0 +1,23 @@
+{
+  "id": "celtic-kings-adventure",
+  "name": "Celtic Kings Adventure",
+  "version": "1.0",
+  "authors": [
+    "Luken_SOD",
+    "Haemimont Games",
+    "FX Interactive",
+    "Villoh (port)"
+  ],
+  "description": {
+    "english": "The saga of the young Gaul Larax, from Celtic Kings: Rage of War (Haemimont Games, FX Interactive) adapted to Imperivm HD by Luken_SOD: 17 maps, the original videos and music, three editions (English, Spanish and Italian, each in the adventure list under its own title). It has its own Larax, Thoric, Lleldoryn and Stonehenge, so Imperivm's are not touched.",
+    "spanish": "La saga del joven galo Lárax, de Celtic Kings: Rage of War (Haemimont Games, FX Interactive) adaptada a Imperivm HD por Luken_SOD: 17 mapas, los vídeos y la música originales, tres ediciones (inglés, español e italiano, cada una con su título en la lista de aventuras). Trae su propio Lárax, Thoric, Lleldoryn y Stonehenge, así que los de Imperivm no se tocan.",
+    "italian": "La saga del giovane gallo Larax, da Celtic Kings: Rage of War (Haemimont Games, FX Interactive) adattata a Imperivm HD da Luken_SOD: 17 mappe, i video e la musica originali, tre edizioni (inglese, spagnola e italiana, ciascuna nell'elenco delle avventure con il proprio titolo). Ha il suo Larax, Thoric, Lleldoryn e Stonehenge, quindi quelli di Imperivm non vengono toccati."
+  },
+  "category": "Adventures",
+  "tags": [
+    "Language: English",
+    "Language: Spanish",
+    "Language: Italian"
+  ],
+  "redistributable": true
+}

@@ -1,0 +1,13 @@
+<class id="StoryGWarehouse" cpp_class="CVXBuilding" parent="BaseHouse"
+	entity="Buildings/GVillage/GVillage.ent.xml"
+	entity_autumn="Buildings/GVillage/GVillage.ent.xml"
+	entity_spring="Buildings/GVillage/GVillage.ent.xml"
+	entity_winter="Buildings/GVillage/GVillage_w.ent.xml">
+
+	<properties race="Gaul"/>
+	<properties display_name="Warehouse"/>
+	<properties icon="gameres/icons/GWarehouse.bmp"/>
+	<properties radius="230" selection_radius="250"/>
+	<properties edittree_pos="Structures/Stronghold (Gaul)/Warehouse (Adventure)"/>
+
+</class>

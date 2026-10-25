@@ -1,0 +1,104 @@
+<!-- The Celtic Kings Adventure's commands, added to HD's file: only its own classes (CKDLleldoryn, CKStonehenge, GStoryDruid, RStoryPriest) get them -->
+<patch>
+  <add select="/commands" position="start">
+<cmd name="help-sacrifice" priority="12"
+	button="actions/Sacrifice.bmp"
+	groupverifier="data/subai/verify_isresearched.vs"
+	onaddremovescript="data/subai/helpsacrifice_onaddremove.vs"
+	cursor="do_something"
+	param="Help Sacrifice"
+	researchcommand="yes">
+	<cmdtext target="BaseMage"
+		text=""
+		default-text="Right-click to join ritual"/>
+</cmd>
+
+<cmd name="learn" priority="10"
+	button="actions/Learn.bmp"
+	key="l"
+	rollover="Learn from ally"
+	description="Gains knowledge from a more experienced ally"
+	coststamina = "0">
+	<cmdtext target="Unit"
+		text="Click to learn from ally"
+		default-text="Right-click to learn from ally"/>
+	<src obj="CKDLleldoryn" sticky="yes"/>
+</cmd>
+
+<cmd name="heal" priority="11"
+	button="actions/heal.bmp"
+	key="h"
+	rollover="Heal"
+	description="Heals the target with 20 plus the level of the healer"
+	cursor="do_something"
+	coststamina = "1">
+	<cmdtext target="Unit"
+		text="Click to heal this ally"
+		default-text="Right-click to heal this ally"/>
+	<src obj="CKDLleldoryn" sticky="yes"/>
+	<src obj="GStoryDruid" sticky="yes"/>
+	<src obj="RStoryPriest" sticky="yes"/>
+</cmd>
+
+<cmd name="hide" priority="13"
+	button="actions/invisibility.bmp"
+	key="i"
+	rollover="Invisibility"
+	description="Hides the target from the eyes of all enemies"
+	cursor="do_something"
+	coststamina = "1">
+	<cmdtext target="Unit"
+		text="Hides the target from the eyes of all enemies"
+		default-text=""/>
+	<cmdtext target=""
+		text="Click to hide all allies around this position"
+		default-text=""/>
+	<src obj="CKDLleldoryn" sticky="yes"/>
+</cmd>
+
+<cmd name="ghoul_summoning" priority="14"
+	button="actions/ghost.bmp"
+	key="g"
+	rollover="Summon Ghoul"
+	description="Summons a ghoul that drains the life of nearby enemies and also could be controlled">
+	<src obj="CKDLleldoryn" sticky="yes"/>
+	<src obj="GStoryDruid" sticky="yes"/>
+	<src obj="RStoryPriest" sticky="yes"/>
+</cmd>
+
+<cmd name="cloud_of_plague" priority="14"
+	method="mist"
+	button="actions/mist.bmp"
+	key="p"
+	rollover="Create Cloud of Plague"
+	description="Creates a cloud that slowly kills all affected enemies">
+	<src obj="CKDLleldoryn" sticky="yes"/>
+	<src obj="GStoryDruid" sticky="yes"/>
+	<src obj="RStoryPriest" sticky="yes"/>
+</cmd>
+
+<cmd name="beast_control" priority="15"
+	button="actions/possess.bmp"
+	key="b"
+	rollover="Beast control"
+	description="Takes control of one or more nearby animals">
+	<src obj="CKDLleldoryn" sticky="yes"/>
+</cmd>
+
+<cmd name="mass_hide" priority="15"
+	button="actions/invisibility.bmp"
+	key="n"
+	groupdispatch="data/subai/group_hide.vs"
+	onaddremovescript="data/subai/helpsacrifice_onaddremove.vs"
+	rollover="Mass invisibility"
+	description="Renders all units in area invisible">
+	<cmdtext target="Unit"
+		text="Click to hide all allies around this position"
+		default-text=""/>
+	<cmdtext target=""
+		text="Click to hide all allies around this position"
+		default-text=""/>
+	<src obj="CKDLleldoryn" sticky="yes"/>
+</cmd>
+  </add>
+</patch>

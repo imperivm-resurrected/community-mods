@@ -19,6 +19,9 @@ ported/greek-mod-terrains/
 ported/imperivm-legacy/
 ported/mediterranevm-alpha/
 
+# Celtic Kings Adventure (row 202): the music is third-party (30 MB); rebuilt by tools/celtic-kings-adventure.js from the ModDB zips + extras/celtic-kings-adventure/
+ported/celtic-kings-adventure/music/
+
 # Greek Civilization Mod 1.8 (full game copy, 2.8 GB): rebuilt from the forum rar + extras/greek-mod-1-8/ (tools/flatten-paks.js, port-140.js, greek-1-8.js; see its NOTES.md)
 ported/greek-mod-1-8/
 

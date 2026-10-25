@@ -1,0 +1,50 @@
+<translationtable>
+  <translationtableentry text="DLleldoryn_Map3@DLleldoryn_Map3 class name" result="DLleldoryn_Map3"/>
+  <translationtableentry text="Druids@DLleldoryn_Map3 class name plural" result="Druidas"/>
+  <translationtableentry text="Lleldoryn (No spell)@editortree/Units/Heroes" result="Lleldoryn (ningún hechizo)"/>
+  <translationtableentry text="Thoric@CKThoric class name" result="Thoric"/>
+  <translationtableentry text="Viking Lords@CKThoric class name plural" result="Jefes normandos"/>
+  <translationtableentry text="Thoric (Adventure)@editortree/Units/Heroes" result="Thoric (aventura)"/>
+  <translationtableentry text="GStoryDruid@DGStoryDruid class name" result="GStoryDruid"/>
+  <translationtableentry text="Druids@GStoryDruid class name plural" result="Druidas"/>
+  <translationtableentry text="Druid (Adventure)@editortree/Units/Heroes" result="Druida (aventura)"/>
+  <translationtableentry text="RStoryPriest@RStoryPriest class name" result="RStoryPriest"/>
+  <translationtableentry text="Priests@RStoryPriest class name plural" result="Sacerdotes"/>
+  <translationtableentry text="Priest (Adventure)@editortree/Units/Heroes" result="Sacerdote (aventura)"/>
+  <translationtableentry text="StoryGhost@StoryGhost class name" result="StoryGhost"/>
+  <translationtableentry text="Ghouls@StoryGhost class name plural" result="Espíritus"/>
+  <translationtableentry text="Ghoul (Adventure)@editortree/Units/Heroes" result="Espíritu (aventura)"/>
+  <translationtableentry text="Warehouse" result="Almacén"/>
+  <translationtableentry text="StoryGWarehouse@GWarehouse class name" result="StoryGWarehouse"/>
+  <translationtableentry text="Warehouse (Adventure)@editortree/Structures/Stronghold (Gaul)" result="Almacén (aventura)"/>
+  <translationtableentry text="Warehouse (Adventure)@editortree/Structures/Stronghold (Gaul)/Winter" result="Almacén (aventura)"/>
+  <translationtableentry text="Before continuing the adventure, you can choose the class of the bonus units." result="Antes de continuar con la aventura ñ, puedes escoger la clase de las unidades bonus."/>
+  <translationtableentry text="Type in the chat the class you prefer. If you want to keep the original one, type 'Vanilla'." result="Escribe en el chat la clase que prefieras. Si quieres mantener la original, escribe 'Vanilla'."/>
+  <translationtableentry text="Once a class is confirmed, it can't be changed for the rest of the adventure." result="Una vez una clase es confirmada, no puede ser cambiada durante el resto de la aventura."/>
+  <translationtableentry text="You can type 'Class' to see the list of available classes." result="Puedes escribir 'Class' para ver una lista con las clases disponibles."/>
+  <translationtableentry text="You can type 'Help' to show this message again." result="Puedes escribir 'Help' para ver este mensaje otra vez."/>
+  <translationtableentry text="You must type at least 'Vanilla' to continue." result="Tienes que escribir al menos 'Vanilla' para continuar ."/>
+  <translationtableentry text="Invalid class." result="Clase invalida."/>
+  <translationtableentry text="Valid class." result="Clase valida."/>
+  <translationtableentry text="Celtic Kings Adventure\n\nCreated by Haemimont Games.\nAdapted for Imperivm GBR HD by Luken." result="Imperivm I - La Guerra De Las Galias\n\nCreada por Haemimont Games.\nAdaptada para Imperivm GBR HD por Luken."/>
+  <translationtableentry text="Summons a ghoul that drains the life of nearby enemies and also could be controlled@ghoul_summoning" result="Invoca un espíritu que drena la vida de los enemigos cercanos y que también puede ser controlado"/>
+  <translationtableentry text="Creates a cloud that slowly kills all affected enemies@cloud_of_plague" result="Crea una nube venenosa que mina la salud de los enemigos"/>
+  <translationtableentry text="Beast control@beast_control" result="Dominio de las bestias"/>
+  <translationtableentry text="Takes control of one or more nearby animals@beast_control" result="Toma el control de uno o más animales cercanos"/>
+  <translationtableentry text="Mass invisibility@mass_hide" result="Invisibilidad de masas"/>
+  <translationtableentry text="Renders all units in area invisible@mass_hide" result="Hace invisibles a todas las unidades amigas alrededor del punto señalado"/>
+  <translationtableentry text="Golden rain@golden_rain" result="Lluvia de oro"/>
+  <translationtableentry text="Slowly adds gold to every settlement storage. Lasts for 2 minutes@golden_rain" result="Durante 2 minutos añade oro a cada asentamiento"/>
+  <translationtableentry text="Golden rain - %s1:%s2%s3s" result="Lluvia de oro - %s1:%s2%s3s"/>
+  <translationtableentry text="Teuton uprising@teuton_disaster" result="Rebelión de los teutones"/>
+  <translationtableentry text="Starts a Teuton uprising in every teuton tent (once per game)@teuton_disaster" result="Provoca una Rebelión de los teutones en todos sus campamentos (solo una vez por partida)"/>
+  <translationtableentry text="Teuton uprising - %s1:%s2%s3" result="Rebelión de los teutones - %s1:%s2%s3"/>
+  <translationtableentry text="A Teuton uprising has already been summoned" result="Una Rebelión de los teutones ya ha sido invocada"/>
+  <translationtableentry text="There are no teuton tents on the map" result="No hay campamentos teutones en el mapa"/>
+  <translationtableentry text="Lleldoryn@CKDLleldoryn class name" result="Lleldoryn"/>
+  <translationtableentry text="Druids@CKDLleldoryn class name plural" result="Druidas"/>
+  <translationtableentry text="Larax@CKLarax class name" result="Larax"/>
+  <translationtableentry text="Heroes@CKLarax class name plural" result="Héroes"/>
+  <translationtableentry text="CK Glowing gem" result="Gema brillante"/>
+  <translationtableentry text="CK Gem of Power" result="Gema del poder"/>
+</translationtable>

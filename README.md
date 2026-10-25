@@ -35,6 +35,7 @@ The tools compare each mod with the game's data, so extract it first. `extract-d
 | The HD maps | copy the game's `Scenarios/` and `Adventures/` to `originals/game-data/` | `wrap-map` (skips maps the game already ships) |
 | Every HD pack | `node extract-data.js "<game>" originals/game-data/paks <Name>.pak`, for each `Packs\*.pak` | `port-140` |
 | HD Spanish texts | `extract-data.js` on `local\spanish.pak` (copy it into a `Packs\` folder first), output `originals/game-data/local-spanish` | `port-140` |
+| HD Italian texts | the same on `local\italian.pak` (copied into a `Packs\` folder), output `originals/game-data/local-italian` | `celtic-kings-adventure` |
 | The 1.40 packs | `data.pak`, `Units.pak`, `Buildings.pak`, `MapObjects.pak` from `Cab3.cab` inside `Imperivm III-1.40-ES.exe` (forum t731, `Imperium_3_official_patch.zip`), extracted to `originals/game-140/paks` | `port-140` |
 | Big mods' classes | each one's `mod.json`, `hidden.txt` and `DATA/**/*.sc.xml` in `originals/mods/<mod id>/` | `wrap-map` (`requires`, `incompatibleWith`) |
 | Imperivm I data | `node tools/imperivm1.js setup <patch.exe> <demo.zip>` (see [Maps with Imperivm I classes](#maps-with-imperivm-i-classes)) | `imperivm1` |
@@ -202,6 +203,7 @@ The same idea works for any old map: look for the class in an older `data.pak` (
 | [`imperivm1.js`](tools/imperivm1.js) | Imperivm I classes → `ported/imperivm1-legacy/` |
 | [`cgwar-greece.js`](tools/cgwar-greece.js) | After `port-140.js`: the CGWAR's Greece as a new civilization |
 | [`cgwar-independent.js`](tools/cgwar-independent.js) | After `cgwar-greece.js`: the game's files it replaced become patches of what is Greek; the rest is left out |
+| [`celtic-kings-adventure.js`](tools/celtic-kings-adventure.js) | The Celtic Kings Adventure (row 202): the three ModDB zips → `ported/celtic-kings-adventure/`; its classes, commands and items as its own (`CK*`), the `.bfhp` edited in place to use them (`hpfs.js`), the texts as `loc/` |
 | [`gbr-tactics.js`](tools/gbr-tactics.js) | After `port-140.js`: GBR Tactics 2.4's eight civilizations as civilizations of their own (ids `<civ>_gbrt`, derived prefixes), its new items as patches; the mod's scripts the game's compiler refuses are fixed (see `extras/gbr-tactics/NOTES.md`) |
 | [`greek-4-2.js`](tools/greek-4-2.js) | The Greek Mod 4.2 as its own civilizations (and Rome's and Carthage's branches); `tools/lib/` has what it shares with the others |
 | [`lib/lzis.js`](tools/lib/lzis.js) | Decodes a package the engine stores LZIS-compressed (GBR Tactics' `Z-RandomMap.pak`); `flatten-paks.js` uses it |
