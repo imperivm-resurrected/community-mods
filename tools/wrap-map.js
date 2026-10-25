@@ -171,7 +171,8 @@ const bigMods = !hdFiles || !fs.existsSync(MODS) ? [] : fs.readdirSync(MODS).map
   const own = Object.keys(classFiles(path.join(dir, "DATA")));
   // forum-* = a mod downloaded from the forum but not ported to Resurrected yet: a map needing it has to wait
   return { mod: m, ported: !m.startsWith("forum-"), own: new Set(own), classes: new Set([...Object.keys(hdFiles).filter(c => !hidden.has(hdFiles[c])), ...own]) };
-}).concat(!hdFiles ? [] : fs.readdirSync(path.join(ROOT, "ported")).filter(m => m !== id && dataDir(m) && !fs.existsSync(path.join(MODS, m))) // a mod that is also in originals/mods is counted there (it has its hidden.txt).map(m => {
+// a mod that is also in originals/mods is counted there (it has its hidden.txt)
+}).concat(!hdFiles ? [] : fs.readdirSync(path.join(ROOT, "ported")).filter(m => m !== id && dataDir(m) && !fs.existsSync(path.join(MODS, m))).map(m => {
   // our own class mods (e.g. imperivm1-legacy from tools/imperivm1.js): its id is in its mod.json
   const own = Object.keys(classFiles(dataDir(m)));
   let modId = m;
