@@ -76,6 +76,15 @@ for (const f of branchScripts) fs0.rmSync(path.join(DST, f), { force: true });
   }
 }
 
+// its conquests that share a path with the game's (Mediterranean) or with another port's become conquests of their own, next to those (tools/lib/conquests.js); before tagCollisions, which would rename the files of a folder one by one
+{
+  const fs = require("fs"), PORTED = path.join(ROOT, "ported"), G = path.join(ROOT, "originals", "game-data");
+  const others = [G, ...fs.readdirSync(PORTED).filter(d => d !== "greek-mod-1-8").map(d => path.join(PORTED, d))].filter(d => fs.existsSync(d) && fs.statSync(d).isDirectory());
+  const r = require("./lib/conquests.js")({ OUT: path.join(ROOT, "ported", "greek-mod-1-8"), others, tag: "g18", label: "Rattlesmake" });
+  for (const c of r.done) console.log(`conquest ${c.from} -> ${c.to} (${c.folder})`);
+  if (r.problems.length) console.log("conquests, to check:\n  " + r.problems.join("\n  "));
+}
+
 // names the CGWAR (built first) already has with other bytes, or that are the same gameplay file: this port's are renamed (tools/lib/ported-patch.js)
 {
   const fs = require("fs"), { tagCollisions } = require("./lib/ported-patch.js"), G = path.join(ROOT, "originals", "game-data");
