@@ -27,6 +27,23 @@ const GREEK = /Ares|Greece|Greek|Circe|Hecate|Free_Village|Combative Spirit|Olym
   console.log(`GreekHero -> KGreekHero in ${n} files`);
 }
 
+// 1b. the squad monitor of the AI: the mod's version (items dropped or passed to another hero, War Horn, Invocation, a hurt hero detaches a small army...)
+// is a whole script for every AI player, so it runs as GR_SquadMonitor.vs, and only for the players who chose one of the mod's civilizations
+// (Main.vs, which starts one SquadMonitor per AI player, picks it). The game's stays as it is for everyone else.
+{
+  const sm = walk(OUT).find(f => /^DATA\/AI\/SQUADMONITOR\.VS$/i.test(f));
+  if (sm) {
+    const dir = path.dirname(path.join(OUT, sm));
+    fs.renameSync(path.join(OUT, sm), path.join(dir, "GR_SQUADMONITOR.VS"));
+    const civs = fs.readdirSync(path.join(OUT, "civs")).filter(f => /\.json$/i.test(f)).map(f => f.replace(/\.json$/i, ""));
+    const test = civs.map(c => `Mod_PlayerCiv(AIGetPlayer) == ${c[0].toUpperCase()}${c.slice(1)}`).join(" || ");
+    wr(path.join(OUT, "patches", "DATA", "AI", "MAIN.VS"), `@replace AIRun('SquadMonitor.vs');\r\nif (${test})\r\n\tAIRun('GR_SquadMonitor.vs');\r\nelse\r\n\tAIRun('SquadMonitor.vs');\r\n`);
+    const ini = path.join(OUT, "patches", "DATA", "AI", "AI.INI"), t = rd(ini);
+    if (!/GR_SquadMonitor\.vs/i.test(t)) wr(ini, t.replace(/(\[Scripts\]\r?\n)/, "$1GR_SquadMonitor.vs = void\r\n"));
+    console.log(`SquadMonitor: GR_SQUADMONITOR.VS for ${civs.join(", ")}`);
+  }
+}
+
 // 2. the files at the game's paths (tools/lib/independent.js)
 const { report, patches, dropped } = gameFilesToPatches({ OUT, HD, GREEK, keep: /^currentlang\// });
 
@@ -41,6 +58,19 @@ const { report, patches, dropped } = gameFilesToPatches({ OUT, HD, GREEK, keep: 
   const HDP = path.join(ROOT, "originals", "game-data", "paks"), mine = ownNames(OUT, HDP), t = ownNames(path.join(ROOT, "ported", "greek-mod-1-8"), HDP), names = new Set();
   for (const k of ["cmds", "items"]) for (const n of mine[k]) if ([...t[k]].some(x => x.toLowerCase() === n.toLowerCase())) names.add(n);
   console.log(`names shared with the 1.8: ${[...names].join(", ")} -> "(cgwar)" in ${tagNames({ OUT, names, tag: "cgwar" })} files`);
+  // the texts are keyed by the old name (rollover, and the description under the rollover as its context): the translation of the new name is the same
+  // text, so each entry that names it is repeated with the tagged name (the translation shows without the tag)
+  const loc = path.join(OUT, "loc", "spanish.loc.xml");
+  if (names.size && fs.existsSync(loc)) {
+    const tagged = new Map([...names].map(n => [n.toLowerCase(), `${n} (cgwar)`])), t = rd(loc), extra = [];
+    const retag = v => v.split("@").map(p => tagged.get(p.trim().toLowerCase()) ?? p).join("@");
+    for (const line of t.split(/\r?\n/)) {
+      if (!/<translationtableentry\b/.test(line)) continue;
+      const n = line.replace(/\b(text|justtext|context)(\s*=\s*")([^"]*)"/g, (_m, a, eq, v) => `${a}${eq}${retag(v)}"`);
+      if (n !== line) extra.push(n);
+    }
+    if (extra.length) { wr(loc, t.replace(/\s*<\/translationtable>\s*$/, "\n" + extra.join("\n") + "\n</translationtable>\n")); console.log(`${extra.length} Spanish texts repeated under the tagged names`); }
+  }
 }
 // the mod's extras that were whole files of the game's scripts were handled above; empty folders go
 const prune = d => { for (const e of fs.readdirSync(d, { withFileTypes: true })) if (e.isDirectory()) { prune(path.join(d, e.name)); if (!fs.readdirSync(path.join(d, e.name)).length) fs.rmdirSync(path.join(d, e.name)); } };
