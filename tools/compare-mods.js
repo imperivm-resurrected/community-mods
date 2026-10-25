@@ -67,18 +67,17 @@ for (let k = 0; k < info.length; k++) {
 
 // 3. what each changed in the game's civilizations
 w("## What each mod changed in the game's civilizations\n");
-w("Only units whose own stats differ from HD. The CGWAR changes none: its classes are Greece's. La Reconquista 2010 is not a Greek mod: it is here because it changes the same classes.\n");
-const GAME = { G: "Gaul", M: "Imperial Rome", R: "Republican Rome", C: "Carthage", I: "Iberia", B: "Britain", E: "Egypt", T: "Germany" };
-w("| Civilization | Unit | HD | Rattlesmake 1.8 | Gabbo 4.2 | La Reconquista 2010 |");
-w("|---|---|---|---|---|---|");
-const merged = id => classes(path.join(ROOT, "originals", id, "classes"));
-const mod18 = merged("greek-1-8-merged"), mod42 = merged("greek-4-2-merged"), mod10 = merged("la-reconquista-2010-merged");   // La Reconquista changes the game's eight and adds no Greece
+w("Only units whose own stats differ from HD. The CGWAR changes none: its classes are Greece's.\n");
+const GAME = { G: "Gaul", R: "Republican Rome", C: "Carthage", I: "Iberia", B: "Britain", E: "Egypt", T: "Germany" };
+w("| Civilization | Unit | HD | Rattlesmake 1.8 | Gabbo 4.2 |");
+w("|---|---|---|---|---|");
+const mod18 = classes(path.join(ROOT, "originals", "greek-1-8-merged", "classes")), mod42 = classes(path.join(ROOT, "originals", "greek-4-2-merged", "classes"));
 const ids = new Set();
-for (const t of [mod18, mod42, mod10]) for (const [k, c] of t) if (hd.has(k) && GAME[c.id[0]] && /^[A-Z][A-Z]/.test(c.id) && /cpp_class\s*=\s*"CVX(Unit|Hero)"/.test(c.text) && !/Sentry/.test(c.id)) ids.add(c.id);
+for (const t of [mod18, mod42]) for (const [k, c] of t) if (hd.has(k) && GAME[c.id[0]] && /^[A-Z][A-Z]/.test(c.id) && /cpp_class\s*=\s*"CVX(Unit|Hero)"/.test(c.text) && !/Sentry/.test(c.id)) ids.add(c.id);
 for (const id of [...ids].sort()) {
-  const h = row(hd, id), a = mod18.has(id.toLowerCase()) ? row(mod18, id) : h, b = mod42.has(id.toLowerCase()) ? row(mod42, id) : h, c = mod10.has(id.toLowerCase()) ? row(mod10, id) : h;
-  if (a === h && b === h && c === h) continue;
-  w(`| ${GAME[id[0]]} | \`${id}\` ${display(hd.get(id.toLowerCase()).text)} | ${h} | ${a === h ? "=" : a} | ${b === h ? "=" : b} | ${c === h ? "=" : c} |`);
+  const h = row(hd, id), a = mod18.has(id.toLowerCase()) ? row(mod18, id) : h, b = mod42.has(id.toLowerCase()) ? row(mod42, id) : h;
+  if (a === h && b === h) continue;
+  w(`| ${GAME[id[0]]} | \`${id}\` ${display(hd.get(id.toLowerCase()).text)} | ${h} | ${a === h ? "=" : a} | ${b === h ? "=" : b} |`);
 }
 w("");
 // 4. Greece's researches and orders: what each mod gives it
