@@ -199,7 +199,7 @@ console.log(`menu skin: ${require("./lib/menu-skin.js").skinToPatches({ OUT, HD 
   if (fs.existsSync(cp0)) {
     const keys = t => new Set([...t.matchAll(/^\s*(\w+)\s*=/gm)].map(m => m[1].toLowerCase())), hdKeys = keys(rd(path.join(HD, find(HD, "DATA/CONST.INI") ? path.relative(HD, find(HD, "DATA/CONST.INI")) : "DATA/CONST.INI")));
     const mine = rd(cp0), names = [...mine.matchAll(/^\s*MName(00\d)\s*=\s*(.+?)\s*$/gm)].map(m => `HName${m[1]} = ${m[2]}`);
-    const gp = (mine.match(/\[GamePlay\][^[]*/) || [""])[0], added = [...gp.matchAll(/^\s*(\w+)\s*=.*$/gm)].filter(m => !hdKeys.has(m[1].toLowerCase()) && !/^(UI|Cinematics|Language|MName)/i.test(m[1])).map(m => m[0].trim());
+    const gp = (mine.match(/^\[GamePlay\][^]*?(?=^\[|(?![^]))/m) || [""])[0], added = [...gp.matchAll(/^\s*(\w+)\s*=.*$/gm)].filter(m => !hdKeys.has(m[1].toLowerCase()) && !/^(UI|Cinematics|Language|MName)/i.test(m[1])).map(m => m[0].trim());
     fs.rmSync(cp0);
     if (names.length || added.length) wr(path.join(OUT, "patches", "DATA", "CONST.INI"), `[GamePlay]\r\n${[...names, ...added].join("\r\n")}\r\n`);
     console.log(`const.ini: ${names.length} Greek hero names and ${added.length} keys of the mod's scripts; the mod's tuning of the game left out`);
