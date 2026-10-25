@@ -70,6 +70,8 @@ druid_heal_verify.vs -> druid_heal_verify_g42.vs  (4PRIEST.SC.XML, 5PRIEST.SC.XM
 mahout_school.vs -> mahout_school_g42.vs  (7ARENA.SC.XML, 8ARENA.SC.XML)
 CBlacksmith_anim.vs -> CBlacksmith_anim_g42.vs  (7BLACKSMITH.SC.XML, 8BLACKSMITH.SC.XML)
 coutpost_behavior.vs -> coutpost_behavior_g42.vs  (7OUTPOST.SC.XML, 8OUTPOST.SC.XML)
+coutpost_behavior.vs -> coutpost_behavior_g42_carthnum42.vs  (7OUTPOST.SC.XML)
+coutpost_behavior.vs -> coutpost_behavior_g42_carthmau42.vs  (8OUTPOST.SC.XML)
 tavern_heal.vs -> tavern_heal_g42.vs  (7TAVERN.SC.XML, 8TAVERN.SC.XML)
 create_food_mule_small.vs -> create_food_mule_small_g42.vs  (CTENT.SC.XML)
 create_food_mule_big.vs -> create_food_mule_big_g42.vs  (CTENT.SC.XML)

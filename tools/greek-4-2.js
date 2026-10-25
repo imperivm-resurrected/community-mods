@@ -193,8 +193,8 @@ console.log(`menu skin: ${require("./lib/menu-skin.js").skinToPatches({ OUT, HD 
   const r = require("./lib/own-scripts.js")({ OUT, HD, tag: "g42", skip: /Choose(Republican|Imperial|Punic|Numidian|Mauritanian)(Rome|Carthage)|rand\(\s*776|nLobbyBranch/i,
     dynamic: [/EnvReadString\(\s*\.settlement\s*,\s*subFac\s*\)\s*!=\s*"researched"/g],
     civs: [{ id: "britain42", match: /^(Y|britain42\.)/i, subst: [[/"Fights"/g, '"Britain42 Fights"']] },
-      { id: "carthnum42", match: /^(7|carthnum42\.)/i, flags: { ChooseNumidianCarthage: true }, subst: shaman(7) },
-      { id: "carthmau42", match: /^(8|carthmau42\.)/i, flags: { ChooseMauritanianCarthage: true }, subst: shaman(8) }] });
+      { id: "carthnum42", match: /^(7|carthnum42\.)/i, flags: { ChooseNumidianCarthage: true }, subst: shaman(7), scripts: { "coutpost_behavior.vs": [[/"CMERCENARIO"/g, '"7MERCENARIO"']] } },
+      { id: "carthmau42", match: /^(8|carthmau42\.)/i, flags: { ChooseMauritanianCarthage: true }, subst: shaman(8), scripts: { "coutpost_behavior.vs": [[/"CMERCENARIO"/g, '"8MERCENARIO"']] } }] });
   console.log(`scripts of the mod's own for its civilizations: ${r.copied.length} copied (_g42), ${r.skipped.length} left to the game's (${r.skipped.map(s => s.name).join(", ")})`);
   fs.writeFileSync(path.join(ROOT, "raw", "greek-4-2-own-scripts.txt"), r.copied.map(c => `${c.from} -> ${c.to}  (${c.users.slice(0, 4).join(", ")}${c.users.length > 4 ? ", ..." : ""})`).join("\n") + "\n\nnot copied:\n" + r.skipped.map(s => `${s.name}: ${s.why}`).join("\n") + "\n");
 }
