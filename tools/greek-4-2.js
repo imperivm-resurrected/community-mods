@@ -185,7 +185,16 @@ console.log(`menu skin: ${require("./lib/menu-skin.js").skinToPatches({ OUT, HD 
 // copies of their own (<name>_g42.vs); the game's scripts stay the game's (tools/lib/own-scripts.js). The ones that choose a branch of Rome or Carthage,
 // or read the old engine's sentinel, are not copied: each branch is a civilization now.
 {
-  const r = require("./lib/own-scripts.js")({ OUT, HD, tag: "g42", skip: /Choose(Republican|Imperial|Punic|Numidian|Mauritanian)(Rome|Carthage)|rand\(\s*776|nLobbyBranch/i });
+  // The scripts that read the branch flags (onfinish_research, arena_hirehero, verify_research, specialize_build_verify) are copied with the flags written
+  // in: false for everybody but the Carthages (the Roman branches' hero comes in the order's parameter, as in the game's script; verify_research's
+  // check of the branch is dynamic and goes), and the class or research ids the script writes as text are the civilization's own for the three
+  // that need it (Numidian and Mauritanian Carthage: the shaman of Dark Rituals; Britain: the bet of Fights)
+  const shaman = n => [[/"CShamanNumidian"/g, `"${n}ShamanNumidian"`], [/"CShaman"/g, `"${n}Shaman"`]];
+  const r = require("./lib/own-scripts.js")({ OUT, HD, tag: "g42", skip: /Choose(Republican|Imperial|Punic|Numidian|Mauritanian)(Rome|Carthage)|rand\(\s*776|nLobbyBranch/i,
+    dynamic: [/EnvReadString\(\s*\.settlement\s*,\s*subFac\s*\)\s*!=\s*"researched"/g],
+    civs: [{ id: "britain42", match: /^(Y|britain42\.)/i, subst: [[/"Fights"/g, '"Britain42 Fights"']] },
+      { id: "carthnum42", match: /^(7|carthnum42\.)/i, flags: { ChooseNumidianCarthage: true }, subst: shaman(7) },
+      { id: "carthmau42", match: /^(8|carthmau42\.)/i, flags: { ChooseMauritanianCarthage: true }, subst: shaman(8) }] });
   console.log(`scripts of the mod's own for its civilizations: ${r.copied.length} copied (_g42), ${r.skipped.length} left to the game's (${r.skipped.map(s => s.name).join(", ")})`);
   fs.writeFileSync(path.join(ROOT, "raw", "greek-4-2-own-scripts.txt"), r.copied.map(c => `${c.from} -> ${c.to}  (${c.users.slice(0, 4).join(", ")}${c.users.length > 4 ? ", ..." : ""})`).join("\n") + "\n\nnot copied:\n" + r.skipped.map(s => `${s.name}: ${s.why}`).join("\n") + "\n");
 }
