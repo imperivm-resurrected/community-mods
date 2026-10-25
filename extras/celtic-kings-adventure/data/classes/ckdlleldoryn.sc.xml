@@ -1,0 +1,49 @@
+<class id="CKDLleldoryn" cpp_class="CVXDruid" parent="BaseMage" entity="Units/DLleldoryn/DLleldoryn.ent.xml">
+
+	<properties race="Gaul"/>
+	<properties maxhealth="120"/>
+	<properties armor_slash="2" armor_pierce="2"/>
+	<properties speed="65"/>
+	<properties unit_specials="Healing, Invisibility, Toughness"/>
+
+	<properties icon="gameres/icons/Lleo.bmp"/>
+	<properties display_name="Leldoryn" display_name_plural="Druids"/>
+	<properties help="contents/units/GDruid"/>
+	<properties edittree_pos="Units/Heroes/Lleldoryn (Druid, Celtic Kings Adventure)"/>
+	<sounds command="Sounds/entities/VoiceGDruid.xml"/>
+
+	<method sig="stand_position"  vs="data/subai/rpriest_stand_position.vs"/>
+	<method sig="ondie"           vs="data/subai/druid_ondie.vs"/>
+	<method sig="advance"         vs="data/subai/rpriest_advance.vs"/>
+	<method sig="idle"            vs="data/subai/rpriest_idle.vs"/>
+
+	<method sig="learn"           vs="data/subai/storydruid_learn.vs"/>
+	<method sig="heal"            vs="data/subai/druid_heal.vs" verify="data/subai/druid_heal_verify.vs"/>
+	<method sig="heal"            vs="data/subai/druid_heal_ground.vs"/>
+	<method sig="hide"            vs="data/subai/druid_hide_unit.vs"/>
+	<method sig="hide"            vs="data/subai/druid_hide_ground.vs"/>
+	<method sig="ghoul_summoning" vs="data/subai/storydruid_ghost.vs"/>
+	<method sig="mist" 			  vs="data/subai/storydruid_mist.vs"/>
+	<method sig="beast_control"   vs="data/subai/storydruid_possess.vs"/>
+	<method sig="mass_hide"   	  vs="data/subai/storydruid_masshide_unit.vs"/>
+	<method sig="mass_hide" 	  vs="data/subai/storydruid_masshide.vs"/>
+	<method sig="help-sacrifice"  vs="data/subai/druid_help_sacrifice.vs" verify="data/subai/druid_help_verify.vs" />
+
+	<defaultcmd target="Unit">
+		<cmd name="hide"/>
+	</defaultcmd>
+
+	<defaultcmd target="Hero">
+		<cmd name="attach"/>
+	</defaultcmd>
+
+	<defaultcmd target="ShipBattle">
+		<cmd name="boardship"/>
+		<cmd name="approach"/>
+	</defaultcmd>
+
+	<defaultcmd target="BaseMage">
+		<cmd name="help-sacrifice"/>
+	</defaultcmd>
+
+</class>

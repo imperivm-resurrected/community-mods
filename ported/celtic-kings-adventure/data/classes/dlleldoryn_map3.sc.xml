@@ -1,0 +1,29 @@
+<class id="DLleldoryn_Map3" cpp_class="CVXDruid" parent="BaseMage" entity="Units/DLleldoryn/DLleldoryn.ent.xml">
+
+	<properties race="Gaul"/>
+	<properties maxhealth="120"/>
+	<properties armor_slash="2" armor_pierce="2"/>
+	<properties speed="65"/>
+	<properties unit_specials="Toughness"/>
+
+	<properties icon="gameres/icons/Lleo.bmp"/>
+	<properties display_name="Leldoryn" display_name_plural="Druids"/>
+	<properties help="contents/units/GDruid"/>
+	<properties edittree_pos="Units/Heroes/Lleldoryn (No spell)"/>
+	<sounds command="Sounds/entities/VoiceGDruid.xml"/>
+
+	<method sig="stand_position"  vs="data/subai/rpriest_stand_position.vs"/>
+	<method sig="ondie"           vs="data/subai/druid_ondie.vs"/>
+	<method sig="advance"         vs="data/subai/rpriest_advance.vs"/>
+	<method sig="idle"            vs="data/subai/rpriest_idle.vs"/>
+
+	<defaultcmd target="Hero">
+		<cmd name="attach"/>
+	</defaultcmd>
+
+	<defaultcmd target="ShipBattle">
+		<cmd name="boardship"/>
+		<cmd name="approach"/>
+	</defaultcmd>
+
+</class>

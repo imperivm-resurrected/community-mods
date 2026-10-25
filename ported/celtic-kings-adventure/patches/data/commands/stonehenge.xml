@@ -1,0 +1,31 @@
+<!-- The Celtic Kings Adventure's commands, added to HD's file: only its own classes (CKDLleldoryn, CKStonehenge, GStoryDruid, RStoryPriest) get them -->
+<patch>
+  <add select="/commands">
+<cmd
+	name="golden_rain"
+	offset="1"
+	button="Actions/Gold Rain.bmp"
+	groupverifier="data/subai/storystonehenge_golden_rain_verify.vs"
+	groupdispatch="data/subai/storystonehenge_golden_rain_dispatch.vs"
+	coststamina = "100"
+	rollover="Golden rain"
+	description="Slowly adds gold to every settlement storage. Lasts for 2 minutes"
+	key="g">
+	<src obj="CKStonehenge" sticky="no"/>
+</cmd>
+
+<cmd
+	name="teuton_disaster"
+	offset="1"
+	button = "Actions/T invasion.bmp"
+	groupverifier="data/subai/storystonehenge_teuton_disaster_verify.vs"
+	groupdispatch="data/subai/storystonehenge_teuton_disaster_dispatch.vs"
+	coststamina = "100"
+	rollover = "Teuton uprising"
+	description="Starts a Teuton uprising in every teuton tent (once per game)"
+	key = "d">
+	<src obj="CKStonehenge" sticky="no"/>
+	<nsrc obj="Shrine"/>
+</cmd>
+  </add>
+</patch>

@@ -1,0 +1,7 @@
+<!-- HD's Stonehenge plus the two spells of the Celtic Kings Adventure. HD's Stonehenge, Stonehenge1 and Stonehenge2 stay as they are -->
+<class id="CKStonehenge" cpp_class="CVXTownHall" parent="Stonehenge" entity="">
+
+	<method sig="golden_rain" vs="data/subai/storystonehenge_golden_rain.vs"/>
+	<method sig="teuton_disaster" vs="data/subai/storystonehenge_teuton_disaster.vs"/>
+
+</class>

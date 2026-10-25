@@ -1,0 +1,9 @@
+<class id="Storyhide_sacrifice" cpp_class="CVXSacrifice" parent="Sacrifice" entity="">
+
+	<properties radius="15"/>
+	<properties range="300"/>
+	<properties sight="400"/>
+
+	<method sig="idle" vs="data/subai/storyhide_idle.vs"/>
+
+</class>

@@ -1,0 +1,7 @@
+<class
+	cpp_class="CVXBuilding"
+	entity="Buildings/GVillage/GVillage_w.ent.xml"
+	id="StoryGWarehouseWinter"
+	parent="StoryGWarehouse">
+	<properties edittree_pos="Structures/Stronghold (Gaul)/Winter/Warehouse (Adventure)"/>
+</class>
