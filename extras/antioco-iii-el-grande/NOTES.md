@@ -66,8 +66,9 @@ his (`HHoplite`, `HHero1-3`, `HPriest`, `Hhouse1-3`, `HBarracks`, `HTownhall`…
 `Q`, not `H` (`tools/greek-1-8.js`: `HHoplite` → `QHoplite`, `Units/HHERO3` → `Units/QHERO3`, one letter for another). So his references follow the
 1.8's names: `tools/antioco-iii.js` changes a name `H…` to `Q…` where the 1.8 has the Q one and he does not ship the H one (`HHoplite3`, `HPriest2`, the
 hero icons `HHero10`… are his), in his classes, item scripts, patches and in the maps (`class=`, and the Sequences). The 4 classes that
-reuse a Greek entity (`CCATAFRACTA2`, `Cjinete1`, `Cjinete2`, `HPriest2`) now point to `Units/QHero1-3` and `Units/QPriest` of the 1.8: `validate-mod.js` can
-only look in the game and in this mod, so it reports them (4 errors, see below). Checked by script: every class the maps place, every entity and every icon
+reuse a Greek entity (`CCATAFRACTA2`, `Cjinete1`, `Cjinete2`, `HPriest2`) now point to `Units/QHero1-3` and `Units/QPriest` of the 1.8: the `validate-mod.js` of
+`dev-villoh` before imperivm-resurrected#43 only looked in the game and in this mod, and reported them (4 errors). Since #43 it reads `requires`: with the
+1.8 and the terrains next to the mod (or `--mods`), **0 errors, 30 warnings** (the animation rows and footprints of his own sprites). Checked by script: every class the maps place, every entity and every icon
 his classes name is in this mod, in the game or in the 1.8.
 The 1.8's `Q` classes are the 1.8's own (its base-class edits, `race` `greek18`), not the `H` ones of 2021: the stats of the Greek units in his maps are
 the 1.8's here. Not compared one by one. A map does not choose a civilization for them: the players of his maps are `Carthage`, `Gaul`, `Britain`… or `Random`.
@@ -91,7 +92,7 @@ What else the maps needed, found by trying them in the game (each one was a cras
 Tried by the maintainer (Linux/Wine, profile with `greek-mod-1-8`, `greek-mod-terrains` and this mod): both adventures now start and play. Only that:
 not looked at one by one the units' sprites, the items and their scripts and the trade post's order, and nothing past the first minutes. Not tried: a room
 (no civilization: no set to filter) and the game with the CGWAR, the 4.2 and the MCI active together with this one.
-(Before: `validate-mod.js` of `dev-villoh` only.) Not tried either: the sprites of the units (the `.rle` come from his `rle.mmp`).
+(Validation: `validate-mod.js` of `dev-villoh` with imperivm-resurrected#43, 0 errors.) Not tried either: the sprites of the units (the `.rle` come from his `rle.mmp`).
 
 ## What the original did that this port cannot carry
 
