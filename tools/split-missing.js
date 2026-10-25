@@ -5,7 +5,7 @@
 //   node tools/split-missing.js
 const fs = require("fs"), path = require("path");
 const ROOT = path.join(__dirname, "..");
-const MODS = path.join(ROOT, "MODS.md"), MISSING = path.join(ROOT, "MISSING.md"), DEAD = path.join(ROOT, "DEAD-LINKS.md");
+const MODS = path.join(ROOT, "docs", "MODS.md"), MISSING = path.join(ROOT, "docs", "MISSING.md"), DEAD = path.join(ROOT, "docs", "DEAD-LINKS.md");
 const DEAD_HEAD = `# Dead links
 
 Download links of the \`MODS.md\` rows that no longer work. They are kept here, out of the table, to look them up in the

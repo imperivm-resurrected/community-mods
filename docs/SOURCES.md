@@ -1,8 +1,10 @@
 # Where to look for more mods
 
+**English** · [Español](es/SOURCES.md)
+
 Places that host, or hosted, Imperivm III (*Great Battles of Rome*) mods, maps and adventures. Use it to find rows missing from
 [MODS.md](MODS.md). Checked on 2026-10-19: **live** = opened today, **Wayback** = only an archived copy, **dead** = gone, **?** = not checked.
-"Scraped" says how much of it is already in the tables (see [Tools](README.md#tools)).
+"Scraped" says how much of it is already in the tables (see [Tools](TOOLS.md)).
 
 ## Spanish
 

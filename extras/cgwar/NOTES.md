@@ -1,6 +1,6 @@
 # CGWAR - Greek civilization Mod v6 (Camarada, Gurkhan, Razor, WARRIOR4444)
 
-Row 5. Built with `tools/port-140.js` and then `tools/cgwar-greece.js` (see the README, *Mods made for 1.40*); this folder is what is done by hand on top. The old notes are in the README and in `tools/cgwar-greece.js`; this file only has what is pending.
+Row 5. Built with `tools/port-140.js` and then `tools/cgwar-greece.js` (see docs/BIG-MODS.md, *Mods made for 1.40*); this folder is what is done by hand on top. The old notes are in docs/BIG-MODS.md and in `tools/cgwar-greece.js`; this file only has what is pending.
 
 ## Rebuild
 

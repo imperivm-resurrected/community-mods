@@ -14,7 +14,7 @@ const get = async u => { const r = await fetch(u, { headers: { "User-Agent": "Mo
 (async () => {
   // forum-only rows: rows from Discord already have their screenshots
   const ids = new Set();
-  for (const f of ["MODS.md", "MISSING.md"]) for (const l of fs.readFileSync(path.join(ROOT, f), "utf8").split("\n")) {
+  for (const f of ["MODS.md", "MISSING.md"]) for (const l of fs.readFileSync(path.join(ROOT, "docs", f), "utf8").split("\n")) {
     const m = !l.includes("[Discord](") && l.match(/^\| \d+ \|.*foroactivo\.com\/t(\d+)-/);
     if (m) ids.add(m[1]);
   }

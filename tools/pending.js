@@ -35,7 +35,7 @@ const rows = [];
 let missing = 0;
 for (const file of ["MODS.md", "MISSING.md"]) {
   let H;
-  for (const l of fs.readFileSync(path.join(ROOT, file), "utf8").split("\n")) {
+  for (const l of fs.readFileSync(path.join(ROOT, "docs", file), "utf8").split("\n")) {
     if (l.startsWith("| # |")) H = l.split("|").map(s => s.trim());
     const c = l.split("|").map(s => s.trim());
     if (!H || !/^\d+$/.test(c[1] || "") || !/📋/.test(c[H.indexOf("Status")])) continue;
@@ -58,5 +58,5 @@ for (const [title, test, todo] of GROUPS) {
   md += `\n## ${title} (${xs.length})\n\n${todo}\n\n| ✓ | # | Name | Author | Base | Type | Local | Links | Notes |\n|---|---|---|---|---|---|---|---|---|\n`;
   md += xs.map(r => `| [ ] | ${r.n} | ${r.name} | ${r.author} | ${r.base} | ${r.type} | ${r.local} | ${r.dl || "—"} | |`).join("\n") + "\n";
 }
-fs.writeFileSync(path.join(ROOT, "PENDING.md"), md);
+fs.writeFileSync(path.join(ROOT, "docs", "PENDING.md"), md);
 console.log(`PENDING.md: ${rows.length} rows`);
