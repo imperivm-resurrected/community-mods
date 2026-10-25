@@ -29,7 +29,8 @@
 | [`merge-secuter-fun.js`](../../tools/merge-secuter-fun.js) | El mod Fun de Secuter (filas 312): termina lo que `port-140.js` dejó en conflicto, conservando los cambios de HD y los del mod (las decisiones, en los comentarios) |
 | [`port-translation.js`](../../tools/port-translation.js) | La traducción de un mod para 1.40 (`GAME.LOC.XML`) → `loc/<language>.loc.xml` solo con los textos que tradujo |
 | [`imperivm1.js`](../../tools/imperivm1.js) | Clases de Imperivm I → `ported/imperivm1-legacy/` |
-| [`cgwar-greece.js`](../../tools/cgwar-greece.js) | Después de `port-140.js`: la Grecia del CGWAR como civilización nueva |
+| [`cgwar-civs.js`](../../tools/cgwar-civs.js) | Después de `port-140.js`, antes de `cgwar-greece.js`: la Roma Imperial (CGWAR), un clon de la Roma Republicana con los comandos que activaba la rama imperial del mod (la elección en la Arena no se porta) |
+| [`cgwar-greece.js`](../../tools/cgwar-greece.js) | Después de `cgwar-civs.js`: la Grecia del CGWAR como civilización nueva |
 | [`cgwar-independent.js`](../../tools/cgwar-independent.js) | Después de `cgwar-greece.js`: los archivos del juego que reemplazó pasan a ser parches de lo que es griego; el resto se descarta |
 | [`celtic-kings-adventure.js`](../../tools/celtic-kings-adventure.js) | La Celtic Kings Adventure (fila 202): los tres zips de ModDB → `ported/celtic-kings-adventure/`; sus clases, comandos y objetos como propios (`CK*`), el `.bfhp` editado en el sitio para usarlos (`hpfs.js`), los textos como `loc/` |
 | [`gbr-tactics.js`](../../tools/gbr-tactics.js) | Después de `port-140.js`: las ocho civilizaciones de GBR Tactics 2.4 como civilizaciones propias (ids `<civ>_gbrt`, prefijos derivados), sus objetos nuevos como parches; los scripts del mod que el compilador del juego rechaza se corrigen (véase `extras/gbr-tactics/NOTES.md`) |
