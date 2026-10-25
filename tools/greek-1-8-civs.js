@@ -6,17 +6,28 @@
 //   1. the SDK's clone-civilization.js clones it from HD, but starting from the mod's version of its classes and of its barracks
 //      commands (HD + the 1.8 changes, merged by port-140.js): stats, costs, specials
 //   2. what the 1.8 changed in the base classes it inherits (Ranged, Hero, Catapult...) is written inside each copy
-//   3. the Rome branch choice (Enable_Or_Disable behaviors, the trainM* commands) is not ported (AGENTS.md); scripts the mod never
-//      shipped are dropped from the classes; the mod's "Hero<unit>" classes become Hero<letter><unit>
+//   3. the Rome branch choice (RHT_SCELTA_ROMA, the Enable_Or_Disable behaviors) is not ported (AGENTS.md): Rome is three civilizations, one per
+//      branch (Republican, Imperial, Punic), each with the commands its branch's scripts leave visible (tools/lib/branch.js, as the 4.2 does).
+//      Scripts the mod never shipped are dropped from the classes; the mod's "Hero<unit>" classes become Hero<letter><unit>
 //   4. the copies go into the port: classes, commands, patches that add the copy to shared commands (merged with the port's own)
 // Not here (still pending, see NOTES.md): the mod's changes to shared research commands (ARENA/BLACKSMITH/TEMPLE/TAVERN.XML), the
 // mod's maps (they place the game's R* classes), the mod's changes to game-wide files (unit_specials.ini, skills.ini).
 const path = require("path");
 const ROOT = path.join(__dirname, "..");
+const PORT = path.join(ROOT, "ported", "greek-mod-1-8");
+// the branch scripts (R*_Enable_Or_Disable_Cmd.vs) say what each branch leaves visible; greek-1-8.js does not ship them, tools/lib/branch.js reads them
+const BRANCH = (flag, hire) => ({ flag, scripts: /^R[A-Z]+_ENABLE_OR_DISABLE_CMD\.VS$/i, hire });
 const CIVS = [
   { base: "RepublicanRome", baseLetter: "R", hero: "RepublicanRomanHero", letter: "J", id: "rome18", index: 33,
     name: { spanish: "Roma rep.", english: "Rep. Rome", italian: "Roma rep." },   // short: the dropdown cuts long names
-    dropCmd: /^trainM/ },                                                          // the Imperial units in the Republican barracks: the Rome branch
+    skipExtra: /^ImperialRomanHero/, branch: BRANCH("ChooseRepublicanRome") },
+  // The Imperial and Punic Rome of the 1.8 are new civilizations: no letter and no index, the prefix is derived from the id (its first 3
+  // characters: Emp, Pun; GBR Tactics has Imp and Rep) and the engine assigns the index. Their Velit and Praetorian are the game's Imperial
+  // Rome classes (race ImperialRome, ids RVelit/RPraetorian) that the mod's branch trained in the Republican barracks: copies with the branch's race.
+  { base: "RepublicanRome", baseLetter: "R", hero: "RepublicanRomanHero", id: "empire18", name: { spanish: "Roma imp.", english: "Imp. Rome", italian: "Roma imp." },
+    asBase: ["RVelit", "RPraetorian"], branch: BRANCH("ChooseImperialRome", { cmd: "hireheroRImperial", hero: "ImperialRomanHero" }) },
+  { base: "RepublicanRome", baseLetter: "R", hero: "RepublicanRomanHero", id: "punic18", name: { spanish: "Roma pún.", english: "Pun. Rome", italian: "Roma pun." },
+    skipExtra: /^ImperialRomanHero/, asBase: ["RPraetorian"], branch: BRANCH("ChoosePunicRome") },
   { base: "Gaul", baseLetter: "G", hero: "GaulHero", letter: "L", id: "gaul18", index: 34, name: { spanish: "Galos", english: "Gaul", italian: "Galli" } },
   { base: "Carthage", baseLetter: "C", hero: "CarthaginianHero", letter: "P", id: "carthage18", index: 35, name: { spanish: "Cartago", english: "Carthage", italian: "Cartagine" } },
   { base: "Britain", baseLetter: "B", hero: "BritonHero", letter: "O", id: "britain18", index: 36, name: { spanish: "Britania", english: "Britain", italian: "Britannia" } },
@@ -24,11 +35,16 @@ const CIVS = [
   { base: "Egypt", baseLetter: "E", hero: "EgyptianHero", letter: "V", id: "egypt18", index: 38, name: { spanish: "Egipto", english: "Egypt", italian: "Egitto" } },
   { base: "Germany", baseLetter: "T", hero: "GermanHero", letter: "F", id: "germany18", index: 39, name: { spanish: "Germania", english: "Germany", italian: "Germania" } },
 ];
+// the branch scripts are read from the mod's own files, put in the port while the civilizations are cloned and taken out after (no civilization uses them)
+const fs0 = require("fs"), SRC = path.join(ROOT, "originals", "greek-mod-1.8-flat", "DATA", "SUBAI"), DST = path.join(PORT, "DATA", "SUBAI");
+const branchScripts = fs0.readdirSync(SRC).filter(f => /^R[A-Z]+_ENABLE_OR_DISABLE_CMD\.VS$/i.test(f));
+for (const f of branchScripts) fs0.copyFileSync(path.join(SRC, f), path.join(DST, f));
 require("./lib/clone-civs.js")({
-  PORT: path.join(ROOT, "ported", "greek-mod-1-8"), MERGED: path.join(ROOT, "originals", "greek-1-8-merged"),
+  PORT, MERGED: path.join(ROOT, "originals", "greek-1-8-merged"),
   SUFFIX: "Greek Mod 1.8", LABEL: "Rattlesmake",          // the lobby's dropdown cuts a name at about 22 characters: LABEL is what shows
-  CIVS, want: process.argv.slice(2),
+  CIVS, cloneAllOrders: true, want: process.argv.slice(2),
 });
+for (const f of branchScripts) fs0.rmSync(path.join(DST, f), { force: true });
 
 // names the CGWAR (built first) already has with other bytes, or that are the same gameplay file: this port's are renamed (tools/lib/ported-patch.js)
 {

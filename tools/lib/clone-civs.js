@@ -41,6 +41,10 @@ module.exports = function cloneCivs({ PORT, MERGED, SUFFIX, LABEL, CIVS, cloneAl
     // no `letter` in the table: the SDK derives the prefix from the id (first 3 characters, imperivm-resurrected#37), and no `index`: the game assigns it
     const letter = civ.letter || ((d) => d[0].toUpperCase() + d.slice(1))(civ.id.replace(/_/g, "").slice(0, 3).toLowerCase());
     const OWN = new RegExp(`^(${bl}[A-Z]|${bl}house|${civ.hero}$)`);
+    for (const id of civ.asBase || []) if (!table.has(id)) {              // the game's own, if the mod did not change it
+      const f = ci(HD_CLASSES, `${id}.sc.xml`), t = f && rd(path.join(HD_CLASSES, f));
+      if (t) table.set(id, { text: t, race: (t.match(/<properties\b[^>]*\brace\s*=\s*"([^"]+)"/) || [])[1], parent: parentAttr(t), file: path.join(HD_CLASSES, f) });
+    }
     const report = [];
     // classes of the civilization that do not start with its letter (the mod's Mauritanian hero, MPrinciple, Ancient Roman hero...): the clone
     // tool only takes the base's letter, so they are renamed <letter><id> in the stage, and their children (no race of their own) follow
@@ -62,7 +66,9 @@ module.exports = function cloneCivs({ PORT, MERGED, SUFFIX, LABEL, CIVS, cloneAl
     for (const [id, c] of table) {
       if (!isOwn(id)) continue;
       const nid = extraNew.get(id) || id;
-      wr(path.join(SC, `${nid.toUpperCase()}.SC.XML`), ren(stripBehavior(c.text))); overlaid++;
+      // civ.asBase: classes of another race (the game's Imperial Rome Velit) the civilization trains: the clone takes them with its base's race
+      const text = civ.asBase && civ.asBase.includes(id) ? c.text.replace(/(<properties\b[^>]*\brace\s*=\s*")[^"]*"/, `$1${civ.base}"`) : c.text;
+      wr(path.join(SC, `${nid.toUpperCase()}.SC.XML`), ren(stripBehavior(text))); overlaid++;
       if (!extraNew.has(id)) { const hdf = ci(SC, path.basename(c.file)); if (hdf && hdf.toUpperCase() !== `${nid.toUpperCase()}.SC.XML`) fs.rmSync(path.join(SC, hdf), { force: true }); }
     }
     const dropCmds = s => s.replace(/<cmd\b[^>]*?\bname\s*=\s*"([^"]*)"[\s\S]*?<\/cmd>[ \t]*\r?\n?/g, (m, n) => (civ.dropCmd || NEVER).test(n) ? (report.push(`command ${n} (Rome branch) not ported`), "") : m);
