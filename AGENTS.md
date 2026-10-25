@@ -1,6 +1,6 @@
 # AGENTS.md
 
-Rules for agents and contributors working on this repo. [README.md](README.md) has the full detail of how to port a mod and what each tool does.
+Rules for agents and contributors working on this repo. The [docs](docs/README.md) have the full detail of how to port a mod and what each tool does.
 
 ## What this repo is
 
@@ -20,17 +20,23 @@ Conventional Commits, in English, imperative mood, lowercase after the type, no 
 - Small changes go straight to `main`. Big ones (a new tool, a change in how every port is built) go through a pull request.
 - Issues and pull requests are written in English.
 
+## Documentation
+
+- English is the base language: `README.md` and `docs/`. Spanish lives in `README.es.md` and `docs/es/`, with the same file names.
+- Change a guide, change its Spanish copy in the same commit. The tables (`MODS.md`, `MISSING.md`, `DEAD-LINKS.md`, `PENDING.md`, `AUTHORS.md`) are data and exist only in `docs/`, in English.
+- New guide: add it to `docs/README.md` and `docs/es/README.md`.
+
 ## Tables
 
-- `MODS.md` is the source of truth and is edited by hand. `MISSING.md` and `DEAD-LINKS.md` are kept with `node tools/split-missing.js`.
-- `PENDING.md` is generated: change `MODS.md` or `tools/pending.js` and run `node tools/pending.js`. Never edit it by hand.
+- `docs/MODS.md` is the source of truth and is edited by hand. `docs/MISSING.md` and `docs/DEAD-LINKS.md` are kept with `node tools/split-missing.js`.
+- `docs/PENDING.md` is generated: change `docs/MODS.md` or `tools/pending.js` and run `node tools/pending.js`. Never edit it by hand.
 - `node tools/sync-table.js` sets *Type* and *Status* from each `mod.json`. The GameBanana link is added by hand.
 - `node tools/build-table.js --force` overwrites manual edits. Only in a scratch copy.
 - `OUTREACH.md` and `SCREENSHOTS.md` are not in git.
 
 ## Porting
 
-- Pick the tool by the row's *Type*: `wrap-map.js`, `shrink-mod.js`, `port-140.js` or `imperivm1.js` (table in the README).
+- Pick the tool by the row's *Type*: `wrap-map.js`, `shrink-mod.js`, `port-140.js` or `imperivm1.js` (table in [docs/PORTING.md](docs/PORTING.md)).
 - Hand fixes go in `extras/<id>/` (the final files, `mod.json` with credits, and a `NOTES.md` that says what was changed and why), never only in `ported/<id>/`. The port must be rebuilable from the original download plus the repo.
 - Compare against the original before saying a port is complete: files identical to the game are left out on purpose, so a file missing from `ported/` is not a missing file.
 - Validate with `validate-mod.js --game`, then try it in the game and read `Logs\imperivm\imperivm-mod.log`. Say in the notes what was tried in-game and what was not. A comparison of files does not prove a mod works.
@@ -47,7 +53,7 @@ Conventional Commits, in English, imperative mood, lowercase after the type, no 
 - **What a civilization is, it is from the start; nothing of it is chosen later.** If a mod's civilization has something built into it (a branch, a variant, a unit set, a research that only picks one of several options, a mode that turns it into another), that is the civilization: it is written into the civilization's own classes and commands, and **no town hall, arena, tavern or other building offers to choose it, change it or switch it on afterwards**. A mod that let one Rome become Republican, Imperial or Punic in the game makes **three civilizations**, each with the commands of its branch already in its classes. The lobby is the only choice. Do not port the choosing mechanism (`ChooseXxxRome`, `R*_Enable_Or_Disable_Cmd.vs`, `RHT_SCELTA_ROMA`, `Imperial_Administration`/`Republican_Administration`, `CmdEnable`/`CmdDisable` that open or close what the civilization is), and do not drop the content behind it: each branch is ported as its own civilization. When the original builds a civilization out of such a choice, the ported mod has one civilization per option, never a civilization with a choice inside.
 - **Old engine tricks are not ported**: the `rand(776+player)` sentinel, the launcher and its `gbr.exe`, the town hall choices above. They were patches to fit several civilizations in a 1.40 game with no mods. Here each one is a civilization of its own (the lobby is the choice).
 - **Names and paths**: if two mods use the same class ids, entity folders, templates (`Greek Town N`) or script names, the one being ported is renamed (as `tools/cgwar-greece.js` did for CGWAR). Never touch another mod's files.
-- **Letters and indices are unique** across all the mods in `ported/`: see the table in the README. A new port takes the next free ones and adds its row. Ports "not uploaded" can still change theirs.
+- **Letters and indices are unique** across all the mods in `ported/`: see the table in [docs/CIVILIZATIONS.md](docs/CIVILIZATIONS.md). A new port takes the next free ones and adds its row. Ports "not uploaded" can still change theirs.
 - `incompatibleWith` is **not** a solution. It is accepted only as a temporary state for a port that is not finished, and it goes in the mod's `NOTES.md` under *Pending: independence* with what overlaps. A civilization mod is not done while it needs it.
 - **Check before saying a port is complete**: list the class ids, entity folders and file paths it shares with every other civilization mod in `ported/` (there must be none outside `patches/`), and keep the result in `NOTES.md`. Then test two of them active together.
 - **Open**: maps that place a mod's classes (`wrap-map.js` `requires`) must keep working when the classes are renamed. A renamed class can keep its old id as `altid`, but two mods cannot share an `altid`. Decide per case and write it in `NOTES.md`.
@@ -71,4 +77,4 @@ Conventional Commits, in English, imperative mood, lowercase after the type, no 
 
 - Node, no dependencies. `.rar`/`.zip` are unpacked with `bsdtar`.
 - A tool that rebuilds a port must give the same result run twice. If a decision is not obvious, put the reason in a comment next to it.
-- Add a new tool to the Tools table in the README.
+- Add a new tool to the Tools table in [docs/TOOLS.md](docs/TOOLS.md) (and [docs/es/TOOLS.md](docs/es/TOOLS.md)).
