@@ -12,7 +12,7 @@
 const fs = require("fs"), path = require("path"), cp = require("child_process");
 const ROOT = path.join(__dirname, "..");
 const PRISTINE = path.join(ROOT, "originals", "greek-4-2-pristine"), OUT = path.join(ROOT, "ported", "greek-civilization-mod"), MERGED = path.join(ROOT, "originals", "greek-4-2-merged");
-const HD = path.join(ROOT, "originals", "game-data", "paks"), HDDATA = path.join(ROOT, "originals", "game-data", "DATA");
+const HD = path.join(ROOT, "originals", "game-data", "paks");
 const rd = f => fs.readFileSync(f, "latin1"), wr = (f, s) => { fs.mkdirSync(path.dirname(f), { recursive: true }); fs.rmSync(f, { force: true }); fs.writeFileSync(f, s, "latin1"); };
 const classOf = s => (s.match(/<class\b[^>]*?\bid\s*=\s*"([^"]+)"/) || [])[1];
 const walk = (d, base = d, out = []) => { if (!fs.existsSync(d)) return out; for (const e of fs.readdirSync(d, { withFileTypes: true })) { const p = path.join(d, e.name); e.isDirectory() ? walk(p, base, out) : out.push(path.relative(base, p).replace(/\\/g, "/")); } return out; };
@@ -194,11 +194,26 @@ console.log(`menu skin: ${require("./lib/menu-skin.js").skinToPatches({ OUT, HD 
   }
 }
 
-// the Greek priest names HD's druid_revitalize.vs, which reads a unit special ("revitalize") that only the mod's old engine hook declared: the game's
-// compiler refuses the script ("No matching function with name revitalize") every time the class loads, and the ability never worked here
+// The Greek priest named the game's druid_revitalize*.vs, which read a unit special ("revitalize") that only the mod's old engine hook declared:
+// the game's compiler refused them ("No matching function with name revitalize") and the ability never worked here. The mod's own versions of
+// the three scripts (the ones the independence step left out, because they edit the game's lines) test the special the priest does have
+// ("Determination", the mod's "fake skill to make revitalize work", as HDRUID_IDLE/STAND_POSITION do) and heal only the priest's own
+// civilization: they ship as HPRIEST_REVITALIZE*.VS, the priest's alone, and the game's druids keep the game's scripts.
+// "StaminaBoostSound" (here and in the priest's two idle scripts) is a feedback class nothing in the mod or the game declares: the game's own is "StaminaBoost".
 {
-  const hp = path.join(CLASSES, "HPRIEST.SC.XML");
-  if (fs.existsSync(hp)) { const t0 = rd(hp), t = t0.replace(/^[ \t]*<method\b[^>]*\bvs\s*=\s*"data\/subai\/druid_revitalize[^"]*"[^>]*\/>[ \t]*\r?\n?/gim, ""); if (t !== t0) { wr(hp, t); console.log("HPriest: the revitalize methods that cannot compile are gone"); } }
+  const hp = path.join(CLASSES, "HPRIEST.SC.XML"), SUB = find(OUT, "DATA/SUBAI");
+  if (fs.existsSync(hp)) {
+    let t = rd(hp), n = 0;
+    for (const s of ["", "_VERIFY", "_GROUND"]) {
+      const src = path.join(PRISTINE, "DATA", "SUBAI", `DRUID_REVITALIZE${s}.VS`);
+      wr(path.join(SUB, `HPRIEST_REVITALIZE${s}.VS`), rd(src).replace(/StaminaBoostSound/g, "StaminaBoost"));
+      t = t.replace(new RegExp(`(\\bvs\\s*=\\s*"data/subai/)druid_revitalize${s.toLowerCase()}(\\.vs")`, "gi"), `$1hpriest_revitalize${s.toLowerCase()}$2`).replace(new RegExp(`(\\bverify\\s*=\\s*"data/subai/)druid_revitalize${s.toLowerCase()}(\\.vs")`, "gi"), `$1hpriest_revitalize${s.toLowerCase()}$2`);
+      n++;
+    }
+    wr(hp, t);
+    for (const f of ["HDRUID_IDLE.VS", "HDRUID_STAND_POSITION.VS"]) { const p = path.join(SUB, f); if (fs.existsSync(p)) wr(p, rd(p).replace(/StaminaBoostSound/g, "StaminaBoost")); }
+    console.log(`HPriest: ${n} revitalize scripts of its own (HPRIEST_REVITALIZE*.VS); methods now: ${(t.match(/hpriest_revitalize\w*\.vs/gi) || []).join(", ")}`);
+  }
 }
 // scripts patched by hand (extras/greek-4-2-hand): what the generator cannot cut out of the mod's changes (they are all in one hunk)
 {
@@ -211,7 +226,7 @@ for (const f of ["romerepublican", "romeimperial", "romepunic", "carthagenumidia
 {
   const alias = {};
   for (const id of greekIds) { const m = id.match(/^H(.+)$/); if (m && fs.existsSync(path.join(CLASSES, `${id.toUpperCase()}.SC.XML`))) alias[`M${m[1]}`] = id; }
-  const gp = path.join(OUT, "civs", "greek.json"), g = JSON.parse(fs.readFileSync(gp, "utf8"));
+  const gp = path.join(OUT, "civs", "greek.json"), g = { ...require(gp) };
   delete g.replacesBase; g.template = TEMPLATE; g.ai = true; g.alias = { classes: alias, commands: {} };
   g.name = { spanish: "Grecia (Gabbo)", english: "Greece (Gabbo)", italian: "Grecia (Gabbo)" };
   fs.rmSync(gp); fs.writeFileSync(gp, JSON.stringify(g, null, 2) + "\n", "utf8");
@@ -242,6 +257,42 @@ for (const f of ["romerepublican", "romeimperial", "romepunic", "carthagenumidia
   for (const f of ["RandomMapSettlements.bfhp", "emptyadv.bfhp", "emptyscn.bfhp", "randommap.BFHP"]) { const p = find(OUT, `Packs/${f}`); if (p) fs.rmSync(p); }
 }
 
+// the mod's conquests: a Conquests/<name>.bfhp or a ConquestMaps/<folder> at the path of the game's or of another port's is renamed, whatever the bytes
+// (tools/lib/conquests.js; before tagCollisions, which renames the files of a folder one by one). The mod's Mediterranean has no ConquestMaps folder of
+// its own (its files are the game's): the renamed folder is the game's. Its Greece territory plays as the mod's Greece: the `interface` of a <territory>
+// (the territories.xml inside the .bfhp) is the race of the player, 4 (ImperialRome) in the original, here the index of `greek` (needs
+// imperivm-resurrected#45; the 1.0 release ignores it, as for the CGWAR and the 1.8).
+{
+  const G = path.join(ROOT, "originals", "game-data"), PORTED = path.join(ROOT, "ported"), hpfs = require("./hpfs.js");
+  const others = [G, ...fs.readdirSync(PORTED).filter(d => d !== "greek-civilization-mod").map(d => path.join(PORTED, d))].filter(d => fs.existsSync(d) && fs.statSync(d).isDirectory());
+  const r = require("./lib/conquests.js")({ OUT, others, tag: "g42", label: "Gabbo" }), dataRe = /(\bdata\s*=\s*"ConquestMaps[\/\\])([^"]+)"/i, ci = (d, n) => fs.existsSync(d) && fs.readdirSync(d).find(f => f.toLowerCase() === n.toLowerCase());
+  const problems = [];
+  for (const c of r.done) {
+    console.log(`conquest ${c.from} -> ${c.to} (${c.folder})`);
+    const m = /^(.*) -> (.*)$/.exec(c.folder), cm = path.join(OUT, "ConquestMaps");
+    if (m && !ci(cm, m[1]) && !ci(cm, m[2])) {                // not in the port: the game's folder, under the new name
+      const from = path.join(G, "ConquestMaps", ci(path.join(G, "ConquestMaps"), m[1]) || m[1]), to = path.join(cm, m[2]);
+      if (!fs.existsSync(from)) { problems.push(`ConquestMaps/${m[1]}: not in the port nor in the game's`); continue; }
+      fs.cpSync(from, to, { recursive: true });
+      const t = ci(to, "territories.xml");
+      if (t) { const p = path.join(to, t), s = rd(p); wr(p, s.replace(dataRe, (_x, a) => `${a}${m[2]}"`)); }
+      console.log(`  ConquestMaps/${m[2]}: the game's ${m[1]} (the mod ships none)`);
+      // its map has no region for the Greece territory the mod declares (index 9): drawn here (tools/lib/conquest-greece.js)
+      const gr = require("./lib/conquest-greece.js");
+      console.log(`  Greece: region ${gr.addGreece(to)} pixels in territories.bmp, ShieldGreece.bmp and the name HELLAS on the map`); gr.drawShield(to); gr.writeLabel(to);
+    }
+  }
+  problems.push(...r.problems.filter(x => !/no such folder in the port/.test(x)));
+  if (problems.length) console.log("conquests, to check:\n  " + problems.join("\n  "));
+  const index = require(path.join(OUT, "civs", "greek.json")).index, cDir = find(OUT, "Conquests");
+  for (const f of cDir ? fs.readdirSync(cDir).filter(f => /\.bfhp$/i.test(f)) : []) {
+    const bfhp = path.join(cDir, f), buf = fs.readFileSync(bfhp), e = hpfs(buf).find(x => /^territories\.xml$/i.test(x.path)), raw = e && e.read().toString("latin1");
+    const out = raw && raw.replace(/(<territory\b[^>]*\bid="Greece"[^>]*\binterface=")\d+"/, (_m, a) => `${a}${index}"`);
+    if (!out || out === raw) continue;
+    try { e.write(Buffer.from(out, "latin1")); fs.rmSync(bfhp); fs.writeFileSync(bfhp, buf); console.log(`conquest ${f}: Greece plays as greek (interface ${index})`); }
+    catch (err) { console.log(`conquest ${f}: Greece interface not set (${err.message})`); }
+  }
+}
 // names another mod of ours (or the game's own adventures) already has with other bytes: this port's are renamed (its Greek assets come from the
 // CGWAR and the 1.8 lineage, so the same ids, folders, icons, sounds and scripts show up in all three)
 {
@@ -265,8 +316,12 @@ for (const f of ["romerepublican", "romeimperial", "romepunic", "carthagenumidia
 }
 // two item scripts of the mod that the game's compiler cannot read (no signature line): the item's owner is the argument
 for (const f of ["BELT OF SNAKES REMOVE.VS", "FEATHER AMULET REMOVE.VS"]) { const p = find(OUT, `DATA/ITEMSCRIPTS/${f}`); if (p && !/^\s*\/\//.test(rd(p))) wr(p, "//void, Obj owner\r\n" + rd(p)); }
+// the engine writes .fingerprint in an installed mod's folder (and Windows leaves desktop.ini): never part of the port
+for (const f of walk(OUT).filter(f => /(^|\/)(\.fingerprint|desktop\.ini|thumbs\.db)$/i.test(f))) fs.rmSync(path.join(OUT, f));
 {
-  const mp = path.join(OUT, "mod.json"), j = JSON.parse(fs.readFileSync(mp, "utf8"));
+  // the room's set of civilizations is named after "name" (imperivm-resurrected#38): with the version, so it is not confused with the 1.8's or CGWAR's. The id stays.
+  const mp = path.join(OUT, "mod.json"), j = { ...require(mp) };   // a malformed file stops the build here, on purpose
+  j.name = "Greek Civilization Mod 4.2";
   delete j.incompatibleWith; fs.rmSync(mp); fs.writeFileSync(mp, JSON.stringify(j, null, 2) + "\n", "utf8");
 }
 console.log("done");

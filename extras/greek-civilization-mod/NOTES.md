@@ -3,11 +3,11 @@
 `ported/greek-civilization-mod/` = `shrink-mod.js` on the GameBanana 728851 zip (`originals/gamebanana/728851/`), then this folder copied over it:
 
 ```bash
-node shrink-mod.js <unzipped 4.2> "<HD game>" ../community-mods/ported/greek-civilization-mod --id greek-civilization-mod --name "Greek Civilization Mod" --version 4.2 --category Civilizations \
+node shrink-mod.js <unzipped 4.2> "<HD game>" ../community-mods/ported/greek-civilization-mod --id greek-civilization-mod --name "Greek Civilization Mod 4.2" --version 4.2 --category Civilizations \
   --exclude "mod/*,logs/*,update.xml,README.txt,LEGGIMI_GREEKMOD.txt,GREEKMOD_MANIFEST.json,imperivm-mod.ini"
 ```
 
-- `mod.json`: the one in the zip, with the GameBanana category name (`Civilizations`) and the port credited.
+- `mod.json`: the one in the zip, with the GameBanana category name (`Civilizations`), the port credited and `name` = `Greek Civilization Mod 4.2` (the version is part of the name: the room's list of civilization sets is named after it, next to `Greek Civilization Mod 1.8` and `CGWAR - Greek civilization Mod`; the `id` stays `greek-civilization-mod`, which is what maps `require`; `tools/greek-4-2.js` sets it too).
 - `DATA/CLASSES/BASETAVERN.SC.XML`: the mod's, with the entity path HD itself has broken (`Buildings/Tavern/Tavern_as…`, there is no such folder) pointing to `GTavern`, like Imperivm Legacy's. Nothing else changed.
 
 ## What a Resurrected mod cannot carry
@@ -16,7 +16,7 @@ The zip also brings an engine hook (`winmm.dll`, which builds `gbr_GreekMod_*.ex
 
 ## Greece in the lobby (civs/greek.json)
 
-In 4.2 the Greek faction sits in the Imperial Rome slot: its classes have `race="ImperialRome"` and the letter `H` (`HTownhall`, `HHoplite`), the scripts say `Greece = ImperialRome`, and Gabbo's engine hook shows it in the lobby. A Resurrected mod declares it: `civs/greek.json` (`base: ImperialRome`, `letter: H`, `template: Greek`, `replacesBase: true`, index 31; CGWAR has `greece` 30 with its own race, so the two mods are `incompatibleWith` each other). Greece is its own civilization in the lobby and Imperial Rome no longer shows there, as in 4.2; its classes keep `race="ImperialRome"` so the ~190 script references to ImperialRome keep working untouched. The city and villages are the mod's own "Greek Town N" / "Greek Village N" of `Packs/RandomMapSettlements.bfhp`.
+In 4.2 the Greek faction sits in the Imperial Rome slot: its classes have `race="ImperialRome"` and the letter `H` (`HTownhall`, `HHoplite`), the scripts say `Greece = ImperialRome`, and Gabbo's engine hook shows it in the lobby. Here Greece is its own civilization, `civs/greek.json` (`greek`, letter `H`, index 31, race `greek`, `template`, `ai: true`, no `replacesBase`): in no one's slot, Imperial Rome is the game's again. The port's own Imperial Rome is `romeimp42`. The city and villages are "Greek Gabbo Town N" / "Greek Gabbo Village N", templates added by a patch (the mod's `Packs/RandomMapSettlements.bfhp` is not shipped).
 
 ## Game modes (tools/greek-mod-fixes.js)
 
@@ -36,9 +36,11 @@ Tried in game (2026-10-23, Linux, 1920x1080): the lobby with the three Greek mod
 
 Left out, to port later: the mod's AI for the game's civilizations (they use HD's), the game modes' rules for the clones (Imperivm 2, Liga), the mod's changes to the game's scripts for everybody (260 of them), HD's `druid_revitalize.vs` for the Greek priest (needs a special only the old engine hook declared: the two `revitalize` methods are gone), `Spartacus`, `Fisherman`... (neutral, renamed).
 
-## Rome's branches and Carthage's (civs/*.json, tools/greek-mod-fixes.js)
+## Rome's branches and Carthage's (tools/greek-4-2.js, tools/greek-mod-fixes.js)
 
-In 4.2 Rome (Republican, Imperial, Punic) and Carthage (Numidian, Mauritanian) are picked before the lobby: Gabbo's engine hook leaves the choice in the sentinel `rand(776 + player)`, which five scripts read to research the branch's `ChooseXxx` at the start. Here they are lobby civilizations, variants (`variant`, `replacesBase`) of Republican Rome and Carthage: `RomeRepublican` 21, `RomeImperial` 22, `RomePunic` 23, `CarthageNumidian` 24, `CarthageMauritanian` 25 (Greece is 31). The five scripts ask `Mod_PlayerCiv(player)` instead of the sentinel (`greek-mod-fixes.js` rewrites them). A civilization that is not one of them (a map that fixes plain Rome or Carthage) gets no branch, as before, and the buttons at the town hall are still there.
+In 4.2 Rome (Republican, Imperial, Punic) and Carthage (Numidian, Mauritanian) are picked before the lobby: Gabbo's engine hook leaves the choice in the sentinel `rand(776 + player)`, which five scripts read to research the branch's `ChooseXxx` at the start. Here each branch is a civilization of its own (`romerep42`, `romeimp42`, `romepun42`, `carthnum42`, `carthmau42`, indices 45-49), cloned from HD with its branch's commands already in its classes; nothing at a town hall chooses or switches it, and the sentinel and the scripts that read it (the `R*/C*_ENABLE_OR_DISABLE_CMD.VS`) are not shipped. The old `civs/rome*.json`/`carthage*.json` variants of `extras/` are removed by `greek-4-2.js`.
+
+`greek-mod-fixes.js` still rewrites those five scripts (they feed `greek-4-2-pristine`); the final port does not carry them.
 
 The same script gives the renamed classes their old HD id as `altid` (HD misspells `TValkyria`, `CMacemen`, `BHighlandar`, `IDefendar`, `GTridentWarriar`, `BaseBoilding`; 4.2 fixes them and drops the old ones, so HD's scripts and maps could not create them).
 
@@ -48,9 +50,31 @@ The map is Ferónidas's ("[CM] Ludus Martis"): the Community Mod v12 ships it (1
 
 So the port ships the Community Mod's own build instead, unmodified, from its v12 package, plus the three hero classes it needs and the game does not have (`CHero5` Candecar, `EHero4` Menhotep, `BHero4` Calgacos; a few lines each over a game hero's entity). Tried in game with the Greek Mod: it works.
 
-## Pending: independence (AGENTS.md, *Civilizations are independent*)
+## Conquests (tools/greek-4-2.js, tools/lib/conquests.js)
 
-Not independent yet: it is `incompatibleWith` the CGWAR and the Greek Mod 1.8. Greece (`greek`, 31, letter `H`) takes Imperial Rome's slot, and Rome's three branches and Carthage's two (`civs/rome*.json`, `carthage*.json`, 21-25) are variants that replace the base in the lobby. Target: the game's 8 untouched and every civilization the mod adds or changes as its own, next to the game's. Measured against HD (class files with different parameters): Gauls 17, Britain 15, Carthage 17, Egypt 5, Germany 14, Iberia 11, Republican Rome 16, Imperial Rome 23 (the `M*` Greek-art walls among them), 67 shared base classes (`BaseBarracks`, `BaseTownhall`…). Plan as in `extras/greek-mod-1-8/NOTES.md`: each as "<civ> (Greek Mod 4.2)" cloned from HD with the mod's changes, shared base classes changed only inside the copies, game-wide files only as patches. The old-engine trick of the sentinel `rand(776 + player)` and the five scripts that read it goes away: the lobby is the choice.
+The mod ships two conquests. Both collide by path (AGENTS.md, *Conquests and the engine*), so `greek-4-2.js` runs `lib/conquests.js` before `tagCollisions`:
+
+- **Mediterranean** (`Conquests/mediterranean (g42).BFHP`, menu name "Forgia il tuo impero (Gabbo)"): next to the game's and the 1.8's. Its `ConquestMaps/1 - GBR Europe (g42)` is the game's folder under the new name (the mod ships none: its files are the game's). Its Greece territory has `interface="31"`, the index of `greek`, so it plays as the mod's Greece (it was 4, ImperialRome). **Needs a DLL with imperivm-resurrected#45**; with the 1.0 release the value is ignored and the player keeps the room's race. The mod declared the Greece territory (index 9) on the game's map, which has no region 9 and no `ShieldGreece.bmp`: Greece could not be clicked, also in the original 4.2. `tools/lib/conquest-greece.js` draws it in the copy of the folder: region 9 in `territories.bmp` (the Greek peninsula, the Aegean islands and Crete, found in `global.bmp` by colour inside a polygon, only on pixels that belong to nobody; ~7,800 px), the name HELLAS written on the peninsula in `global.bmp` as the other labels are (the territory's name in the mod's texts is "Hellas"), and `ShieldGreece.bmp`. The art is in `extras/greek-civilization-mod/conquest/`: `hellas-shield.png` is the bronze aspis of *Aspis hoplite shield* by ninelionar ([OpenGameArt](https://opengameart.org/content/aspis-hoplite-shield), CC0: render `aspis shield front 3D rendering.jpg`, cut out as a disk, with the name in Cinzel, OFL, below it) and `hellas-label.png` is the name in the same font, cream with a dark outline. **Tried in game** (2026-10-25, Linux): the conquest list, the map with Greece clickable and its text (Hellas); after the label and the shield were redone the maintainer reported it works.
+- **L'unificazione italica** (Giuseppe D'Addio): `ConquestMaps/8 - GBR Italia (g42)`, "(Gabbo)" in the menu. Its territories are Italian peoples on the game's races (none is Greece): nothing to set. The same folder name is also in `ported/l-unificazione-italica` (a wrapped map that `requires` this mod and ships only its `territories.xml`); that is why this one is renamed. They are two different things and both stay: the wrapped map is the standalone one, this conquest is the one that comes with the 4.2.
+
+## Review against the new engine (imperivm-resurrected#37 and #38, `dev-villoh`)
+
+- **Prefixes and indices (#37)**: kept. The 11 civilizations keep their one-character letters and explicit indices (31, 40-49): published numbers stay as they are, and changing a letter renames every class of the mod. `hirehero5`, `hirehero6`, `hirehero8`... are command ids, not prefixes. This task adds no civilization, so nothing needed a derived prefix.
+- **Set name (#38)**: the set is named after `name` in `mod.json`: `Greek Civilization Mod 4.2` (it was `Greek Civilization Mod`). The `id` does not change. Nothing else carried the old name: `compare-mods.js` does not print it, maps `require` the id, the dropdown labels are "<civ> (Gabbo)" (Gabbo is the author in `mod.json` too, same as the set). The registry `sdk/prefixes.md` of `imperivm-resurrected` still lists the pack as "Greek Civilization Mod" (not this repository).
+- **A room with only this set**: all 11 civilizations have `ai: true`, none has `random: false`, none uses `replacesBase`, `variant` or `ownAi`, so the dropdowns, the random draw and the AI have something to pick (read from `civs/*.json`; the set shown in a room: not itemised in the maintainer's test).
+- **What assumes it is always in the room**: the Greek AI (`GR42_*`, `patches/DATA/AI/`) and `HOUTPOST_BEHAVIOR.VS` ask `Mod_TrueRace(...) == Greek`, the race of this mod's Greece: they work whenever the mod is loaded, whatever set the room allows. No script asks `Mod_PlayerCiv` of an id of another mod, and none of this mod's civilizations needs another mod to be in the room. A map that `requires` the mod places its `H*` classes whatever the room allows (the engine's rule, **not tried here**).
+
+## Pending items (issue #7)
+
+- **Greek priest**: it had lost its two `revitalize` methods (HD's `druid_revitalize*.vs` read a unit special only the old engine hook declared). It has them again: `HPRIEST_REVITALIZE.VS`, `_VERIFY.VS`, `_GROUND.VS` are the mod's own scripts (they test `Determination`, which the priest has, and heal only the priest's own civilization), and the class points to them. The game's druids keep the game's scripts. Also, the three priest scripts and `HDRUID_IDLE/STAND_POSITION.VS` created the feedback `StaminaBoostSound`, a class nobody declares: it is `StaminaBoost` now. Tried in the maintainer's test of 2026-10-25 ("it works"); the log line and the healing were not written down one by one.
+- **Covers of the mod's versions of the game's adventures (309 KB vs 464 KB)**: not a defect. The mod's covers are the old retail pictures at 440x360, **16 bits** (309 KB); HD's are other artwork at 24 bits (464 KB; HD's own `Tutorial.BMP` is 16 bits too). They belong to the mod's adventures (listed as "(Gabbo)"), so they stay. Open question for the maintainer: use HD's covers instead.
+- **`.fingerprint` and `desktop.ini`**: the port has none (checked after the build). `.fingerprint` is written by the engine into an installed folder (`$G/mods/<id>/`), so copy from `ported/`, not from the game's `mods/`; `desktop.ini` was in `DATA/SOUND ENTITIES/` of the zip and `tagCollisions` removes it. `greek-4-2.js` now also removes both at the end.
+- **`Spartacus1`, `Spartacus2`**: two neutral heroes (no race; `edittree_pos=""`) that the mod ships and nothing uses: no command trains them, no map of the port and no script places them (searched, `.bfhp` included). They collide with nobody (the 1.8 has `JSpartacus1/2`, CGWAR none), so they stay as the mod had them.
+- **Branch checks in game**: Roman branches (barracks, arena, blacksmith, `hirehero5`/`hirehero6`), Carthage's (`hirehero8`) and the log's `compilation error` lines: covered by the maintainer's test of 2026-10-25 ("it works"), not itemised.
+
+## Independence check (tools/shared-paths.js, after the build)
+
+`node tools/shared-paths.js greek-civilization-mod` against the other civilization mods: **CGWAR** 0 class ids in common, 2 files at the same path with other bytes (`currentlang/menubackground*.bmp`, the menu skin: the content manager lets the player choose); **Greek Mod 1.8** 0 class ids, 3 files with other bytes (`currentlang/logo.bmp`, `menubackground.bmp`, `menu_16_9.bmp`, the same menu skin); GBR Tactics and La Reconquista 2010: none. Not Greek mods, left as they were: Imperivm Legacy (4 class ids, 182 files), Mediterranevm alpha (3 ids, 65 files), MCI (1 id, 12 files).
 
 Open: the ported maps that `require` this mod place its `H*` classes; they must keep working after the rename (see AGENTS.md, *Open*).
 
