@@ -34,7 +34,16 @@ In 4.2 the Greek faction sits in the Imperial Rome slot: its classes have `race=
 
 Tried in game (2026-10-23, Linux, 1920x1080): the lobby with the three Greek mods active (all the civilizations show, no patch errors, the content manager shows no problem), a skirmish with several civilizations that hung because of script patches of the CGWAR that did not compile (fixed, see its NOTES). **Not tried**: a game with every civilization of the 4.2, the Greek AI, the Roman branches' barracks, heroes.
 
-Left out, to port later: the mod's AI for the game's civilizations (they use HD's), the game modes' rules for the clones (Imperivm 2, Liga), the mod's changes to the game's scripts for everybody (260 of them), HD's `druid_revitalize.vs` for the Greek priest (needs a special only the old engine hook declared: the two `revitalize` methods are gone), `Spartacus`, `Fisherman`... (neutral, renamed).
+Left out, to port later: the mod's AI for the game's civilizations (they use HD's), the game modes' rules for the clones (Imperivm 2, Liga), `Spartacus`, `Fisherman`... (neutral, renamed).
+
+## The mod's versions of the game's scripts (tools/lib/own-scripts.js)
+
+The clones and Greece played in the 4.2 with the mod's edits of the game's behavior scripts (`barrack_train.vs`, `hero_attack.vs`, `druid_learn.vs`, the blacksmith and temple animations, the catapults, the village and outpost scripts...). They used to be left out (747 files of the mod's at the game's paths; `raw/greek-4-2-left-out.txt`) because the game's scripts must not change for the game's civilizations. Now each one the port's classes and commands name (and the ones those start) is a copy of its own, `<name>_g42.vs`, and only the port's classes and commands point to it: 112 copies, listed in `raw/greek-4-2-own-scripts.txt`. The game's scripts stay the game's.
+
+- **Not copied (4)**: `onfinish_research.vs`, `arena_hirehero.vs`, `verify_research.vs` and `specialize_build_verify.vs` read the old branch flags (`ChooseXxx`) or the sentinel: each branch is a civilization now, so they keep the game's script. What it costs: the mod's effects of researches in `onfinish_research.vs`, and Rome's hero hiring by branch in the arena, are the game's. A per-branch version (each flag resolved at build time, class ids of the clone) is the way, not done.
+- **Class ids written as text** in a shared script (`Place("EPriest")`, `Mutate("CMERCENARIO")`) are the game's or the mod's old ids, not the clone's: they place the game's class (or none: `CMERCENARIO` of Carthage's outpost, `BHorseman` of the Iberian scout, which the mod's own script misspells). Same as the game's script did.
+- **const.ini**: the keys the game does not have (`MaxMyrmidonsValue`, `Stonehenge*`, `AntiRonda*`, `LastRoarRadius`, `DesertSpiritsRadius`, `RaidsDuration`, the Carthage outpost's) are in a patch now: only the mod's scripts read them, and without them `GetConst` of the Myrmidons' school and the Stonehenge spells found nothing. A key the game has keeps the game's value.
+- **`StaminaBoostSound`** (a feedback class nobody declares) is `StaminaBoost` in every script of the port. The Greek priest names `druid_revitalize*_g42.vs`.
 
 ## Rome's branches and Carthage's (tools/greek-4-2.js, tools/greek-mod-fixes.js)
 
