@@ -76,6 +76,17 @@ const GREEK = /Ares|Greece|Greek|Circe|Hecate|Free_Village|Combative Spirit|Olym
       }
     }
     if (r.problems.length) console.log("conquests, to check:\n  " + r.problems.join("\n  "));
+    // The race of the player of a territory is the `interface` of its <territory> in the territories.xml inside the .bfhp: 4 (ImperialRome) in the
+    // original, where Greece was Imperial Rome. A civilization of a mod is its index; it needs an Imperivm Resurrected build with
+    // imperivm-resurrected#44/#45 (the 1.0 release only reads 0-7 and the player keeps the room's race).
+    const index = JSON.parse(fs.readFileSync(path.join(OUT, "civs", "greece.json"), "utf8")).index;
+    for (const f of fs.readdirSync(cDir).filter(f => /\.bfhp$/i.test(f))) {
+      const p = path.join(cDir, f), buf = fs.readFileSync(p), e = require("./hpfs.js")(buf).find(x => /^territories\.xml$/i.test(x.path)), raw = e && e.read().toString("latin1");
+      const out = raw && raw.replace(/(<territory\b[^>]*\bid="Graecia"[^>]*\binterface=")\d+"/, (_m, a) => `${a}${index}"`);
+      if (!out || out === raw) continue;
+      try { e.write(Buffer.from(out, "latin1")); fs.rmSync(p); fs.writeFileSync(p, buf); console.log(`conquest ${f}: Graecia plays as Greece (CGWAR) (interface ${index})`); }
+      catch (err) { console.log(`conquest ${f}: Graecia interface not set (${err.message})`); }
+    }
   }
 }
 
