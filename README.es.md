@@ -11,7 +11,6 @@
   <a href="LICENSE"><img alt="Licencia: GPL-3.0" src="https://img.shields.io/badge/licencia-GPL--3.0-blue"></a>
   <a href="https://github.com/imperivm-resurrected/community-mods/commits/main"><img alt="Último commit" src="https://img.shields.io/github/last-commit/imperivm-resurrected/community-mods?label=%C3%BAltimo%20commit"></a>
   <a href="https://github.com/imperivm-resurrected/community-mods/issues"><img alt="Issues" src="https://img.shields.io/github/issues/imperivm-resurrected/community-mods"></a>
-  <img alt="Node.js, sin dependencias" src="https://img.shields.io/badge/node-sin%20dependencias-339933?logo=nodedotjs&logoColor=white">
   <a href="https://gamebanana.com/games/26069"><img alt="GameBanana" src="https://img.shields.io/badge/GameBanana-Imperivm%20Hub-f5c518"></a>
   <a href="https://discord.gg/6kCatX3Zbc"><img alt="Discord" src="https://img.shields.io/badge/Discord-Imperivm%20Resurrected-5865F2?logo=discord&logoColor=white"></a>
 </p>
