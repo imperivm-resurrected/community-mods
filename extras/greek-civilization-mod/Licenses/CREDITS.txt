@@ -1,0 +1,15 @@
+Greek Civilization Mod 4.2 (Imperivm Resurrected port)
+
+Creator of the mod:   Gabbo
+Original authors:     Team Rattlesmake (founders of the Greek Mod)
+Contributors:         Axaros (ideas, YouTube), Sickboy Channel and Raffaele Luongo (voice dubbing), Alexius (Imperivm Launcher),
+                      Upercat (modding, dubbing), Thaitoan (modding), Shaul (multiplayer, modding)
+Special thanks:       Hydra, Taiga (ideas), Faramir (testing)
+Port:                 Villoh
+
+Credits as published with the mod (GameBanana 731819, "Greek Civilization Mod - Original").
+
+Graphics, interface images, sounds and voices that the 4.2 replaced in its 26 October 2026 package come from the Caesar Mod 1.05
+(Paolo Lamberto and the creators of the Greek Mod, as in its credits). The Caesar Mod is released under CC BY-SA 4.0
+(CAESAR-CC-BY-SA-4.0.txt); what this mod derives from it is distributed under the same license. The rights to the game's own
+assets remain with their owners.

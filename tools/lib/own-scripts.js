@@ -39,7 +39,17 @@ function classMapper({ OUT, HD, modClasses }) {
   return (text, civ) => text.replace(/"([A-Za-z0-9_]+)"/g, (m, x) => { const y = classOf(x, civ); return y === x ? m : `"${y}"`; });
 }
 
-module.exports = function ownScripts({ OUT, HD, tag, skip, civs = [], dynamic = [], modClasses }) {
+// Methods a class inherits from a class of the game (`Unit`'s attack, `Catapult`'s idle...) name the game's script, and the mod edited some of those scripts without
+// touching the class: nothing of the port names them, so the copies above never reach the clones. For each class of the port the methods its effective definer
+// (the nearest ancestor with that `sig`) has in the game are written inside it, with every <method> of that sig (the game restates a whole sig when it redefines one),
+// pointing to the copy. A class of the port that defines the sig itself, or inherits it from another class of the port, is not touched (its own text names the
+// script). Behaviors a class inherits are NOT overridden (writing one inside would run both): they are listed in the result, `behaviorsLeft`.
+const METHOD = /<method\b[^>]*?\/>/gi, strip = t => t.replace(/<!--[\s\S]*?-->/g, "");
+const sigOf = e => ((e.match(/\bsig\s*=\s*"([^"]+)"/i) || [])[1] || "").toLowerCase();
+const classInfo = (file, text) => { const t = strip(text), id = (t.match(/<class\b[^>]*?\bid\s*=\s*"([^"]+)"/i) || [])[1]; return id && { id, file, parent: (t.match(/<class\b[^>]*?\bparent\s*=\s*"([^"]+)"/i) || [])[1], methods: [...t.matchAll(METHOD)].map(m => m[0]), behaviors: [...t.matchAll(/<behavior\b[^>]*?\bscript\s*=\s*"data[\\/]subai[\\/]([^"]+)"/gi)].map(m => m[1]) }; };
+
+// `inherit`: false leaves this out; a list of script names does it only for the methods that name one of them (the edits a new source brings, not all 55 the mod ever made).
+module.exports = function ownScripts({ OUT, HD, tag, skip, civs = [], dynamic = [], modClasses, inherit = false }) {
   const dir = (base, rel) => { let p = base; for (const part of rel.split("/")) { const n = ci(p, part); if (!n) return null; p = path.join(p, n); } return p; };
   const SUB = dir(OUT, "DATA/SUBAI"), HDSUB = dir(HD, "DATA/SUBAI");
   const result = { copied: [], skipped: [], problems: [] };
@@ -52,6 +62,29 @@ module.exports = function ownScripts({ OUT, HD, tag, skip, civs = [], dynamic = 
   const wanted = new Map();                                                     // lowercase name -> { name, users }
   const want = (n, by) => { const k = n.toLowerCase(); if (!wanted.has(k)) wanted.set(k, { name: n, users: new Set() }); wanted.get(k).users.add(by); };
   for (const f of users) for (const m of rd(f).matchAll(REF)) want(m[2], path.basename(f));
+  // the methods a class of the port inherits from the game's classes, with a script the mod edited
+  const inject = [], behaviorsLeft = new Map();                                 // { file, elements } ; script -> Set(HD classes)
+  if (inherit) {
+    const hdMap = new Map(), portMap = new Map(), hdDir = dir(HD, "DATA/CLASSES"), portDir = dir(OUT, "DATA/CLASSES");
+    for (const [d, map] of [[hdDir, hdMap], [portDir, portMap]]) if (d) for (const f of fs.readdirSync(d)) if (/\.sc\.xml$/i.test(f)) { const c = classInfo(path.join(d, f), rd(path.join(d, f))); if (c) map.set(c.id.toLowerCase(), c); }
+    const parentOf = c => c.parent && (portMap.get(c.parent.toLowerCase()) || hdMap.get(c.parent.toLowerCase()));
+    for (const c of portMap.values()) {
+      const own = new Set(c.methods.map(sigOf)), seen = new Set(own);
+      for (let a = parentOf(c), n = 0; a && n < 40; a = parentOf(a), n++) {
+        const bySig = new Map(); for (const e of a.methods) { const s = sigOf(e); if (s && !seen.has(s)) (bySig.get(s) || bySig.set(s, []).get(s)).push(e); }
+        for (const [s, els] of bySig) {
+          seen.add(s);
+          if (portMap.get(a.id.toLowerCase()) === a) continue;                      // a class of the port defines it: its text names the script
+          const names = els.flatMap(e => [...e.matchAll(REF)].map(m => m[2]));
+          const only = Array.isArray(inherit) ? new Set(inherit.map(x => x.toLowerCase())) : null;
+          if (!names.some(nme => differs(nme) && (!only || only.has(nme.toLowerCase())))) continue;
+          inject.push({ file: c.file, elements: els });
+          for (const nme of names) want(nme, path.basename(c.file));
+        }
+        if (!portMap.get(a.id.toLowerCase())) for (const b of a.behaviors) if (differs(b)) (behaviorsLeft.get(b.toLowerCase()) || behaviorsLeft.set(b.toLowerCase(), new Set()).get(b.toLowerCase())).add(a.id);
+      }
+    }
+  }
   // the scripts they start: the closure
   const bare = /["']([^"'\s\\/]+\.vs)["']/gi;
   for (let grew = true; grew;) {
@@ -92,7 +125,16 @@ module.exports = function ownScripts({ OUT, HD, tag, skip, civs = [], dynamic = 
   const target = (n, civ) => { const r = rename.get(n.toLowerCase()); return r ? ((civ && r.per.get(civ.id)) || r.def) : null; };
   const swap = (text, civ) => text.replace(REF, (m, pre, n) => target(n, civ) ? pre + target(n, civ) : m).replace(bare, (m, n) => target(n, civ) ? m.replace(n, target(n, civ)) : m);
   for (const j of jobs) { const t = rd(mine(j.from)); wr(path.join(SUB, j.to), swap(resolve(t, j.civ, j.from, j.branchy), j.civ)); }
-  for (const f of users) { const t = rd(f), c = civOf(path.basename(f)), n = t.replace(REF, (m, pre, name) => target(name, c) ? pre + target(name, c) : m); if (n !== t) wr(f, n); }
+  const injectBy = new Map(); for (const i of inject) (injectBy.get(i.file) || injectBy.set(i.file, []).get(i.file)).push(...i.elements);
+  let injected = 0, touched = 0;
+  for (const f of users) {
+    const t = rd(f), c = civOf(path.basename(f));
+    let n = t.replace(REF, (m, pre, name) => target(name, c) ? pre + target(name, c) : m);
+    const add = (injectBy.get(f) || []).map(e => swap(e, c)).filter((e, i) => e !== injectBy.get(f)[i]);   // only the ones that point to a copy
+    if (add.length) { n = n.replace(/(<class\b[^>]*>)/, `$1\n\t<!-- scripts the mod edited and the class inherits from the game's: copies of its own (the game's stay as they are) -->\n\t${add.join("\n\t")}`); injected += add.length; touched++; }
+    if (n !== t) wr(f, n);
+  }
+  result.injected = injected; result.touched = touched; result.behaviorsLeft = [...behaviorsLeft].map(([b, s]) => `${b} (${[...s].join(", ")})`);
   return result;
 };
 
