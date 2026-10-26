@@ -34,7 +34,7 @@ In 4.2 the Greek faction sits in the Imperial Rome slot: its classes have `race=
 
 Tried in game (2026-10-23, Linux, 1920x1080): the lobby with the three Greek mods active (all the civilizations show, no patch errors, the content manager shows no problem), a skirmish with several civilizations that hung because of script patches of the CGWAR that did not compile (fixed, see its NOTES). **Not tried**: a game with every civilization of the 4.2, the Greek AI, the Roman branches' barracks, heroes.
 
-Left out, to port later: the game modes' rules for the clones (see *Game modes*), the AI scripts the engine calls by name (see *The mod's AI*), `Spartacus`, `Fisherman`... (neutral, renamed).
+Left out: the game modes' rules for the clones (see *Game modes*), the AI scripts the engine calls by name (see *The mod's AI*). `Spartacus` and `Fisherman`... (neutral, renamed) stay.
 
 ## The mod's versions of the game's scripts (tools/lib/own-scripts.js)
 
@@ -95,7 +95,15 @@ The mod ships two conquests. Both collide by path (AGENTS.md, *Conquests and the
 - **A room with only this set**: all 11 civilizations have `ai: true`, none has `random: false`, none uses `replacesBase`, `variant` or `ownAi`, so the dropdowns, the random draw and the AI have something to pick (read from `civs/*.json`; the set shown in a room: not itemised in the maintainer's test).
 - **What assumes it is always in the room**: the Greek AI (`GR42_*`, `patches/DATA/AI/`) and `HOUTPOST_BEHAVIOR.VS` ask `Mod_TrueRace(...) == Greek`, the race of this mod's Greece: they work whenever the mod is loaded, whatever set the room allows. No script asks `Mod_PlayerCiv` of an id of another mod, and none of this mod's civilizations needs another mod to be in the room. A map that `requires` the mod places its `H*` classes whatever the room allows (the engine's rule, **not tried here**).
 
-## Pending items (issue #7)
+## Pending (what is left, after issue #7)
+
+- **Game modes for the clones**: Imperivm 2 (Old school) costs and kits, and Varios' hiding of the Liga upgrades, are not applied to the clones (see *Game modes*). Needs a script per civilization with the clone's names and the ~170 "Imp2 Cost" orders cloned for each.
+- **AI**: what the engine calls by name (`CalcGAIKAPriority`, `GetArmyNeed`, `EvalRecruit`, `SendSquad`, `TSH_*`, `GS_*`, `SquadMonitor`, `Recruiter`, `Main`, siege and guard helpers) is the game's for every AI; Rome's three branches and Carthage's two use the game's economy.
+- **`BHorseman`** in `iberian_village_trainIScout.vs`: the class does not exist (the mod's script misspells it).
+- **imperivm-resurrected#45** for Greece to play as `greek` in the Mediterranean conquest; **#48** (the engine's outpost scan can close a big match).
+- **`sdk/prefixes.md`** of `imperivm-resurrected` lists these civilizations under "Greek Civilization Mod", without the 4.2.
+
+## Pending items done (issue #7)
 
 - **Greek priest**: it had lost its two `revitalize` methods (HD's `druid_revitalize*.vs` read a unit special only the old engine hook declared). It has them again: `HPRIEST_REVITALIZE.VS`, `_VERIFY.VS`, `_GROUND.VS` are the mod's own scripts (they test `Determination`, which the priest has, and heal only the priest's own civilization), and the class points to them. The game's druids keep the game's scripts. Also, the three priest scripts and `HDRUID_IDLE/STAND_POSITION.VS` created the feedback `StaminaBoostSound`, a class nobody declares: it is `StaminaBoost` now. Tried in the maintainer's test of 2026-10-25 ("it works"); the log line and the healing were not written down one by one.
 - **Covers of the mod's versions of the game's adventures (309 KB vs 464 KB)**: not a defect. The mod's covers are the old retail pictures at 440x360, **16 bits** (309 KB); HD's are other artwork at 24 bits (464 KB; HD's own `Tutorial.BMP` is 16 bits too). They belong to the mod's adventures (listed as "(Gabbo)"), so they stay. Open question for the maintainer: use HD's covers instead.
@@ -105,7 +113,7 @@ The mod ships two conquests. Both collide by path (AGENTS.md, *Conquests and the
 
 ## Independence check (tools/shared-paths.js, after the build)
 
-`node tools/shared-paths.js greek-civilization-mod` against the other civilization mods: **CGWAR** 0 class ids in common, 2 files at the same path with other bytes (`currentlang/menubackground*.bmp`, the menu skin: the content manager lets the player choose); **Greek Mod 1.8** 0 class ids, 3 files with other bytes (`currentlang/logo.bmp`, `menubackground.bmp`, `menu_16_9.bmp`, the same menu skin); GBR Tactics and La Reconquista 2010: none. Not Greek mods, left as they were: Imperivm Legacy (4 class ids, 182 files), Mediterranevm alpha (3 ids, 65 files), MCI (1 id, 12 files).
+`node tools/shared-paths.js greek-civilization-mod` against the other civilization mods: **CGWAR** 0 class ids in common, 2 files at the same path with other bytes (`currentlang/menubackground*.bmp`, the menu skin: the content manager lets the player choose); **Greek Mod 1.8** 0 class ids, 3 files with other bytes (`currentlang/logo.bmp`, `menubackground.bmp`, `menu_16_9.bmp`, the same menu skin); GBR Tactics and La Reconquista 2010: none. Not Greek mods, left as they were: Imperivm Legacy (4 class ids, 182 files), Mediterranevm alpha (now civilizations of its own: 3 neutral ids it shares with this mod, `CTent`, `HOutpost`, `Snake`/`SnakeUnit`, and 65 files, e.g. the outpost's art; checked 2026-10-26), MCI (1 id, 12 files). Not Greek mods' business here, but by AGENTS.md they need their own names: open for those ports.
 
 Open: the ported maps that `require` this mod place its `H*` classes; they must keep working after the rename (see AGENTS.md, *Open*).
 

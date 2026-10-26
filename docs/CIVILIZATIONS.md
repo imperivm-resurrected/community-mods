@@ -59,4 +59,6 @@ A civilization with no `letter` (derived prefix: the first three letters of the 
 
 So are the 1.8's Imperial and Punic Rome (`empire18`, `punic18`): prefixes `Emp` and `Pun` derived from the id, indices assigned by the engine.
 
+The 4.2's eleven civilizations play with the mod's own scripts and AI, and only they do: the mod's versions of the game's behavior scripts are copies named `<name>_g42.vs` that only its classes and commands use, its AI runs as `GR42_*` (economy for Greece, Gaul, Britain, Iberia, Egypt and Germany; tactics for all but the Roman branches and Mauritanian Carthage, which the mod gives none) behind patches that ask `Mod_TrueRace`, and its game modes only reach its civilizations. What is not applied to the clones yet is in `extras/greek-civilization-mod/NOTES.md`, *Pending*.
+
 The three Greek mods are independent of the game and of each other (checked with `tools/shared-paths.js` and the content manager); what is left is in each mod's `NOTES.md`, *Pending*.
