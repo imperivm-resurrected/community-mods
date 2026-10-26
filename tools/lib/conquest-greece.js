@@ -43,7 +43,9 @@ const magick = (args, enc) => { const r = cp.spawnSync("magick", args, { maxBuff
 function drawShield(folder) {
   const out = path.join(folder, "ShieldGreece.bmp");
   fs.rmSync(out, { force: true });
-  magick(["-size", "296x316", "xc:#00ff00", path.join(ART, "hellas-shield.png"), "-composite", "-filter", "Lanczos", "-resize", "74x79!", "-type", "TrueColor", `BMP3:${out}`]);
+  // scaled first and the alpha cut hard (no half-transparent edge): resized on the green, the edge pixels are part green and the game does not take them for the
+  // background (a green fringe round the shield and the name). The game's own shields have no soft edge either.
+  magick(["-size", "74x79", "xc:#00ff00", "(", path.join(ART, "hellas-shield.png"), "-filter", "Lanczos", "-resize", "74x79!", "-channel", "A", "-threshold", "55%", "+channel", ")", "-composite", "-type", "TrueColor", `BMP3:${out}`]);
 }
 
 // the name on the map, over the Greek peninsula, in global.bmp (16 bits, 5-5-5) as GALLIA, ROMA... are

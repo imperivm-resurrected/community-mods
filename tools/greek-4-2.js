@@ -1,6 +1,6 @@
 // Greek Civilization Mod 4.2: every civilization of the mod (and every one it changes) as a civilization of its own, next to the game's
-// (AGENTS.md, "Civilizations are independent" and "What a civilization is, it is from the start"). Run after shrink-mod.js, the copy of
-// extras/greek-civilization-mod/ and tools/greek-mod-fixes.js, which leave the port in originals/greek-4-2-pristine:
+// (AGENTS.md, "Civilizations are independent" and "What a civilization is, it is from the start"). Run after tools/greek-4-2-source.js, which
+// leaves the mod's folder of Gabbo's package (GameBanana 731819) in originals/greek-4-2-pristine-731819:
 //   node tools/greek-4-2.js [id ...]        (no id: everything)
 // Rebuilds ported/greek-civilization-mod from the pristine copy (hard links, so it costs no space) and then:
 //   1. keeps the mod's version of the game's classes and commands (originals/greek-4-2-merged) and drops them from the port: they are the
@@ -11,14 +11,14 @@
 //   4. Greece (letter H) is its own civilization, no longer in Imperial Rome's slot
 const fs = require("fs"), path = require("path"), cp = require("child_process");
 const ROOT = path.join(__dirname, "..");
-const PRISTINE = path.join(ROOT, "originals", "greek-4-2-pristine"), OUT = path.join(ROOT, "ported", "greek-civilization-mod"), MERGED = path.join(ROOT, "originals", "greek-4-2-merged");
+const PRISTINE = path.join(ROOT, "originals", "greek-4-2-pristine-731819"), OUT = path.join(ROOT, "ported", "greek-civilization-mod"), MERGED = path.join(ROOT, "originals", "greek-4-2-merged");
 const HD = path.join(ROOT, "originals", "game-data", "paks");
 const rd = f => fs.readFileSync(f, "latin1"), wr = (f, s) => { fs.mkdirSync(path.dirname(f), { recursive: true }); fs.rmSync(f, { force: true }); fs.writeFileSync(f, s, "latin1"); };
 const classOf = s => (s.match(/<class\b[^>]*?\bid\s*=\s*"([^"]+)"/) || [])[1];
 const walk = (d, base = d, out = []) => { if (!fs.existsSync(d)) return out; for (const e of fs.readdirSync(d, { withFileTypes: true })) { const p = path.join(d, e.name); e.isDirectory() ? walk(p, base, out) : out.push(path.relative(base, p).replace(/\\/g, "/")); } return out; };
 const find = (base, rel) => { let p = base; for (const part of rel.split("/")) { if (!fs.existsSync(p)) return null; const n = fs.readdirSync(p).find(x => x.toLowerCase() === part.toLowerCase()); if (!n) return null; p = path.join(p, n); } return p; };
 const want = process.argv.slice(2);
-if (!fs.existsSync(PRISTINE)) { console.error("no " + PRISTINE + ": it is the port of the 4.2 before this script (see extras/greek-civilization-mod/NOTES.md)"); process.exit(1); }
+if (!fs.existsSync(PRISTINE)) { console.error("no " + PRISTINE + ": run tools/greek-4-2-source.js first (see extras/greek-civilization-mod/NOTES.md)"); process.exit(1); }
 
 // the civilizations: letters and indices in the table of docs/CIVILIZATIONS.md (a digit is a letter too: 26 run out)
 const CIVS = [
@@ -201,6 +201,8 @@ console.log(`menu skin: ${require("./lib/menu-skin.js").skinToPatches({ OUT, HD 
   const shaman = n => [[/"CShamanNumidian"/g, `"${n}ShamanNumidian"`], [/"CShaman"/g, `"${n}Shaman"`]];
   const r = require("./lib/own-scripts.js")({ OUT, HD, tag: "g42", skip: /Choose(Republican|Imperial|Punic|Numidian|Mauritanian)(Rome|Carthage)|rand\(\s*776|nLobbyBranch/i,
     dynamic: [/EnvReadString\(\s*\.settlement\s*,\s*subFac\s*\)\s*!=\s*"researched"/g],
+    // the edits this source brings to scripts the classes inherit from the game (Unit, Military): the archers' flight distance, and capturing the ambient peasants
+    inherit: ["unit_attack.vs", "unit_engage.vs", "unit_engage_unit_type.vs", "unit_engage_unit_type_exclusive.vs", "unit_guard_engage.vs", "unit_capture.vs"],
     // every civilization that is a clone also gets the class ids the scripts write as text ("EPriest") as its own ("1Priest") where the clone has the class
     modClasses: path.join(PRISTINE, "DATA", "CLASSES"),
     civs: [{ id: "gaul42", letter: "X", from: ["G"], match: /^(X|gaul42\.)/i }, { id: "iberia42", letter: "Z", from: ["I"], match: /^(Z|iberia42\.)/i },
@@ -211,6 +213,7 @@ console.log(`menu skin: ${require("./lib/menu-skin.js").skinToPatches({ OUT, HD 
       { id: "carthnum42", letter: "7", from: ["C"], match: /^(7|carthnum42\.)/i, flags: { ChooseNumidianCarthage: true }, subst: shaman(7), scripts: { "coutpost_behavior.vs": [[/"CMERCENARIO"/g, '"7MERCENARIO"']] } },
       { id: "carthmau42", letter: "8", from: ["C"], match: /^(8|carthmau42\.)/i, flags: { ChooseMauritanianCarthage: true }, subst: shaman(8), scripts: { "coutpost_behavior.vs": [[/"CMERCENARIO"/g, '"8MERCENARIO"']] } }] });
   console.log(`scripts of the mod's own for its civilizations: ${r.copied.length} copied (_g42), ${r.skipped.length} left to the game's (${r.skipped.map(s => s.name).join(", ")})`);
+  console.log(`  methods inherited from the game's classes whose script the mod edited: ${r.injected} <method> written inside ${r.touched} classes; behaviors inherited and left the game's: ${(r.behaviorsLeft || []).join("; ") || "none"}`);
   fs.writeFileSync(path.join(ROOT, "raw", "greek-4-2-own-scripts.txt"), r.copied.map(c => `${c.from} -> ${c.to}  (${c.users.slice(0, 4).join(", ")}${c.users.length > 4 ? ", ..." : ""})`).join("\n") + "\n\nnot copied:\n" + r.skipped.map(s => `${s.name}: ${s.why}`).join("\n") + "\n");
 }
 
@@ -249,6 +252,19 @@ console.log(`menu skin: ${require("./lib/menu-skin.js").skinToPatches({ OUT, HD 
   edit("5 Old school.VS", /^if \(nRace == Gaul\)\s*\n\s*StartPlayerScript\(player, "data\/subai\/mode_imperivm2_gaul\.vs"\);/m, start("mode_imperivm2_gaul.vs", ["gaul42"]), "Gaul's kit");
   edit("5 Old school.VS", /^if \(nRace == Iberia\)\s*\n\s*StartPlayerScript\(player, "data\/subai\/mode_imperivm2_iberia\.vs"\);/m, start("mode_imperivm2_iberia.vs", ["iberia42"]), "Iberia's kit");
   edit("5 Old school.VS", /^StartPlayerScript\(player, "data\/subai\/mode_imperivm2_costs\.vs"\);/m, start("mode_imperivm2_costs.vs", IMP2), "the costs");
+}
+
+// 3d. the modes' room settings (modes/*.json, an SDK feature): the mod fixes the gold, population, fog, explored map and bonus of its own modes (Varios, Liga,
+// Punic) and, in Old school, the civilizations that can be chosen: here the four of this port that stand for the ones the mode allowed (Imperial Rome, Gaul, Iberia,
+// Numidian Carthage). The room moves a player with another one to the first of the list; "5 Old school.VS" still eliminates one that gets in some other way.
+{
+  const md = find(OUT, "modes");
+  if (md) for (const f of fs.readdirSync(md).filter(f => /\.json$/i.test(f))) {
+    const p = path.join(md, f), j = { ...require(p) };
+    if (/old school/i.test(j.mode || f)) j.civilizations = ["gaul42", "iberia42", "romeimp42", "carthnum42"];
+    fs.rmSync(p); fs.writeFileSync(p, JSON.stringify(j, null, 2) + "\n", "utf8");
+    console.log(`mode ${j.mode}: ${Object.keys(j).filter(k => k !== "mode").join(", ") || "nothing fixed"}`);
+  }
 }
 
 // 4. the game's files the mod replaced: only what is Greek, as patches; the rest, and what the mod hid, goes
@@ -389,6 +405,35 @@ for (const f of ["romerepublican", "romeimperial", "romepunic", "carthagenumidia
 }
 // two item scripts of the mod that the game's compiler cannot read (no signature line): the item's owner is the argument
 for (const f of ["BELT OF SNAKES REMOVE.VS", "FEATHER AMULET REMOVE.VS"]) { const p = find(OUT, `DATA/ITEMSCRIPTS/${f}`); if (p && !/^\s*\/\//.test(rd(p))) wr(p, "//void, Obj owner\r\n" + rd(p)); }
+// Gabbo's package turns on three rules in rules/game.json: an army stays with its hero at the walls, wall sentries cannot be picked, civilians take no damage and
+// cannot be attacked. Resurrected's rules/game.json sets them, but for every civilization of every game the mod is active in (the game's included). Here each one is
+// scoped to this mod's own classes, so it never reaches the game's civilizations or another mod's:
+//   - protected civilians: the port's own villager, old man and ambient classes (and what descends from them), not `Peasant` or `PeasantAmbient`, which the game's
+//     civilizations use too. The shared neutral ones (Trader, Tradecar_Donkey, Camel, CartTrader) are the game's: left out
+//   - sentries: `non_selectable="1"` on the port's own Sentry classes. The engine's own rule sets a flag on every sentry that PickFilter_IsSelectable reads; that filter
+//     reads this class property too (the one Wall and Tower have), so the click goes to what is behind
+//   - an army staying with its hero is one patch of the engine's code, for everybody: there is no way to scope it today, so it is not set (NOTES.md)
+// After the names step (tagCollisions renames classes), so the ids written are the final ones.
+{
+  const parse = s => ({ id: classOf(s), parent: (s.match(/<class\b[^>]*?\bparent\s*=\s*"([^"]+)"/) || [])[1] });
+  const game = new Map(), mine = new Map();
+  for (const f of walk(HD_CLASSES).filter(f => /\.sc\.xml$/i.test(f))) { const c = parse(rd(path.join(HD_CLASSES, f))); if (c.id) game.set(c.id.toLowerCase(), c); }
+  const portFiles = walk(CLASSES).filter(f => /\.sc\.xml$/i.test(f));
+  for (const f of portFiles) { const c = parse(rd(path.join(CLASSES, f))); if (c.id) mine.set(c.id.toLowerCase(), { ...c, file: path.join(CLASSES, f) }); }
+  const chain = id => { const out = []; for (let c = mine.get(id.toLowerCase()) || game.get(id.toLowerCase()), n = 0; c && n < 40; c = c.parent && (mine.get(c.parent.toLowerCase()) || game.get(c.parent.toLowerCase())), n++) out.push(c.id); return out; };
+  const under = (id, base) => chain(id).slice(1).some(x => x.toLowerCase() === base.toLowerCase());
+  const civilians = [...mine.values()].filter(c => under(c.id, "Peasant") || under(c.id, "PeasantAmbient")), set = new Set(civilians.map(c => c.id.toLowerCase()));
+  const tops = civilians.filter(c => !c.parent || !set.has(c.parent.toLowerCase())).map(c => c.id).sort();
+  wr(path.join(OUT, "rules", "game.json"), JSON.stringify({ protectedClasses: tops }, null, 2) + "\n");
+  let sentries = 0;
+  for (const c of mine.values()) {
+    if (!under(c.id, "Sentry")) continue;
+    const s = rd(c.file);
+    if (/non_selectable\s*=/.test(s)) continue;
+    wr(c.file, s.replace(/(<class\b[^>]*>)/, `$1\n\t<properties non_selectable="1"/>   <!-- wall sentries cannot be picked (the 4.2's rule, for this mod's own sentries only) -->`)); sentries++;
+  }
+  console.log(`rules: ${tops.length} civilian classes of its own protected (rules/game.json), ${sentries} sentry classes not selectable`);
+}
 // the engine writes .fingerprint in an installed mod's folder (and Windows leaves desktop.ini): never part of the port
 for (const f of walk(OUT).filter(f => /(^|\/)(\.fingerprint|desktop\.ini|thumbs\.db)$/i.test(f))) fs.rmSync(path.join(OUT, f));
 {
