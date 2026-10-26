@@ -169,8 +169,17 @@ console.log(`Greece: ${greekIds.size} classes with race "${GREEK_RACE}" (${piece
   // mod's GetTacticScript (originals/greek-4-2-pristine/DATA/AI/GETTACTICSCRIPT.VS: 30% / 60% of the first roll, the Rome branches and the
   // Mauritanian Carthage none, Numidian Carthage 100%). Gaul in Old School mode has none (its tactic is not asked for there)
   const TACT = (a, b) => [[30, a], [90, b]];
-  const r = require("./lib/greek-ai.js")({ OUT, HD, prefix: "GR42_", constName: "Greek", varRe: /^AIV_(Max[A-Z]|Time)/,
-    civs: ["Greek", "Gaul42", "Britain42", "Iberia42", "Egypt42", "Germany42"],
+  const ALL = ["Greek", "Gaul42", "Britain42", "Iberia42", "Egypt42", "Germany42", "Romerep42", "Romeimp42", "Romepun42", "Carthnum42", "Carthmau42"], FLAT = ["Greek", "Gaul42", "Britain42", "Iberia42", "Egypt42", "Germany42"];
+  // the rest of the mod's AI (tools/lib/own-ai.js): the monitors Main.vs starts and the group strategies as copies, and what the engine calls by name as blocks
+  // inside the game's scripts that only run for the mod's civilizations; the TSH_* helpers read the old branch flags for Rome's branches (FLAT: not for them)
+  const rest = require("./lib/own-ai.js")({ OUT, HD, SRC: path.join(PRISTINE, "DATA", "AI"), prefix: "GR42_", civs: ALL, flat: FLAT, inline: [
+    { name: "CalcGAIKAPriority", player: "idPlayer" }, { name: "EvalRecruit", player: "sq.Player" }, { name: "CalcMaxTake", player: "idPlayer" }, { name: "CheckMAIKA", player: "idPlayer" },
+    { name: "GetGAIKAStrat", player: "idPlayer" }, { name: "HeroSkill Default", player: "hero.player" }, { name: "TSH_HeroSkills", player: "hero.player" },
+    { name: "TSH_Research", player: "set.player" }, { name: "TSH_TempleRecruit", player: "set.player" },
+    { name: "TSH_RecruitArmy", player: "set.player", set: "flat" }, { name: "TSH_HeroRecruit", player: "set.player", set: "flat" }, { name: "TSH_ArenaRecruit", player: "set.player", set: "flat" }] });
+  console.log(`AI: ${rest.forks.length} scripts as GR42_* copies started by Main.vs and the strategies (${rest.forks.join(", ")}); ${rest.inlined.length} inside the game's (${rest.inlined.join(", ")})`);
+  const r = require("./lib/greek-ai.js")({ OUT, HD, prefix: "GR42_", constName: "Greek", varRe: /^AIV_(Max[A-Z]|Time)/, extra: rest,
+    civs: FLAT,
     tactics: { Greek: TACT("TS_GreekTactic", "TS_GreekTactic2"), Gaul42: TACT("TS_GaulTactic", "TS_GaulTactic2"), Britain42: TACT("TS_BritishTactic", "TS_BritishTactic2"),
       Iberia42: TACT("TS_IberianTactic", "TS_IberianTactic2"), Germany42: TACT("TS_GermanyTactic", "TS_GermanyTactic2"), Egypt42: [[100, "TS_EgyptTactic"]],
       Carthnum42: [[100, "TS_CarthageTactic"]], Carthmau42: [], Romerep42: [], Romeimp42: [], Romepun42: [] },

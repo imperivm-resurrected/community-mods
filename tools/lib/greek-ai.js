@@ -14,7 +14,7 @@ const fs = require("fs"), path = require("path");
 const rd = f => fs.readFileSync(f, "latin1"), wr = (f, s) => { fs.mkdirSync(path.dirname(f), { recursive: true }); fs.rmSync(f, { force: true }); fs.writeFileSync(f, s, "latin1"); }   // rm first: the file may be a hard link to the pristine copy;
 const find = (base, rel) => { let p = base; for (const part of rel.split("/")) { if (!fs.existsSync(p)) return null; const n = fs.readdirSync(p).find(x => x.toLowerCase() === part.toLowerCase()); if (!n) return null; p = path.join(p, n); } return p; };
 
-module.exports = function greekAi({ OUT, HD, prefix, constName, varRe, civs = [constName], tactics = {}, guards = {} }) {
+module.exports = function greekAi({ OUT, HD, prefix, constName, varRe, civs = [constName], tactics = {}, guards = {}, extra = { ini: {}, vars: new Set() } }) {
   const isMine = `(${civs.map(c => `Mod_TrueRace(set.GetCentralBuilding) == ${c}`).join(" || ")})`;
   const AI = find(OUT, "DATA/AI"), HD_AI = find(HD, "DATA/AI");
   if (!AI) return { names: [], loops: [] };
@@ -49,12 +49,13 @@ module.exports = function greekAi({ OUT, HD, prefix, constName, varRe, civs = [c
     wr(path.join(AI, prefix + f), t); tsScripts.push(n);
   }
   for (const f of fs.readdirSync(AI).filter(f => new RegExp(`^${prefix}`, "i").test(f) && /\.vs$/i.test(f))) for (const m of rd(path.join(AI, f)).matchAll(/\bAIV_[A-Za-z0-9]+/g)) need.add(m[0]);
+  for (const v of extra.vars) need.add(v);
   // an AI variable the game does not have and that one of these scripts reads is declared (a key the game has keeps its value for everybody)
   const vars = [];
   for (const [k, val] of iniVars(modIni)) { const [sec, name] = k.split("|"); if (!hdVars.has(k) && ![...hdVars.keys()].some(h => h.endsWith(`|${name}`)) && (varRe.test(name) || need.has(name))) vars.push([sec, `${name} = ${val}`]); }
   const varLines = []; for (const sec of [...new Set(vars.map(x => x[0]))]) varLines.push(`[${sec}]`, ...vars.filter(x => x[0] === sec).map(x => x[1]));
   const tsLines = tsScripts.map(n => `${prefix}${n}.vs = ${sigOf(n)}`);
-  wr(path.join(OUT, "patches", "DATA", "AI", "AI.INI"), ["[EconomyScripts]", ...loops.map(n => "+" + n), "[TacticScripts]", ...tsScripts.filter(n => n !== "TS_AttackAtWill").map(n => `+${prefix}${n}`), "[Scripts]", ...names.map(n => `${prefix}${n} = void, Settlement set`), ...tsLines, ...varLines, ""].join("\r\n"));
+  wr(path.join(OUT, "patches", "DATA", "AI", "AI.INI"), ["[EconomyScripts]", ...loops.map(n => "+" + n), "[TacticScripts]", ...tsScripts.filter(n => n !== "TS_AttackAtWill").map(n => `+${prefix}${n}`), ...((extra.ini.GAIKAStrat || []).length ? ["[GAIKAStrat]", ...extra.ini.GAIKAStrat] : []), "[Scripts]", ...names.map(n => `${prefix}${n} = void, Settlement set`), ...tsLines, ...(extra.ini.Scripts || []), ...varLines, ""].join("\r\n"));
   if (Object.keys(tactics).length) {
     const body = Object.entries(tactics).map(([civ, picks]) => !picks.length ? `if (Mod_TrueRace(set.GetCentralBuilding) == ${civ})\r\n\treturn TS_NONE;\r\n` : `if (Mod_TrueRace(set.GetCentralBuilding) == ${civ})\r\n{\r\n${guards[civ] ? `\tif (${guards[civ]})\r\n\t\treturn TS_NONE;\r\n` : ""}\tif (GetTime() < 2000)\r\n\t{\r\n\t\trnd = rand(100);\r\n${picks.map(([upTo, n]) => `\t\tif (rnd < ${upTo})\r\n\t\t\treturn ${prefix}${n};\r\n`).join("")}\t}\r\n\treturn TS_NONE;\r\n}\r\n`).join("");
     wr(path.join(OUT, "patches", "DATA", "AI", "GETTACTICSCRIPT.VS"), `@before nRace = set.GetCentralBuilding.race;\r\n// The mod's own tactics, only for its civilizations (the game's AI sees their base)\r\n${body}`);
