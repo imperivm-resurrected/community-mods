@@ -40,7 +40,9 @@ module.exports = function cloneCivs({ PORT, MERGED, SUFFIX, LABEL, CIVS, cloneAl
     const bl = civ.baseLetter, Id = civ.id[0].toUpperCase() + civ.id.slice(1);
     // no `letter` in the table: the SDK derives the prefix from the id (first 3 characters, imperivm-resurrected#37), and no `index`: the game assigns it
     const letter = civ.letter || ((d) => d[0].toUpperCase() + d.slice(1))(civ.id.replace(/_/g, "").slice(0, 3).toLowerCase());
-    const OWN = new RegExp(`^(${bl}[A-Z]|${bl}house|${civ.hero}$)`);
+    const OWN0 = new RegExp(`^(${bl}[A-Z]|${bl}house|${civ.hero}$)`);
+    // `neutral` (RegExp): classes that look like the civilization's by their letter or race but belong to nobody (a map object, a mercenary tent): they stay in the port as they are
+    const OWN = civ.neutral ? { test: id => OWN0.test(id) && !civ.neutral.test(id) } : OWN0;
     for (const id of civ.asBase || []) if (!table.has(id)) {              // the game's own, if the mod did not change it
       const f = ci(HD_CLASSES, `${id}.sc.xml`), t = f && rd(path.join(HD_CLASSES, f));
       if (t) table.set(id, { text: t, race: (t.match(/<properties\b[^>]*\brace\s*=\s*"([^"]+)"/) || [])[1], parent: parentAttr(t), file: path.join(HD_CLASSES, f) });
@@ -48,7 +50,7 @@ module.exports = function cloneCivs({ PORT, MERGED, SUFFIX, LABEL, CIVS, cloneAl
     const report = [];
     // classes of the civilization that do not start with its letter (the mod's Mauritanian hero, MPrinciple, Ancient Roman hero...): the clone
     // tool only takes the base's letter, so they are renamed <letter><id> in the stage, and their children (no race of their own) follow
-    const skipExtra = new RegExp(`^Hero[A-Z]${civ.skipExtra ? "|" + civ.skipExtra.source : ""}`);   // the editor heroes have their own step
+    const skipExtra = new RegExp(`^Hero[A-Z]${civ.skipExtra ? "|" + civ.skipExtra.source : ""}${civ.neutral ? "|" + civ.neutral.source : ""}`);   // the editor heroes have their own step
     const extraIds = new Set();
     for (const [id, c] of table) if (c.race === civ.base && !OWN.test(id) && !skipExtra.test(id)) extraIds.add(id);
     for (let grew = true; grew;) { grew = false; for (const [id, c] of table) if (!OWN.test(id) && !extraIds.has(id) && !c.race && c.parent && (OWN.test(c.parent) || extraIds.has(c.parent)) && !skipExtra.test(id)) { extraIds.add(id); grew = true; } }
