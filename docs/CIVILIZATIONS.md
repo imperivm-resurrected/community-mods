@@ -9,7 +9,7 @@ Letters and indices are unique across all the ports (the SDK allows indices 10-9
 | Index | `id` | Letter | Base | Mod | State |
 |---|---|---|---|---|---|
 | 30 | `greece` | `K` | ImperialRome | CGWAR | Own race; independent of the game, the 1.8 and the 4.2 (`tools/cgwar-independent.js`; `tools/shared-paths.js` finds no class ids in common) |
-| 31 | `greek` | `H` | ImperialRome (own race) | 4.2 | Greece of the 4.2, in no one's slot (`tools/greek-4-2.js`) |
+| 31 | `greek` | `H` | ImperialRome (own race) | 4.2 | Greece of the 4.2, in no one's slot (`tools/greek-4-2.js`); the room's set of the 4.2 is named after the mod, *Greek Civilization Mod 4.2* |
 | 32 | `greek18` | `Q` | ImperialRome (own race) | 1.8 | Greece independent of the game's and of the 4.2/CGWAR classes; still shares neutral content (fisherman, scripts, music) with the 4.2, Imperivm Legacy and the MCI |
 | 33 | `rome18` | `J` | RepublicanRome | 1.8 | Republican Rome with the 1.8's stats, costs and branch, cloned from HD (`tools/greek-1-8-civs.js`) |
 | 34 | `gaul18` | `L` | Gaul | 1.8 | Gaul with the 1.8's stats and barracks costs |
@@ -58,5 +58,7 @@ Letters and indices are unique across all the ports (the SDK allows indices 10-9
 A civilization with no `letter` (derived prefix: the first three letters of the `id`, imperivm-resurrected#37) and no `index` (the engine assigns it) reserves nothing in this table; its rows say `(engine)` and are here to spot clashes. **Two ports cannot be active together if they share a derived prefix: the engine ignores the second civilization.** Today GBR Tactics and La Reconquista 2010 clash on `Gau`, `Bri`, `Car`, `Egy`, `Ger`, `Ibe` and `Imp`.
 
 So are the 1.8's Imperial and Punic Rome (`empire18`, `punic18`): prefixes `Emp` and `Pun` derived from the id, indices assigned by the engine.
+
+The 4.2's eleven civilizations play with the mod's own scripts and AI, and only they do: the mod's versions of the game's behavior scripts are copies named `<name>_g42.vs` that only its classes and commands use, its AI runs as `GR42_*` (economy for Greece, Gaul, Britain, Iberia, Egypt and Germany; tactics for all but the Roman branches and Mauritanian Carthage, which the mod gives none; the monitors, the group strategies and what the engine calls by name for all eleven) behind patches that ask `Mod_TrueRace` or `Mod_PlayerCiv`, and its game modes only reach its civilizations (Old school's Imperivm 2 costs and kits for Gaul 4.2, Iberia 4.2, Imperial Rome 4.2 and Numidian Carthage; Varios' rule for all). What is not applied to the clones yet is in `extras/greek-civilization-mod/NOTES.md`, *Pending*.
 
 The three Greek mods are independent of the game and of each other (checked with `tools/shared-paths.js` and the content manager); what is left is in each mod's `NOTES.md`, *Pending*.

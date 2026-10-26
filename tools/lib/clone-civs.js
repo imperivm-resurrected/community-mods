@@ -106,7 +106,7 @@ module.exports = function cloneCivs({ PORT, MERGED, SUFFIX, LABEL, CIVS, cloneAl
 
     // the mod's "Imperivm 2" game mode (old school costs) is a game mode, not a civilization's: its copies of the orders ("ReqModeImp2") are not
     // in the civilization, and the orders that only show outside the mode ("NReqModeImp2, , ,") lose that prefix of their parameter
-    {
+    if (!civ.keepImp2) {                                             // civ.keepImp2: the mod's mode scripts for this civilization are written (greek-4-2.js): its copies stay
       let gone = 0, plain = 0;
       for (const sf of files(SM, /\.xml$/i)) {
         const st = rd(path.join(SM, sf)), sm = mask(st); let o = "", at = 0;
