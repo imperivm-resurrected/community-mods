@@ -28,7 +28,7 @@
 // `altid`, so both names find it (the 4.2 version, as in the 4.2 balance).
 const fs = require("fs"), path = require("path");
 const ROOT = path.join(__dirname, "..");
-const MOD = path.join(ROOT, "ported", "greek-civilization-mod");
+const MOD = process.argv[2] ? path.resolve(process.argv[2]) : path.join(ROOT, "ported", "greek-civilization-mod");   // tools/greek-4-2-source.js passes its own folder
 const GS = path.join(MOD, "DATA", "GAMESCRIPTS");
 
 for (const f of fs.readdirSync(GS).filter(f => /\.VX$/i.test(f))) fs.rmSync(path.join(GS, f));
