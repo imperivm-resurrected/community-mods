@@ -192,9 +192,15 @@ console.log(`menu skin: ${require("./lib/menu-skin.js").skinToPatches({ OUT, HD 
   const shaman = n => [[/"CShamanNumidian"/g, `"${n}ShamanNumidian"`], [/"CShaman"/g, `"${n}Shaman"`]];
   const r = require("./lib/own-scripts.js")({ OUT, HD, tag: "g42", skip: /Choose(Republican|Imperial|Punic|Numidian|Mauritanian)(Rome|Carthage)|rand\(\s*776|nLobbyBranch/i,
     dynamic: [/EnvReadString\(\s*\.settlement\s*,\s*subFac\s*\)\s*!=\s*"researched"/g],
-    civs: [{ id: "britain42", match: /^(Y|britain42\.)/i, subst: [[/"Fights"/g, '"Britain42 Fights"']] },
-      { id: "carthnum42", match: /^(7|carthnum42\.)/i, flags: { ChooseNumidianCarthage: true }, subst: shaman(7), scripts: { "coutpost_behavior.vs": [[/"CMERCENARIO"/g, '"7MERCENARIO"']] } },
-      { id: "carthmau42", match: /^(8|carthmau42\.)/i, flags: { ChooseMauritanianCarthage: true }, subst: shaman(8), scripts: { "coutpost_behavior.vs": [[/"CMERCENARIO"/g, '"8MERCENARIO"']] } }] });
+    // every civilization that is a clone also gets the class ids the scripts write as text ("EPriest") as its own ("1Priest") where the clone has the class
+    modClasses: path.join(PRISTINE, "DATA", "CLASSES"),
+    civs: [{ id: "gaul42", letter: "X", from: ["G"], match: /^(X|gaul42\.)/i }, { id: "iberia42", letter: "Z", from: ["I"], match: /^(Z|iberia42\.)/i },
+      { id: "egypt42", letter: "1", from: ["E"], match: /^(1|egypt42\.)/i }, { id: "germany42", letter: "3", from: ["T"], match: /^(3|germany42\.)/i },
+      { id: "romerep42", letter: "4", from: ["R", "M"], match: /^(4|romerep42\.)/i }, { id: "romeimp42", letter: "5", from: ["R", "M"], match: /^(5|romeimp42\.)/i },
+      { id: "romepun42", letter: "6", from: ["R", "M"], match: /^(6|romepun42\.)/i },
+      { id: "britain42", letter: "Y", from: ["B"], match: /^(Y|britain42\.)/i, subst: [[/"Fights"/g, '"Britain42 Fights"']] },
+      { id: "carthnum42", letter: "7", from: ["C"], match: /^(7|carthnum42\.)/i, flags: { ChooseNumidianCarthage: true }, subst: shaman(7), scripts: { "coutpost_behavior.vs": [[/"CMERCENARIO"/g, '"7MERCENARIO"']] } },
+      { id: "carthmau42", letter: "8", from: ["C"], match: /^(8|carthmau42\.)/i, flags: { ChooseMauritanianCarthage: true }, subst: shaman(8), scripts: { "coutpost_behavior.vs": [[/"CMERCENARIO"/g, '"8MERCENARIO"']] } }] });
   console.log(`scripts of the mod's own for its civilizations: ${r.copied.length} copied (_g42), ${r.skipped.length} left to the game's (${r.skipped.map(s => s.name).join(", ")})`);
   fs.writeFileSync(path.join(ROOT, "raw", "greek-4-2-own-scripts.txt"), r.copied.map(c => `${c.from} -> ${c.to}  (${c.users.slice(0, 4).join(", ")}${c.users.length > 4 ? ", ..." : ""})`).join("\n") + "\n\nnot copied:\n" + r.skipped.map(s => `${s.name}: ${s.why}`).join("\n") + "\n");
 }

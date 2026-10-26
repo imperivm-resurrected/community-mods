@@ -21,7 +21,12 @@ const REF = /(data[\\/]subai[\\/])([^"'\s]+?\.vs)\b/gi;
 const FLAG = /EnvReadString\s*\(\s*[^,()]+,\s*"(Choose\w+)"\s*\)\s*(==|!=)\s*"researched"/g;
 const LEFT = /EnvReadString\s*\([^)]*Choose\w+|\bnLobbyBranch|rand\(\s*776|CmdEnable\(\s*"Choose|CmdDisable\(\s*"Choose|EnvWriteString\s*\([^)]*Choose/;
 
-module.exports = function ownScripts({ OUT, HD, tag, skip, civs = [], dynamic = [] }) {
+// Class ids written as text (`Place("EPriest", ...)`, `.class == "GArcher"`) are the game's or the mod's old ids. A civilization of `civs` with a `letter` gets its
+// own: the script is copied once for it when its text changes, with each literal that is a known class id (`from`: the letters of the ids it was cloned from)
+// written as the clone has it (`EPriest` -> `1Priest`) when that class exists in the port. `modClasses` is a folder with the mod's own classes (their ids count as known).
+const classIds = d => { const out = new Set(); if (d && fs.existsSync(d)) for (const f of fs.readdirSync(d)) if (/\.sc\.xml$/i.test(f)) { const m = /<class\b[^>]*?\bid\s*=\s*"([^"]+)"/.exec(fs.readFileSync(path.join(d, f), "latin1")); if (m) out.add(m[1]); } return out; };
+
+module.exports = function ownScripts({ OUT, HD, tag, skip, civs = [], dynamic = [], modClasses }) {
   const dir = (base, rel) => { let p = base; for (const part of rel.split("/")) { const n = ci(p, part); if (!n) return null; p = path.join(p, n); } return p; };
   const SUB = dir(OUT, "DATA/SUBAI"), HDSUB = dir(HD, "DATA/SUBAI");
   const result = { copied: [], skipped: [], problems: [] };
@@ -49,33 +54,37 @@ module.exports = function ownScripts({ OUT, HD, tag, skip, civs = [], dynamic = 
   // which ones are copied; a script that reads the branch flags gets one copy per civilization of `civs` that uses it, and one for all the others
   const rename = new Map();                                                     // lowercase old name -> { def, per: Map(civ id -> new name) }
   const civOf = base => civs.find(c => c.match.test(base));
-  const resolve = (text, civ, name = "") => {
+  const portIds = new Map([...classIds(dir(OUT, "DATA/CLASSES"))].map(i => [i.toLowerCase(), i]));
+  const known = new Set([...classIds(dir(HD, "DATA/CLASSES")), ...classIds(modClasses)].map(i => i.toLowerCase()));
+  const classOf = (x, civ) => {
+    const lx = x.toLowerCase(); if (!known.has(lx) || portIds.has(lx)) return x;
+    for (const c of [...(civ.from.includes(x[0]) ? [civ.letter + x.slice(1)] : []), civ.letter + x]) if (portIds.has(c.toLowerCase())) return portIds.get(c.toLowerCase());
+    return x;
+  };
+  const resolve = (text, civ, name = "", branchy = false) => {
     let t = text.replace(FLAG, (_m, name, op) => ((civ && civ.flags && civ.flags[name] === true) === (op === "==")) ? "true" : "false");
     for (const d of dynamic) t = t.replace(d, "false");
-    for (const [re, to] of [...((civ && civ.subst) || []), ...((civ && civ.scripts && civ.scripts[name.toLowerCase()]) || [])]) t = t.replace(re, to);
+    for (const [re, to] of [...(branchy && civ && civ.subst || []), ...((civ && civ.scripts && civ.scripts[name.toLowerCase()]) || [])]) t = t.replace(re, to);
+    if (civ && civ.letter) t = t.replace(/"([A-Za-z0-9_]+)"/g, (m, x) => { const y = classOf(x, civ); return y === x ? m : `"${y}"`; });
     return t;
   };
   const jobs = [];                                                              // { from, to, civ }
   for (const [k, w] of wanted) {
     if (!differs(w.name)) continue;
     const t = rd(mine(w.name)), stem = w.name.replace(/\.vs$/i, ""), ext = w.name.slice(stem.length);
-    if (skip.test(t) || civs.some(c => c.scripts && c.scripts[w.name.toLowerCase()])) {
-      if (LEFT.test(resolve(t, null, w.name).replace(/\/\/[^\n]*/g, ""))) { result.skipped.push({ name: w.name, why: "reads the branch in a way that is not a flag" }); continue; }
-      const per = new Map(), base = resolve(t, null, w.name), used = [...w.users].map(civOf).filter(c => c && resolve(t, c, w.name) !== base);   // a civilization with the same text as the rest shares the copy
-      for (const c of new Set(used)) per.set(c.id, `${stem}_${tag}_${c.id}${ext}`);
-      rename.set(k, { def: `${stem}_${tag}${ext}`, per });
-      jobs.push({ from: w.name, to: `${stem}_${tag}${ext}`, civ: null, users: [...w.users], flags: true });
-      for (const c of new Set(used)) jobs.push({ from: w.name, to: per.get(c.id), civ: c, users: [...w.users].filter(u => civOf(u) === c), flags: true });
-    } else {
-      rename.set(k, { def: `${stem}_${tag}${ext}`, per: new Map() });
-      jobs.push({ from: w.name, to: `${stem}_${tag}${ext}`, civ: null, users: [...w.users] });
-    }
+    const branchy = skip.test(t) || civs.some(c => c.scripts && c.scripts[w.name.toLowerCase()]);
+    if (branchy && LEFT.test(resolve(t, null, w.name, true).replace(/\/\/[^\n]*/g, ""))) { result.skipped.push({ name: w.name, why: "reads the branch in a way that is not a flag" }); continue; }
+    const per = new Map(), base = resolve(t, null, w.name, branchy), used = [...w.users].map(civOf).filter(c => c && resolve(t, c, w.name, branchy) !== base);   // a civilization with the same text as the rest shares the copy
+    for (const c of new Set(used)) per.set(c.id, `${stem}_${tag}_${c.id}${ext}`);
+    rename.set(k, { def: `${stem}_${tag}${ext}`, per });
+    jobs.push({ from: w.name, to: `${stem}_${tag}${ext}`, civ: null, users: [...w.users], branchy });
+    for (const c of new Set(used)) jobs.push({ from: w.name, to: per.get(c.id), civ: c, users: [...w.users].filter(u => civOf(u) === c), branchy });
   }
-  for (const j of jobs) result.copied.push({ from: j.from, to: j.to, users: j.users, ...(j.flags ? { flags: j.civ ? j.civ.id : "all false" } : {}) });
+  for (const j of jobs) result.copied.push({ from: j.from, to: j.to, users: j.users, ...(j.civ ? { civ: j.civ.id } : {}) });
   if (!rename.size) return result;
   const target = (n, civ) => { const r = rename.get(n.toLowerCase()); return r ? ((civ && r.per.get(civ.id)) || r.def) : null; };
   const swap = (text, civ) => text.replace(REF, (m, pre, n) => target(n, civ) ? pre + target(n, civ) : m).replace(bare, (m, n) => target(n, civ) ? m.replace(n, target(n, civ)) : m);
-  for (const j of jobs) { const t = rd(mine(j.from)); wr(path.join(SUB, j.to), swap(j.flags ? resolve(t, j.civ, j.from) : t, j.civ)); }
+  for (const j of jobs) { const t = rd(mine(j.from)); wr(path.join(SUB, j.to), swap(resolve(t, j.civ, j.from, j.branchy), j.civ)); }
   for (const f of users) { const t = rd(f), c = civOf(path.basename(f)), n = t.replace(REF, (m, pre, name) => target(name, c) ? pre + target(name, c) : m); if (n !== t) wr(f, n); }
   return result;
 };
