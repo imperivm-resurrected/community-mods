@@ -34,7 +34,7 @@ In 4.2 the Greek faction sits in the Imperial Rome slot: its classes have `race=
 
 Tried in game (2026-10-23, Linux, 1920x1080): the lobby with the three Greek mods active (all the civilizations show, no patch errors, the content manager shows no problem), a skirmish with several civilizations that hung because of script patches of the CGWAR that did not compile (fixed, see its NOTES). **Not tried**: a game with every civilization of the 4.2, the Greek AI, the Roman branches' barracks, heroes.
 
-Left out: the game modes' rules for the clones (see *Game modes*), the AI scripts the engine calls by name (see *The mod's AI*). `Spartacus` and `Fisherman`... (neutral, renamed) stay.
+Left out: the AI the engine calls with no player (the `AIO*` orders and the siege and guard helpers, see *The mod's AI*). `Spartacus` and `Fisherman`... (neutral, renamed) stay.
 
 ## The mod's versions of the game's scripts (tools/lib/own-scripts.js)
 
@@ -105,6 +105,7 @@ The mod ships two conquests. Both collide by path (AGENTS.md, *Conquests and the
 
 ## Pending (what is left, after issue #7)
 
+- **Tried in game**: the AI blocks inside the game's scripts (`own-ai.js`) and the Imperivm 2 and Varios rules for the clones (`mode-rules.js`) were built last; test them with the log open (`compilation error`).
 - **AI**: the `AIO*` orders and the siege and guard helpers (no player in their parameters) are the game's for every AI; Rome's three branches and Carthage's two use the game's economy and recruiting helpers.
 - **`BHorseman`** in `iberian_village_trainIScout.vs`: the class does not exist (the mod's script misspells it).
 - **imperivm-resurrected#45** for Greece to play as `greek` in the Mediterranean conquest; **#48** (the engine's outpost scan can close a big match).
