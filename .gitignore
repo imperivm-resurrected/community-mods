@@ -12,7 +12,7 @@ raw/discord.json
 SCREENSHOTS.md
 ported/imperivm1-legacy/**/*.rle
 ported/imperivm1-legacy/**/*.pass
-# rebuilt from the original download + extras/<id>/ (hand fixes and mod.json): tools/port-140.js, tools/greek-terrains.js, shrink-mod.js (Imperivm Legacy, see README)
+# rebuilt from the original download + extras/<id>/ (hand fixes and mod.json): tools/port-140.js, tools/greek-terrains.js, tools/mediterranevm-alpha.js, shrink-mod.js (Imperivm Legacy, see README)
 ported/mci/
 ported/cgwar/
 ported/greek-mod-terrains/

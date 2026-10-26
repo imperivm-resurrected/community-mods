@@ -2,15 +2,20 @@
   "id": "mediterranevm-alpha",
   "name": "Mediterranevm (alpha)",
   "version": "alpha",
+  "category": "Civilizations",
   "authors": [
     "GreekModTeam",
     "Villoh (port)"
   ],
   "description": {
-    "english": "Alpha of the Mediterranevm mod, the ancestor of Imperivm Legacy: reworked units and buildings (Numidian tent, outpost, Berber assassin, Libyan footman, Teuton archer, Britons and more), new art and voices.",
-    "spanish": "Alfa del mod Mediterranevm, antecesor de Imperivm Legacy: unidades y edificios rehechos (tienda númida, puesto avanzado, asesino bereber, infante libio, arquero teutón, britanos y más), con gráficos y voces nuevos."
+    "spanish": "Alfa del mod Mediterranevm, antecesor de Imperivm Legacy, como ocho civilizaciones propias junto a las del juego (\"Galos (Mediterr.)\", \"Roma rep. (Mediterr.)\"…): unidades y edificios rehechos (infante libio, asesino bereber, arquero teutón, britanos y más), pescadores, reservas de comida, y la tienda númida y la guarnición griega como objetos neutrales del mapa, con gráficos y voces nuevos. Las civilizaciones del juego no cambian.",
+    "english": "The alpha of the Mediterranevm mod, the ancestor of Imperivm Legacy, as eight civilizations of their own next to the game's (\"Gaul (Mediterr.)\", \"Rep. Rome (Mediterr.)\"…): reworked units and buildings (Libyan footman, Berber assassin, Teuton archer, Britons and more), fishermen, food storing, and the Numidian tent and the Greek garrison as neutral map objects, with new art and voices. The game's civilizations do not change."
   },
-  "category": "Gameplay & Balance",
-  "tags": [],
-  "redistributable": true
+  "tags": [
+    "Type: Gameplay & Balance"
+  ],
+  "redistributable": true,
+  "sources": {
+    "page": "https://www.moddb.com/games/imperivm-great-battles-of-rome/downloads/mediterranevm-mod-alpha"
+  }
 }
