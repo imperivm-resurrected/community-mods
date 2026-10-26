@@ -46,6 +46,14 @@ Letters and indices are unique across all the ports (the SDK allows indices 10-9
 | (engine) | `iberia2010` | `Ibe` (derived) | Iberia | La Reconquista 2010 | `tools/reconquista-2010.js` |
 | (engine) | `rome2010` | `Rom` (derived) | RepublicanRome | La Reconquista 2010 | `tools/reconquista-2010.js` |
 | (engine) | `imperial2010` | `Imp` (derived) | ImperialRome | La Reconquista 2010 | `tools/reconquista-2010.js` |
+| (engine) | `mgaul` | `Mga` (derived) | Gaul | Mediterranevm (alpha) | `tools/mediterranevm-alpha.js` |
+| (engine) | `mrome` | `Mro` (derived) | RepublicanRome | Mediterranevm (alpha) | `tools/mediterranevm-alpha.js` |
+| (engine) | `mimperial` | `Mim` (derived) | ImperialRome | Mediterranevm (alpha) | `tools/mediterranevm-alpha.js` |
+| (engine) | `mcarthage` | `Mca` (derived) | Carthage | Mediterranevm (alpha) | `tools/mediterranevm-alpha.js` |
+| (engine) | `mbritain` | `Mbr` (derived) | Britain | Mediterranevm (alpha) | `tools/mediterranevm-alpha.js` |
+| (engine) | `miberia` | `Mib` (derived) | Iberia | Mediterranevm (alpha) | `tools/mediterranevm-alpha.js` |
+| (engine) | `megypt` | `Meg` (derived) | Egypt | Mediterranevm (alpha) | `tools/mediterranevm-alpha.js` |
+| (engine) | `mgermany` | `Mge` (derived) | Germany | Mediterranevm (alpha) | `tools/mediterranevm-alpha.js` |
 
 A civilization with no `letter` (derived prefix: the first three letters of the `id`, imperivm-resurrected#37) and no `index` (the engine assigns it) reserves nothing in this table; its rows say `(engine)` and are here to spot clashes. **Two ports cannot be active together if they share a derived prefix: the engine ignores the second civilization.** Today GBR Tactics and La Reconquista 2010 clash on `Gau`, `Bri`, `Car`, `Egy`, `Ger`, `Ibe` and `Imp`.
 
