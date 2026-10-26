@@ -26,6 +26,19 @@ const LEFT = /EnvReadString\s*\([^)]*Choose\w+|\bnLobbyBranch|rand\(\s*776|CmdEn
 // written as the clone has it (`EPriest` -> `1Priest`) when that class exists in the port. `modClasses` is a folder with the mod's own classes (their ids count as known).
 const classIds = d => { const out = new Set(); if (d && fs.existsSync(d)) for (const f of fs.readdirSync(d)) if (/\.sc\.xml$/i.test(f)) { const m = /<class\b[^>]*?\bid\s*=\s*"([^"]+)"/.exec(fs.readFileSync(path.join(d, f), "latin1")); if (m) out.add(m[1]); } return out; };
 
+// a function (text, civ) -> text that writes each literal that is a known class id as the clone `civ` ({ letter, from }) has it
+function classMapper({ OUT, HD, modClasses }) {
+  const dirOf = (base, rel) => { let p = base; for (const part of rel.split("/")) { const n = ci(p, part); if (!n) return null; p = path.join(p, n); } return p; };
+  const portIds = new Map([...classIds(dirOf(OUT, "DATA/CLASSES"))].map(i => [i.toLowerCase(), i]));
+  const known = new Set([...classIds(dirOf(HD, "DATA/CLASSES")), ...classIds(modClasses)].map(i => i.toLowerCase()));
+  const classOf = (x, civ) => {
+    const lx = x.toLowerCase(); if (!known.has(lx) || portIds.has(lx)) return x;
+    for (const c of [...(civ.from.includes(x[0]) ? [civ.letter + x.slice(1)] : []), civ.letter + x]) if (portIds.has(c.toLowerCase())) return portIds.get(c.toLowerCase());
+    return x;
+  };
+  return (text, civ) => text.replace(/"([A-Za-z0-9_]+)"/g, (m, x) => { const y = classOf(x, civ); return y === x ? m : `"${y}"`; });
+}
+
 module.exports = function ownScripts({ OUT, HD, tag, skip, civs = [], dynamic = [], modClasses }) {
   const dir = (base, rel) => { let p = base; for (const part of rel.split("/")) { const n = ci(p, part); if (!n) return null; p = path.join(p, n); } return p; };
   const SUB = dir(OUT, "DATA/SUBAI"), HDSUB = dir(HD, "DATA/SUBAI");
@@ -54,18 +67,12 @@ module.exports = function ownScripts({ OUT, HD, tag, skip, civs = [], dynamic = 
   // which ones are copied; a script that reads the branch flags gets one copy per civilization of `civs` that uses it, and one for all the others
   const rename = new Map();                                                     // lowercase old name -> { def, per: Map(civ id -> new name) }
   const civOf = base => civs.find(c => c.match.test(base));
-  const portIds = new Map([...classIds(dir(OUT, "DATA/CLASSES"))].map(i => [i.toLowerCase(), i]));
-  const known = new Set([...classIds(dir(HD, "DATA/CLASSES")), ...classIds(modClasses)].map(i => i.toLowerCase()));
-  const classOf = (x, civ) => {
-    const lx = x.toLowerCase(); if (!known.has(lx) || portIds.has(lx)) return x;
-    for (const c of [...(civ.from.includes(x[0]) ? [civ.letter + x.slice(1)] : []), civ.letter + x]) if (portIds.has(c.toLowerCase())) return portIds.get(c.toLowerCase());
-    return x;
-  };
+  const mapClasses = classMapper({ OUT, HD, modClasses });
   const resolve = (text, civ, name = "", branchy = false) => {
     let t = text.replace(FLAG, (_m, name, op) => ((civ && civ.flags && civ.flags[name] === true) === (op === "==")) ? "true" : "false");
     for (const d of dynamic) t = t.replace(d, "false");
     for (const [re, to] of [...(branchy && civ && civ.subst || []), ...((civ && civ.scripts && civ.scripts[name.toLowerCase()]) || [])]) t = t.replace(re, to);
-    if (civ && civ.letter) t = t.replace(/"([A-Za-z0-9_]+)"/g, (m, x) => { const y = classOf(x, civ); return y === x ? m : `"${y}"`; });
+    if (civ && civ.letter) t = mapClasses(t, civ);
     return t;
   };
   const jobs = [];                                                              // { from, to, civ }
@@ -88,3 +95,5 @@ module.exports = function ownScripts({ OUT, HD, tag, skip, civs = [], dynamic = 
   for (const f of users) { const t = rd(f), c = civOf(path.basename(f)), n = t.replace(REF, (m, pre, name) => target(name, c) ? pre + target(name, c) : m); if (n !== t) wr(f, n); }
   return result;
 };
+
+module.exports.classMapper = classMapper;

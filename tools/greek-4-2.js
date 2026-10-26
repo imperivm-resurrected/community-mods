@@ -22,18 +22,18 @@ if (!fs.existsSync(PRISTINE)) { console.error("no " + PRISTINE + ": it is the po
 
 // the civilizations: letters and indices in the table of docs/CIVILIZATIONS.md (a digit is a letter too: 26 run out)
 const CIVS = [
-  { base: "Gaul", baseLetter: "G", hero: "GaulHero", letter: "X", id: "gaul42", index: 40, name: { spanish: "Galos", english: "Gaul", italian: "Galli" } },
+  { base: "Gaul", baseLetter: "G", hero: "GaulHero", letter: "X", keepImp2: true, id: "gaul42", index: 40, name: { spanish: "Galos", english: "Gaul", italian: "Galli" } },
   { base: "Britain", baseLetter: "B", hero: "BritonHero", letter: "Y", id: "britain42", index: 41, name: { spanish: "Britania", english: "Britain", italian: "Britannia" } },
-  { base: "Iberia", baseLetter: "I", hero: "IberianHero", letter: "Z", id: "iberia42", index: 42, name: { spanish: "Iberia", english: "Iberia", italian: "Iberia" } },
+  { base: "Iberia", baseLetter: "I", hero: "IberianHero", letter: "Z", keepImp2: true, id: "iberia42", index: 42, name: { spanish: "Iberia", english: "Iberia", italian: "Iberia" } },
   { base: "Egypt", baseLetter: "E", hero: "EgyptianHero", letter: "1", id: "egypt42", index: 43, name: { spanish: "Egipto", english: "Egypt", italian: "Egitto" } },
   { base: "Germany", baseLetter: "T", hero: "GermanHero", letter: "3", id: "germany42", index: 44, name: { spanish: "Germania", english: "Germany", italian: "Germania" } },
   { base: "RepublicanRome", baseLetter: "R", hero: "RepublicanRomanHero", letter: "4", id: "romerep42", index: 45, name: { spanish: "Roma rep.", english: "Rep. Rome", italian: "Roma rep." },
     skipExtra: /^(ImperialRomanHero|MHero|AncientRomanHero)/, branch: { flag: "ChooseRepublicanRome", scripts: /^R[A-Z]+_ENABLE_OR_DISABLE_CMD\.VS$/i } },
-  { base: "RepublicanRome", baseLetter: "R", hero: "RepublicanRomanHero", letter: "5", id: "romeimp42", index: 46, name: { spanish: "Roma imp.", english: "Imp. Rome", italian: "Roma imp." },
+  { base: "RepublicanRome", baseLetter: "R", hero: "RepublicanRomanHero", letter: "5", keepImp2: true, id: "romeimp42", index: 46, name: { spanish: "Roma imp.", english: "Imp. Rome", italian: "Roma imp." },
     skipExtra: /^(AncientRomanHero)/, branch: { flag: "ChooseImperialRome", scripts: /^R[A-Z]+_ENABLE_OR_DISABLE_CMD\.VS$/i, hire: { cmd: "hireheroRImperial", hero: "ImperialRomanHero" } } },
   { base: "RepublicanRome", baseLetter: "R", hero: "RepublicanRomanHero", letter: "6", id: "romepun42", index: 47, name: { spanish: "Roma púnica", english: "Punic Rome", italian: "Roma punica" },
     skipExtra: /^(ImperialRomanHero|MHero)/, branch: { flag: "ChoosePunicRome", scripts: /^R[A-Z]+_ENABLE_OR_DISABLE_CMD\.VS$/i, hire: { cmd: "hireheroR", hero: "AncientRomanHero" } } },
-  { base: "Carthage", baseLetter: "C", hero: "CarthaginianHero", letter: "7", id: "carthnum42", index: 48, name: { spanish: "Númida", english: "Numidia", italian: "Numida" },
+  { base: "Carthage", baseLetter: "C", hero: "CarthaginianHero", letter: "7", keepImp2: true, id: "carthnum42", index: 48, name: { spanish: "Númida", english: "Numidia", italian: "Numida" },
     skipExtra: /^(MauritanianHero)/, branch: { flag: "ChooseNumidianCarthage", scripts: /^C[A-Z]+_ENABLE_OR_DISABLE_CMD\.VS$/i } },
   { base: "Carthage", baseLetter: "C", hero: "CarthaginianHero", letter: "8", id: "carthmau42", index: 49, name: { spanish: "Mauritana", english: "Mauritania", italian: "Mauritana" },
     branch: { flag: "ChooseMauritanianCarthage", scripts: /^C[A-Z]+_ENABLE_OR_DISABLE_CMD\.VS$/i, hire: { cmd: "hireheroCM", hero: "MauritanianHero" } } },
@@ -216,17 +216,39 @@ console.log(`menu skin: ${require("./lib/menu-skin.js").skinToPatches({ OUT, HD 
 
 // 3c. the mod's game modes (data/gamescripts/1 VARIOS ... 9 CUSTOM) are modes of the mod: their rules for a civilization reach only the mod's civilizations.
 // "1 Varios" took Eagle/Wolf Summoning, Scout Area, Expedition and Gossip from the game's civilizations' buildings (RTavern, MTavern, CTavern, EMarket,
-// BTempleOfThor, TTempleOfNeptus...); "5 Old school" (Imperivm 2) disabled the game's orders of 22 of the game's buildings, with no replacement (its
-// "Imp2 Cost" orders are not shipped), and let the game's Rome, Gaul, Iberia and Carthage in. Now Varios' rule is asked of the mod's civilizations only, and
-// Old school lets in the mod's four equivalents (Gaul 4.2, Iberia 4.2, Imperial Rome 4.2, Numidian Carthage): the others, the game's included, are out as it
-// already did with the rest. The rules themselves name the game's classes: for the mod's civilizations they find nothing yet (NOTES.md, *Game modes*).
+// BTempleOfThor, TTempleOfNeptus...); "5 Old school" (Imperivm 2) disabled the game's orders of 22 of the game's buildings, with no replacement (its "Imp2 Cost"
+// orders are not shipped), and let the game's Rome, Gaul, Iberia and Carthage in. Now the rules are written for each of the mod's civilizations (tools/lib/mode-rules.js:
+// the scripts with the clone's class ids and order names, <name>_<civ id>.vs) and the modes start the copy of the player's civilization; the game's civilizations get
+// none. Old school lets in the mod's four equivalents (Gaul 4.2, Iberia 4.2, Imperial Rome 4.2, Numidian Carthage): the others, the game's included, are out as
+// it already did with the rest. Those four keep the "Imp2 Cost" copies of their orders (keepImp2 in the table above). The branch the mode forced on Rome and Carthage
+// (mode_inverno_rules.vs) is what romeimp42 and carthnum42 are.
 {
-  const GM = find(OUT, "DATA/GAMESCRIPTS"), mine = ["Greek", "Gaul42", "Britain42", "Iberia42", "Egypt42", "Germany42", "Romerep42", "Romeimp42", "Romepun42", "Carthnum42", "Carthmau42"];
-  const is = list => list.map(c => `Mod_PlayerCiv(player) == ${c}`).join(" || ");
-  const edit = (file, from, to) => { const p = path.join(GM, find(GM, file) ? path.basename(find(GM, file)) : file); if (!fs.existsSync(p)) return console.log(`  game mode ${file}: not in the port`); const t = rd(p); if (!from.test(t)) return console.log(`  game mode ${file}: ${from} not found`); wr(p, t.replace(from, to)); console.log(`game mode ${file}: rules of the mod's civilizations only`); };
-  edit("1 VARIOS.VS", /^([ \t]*)StartPlayerScript\(player, "data\/subai\/mode_varios_disable_upgrades\.vs"\);/m, `$1if (${is(mine)})\n$1\tStartPlayerScript(player, "data/subai/mode_varios_disable_upgrades.vs");`);
-  edit("5 Old school.VS", /if \(nRace != RepublicanRome && nRace != Gaul && nRace != Iberia && nRace != Carthage\)/, `if (!(${is(["Gaul42", "Iberia42", "Romeimp42", "Carthnum42"])}))`);
-  edit("5 Old school.VS", /Translate\("Old school: only Rome, Gaul, Iberia and Numidian Carthage are allowed"\)/, 'Translate("Old school: only Gaul 4.2, Iberia 4.2, Imperial Rome 4.2 and Numidian Carthage (Greek Mod 4.2) are allowed")');
+  const GM = find(OUT, "DATA/GAMESCRIPTS");
+  const CL = [["greek", "Greek", "H", ["M"]], ["gaul42", "Gaul42", "X", ["G"]], ["britain42", "Britain42", "Y", ["B"]], ["iberia42", "Iberia42", "Z", ["I"]], ["egypt42", "Egypt42", "1", ["E"]],
+    ["germany42", "Germany42", "3", ["T"]], ["romerep42", "Romerep42", "4", ["R", "M"]], ["romeimp42", "Romeimp42", "5", ["R", "M"]], ["romepun42", "Romepun42", "6", ["R", "M"]],
+    ["carthnum42", "Carthnum42", "7", ["C"]], ["carthmau42", "Carthmau42", "8", ["C"]]].map(([id, c, letter, from]) => ({ id, c, letter, from }));
+  const IMP2 = ["gaul42", "iberia42", "romeimp42", "carthnum42"], ALLIDS = CL.map(c => c.id);
+  const rules = [{ script: "mode_varios_disable_upgrades.vs", civs: ALLIDS }, { script: "mode_hide_imperivm2_costs.vs", civs: IMP2 }, { script: "mode_imperivm2_costs.vs", civs: IMP2 },
+    { script: "mode_imperivm2_gaul.vs", civs: ["gaul42"] }, { script: "mode_imperivm2_iberia.vs", civs: ["iberia42"] }, { script: "mode_imperivm2_rome.vs", civs: ["romeimp42"] }];
+  const made = require("./lib/mode-rules.js")({ OUT, HD, modClasses: path.join(PRISTINE, "DATA", "CLASSES"), clones: CL, rules });
+  console.log(`game modes: ${made.length} scripts written for the mod's civilizations (${rules.map(r => r.script.replace(/^mode_|\.vs$/gi, "")).join(", ")})`);
+  const start = (script, ids, ind = "") => ids.map(id => `${ind}if (Mod_PlayerCiv(player) == ${CL.find(c => c.id === id).c})\n${ind}\tStartPlayerScript(player, "data/subai/${script.replace(/\.vs$/i, "")}_${id}.vs");`).join("\n");
+  const only = ids => `if (!(${ids.map(id => `Mod_PlayerCiv(player) == ${CL.find(c => c.id === id).c}`).join(" || ")}))`;
+  const gmFiles = fs.readdirSync(GM).filter(f => /\.vs$/i.test(f));
+  const edit = (file, from, to, what) => { const f = gmFiles.find(x => x.toLowerCase() === file.toLowerCase()); if (!f) return console.log(`  game mode ${file}: not in the port`); const p = path.join(GM, f), t = rd(p); if (!from.test(t)) return console.log(`  game mode ${file}: ${what} not found`); wr(p, t.replace(from, to)); };
+  for (const f of gmFiles) {                                     // every mode that hid the Imperivm 2 orders or Varios' upgrades
+    const p = path.join(GM, f); let t = rd(p); const t0 = t;
+    t = t.replace(/^([ \t]*)StartPlayerScript\(player, "data\/subai\/mode_hide_imperivm2_costs\.vs"\);/m, (_m, ind) => start("mode_hide_imperivm2_costs.vs", IMP2, ind));
+    t = t.replace(/^([ \t]*)StartPlayerScript\(player, "data\/subai\/mode_varios_disable_upgrades\.vs"\);/m, (_m, ind) => start("mode_varios_disable_upgrades.vs", ALLIDS, ind));
+    if (t !== t0) wr(p, t);
+  }
+  edit("5 Old school.VS", /if \(nRace != RepublicanRome && nRace != Gaul && nRace != Iberia && nRace != Carthage\)/, only(IMP2), "the check of the civilizations");
+  edit("5 Old school.VS", /Translate\("Old school: only Rome, Gaul, Iberia and Numidian Carthage are allowed"\)/, 'Translate("Old school: only Gaul 4.2, Iberia 4.2, Imperial Rome 4.2 and Numidian Carthage (Greek Mod 4.2) are allowed")', "the message");
+  edit("5 Old school.VS", /^if \(nRace == RepublicanRome \|\| nRace == Carthage\)\s*\n\s*StartPlayerScript\(player, "data\/subai\/mode_inverno_rules\.vs"\);/m, "// the branch the mode forced (Imperial Rome, Numidian Carthage) is the civilization now: nothing to force", "the forced branch");
+  edit("5 Old school.VS", /^if \(nRace == RepublicanRome\)\s*\n\s*StartPlayerScript\(player, "data\/subai\/mode_imperivm2_rome\.vs"\);/m, start("mode_imperivm2_rome.vs", ["romeimp42"]), "Rome's kit");
+  edit("5 Old school.VS", /^if \(nRace == Gaul\)\s*\n\s*StartPlayerScript\(player, "data\/subai\/mode_imperivm2_gaul\.vs"\);/m, start("mode_imperivm2_gaul.vs", ["gaul42"]), "Gaul's kit");
+  edit("5 Old school.VS", /^if \(nRace == Iberia\)\s*\n\s*StartPlayerScript\(player, "data\/subai\/mode_imperivm2_iberia\.vs"\);/m, start("mode_imperivm2_iberia.vs", ["iberia42"]), "Iberia's kit");
+  edit("5 Old school.VS", /^StartPlayerScript\(player, "data\/subai\/mode_imperivm2_costs\.vs"\);/m, start("mode_imperivm2_costs.vs", IMP2), "the costs");
 }
 
 // 4. the game's files the mod replaced: only what is Greek, as patches; the rest, and what the mod hid, goes
