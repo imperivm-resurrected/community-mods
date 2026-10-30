@@ -1,0 +1,49 @@
+<patch>
+  <add select="/items">
+<item id="qGold1000"
+	      image="gameres/icons/items/Gold hero.bmp"
+	      sound="data/sound entities/ItemUse.xml"
+	      level="0"
+	      usecount="1000"
+	      name="Gold"
+	      description="Is added to the treasury when its bearer enters an outpost or settlement"
+	      cursed="0"
+	      equip_script="file://data/ItemScripts/q_deposit_gold.vs"
+	      important="yes">
+	</item>
+<item id="qTeschio dell'eroe"
+	      image="gameres/icons/items/Skull.bmp"
+	      level="0"
+	      name="Teschio dell'eroe"
+	      description="Aumenta la difesa del possessore di 10 punti e la salute di 100"
+	      important="yes">
+	  <bonus health="100" damage="0" armor_slash="10" armor_pierce="10" level="0" experience="0"/>
+	</item>
+<item id="qGemma dell'energia"
+	      image="gameres/icons/items/Green Diamond.bmp"
+	      sound="data/sound entities/ItemUse.xml"
+	      level="0"
+	      usecount="0"
+	      name="Gemma dell'energia"
+	      description="Tutte le unita' assegnate recuparano l'energia due volte piu' velocemente"
+	      cursed="0"
+	      equip_script="file://data/ItemScripts/q_energy_gem.vs"
+	      important="yes">
+	  <bonus health="0" damage="0" armor_slash="0" armor_pierce="0" level="0" experience="0"/>
+	</item>
+<item id="qGemma della furia"
+	      image="gameres/icons/items/Red Diamond.bmp"
+	      sound="data/sound entities/ItemUse.xml"
+	      level="0"
+	      usecount="0"
+	      name="Gemma della furia"
+	      description="Aumenta l'attacco di tutte le unita' assegnate di 4 punti"
+	      cursed="0"
+	      equip_script="file://data/ItemScripts/q_attack_gem.vs"
+	      remove_script="file://data/ItemScripts/q_attack_gem_remove.vs"
+	      die_script="file://data/ItemScripts/q_attack_gem_remove.vs"
+	      important="yes">
+	  <bonus health="0" damage="0" armor_slash="0" armor_pierce="0" level="0" experience="0"/>
+	</item>
+  </add>
+</patch>

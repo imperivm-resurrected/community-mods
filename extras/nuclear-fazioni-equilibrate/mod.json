@@ -1,0 +1,15 @@
+{
+  "id": "nuclear-fazioni-equilibrate",
+  "name": {"spanish": "Facciones equilibradas 2.6", "english": "Balanced Factions 2.6", "italian": "Fazioni equilibrate 2.6"},
+  "version": "2.6",
+  "authors": ["Nucl3arW1nter", "Villoh (port)"],
+  "description": {
+    "spanish": "Pequeño mod de equilibrio de Nucl3arW1nter como ocho civilizaciones propias junto a las del juego («Galos (Nuclear)», «Roma rep. (Nuclear)»…): sube y baja el coste, la salud y el ataque de unas veinte unidades (carro de guerra, nobles, princeps, guerreros con hacha, elefantes, héroes cartagineses, guerrilleros…) y el coste de varias órdenes de cuarteles, templos, taberna y arena, para que se pueda ganar con cualquier pueblo. Versión 2.6 (septiembre de 2018). Las civilizaciones del juego no cambian: en la sala, el anfitrión puede permitir solo este conjunto.",
+    "english": "Small balance mod by Nucl3arW1nter as eight civilizations of their own next to the game's (\"Gaul (Nuclear)\", \"Rep. Rome (Nuclear)\"…): raises and lowers the cost, health and attack of about twenty units (war chariot, nobles, princeps, axe warriors, elephants, Carthaginian heroes, guerrillas…) and the cost of several orders of the barracks, temples, tavern and arena, so any people can win. Version 2.6 (September 2018). The game's civilizations do not change: in a room, the host can allow only this set.",
+    "italian": "Piccola mod di bilanciamento di Nucl3arW1nter come otto civiltà proprie accanto a quelle del gioco («Galli (Nuclear)», «Roma rep. (Nuclear)»…): potenzia e depotenzia circa venti unità (carro da guerra, nobili, princeps, guerrieri con ascia, elefanti, eroi cartaginesi, guerriglieri…) e il costo di vari ordini di caserme, templi, taverna e arena, perché si possa vincere con qualsiasi popolo. Versione 2.6 (settembre 2018). Le civiltà del gioco non cambiano: in una stanza l'ospite può permettere solo questo insieme."
+  },
+  "category": "Gameplay & Balance",
+  "tags": ["Type: Units & Heroes"],
+  "redistributable": true,
+  "sources": {"page": "https://imperivmeditor.forumcommunity.net/?t=59500820"}
+}

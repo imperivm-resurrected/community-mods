@@ -1,0 +1,3 @@
+<patch>
+  <add select="/class"><properties respawn_item="Herb amulet of luck" respawn_time="900000"/></add>
+</patch>
