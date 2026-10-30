@@ -1,0 +1,19 @@
+{
+  "id": "greek-mod-2-3",
+  "name": "Greek Mod 2.3",
+  "version": "2.3",
+  "authors": [
+    "MediterranevmTeam",
+    "Rattlesmake",
+    "Villoh (port)"
+  ],
+  "description": {
+    "english": "Greece as a civilization of its own and the game's civilizations as the Greek Mod 2.3 changed them (Republican, Imperial and Punic Rome, Gauls, Carthaginians, Britons, Iberians, Egyptians and Germans), each next to the originals: it changes none of the game's. Rattlesmake's Greek Mod continued by MediterranevmTeam, the last version before 2.5.",
+    "spanish": "Grecia como civilización propia y las civilizaciones del juego con los cambios del Greek Mod 2.3 (Roma republicana, imperial y púnica, galos, cartagineses, britanos, iberos, egipcios y germanos), cada una junto a las originales: no modifica ninguna del juego. El Greek Mod de Rattlesmake continuado por MediterranevmTeam, la última versión antes de la 2.5."
+  },
+  "category": "Civilizations",
+  "redistributable": true,
+  "sources": {
+    "page": "https://www.moddb.com/mods/greek-civilization-mod"
+  }
+}

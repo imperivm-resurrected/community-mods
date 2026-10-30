@@ -1,0 +1,38 @@
+163 scripts, 16 hero bases, 239 class names and 103 GetConst keys checked
+
+0 errors
+
+33 warnings
+DATA/SUBAI/CTENT_BEHAVIOR_w23.VS: "CNumidianRider" is the game's class that WcaNumidianRider replaces
+DATA/SUBAI/iberian_village_trainIScout_w23.vs: "IScout" is the game's class that WibScout replaces
+DATA/SUBAI/iberian_village_trainIScout_w23.vs: "BHorseman" names no class of the port or the game (Place makes nothing, IsHeirOf is false)
+DATA/SUBAI/iberian_village_trainIScout_w23_wiberia.vs: "BHorseman" names no class of the port or the game (Place makes nothing, IsHeirOf is false)
+DATA/SUBAI/onfinish_research_w23.vs: "GGuardPost" is the game's class that WgaGuardPost replaces
+DATA/SUBAI/onfinish_research_w23.vs: "IEnchantress" is the game's class that WibEnchantress replaces
+DATA/SUBAI/onfinish_research_w23_wbritain.vs: "GGuardPost" is the game's class that WgaGuardPost replaces
+DATA/SUBAI/onfinish_research_w23_wbritain.vs: "IEnchantress" is the game's class that WibEnchantress replaces
+DATA/SUBAI/onfinish_research_w23_wcarthage.vs: "GGuardPost" is the game's class that WgaGuardPost replaces
+DATA/SUBAI/onfinish_research_w23_wcarthage.vs: "IEnchantress" is the game's class that WibEnchantress replaces
+DATA/SUBAI/onfinish_research_w23_wegypt.vs: "GGuardPost" is the game's class that WgaGuardPost replaces
+DATA/SUBAI/onfinish_research_w23_wegypt.vs: "IEnchantress" is the game's class that WibEnchantress replaces
+DATA/SUBAI/onfinish_research_w23_wgaul.vs: "IEnchantress" is the game's class that WibEnchantress replaces
+DATA/SUBAI/onfinish_research_w23_wiberia.vs: "GGuardPost" is the game's class that WgaGuardPost replaces
+DATA/SUBAI/onfinish_research_w23_wimperial.vs: "GGuardPost" is the game's class that WgaGuardPost replaces
+DATA/SUBAI/onfinish_research_w23_wimperial.vs: "IEnchantress" is the game's class that WibEnchantress replaces
+DATA/SUBAI/onfinish_research_w23_wpunic.vs: "GGuardPost" is the game's class that WgaGuardPost replaces
+DATA/SUBAI/onfinish_research_w23_wpunic.vs: "IEnchantress" is the game's class that WibEnchantress replaces
+DATA/SUBAI/onfinish_research_w23_wrome.vs: "GGuardPost" is the game's class that WgaGuardPost replaces
+DATA/SUBAI/onfinish_research_w23_wrome.vs: "IEnchantress" is the game's class that WibEnchantress replaces
+DATA/SUBAI/outpost_idle_w23.vs: "ROutpost" is the game's class that WimOutpost, WpuOutpost, WroOutpost replaces
+DATA/SUBAI/outpost_idle_w23.vs: "EOutpost" is the game's class that WegOutpost replaces
+DATA/SUBAI/outpost_idle_w23.vs: "CMaceman" is the game's class that WcaMaceman replaces
+DATA/SUBAI/outpost_idle_w23_wcarthage.vs: "ROutpost" is the game's class that WimOutpost, WpuOutpost, WroOutpost replaces
+DATA/SUBAI/outpost_idle_w23_wcarthage.vs: "EOutpost" is the game's class that WegOutpost replaces
+DATA/SUBAI/outpost_idle_w23_wegypt.vs: "ROutpost" is the game's class that WimOutpost, WpuOutpost, WroOutpost replaces
+DATA/SUBAI/outpost_idle_w23_wegypt.vs: "CMaceman" is the game's class that WcaMaceman replaces
+DATA/SUBAI/outpost_idle_w23_wimperial.vs: "EOutpost" is the game's class that WegOutpost replaces
+DATA/SUBAI/outpost_idle_w23_wimperial.vs: "CMaceman" is the game's class that WcaMaceman replaces
+DATA/SUBAI/outpost_idle_w23_wpunic.vs: "EOutpost" is the game's class that WegOutpost replaces
+DATA/SUBAI/outpost_idle_w23_wpunic.vs: "CMaceman" is the game's class that WcaMaceman replaces
+DATA/SUBAI/outpost_idle_w23_wrome.vs: "EOutpost" is the game's class that WegOutpost replaces
+DATA/SUBAI/outpost_idle_w23_wrome.vs: "CMaceman" is the game's class that WcaMaceman replaces

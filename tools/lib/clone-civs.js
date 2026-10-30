@@ -53,6 +53,9 @@ module.exports = function cloneCivs({ PORT, MERGED, SUFFIX, LABEL, CIVS, cloneAl
     const skipExtra = new RegExp(`^Hero[A-Z]${civ.skipExtra ? "|" + civ.skipExtra.source : ""}${civ.neutral ? "|" + civ.neutral.source : ""}`);   // the editor heroes have their own step
     const extraIds = new Set();
     for (const [id, c] of table) if (c.race === civ.base && !OWN.test(id) && !skipExtra.test(id)) extraIds.add(id);
+    // asBase classes whose id does not start with the base's letter (the game's Imperial Rome heroes MHero1..: the Imperial branch hires them) are renamed like the
+    // extras, <letter><id> (RMHero1 -> WimMHero1): the SDK only clones the ids that start with the base's letter, and RHero1 and MHero1 would both become WimHero1
+    for (const id of civ.asBase || []) if (table.has(id) && !OWN.test(id)) extraIds.add(id);
     for (let grew = true; grew;) { grew = false; for (const [id, c] of table) if (!OWN.test(id) && !extraIds.has(id) && !c.race && c.parent && (OWN.test(c.parent) || extraIds.has(c.parent)) && !skipExtra.test(id)) { extraIds.add(id); grew = true; } }
     const extraNew = new Map([...extraIds].map(id => [id, `${bl}${id}`]));
     const isOwn = id => OWN.test(id) || extraIds.has(id);
