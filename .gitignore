@@ -44,3 +44,8 @@ ported/antioco-iii-el-grande/
 # AsvrMod VII a0.8.1: rebuilt from the GameBanana rar + extras/asvrmod-vii-civs/ (tools/asvrmod-vii.js: unpacks into .scratch/, runs port-140.js; see its NOTES.md)
 ported/asvrmod-vii-civs/
 .scratch/
+
+# Greek Mod 2.3 / 2.5.3 / 2.6.1: rebuilt from the original download + extras/greek-mod-2-*/ (tools/greek-2x-source.js, tools/port-140.js, tools/greek-2x.js; see its NOTES.md)
+ported/greek-mod-2-3/
+ported/greek-mod-2-5-3/
+ported/greek-mod-2-6-1/
