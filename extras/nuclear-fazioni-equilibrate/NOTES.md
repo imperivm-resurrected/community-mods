@@ -31,7 +31,7 @@ Against HD (`node tools/mod-class-diff.js ported/.../DATA/CLASSES --hd` on the m
 G="$HOME/.local/share/Steam/steamapps/common/Imperivm - Great Battles of Rome HD" node tools/nuclear-fazioni-equilibrate.js [id ...]
 ```
 
-It unpacks the rar in a temporary folder (`bsdtar`, nothing under `originals/`), runs `tools/port-140.js` on it (merge with HD against 1.40), keeps the mod's classes and commands apart and clones each civilization with `tools/lib/clone-civs.js` (`cloneAllOrders`), then copies `extras/nuclear-fazioni-equilibrate/mod.json`. It replaces `ported/nuclear-fazioni-equilibrate/` (the first port, 31 files at the game's paths, is gone). The same result twice (checked with `md5sum` of every file).
+It unpacks the rar in a temporary folder (`bsdtar`, nothing under `originals/`), runs `tools/port-140.js` on it (merge with HD against 1.40), keeps the mod's classes and commands apart and clones each civilization with `tools/lib/clone-civs.js` (`cloneAllOrders`), then copies `extras/nuclear-fazioni-equilibrate/mod.json`. It replaces `ported/nuclear-fazioni-equilibrate/` (the first port, 31 files at the game's paths, is gone). The folder (500 files) is git-ignored (`.gitignore`), like Mediterranevm's: only the tool and `extras/` are in git. The same result twice (checked with `md5sum` of every file).
 
 ## Left out because it is global
 
