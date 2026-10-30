@@ -104,7 +104,7 @@ module.exports = function ownScripts({ OUT, HD, tag, skip, civs = [], dynamic = 
   const civOf = base => civs.find(c => c.match.test(base));
   const mapClasses = classMapper({ OUT, HD, modClasses });
   const resolve = (text, civ, name = "", branchy = false) => {
-    let t = text.replace(FLAG, (_m, name, op) => ((civ && civ.flags && civ.flags[name] === true) === (op === "==")) ? "true" : "false");
+    let t = text.replace(FLAG, (_m, name, op) => ((civ?.flags?.[name] === true) === (op === "==")) ? "true" : "false");
     for (const d of dynamic) t = t.replace(d, "false");
     for (const [re, to] of [...(branchy && civ && civ.subst || []), ...((civ && civ.scripts && civ.scripts[name.toLowerCase()]) || [])]) t = t.replace(re, to);
     if (civ && civ.letter) t = mapClasses(t, civ);
