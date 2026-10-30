@@ -61,6 +61,17 @@ Conventional Commits, in English, imperative mood, lowercase after the type, no 
 - **Maps that place a mod's classes** (`wrap-map.js` `requires`) must keep working when the classes are renamed. For a balance mod ported as copies, the maps that `require` it are **rewritten to the copies' classes** (the `fresh` renaming in `tools/lib/clone-civs.js`; `tools/hpfs.js` scans them) and then need the mod's set of civilizations; the room filter does not override what a map places (decided in #15). For other renames a class can keep its old id as `altid`, but two mods cannot share an `altid`. Write the case in `NOTES.md`. Pending: the maps that `require` the 4.2, the 1.8 or CGWAR (#8).
 - Done: `cgwar`, `greek-mod-1-8`, `greek-civilization-mod` (the three Greek mods) and `mediterranevm-alpha` are independent of the game and of each other. The Roman branches are civilizations of their own too (`cgwarimperial`, `cgwarrepublic`, `rome18`, `empire18`, `punic18`; the 4.2's in `greek-4-2.js`). Pending, in each `NOTES.md`: what was not tried in game. Pending as ports: the balance mods (#17-#22, #29).
 
+## World rules packs (what a clone cannot carry)
+
+Some of what a balance mod changes cannot be scoped to a clone: a value of a global `.ini` (`UNIT_SPECIALS.INI`), the game's neutral classes (`Chest`, `Obelisk`, the outposts), the capacity of a base class every civilization inherits, a script edited at its own path (`UNIT_ON_KILL.VS`), the engine's rules read by name. Do not drop it and do not force it into the civilizations: it goes in a **separate pack of its own**, `<id>-rules`, next to the mod's civilizations pack.
+
+- **The civilizations pack never changes the game.** The rules pack does, on purpose, for every player in the match while it is on. It is optional, never offered as a civilization, and says so in its `mod.json` description (in the three languages): "changes the game's own classes/values for everyone".
+- **The cut**: if it can be written inside the clone (stats, costs, commands, base-class changes copied into each clone, scripts as copies), it goes to the civilizations pack. If the game reads it by name or from a class of its own that nobody can duplicate, it goes to the rules pack.
+- **Only patches** (`patches/`, `<set select=...>`), with the mod's own ids for items, scripts and commands. Never a whole file at the game's path.
+- **Two rules packs that edit the same line or class collide.** The manager already treats it as "use only one" (it compares paths). Say in `NOTES.md` which ones overlap; no `incompatibleWith`.
+- A mod with nothing global has no rules pack. A mod whose only content is global (`oggetti-in-tutte-le-strutture`) is just a rules pack, with no clones.
+- Anything you leave out of a civilizations pack because it is global goes in `NOTES.md` under *Left out because it is global*, so the rules pack can be built later.
+
 ## Conquests and the engine
 
 - **A conquest collides by path like an adventure does.** A mod's `Conquests/<name>.bfhp` and `ConquestMaps/<folder>` at the path of the game's (`mediterranean.BFHP`, `1 - GBR europe`) or of another port's replace them, whatever the bytes. They ship next to them: `tools/lib/conquests.js` renames the `.bfhp` and its picture, the folder, both `data=` (the `territories.xml` inside the `.bfhp` and the one in the folder) and adds `(<label>)` to the name in the menu. Call it **before** `tagCollisions`, which renames the files of a folder one by one and leaves the conquest broken.
