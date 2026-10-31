@@ -30,10 +30,12 @@ const classIds = d => { const out = new Set(); if (d && fs.existsSync(d)) for (c
 function classMapper({ OUT, HD, modClasses }) {
   const dirOf = (base, rel) => { let p = base; for (const part of rel.split("/")) { const n = ci(p, part); if (!n) return null; p = path.join(p, n); } return p; };
   const portIds = new Map([...classIds(dirOf(OUT, "DATA/CLASSES"))].map(i => [i.toLowerCase(), i]));
-  const known = new Set([...classIds(dirOf(HD, "DATA/CLASSES")), ...classIds(modClasses)].map(i => i.toLowerCase()));
+  const hdIds = new Set([...classIds(dirOf(HD, "DATA/CLASSES"))].map(i => i.toLowerCase()));
+  const known = new Set([...hdIds, ...classIds(modClasses).values()].map(i => i.toLowerCase()));
+  // civ.modOnly: the prefix is put in front only of ids the mod added ("Hipatista"), never of the game's generic classes ("Sentry", "Gate"); civ.keep: ids that stay as they are
   const classOf = (x, civ) => {
-    const lx = x.toLowerCase(); if (!known.has(lx) || portIds.has(lx)) return x;
-    for (const c of [...(civ.from.includes(x[0]) ? [civ.letter + x.slice(1)] : []), civ.letter + x]) if (portIds.has(c.toLowerCase())) return portIds.get(c.toLowerCase());
+    const lx = x.toLowerCase(); if (!known.has(lx) || portIds.has(lx) || (civ.keep && civ.keep.test(x))) return x;
+    for (const c of [...(civ.from.includes(x[0]) ? [civ.letter + x.slice(1)] : []), ...(civ.modOnly && hdIds.has(lx) ? [] : [civ.letter + x])]) if (portIds.has(c.toLowerCase())) return portIds.get(c.toLowerCase());
     return x;
   };
   return (text, civ) => text.replace(/"([A-Za-z0-9_]+)"/g, (m, x) => { const y = classOf(x, civ); return y === x ? m : `"${y}"`; });
