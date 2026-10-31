@@ -389,6 +389,11 @@ for (const f of walk(OUT).filter(f => /^(CURRENTLANG\/[^/]+\.bmp|UI\/MENU\/[^/]+
   console.log(`names shared with other ports: ${clash.cmds.size} orders, ${clash.items.size} items -> "(${TAG})" in ${tagNames({ OUT, names, tag: TAG })} files`);
 }
 
+// tagCollisions rewrites a renamed file's references by file name alone, so a name that only ends the same way, or a file of that name in another folder, was renamed too
+// and now asks for a file that does not exist (the blue square where the "Gladiator shows" icon should be). The pictures that do not resolve go back to the mod's own name:
+// tools/lib/asvr-refs.js. Its check at the end of the build stops on any that is still missing.
+{ const fixed = require("./lib/asvr-refs.js").fixBmpRefs(OUT, HD); console.log(`picture references put back to the mod's own name: ${fixed.length}${fixed.length ? "\n  " + fixed.join("\n  ") : ""}`); }
+
 // The main menu skin: the one exception to "patches only" the maintainer approved (cosmetic, one skin shows at a time; the 1.8 does the same). After step 6 on purpose.
 { const r = require("./lib/asvr-menu.js")({ SRC, OUT }); console.log(`main menu: ${r.files.length} files (${r.edits.join(", ")} edited from the rar's; ${r.files.filter(f => /^UI\//.test(f)).length} pictures of UI/MENU)`); }
 
@@ -546,6 +551,8 @@ if (fs.existsSync(EXTRAS)) for (const f of walk(EXTRAS)) { if (f === "NOTES.md")
     else if (fn === "GetRandomHeroClass") bases.add(id);
   }
   for (const b of bases) { const w = heroBaseProblem(TABLE, b); if (w) problems.push(`GetRandomHeroClass("${b}"): ${w}`); }
+  // every picture a command, class or item names exists in the port or in the game, and no text names an `_asv` file, folder or class that is not there
+  { const info = {}; problems.push(...require("./lib/asvr-refs.js").checkRefs(OUT, HD, info)); console.log(`picture references: ${info.checked} checked, ${info.allowed.length} allowed (the mod's own: ${info.allowed.join(", ")})`); }
   // the menu skin: exactly what was approved, and nothing that would change the game for everybody
   { const have = walk(OUT).map(f => f.toLowerCase()), bad = [];
     for (const f of have) {
