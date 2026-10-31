@@ -1,4 +1,4 @@
-# asvrmod-vii: to check by hand
+# asvrmod-vii-civs: to check by hand
 
 28 items. In each conflict the mod's side was used.
 

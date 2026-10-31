@@ -23,7 +23,7 @@ No `index` (the engine assigns it, #37), every civilization `ai: true`, `random`
 G="$HOME/.local/share/Steam/steamapps/common/Imperivm - Great Battles of Rome HD" node tools/asvrmod-vii.js [id ...]     # no id: all eight
 ```
 
-It unpacks the rar into `.scratch/asvr-src` (inside the worktree, git-ignored; nothing is written under `originals/`), drops the three `.exe` and `NOTAS.txt`, runs `tools/port-140.js` on it into `.scratch/asvr-pristine` (HD + 1.40 + mod, three-way: `raw/port-140/asvrmod-vii.md` lists the 28 conflicts, in which the mod's side was used), copies that into `ported/asvrmod-vii` and does the rest (below). The same build twice gives the same files (2060 files, checked with md5). `extras/asvrmod-vii/mod.json` is copied over at the end; there are no other hand fixes: the fixes the build applies are in the tool, each with its reason. `raw/asvrmod-vii-left-out.txt` and `raw/asvrmod-vii-own-scripts.txt` list what the build left out and which scripts it copied. Libraries: `tools/lib/asvr-ai.js` (the AI), `tools/lib/asvr-inline.js` (behaviors the clones inherit), and `tools/lib/own-scripts.js` / `clone-civs.js` with the small changes listed in `PR-NOTES.md`.
+It unpacks the rar into `.scratch/asvr-src` (inside the worktree, git-ignored; nothing is written under `originals/`), drops the three `.exe` and `NOTAS.txt`, runs `tools/port-140.js` on it into `.scratch/asvr-pristine` (HD + 1.40 + mod, three-way: `raw/port-140/asvrmod-vii-civs.md` lists the 28 conflicts, in which the mod's side was used), copies that into `ported/asvrmod-vii-civs` and does the rest (below). The same build twice gives the same files (2060 files, checked with md5). `extras/asvrmod-vii-civs/mod.json` is copied over at the end; there are no other hand fixes: the fixes the build applies are in the tool, each with its reason. `raw/asvrmod-vii-civs-left-out.txt` and `raw/asvrmod-vii-civs-own-scripts.txt` list what the build left out and which scripts it copied. Libraries: `tools/lib/asvr-ai.js` (the AI), `tools/lib/asvr-inline.js` (behaviors the clones inherit), and `tools/lib/own-scripts.js` / `clone-civs.js` with the small changes listed in `PR-NOTES.md`.
 
 ## What `AsvrMod.exe` changed (nobody had looked)
 
@@ -67,7 +67,7 @@ Done as `tools/lib/asvr-ai.js` does, with the rules of #15:
 
 ## Left out because it is global
 
-What the mod changes that cannot be scoped to a clone (AGENTS.md, *World rules packs*): a rules pack (`asvrmod-vii-rules`) can carry it later; it is not built in this task. Originals are the HD game's values; the mod's are what the original ships (its 1.40 values where the mod did not touch the key are not listed).
+What the mod changes that cannot be scoped to a clone (AGENTS.md, *World rules packs*): a rules pack (`asvrmod-vii-civs-rules`) can carry it later; it is not built in this task. Originals are the HD game's values; the mod's are what the original ships (its 1.40 values where the mod did not touch the key are not listed).
 
 #### `DATA/CONST.INI`: 16 values
 
@@ -217,7 +217,7 @@ Not listed above and also global: the mod's `UNIT_SPECIALS.INI` changes the *tex
 | `witch hut` | `respawn_time` | 300000 | 500000 |
 | `witch hut` | `respawn_item` | Rye spikes | Pocion misteriosa |
 
-**Scripts of the game edited at their own path, not scoped:** `ruin_behavior.vs` (`BaseRuins`: the ruins), the `BONUSSCRIPTS` (`001 Wealth`, `002 Riches`, `003 Hero`: the starting bonuses), `GAMESCRIPTS` (the game modes). The mod's `RANDOMMAP/PLACEOBJECTS.XML` changes the counts of the game's own objects (`ROutpost` `max 2 -> 1`, `Stonehenge1/2`, `Ruins1` min/max and a `RaceAlternative` of `Ruins2`, `Shrine`), `COASTAL.RM.XML` loses `no_ruins`, and `DATA/INTERFACE/` (the help and editor lists and the menu INIs but two), the loading, credits, help and options screens of `Currentlang/` (`CARGAR`, `CREDITS.TXT`, `HELP`, `OPTIONS`, `CONQUESTDEFAULT`: HD does not read them by those paths) and the other menu INIs of the rar do nothing or re-skin the game: left out. The main menu skin (two INIs, `UI/MENU`, the wall) is the exception, below.  The 26 walk sounds `SOUNDS/WALK/HORSE_ARMY_*` and the icons the mod redrew at the game's paths (`UI/ICONS`, `UI/CMDBAR`, `UI/INFOBAR`, `UI/HELP`: 22 files) replace the game's own: left out (`raw/asvrmod-vii-left-out.txt` has the list).
+**Scripts of the game edited at their own path, not scoped:** `ruin_behavior.vs` (`BaseRuins`: the ruins), the `BONUSSCRIPTS` (`001 Wealth`, `002 Riches`, `003 Hero`: the starting bonuses), `GAMESCRIPTS` (the game modes). The mod's `RANDOMMAP/PLACEOBJECTS.XML` changes the counts of the game's own objects (`ROutpost` `max 2 -> 1`, `Stonehenge1/2`, `Ruins1` min/max and a `RaceAlternative` of `Ruins2`, `Shrine`), `COASTAL.RM.XML` loses `no_ruins`, and `DATA/INTERFACE/` (the help and editor lists and the menu INIs but two), the loading, credits, help and options screens of `Currentlang/` (`CARGAR`, `CREDITS.TXT`, `HELP`, `OPTIONS`, `CONQUESTDEFAULT`: HD does not read them by those paths) and the other menu INIs of the rar do nothing or re-skin the game: left out. The main menu skin (two INIs, `UI/MENU`, the wall) is the exception, below.  The 26 walk sounds `SOUNDS/WALK/HORSE_ARMY_*` and the icons the mod redrew at the game's paths (`UI/ICONS`, `UI/CMDBAR`, `UI/INFOBAR`, `UI/HELP`: 22 files) replace the game's own: left out (`raw/asvrmod-vii-civs-left-out.txt` has the list).
 
 **Not global but not ported either.** The three game modes the mod adds (`6 Destruccion`, `9 Portuacion`, `10 Rey de los bandidos`) and the two starting bonuses it adds (`004 Wealth`, `005 People`): the modes say "By El Jüsticiero Misteryoso, no plagiar", so they are another author's code that the Asvr permission does not cover; their numbers (`6`...`10`, `004`, `005`) are the ones the 4.2's modes and bonuses take, so the room could not tell them apart; and none belongs to a civilization. The build drops them.
 
@@ -240,7 +240,7 @@ The two INIs were checked byte for byte against the files the maintainer tried (
 
 **Not shipped, on purpose**: `GAME.LOC.XML` and `TRANSLATION.LOC.XML` (the Spanish text table of the whole game, 755 KB each: it would translate the game for everybody), the other nine menu INIs of the rar, `MENUBACKGROUNDIMPERIVM.bmp`, `CARGAR`, `HELP`, `OPTIONS`, `CONQUESTDEFAULT`, `CREDITS.TXT`, `HELP.XML`, and anything else of `UI/`.
 
-**Tried in game on 2026-10-31 (the maintainer, a prototype with these files installed in `asvrmod-vii`)**: the main menu looks like the original GameBanana one (green buttons at the right of the window, tips panel, `1.40`, the wall, the scrolling generals, the title) and `imperivm-mod.log` has no errors and no compilation errors. **Not looked at**: the other screens that use the green buttons and frames (conquest, options, multiplayer, lobby, load game).
+**Tried in game on 2026-10-31 (the maintainer, a prototype with these files installed in `asvrmod-vii-civs`)**: the main menu looks like the original GameBanana one (green buttons at the right of the window, tips panel, `1.40`, the wall, the scrolling generals, the title) and `imperivm-mod.log` has no errors and no compilation errors. **Not looked at**: the other screens that use the green buttons and frames (conquest, options, multiplayer, lobby, load game).
 
 **What differs from the original menu**:
 - The labels are the game's language: the original showed Spanish ones because of the text tables, which are not shipped.
@@ -249,7 +249,7 @@ The two INIs were checked byte for byte against the files the maintainer tried (
 - Resurrected's heart and Discord icons are bottom-left.
 - The wall has the first general baked in (the pasted frame), and the strip scrolls over it.
 
-**Overlap (`node tools/shared-paths.js asvrmod-vii`)**: one skin shows at a time, and the winner of each file is chosen by the load order of the mods or by the player in the content manager ("Use the files of ...", per pair of mods and per file); no `incompatibleWith`. The patches of another skin's INI stack on top of whichever file wins: not tried.
+**Overlap (`node tools/shared-paths.js asvrmod-vii-civs`)**: one skin shows at a time, and the winner of each file is chosen by the load order of the mods or by the player in the content manager ("Use the files of ...", per pair of mods and per file); no `incompatibleWith`. The patches of another skin's INI stack on top of whichever file wins: not tried.
 - `DATA/INTERFACE/MENU/MAINMENU.INI`: shipped whole by **Imperivm Legacy** (other bytes). The Greek Mod 1.8 and the 4.2 do not ship it whole in this repository: they patch it (`patches/DATA/INTERFACE/MENU/MAINMENU.INI`, `TEMPLATE.INI`; the 4.2 also `MENUBACK.INI`), so their patches would apply on top of whichever file wins. That combination has not been tried.
 - `DATA/INTERFACE/MENU/MENUBACK.INI`: shipped whole by no other port; patched by the 4.2.
 - `UI/MENU/*`: **the 1.8** has 16 of the same names with other bytes (`BIGGOLD`, `BUTTON`, `BUTTON60`, `CHECKBUTTON`, `DOWNARROW`, `FRAME`, `HERO`, `MMENBUT`, `SCROLLBACK`, `SMALLGOLD`, `TAPAL`, `TAPAR`, `TEAMS`, `UPARROW`, `BONUSES`, `VOLUME_CONTROL`); `BONUSES.BMP` is also shipped by Imperivm Legacy and the MCI, `FOOD.BMP` and `PEOPLE.BMP` by the MCI. The 4.2's pictures have other names.
@@ -282,7 +282,7 @@ The three maps `require` `gamebanana-729311`, which is the old `originals/mods` 
 
 (The two `ported/*-asurmod` folders also ship `data/classes/` guards of their own (`BGuardia`...); they are the maps' own and are not touched.)
 
-The mod's version of the class ids is in `ported/asvrmod-vii/civs/*.json` (`alias.classes`: the id the clone step started from, so `MHipatista`, `REHOPLITA`, `GTracio`... are the keys for the renamed ones). `ported/asvrmod-vii-traduzione-italiana` translates by text (its `loc/` keys are the Spanish strings, not class ids), so it should still match the commands and items; the 15 orders renamed with `(asv)` and the 3,887 vs 3,474 texts of a0.7/a0.8.1 are to check then.
+The mod's version of the class ids is in `ported/asvrmod-vii-civs/civs/*.json` (`alias.classes`: the id the clone step started from, so `MHipatista`, `REHOPLITA`, `GTracio`... are the keys for the renamed ones). `ported/asvrmod-vii-traduzione-italiana` translates by text (its `loc/` keys are the Spanish strings, not class ids), so it should still match the commands and items; the 15 orders renamed with `(asv)` and the 3,887 vs 3,474 texts of a0.7/a0.8.1 are to check then.
 
 ## imperivm-resurrected #37 and #38
 
@@ -293,7 +293,7 @@ The mod's version of the class ids is in `ported/asvrmod-vii/civs/*.json` (`alia
 
 ## Independence check
 
-`node tools/shared-paths.js asvrmod-vii` (with every other port in `ported/` linked: CGWAR, the 1.8, the 4.2, Mediterranevm, MCI, Imperivm Legacy, Secuter Fun, Community Mod, Caesar Mod...):
+`node tools/shared-paths.js asvrmod-vii-civs` (with every other port in `ported/` linked: CGWAR, the 1.8, the 4.2, Mediterranevm, MCI, Imperivm Legacy, Secuter Fun, Community Mod, Caesar Mod...):
 
 ```text
 no collisions
@@ -329,7 +329,7 @@ What went wrong, and is fixed:
 
 **Not tried**: the eight `(Asvr)` civilizations in the lobby, a room with only this set, a skirmish (barracks, hero hire, the arena's `*Lider`, items, the iron mine), the AI `(Asvr)` playing, the other screens with the green buttons (conquest, options, multiplayer, lobby), two civilization mods together, save and load, the three maps that require the mod and the Italian translation.
 
-**To try, in this order** (copy `ported/asvrmod-vii` to `$G/mods`; a room with only this set):
+**To try, in this order** (copy `ported/asvrmod-vii-civs` to `$G/mods`; a room with only this set):
 
 1. The main menu (looks right, tried) and **the other screens with the green buttons** (conquest, options, multiplayer, lobby, load game: not looked at). The lobby: the eight `(Asvr)` civilizations show, with their names, and the game's eight are as they were. The dropdowns list only the eight, Random draws one of them.
 2. `Logs\imperivm\imperivm-mod.log`: `compilation error` (the three inherited-behavior patches, `GetEconomyScript`, `GetTacticScript`, `Main.vs`, `CalcGAIKAPriority`, `GetArmyNeed`, `TSH_ArenaRecruit`) and `Logs\comp_out.txt` / `vxlog.log` for the scripts of the mod.
@@ -340,7 +340,7 @@ What went wrong, and is fixed:
 
 ## Pending
 
-- **The id.** `asvrmod-vii` is also the id the game's GameBanana downloader gives the original 7a 0.8 package (it overwrote this port once on 2026-10-31 and keeps checking for updates). The port needs another id (suggestion `asvrmod-vii-civs`) or a decision; the three maps and the Italian translation `require` `gamebanana-729311`.
+- **The id (done).** The port is `asvrmod-vii-civs`: `asvrmod-vii` is the id the game's GameBanana downloader gives the original 7a 0.8 package (it overwrote the first build of this port on 2026-10-31). Profiles that listed `asvrmod-vii` for this port must now list `asvrmod-vii-civs`. The three maps and the Italian translation still `require` `gamebanana-729311` (the original), see #8.
 - **Permission** is "via Shaul R.", not confirmed directly with Asvr.
 
 - *Pending: independence*: none known; the sprites are standalone `.rle` (no `rle.mmp.tail`), so there is no graphics-tail conflict with the 4.2 or Imperivm Legacy.

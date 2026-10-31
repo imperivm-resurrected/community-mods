@@ -41,6 +41,6 @@ ported/gbr-tactics/
 # Antíoco III el Grande (Falcata): rebuilt from the forum zip + extras/antioco-iii-el-grande/ (tools/port-140.js + tools/antioco-iii.js, see its NOTES.md)
 ported/antioco-iii-el-grande/
 
-# AsvrMod VII a0.8.1: rebuilt from the GameBanana rar + extras/asvrmod-vii/ (tools/asvrmod-vii.js: unpacks into .scratch/, runs port-140.js; see its NOTES.md)
-ported/asvrmod-vii/
+# AsvrMod VII a0.8.1: rebuilt from the GameBanana rar + extras/asvrmod-vii-civs/ (tools/asvrmod-vii.js: unpacks into .scratch/, runs port-140.js; see its NOTES.md)
+ported/asvrmod-vii-civs/
 .scratch/
