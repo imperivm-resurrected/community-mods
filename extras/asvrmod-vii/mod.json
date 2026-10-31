@@ -1,0 +1,22 @@
+{
+  "id": "asvrmod-vii",
+  "name": "AsvrMod VII a0.8.1",
+  "version": "a0.8.1",
+  "category": "Civilizations",
+  "authors": [
+    "Asvr",
+    "Villoh (port)"
+  ],
+  "description": {
+    "spanish": "AsvrMod VII Ancient Generals a0.8.1 como ocho civilizaciones propias junto a las del juego (\"Galos (Asvr)\", \"Roma rep. (Asvr)\"…): estadísticas, habilidades de héroe y puestos avanzados nuevos, los líderes (\"Lider\"), héroes extra, objetos nuevos y una IA que usa cuevas y objetos. Las civilizaciones del juego no cambian.",
+    "english": "AsvrMod VII Ancient Generals a0.8.1 as eight civilizations of their own next to the game's (\"Gaul (Asvr)\", \"Rep. Rome (Asvr)\"…): new stats, hero skills and outposts, the leaders (\"Lider\"), extra heroes, new items and an AI that uses caves and items. The game's civilizations do not change.",
+    "italian": "AsvrMod VII Ancient Generals a0.8.1 come otto civiltà a sé, accanto a quelle del gioco (\"Galli (Asvr)\", \"Roma rep. (Asvr)\"…): nuove statistiche, abilità degli eroi e avamposti, i capi (\"Lider\"), eroi extra, nuovi oggetti e un'IA che usa grotte e oggetti. Le civiltà del gioco non cambiano."
+  },
+  "tags": [
+    "Type: Gameplay & Balance"
+  ],
+  "redistributable": true,
+  "sources": {
+    "page": "https://gamebanana.com/mods/729311"
+  }
+}
