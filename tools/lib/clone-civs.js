@@ -52,7 +52,8 @@ module.exports = function cloneCivs({ PORT, MERGED, SUFFIX, LABEL, CIVS, cloneAl
     // tool only takes the base's letter, so they are renamed <letter><id> in the stage, and their children (no race of their own) follow
     const skipExtra = new RegExp(`^Hero[A-Z]${civ.skipExtra ? "|" + civ.skipExtra.source : ""}${civ.neutral ? "|" + civ.neutral.source : ""}`);   // the editor heroes have their own step
     const extraIds = new Set();
-    for (const [id, c] of table) if (c.race === civ.base && !OWN.test(id) && !skipExtra.test(id)) extraIds.add(id);
+    // asBase: also the classes of another race that the mod trains here and whose id does not start with this civilization's letter (EHoplita in Rome): renamed <letter><id>
+    for (const [id, c] of table) if ((c.race === civ.base || (civ.asBase || []).includes(id)) && !OWN.test(id) && !skipExtra.test(id)) extraIds.add(id);
     for (let grew = true; grew;) { grew = false; for (const [id, c] of table) if (!OWN.test(id) && !extraIds.has(id) && !c.race && c.parent && (OWN.test(c.parent) || extraIds.has(c.parent)) && !skipExtra.test(id)) { extraIds.add(id); grew = true; } }
     const extraNew = new Map([...extraIds].map(id => [id, `${bl}${id}`]));
     const isOwn = id => OWN.test(id) || extraIds.has(id);
