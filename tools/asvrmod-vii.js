@@ -2,7 +2,7 @@
 // (AGENTS.md, "Civilizations are independent"; decided in #15: a balance mod is ported as copies, the host chooses the set in the room). Rebuild with
 //   G="$HOME/.local/share/Steam/steamapps/common/Imperivm - Great Battles of Rome HD" node tools/asvrmod-vii.js [id ...]     (no id: all eight)
 // It unpacks originals/gamebanana/729311/asvrmod_7a_081.rar in .scratch/asvr-src (git-ignored, inside the worktree: nothing is written under originals/; the
-// three executables are not used), runs tools/port-140.js on it into .scratch/asvr-pristine (HD + 1.40 + mod, three-way), rebuilds ported/asvrmod-vii from that and then:
+// three executables are not used), runs tools/port-140.js on it into .scratch/asvr-pristine (HD + 1.40 + mod, three-way), rebuilds ported/asvrmod-vii-civs from that and then:
 //   1. keeps the mod's version of the game's classes and commands (.scratch/asvr-merged) and drops them from the port: they are the game's, and each
 //      civilization they belong to is cloned from HD with the mod's changes on top (tools/lib/clone-civs.js); what the mod changed in the base classes
 //      (Hero, Melee, Ranged, Catapult...) is written inside each clone
@@ -17,7 +17,7 @@
 const fs = require("fs"), path = require("path"), cp = require("child_process");
 const { net, checkBalance, checkAbsolute, removeStrayBraces, applyPatch, classStrings, classTable, heroBaseProblem, CLASS_CALL } = require("./lib/script-checks.js");
 const ROOT = path.join(__dirname, "..");
-const ID = "asvrmod-vii", OUT = path.join(ROOT, "ported", ID), EXTRAS = path.join(ROOT, "extras", ID);
+const ID = "asvrmod-vii-civs", OUT = path.join(ROOT, "ported", ID), EXTRAS = path.join(ROOT, "extras", ID);
 const SCRATCH = path.join(ROOT, ".scratch"), SRC = path.join(SCRATCH, "asvr-src"), PRISTINE = path.join(SCRATCH, "asvr-pristine"), MERGED = path.join(SCRATCH, "asvr-merged");
 const RAR = path.join(ROOT, "originals", "gamebanana", "729311", "asvrmod_7a_081.rar");
 const HD = path.join(ROOT, "originals", "game-data", "paks"), HDDATA = path.join(ROOT, "originals", "game-data", "DATA");
@@ -199,7 +199,7 @@ const CLONES = CIVS.map(c => { const letter = c.id.slice(0, 3).replace(/^./, x =
   console.log(`scripts of the mod's own for its civilizations: ${r.copied.length} copied (_${TAG}), ${r.skipped.length} left to the game's (${r.skipped.map(s => s.name).join(", ")})`);
   console.log(`  methods inherited from the game's classes whose script the mod edited: ${r.injected} <method> written inside ${r.touched} classes; behaviors inherited and left the game's: ${(r.behaviorsLeft || []).join("; ") || "none"}`);
   fs.mkdirSync(path.join(ROOT, "raw"), { recursive: true });
-  fs.writeFileSync(path.join(ROOT, "raw", "asvrmod-vii-own-scripts.txt"), r.copied.map(c => `${c.from} -> ${c.to}  (${c.users.slice(0, 4).join(", ")}${c.users.length > 4 ? ", ..." : ""})`).join("\n") + "\n\nnot copied:\n" + r.skipped.map(s => `${s.name}: ${s.why}`).join("\n") + "\n\nbehaviors inherited from the game's classes and left the game's:\n" + (r.behaviorsLeft || []).join("\n") + "\n");
+  fs.writeFileSync(path.join(ROOT, "raw", "asvrmod-vii-civs-own-scripts.txt"), r.copied.map(c => `${c.from} -> ${c.to}  (${c.users.slice(0, 4).join(", ")}${c.users.length > 4 ? ", ..." : ""})`).join("\n") + "\n\nnot copied:\n" + r.skipped.map(s => `${s.name}: ${s.why}`).join("\n") + "\n\nbehaviors inherited from the game's classes and left the game's:\n" + (r.behaviorsLeft || []).join("\n") + "\n");
 }
 
 // 3d. The mod wrote its civilization tests as `.race == Gaul` (`owner.AsUnit.race == Germany`): for a clone the race is the clone's own, so the test is false (a
@@ -363,8 +363,8 @@ for (const f of walk(OUT).filter(f => /^(CURRENTLANG\/[^/]+\.bmp|UI\/MENU\/[^/]+
     }
     if (!gone) break;
   }
-  fs.writeFileSync(path.join(ROOT, "raw", "asvrmod-vii-left-out.txt"), left.join("\n") + "\n");
-  console.log(`game files with other bytes: ${left.length} left out (raw/asvrmod-vii-left-out.txt)`);
+  fs.writeFileSync(path.join(ROOT, "raw", "asvrmod-vii-civs-left-out.txt"), left.join("\n") + "\n");
+  console.log(`game files with other bytes: ${left.length} left out (raw/asvrmod-vii-civs-left-out.txt)`);
 }
 
 // 6. names another mod of ours (or the game's own adventures) already has with other bytes: this port's are renamed
@@ -397,7 +397,7 @@ for (const f of walk(OUT).filter(f => /^(CURRENTLANG\/[^/]+\.bmp|UI\/MENU\/[^/]+
 // The main menu skin: the one exception to "patches only" the maintainer approved (cosmetic, one skin shows at a time; the 1.8 does the same). After step 6 on purpose.
 { const r = require("./lib/asvr-menu.js")({ SRC, OUT }); console.log(`main menu: ${r.files.length} files (${r.edits.join(", ")} edited from the rar's; ${r.files.filter(f => /^UI\//.test(f)).length} pictures of UI/MENU)`); }
 
-// 7. hand fixes of this mod (extras/asvrmod-vii/): the final files and mod.json with the credits
+// 7. hand fixes of this mod (extras/asvrmod-vii-civs/): the final files and mod.json with the credits
 if (fs.existsSync(EXTRAS)) for (const f of walk(EXTRAS)) { if (f === "NOTES.md") continue; const dst = path.join(OUT, f); fs.mkdirSync(path.dirname(dst), { recursive: true }); fs.rmSync(dst, { force: true }); fs.copyFileSync(path.join(EXTRAS, f), dst); }
 // Scripts of the mod that the game's compiler (stricter than 1.40's) refuses: they use a variable they never declare, or declare one twice, or
 // the header names a parameter other than the one the body reads. A behavior that does not compile ends at once and the engine starts it again,
