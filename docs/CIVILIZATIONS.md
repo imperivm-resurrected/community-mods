@@ -54,6 +54,14 @@ Letters and indices are unique across all the ports (the SDK allows indices 10-9
 | (engine) | `miberia` | `Mib` (derived) | Iberia | Mediterranevm (alpha) | `tools/mediterranevm-alpha.js` |
 | (engine) | `megypt` | `Meg` (derived) | Egypt | Mediterranevm (alpha) | `tools/mediterranevm-alpha.js` |
 | (engine) | `mgermany` | `Mge` (derived) | Germany | Mediterranevm (alpha) | `tools/mediterranevm-alpha.js` |
+| (engine) | `ngaul` | `Nga` (derived) | Gaul | Balanced Factions 2.6 | `tools/nuclear-fazioni-equilibrate.js` |
+| (engine) | `nrome` | `Nro` (derived) | RepublicanRome | Balanced Factions 2.6 | `tools/nuclear-fazioni-equilibrate.js` |
+| (engine) | `nimperial` | `Nim` (derived) | ImperialRome | Balanced Factions 2.6 | `tools/nuclear-fazioni-equilibrate.js` |
+| (engine) | `ncarthage` | `Nca` (derived) | Carthage | Balanced Factions 2.6 | `tools/nuclear-fazioni-equilibrate.js` |
+| (engine) | `nbritain` | `Nbr` (derived) | Britain | Balanced Factions 2.6 | `tools/nuclear-fazioni-equilibrate.js` |
+| (engine) | `niberia` | `Nib` (derived) | Iberia | Balanced Factions 2.6 | `tools/nuclear-fazioni-equilibrate.js` |
+| (engine) | `negypt` | `Neg` (derived) | Egypt | Balanced Factions 2.6 | `tools/nuclear-fazioni-equilibrate.js` |
+| (engine) | `ngermany` | `Nge` (derived) | Germany | Balanced Factions 2.6 | `tools/nuclear-fazioni-equilibrate.js` |
 
 A civilization with no `letter` (derived prefix: the first three letters of the `id`, imperivm-resurrected#37) and no `index` (the engine assigns it) reserves nothing in this table; its rows say `(engine)` and are here to spot clashes. **Two ports cannot be active together if they share a derived prefix: the engine ignores the second civilization.** Today GBR Tactics and La Reconquista 2010 clash on `Gau`, `Bri`, `Car`, `Egy`, `Ger`, `Ibe` and `Imp`.
 

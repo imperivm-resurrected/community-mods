@@ -1,0 +1,15 @@
+{
+  "id": "oggetti-in-tutte-le-strutture-e-forti-bilanciati",
+  "name": {"spanish": "Objetos en todas las estructuras y fuertes equilibrados 1.0", "english": "Items in every structure and balanced forts 1.0", "italian": "Oggetti in tutte le strutture e forti bilanciati 1.0"},
+  "version": "1.0",
+  "authors": ["Secuter", "Villoh (port)"],
+  "description": {
+    "spanish": "Reglas del mundo: CAMBIA las clases, los valores y un script del propio juego para TODOS los jugadores mientras esté activo, y no añade civilizaciones. Todo lo de «Objetos en todas las estructuras» (objetos nuevos en columnas, obeliscos, pozo, cofre…; más capacidad en aldeas, fuertes y carros) y además los fuertes neutrales: todos tienen hasta 4 tipos de unidades de nivel 8 (hasta el 24), con fuerza y recursos parejos, y el fuerte egipcio de oro también está defendido. Los campamentos teutones no cambian. No se puede usar junto a «Objetos en todas las estructuras» (cambian las mismas clases).",
+    "english": "World rules: it CHANGES the game's own classes, values and a script for EVERYONE while it is on, and adds no civilizations. Everything in «Items in every structure» (new items in pillars, obelisks, well, chest…; more capacity in villages, forts and wagons) plus the neutral forts: all of them hold up to 4 unit types from level 8 (up to 24), evenly matched in strength and resources, and the Egyptian gold fort is defended too. Teutonic camps are unchanged. It cannot be used together with «Oggetti in tutte le strutture» (they change the same classes).",
+    "italian": "Regole del mondo: CAMBIA le classi, i valori e uno script del gioco stesso per TUTTI i giocatori finché è attiva, e non aggiunge civiltà. Tutto di «Oggetti in tutte le strutture» (oggetti nuovi in colonne, obelischi, pozzo, forziere…; più capacità in villaggi, forti e carri) e inoltre i forti neutrali: tutti hanno fino a 4 tipi di unità di livello 8 (fino al 24), con forza e risorse pari, e anche il forte egizio dell'oro è difeso. Gli accampamenti teutoni non cambiano. Non si può usare insieme a «Oggetti in tutte le strutture» (cambiano le stesse classi)."
+  },
+  "category": "Gameplay & Balance",
+  "tags": ["Type: Units & Heroes"],
+  "redistributable": true,
+  "sources": {"page": "https://imperivmeditor.forumcommunity.net/?t=59793555"}
+}

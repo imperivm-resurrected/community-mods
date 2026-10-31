@@ -19,6 +19,9 @@ ported/greek-mod-terrains/
 ported/imperivm-legacy/
 ported/mediterranevm-alpha/
 
+# Balanced Factions 2.6 (eight clones, 500 files): rebuilt by `G=... node tools/nuclear-fazioni-equilibrate.js` from the forum rar + extras/nuclear-fazioni-equilibrate/
+ported/nuclear-fazioni-equilibrate/
+
 # Celtic Kings Adventure (row 202): the music is third-party (30 MB); rebuilt by tools/celtic-kings-adventure.js from the ModDB zips + extras/celtic-kings-adventure/
 ported/celtic-kings-adventure/music/
 

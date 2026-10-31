@@ -54,6 +54,14 @@ Las letras y los índices son únicos en todos los ports (el SDK admite índices
 | (motor) | `miberia` | `Mib` (derivado) | Iberia | Mediterranevm (alpha) | `tools/mediterranevm-alpha.js` |
 | (motor) | `megypt` | `Meg` (derivado) | Egypt | Mediterranevm (alpha) | `tools/mediterranevm-alpha.js` |
 | (motor) | `mgermany` | `Mge` (derivado) | Germany | Mediterranevm (alpha) | `tools/mediterranevm-alpha.js` |
+| (motor) | `ngaul` | `Nga` (derivado) | Gaul | Balanced Factions 2.6 | `tools/nuclear-fazioni-equilibrate.js` |
+| (motor) | `nrome` | `Nro` (derivado) | RepublicanRome | Balanced Factions 2.6 | `tools/nuclear-fazioni-equilibrate.js` |
+| (motor) | `nimperial` | `Nim` (derivado) | ImperialRome | Balanced Factions 2.6 | `tools/nuclear-fazioni-equilibrate.js` |
+| (motor) | `ncarthage` | `Nca` (derivado) | Carthage | Balanced Factions 2.6 | `tools/nuclear-fazioni-equilibrate.js` |
+| (motor) | `nbritain` | `Nbr` (derivado) | Britain | Balanced Factions 2.6 | `tools/nuclear-fazioni-equilibrate.js` |
+| (motor) | `niberia` | `Nib` (derivado) | Iberia | Balanced Factions 2.6 | `tools/nuclear-fazioni-equilibrate.js` |
+| (motor) | `negypt` | `Neg` (derivado) | Egypt | Balanced Factions 2.6 | `tools/nuclear-fazioni-equilibrate.js` |
+| (motor) | `ngermany` | `Nge` (derivado) | Germany | Balanced Factions 2.6 | `tools/nuclear-fazioni-equilibrate.js` |
 
 Una civilización sin `letter` (prefijo derivado: las 3 primeras letras del `id`, imperivm-resurrected#37) ni `index` (lo asigna el motor) no reserva nada en esta tabla; sus filas dicen `(motor)` y están para detectar choques. **Dos ports no pueden estar activos a la vez si comparten un prefijo derivado: el motor ignora la segunda civilización.** Ahora mismo chocan GBR Tactics y La Reconquista 2010 en `Gau`, `Bri`, `Car`, `Egy`, `Ger`, `Ibe` e `Imp`.
 

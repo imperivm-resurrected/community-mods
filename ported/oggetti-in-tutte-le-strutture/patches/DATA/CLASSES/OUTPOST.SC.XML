@@ -1,0 +1,3 @@
+<patch>
+  <set select="/class/properties[@is_central_building]" settlement_maxfood="100000" settlement_maxgold="100000"/>
+</patch>
