@@ -62,6 +62,14 @@ Letters and indices are unique across all the ports (the SDK allows indices 10-9
 | (engine) | `niberia` | `Nib` (derived) | Iberia | Balanced Factions 2.6 | `tools/nuclear-fazioni-equilibrate.js` |
 | (engine) | `negypt` | `Neg` (derived) | Egypt | Balanced Factions 2.6 | `tools/nuclear-fazioni-equilibrate.js` |
 | (engine) | `ngermany` | `Nge` (derived) | Germany | Balanced Factions 2.6 | `tools/nuclear-fazioni-equilibrate.js` |
+| (engine) | `agaul` | `Aga` (derived) | Gaul | AsvrMod VII | `tools/asvrmod-vii.js` |
+| (engine) | `arome` | `Aro` (derived) | RepublicanRome | AsvrMod VII | `tools/asvrmod-vii.js` |
+| (engine) | `aimperial` | `Aim` (derived) | ImperialRome | AsvrMod VII | `tools/asvrmod-vii.js` |
+| (engine) | `acarthage` | `Aca` (derived) | Carthage | AsvrMod VII | `tools/asvrmod-vii.js` |
+| (engine) | `abritain` | `Abr` (derived) | Britain | AsvrMod VII | `tools/asvrmod-vii.js` |
+| (engine) | `aiberia` | `Aib` (derived) | Iberia | AsvrMod VII | `tools/asvrmod-vii.js` |
+| (engine) | `aegypt` | `Aeg` (derived) | Egypt | AsvrMod VII | `tools/asvrmod-vii.js` |
+| (engine) | `agermany` | `Age` (derived) | Germany | AsvrMod VII | `tools/asvrmod-vii.js` |
 
 A civilization with no `letter` (derived prefix: the first three letters of the `id`, imperivm-resurrected#37) and no `index` (the engine assigns it) reserves nothing in this table; its rows say `(engine)` and are here to spot clashes. **Two ports cannot be active together if they share a derived prefix: the engine ignores the second civilization.** Today GBR Tactics and La Reconquista 2010 clash on `Gau`, `Bri`, `Car`, `Egy`, `Ger`, `Ibe` and `Imp`.
 
