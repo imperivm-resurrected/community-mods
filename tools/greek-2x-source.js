@@ -8,7 +8,8 @@
 //   work/greek-<v>-flat/   the same, without the files byte-identical to Imperivm Legacy's (2.5.3 and 2.6.1: extras/<id>/legacy-left-out.txt)
 // The executables, DLLs, the launcher and the installer's uninstaller are left out by flatten-paks.js: a mod cannot ship them (NOTES.md says what they did).
 const fs = require("fs"), path = require("path"), cp = require("child_process");
-const { ROOT, WORK, VERSIONS } = require("./lib/greek-2x-versions.js");
+const { ROOT, WORK, VERSIONS, SDK } = require("./lib/greek-2x-versions.js");
+process.env.SDK = SDK;                                      // flatten-paks.js and the SDK tools read it
 const VER = process.argv[2], V = VERSIONS[VER];
 if (!V) { console.error("usage: node tools/greek-2x-source.js <" + Object.keys(VERSIONS).join("|") + ">"); process.exit(1); }
 const run = (cmd, args, opt = {}) => { const r = cp.spawnSync(cmd, args, { stdio: "inherit", ...opt }); if (r.status) { console.error(`${cmd} ${args.join(" ")} failed (${r.status})`); process.exit(1); } };
@@ -53,7 +54,7 @@ run("cp", ["-al", RAW, FLAT]);                                                  
 // 2b. the voices of each language pack: flatten-paks.js merges only Local\spanish.pak, so the English and Italian recordings (other takes, 44.1 kHz 16 bit against
 // the Spanish pack's 22 kHz 8 bit) never reached the port. work/<v>-lang/<language>/CURRENTLANG/VOICES is what greek-2x.js reads (czech.pak is not a language of the game).
 {
-  const LANG = path.join(WORK, `${V.work}-lang`), SDK = process.env.SDK || path.join(__dirname, "..", "..", "imperivm-resurrected", "sdk");
+  const LANG = path.join(WORK, `${V.work}-lang`);
   fs.rmSync(LANG, { recursive: true, force: true });
   const local = fs.readdirSync(GAME).find(f => /^local$/i.test(f));
   for (const pak of local ? fs.readdirSync(path.join(GAME, local)).filter(f => /^(english|spanish|italian)\.pak$/i.test(f)) : []) {

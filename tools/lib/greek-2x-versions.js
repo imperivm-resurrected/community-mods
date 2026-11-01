@@ -10,6 +10,16 @@
 // Nothing is written under originals/: everything goes to work/ (git-ignored).
 const path = require("path");
 const ROOT = path.join(__dirname, "..", "..");
+// Where the files this build needs but the branch does not carry are. ROOT is the worktree the tool runs in, which may sit anywhere (next to the main checkout, or under
+// its .wt/), so nothing is looked up as ROOT/../<sibling>: the MAIN checkout (the parent of the git common dir) is asked too. Found out by a clean worktree under
+// community-mods/.wt/ that built the 2.3 WITHOUT Imperivm Legacy's names (176 files different): ROOT/../community-mods/ported/imperivm-legacy does not exist there.
+const fs = require("fs"), cp = require("child_process");
+const MAIN = (() => { try { return path.dirname(path.resolve(ROOT, cp.execFileSync("git", ["rev-parse", "--git-common-dir"], { cwd: ROOT, encoding: "utf8", stdio: ["ignore", "pipe", "ignore"] }).trim())); } catch { return ROOT; } })();
+const firstThere = list => list.find(p => p && fs.existsSync(p));
+// the SDK of imperivm-resurrected (env SDK overrides): the repository next to the main checkout
+const SDK = process.env.SDK || firstThere([path.join(ROOT, "..", "imperivm-resurrected", "sdk"), path.join(MAIN, "..", "imperivm-resurrected", "sdk")]) || path.join(ROOT, "..", "imperivm-resurrected", "sdk");
+// the folder of the ports that the branch does not carry (git-ignored there): Imperivm Legacy, whose names every build compares with (env LEGACY_PORTED overrides)
+const LEGACY_PORTED = [process.env.LEGACY_PORTED, path.join(MAIN, "ported"), path.join(ROOT, "..", "community-mods", "ported")].filter(Boolean);
 // The conflicts of git merge-file (HD, the 1.40 the mod started from, the mod) that tools/port-140.js settled with the mod's side and that cannot stay so,
 // decided by hand, in order: "cur" = HD's side, "oth" = the mod's, a string, or a function (cur, oth) -> text. Only scripts (the XML files keep port-140.js's
 // attribute by attribute merge). An undecided conflict, or a decision with no conflict, stops tools/greek-2x.js.
@@ -39,7 +49,7 @@ const letters = pre => Object.fromEntries(SUFFIXES.map(s => [s, pre + CODES[s]])
 // the line, oldest first: a version is built against the ports of the versions before it only, so that a later one never changes an earlier one
 const LINE = ["greek-mod-2-3", "greek-mod-2-5-3", "greek-mod-2-6-1", "mediterranevm-3-6"];
 module.exports = {
-  ROOT,
+  ROOT, MAIN, SDK, LEGACY_PORTED,
   LINE,
   WORK: process.env.WORK || path.join(ROOT, "work"),
   VERSIONS: {

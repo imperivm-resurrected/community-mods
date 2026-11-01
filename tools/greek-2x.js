@@ -12,7 +12,8 @@
 //   3. the Roman branches are three civilizations (Republican, Imperial, Punic), the game's other civilizations one each (tools/lib/clone-civs.js)
 //   4. AI, scripts, conquests and names that collide with another port: tools/lib/{greek-ai,own-ai,own-scripts,independent,conquests,ported-patch}.js
 const fs = require("fs"), path = require("path"), cp = require("child_process"), os = require("os");
-const { ROOT, WORK, VERSIONS, LINE } = require("./lib/greek-2x-versions.js");
+const { ROOT, WORK, VERSIONS, LINE, SDK, LEGACY_PORTED } = require("./lib/greek-2x-versions.js");
+process.env.SDK = SDK;                                      // the shared tools (clone-civs.js, port-140.js, flatten-paks.js) read it
 const VER = process.argv[2], V = VERSIONS[VER];
 if (!V) { console.error("usage: node tools/greek-2x.js <" + Object.keys(VERSIONS).join("|") + "> [civ id ...]"); process.exit(1); }
 const want = process.argv.slice(3);
@@ -20,6 +21,14 @@ const OUT = path.join(ROOT, "ported", V.dir), EXTRAS = path.join(ROOT, "extras",
 const FLAT = path.join(WORK, `${V.work}-flat`), FULL = path.join(WORK, `${V.work}-full`, V.inner || ""), MERGED = path.join(WORK, `${V.work}-merged`);
 const HD = path.join(ROOT, "originals", "game-data", "paks"), G = path.join(ROOT, "originals", "game-data");
 const PORTED = path.join(ROOT, "ported");
+// Imperivm Legacy (and Imperivm I's): the names this port shares with it are renamed like those it shares with the other ports. It is git-ignored in the main checkout, so it is
+// looked up there (LEGACY_PORTED, tools/lib/greek-2x-versions.js). Without it the build would rename LESS and be different from a build that has it, so it stops.
+const EXTRA_PORTS = [];
+for (const d of ["imperivm-legacy", "imperivm1-legacy"]) {
+  if (fs.existsSync(path.join(PORTED, d))) continue;               // it is one of the ports of this worktree: `others` has it
+  const p = LEGACY_PORTED.map(b => path.join(b, d)).find(x => fs.existsSync(x));
+  if (p) EXTRA_PORTS.push(p); else if (d === "imperivm-legacy" && !process.env.GREEK2X_NO_LEGACY) { console.error(`no ${d} in ${PORTED} or in ${LEGACY_PORTED.join(", ")}: the names that collide with Imperivm Legacy would NOT be renamed and the build would differ from one that has it. Build it there, set LEGACY_PORTED=<a ported/ folder that has it>, or GREEK2X_NO_LEGACY=1 to build without it on purpose.`); process.exit(1); }
+}
 const rd = f => fs.readFileSync(f, "latin1"), wr = (f, s) => { fs.mkdirSync(path.dirname(f), { recursive: true }); fs.rmSync(f, { force: true }); fs.writeFileSync(f, s, "latin1"); };
 const classOf = s => (s.match(/<class\b[^>]*?\bid\s*=\s*"([^"]+)"/) || [])[1];
 const walk = (d, base = d, out = []) => { if (!fs.existsSync(d)) return out; for (const e of fs.readdirSync(d, { withFileTypes: true })) { const p = path.join(d, e.name); if (e.isDirectory()) walk(p, base, out); else out.push(path.relative(base, p).replace(/\\/g, "/")); } return out; };
@@ -111,7 +120,7 @@ console.log(`${V.name}: ${[GREEK.id, ...CIVS.map(c => c.id)].map(i => `${i} (${p
   if (pak && fs.existsSync(HDL)) {
     const tmp = fs.mkdtempSync(path.join(os.tmpdir(), "it-")), g = path.join(tmp, "game");
     fs.mkdirSync(path.join(g, "Packs"), { recursive: true }); fs.copyFileSync(pak, path.join(g, "Packs", "italian.pak"));
-    const r = cp.spawnSync("node", [path.join(process.env.SDK || path.join(ROOT, "..", "imperivm-resurrected", "sdk"), "tools", "extract-data.js"), g, path.join(tmp, "out"), "italian.pak"], { encoding: "utf8" });
+    const r = cp.spawnSync("node", [path.join(SDK, "tools", "extract-data.js"), g, path.join(tmp, "out"), "italian.pak"], { encoding: "utf8" });
     if (r.status) { console.error(r.stderr || r.stdout); process.exit(1); }
     const decode = b => { const u = b.toString("utf8"); return u.includes("\ufffd") ? b.toString("latin1") : u; };
     const entries = f => { const m = new Map(); if (fs.existsSync(f)) for (const e of decode(fs.readFileSync(f)).matchAll(/<translationtableentry\b[^>]*?\/>/g)) {
@@ -605,7 +614,8 @@ fs.rmSync(path.join(OUT, "legacy-left-out.txt"), { force: true });
 // ---- 11. names another port (or the game's adventures) already has with other bytes: this port's are renamed ------------------------------------------------
 {
   const { tagCollisions, ownNames, tagNames } = require("./lib/ported-patch.js");
-  const extra = ["imperivm-legacy", "imperivm1-legacy"].map(d => path.join(ROOT, "..", "community-mods", "ported", d)).filter(d => fs.existsSync(d) && !fs.existsSync(path.join(PORTED, path.basename(d))));
+  const extra = EXTRA_PORTS;
+  console.log(`names compared with: ${others().filter(d => d !== G).length} ports of this worktree and ${extra.length ? extra.map(d => path.basename(d)).join(", ") + " from " + path.dirname(extra[0]) : "no Imperivm Legacy"}`);
   for (let pass = 1; pass <= 6; pass++) {
     const r = tagCollisions({ OUT, tag: V.tag, others: [...others().filter(d => d !== G), ...extra, G, path.join(G, "paks")].filter(fs.existsSync), mapLabel: V.label, skip: /^(currentlang|ui\/menu|data\/interface\/menu)\// });
     console.log(`own names (${V.tag}), pass ${pass}: ${r.classes.length} classes (${r.classes.slice(0, 6).join(", ")}...), ${r.folders.length} art folders, ${r.maps.length} maps, ${r.files.length} files${r.unlabeled.length ? "; names not written: " + r.unlabeled.slice(0, 4).join(" | ") : ""}`);
@@ -675,7 +685,7 @@ fs.rmSync(path.join(OUT, "legacy-left-out.txt"), { force: true });
 
 // ---- 11c. what the scripts name: patches applied to the game's scripts with the engine's algorithm, hero bases, classes, GetConst keys (tools/lib/greek-2x-checks.js) -------------
 {
-  const r = require("./lib/greek-2x-checks.js").checkScripts({ OUT, HD });
+  const r = require("./lib/greek-2x-checks.js").checkScripts({ OUT, HD, SDK });
   fs.writeFileSync(path.join(ROOT, "raw", `${V.dir}-script-checks.txt`), [...r.notes, "", `${r.errors.length} errors`, ...r.errors, "", `${r.warnings.length} warnings`, ...r.warnings].join("\n") + "\n");
   console.log(`script checks: ${r.notes[0]}; ${r.errors.length} errors, ${r.warnings.length} warnings (raw/${V.dir}-script-checks.txt)`);
   if (r.errors.length) { console.error("SCRIPT CHECKS FAILED:\n  " + r.errors.join("\n  ")); process.exitCode = 1; }
