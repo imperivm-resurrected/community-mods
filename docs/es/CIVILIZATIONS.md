@@ -70,6 +70,14 @@ Las letras y los índices son únicos en todos los ports (el SDK admite índices
 | (motor) | `aiberia` | `Aib` (derivado) | Iberia | AsvrMod VII | `tools/asvrmod-vii.js` |
 | (motor) | `aegypt` | `Aeg` (derivado) | Egypt | AsvrMod VII | `tools/asvrmod-vii.js` |
 | (motor) | `agermany` | `Age` (derivado) | Germany | AsvrMod VII | `tools/asvrmod-vii.js` |
+| (motor) | `fgaul` | `Fga` (derivado) | Gaul | Community Mod 12 | `tools/community-mod.js` |
+| (motor) | `frome` | `Fro` (derivado) | RepublicanRome | Community Mod 12 | `tools/community-mod.js` |
+| (motor) | `fimperial` | `Fim` (derivado) | ImperialRome | Community Mod 12 | `tools/community-mod.js` |
+| (motor) | `fcarthage` | `Fca` (derivado) | Carthage | Community Mod 12 | `tools/community-mod.js` |
+| (motor) | `fbritain` | `Fbr` (derivado) | Britain | Community Mod 12 | `tools/community-mod.js` |
+| (motor) | `fiberia` | `Fib` (derivado) | Iberia | Community Mod 12 | `tools/community-mod.js` |
+| (motor) | `fegypt` | `Feg` (derivado) | Egypt | Community Mod 12 | `tools/community-mod.js` |
+| (motor) | `fgermany` | `Fge` (derivado) | Germany | Community Mod 12 | `tools/community-mod.js` |
 
 Una civilización sin `letter` (prefijo derivado: las 3 primeras letras del `id`, imperivm-resurrected#37) ni `index` (lo asigna el motor) no reserva nada en esta tabla; sus filas dicen `(motor)` y están para detectar choques. **Dos ports no pueden estar activos a la vez si comparten un prefijo derivado: el motor ignora la segunda civilización.** Ahora mismo chocan GBR Tactics y La Reconquista 2010 en `Gau`, `Bri`, `Car`, `Egy`, `Ger`, `Ibe` e `Imp`.
 
