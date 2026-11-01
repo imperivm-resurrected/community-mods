@@ -1,0 +1,74 @@
+348 scripts, 16 hero bases, 277 class names and 109 GetConst keys checked
+
+0 errors
+
+69 warnings
+DATA/AI/GRW26_TS_ATTACKATWILL.VS: "BearUnit,BoarUnit,LionMUnit,LionFUnit" names no class of the port or the game (Place makes nothing, IsHeirOf is false)
+DATA/AI/GRW26_TS_ATTACKATWILL.VS: "UntamableHorse" names no class of the port or the game (Place makes nothing, IsHeirOf is false)
+DATA/AI/GRW26_TS_ATTACKATWILL.VS: "DeerUnit" names no class of the port or the game (Place makes nothing, IsHeirOf is false)
+DATA/AI/GRW26_TS_ATTACKATWILL.VS: "IOutpost,BOutpost" names no class of the port or the game (Place makes nothing, IsHeirOf is false)
+DATA/ITEMSCRIPTS/BCARNYX_w26.VS: "BSwordsman" is the game's class that W6brSwordsman replaces
+DATA/ITEMSCRIPTS/GCARNYX_w26.VS: "GSwordsman" is the game's class that W6gaSwordsman replaces
+DATA/ITEMSCRIPTS/TWARHORN_w26.VS: "TSwordsman" is the game's class that W6geSwordsman replaces
+DATA/SUBAI/BEAR_BOAR_IDLE_w26.VS: "Military,FakeTower" names no class of the port or the game (Place makes nothing, IsHeirOf is false)
+DATA/SUBAI/CTENT_BEHAVIOR_w26.VS: "CNumidianRider" is the game's class that W6caNumidianRider replaces
+DATA/SUBAI/GDRUID_ONDIE.VS: "BearSummoned" names no class of the port or the game (Place makes nothing, IsHeirOf is false)
+DATA/SUBAI/GDRUID_ONDIE.VS: "BoarSummoned" names no class of the port or the game (Place makes nothing, IsHeirOf is false)
+DATA/SUBAI/TBarracks_anim_w26.vs: "TBarrackHorse" names no class of the port or the game (Place makes nothing, IsHeirOf is false)
+DATA/SUBAI/TOWNHALL_BUILDINGSBEHAVIOR_B_w26.VS: "TTeutonWolf" is the game's class that W6geTeutonWolf replaces
+DATA/SUBAI/create_food_boat_big_w26.vs: "GShipyard3" is the game's class that W6gaShipyard3 replaces
+DATA/SUBAI/create_food_boat_big_w26.vs: "GShipyard4" is the game's class that W6gaShipyard4 replaces
+DATA/SUBAI/create_food_boat_small_w26.vs: "GShipyard3" is the game's class that W6gaShipyard3 replaces
+DATA/SUBAI/create_food_boat_small_w26.vs: "GShipyard4" is the game's class that W6gaShipyard4 replaces
+DATA/SUBAI/create_food_mule_big_w26.vs: "RomanShipyard" names no class of the port or the game (Place makes nothing, IsHeirOf is false)
+DATA/SUBAI/create_food_mule_big_w26.vs: "GaulShipyard" names no class of the port or the game (Place makes nothing, IsHeirOf is false)
+DATA/SUBAI/create_food_mule_small_w26.vs: "RomanShipyard" names no class of the port or the game (Place makes nothing, IsHeirOf is false)
+DATA/SUBAI/create_food_mule_small_w26.vs: "GaulShipyard" names no class of the port or the game (Place makes nothing, IsHeirOf is false)
+DATA/SUBAI/create_gold_boat_big_w26.vs: "GShipyard3" is the game's class that W6gaShipyard3 replaces
+DATA/SUBAI/create_gold_boat_big_w26.vs: "GShipyard4" is the game's class that W6gaShipyard4 replaces
+DATA/SUBAI/create_gold_boat_small_w26.vs: "GShipyard3" is the game's class that W6gaShipyard3 replaces
+DATA/SUBAI/create_gold_boat_small_w26.vs: "GShipyard4" is the game's class that W6gaShipyard4 replaces
+DATA/SUBAI/create_gold_mule_big_w26.vs: "RomanShipyard" names no class of the port or the game (Place makes nothing, IsHeirOf is false)
+DATA/SUBAI/create_gold_mule_big_w26.vs: "GaulShipyard" names no class of the port or the game (Place makes nothing, IsHeirOf is false)
+DATA/SUBAI/create_gold_mule_small_w26.vs: "RomanShipyard" names no class of the port or the game (Place makes nothing, IsHeirOf is false)
+DATA/SUBAI/create_gold_mule_small_w26.vs: "GaulShipyard" names no class of the port or the game (Place makes nothing, IsHeirOf is false)
+DATA/SUBAI/druid_ghoul_summoning_w26.vs: "GGhost" is the game's class that W6gaGhost replaces
+DATA/SUBAI/iberian_village_trainIScout_w26.vs: "IScout" is the game's class that W6ibScout replaces
+DATA/SUBAI/iberian_village_trainIScout_w26.vs: "BHorseman" names no class of the port or the game (Place makes nothing, IsHeirOf is false)
+DATA/SUBAI/iberian_village_trainIScout_w26_w6iberia.vs: "BHorseman" names no class of the port or the game (Place makes nothing, IsHeirOf is false)
+DATA/SUBAI/itavern_calltoarms_w26.vs: "IMilitiaman" is the game's class that W6ibMilitiaman replaces
+DATA/SUBAI/military_ondie_w26.vs: "IMountaineer" is the game's class that W6ibMountaineer replaces
+DATA/SUBAI/military_ondie_w26.vs: "RLiberatus" is the game's class that W6imLiberatus, W6puLiberatus, W6roLiberatus replaces
+DATA/SUBAI/military_ondie_w26.vs: "TValkyrie" is the game's class that W6geValkyrie replaces
+DATA/SUBAI/military_ondie_w26.vs: "GTridentWarrior" is the game's class that W6gaTridentWarrior replaces
+DATA/SUBAI/military_ondie_w26_w6gaul.vs: "IMountaineer" is the game's class that W6ibMountaineer replaces
+DATA/SUBAI/military_ondie_w26_w6gaul.vs: "RLiberatus" is the game's class that W6imLiberatus, W6puLiberatus, W6roLiberatus replaces
+DATA/SUBAI/military_ondie_w26_w6gaul.vs: "TValkyrie" is the game's class that W6geValkyrie replaces
+DATA/SUBAI/military_ondie_w26_w6germany.vs: "IMountaineer" is the game's class that W6ibMountaineer replaces
+DATA/SUBAI/military_ondie_w26_w6germany.vs: "RLiberatus" is the game's class that W6imLiberatus, W6puLiberatus, W6roLiberatus replaces
+DATA/SUBAI/military_ondie_w26_w6germany.vs: "GTridentWarrior" is the game's class that W6gaTridentWarrior replaces
+DATA/SUBAI/military_ondie_w26_w6iberia.vs: "RLiberatus" is the game's class that W6imLiberatus, W6puLiberatus, W6roLiberatus replaces
+DATA/SUBAI/military_ondie_w26_w6iberia.vs: "TValkyrie" is the game's class that W6geValkyrie replaces
+DATA/SUBAI/military_ondie_w26_w6iberia.vs: "GTridentWarrior" is the game's class that W6gaTridentWarrior replaces
+DATA/SUBAI/military_ondie_w26_w6imperial.vs: "IMountaineer" is the game's class that W6ibMountaineer replaces
+DATA/SUBAI/military_ondie_w26_w6imperial.vs: "TValkyrie" is the game's class that W6geValkyrie replaces
+DATA/SUBAI/military_ondie_w26_w6imperial.vs: "GTridentWarrior" is the game's class that W6gaTridentWarrior replaces
+DATA/SUBAI/military_ondie_w26_w6punic.vs: "IMountaineer" is the game's class that W6ibMountaineer replaces
+DATA/SUBAI/military_ondie_w26_w6punic.vs: "TValkyrie" is the game's class that W6geValkyrie replaces
+DATA/SUBAI/military_ondie_w26_w6punic.vs: "GTridentWarrior" is the game's class that W6gaTridentWarrior replaces
+DATA/SUBAI/military_ondie_w26_w6rome.vs: "IMountaineer" is the game's class that W6ibMountaineer replaces
+DATA/SUBAI/military_ondie_w26_w6rome.vs: "TValkyrie" is the game's class that W6geValkyrie replaces
+DATA/SUBAI/military_ondie_w26_w6rome.vs: "GTridentWarrior" is the game's class that W6gaTridentWarrior replaces
+DATA/SUBAI/onfinish_research_w26.vs: "IEnchantress" is the game's class that W6ibEnchantress replaces
+DATA/SUBAI/onfinish_research_w26_w6britain.vs: "IEnchantress" is the game's class that W6ibEnchantress replaces
+DATA/SUBAI/onfinish_research_w26_w6carthage.vs: "IEnchantress" is the game's class that W6ibEnchantress replaces
+DATA/SUBAI/onfinish_research_w26_w6egypt.vs: "IEnchantress" is the game's class that W6ibEnchantress replaces
+DATA/SUBAI/onfinish_research_w26_w6gaul.vs: "IEnchantress" is the game's class that W6ibEnchantress replaces
+DATA/SUBAI/onfinish_research_w26_w6imperial.vs: "IEnchantress" is the game's class that W6ibEnchantress replaces
+DATA/SUBAI/onfinish_research_w26_w6punic.vs: "IEnchantress" is the game's class that W6ibEnchantress replaces
+DATA/SUBAI/onfinish_research_w26_w6rome.vs: "IEnchantress" is the game's class that W6ibEnchantress replaces
+DATA/SUBAI/teuton_archer_mutate_gv_w26.vs: "TTeutonArcher" is the game's class that W6geTeutonArcher replaces
+DATA/SUBAI/teuton_rider_mutate_gv_w26.vs: "TTeutonRider" is the game's class that W6geTeutonRider replaces
+patches/DATA/AI/EVALRECRUIT.VS: "GTridentWarrior" is the game's class that W6gaTridentWarrior replaces
+patches/DATA/AI/EVALRECRUIT.VS: "BVikingLord" is the game's class that W6brVikingLord replaces
+patches/DATA/AI/EVALRECRUIT.VS: "CWarElephant" is the game's class that W6caWarElephant replaces

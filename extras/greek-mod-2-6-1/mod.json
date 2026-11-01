@@ -1,0 +1,20 @@
+{
+  "id": "greek-mod-2-6-1",
+  "name": "Greek Mod 2.6.1",
+  "version": "2.6.1",
+  "authors": [
+    "GreekModTeam",
+    "MediterranevmTeam",
+    "Rattlesmake",
+    "Villoh (port)"
+  ],
+  "description": {
+    "english": "Greece as a civilization of its own and the game's civilizations as the Greek Mod 2.6.1 changed them (Republican, Imperial and Punic Rome, Gauls, Carthaginians, Britons, Iberians, Egyptians and Germans), each next to the originals: it changes none of the game's. Rattlesmake's Greek Mod continued by the Mediterranevm team. Credits: Axaros, TheForce, Madara, Becchino, Consul123, Taiga, Nicoghiro31 (ideas); Paulus, Axaros, Camarada, Taiga, IL_PRINS, Nicoghiro31, Consul123, Vjenko (programming); Nicoghiro31 and Gargolus (assets). The 55 files of this version that are byte-identical to Imperivm Legacy 2.4.1 (Nicoghiro31) are not included.",
+    "spanish": "Grecia como civilización propia y las civilizaciones del juego con los cambios del Greek Mod 2.6.1 (Roma republicana, imperial y púnica, galos, cartagineses, britanos, iberos, egipcios y germanos), cada una junto a las originales: no modifica ninguna del juego. El Greek Mod de Rattlesmake continuado por el equipo de Mediterranevm. Créditos: Axaros, TheForce, Madara, Becchino, Consul123, Taiga, Nicoghiro31 (ideas); Paulus, Axaros, Camarada, Taiga, IL_PRINS, Nicoghiro31, Consul123, Vjenko (programación); Nicoghiro31 y Gargolus (recursos). No incluye los 55 ficheros de esta versión idénticos byte a byte a los de Imperivm Legacy 2.4.1 (Nicoghiro31)."
+  },
+  "category": "Civilizations",
+  "redistributable": false,
+  "sources": {
+    "page": "https://t.me/imperivmgreekmod"
+  }
+}
