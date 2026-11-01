@@ -44,7 +44,7 @@ Measured on the flattened folders (`work/greek-2-3-flat` against `originals/gree
 - **Neutral content** (nobody's, shipped as is, renamed `_w23` because the alpha, the 4.2 and Imperivm Legacy have the same ids): the Numidian tent and its horsemen (`CTent`, `CHorseman`, `CCamelRider`), the Greek garrison post `HOutpost`, the fisherman, `Crixus`, `Gannicus`, `GOathsworn`... their voices (`Voices/CHORSEMAN_w23`, `FISHERMAN_w23`) 14 classes, 14 art folders and 170 other files in all (`tagCollisions`, tag `w23`; list in the log of the build).
 - **Voices per language**: the mod's 11 voice folders (Greece's units, the fisherman and the Numidian horseman) come from each language pack of the download: `currentlang/voices` (every language) has the English pack's takes (44.1 kHz 16 bit; the Spanish pack's are 22 kHz 8 bit, other takes), `local/spanish/voices` and `local/italian/voices` their own pack's. The English pack has no recording of the Greek villagers: `currentlang/voices/WGRVILLAGER` keeps the Spanish pack's for everybody. Until 2026-10-30 the port had only the Spanish pack's, for every language (`tools/flatten-paks.js` reads `spanish.pak` only); not heard in game, only compared as files. `czech.pak` is not a language of the game and is left out.
 - **Italian and Spanish texts**: `loc/italian.loc.xml` (314 entries) and `loc/spanish.loc.xml` (339), without what changes the game's own texts for everybody (7 Spanish and 25 Italian entries, 13 kept for the clones' commands).
-- **Menu skin** (`CURRENTLANG/*`, `DATA/INTERFACE/MENU` as patches of the keys it changed): kept, cosmetic.
+- **Menu skin** (`CURRENTLANG/*`, `UI/MENU/*.BMP` whole, `DATA/INTERFACE/MENU` as patches of the keys it changed): kept, cosmetic. **The 24 `UI/MENU/*.BMP` (the skin's buttons, frames, arrows and scroll bars: 1,256 to 144,152 bytes) were dropped by the first builds** (the keep filter in `tools/greek-2x.js` had no `i` flag and the mod's folders are upper case); fixed, they are in the port now. Not tried in game. `DATA/INTERFACE/EDITOR/MAPPLACE.INI` and `VIEWCONQUESTMAP.INI` stay out, with their reason in `raw/greek-mod-2-3-left-out.txt`: the editor's own INIs with other bytes than the game's, global, not the menu skin.
 - **Music**: the tracks of the mod that are not the game's.
 
 ## What the original did through its `.exe` and DLLs (not shipped: a mod carries data only)
@@ -81,7 +81,7 @@ mediterranevm-alpha: 1 files in the same path with other bytes, 10 identical, 0 
 6 collisions
 \`\`\`
 
-Only the menu skin (`currentlang/menubackground.bmp`, `logo.bmp`, `menu_16_9.bmp`): cosmetic, the content manager lets the player choose (as already among the Greek mods). Not checked against Imperivm Legacy (it is not in this worktree's `ported/`): the names that collide with it were renamed (`tagCollisions` also compares with the main checkout's `ported/imperivm-legacy`).
+Only the menu skin (`currentlang/menubackground.bmp`, `logo.bmp`, `menu_16_9.bmp`; and the 24 `UI/MENU/*.BMP`, which replace the game's at the game's paths and are shipped by no other port: `shared-paths.js` lists them only against HD): cosmetic, the content manager lets the player choose (as already among the Greek mods). Not checked against Imperivm Legacy (it is not in this worktree's `ported/`): the names that collide with it were renamed (`tagCollisions` also compares with the main checkout's `ported/imperivm-legacy`).
 
 ## Pictures, sounds and references (checked offline)
 
