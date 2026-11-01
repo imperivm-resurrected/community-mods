@@ -408,6 +408,19 @@ const ALL = [CONST, ...CIVS.map(c => c.id[0].toUpperCase() + c.id.slice(1))], NO
     wr(ini, rd(ini).split(/\r?\n/).filter(l => !new RegExp(`${V.ai}${n}\\b`).test(l)).join("\r\n"));
     report.push(`AI ${n}: the mod's edit is not ported (the game picks its group strategy by name)`);
   }
+  // 6b. a call to a script of the port's own AI that the port does not ship: the game answers "No matching function" / the script is not found and the AI player stops
+  // (found by tools/lib/greek-2x-names.js in the 2.3: the Greek tactic ran GRW23_TS_AttackAtWill.vs, a copy the 2.3 never had; the renaming of the tactics wrote the prefix
+  // into the call anyway). It is the game's own script then.
+  {
+    const AIDIR = find(OUT, "DATA/AI"), HDAI = find(HD, "DATA/AI"), esc = x => x.replace(/[.*+?^${}()|[\]\\]/g, "\\$&"), pre = esc(V.ai), notes = [];
+    const ci = (d, n) => fs.readdirSync(d).find(x => x.toLowerCase() === n.toLowerCase()), inPort = n => !!ci(AIDIR, n), inHD = n => !!ci(HDAI, n);
+    for (const f of fs.readdirSync(AIDIR).filter(x => x.toLowerCase().startsWith(V.ai.toLowerCase()) && /\.vs$/i.test(x))) {
+      const p = path.join(AIDIR, f), s = rd(p);
+      const t = s.replace(new RegExp(`(["'])${pre}([\\w ]+)\\.vs\\1`, "gi"), (m, q, n) => { if (inPort(`${V.ai}${n}.vs`) || !inHD(`${n}.vs`)) return m; notes.push(`${f}: ${V.ai}${n}.vs -> ${n}.vs (the game's)`); return `${q}${n}.vs${q}`; });
+      if (t !== s) wr(p, t);
+    }
+    console.log(`AI names: ${notes.length} put right${notes.length ? "\n  " + notes.join("\n  ") : ""}`);
+  }
   fs.rmSync(SRC, { recursive: true, force: true });
 }
 console.log(`menu skin: ${require("./lib/menu-skin.js").skinToPatches({ OUT, HD })} layout files became patches of the keys they changed`);
