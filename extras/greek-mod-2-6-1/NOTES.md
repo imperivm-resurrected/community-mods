@@ -28,6 +28,8 @@ node tools/greek-2x.js 2.6.1
 
 `work/` is git-ignored. Same hash twice (checked). Reports: `raw/greek-mod-2-6-1-{left-out,own-scripts,global,whole-scripts,script-checks}` and `raw/port-140/greek-mod-2-6-1.md`.
 
+**What has to be there to get the same bytes** (the build renames what it shares with another port, `_w26`, so the result depends on the ports it sees): the ports the branch tracks; `ported/cgwar`, `ported/greek-civilization-mod`, `ported/greek-mod-1-8` and `ported/mediterranevm-alpha` (git-ignored: build them or link the main checkout's); **`ported/greek-mod-2-3` and `ported/greek-mod-2-5-3`, built by `tools/greek-2x.js` of the layers below**; and Imperivm Legacy, `ported/imperivm-legacy`, which the tool looks for in the main checkout (or `LEGACY_PORTED=<ported/ folder>`) and **stops without** (`GREEK2X_NO_LEGACY=1` builds without it on purpose). The SDK is the one next to the main checkout (`SDK=` overrides). Details in `extras/greek-mod-2-3/NOTES.md`.
+
 ## What the mod changed (against the 2.5.3)
 
 Measured by MD5 on the unpacked folders: 86 new files, 297 changed, 10 removed. No conquests (as in the 2.5.3). Greece's random-map towns and villages are named **"Imperial Roman Town N" / "Imperial Roman Village N"** in this version's `RandomMapSettlements.bfhp` (the patched `gbr.exe` gave slot 4 the names of Imperial Rome again), with Greek classes inside: `tools/greek-2x.js` finds them by their classes, as it finds the 2.3's and the 2.5.3's "Greek Town N" (7 templates; before this fix the build wrote none and Greece had no city on a random map).
