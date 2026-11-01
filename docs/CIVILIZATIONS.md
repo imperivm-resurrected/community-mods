@@ -70,6 +70,14 @@ Letters and indices are unique across all the ports (the SDK allows indices 10-9
 | (engine) | `aiberia` | `Aib` (derived) | Iberia | AsvrMod VII | `tools/asvrmod-vii.js` |
 | (engine) | `aegypt` | `Aeg` (derived) | Egypt | AsvrMod VII | `tools/asvrmod-vii.js` |
 | (engine) | `agermany` | `Age` (derived) | Germany | AsvrMod VII | `tools/asvrmod-vii.js` |
+| (engine) | `fgaul` | `Fga` (derived) | Gaul | Community Mod 12 | `tools/community-mod.js` |
+| (engine) | `frome` | `Fro` (derived) | RepublicanRome | Community Mod 12 | `tools/community-mod.js` |
+| (engine) | `fimperial` | `Fim` (derived) | ImperialRome | Community Mod 12 | `tools/community-mod.js` |
+| (engine) | `fcarthage` | `Fca` (derived) | Carthage | Community Mod 12 | `tools/community-mod.js` |
+| (engine) | `fbritain` | `Fbr` (derived) | Britain | Community Mod 12 | `tools/community-mod.js` |
+| (engine) | `fiberia` | `Fib` (derived) | Iberia | Community Mod 12 | `tools/community-mod.js` |
+| (engine) | `fegypt` | `Feg` (derived) | Egypt | Community Mod 12 | `tools/community-mod.js` |
+| (engine) | `fgermany` | `Fge` (derived) | Germany | Community Mod 12 | `tools/community-mod.js` |
 
 A civilization with no `letter` (derived prefix: the first three letters of the `id`, imperivm-resurrected#37) and no `index` (the engine assigns it) reserves nothing in this table; its rows say `(engine)` and are here to spot clashes. **Two ports cannot be active together if they share a derived prefix: the engine ignores the second civilization.** Today GBR Tactics and La Reconquista 2010 clash on `Gau`, `Bri`, `Car`, `Egy`, `Ger`, `Ibe` and `Imp`.
 
