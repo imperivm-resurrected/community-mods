@@ -1,0 +1,13 @@
+# values of the game's own CONST.INI keys the mod changes (global: not ported)
+GamePlay / DiseaseCost: game 3 -> mod 10
+GamePlay / StonehengeBloodlustTime: game 60000 -> mod 30000
+GamePlay / LoyaltyRadiusTownhall: game 850 -> mod 100
+GamePlay / LoyaltyRadius: game 1000 -> mod 300
+PlayerColors / id2: game 255, 255, 0 -> mod 255, 244, 79
+PlayerColors / id5: game 237, 160, 255 -> mod 240, 190, 214
+PlayerColors / id4: game 0, 232, 232 -> mod 135, 206, 235
+PlayerColors / id3: game 0, 255, 0 -> mod 102, 255, 0
+PlayerColors / id11: game 196, 13, 198 -> mod 173, 10, 253
+PlayerColors / id7: game 174, 0, 0 -> mod 145, 11, 36
+PlayerColors / id10: game 0, 0, 248 -> mod 65, 105, 225
+PlayerColors / id8: game 249, 155, 32 -> mod 255, 164, 55
