@@ -13,7 +13,7 @@ if (!.IsStonehengeControlable()) {
 	reasonText = rollover(this,true) + "<color 255 0 0>\n" + Translate("Stonehenge isn't under your control");
 	return false;
 }
-if (.stamina < GetCmdStaminaCost("show")) {
+if (.stamina < GetCmdStaminaCost("show (rules)")) {
 	reasonText = rollover(this,true) + "<color 255 0 0>\n" + Translate("Stonehenge is insufficiently charged");
 	return false;
 }

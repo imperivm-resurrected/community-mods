@@ -20,6 +20,9 @@ const fs = require("fs"), path = require("path"), os = require("os"), cp = requi
 const { xmlAdded, iniChanged } = require("./lib/ported-patch.js");
 const { applyPatch } = require("./lib/script-checks.js");
 const ROOT = path.join(__dirname, "..");
+// the SDK of imperivm-resurrected (env SDK overrides): next to this tree or next to the MAIN checkout (the parent of the git common dir); port-140.js reads it from the environment. The same bytes wherever the tool runs.
+const MAIN = (() => { try { return path.dirname(path.resolve(ROOT, cp.execFileSync("git", ["rev-parse", "--git-common-dir"], { cwd: ROOT, encoding: "utf8", stdio: ["ignore", "pipe", "ignore"] }).trim())); } catch { return ROOT; } })();
+process.env.SDK = process.env.SDK || [path.join(ROOT, "..", "imperivm-resurrected", "sdk"), path.join(MAIN, "..", "imperivm-resurrected", "sdk")].find(p => fs.existsSync(p)) || path.join(ROOT, "..", "imperivm-resurrected", "sdk");
 const ID = "secuter-fun-mod-rules", T = "s", OUT = path.join(ROOT, "ported", ID), EXTRAS = path.join(ROOT, "extras", ID);
 const ZIP = path.join(ROOT, "originals", "forum", "fun-mod-civilta-personalizzate-2017", "files", "Secuter Mod Imperium.zip");
 const HD = path.join(ROOT, "originals", "game-data", "paks", "DATA"), GAME = process.env.G;
@@ -30,6 +33,7 @@ const rd = f => fs.readFileSync(f, "latin1"), wr = (f, s) => { fs.mkdirSync(path
 const wrU = (f, s) => { fs.mkdirSync(path.dirname(f), { recursive: true }); fs.rmSync(f, { force: true }); fs.writeFileSync(f, s, "utf8"); };   // accents in comments: the validator wants UTF-8
 const ci = (d, n) => { const x = fs.existsSync(d) && fs.readdirSync(d).find(f => f.toLowerCase() === n.toLowerCase()); return x && path.join(d, x); };
 const classOf = s => (s.match(/<class\b[^>]*?\bid\s*=\s*"([^"]+)"/) || [])[1];
+const walk = (d, base = d, out = []) => { if (!fs.existsSync(d)) return out; for (const e of fs.readdirSync(d, { withFileTypes: true })) { const p = path.join(d, e.name); if (e.isDirectory()) walk(p, base, out); else out.push(path.relative(base, p).replace(/\\/g, "/")); } return out; };
 const report = [];
 
 // 0. the mod, merged with HD (the same steps as tools/secuter-fun-mod.js plain)
@@ -116,6 +120,15 @@ const ids = new Map();
 {
   const x = xmlAdded(rd(ci(HD, "ITEMS.XML")), rd(ci(path.join(M, "DATA"), "ITEMS.XML")), "items", report, "ITEMS.XML");
   let xml = x.xml;
+  // An item nothing in the plain version places or gives is dead weight: the four Greek items the plain zip carries from the 1.8 (Emblem of Democracy / Oligarchy, Charm of Athena / Aegle: the
+  // government forms and researches that give them are Greece's, not here) and whose pictures exist nowhere. An item stays if its id is named in a class, a script, a command or an INI of the mod.
+  {
+    const text = walk(path.join(M, "DATA")).filter(f => /\.(xml|vs|ini)$/i.test(f) && !/^ITEMS\.XML$/i.test(f)).map(f => rd(path.join(M, "DATA", f))).join("\n");
+    const dead = [];
+    xml = xml.replace(/[ \t]*<item\b[\s\S]*?<\/item>[ \t]*\r?\n?/g, blk => { const id = (blk.match(/<item\b[^>]*?\bid\s*=\s*"([^"]+)"/) || [])[1]; if (text.includes(`"${id}"`) || text.includes(`'${id}'`)) return blk; dead.push(id); return ""; });
+    x.count -= dead.length;
+    if (dead.length) report.push(`items nothing in the mod places or gives, not shipped: ${dead.join(", ")}`);
+  }
   for (const m of xml.matchAll(/<item\b[^>]*?\bid\s*=\s*"([^"]+)"/g)) ids.set(m[1], T + m[1]);
   xml = xml.replace(/(<item\b[^>]*?\bid\s*=\s*")([^"]+)"/g, (_m, a, id) => `${a}${ids.get(id)}"`);
   const scripts = new Set();
@@ -141,13 +154,16 @@ const GLOBAL = /^(Chest|FacePillar|LionThrone|Obelisk1|Obelisk2|RibCage|ScullTre
     if (!ops.length) continue;
     wrU(path.join(OUT, "patches", "DATA", "CLASSES", f.toUpperCase()), `<patch>\n${ops.join("\n")}\n</patch>\n`); n++; names.push(id);
   }
-  console.log(`${n} classes patched (${names.join(", ")})`);
+  console.log(`${n} class patches (${names.join(", ")}), then the Stonehenge's methods are added to the class patch`);
   // the mod's new neutral class the game does not have, an additive file (the Pyramid, a Stonehenge of Egypt)
   const added = [];
   for (const f of fs.readdirSync(path.join(M, "DATA", "CLASSES")).filter(f => /\.sc\.xml$/i.test(f)).sort()) {
     const mod = rd(path.join(M, "DATA", "CLASSES", f)), id = classOf(mod);
     if (!id || ci(path.join(HD, "CLASSES"), f) || !/^Pyramid$/.test(id)) continue;
     wrU(path.join(OUT, "DATA", "CLASSES", f.toUpperCase()), mod); added.push(id);
+    // its icon is a picture of the mod's zip that no pack shipped (the civilizations packs leave the Pyramid out, so it was dropped as unused there): it comes with the class
+    const ic = (mod.match(/icon\s*=\s*"gameres\/icons\/([^"]+\.bmp)"/i) || [])[1], icf = ic && ci(path.join(M, "UI", "ICONS"), ic);
+    if (icf) { fs.mkdirSync(path.join(OUT, "UI", "ICONS"), { recursive: true }); fs.copyFileSync(icf, path.join(OUT, "UI", "ICONS", path.basename(icf))); added.push(`UI/ICONS/${path.basename(icf)}`); } else report.push(`Pyramid: its icon ${ic} is not in the mod's zip`);
   }
   console.log(`${added.length} new classes: ${added.join(", ")}`);
 }
@@ -180,7 +196,6 @@ const guard = (text, label, declAfter, useBefore) => {
   for (const f of fs.readdirSync(sub).filter(f => /^STONEHENGE_(SHOW|GHOST)/i.test(f) && !ci(path.join(HD, "SUBAI"), f))) { wrU(path.join(OUT, "DATA", "SUBAI", f.toUpperCase()), rd(path.join(sub, f))); n++; }
   console.log(`${n} scripts of the Stonehenge`);
 }
-
 // 4. orders of the Stonehenge and the Pyramid; constants
 {
   const mc = ci(path.join(M, "DATA", "COMMANDS"), "STONEHENGE.XML"), hc = ci(path.join(HD, "COMMANDS"), "STONEHENGE.XML");
@@ -194,7 +209,36 @@ const guard = (text, label, declAfter, useBefore) => {
   }
 }
 
+// The Stonehenge's order `show` has the name of one of the game's (UNIT.XML: `show`, the mountaineer's): a second <cmd name="show"> would be the same key. The order is called by its name
+// (name == the class's method `sig`, and the scripts say `SetCommand("show")`), so the name changes in the order, in the method and in the scripts of the Stonehenge: `show (rules)`,
+// the way the Greek 2.x ports rename an order that two mods define (`revitalize (w26)`). `ghost` is not the name of any order of the game and stays. Not tried in game.
+{
+  const edit = (rel, fn) => { const p = path.join(OUT, rel); const s = rd(p), t = fn(s); if (t === s) throw new Error(`${rel}: nothing to rename`); wrU(p, t); };
+  edit("patches/DATA/COMMANDS/STONEHENGE.XML", s => s.replace(/(<cmd\s+name=")show"/, '$1show (rules)"'));
+  edit("patches/DATA/CLASSES/STONEHENGE.SC.XML", s => s.replace(/(<method sig=")show"/, '$1show (rules)"'));
+  for (const f of ["STONEHENGE_SHOW_DISPATCH.VS", "STONEHENGE_SHOW_VERIFY.VS"]) edit(`DATA/SUBAI/${f}`, s => s.replace(/\("show"\)/g, '("show (rules)")'));
+}
+
 // 5. mod.json from extras
 for (const f of fs.existsSync(EXTRAS) ? fs.readdirSync(EXTRAS) : []) if (f !== "NOTES.md") { fs.mkdirSync(OUT, { recursive: true }); fs.copyFileSync(path.join(EXTRAS, f), path.join(OUT, f)); }
+// 6. Offline check of what the pack names: every picture, entity and sound of its classes, orders and items, and every script its classes, orders and items name, is in the pack or the game
+// (the first build shipped a Pyramid with a picture nobody had and items whose scripts it had not copied). The build stops on one.
+{
+  const have = new Set([...walk(OUT), ...walk(path.join(ROOT, "originals", "game-data", "paks"))].map(f => f.toLowerCase())), bad = [];
+  const ATTR = /\b(button|queueicon|icon|transpicon|image|entity|entity_winter|sound)\s*=\s*"([^"]*)"/gi, problems = [];
+  for (const f of walk(OUT).filter(f => /\.xml$/i.test(f) && /^(patches\/)?DATA\//i.test(f))) {
+    const s = rd(path.join(OUT, f)).replace(/<!--[\s\S]*?-->/g, "");
+    for (const m of s.matchAll(ATTR)) {
+      let v = m[2].replace(/\\/g, "/").trim(); if (!v) continue;
+      const g = /^gameres\/(cmdbar|icons|infobar)\/(.*)$/i.exec(v), rel = g ? `ui/${g[1]}/${g[2]}` : /^data\//i.test(v) || /\.ent\.xml$/i.test(v) ? v : /^button$/i.test(m[1]) ? `ui/cmdbar/${v}` : null;
+      if (rel && !have.has(rel.toLowerCase())) bad.push(`${f}: ${m[1]}="${m[2]}" is not in the pack or in the game`);
+    }
+    for (const m of s.matchAll(/(?:file:\/\/)?data[\\/](?:subai|itemscripts)[\\/]([^"'<>]+?\.vs)/gi)) { const rel = `data/${/itemscripts/i.test(m[0]) ? "itemscripts" : "subai"}/${m[1]}`; if (!have.has(rel.toLowerCase())) bad.push(`${f}: names the script ${m[0]}, which is not in the pack or in the game`); }
+  }
+  problems.push(...bad);
+  console.log(`references: ${problems.length} problems`);
+  if (problems.length) { console.error(`REFERENCE CHECK FAILED (${problems.length}):\n  ${[...new Set(problems)].join("\n  ")}`); process.exit(1); }
+}
+if (!process.env.SECUTER_KEEP_SCRATCH) for (const d of [SRC, P140, M]) fs.rmSync(d, { recursive: true, force: true });
 if (report.length) console.log(`to check:\n  ${report.join("\n  ")}`);
 console.log("done");
