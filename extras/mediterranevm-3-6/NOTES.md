@@ -34,6 +34,27 @@ It unpacks the three RARs in a temporary folder (nothing under `originals/`; `bs
 - **Voices are the clones' own** (79 entities of their own, 79 folders copied as `<folder>_g36`: 367 files). Spanish and Italian: only the files that are not the game's own go to `local/<language>/voices` (20 and 25). The 83 voice folders at the root of the ENG archive's `local/spanish.pak` are **HD's own Spanish voices** (388 of 388 files byte-identical to HD's `spanish` voices and to the ES archive's pak), not the mod's: they are not ported.
 - **Texts**: 278 texts in each of `spanish` and `italian`; the texts that change the game's own are left out (25 and 35).
 
+## Menu skin (shipped; **not tried in game**)
+
+AGENTS.md, *Civilizations are independent*, the cosmetic exception: only what the skin changes, no text table, an INI as a patch of its changed keys, pictures whole at the game's path (only one skin shows; the content manager lets the player choose "Use the files of ...", per mod and per file; no `incompatibleWith`).
+
+- **Pictures** (whole, at the game's paths, `Currentlang/`): `MENUBACKGROUND.BMP` (6,220,856 bytes), `LOGO.bmp` (216,876), `ADVENTUREDEFAULT.BMP` (316,856). All three differ from the game's (`MENUBACKGROUND` vs `Currentlang/MENUBACKGROUND.bmp` of the install, md5 `028cef…` vs `b48d4f…`; the other two were kept by `shrink-mod.js`, which only keeps files that are not the game's own, and differ from the Spanish and the Italian game's too) and are the same bytes in the ENG, ES and ITA archives. Not tried with the game in Spanish or Italian (those languages ship their own `Currentlang` pictures in `local/<language>.pak`; which wins was not checked).
+- **Layout INIs** (`patches/DATA/INTERFACE/MENU/`, only the keys the mod changed; 14 comments at the end of a line, which the engine does not strip, were dropped from the values): of the 48 `MENU` files in the archive, **13 differ from the game's** and are shipped; the other 35 are byte-identical (`shrink-mod.js` already left them out), among them `MENUBACK.INI`.
+
+| file | keys changed | what |
+|---|---|---|
+| `MAINMENU.INI` | 9 | the panel and logo (`Currentlang/Logo.bmp`) at the right, the version line `Mediterranevm Mod v3.6` |
+| `TEMPLATE.INI` | 23 | `ButtonXStart`/`ButtonYStart` and the `Button0..16Rect` of every menu (the skin's button column) |
+| `MAINMENU_SCROLLING.INI`, `SETTINGS.INI`, `CONQUESTMENU.INI` | 1 each | window size / `ButtonYStart` |
+| `MPMENU.INI` | 20 | the multiplayer panel moved by the skin's +277,+156 offset; `Text = Go to Lobby`, `Go to LAN/VPN` |
+| `PREADVENTUREMENU.INI`, `PROFILE.INI`, `SELECTMAP.INI`, `MPGAMEMENU.INI`, `MPCHAT.INI`, `GSCHAT.INI`, `CONQUESTGAME.INI` | 13, 12, 5, 6, 2, 3, 8 | the same offsets for those panels |
+
+  The skin is a 1920x1080 layout that moves every panel by (+277,+156); `TEMPLATE.INI` and `MAINMENU.INI` place it and the others follow it, which is why all 13 are shipped (the validator finds 0 errors). **`CONQUESTGAME.INI`**: the mod points `[BackImage]` at `UI/Interface/MenuMod.bmp`, which is in none of the three archives or in the game (the mod's own bug): that key is **not shipped** (the conquest screen keeps the game's `CurrentLang/MenuBackground.bmp`, which is now the skin's); the other 8 keys are. The patches contain no text table.
+- **Ports that share each file** (`shared-paths.js`; the winner is chosen by load order or by the player in the content manager, per pair and per file; the combination of patches on top of whichever file wins is not tried):
+  - `Currentlang/MENUBACKGROUND.BMP`: other bytes in `cgwar`, `greek-civilization-mod` (4.2), `greek-mod-1-8`, `greek-mod-2-3`, `-2-5-3`, `-2-6-1`, `mediterranevm-alpha`, `mci` and Imperivm Legacy (`MENUBACKGROUND.bmp` `2b41b5…`).
+  - `Currentlang/LOGO.bmp` and `ADVENTUREDEFAULT.BMP`: other bytes in the 4.2, the 1.8 and the three 2.x versions; **the same bytes as Imperivm Legacy's** (Legacy is the descendant).
+  - Layout patches: the 4.2, the 1.8 and the 2.x versions patch `MAINMENU.INI`/`TEMPLATE.INI` too (patches stack: where two change the same key the later wins); `community-mod-civs` patches eight of these 13 files (and `MENUBACK.INI`); Imperivm Legacy ships the same 13 files whole (7 byte-identical to this mod's originals, 6 not: `CONQUESTGAME.INI`, `MAINMENU.INI`, `MPGAMEMENU.INI`, `MPMENU.INI`, `PREADVENTUREMENU.INI`, `TEMPLATE.INI`).
+
 ## Graphics: `rle.mmp.tail`
 
 The mod's own `rle.mmp` is 419.8 MB. `shrink-mod.js` keeps only the sprites that are new or different from the game's `rle.mmp`: **`rle.mmp.tail`, 30,164,723 bytes (28.8 MB)**, appended after the game's, with the fingerprint of the game's `rle.mmp` it was made for (`sdk/reference.md`, `publishing.md`). The `.rle.MMP` files of the mod are small cells that store a byte offset into that combined file; **renaming an entity folder (`tagCollisions`) does not change them**: checked, 66 cells of the six renamed folders (`CHorseman`, `HHoplite`, `Fisherman`, `HOutpost`, `Numidian_Tent`, `CMercenaryTuareg`) are byte-identical to `shrink-mod.js`'s output before the rename. Not tried in game (the sprites, the offsets).
@@ -45,7 +66,7 @@ The mod's own `rle.mmp` is 419.8 MB. `shrink-mod.js` keeps only the sprites that
 - `DATA/CONST.INI`: 3 keys the game lacks are added by a patch (including `DoubleHealAmount`); 12 values of the game's own keys are left out (`raw/mediterranevm-3-6-const-ini.txt`): `DiseaseCost` 3→10, `StonehengeBloodlustTime` 60000→30000, `LoyaltyRadiusTownhall` 850→100, `LoyaltyRadius` 1000→300, and eight `PlayerColors`.
 - `DATA/ITEMS.XML`: 2 elements patched in; the two the mod edits in the game's items (`herb amulet of luck`, `gem of wisdom`) are left out; `DATA/ITEMSCRIPTS/` (`GEM OF WISDOM.VS`, `BATTLE DRUMS OF RAGE.VS`) are left out.
 - `DATA/RANDOMMAP/PLACEOBJECTS.XML`: the mod places `HOutpost` and `CTent` in every random map. Not ported. The other random-map templates, `UNIT_SPECIALS.INI`, `terrains.xml`, `vxnotifications.xml`, `RANDOM_MAP.OBJ.XML`, three game scripts, `RandomMapSettlements.bfhp` and the 18 interface `.ini` of the menu skin are not ported either.
-- The terrain textures (`TERRAIN/`, `MINIMAP/ZOOM*/TERRAIN/`; they go with `terrains.xml`; the mini-map ones replace the game's `grass3.bmp` and others at the game's paths) and the menu pictures (`Currentlang/*.bmp`, which the 4.2, the 1.8, the 2.x and the alpha ship their own).
+- **Global, reason 1: the terrain textures** (`TERRAIN/`, `MINIMAP/ZOOM*/TERRAIN/`): they go with `terrains.xml` (global, not ported), so no class of the port uses them, and the mini-map ones replace the game's `grass3.bmp` and others at the game's paths. **Global, reason 2: the in-game bars and the editor combo** (`DATA/INTERFACE/CMDBAR/CMDBAR.INI`, `CMDBARIBERIA.INI`, `CMDBARRROME.INI`, `INFOBAR/INFOBAR_IBERIA.INI`, `EDITOR/COMBO/UNITICONS.INI`): the engine reads them by path and they move or extend the game's own civilizations' bars; they are not the menu skin. **Global, reason 3: engine-read files the mod edits at the game's paths** (random maps, game scripts, `terrains.xml`, `vxnotifications.xml`, the pictures of the game's own in-game bars). `raw/mediterranevm-3-6-left-out.txt` gives the reason on each line: three global reasons, and "no class, entity or script of the port names it" for scripts and pictures of the game that the mod edited (the earlier "nothing uses it" label was wrong for engine-read files and is gone).
 - The game's texts the mod changes (above) and the game's neutral objects the mod edits in place (`Shrine`'s icon, `Stonehenge`'s orders).
 - The whole list: `raw/mediterranevm-3-6-left-out.txt` (200 files), `raw/mediterranevm-3-6-const-ini.txt`.
 
@@ -79,7 +100,7 @@ Barracks and town halls are untouched by the mod.
 
 Maintainer, 2026-11-01 23:16-23:18, the build of PR #51 head `71c164be`, profile with only this set. From his report and `imperivm-mod.log`:
 
-- The set **loaded** (`Mediterranevm 3.6 3.6, 1875 files`) and the **eight civilizations registered** (`gbritain` … `grome`, indexes 10-17). The main menu is the game's own: no menu skin is shipped, as designed.
+- The set **loaded** (`Mediterranevm 3.6 3.6, 1875 files`) and the **eight civilizations registered** (`gbritain` … `grome`, indexes 10-17). The main menu was the game's own **because that build shipped no menu skin**; the skin below is added after this test and is **not tried**.
 - He started a **skirmish with random civilizations** (slots with 3.6 civilizations: 15, 12, 17, 14); it ran about **13 seconds on screen**. The session ended cleanly (130 s): **0 errors, 0 compilation errors**; the 6 warnings are a `winmm` export note and room slots whose saved civilization no longer exists. His words: "no hubo mayor problema".
 - That is: **it loads, starts a match, and shows no script errors in that very short session.** Nothing more.
 
