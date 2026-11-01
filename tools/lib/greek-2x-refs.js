@@ -85,7 +85,7 @@ function checkRefs(OUT, HD, tag, { legacy = [], extraRoots = [], hdClasses = nul
       const rel = relOf(m[1], m[2]); if (!rel) continue; n++;
       if (have.has(rel.toLowerCase())) continue;
       const v = m[2].replace(/\\/g, "/").toLowerCase();
-      if (ALLOW.has(v)) { allowed.set(m[2], ALLOW.get(v)); continue; }
+      if (ALLOW.has(v) || ownBugs.has(v)) { allowed.set(m[2], ALLOW.get(v) || ownBugs.get(v)); continue; }
       if (left.has(rel.toLowerCase()) || left.has(rel.toLowerCase().replace(new RegExp(`_${tag}(\\.bmp)$`), "$1"))) { allowed.set(m[2], "left out on purpose: byte-identical to a file of Imperivm Legacy (license not settled); the game draws its placeholder"); continue; }
       bad(f, `${m[1]}="${m[2]}"`, `-> ${rel} is not in the port or in the game`);
     }

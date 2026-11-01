@@ -82,7 +82,10 @@ function checkNames({ OUT, HD, SDK }) {
   for (const t of [iniAt(hdData, "UNIT_SPECIALS.INI"), iniAt(OUT, "patches/DATA/UNIT_SPECIALS.INI")])
     for (const m of t.matchAll(/^\s*\[([^\]]+)\]/gm)) { const n = m[1].trim().toLowerCase(); known.add(n.replace(/\s+/g, "")); known.add(n.replace(/\s+/g, "_")); }
   // AI.INI of the game and of the port's patch: the AI scripts (callable by name), the strategies, the AIV_ variables
-  for (const t of [iniAt(hdData, "AI/AI.INI"), iniAt(OUT, "patches/DATA/AI/AI.INI")]) {
+  // (and the AI.INI of each AI profile the port ships: a subfolder of data/ai that has its own)
+  const profileInis = [];
+  if (mine && ci(mine, "AI")) for (const e of fs.readdirSync(path.join(mine, ci(mine, "AI")), { withFileTypes: true })) if (e.isDirectory()) profileInis.push(iniAt(path.join(mine, ci(mine, "AI")), `${e.name}/AI.INI`));
+  for (const t of [iniAt(hdData, "AI/AI.INI"), iniAt(OUT, "patches/DATA/AI/AI.INI"), ...profileInis]) {
     let sec = "";
     for (const l of t.split(/\r?\n/)) {
       const h = /^\s*\[([^\]]+)\]/.exec(l); if (h) { sec = h[1]; continue; }
