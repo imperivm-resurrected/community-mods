@@ -1,7 +1,7 @@
 <patch>
   <add select="/commands">
 <cmd
-	name="show"
+	name="show (rules)"
 	offset="1"
 	button="Actions/Show.bmp"
 	groupverifier="data/subai/stonehenge_show_verify.vs"

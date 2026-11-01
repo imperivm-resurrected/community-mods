@@ -44,46 +44,5 @@
 	      important="yes">
 	  <bonus health="0" damage="0" armor_slash="0" armor_pierce="0" level="0" experience="0"/>
 	</item>
-<item id="sEmblem of Democracy"
-	      image="gameres/icons/items/Emblem of Democracy.bmp"
-	      sound="data/sound entities/ItemUse.xml"
-	      important="no"
-	      level="0"
-	      name="Emblem of Democracy"
-	      cursed="1"
-	      description="Symbol of democracy, increases the bearer's health by 100 extra points">
-	  <bonus health="100" health_percent="0" damage="0" armor_slash="0" armor_pierce="0" level="0" experience="0"/>
-	</item>
-<item id="sEmblem of Oligarchy"
-	      image="gameres/icons/items/Emblem of Oligarchy.bmp"
-	      sound="data/sound entities/ItemUse.xml"
-	      important="no"
-	      level="0"
-	      name="Emblem of Oligarchy"
-	      cursed="1"
-	      description="Symbol of oligarchy, increases the bearer's attack by 5 extra points">
-	  <bonus health="0" health_percent="0" damage="5" armor_slash="0" armor_pierce="0" level="0" experience="0"/>
-	</item>
-<item id="sCharm of Athena"
-	      image="gameres/icons/items/Charm of Athena.bmp"
-	      sound="data/sound entities/ItemUse.xml"
-	      important="no"
-	      level="0"
-	      name="Charm of Athena"
-	      cursed="1"
-	      equip_script="file://data/ItemScripts/s_charm of athena.vs"
-	      remove_script="file://data/ItemScripts/s_charm of athena removing.vs"
-	      description="Increases the bearer's base speed by 40%">
-	</item>
-<item id="sCharm of Aegle"
-	      image="gameres/icons/items/Charm of Aegle.bmp"
-	      sound="data/sound entities/ItemUse.xml"
-	      important="no"
-	      level="0"
-	      name="Charm of Aegle"
-	      cursed="1"
-	      description="Increases the bearer's health by 10%">
-	  <bonus health="0" health_percent="10" damage="0" armor_slash="0" armor_pierce="0" level="0" experience="0"/>
-	 </item>
   </add>
 </patch>
