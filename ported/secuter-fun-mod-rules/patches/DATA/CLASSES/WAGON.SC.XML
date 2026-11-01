@@ -1,0 +1,3 @@
+<patch>
+  <set select="/class/properties[@max_load]" max_load="5000"/>
+</patch>

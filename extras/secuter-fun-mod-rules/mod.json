@@ -1,0 +1,19 @@
+{
+  "id": "secuter-fun-mod-rules",
+  "name": "Secuter Fun rules 1.5",
+  "version": "1.5",
+  "category": "Gameplay & Balance",
+  "authors": [
+    "Secuter",
+    "Villoh (port)"
+  ],
+  "description": {
+    "spanish": "Las reglas del mundo de la Fun mod 1.5 de Secuter, aparte de sus civilizaciones: cambia las clases y valores del propio juego PARA TODOS los jugadores mientras está activo. La guarnición de los puestos avanzados (4 tipos de defensor), los objetos neutros (cofres, obeliscos, Stonehenge y su espectro, pirámide), los barcos, 4 objetos nuevos y algunas constantes. Los campamentos del mapa aleatorio no están (no se pueden escribir como parche). No añade civilizaciones: las de la Fun mod son «Secuter Fun 1.5» y «Secuter Fun Greece 1.5». NO usar junto con «Objetos en todas las estructuras y fuertes equilibrados» (ni con «Objetos en todas las estructuras»): tocan el mismo script y las mismas clases, y nada en el juego lo impide; con los dos activos el script de los fuertes declara las mismas variables dos veces y no compila.",
+    "english": "The world rules of Secuter's Fun mod 1.5, apart from its civilizations: it changes the game's own classes and values FOR EVERY PLAYER while it is on. The garrison of the outposts (4 kinds of defender), the neutral objects (chests, obelisks, Stonehenge and its ghost, the pyramid), the ships, 4 new items and some constants. The camps of the random map are not here (they cannot be written as a patch). It adds no civilization: the Fun mod's are \"Secuter Fun 1.5\" and \"Secuter Fun Greece 1.5\". Do NOT use it together with \"Items in every structure and balanced forts\" (nor with \"Items in every structure\"): they touch the same script and the same classes, nothing in the game stops you, and with both on the forts' script declares the same variables twice and does not compile.",
+    "italian": "Le regole del mondo della Fun mod 1.5 di Secuter, a parte le sue civiltà: cambia le classi e i valori del gioco stesso PER TUTTI i giocatori finché è attivo. La guarnigione degli avamposti (4 tipi di difensore), gli oggetti neutri (forzieri, obelischi, Stonehenge e il suo spettro, piramide), le navi, 4 nuovi oggetti e alcune costanti. Gli accampamenti della mappa casuale non ci sono (non si possono scrivere come patch). Non aggiunge civiltà: quelle della Fun mod sono «Secuter Fun 1.5» e «Secuter Fun Greece 1.5». NON usarlo insieme a «Oggetti in tutte le strutture e forti bilanciati» (né a «Oggetti in tutte le strutture»): toccano lo stesso script e le stesse classi, nulla nel gioco lo impedisce, e con entrambi attivi lo script dei forti dichiara le stesse variabili due volte e non compila."
+  },
+  "redistributable": true,
+  "sources": {
+    "page": "https://imperivmeditor.forumcommunity.net/?t=60040716"
+  }
+}
