@@ -70,6 +70,14 @@ Letters and indices are unique across all the ports (the SDK allows indices 10-9
 | (engine) | `aiberia` | `Aib` (derived) | Iberia | AsvrMod VII | `tools/asvrmod-vii.js` |
 | (engine) | `aegypt` | `Aeg` (derived) | Egypt | AsvrMod VII | `tools/asvrmod-vii.js` |
 | (engine) | `agermany` | `Age` (derived) | Germany | AsvrMod VII | `tools/asvrmod-vii.js` |
+| (engine) | `lgaul` | `Lga` (derived) | Gaul | Imperivm Legacy 2.4.1 | `tools/imperivm-legacy.js` |
+| (engine) | `lrome` | `Lro` (derived) | RepublicanRome | Imperivm Legacy 2.4.1 | `tools/imperivm-legacy.js` |
+| (engine) | `limperial` | `Lim` (derived) | ImperialRome | Imperivm Legacy 2.4.1 | `tools/imperivm-legacy.js` |
+| (engine) | `lcarthage` | `Lca` (derived) | Carthage | Imperivm Legacy 2.4.1 | `tools/imperivm-legacy.js` |
+| (engine) | `lbritain` | `Lbr` (derived) | Britain | Imperivm Legacy 2.4.1 | `tools/imperivm-legacy.js` |
+| (engine) | `liberia` | `Lib` (derived) | Iberia | Imperivm Legacy 2.4.1 | `tools/imperivm-legacy.js` |
+| (engine) | `legypt` | `Leg` (derived) | Egypt | Imperivm Legacy 2.4.1 | `tools/imperivm-legacy.js` |
+| (engine) | `lgermany` | `Lge` (derived) | Germany | Imperivm Legacy 2.4.1 | `tools/imperivm-legacy.js` |
 
 A civilization with no `letter` (derived prefix: the first three letters of the `id`, imperivm-resurrected#37) and no `index` (the engine assigns it) reserves nothing in this table; its rows say `(engine)` and are here to spot clashes. **Two ports cannot be active together if they share a derived prefix: the engine ignores the second civilization.** Today GBR Tactics and La Reconquista 2010 clash on `Gau`, `Bri`, `Car`, `Egy`, `Ger`, `Ibe` and `Imp`.
 

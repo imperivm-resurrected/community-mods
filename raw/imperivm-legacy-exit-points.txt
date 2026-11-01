@@ -1,0 +1,9 @@
+Buildings of the port whose type-2 points (and .pass) are not those of any building of the game (to try in game):
+BUILDINGS/CGUARDPOST/CGUARDPOST.ENT.XML: type-2 points -171,-161 230,122 with a .pass that no building of the game has with them
+BUILDINGS/GGUARDPOST/GGUARDPOST_AS.ENT_leg.XML: type-2 points -171,-161 261,134 with a .pass that no building of the game has with them
+BUILDINGS/GGUARDPOST/GGUARDPOST_W.ENT_leg.XML: type-2 points -171,-161 261,134 with a .pass that no building of the game has with them
+BUILDINGS/HOUTPOST_leg/HOUTPOST.ENT.XML: type-2 points -100,130 100,130 with a .pass that no building of the game has with them
+BUILDINGS/RHOUSE02/RHOUSE02_AS.ENT_leg.XML: type-2 points -120,115 with a .pass that no building of the game has with them
+BUILDINGS/RHOUSE02/RHOUSE02_W.ENT_leg.XML: type-2 points -120,115 with a .pass that no building of the game has with them
+BUILDINGS/SHIPYARD 4/SHIPYARD 4_AS.ENT_leg.XML: type-2 points -108,-15 201,-174 with a .pass that no building of the game has with them
+BUILDINGS/SHIPYARD 4/SHIPYARD 4_W.ENT_leg.XML: type-2 points -108,-15 201,-174 with a .pass that no building of the game has with them

@@ -70,6 +70,14 @@ Las letras y los índices son únicos en todos los ports (el SDK admite índices
 | (motor) | `aiberia` | `Aib` (derivado) | Iberia | AsvrMod VII | `tools/asvrmod-vii.js` |
 | (motor) | `aegypt` | `Aeg` (derivado) | Egypt | AsvrMod VII | `tools/asvrmod-vii.js` |
 | (motor) | `agermany` | `Age` (derivado) | Germany | AsvrMod VII | `tools/asvrmod-vii.js` |
+| (motor) | `lgaul` | `Lga` (derivado) | Gaul | Imperivm Legacy 2.4.1 | `tools/imperivm-legacy.js` |
+| (motor) | `lrome` | `Lro` (derivado) | RepublicanRome | Imperivm Legacy 2.4.1 | `tools/imperivm-legacy.js` |
+| (motor) | `limperial` | `Lim` (derivado) | ImperialRome | Imperivm Legacy 2.4.1 | `tools/imperivm-legacy.js` |
+| (motor) | `lcarthage` | `Lca` (derivado) | Carthage | Imperivm Legacy 2.4.1 | `tools/imperivm-legacy.js` |
+| (motor) | `lbritain` | `Lbr` (derivado) | Britain | Imperivm Legacy 2.4.1 | `tools/imperivm-legacy.js` |
+| (motor) | `liberia` | `Lib` (derivado) | Iberia | Imperivm Legacy 2.4.1 | `tools/imperivm-legacy.js` |
+| (motor) | `legypt` | `Leg` (derivado) | Egypt | Imperivm Legacy 2.4.1 | `tools/imperivm-legacy.js` |
+| (motor) | `lgermany` | `Lge` (derivado) | Germany | Imperivm Legacy 2.4.1 | `tools/imperivm-legacy.js` |
 
 Una civilización sin `letter` (prefijo derivado: las 3 primeras letras del `id`, imperivm-resurrected#37) ni `index` (lo asigna el motor) no reserva nada en esta tabla; sus filas dicen `(motor)` y están para detectar choques. **Dos ports no pueden estar activos a la vez si comparten un prefijo derivado: el motor ignora la segunda civilización.** Ahora mismo chocan GBR Tactics y La Reconquista 2010 en `Gau`, `Bri`, `Car`, `Egy`, `Ger`, `Ibe` e `Imp`.
 
