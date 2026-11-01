@@ -339,6 +339,9 @@ fs.mkdirSync(path.join(ROOT, "raw"), { recursive: true });
   const bare = t => { const m = new Map(); let sec = ""; for (const l of t.replace(/\r/g, "").split("\n")) { const h = l.match(/^\s*\[([^\]]+)\]/); if (h) { sec = h[1]; if (!m.has(sec)) m.set(sec, []); continue; } const x = l.trim(); if (sec && x && !x.startsWith(";") && !x.includes("=")) m.get(sec).push(x); } return m; };
   const mine = new Map(MENU ? fs.readdirSync(MENU).map(f => [f.toLowerCase(), rd(path.join(MENU, f))]) : []);
   const n = require("./lib/menu-skin.js").skinToPatches({ OUT, HD }), lists = [];
+  // skinToPatches of the main checkout writes the patches at patches/menuini/, this worktree's older one at patches/DATA/INTERFACE/MENU/: bring both to the second for the edits below;
+  // where they end up is decided at the end (WHERE MENU PATCHES GO, below)
+  { const mi = find(OUT, "patches/menuini"); if (mi) for (const f of fs.readdirSync(mi)) { const dst = path.join(OUT, "patches", "DATA", "INTERFACE", "MENU", f); fs.mkdirSync(path.dirname(dst), { recursive: true }); fs.copyFileSync(path.join(mi, f), dst); fs.rmSync(path.join(mi, f)); } if (mi) fs.rmSync(mi, { recursive: true, force: true }); }
   const PD = find(OUT, "patches/DATA/INTERFACE/MENU");
   for (const f of PD ? fs.readdirSync(PD) : []) {
     const hp = find(HD, `DATA/INTERFACE/MENU/${f}`), A = bare(rd(hp)), B = bare(mine.get(f.toLowerCase()) || ""), ops = new Map();
@@ -550,6 +553,20 @@ if (fs.existsSync(EXTRAS)) for (const f of walk(EXTRAS)) { if (f === "NOTES.md")
   for (const f of dir ? fs.readdirSync(dir) : []) { const p = path.join(dir, f), s = rd(p), t = s.replace(/^(\s*[^;=\s\[][^=\r\n]*=[^;\r\n]*?)[ \t]+;[^\r\n]*$/gm, "$1"); if (t !== s) { wr(p, t); n++; } }
   console.log(`menu skin patches: end-of-line comments cut in ${n} files`);
 }
+// WHERE MENU PATCHES GO. The engine applies a patch only if its path is exactly the one the game opens (src/mods/patch.cpp PatchApply(rel); the key is the lower-case path under patches/),
+// and the game opens the menu INIs as menuini/<name>.ini (seen in the maintainer's game log of Mediterranevm 3.6: "menuini/mainmenu.ini, mpgamemenu.ini, settings.ini applied"), not as
+// data/interface/menu/<name>.ini: a patch at patches/DATA/INTERFACE/MENU/ was never applied except template.ini, which the engine opens, and patches, under both names. Every skin patch goes to
+// patches/menuini/, template.ini also stays at patches/DATA/INTERFACE/MENU/ (the rule of tools/lib/menu-skin.js on main, bd47ba31, copied here: that lib is not touched).
+{
+  const src = find(OUT, "patches/DATA/INTERFACE/MENU"); let n = 0;
+  for (const f of src ? fs.readdirSync(src) : []) {
+    const dst = path.join(OUT, "patches", "menuini", f); fs.mkdirSync(path.dirname(dst), { recursive: true }); fs.rmSync(dst, { force: true }); fs.copyFileSync(path.join(src, f), dst); n++;
+    if (!/^template\.ini$/i.test(f)) fs.rmSync(path.join(src, f));
+  }
+  if (src && !fs.readdirSync(src).length) fs.rmdirSync(src);
+  if (find(OUT, "patches/DATA/INTERFACE") && !fs.readdirSync(find(OUT, "patches/DATA/INTERFACE")).length) fs.rmdirSync(find(OUT, "patches/DATA/INTERFACE"));
+  console.log(`menu skin patches: ${n} at patches/menuini/ (the path the game opens), template.ini also at patches/DATA/INTERFACE/MENU/`);
+}
 // a <method>/<behavior> that names a script neither the mod nor the game has (the mod never shipped DLLELDORYN_FOLLOW.VS): the game could not run it.
 // clone-civs.js removes the ones at the start of a line; these sit inline among other elements
 {
@@ -686,6 +703,12 @@ if (fs.existsSync(EXTRAS)) for (const f of walk(EXTRAS)) { if (f === "NOTES.md")
   for (const b of bases) { const w = heroBaseProblem(TABLE, b); if (w) problems.push(`GetRandomHeroClass("${b}"): ${w}`); }
   // every picture, sound entity, sound file and entity a text names exists in the port or in the game (or was already broken in the rar), and no text names a `_cm` file, folder or class that is not there
   { const r = REFS.checkRefs({ OUT, HD, TAG, baseline: BASELINE }); problems.push(...r.problems); console.log(`references: ${r.checked} checked, ${r.allowed.length} unresolved in the mod's own package too (left alone)`); fs.writeFileSync(path.join(ROOT, "raw", "community-mod-civs-refs-unresolved.txt"), r.allowed.sort().join("\n") + "\n"); }
+  // a patch whose path is not one the game opens is never applied (the menu INIs were: see WHERE MENU PATCHES GO). The path under patches/ must be a file of the game (data/...: the same
+  // path in the game's DATA; menuini/<name>.ini: DATA/INTERFACE/MENU/<name>.ini) and in the form the engine opens it: lower-case compare, forward slashes, no `..`
+  { const pr = path.join(OUT, "patches"), gameFiles = new Set([...walk(HDDATA).map(f => "data/" + f), ...walk(path.join(ROOT, "originals", "game-data", "paks")).filter(f => /^DATA\//i.test(f))].map(f => f.toLowerCase()));
+    const menu = new Set(walk(HDDATA).filter(f => /^INTERFACE\/MENU\/[^/]+\.ini$/i.test(f)).map(f => f.split("/").pop().toLowerCase()));
+    for (const f of walk(pr)) { const k = f.toLowerCase(); if (/^menuini\/[^/]+$/.test(k) ? !menu.has(k.slice(8)) : !gameFiles.has(k)) problems.push(`patches/${f}: the game has no file at that path: the engine would never apply it`); }
+    if (walk(pr).some(f => /^DATA\/INTERFACE\/MENU\//i.test(f) && !/^DATA\/INTERFACE\/MENU\/TEMPLATE\.INI$/i.test(f))) problems.push("patches/DATA/INTERFACE/MENU/ holds a menu INI other than template.ini: the game opens it as menuini/"); }
   // the menu skin: what was approved (art at the game's paths, INIs as patches) and nothing that would change the game for everybody
   { const have = walk(OUT).map(f => f.toLowerCase()), bad = [];
     for (const f of have) {
