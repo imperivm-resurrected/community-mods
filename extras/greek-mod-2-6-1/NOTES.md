@@ -121,7 +121,7 @@ The download has no license text. `CURRENTLANG/CREDITS.TXT` lists the team. `mod
 
 ## Validation
 
-`validate-mod.js --game "$G" --data originals/game-data/DATA` (SDK of `dev-villoh`): **2833 files checked, 0 errors, 59 warnings** (animations whose `frames` do not match their rows, in the mod's own sprites).
+`validate-mod.js --game "$G" --data originals/game-data/DATA` (SDK of `dev-villoh`): **2837 files checked, 0 errors, 59 warnings** (animations whose `frames` do not match their rows, in the mod's own sprites).
 
 `node tools/shared-paths.js greek-mod-2-6-1`: **0 class ids in common** with the game and the other ports (also 0 files at the same path with other bytes against the 2.3 and the 2.5.3):
 
@@ -140,11 +140,11 @@ mediterranevm-alpha: 1 files in the same path with other bytes, 10 identical, 0 
 7 collisions
 ```
 
-Only the menu skin: cosmetic. Script checks (`raw/greek-mod-2-6-1-script-checks.txt`): 348 scripts, 0 errors, 69 warnings (the kinds of the 2.3 and the 2.5.3).
+Only the menu skin: cosmetic. Script checks (`raw/greek-mod-2-6-1-script-checks.txt`): 351 scripts, 0 errors, 69 warnings (the kinds of the 2.3 and the 2.5.3).
 
 ## Pictures, sounds and references (checked offline)
 
-`tools/lib/greek-2x-refs.js`, run by `tools/greek-2x.js` after `tagCollisions`, **stops the build** when a picture (`button`, `queueicon`, `icon`, `transpicon`, `image` of the commands, classes and `patches/DATA/ITEMS.XML`), a sound file of a sound entity, a class's sound entity or sound, or an `entity=` does not resolve in the port or in HD's packs (`gameres/cmdbar|icons|infobar/X` -> `UI/CMDBAR|ICONS|INFOBAR/X`; a plain `button=` -> `UI/CMDBAR/X`), or when a text names a `_w26` file, folder or class that does not exist. Result of the last build: **4286 references checked, 0 that do not resolve**, 28 allowed (below).
+`tools/lib/greek-2x-refs.js`, run by `tools/greek-2x.js` after `tagCollisions`, **stops the build** when a picture (`button`, `queueicon`, `icon`, `transpicon`, `image` of the commands, classes and `patches/DATA/ITEMS.XML`), a sound file of a sound entity, a class's sound entity or sound, or an `entity=` does not resolve in the port or in HD's packs (`gameres/cmdbar|icons|infobar/X` -> `UI/CMDBAR|ICONS|INFOBAR/X`; a plain `button=` -> `UI/CMDBAR/X`), or when a text names a `_w26` file, folder or class that does not exist. Result of the last build: **4287 references checked, 0 that do not resolve**, 28 allowed (below).
 
 **What went wrong and is fixed.** `tagCollisions` (`tools/lib/ported-patch.js`, shared, NOT changed) renames a file that collides with another port's and then rewrites every text that names it by **file name alone**, in every folder. When the renamed copy was another one (the icon under `UI/CMDBAR/UPGRADES` was renamed, the one under `UI/ICONS/UPGRADES` was not; HD's own `ZOMBIFY.BMP` was identical and dropped), every reference that meant the other file now asked for `<name>_w26.BMP`, which nobody wrote: the game draws its placeholder, a solid blue square in the command bar. Found by the maintainer's scan after the same bug in the AsvrMod port (PR #40); the logic of its `asvr-refs.js` is copied here, with the tag as a parameter, because that file is not in this branch and `ported-patch.js` is shared. When that PR merges, both can use one module.
 
@@ -196,13 +196,30 @@ All the rows above are **ours** (the rename broke them: the unsuffixed name reso
 
 **`DATA/CLASSES/WINTER/THERMAE.SC_w26.XML` is an open question.** Its name no longer ends in `.sc.xml`, and the class loader is a different one from the random-map list: the AsvrMod test does not cover it. Not claimed to work; not checked in game. If the winter Thermae is not read, the summer class still exists (`ThermaeWinter` only sets the winter sprite of the ruin).
 
+## Names the scripts use (checked offline, added after the 2.6.1's first test)
+
+The 2.6.1's first in-game test (maintainer, 2026-11-01, only this set, installed from the build) loaded and showed three compilation errors that the build had not caught (script checks: 0 errors). `tools/lib/greek-2x-names.js` (run by `tools/lib/greek-2x-checks.js`, so by every build) now reads the port's scripts and the game's scripts that a class or command of the port points to, and **stops the build** on: a bare name or a call that is no variable, member, game function or constant (`sdk/game-functions.txt`), special, AI name, strategy or class; a script file named by a `vs=` / `verify=` or an `AIRun("X.vs")` that is in neither the port nor the game; an order (`AddCommand`, `SetCommand`, `ExecCmd`, `GetCmdStaminaCost`...) that no command or method of the port or the game has. Scripts that nothing points to are not read (counted in the note). What it **cannot** see: the type of an expression and the signature of a call (`x.nme`, a typo after a dot, passes); `Mod_*` names (any passes); a name a string builds at run time; code under `if (false)`; whether a script does what it should. It is calibrated on the game's own live scripts, so it can miss a name that only the game's dead scripts define.
+
+What it found, and what was done (2.6.1; the 2.3 and the 2.5.3 had the first and the second kind too, below):
+
+| Where | What | Cause | Fix |
+|---|---|---|---|
+| `GRW26_SquadMonitor.vs` (152, 84), 2 places | `StratRunning(...) == GRW26_GS_EnterSettlement`: "No matching function with name GRW26_GS_EnterSettlement" | `own-ai.js` forked the monitor and wrote the prefix into the name of the strategy; the build then left the mod's `GS_*` strategies out (the engine picks a strategy by name, `GetGAIKAStrat` returns the game's) but the monitor kept the renamed constant | the game's own constant `GS_EnterSettlement` (same compare, the strategy that runs is the game's: the mod's variant of that strategy, a different script, is still **not ported**) |
+| `GRW26_ES_Stronghold.vs`, `AIRun("ESH_BuildCarthaginianArmy.vs")`, `AIRun("ESH_UpgradeBarracks.vs")` | two scripts of the mod's own AI that are in neither the game nor the port: the Stronghold economy would fail when it reaches them (a Carthaginian-style army request, the barrack upgrades) | `greek-ai.js` only carries scripts that the game also has | shipped as `GRW26_ESH_BuildCarthaginianArmy.vs` and `GRW26_ESH_UpgradeBarracks.vs`, registered in the AI.INI patch |
+| `GRW26_ES_Village.vs`, `ExecCmd("repair village ai")` | an order the mod added to the game's `VILLAGE.XML` (`src BaseVillage`, "used only by AI") that the clones do not carry | the game's command files stay the game's | `repair village ai (w26)`, a command of the port's own (`DATA/COMMANDS/W6GRVILLAGEAI.XML`) offered by the 10 village classes of the port; the script names it so |
+| HD's `DRUID_REVITALIZE_GROUND.VS` (`(9, 28): No matching function with name revitalize`), run by the priest's right-click on the ground | `.HasSpecial(revitalize)` | **not the rename**: there is no special `revitalize` in HD or in the 1.40 (`UNIT_SPECIALS.INI` has 36 sections in both) and the mod's own copy of that script is HD's text; the mod fixed the sibling `DRUID_REVITALIZE.VS` (the same order on a unit: `.HasSpecial(determination) // fake skill to make revitalize work`) and the priest has Determination, but left this one | `druid_revitalize_ground_w26.vs`: the same one-word fix; its orders were `"revitalize"` and are `"revitalize (w26)"` as the class and the command now call them |
+
+Not run in game: nothing of the above has been tried after the fix. Each of these stopped one script only (the error text says which), the rest of the port kept loading.
+
 ## Maps that `require` this mod
 
 None known. `Greek_MapsAdventures.zip` is not ported here (#8).
 
 ## In game
 
-**NOT tried.** Built and validated offline only: nothing of this version has run in game. The 2.3's test found four defects in its scripts and its barracks (the build now checks for them, the barracks exit point is fixed as in the 2.3 and the 2.5.3 where it was tried). Not tried: everything, in particular the long game against the Roman AIs, the hero of each arena, the barracks in both Greek town layouts, the 168 script copies (47 of them whole), the random-map city of Greece (new in this build), the icons and attack sounds, the voices, `THERMAE.SC_w26.XML`, the renamed templates, the `gbr.exe` table limits above, two civilization mods together, and the gymnasium, temple and village exits.
+**One test so far (maintainer, 2026-11-01 20:43, profile with only this set): it loaded, and the log had three compilation errors** (`GRW26_SquadMonitor.vs` twice and HD's `DRUID_REVITALIZE_GROUND.VS`), described and fixed in *Names the scripts use*. Nothing else was tried; the fixes themselves are **not tried in game**.
+
+**NOT tried:** the long game against the Roman AIs, the hero of each arena, the barracks in both Greek town layouts, the 168 script copies (47 whole), the random-map city of Greece (new in this build), the priest's revitalize (both the unit and the ground variant), the icons and attack sounds, the voices, `THERMAE.SC_w26.XML`, the renamed templates, the `gbr.exe` table limits above, two civilization mods together, and the gymnasium, temple and village exits.
 
 ## Pending: independence
 
