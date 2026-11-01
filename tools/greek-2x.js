@@ -501,8 +501,10 @@ console.log(`menu skin: ${require("./lib/menu-skin.js").skinToPatches({ OUT, HD 
   fs.rmSync(path.join(OUT, "hidden.txt"), { force: true });
   const GREEKRE = new RegExp(`Greece|Greek|\\b${PREFIX}[A-Z][a-z]|train${PREFIX}\\b|Athena|Aegle|Zeus|Circe|Hecate|Olympic|Ares|${CONST}`);
   const { gameFilesToPatches } = require("./lib/independent.js");
-  const r = gameFilesToPatches({ OUT, HD, GREEK: GREEKRE, keep: /^(currentlang|ui\/menu)\//, skipFiles: /^DATA\/SUBAI\/(VERIFY_RESEARCH|UNIT_ATTACH_VERIFY)\.VS$/i });
+  const r = gameFilesToPatches({ OUT, HD, GREEK: GREEKRE, keep: /^(currentlang|ui\/menu)\//i, skipFiles: /^DATA\/SUBAI\/(VERIFY_RESEARCH|UNIT_ATTACH_VERIFY)\.VS$/i });
   console.log(`game files: ${r.patches.length} became patches, ${r.dropped.length} left out`);
+  // the reason of each file left out (independent.js lists only the path): an editor INI is not the menu skin and is the game's own, global
+  r.dropped = r.dropped.map(f => / \(/.test(f) ? f : /^DATA\/INTERFACE\/EDITOR\//i.test(f) ? `${f} (global: the editor's own INI with other bytes than the game's; not the menu skin, and it cannot be scoped to the port's civilizations)` : `${f} (the game's own file with other bytes: no rule of this tool can scope it to the port)`);
   fs.writeFileSync(path.join(ROOT, "raw", `${V.dir}-left-out.txt`), r.dropped.join("\n") + "\n\n" + r.report.join("\n") + "\n");
 }
 // const.ini: the names of Greece's heroes (MName00x -> <prefix>Name00x) and the keys the game does not have that the mod's scripts read
@@ -617,7 +619,7 @@ fs.rmSync(path.join(OUT, "legacy-left-out.txt"), { force: true });
   const extra = EXTRA_PORTS;
   console.log(`names compared with: ${others().filter(d => d !== G).length} ports of this worktree and ${extra.length ? extra.map(d => path.basename(d)).join(", ") + " from " + path.dirname(extra[0]) : "no Imperivm Legacy"}`);
   for (let pass = 1; pass <= 6; pass++) {
-    const r = tagCollisions({ OUT, tag: V.tag, others: [...others().filter(d => d !== G), ...extra, G, path.join(G, "paks")].filter(fs.existsSync), mapLabel: V.label, skip: /^(currentlang|ui\/menu|data\/interface\/menu)\// });
+    const r = tagCollisions({ OUT, tag: V.tag, others: [...others().filter(d => d !== G), ...extra, G, path.join(G, "paks")].filter(fs.existsSync), mapLabel: V.label, skip: /^(currentlang|ui\/menu|data\/interface\/menu)\//i });
     console.log(`own names (${V.tag}), pass ${pass}: ${r.classes.length} classes (${r.classes.slice(0, 6).join(", ")}...), ${r.folders.length} art folders, ${r.maps.length} maps, ${r.files.length} files${r.unlabeled.length ? "; names not written: " + r.unlabeled.slice(0, 4).join(" | ") : ""}`);
     if (!r.classes.length && !r.folders.length && !r.maps.length && !r.files.length) break;
   }

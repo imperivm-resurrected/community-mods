@@ -41,6 +41,8 @@ run("cp", ["-al", RAW, FLAT]);                                                  
   if (V.legacyLeft && fs.existsSync(list)) {
     const find = (base, rel) => { let p = base; for (const part of rel.split("/")) { const n = fs.existsSync(p) && fs.readdirSync(p).find(x => x.toLowerCase() === part.toLowerCase()); if (!n) return null; p = path.join(p, n); } return p; };
     const base23 = path.join(WORK, "greek-2-3-raw");
+    // the 2.3 is the baseline: without its raw folder the "replaced by the 2.3's" files would silently be dropped and the build would differ from one that has it
+    if (!fs.existsSync(base23)) { console.error(`no ${base23}: run \`node tools/greek-2x-source.js 2.3\` first and keep work/greek-2-3-raw until the ${VER} is built (the Legacy exclusion puts the 2.3's files back from it)`); process.exit(1); }
     let dropped = 0, replaced = 0;
     for (const rel of fs.readFileSync(list, "utf8").split(/\r?\n/).filter(l => l && !l.startsWith("#"))) {
       const mine = find(FLAT, rel); if (!mine) { console.error(`${rel}: not in ${FLAT}`); process.exit(1); }
