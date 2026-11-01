@@ -96,7 +96,7 @@ The installer has no license text. `CURRENTLANG/CREDITS.TXT` (shipped in `local/
 
 ## Validation
 
-`validate-mod.js --game "$G" --data originals/game-data/DATA` (SDK of `dev-villoh`): **2714 files checked, 0 errors, 68 warnings** (animations whose `frames` do not match their rows, in the mod's own sprites).
+`validate-mod.js --game "$G" --data originals/game-data/DATA` (SDK of `dev-villoh`): **2715 files checked, 0 errors, 68 warnings** (animations whose `frames` do not match their rows, in the mod's own sprites).
 
 `node tools/shared-paths.js greek-mod-2-5-3`: **0 class ids in common** with the game and with the CGWAR, the 4.2, the 1.8 and Mediterranevm alpha:
 
@@ -117,7 +117,7 @@ mediterranevm-alpha: 1 files in the same path with other bytes, 10 identical, 0 
 
 Only the menu skin: cosmetic. Against the 2.3 (`ported/greek-mod-2-3`, the other port of the line): 0 files at the same path with other bytes, 598 identical (art and sounds both carry), 0 class ids in common. Imperivm Legacy is not in this worktree's `ported/`: the names that collide with it were renamed (`tagCollisions`, tag `w25`, also compares with the main checkout's `ported/imperivm-legacy`).
 
-Script checks (`raw/greek-mod-2-5-3-script-checks.txt`): 257 scripts, 0 errors, 49 warnings: the same two kinds as in the 2.3 (a clone's copy names the game's class of another civilization in a branch it never takes; `"BHorseman"` in `iberian_village_trainIScout.vs`, the mod's own bug) plus `"RomanShipyard"` / `"GaulShipyard"` in the mule scripts and `"TBarrackHorse"`, classes neither the game nor the mod has.
+Script checks (`raw/greek-mod-2-5-3-script-checks.txt`): 258 scripts, 0 errors, 49 warnings: the same two kinds as in the 2.3 (a clone's copy names the game's class of another civilization in a branch it never takes; `"BHorseman"` in `iberian_village_trainIScout.vs`, the mod's own bug) plus `"RomanShipyard"` / `"GaulShipyard"` in the mule scripts and `"TBarrackHorse"`, classes neither the game nor the mod has.
 
 ## Pictures, sounds and references (checked offline)
 
@@ -163,6 +163,12 @@ All the rows above are **ours** (the rename broke them: the unsuffixed name reso
 **Not tried for this port:** that *Competitive* and *Real World* show in the lobby and generate a map with this set active; and what the lobby shows when this set is active together with the 1.8 or the 4.2, which ship byte-identical templates (probably the same name twice in the list).
 
 **`DATA/CLASSES/WINTER/THERMAE.SC_w25.XML` is an open question.** Its name no longer ends in `.sc.xml`, and the class loader is a different one from the random-map list: the AsvrMod test does not cover it. Not claimed to work; not checked in game. If the winter Thermae is not read, the summer class still exists (`ThermaeWinter` only sets the winter sprite of the ruin).
+
+## Names the scripts use (checked offline, added after the 2.6.1's first test)
+
+The 2.6.1's first in-game test (maintainer, 2026-11-01, only this set, installed from the build) loaded and showed three compilation errors that the build had not caught (script checks: 0 errors). `tools/lib/greek-2x-names.js` (run by `tools/lib/greek-2x-checks.js`, so by every build) now reads the port's scripts and the game's scripts that a class or command of the port points to, and **stops the build** on: a bare name or a call that is no variable, member, game function or constant (`sdk/game-functions.txt`), special, AI name, strategy or class; a script file named by a `vs=` / `verify=` or an `AIRun("X.vs")` that is in neither the port nor the game; an order (`AddCommand`, `SetCommand`, `ExecCmd`, `GetCmdStaminaCost`...) that no command or method of the port or the game has. Scripts that nothing points to are not read (counted in the note). What it **cannot** see: the type of an expression and the signature of a call (`x.nme`, a typo after a dot, passes); `Mod_*` names (any passes); a name a string builds at run time; code under `if (false)`; whether a script does what it should. It is calibrated on the game's own live scripts, so it can miss a name that only the game's dead scripts define.
+
+What it found in this version: `GRW25_ES_Stronghold.vs` calls `ESH_BuildCarthaginianArmy.vs`, a script of the mod's own that the port did not ship: shipped as `GRW25_ESH_BuildCarthaginianArmy.vs`, registered in the AI.INI patch. Not seen in game.
 
 ## Maps that `require` this mod
 

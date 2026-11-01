@@ -1,4 +1,5 @@
-257 scripts, 16 hero bases, 247 class names and 147 GetConst keys checked
+258 scripts, 16 hero bases, 247 class names and 150 GetConst keys checked
+names: 271 scripts read, 0 problems; 46 scripts that nothing points to were not read (BDRUID_HIDE_CLOSE_ALLIES_w25.VS, BEAR_BOAR_ENGAGE_w25.VS, BEAR_BOAR_IDLE_w25.VS, DEER_HORSE_MOVE_w25.VS, ...)
 
 0 errors
 
