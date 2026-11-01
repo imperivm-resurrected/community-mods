@@ -1,0 +1,22 @@
+{
+  "id": "secuter-fun-mod-grecia",
+  "name": "Secuter Fun Greece 1.5",
+  "version": "1.5",
+  "category": "Civilizations",
+  "authors": [
+    "Secuter",
+    "Villoh (port)"
+  ],
+  "description": {
+    "spanish": "Fun mod 1.5 de Secuter, versión Grecia, como nueve civilizaciones propias junto a las del juego: las ocho del juego («Galos (Secuter)», «Roma rep. (Secuter)»…) y «Grecia (Secuter)», la Grecia del Greek Mod 1.8 con los cambios de Secuter (carro, hipaspista, mirmidón, sacerdote, toxotes, puesto avanzado, héroe del carro). Unidades básicas sin coste de población (héroes y sacerdotes sí), sin Libertad, nueva clase de unidades a distancia de alcance medio, velocidad uniforme de la caballería, generales más fuertes (hasta 100 unidades y 7 habilidades), héroes con habilidades distintas, comprar víveres en la taberna, formaciones nuevas. Es independiente del Greek Mod: no lo necesita. Las civilizaciones del juego no cambian. Los cambios que afectan al juego entero van en el paquete aparte «secuter-fun-mod-rules».",
+    "english": "Secuter's Fun mod 1.5, Greece version, as nine civilizations of their own next to the game's: the game's eight (\"Gaul (Secuter)\", \"Rep. Rome (Secuter)\"…) and \"Greece (Secuter)\", the Greek Mod 1.8's Greece with Secuter's changes (chariot, hypaspist, myrmidon, priest, toxotes, outpost, chariot hero). Basic units cost no population (heroes and priests do), no Liberty, a new mid-range ranged class, uniform cavalry speed, stronger generals (up to 100 units and 7 abilities), heroes with different abilities, buy food in the tavern, new formations. It is independent of the Greek Mod: it does not need it. The game's civilizations do not change. What changes the whole game is in the separate pack \"secuter-fun-mod-rules\".",
+    "italian": "Fun mod 1.5 di Secuter, versione Grecia, come nove civiltà a sé accanto a quelle del gioco: le otto del gioco («Galli (Secuter)», «Roma rep. (Secuter)»…) e «Grecia (Secuter)», la Grecia del Greek Mod 1.8 con le modifiche di Secuter (carro, ipaspista, mirmidone, sacerdote, toxotes, avamposto, eroe del carro). Unità base senza costo in popolazione (eroi e sacerdoti sì), niente Libertà, una nuova classe a distanza di gittata media, velocità uniforme della cavalleria, generali più forti (fino a 100 unità e 7 abilità), eroi con abilità diverse, compra viveri nella taverna, nuove formazioni. È indipendente dal Greek Mod: non lo richiede. Le civiltà del gioco non cambiano. Ciò che cambia tutto il gioco è nel pacchetto separato «secuter-fun-mod-rules»."
+  },
+  "tags": [
+    "Type: Gameplay & Balance"
+  ],
+  "redistributable": true,
+  "sources": {
+    "page": "https://imperivmeditor.forumcommunity.net/?t=60040716"
+  }
+}
