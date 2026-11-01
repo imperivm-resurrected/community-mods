@@ -433,6 +433,22 @@ const ALL = [CONST, ...CIVS.map(c => c.id[0].toUpperCase() + c.id.slice(1))], NO
   fs.rmSync(SRC, { recursive: true, force: true });
 }
 console.log(`menu skin: ${require("./lib/menu-skin.js").skinToPatches({ OUT, HD })} layout files became patches of the keys they changed`);
+// WHERE THE ENGINE LOOKS FOR EACH MENU INI. A patch is matched by the exact path the game OPENS (src/mods/patch.cpp PatchApply(rel), called from src/mods/vfs.cpp with the normalized open path; no alias
+// between the folders), and the game opens the screens as `menuini/<name>.ini` (the game log of 2026-11-01: menuini/mainmenu.ini, menuini/mpgamemenu.ini, menuini/settings.ini...; the engine's own patch of the
+// main menu is menuini/mainmenu.ini), not as data/interface/menu/<name>.ini. The template is opened under both names (seen applied at both). So every skin INI patch goes to patches/menuini/ and the template
+// ALSO stays at patches/DATA/INTERFACE/MENU/. The rule is the same as tools/lib/menu-skin.js has on main (menuini/ for all, template.ini in both); written here so this stack does not depend on that commit, and
+// idempotent: if skinToPatches already wrote patches/menuini/ there is nothing left to move.
+{
+  const fromDir = path.join(OUT, "patches", "DATA", "INTERFACE", "MENU"), toDir = path.join(OUT, "patches", "menuini");
+  let moved = 0;
+  for (const f of fs.existsSync(fromDir) ? fs.readdirSync(fromDir).sort() : []) {
+    const t = fs.readFileSync(path.join(fromDir, f)); fs.mkdirSync(toDir, { recursive: true });
+    fs.rmSync(path.join(toDir, f), { force: true }); fs.writeFileSync(path.join(toDir, f), t); moved++;
+    if (!/^template\.ini$/i.test(f)) fs.rmSync(path.join(fromDir, f));
+  }
+  if (fs.existsSync(fromDir) && !fs.readdirSync(fromDir).length) fs.rmSync(fromDir, { recursive: true });
+  console.log(`menu skin: ${moved} patches placed at patches/menuini/ (the path the game opens), the template also at patches/DATA/INTERFACE/MENU/`);
+}
 
 // ---- 7. the mod's versions of the game's behavior scripts: copies of their own (<name>_<tag>.vs) that the classes of the mod's civilizations point to ---------
 // port-140.js already merged each one with HD (HD + the mod's edits), so the file at the game's path is the copy to make (tools/lib/own-scripts.js).
