@@ -303,9 +303,24 @@ const report = [], patches = [];
   const left = [];
   // the game's own files the mod edited in place that are not a civilization's: left out (the edited item scripts)
   const GONE = /^DATA\/(ITEMSCRIPTS\/|CONST\.INI)/i;
-  // global assets: the terrain textures (they go with terrains.xml, which is global and not ported, so nothing of the mod uses them; the mini-map ones replace the game's grass3.bmp & co at the game's paths)
-  // and the menu pictures (Currentlang/*.bmp: they replace the game's, and the 4.2, the 1.8, the 2.x and the alpha ship their own)
-  for (const f of walk(OUT)) if (/^(TERRAIN\/|MINIMAP\/ZOOM\d+\/TERRAIN\/|Currentlang\/[^/]+\.bmp$)/i.test(f)) { fs.rmSync(path.join(OUT, f)); left.push(f + " (global: terrain textures / menu pictures)"); }
+  const ENGINE_READ = /^(DATA\/(RANDOMMAP\/|GAMESCRIPTS\/|TERRAINS\.XML|VXNOTIFICATIONS\.XML)|UI\/(INFOBAR\/|CMDBAR\/(FRAMES\/|EMPTYMENU|[^/]+\.bmp$)))/i;
+  // GLOBAL, reason 1: the terrain textures. They go with terrains.xml (global, not ported), so no class of the port uses them, and the mini-map ones replace the game's grass3.bmp & co at the game's paths.
+  for (const f of walk(OUT)) if (/^(TERRAIN\/|MINIMAP\/ZOOM\d+\/TERRAIN\/)/i.test(f)) { fs.rmSync(path.join(OUT, f)); left.push(f + " (global, reason 1: terrain texture; it goes with terrains.xml, which is global)"); }
+  // THE MENU SKIN (AGENTS.md, "Civilizations are independent": the cosmetic exception). Shipped, not left out:
+  //  - Currentlang/{MenuBackground,Logo,AdventureDefault}.bmp: whole files at the game's paths (only one skin shows; the content manager lets the player choose). Checked: all three differ from the game's, none is a text table.
+  //  - DATA/INTERFACE/MENU/*.ini: a patch of only the keys the mod changed (tools/lib/menu-skin.js, as the 4.2, the 1.8 and the 2.x ports do): the skin moves every menu panel to a 1920x1080 layout, so
+  //    all 13 MENU files that differ from the game's are the skin's (MAINMENU.INI and TEMPLATE.INI place the logo, the buttons and the panel; the others follow them). The 13 others are the game's byte for byte (shrink-mod.js dropped them).
+  const nSkin = require("./lib/menu-skin.js").skinToPatches({ OUT, HD });
+  console.log(`menu skin: ${nSkin} layout files became patches of the keys they changed; Currentlang/*.bmp stay`);
+  // the validator warns (and the SDK says) that the engine does not strip a comment at the end of a key line ("Button12Rect = ... %ButtonHeight% ;Start estrategia"): in the patches the comments are dropped, the values stay
+  { let nc = 0; const dir = find(OUT, "patches/DATA/INTERFACE/MENU");
+    for (const f of dir ? fs.readdirSync(dir) : []) { const pp = path.join(dir, f), t = rd(pp), n = t.replace(/^((?!Text\s*=)[A-Za-z0-9_.]+\s*=\s*[^;\r\n]*?)[ \t]+;[^\r\n]*/gm, (_m, a) => { nc++; return a; }); if (n !== t) wr(pp, n); }
+    if (nc) console.log(`menu skin: ${nc} comments at the end of a line left out of the patches (the engine does not strip them)`); }
+  // the mod's CONQUESTGAME.INI points [BackImage] at UI/Interface/MenuMod.bmp, a picture that is in none of the three archives or in the game (the mod's own bug): that key is not shipped, the conquest screen keeps the game's CurrentLang/MenuBackground.bmp (= the skin's)
+  { const pp = find(OUT, "patches/DATA/INTERFACE/MENU/CONQUESTGAME.INI");
+    if (pp) { const t = rd(pp), n = t.replace(/\[BackImage\]\r?\nImage = UI\/Interface\/MenuMod\.bmp\r?\n/i, ""); if (n !== t) { wr(pp, n); left.push("DATA/INTERFACE/MENU/CONQUESTGAME.INI [BackImage] Image = UI/Interface/MenuMod.bmp (key not shipped: the picture exists nowhere, the mod's own bug)"); console.log("CONQUESTGAME.INI: the [BackImage] key that names the missing MenuMod.bmp is not shipped"); } } }
+  // GLOBAL, reason 2: the rest of DATA/INTERFACE is not the menu skin: the in-game command bars and info bar of the game's own civilizations (the engine reads them by path) and the editor's unit combo. They would change the game's own civilizations.
+  for (const f of walk(OUT)) if (/^DATA\/INTERFACE\/(CMDBAR|INFOBAR|EDITOR)\//i.test(f)) { fs.rmSync(path.join(OUT, f)); left.push(f + " (global, reason 2: in-game bar / editor INI the engine reads by path; not the menu skin)"); }
   for (const f of walk(OUT)) {
     if (/^(patches|civs|loc|local)\//i.test(f) || f === "mod.json") continue;
     const h = hdFile.get(f.toLowerCase()); if (!h) continue;
@@ -321,7 +336,7 @@ const report = [], patches = [];
       const h = hdFile.get(f.toLowerCase()); if (!h) continue;
       const base = path.basename(f).toLowerCase().replace(/\.rle$/, ""), stem = base.replace(/\.[^.]+$/, "");
       if (/^(units|buildings|mapobjects|outlines|minimap)\//i.test(f)) continue;                      // art and entities: found by folder
-      if (!texts.some(([tf, t]) => tf.toLowerCase() !== f.toLowerCase() && (t.includes(base) || (/\.(bmp|wav|mp3)$/i.test(base) && t.includes(stem))))) { fs.rmSync(path.join(OUT, f)); left.push(f + " (nothing uses it)"); gone++; }
+      if (!texts.some(([tf, t]) => tf.toLowerCase() !== f.toLowerCase() && (t.includes(base) || (/\.(bmp|wav|mp3)$/i.test(base) && t.includes(stem))))) { fs.rmSync(path.join(OUT, f)); left.push(f + (ENGINE_READ.test(f) ? " (global, reason 3: the engine reads it by path or name, no class of the port names it: pictures of the game\u0027s own in-game bars, random maps, game scripts, terrains, notifications)" : " (no class, entity or script of the port names it: a script or picture of the game at its own path that the mod edited)")); gone++; }
     }
     if (!gone) break;
   }
@@ -425,7 +440,7 @@ if (fs.existsSync(EXTRAS)) for (const f of walk(EXTRAS)) { if (f === "NOTES.md")
 if (UNPACKED.es && UNPACKED.ita) {
   const G0 = path.join(ROOT, "originals", "game-data");
   const alias = { classes: new Map(), commands: new Map() };
-  for (const f of fs.readdirSync(path.join(OUT, "civs"))) { const j = JSON.parse(fs.readFileSync(path.join(OUT, "civs", f), "utf8")); for (const k of ["classes", "commands"]) for (const [o, n] of Object.entries((j.alias || {})[k] || {})) (alias[k].get(o) || alias[k].set(o, []).get(o)).push(n); }
+  for (const f of fs.readdirSync(path.join(OUT, "civs"))) { let j; try { j = JSON.parse(fs.readFileSync(path.join(OUT, "civs", f), "utf8")); } catch (e) { console.error(`civs/${f} is not valid JSON (${e.message}): the build stops`); process.exit(1); } for (const k of ["classes", "commands"]) for (const [o, n] of Object.entries((j.alias || {})[k] || {})) (alias[k].get(o) || alias[k].set(o, []).get(o)).push(n); }
   // the mod's own classes that carry the tag (the neutral ones)
   for (const f of walk(find(OUT, "DATA/CLASSES")).filter(f => /\.sc\.xml$/i.test(f))) { const id = classOf(rd(path.join(find(OUT, "DATA/CLASSES"), f))); const m = id && id.match(new RegExp(`^(.+)_${TAG}$`)); if (m) (alias.classes.get(m[1]) || alias.classes.set(m[1], []).get(m[1])).push(id); }
   const decode = b => { const u = b.toString("utf8"); return u.includes("\ufffd") ? b.toString("latin1") : u; };
