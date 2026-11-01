@@ -1,0 +1,7 @@
+<class id="Pyramid" cpp_class="CVXTownHall" parent="Stonehenge" entity="MapObjects/Egypt/Pyramide2/Pyramide2.ent.xml">
+
+	<properties edittree_pos="Structures/Interactive/Piramide"/>
+	<properties icon="gameres/icons/EPyramid.bmp"/>
+	<properties radius="250" selection_radius="270"/>
+
+</class>

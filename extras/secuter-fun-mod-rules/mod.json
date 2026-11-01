@@ -1,0 +1,19 @@
+{
+  "id": "secuter-fun-mod-rules",
+  "name": "Secuter Fun rules 1.5",
+  "version": "1.5",
+  "category": "Gameplay & Balance",
+  "authors": [
+    "Secuter",
+    "Villoh (port)"
+  ],
+  "description": {
+    "spanish": "Las reglas del mundo de la Fun mod 1.5 de Secuter, aparte de sus civilizaciones: cambia las clases y valores del propio juego PARA TODOS los jugadores mientras está activo. Los campamentos de los pueblos en el mapa aleatorio, la guarnición de los puestos avanzados (4 tipos de defensor), los objetos neutros (cofres, obeliscos, Stonehenge y su espectro, pirámide), los barcos, los objetos nuevos y algunas constantes. No añade civilizaciones: las de la Fun mod son «Secuter Fun 1.5» y «Secuter Fun Greece 1.5». Usar solo uno con «Objetos en todas las estructuras y fuertes equilibrados», que toca el mismo script y las mismas clases.",
+    "english": "The world rules of Secuter's Fun mod 1.5, apart from its civilizations: it changes the game's own classes and values FOR EVERY PLAYER while it is on. The camps of the peoples on the random map, the garrison of the outposts (4 kinds of defender), the neutral objects (chests, obelisks, Stonehenge and its ghost, the pyramid), the ships, the new items and some constants. It adds no civilization: the Fun mod's are \"Secuter Fun 1.5\" and \"Secuter Fun Greece 1.5\". Use only one with \"Items in every structure and balanced forts\", which touches the same script and the same classes.",
+    "italian": "Le regole del mondo della Fun mod 1.5 di Secuter, a parte le sue civiltà: cambia le classi e i valori del gioco stesso PER TUTTI i giocatori finché è attivo. Gli accampamenti dei popoli nella mappa casuale, la guarnigione degli avamposti (4 tipi di difensore), gli oggetti neutri (forzieri, obelischi, Stonehenge e il suo spettro, piramide), le navi, i nuovi oggetti e alcune costanti. Non aggiunge civiltà: quelle della Fun mod sono «Secuter Fun 1.5» e «Secuter Fun Greece 1.5». Usarne solo uno con «Oggetti in tutte le strutture e forti bilanciati», che tocca lo stesso script e le stesse classi."
+  },
+  "redistributable": true,
+  "sources": {
+    "page": "https://imperivmeditor.forumcommunity.net/?t=60040716"
+  }
+}
