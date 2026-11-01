@@ -1,6 +1,0 @@
-<class id="EHero3a" cpp_class="CVXHero" parent="EHero3" entity="Units/EHero3/EHero3.ent.xml">
-
-	<properties display_name="Paneb" display_name_plural="Heroes"/>
-	<properties icon="gameres/icons/EHero3.bmp"/>
-
-</class>

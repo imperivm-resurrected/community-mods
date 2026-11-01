@@ -1,8 +1,0 @@
-<class id="CHero3" cpp_class="CVXHero" parent="CarthaginianHero" entity="Units/CHero3/CHero3.ent.xml">
-
-	<properties display_name="Carthalo" display_name_plural="Heroes"/>
-	<properties icon="gameres/icons/CHero3.bmp"/>
-	<properties edittree_pos="Units/Cartagine/Numida/Eroe - Carthalo"/>
-	<properties HeroSkills="Frenzy, Rush, Quick March, Leadership, Wisdom"/>
-
-</class>

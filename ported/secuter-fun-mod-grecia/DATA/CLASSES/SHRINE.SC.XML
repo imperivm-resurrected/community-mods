@@ -1,9 +1,0 @@
-<class id="Shrine" cpp_class="CVXTownHall" parent="Stonehenge" entity="MapObjects/Shrine/Shrine.ent.xml">
-
-	<properties edittree_pos="Structures/Interactive/Shrine"/>
-	<properties icon="gameres/icons/Shrine.bmp"/>
-	<properties radius="250" selection_radius="255"/>
-	<properties minimap_icon_type="black"/>
-
-
-</class>

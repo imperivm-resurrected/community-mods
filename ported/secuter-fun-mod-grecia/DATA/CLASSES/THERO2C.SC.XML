@@ -1,6 +1,0 @@
-<class id="THero2c" cpp_class="CVXHero" parent="THero2" entity="Units/THero2/THero2.ent.xml">
-
-	<properties display_name="Manifred" display_name_plural="Heroes"/>
-	<properties icon="gameres/icons/THero2.bmp"/>
-
-</class>

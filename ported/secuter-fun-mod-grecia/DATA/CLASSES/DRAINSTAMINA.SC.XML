@@ -1,5 +1,0 @@
-<class id="DrainStamina" cpp_class="CVXScriptObj" parent="BaseBuffObj" entity="">
-
-	<behavior script = "data/subai/druid_drain_stamina.vs"/>
-	
-</class>

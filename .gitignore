@@ -44,3 +44,7 @@ ported/antioco-iii-el-grande/
 # AsvrMod VII a0.8.1: rebuilt from the GameBanana rar + extras/asvrmod-vii-civs/ (tools/asvrmod-vii.js: unpacks into .scratch/, runs port-140.js; see its NOTES.md)
 ported/asvrmod-vii-civs/
 .scratch/
+
+# Secuter's Fun mod 1.5, plain and Greece version (8 and 9 civilizations of their own, 665 and 1360 files): rebuilt by `G=... node tools/secuter-fun-mod.js plain|grecia` from the forum zips + extras/<id>/ (the Greece version also reads the built ported/greek-mod-1-8, see its NOTES.md)
+ported/secuter-fun-mod/
+ported/secuter-fun-mod-grecia/

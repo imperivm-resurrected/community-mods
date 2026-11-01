@@ -1,6 +1,0 @@
-<class id="RHero1b" cpp_class="CVXHero" parent="RHero1" entity="Units/RHero1/RHero1.ent.xml">
-
-	<properties display_name="Gallio" display_name_plural="Heroes"/>
-	<properties icon="gameres/icons/RHero1.bmp"/>
-
-</class>
