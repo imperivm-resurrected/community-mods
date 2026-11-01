@@ -1,5 +1,0 @@
-<class id="GArenaBear" cpp_class="CVXDecor" parent="Object" entity="Buildings/GArena 1/GArena_Bear.ent.xml">
-
-	<method sig="idle" vs="data/subai/anim.vs"/>
-
-</class>

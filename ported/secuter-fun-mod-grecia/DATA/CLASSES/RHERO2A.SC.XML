@@ -1,6 +1,0 @@
-<class id="RHero2a" cpp_class="CVXHero" parent="RHero2" entity="Units/CAESAR/CAESAR.ENT.XML">
-
-	<properties display_name="Glycon" display_name_plural="Heroes"/>
-	<properties icon="gameres/icons/MHero8.bmp"/>
-
-</class>

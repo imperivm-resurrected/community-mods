@@ -1,8 +1,0 @@
-<class id="GHero2" cpp_class="CVXHero" parent="GaulHero" entity="Units/GHero2/GHero2.ent.xml">
-
-	<properties display_name="Ogox" display_name_plural="Heroes"/>
-	<properties icon="gameres/icons/GHero2.bmp"/>
-	<properties edittree_pos="Units/Gallia/Eroe - Ogox"/>
-	<properties HeroSkills="Defensive cry, Assault, Quick March, Leadership, Epic armor"/>
-
-</class>

@@ -1,6 +1,0 @@
-<class id="BaseBuffObj" cpp_class="CVXScriptObj" parent="Object" entity="">
-
-	<properties stamina_dec_time = "600"/>
-	<properties sight = "800"/>
-	
-</class>

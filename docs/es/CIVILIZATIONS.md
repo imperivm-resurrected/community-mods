@@ -70,6 +70,23 @@ Las letras y los índices son únicos en todos los ports (el SDK admite índices
 | (motor) | `aiberia` | `Aib` (derivado) | Iberia | AsvrMod VII | `tools/asvrmod-vii.js` |
 | (motor) | `aegypt` | `Aeg` (derivado) | Egypt | AsvrMod VII | `tools/asvrmod-vii.js` |
 | (motor) | `agermany` | `Age` (derivado) | Germany | AsvrMod VII | `tools/asvrmod-vii.js` |
+| (motor) | `sgaul` | `Sga` (derivado) | Gaul | Secuter Fun 1.5 | `tools/secuter-fun-mod.js` |
+| (motor) | `srome` | `Sro` (derivado) | RepublicanRome | Secuter Fun 1.5 | `tools/secuter-fun-mod.js` |
+| (motor) | `simperial` | `Sim` (derivado) | ImperialRome | Secuter Fun 1.5 | `tools/secuter-fun-mod.js` |
+| (motor) | `scarthage` | `Sca` (derivado) | Carthage | Secuter Fun 1.5 | `tools/secuter-fun-mod.js` |
+| (motor) | `sbritain` | `Sbr` (derivado) | Britain | Secuter Fun 1.5 | `tools/secuter-fun-mod.js` |
+| (motor) | `siberia` | `Sib` (derivado) | Iberia | Secuter Fun 1.5 | `tools/secuter-fun-mod.js` |
+| (motor) | `segypt` | `Seg` (derivado) | Egypt | Secuter Fun 1.5 | `tools/secuter-fun-mod.js` |
+| (motor) | `sgermany` | `Sge` (derivado) | Germany | Secuter Fun 1.5 | `tools/secuter-fun-mod.js` |
+| (motor) | `zgaul` | `Zga` (derivado) | Gaul | Secuter Fun Greece 1.5 | `tools/secuter-fun-mod.js` |
+| (motor) | `zrome` | `Zro` (derivado) | RepublicanRome | Secuter Fun Greece 1.5 | `tools/secuter-fun-mod.js` |
+| (motor) | `zimperial` | `Zim` (derivado) | ImperialRome | Secuter Fun Greece 1.5 | `tools/secuter-fun-mod.js` |
+| (motor) | `zcarthage` | `Zca` (derivado) | Carthage | Secuter Fun Greece 1.5 | `tools/secuter-fun-mod.js` |
+| (motor) | `zbritain` | `Zbr` (derivado) | Britain | Secuter Fun Greece 1.5 | `tools/secuter-fun-mod.js` |
+| (motor) | `ziberia` | `Zib` (derivado) | Iberia | Secuter Fun Greece 1.5 | `tools/secuter-fun-mod.js` |
+| (motor) | `zegypt` | `Zeg` (derivado) | Egypt | Secuter Fun Greece 1.5 | `tools/secuter-fun-mod.js` |
+| (motor) | `zgermany` | `Zge` (derivado) | Germany | Secuter Fun Greece 1.5 | `tools/secuter-fun-mod.js` |
+| (motor) | `zgreece` | `Zgr` (derivado) | ImperialRome (raza propia) | Secuter Fun Greece 1.5 | La Grecia de la 1.8 con los cambios de Secuter, independiente de los tres mods griegos (`tools/secuter-greece.js`) |
 
 Una civilización sin `letter` (prefijo derivado: las 3 primeras letras del `id`, imperivm-resurrected#37) ni `index` (lo asigna el motor) no reserva nada en esta tabla; sus filas dicen `(motor)` y están para detectar choques. **Dos ports no pueden estar activos a la vez si comparten un prefijo derivado: el motor ignora la segunda civilización.** Ahora mismo chocan GBR Tactics y La Reconquista 2010 en `Gau`, `Bri`, `Car`, `Egy`, `Ger`, `Ibe` e `Imp`.
 

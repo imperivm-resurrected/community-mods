@@ -1,4 +1,0 @@
-<class id="MeleeAnimal" cpp_class="CVXUnit" parent="Melee" entity="">
-
-	<properties formation_radius="30" radius="30" selection_radius="30"/>
-</class>

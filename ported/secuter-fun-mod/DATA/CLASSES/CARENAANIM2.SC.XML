@@ -1,5 +1,0 @@
-<class id="CArenaAnim2" cpp_class="CVXDecor" parent="Object" entity="Buildings/CArena/CArena_Anim_Noble.ent.xml">
-	
-	<method sig="idle" vs="data/subai/anim.vs"/>
-
-</class>

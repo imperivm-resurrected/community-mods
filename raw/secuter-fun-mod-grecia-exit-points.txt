@@ -1,0 +1,12 @@
+ZGRBARRACKS/ZGRBARRACKS.ENT.XML point 1 (-16,-50) -> cell 62,68: free, free 3x3 6/9, reaches the outside of the footprint
+ZGRGYMNASIUM/ZGRGYMNASIUM.ENT.XML point 1 (32,-16) -> cell 65,65: free, free 3x3 8/9, reaches the outside of the footprint
+ZGRTEMPLE/ZGRTEMPLE.ENT.XML point 1 (35,-134) -> cell 65,73: BLOCKED, free 3x3 3/9, -
+ZGRVILLAGE/ZGRVILLAGE.ENT.XML point 2 (90,5) -> cell 69,64: free, free 3x3 6/9, reaches the outside of the footprint
+ZGRTOWNHALL/ZGRTOWNHALL.ENT.XML point 9 (35,94) -> cell 65,59: free, free 3x3 8/9, reaches the outside of the footprint
+ZGRTOWNHALL/ZGRTOWNHALL.ENT.XML point 10 (41,88) -> cell 66,59: free, free 3x3 5/9, reaches the outside of the footprint
+ZGRTOWNHALL/ZGRTOWNHALL.ENT.XML point 11 (41,2) -> cell 66,64: free, free 3x3 7/9, reaches the outside of the footprint
+ZGRTOWNHALL/ZGRTOWNHALL.ENT.XML point 12 (45,2) -> cell 66,64: free, free 3x3 7/9, reaches the outside of the footprint
+ZGRTOWNHALL/ZGRTOWNHALL.ENT.XML point 13 (-41,-94) -> cell 60,70: BLOCKED, free 3x3 0/9, -
+ZGRTOWNHALL/ZGRTOWNHALL.ENT.XML point 14 (-45,88) -> cell 60,59: BLOCKED, free 3x3 0/9, -
+ZGRTOWNHALL/ZGRTOWNHALL.ENT.XML point 15 (-45,2) -> cell 60,64: free, free 3x3 6/9, reaches the outside of the footprint
+ZGRTOWNHALL/ZGRTOWNHALL.ENT.XML point 16 (-51,2) -> cell 60,64: free, free 3x3 6/9, reaches the outside of the footprint
