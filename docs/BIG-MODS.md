@@ -34,10 +34,10 @@ GBR Tactics 2.4 ([extras/gbr-tactics/](../extras/gbr-tactics/)) has no Greece: i
 A mod made for HD (not 1.40) is reduced with the SDK's `shrink-mod.js`, which keeps only what differs from the game. Imperivm Legacy 2.4.1 ships as three installers (ENG, ESP, ITA; Clickteam, not Inno Setup, so `innoextract` fails): `7z e -t#` splits one into `.bz2` chunks, but it loses the file names, so the simplest way is to install it with wine (`WINEPREFIX=/tmp/wine-legacy wine <installer>`, to `C:\legacy`). The three installers only differ in the language package (`local\<language>.pak`, a chunk of ~19 MB: the one that differs between installers, `bunzip2` it after `7z e -t#`), so install one and copy the `.pak` of the others into its `local\` as `spanish.pak` and `italian.pak`.
 
 ```bash
-node shrink-mod.js <installed mod> "<game>" ported/imperivm-legacy --id imperivm-legacy --name "Imperivm Legacy" --version 2.4.1 --category "Gameplay & Balance"
+G="<the HD game folder>" SDK="<imperivm-resurrected/sdk>" node tools/imperivm-legacy.js      # from .scratch/legacy-src, the three installs in one folder
 ```
 
-Then copy `extras/imperivm-legacy/` over the result: the 4 files with broken paths in the original mod (`BASETAVERN`, `RAMUNIT`, `RTHERMAE`, `FOG_OWNER_MARKER`) and its `mod.json`. `ported/imperivm-legacy/` (353 MB) isn't in git, like the 1.40 ones.
+It runs `shrink-mod.js` on it, puts the 4 files with broken paths in the original mod (`BASETAVERN`, `RAMUNIT`, `RTHERMAE`, `FOG_OWNER_MARKER`) from `extras/imperivm-legacy/` over the result and makes the game's eight civilizations as eight of its own, next to the game's (`(Legacy)`, prefixes `Lga`…`Lge`). Steps and what was left out: `extras/imperivm-legacy/NOTES.md`. `ported/imperivm-legacy/` (125 MB) isn't in git, like the 1.40 ones.
 
 # Maps with Imperivm I classes
 
