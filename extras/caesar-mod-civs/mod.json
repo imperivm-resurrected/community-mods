@@ -1,0 +1,22 @@
+{
+  "id": "caesar-mod-civs",
+  "name": "Caesar Mod 1.1.0",
+  "version": "1.1.0",
+  "authors": [
+    "Paolo Lamberto",
+    "Greek Mod 1.9 creators",
+    "Villoh (port)"
+  ],
+  "description": {
+    "spanish": "Caesar Mod 1.1.0 de Paolo Lamberto (basado en el Greek Mod 1.9) como civilizaciones propias, junto a las del juego, que no se tocan: Grecia y una copia de cada civilización del juego con el equilibrio del mod (Galos, Britania, Iberia, Egipto, Germania, Cartago y Roma republicana, imperial y púnica). Trae también sus 51 mapas, las Grandes Batallas y los Grandes Desafíos, la conquista del Mediterráneo y su música. Los cambios globales del mod (constantes, objetos y clases neutrales del juego) no están aquí.",
+    "english": "Paolo Lamberto's Caesar Mod 1.1.0 (based on the Greek Mod 1.9) as civilizations of their own next to the game's, which are not touched: Greece and a copy of each of the game's civilizations with the mod's balance (Gaul, Britain, Iberia, Egypt, Germany, Carthage and Republican, Imperial and Punic Rome). It also brings the mod's 51 maps, the Great Battles and Great Challenges, the Mediterranean conquest and its music. The mod's global changes (constants, items and the game's neutral classes) are not in this pack.",
+    "italian": "La Caesar Mod 1.1.0 di Paolo Lamberto (basata sulla Greek Mod 1.9) come civiltà a sé, accanto a quelle del gioco, che non vengono toccate: la Grecia e una copia di ogni civiltà del gioco con il bilanciamento della mod (Galli, Britannia, Iberia, Egitto, Germania, Cartagine e Roma repubblicana, imperiale e punica). Porta anche le sue 51 mappe, le Grandi Battaglie e le Grandi Sfide, la conquista del Mediterraneo e la sua musica. I cambiamenti globali della mod (costanti, oggetti e classi neutrali del gioco) non sono in questo pacchetto."
+  },
+  "category": "Civilizations",
+  "license": "CC-BY-SA-4.0",
+  "redistributable": true,
+  "sources": {
+    "page": "https://gamebanana.com/mods/728740",
+    "gamebanana": 728740
+  }
+}
