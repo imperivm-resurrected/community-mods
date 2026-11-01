@@ -1,0 +1,22 @@
+{
+  "id": "secuter-fun-mod",
+  "name": "Secuter Fun 1.5",
+  "version": "1.5",
+  "category": "Civilizations",
+  "authors": [
+    "Secuter",
+    "Villoh (port)"
+  ],
+  "description": {
+    "spanish": "Fun mod 1.5 de Secuter, «hecha más que nada por diversión», como ocho civilizaciones propias junto a las del juego («Galos (Secuter)», «Roma rep. (Secuter)»…): las unidades básicas no cuestan población (héroes y sacerdotes sí), se quita la Libertad, nueva clase de unidades a distancia de alcance medio, velocidad uniforme de la caballería, generales más fuertes para cada pueblo (hasta 100 unidades y 7 habilidades), héroes con habilidades distintas, comando de comprar víveres en la taberna, formaciones nuevas y los cambios de unidades de Nucl3arW1nter. Las civilizaciones del juego no cambian. Los cambios que afectan al juego entero (campamentos del mapa, puestos avanzados, objetos, constantes) van en el paquete aparte «secuter-fun-mod-rules».",
+    "english": "Secuter's Fun mod 1.5, \"made mostly for fun\", as eight civilizations of their own next to the game's (\"Gaul (Secuter)\", \"Rep. Rome (Secuter)\"…): basic units cost no population (heroes and priests do), Liberty is removed, a new mid-range ranged class, uniform cavalry speed, a stronger general for each people (up to 100 units and 7 abilities), heroes with different abilities, a buy-food command in the tavern, new formations and Nucl3arW1nter's unit changes. The game's civilizations do not change. What changes the whole game (the camps on the map, the outposts, items, constants) is in the separate pack \"secuter-fun-mod-rules\".",
+    "italian": "Fun mod 1.5 di Secuter, «fatta più che altro per divertimento», come otto civiltà a sé accanto a quelle del gioco («Galli (Secuter)», «Roma rep. (Secuter)»…): le unità base non costano popolazione (eroi e sacerdoti sì), la Libertà è rimossa, una nuova classe a distanza di gittata media, velocità uniforme della cavalleria, un generale più forte per ogni popolo (fino a 100 unità e 7 abilità), eroi con abilità diverse, il comando Compra viveri nella taverna, nuove formazioni e le modifiche alle unità di Nucl3arW1nter. Le civiltà del gioco non cambiano. Ciò che cambia tutto il gioco (gli accampamenti della mappa, gli avamposti, gli oggetti, le costanti) è nel pacchetto separato «secuter-fun-mod-rules»."
+  },
+  "tags": [
+    "Type: Gameplay & Balance"
+  ],
+  "redistributable": true,
+  "sources": {
+    "page": "https://imperivmeditor.forumcommunity.net/?t=60040716"
+  }
+}
