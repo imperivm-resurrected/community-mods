@@ -529,22 +529,23 @@ for (const f of ["BELT OF SNAKES REMOVE.VS", "FEATHER AMULET REMOVE.VS"]) { cons
     if (cursorX - 3000 > 31000) report.push("the Greek templates do not fit in the free area");
   } else report.push("no Packs/RandomMapSettlements.bfhp: no Greek templates for the random map");
 }
-// Greece's barracks: the mod gave it ONE exit point (type 2, -32,-50), on the steps at the back of the courtyard and at the dead end of a 1-2 cell corridor of its
-// .pass (the footprint is a 34x33 cell diamond with that corridor through it; SDK's pass.js reads it). The engine keeps an exit point only if its cell is free
-// (CVXBuilding::ComputeDoorPoints). In the in-game test the troops stayed on the steps at that point in the town that puts the barracks north-west of the town hall
-// ("Greek Town 2") and came out in the one that puts it south-west ("Greek Town 1"). WHY the layout matters is not proven (nothing in either layout is within 250 map
-// units of the point), only that the point is the weak one. Three exit points inside the courtyard, at its door (the narrowest part of the corridor, rows 62-66 of the .pass,
-// has no cell with a free 3x3 around it: these three are cells 67,62 / 68,61 / 69,60, the first one touching the footprint), replace it, as the game's Roman barracks have several; type 10 and 12 stay where they were. Two tries
-// put them outside (200 units south of the diamond; at the mouth of the corridor): the troops came out but far from the door. Not tried in game when written.
+// Greece's barracks: the mod gave it ONE exit point (type 2, -32,-50) = cell 61,68 of its .PASS (SDK's pass.js), the very end of a 1-2 cell dead-end corridor through
+// the footprint (a 34x33 cell diamond), on the steps at the back of the courtyard. In game (maintainer, 2.3 and 2.5.3, units trained and looked at) the troops stayed
+// stuck on the steps in "Greek Town 2" (barracks north-west of the town hall) and came out in "Greek Town 1" (south-west). Tried, one run each, not repeated:
+//   (-32,-50) cell 61,68 (the original)        stuck in Town 2 (2.5.3, as in 2.3)
+//   (-16,-50) cell 62,68                        out well in Town 2 AND in Town 1 (2.5.3)       <- the fix below
+//   (0,-34)   cell 63,67                        also worked in Town 2
+//   three door points (64,22 / 80,34 / 96,45)   worked in 2.3, but they are not needed
+//   two tries outside the building (200 units south of the diamond; at the mouth of the corridor): the troops came out but far from the door
+// Row 68 of the .PASS has free cells 61, 62 and 63 only; 61 is the end of the corridor (free 3x3 around it: 4/9, against 6/9 for 62). That fits, but WHY the engine fails at
+// 61 and in one layout only is NOT proven (nothing in either layout is within 250 map units of the point). The minimal fix: that point moves from x=-32 to x=-16; the
+// points of type 10 and 12 stay at -32,-50 and nothing else changes.
 {
   const f = path.join(OUT, "BUILDINGS", `${PREFIX}BARRACKS`.toUpperCase(), `${PREFIX}BARRACKS.ENT.XML`.toUpperCase());
   if (fs.existsSync(f)) {
-    const t = fs.readFileSync(f, "latin1"), re = /<point idx="(\d+)" type="2" x="-32" y="-50"\/>/;
-    if (!re.test(t)) report.push("the barracks' exit point is not where the exits were moved from: look at it");
-    else {
-      const idx = Math.max(...[...t.matchAll(/<point idx="(\d+)"/g)].map(m => +m[1])) + 1;
-      wr(f, t.replace(re, [[64, 22], [80, 34], [96, 45]].map(([x, y], k) => `<point idx="${k ? idx + k - 1 : "$1"}" type="2" x="${x}" y="${y}"/>`).join("\n")));
-    }
+    const t = fs.readFileSync(f, "latin1"), re = /(<point idx="\d+" type="2" x=)"-32"( y="-50"\/>)/;
+    if (!re.test(t)) report.push("the barracks' exit point is not where it was moved from (type 2, -32,-50): look at it");
+    else wr(f, t.replace(re, '$1"-16"$2'));
   }
 }
 // the mod's own files (extras/<id>/: mod.json, hand patches)
