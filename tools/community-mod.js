@@ -713,7 +713,7 @@ if (fs.existsSync(EXTRAS)) for (const f of walk(EXTRAS)) { if (f === "NOTES.md")
   for (const d of mods) {
     const j = readJson(path.join(ROOT, "ported", d, "mod.json")), rel = (j.requires || []).includes("community-mod") ? "requires" : (j.incompatibleWith || []).includes("community-mod") ? "incompatibleWith" : "mentions";
     const added = new Set(); let cloned = new Set(), maps = 0;
-    const MAINPORTED = path.join(ROOT, "..", "..", "ported", d);   // the .bfhp files are git-ignored: they are in the main checkout, not in a worktree
+    const MAINPORTED = path.join(MAIN, "ported", d);   // the .bfhp files are git-ignored: they are in the main checkout, not in a worktree
     for (const f of walk(fs.existsSync(MAINPORTED) ? MAINPORTED : path.join(ROOT, "ported", d)).filter(f => /\.bfhp$/i.test(f))) {
       let ents; try { ents = hpfs(fs.readFileSync(path.join(fs.existsSync(MAINPORTED) ? MAINPORTED : path.join(ROOT, "ported", d), f))); } catch { continue; } maps++;
       for (const e of ents.filter(e => /\.(xml|vs)$/i.test(e.path))) for (const m of e.read().toString("latin1").matchAll(/\bclass\s*=\s*"([^"]+)"/g)) { const k = m[1].toLowerCase(); if (fresh.has(k)) added.add(fresh.get(k)[0]); else if (alias.has(k)) cloned.add(k); }
