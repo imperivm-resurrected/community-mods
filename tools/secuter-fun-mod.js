@@ -17,6 +17,12 @@
 const fs = require("fs"), path = require("path"), cp = require("child_process");
 const { removeStrayBraces } = require("./lib/script-checks.js");
 const ROOT = path.join(__dirname, "..");
+// The MAIN checkout (the parent of the git common dir): a worktree under .wt/ does not have the ports that are built only there (Mediterranevm, Imperivm Legacy, the MCI...). The names this
+// port shares with them are renamed like the ones it shares with the ports of the worktree, so they are read from there too: the same commit gives the same bytes from the main checkout and from
+// a worktree (the idea of tools/greek-2x.js and tools/lib/greek-2x-versions.js, branch chain-greek-mod-2x).
+const MAIN = (() => { try { return path.dirname(path.resolve(ROOT, cp.execFileSync("git", ["rev-parse", "--git-common-dir"], { cwd: ROOT, encoding: "utf8", stdio: ["ignore", "pipe", "ignore"] }).trim())); } catch { return ROOT; } })();
+// the SDK of imperivm-resurrected (env SDK overrides): the repository next to the main checkout; port-140.js and clone-civs.js read it from the environment
+process.env.SDK = process.env.SDK || [path.join(ROOT, "..", "imperivm-resurrected", "sdk"), path.join(MAIN, "..", "imperivm-resurrected", "sdk")].find(p => fs.existsSync(p)) || path.join(ROOT, "..", "imperivm-resurrected", "sdk");
 const VARIANT = process.argv[2];
 if (!["plain", "grecia"].includes(VARIANT)) { console.error("usage: node tools/secuter-fun-mod.js plain|grecia [id ...]"); process.exit(1); }
 const GRECIA = VARIANT === "grecia";
@@ -30,6 +36,7 @@ const classOf = s => (s.match(/<class\b[^>]*?\bid\s*=\s*"([^"]+)"/) || [])[1];
 const walk = (d, base = d, out = []) => { if (!fs.existsSync(d)) return out; for (const e of fs.readdirSync(d, { withFileTypes: true })) { const p = path.join(d, e.name); if (e.isDirectory()) walk(p, base, out); else out.push(path.relative(base, p).replace(/\\/g, "/")); } return out; };
 const find = (base, rel) => { let p = base; for (const part of rel.split("/")) { if (!fs.existsSync(p)) return null; const n = fs.readdirSync(p).find(x => x.toLowerCase() === part.toLowerCase()); if (!n) return null; p = path.join(p, n); } return p; };
 const md5 = f => require("crypto").createHash("md5").update(fs.readFileSync(f)).digest("hex");
+const readJson = f => { try { return JSON.parse(fs.readFileSync(f, "utf8")); } catch (e) { console.error(`${f}: ${e.message}`); process.exit(1); } };   // a malformed file stops the build, on purpose
 const want = process.argv.slice(3);
 if (!fs.existsSync(ZIP)) { console.error("no " + ZIP + " (node tools/download-forum.js)"); process.exit(1); }
 if (!process.env.G || !fs.existsSync(path.join(process.env.G, "rle.mmp"))) { console.error('set G to the HD game folder (port-140.js compares sprites with it)'); process.exit(1); }
@@ -77,6 +84,17 @@ for (const f of walk(OUT).filter(f => /\.vs$/i.test(f))) {
     if (r.removed.length) { wr(p, r.text); stray.push(`DATA/${f} (line ${r.removed.join(", ")})`); }
   }
   console.log(`stray "}" removed from the mod's own scripts: ${stray.join("; ") || "none"}`);
+}
+// The mod's own LOAD_PAESANTS_VERIFY.VS (the game has none) tests `!bld.IsEnemy(u)` in a loop whose variable is `ship` and declares no `u`: the game's compiler stops the script ("Cannot run script" in
+// game). The loop counts the free places of the ships of ShipBattle near the port that are not the enemy's: `u` is the loop's ship. The same shape as HD's EBLACKSMITH_CHARMS_VERIFY.VS
+// (`!bld.IsEnemy(u)`, u the unit of the loop). A deviation from the original, written in NOTES.md. Obj::IsEnemy(Obj, Obj) takes the ship.
+{
+  const f = find(OUT, "DATA/SUBAI/LOAD_PAESANTS_VERIFY.VS");
+  if (f) {
+    const s = rd(f), t = s.replace(/!bld\.IsEnemy\(u\)/, "!bld.IsEnemy(ship)");
+    if (t === s) { console.error("LOAD_PAESANTS_VERIFY.VS: the line to fix (!bld.IsEnemy(u)) is not there"); process.exit(1); }
+    wr(f, t); console.log("LOAD_PAESANTS_VERIFY.VS: !bld.IsEnemy(u) -> !bld.IsEnemy(ship) (the mod's script used an undeclared variable)");
+  }
 }
 const CLASSES = find(OUT, "DATA/CLASSES"), COMMANDS = find(OUT, "DATA/COMMANDS");
 const HD_CLASSES = find(HD, "DATA/CLASSES");
@@ -136,7 +154,8 @@ console.log(`${orphaned.length} classes left out (no entity in the zip, or a map
 if (GRECIA) {
   // Secuter's own Greek classes in the zip (H*, the 1.8's letter) are the input of the merge in tools/secuter-greece.js (from PRISTINE); they leave the port
   for (const f of walk(CLASSES).filter(f => /\.sc\.xml$/i.test(f) && !/[\\/]/.test(f))) { const p = path.join(CLASSES, f), id = classOf(rd(p)); if (id && /^(H[A-Z]|Hhouse)/.test(id) && !hdClass.has(id.toLowerCase())) fs.rmSync(p); }
-  const B = path.join(ROOT, "ported", "greek-mod-1-8");
+  // (the built 1.8 port is read from this tree or, if it is not here, from the main checkout: the same bytes wherever the tool runs)
+  const B = [path.join(ROOT, "ported", "greek-mod-1-8"), path.join(MAIN, "ported", "greek-mod-1-8")].find(p => fs.existsSync(path.join(p, "civs", "greek18.json"))) || path.join(ROOT, "ported", "greek-mod-1-8");
   if (!fs.existsSync(path.join(B, "civs", "greek18.json"))) { console.error("needs the built port of the Greek Mod 1.8 (ported/greek-mod-1-8: see extras/greek-mod-1-8/NOTES.md, Rebuild); it is only read"); process.exit(1); }
   const r = require("./secuter-greece.js")({ OUT, B, HD, PRISTINE, MERGED, ORIG18: path.join(ROOT, "originals", "greek-mod-1.8", "DATA"), TAG });
   fs.writeFileSync(path.join(ROOT, "raw", `${ID}-exit-points.txt`), r.exits.join("\n") + "\n");
@@ -188,7 +207,7 @@ const OWNFILE = "SECUTERFUN.XML";
   // a command can name a class by its altid (DruidHouse for GDruidHouse): the clone step does not follow it, the civs' alias tables do (original id -> the clone's)
   const altid = new Map(), cloneOf = new Map();
   for (const f of walk(HD_CLASSES).filter(f => /\.sc\.xml$/i.test(f) && !/[\\/]/.test(f))) { const s = rd(path.join(HD_CLASSES, f)), a = (s.match(/<class\b[^>]*?\baltid\s*=\s*"([^"]+)"/) || [])[1]; if (a) altid.set(a.toLowerCase(), classOf(s)); }
-  for (const c of CIVS) { const jp = path.join(OUT, "civs", `${c.id}.json`); if (!fs.existsSync(jp)) continue; for (const [o, n] of Object.entries(JSON.parse(fs.readFileSync(jp, "utf8")).alias.classes || {})) { const k = o.toLowerCase(); (cloneOf.get(k) || cloneOf.set(k, []).get(k)).push(n); } }
+  for (const c of CIVS) { const jp = path.join(OUT, "civs", `${c.id}.json`); if (!fs.existsSync(jp)) continue; for (const [o, n] of Object.entries(readJson(jp).alias.classes || {})) { const k = o.toLowerCase(); (cloneOf.get(k) || cloneOf.set(k, []).get(k)).push(n); } }
   // (Greece version) the mod's Greek classes are named as in the 1.8 (HGymnasium); Greece's are ZgrGymnasium. Its own orders (trainHHoplite, HAddPop...) are in ZGREECE.XML, renamed.
   const greekOrder = n => GRECIA && /^(train|hirehero)?H[A-Z]|^trainpeasanth$/.test(n);
   const toZgr = new Map();
@@ -249,6 +268,34 @@ const raceTests = (text, obj = objOf(text)) => text.replace(RACE_RE, (m, r, op, 
   console.log(`${n} scripts of the mod: the tests of the civilization (.race == Gaul...) also accept the clones`);
 }
 
+// 3e. (Greece version) the 1.8's own copies of the game's scripts (*_zgr.vs, tools/secuter-greece.js) and Secuter's copies (*_sez.vs) of the SAME script: his zip has the file at the
+// game's path, so what HIS Greece ran is his file; the two names differed only by case (MILITARY_ONDIE_sez.VS and military_ondie_sez.vs: one file on Windows and in a zip, the other
+// shadowed). One script each, and Greece's classes point to it:
+//   - military_ondie: the Warrior Tales are two different mechanics (the 1.8: a 1 in 4 chance that ONE nearby unit gets the experience, as a `random == 1` test; Secuter: every unit of
+//     the circle, under `if researched`, plus the Stonehenge ghost). They cannot both run: Secuter's stays, the 1.8's chance for Greek units is not kept.
+//   - unit_attach_verify: Secuter's differs from the 1.8's by one line each (his `.IsHeirOf("Peasant")` test; the 1.8's `DiplGetShareControl` line, only when not in multiplayer). They
+//     are compatible: the single script has both (the 1.8's line before the final `return true;`, as the 4.2 port did).
+if (GRECIA) {
+  const sub = find(OUT, "DATA/SUBAI"), done = [];
+  for (const z of fs.readdirSync(sub).filter(f => /_zgr\.vs$/i.test(f))) {
+    const base = z.replace(/_zgr\.vs$/i, ""), s = fs.readdirSync(sub).find(f => f.toLowerCase() === `${base}_sez.vs`.toLowerCase());
+    if (!s) continue;
+    if (/^unit_attach_verify$/i.test(base)) {
+      const line = (rd(path.join(sub, z)).match(/^[^\n]*DiplGetShareControl[^\n]*\r?\n/m) || [])[0];
+      const t = rd(path.join(sub, s)), i = t.lastIndexOf("return true;");
+      if (!line || i < 0) { console.error(`${s}: the 1.8's DiplGetShareControl line or the final return is not where it was`); process.exit(1); }
+      wr(path.join(sub, s), t.slice(0, i) + line.trim() + "\r\n" + t.slice(i));
+    }
+    fs.rmSync(path.join(sub, z));
+    for (const dir of ["DATA/CLASSES", "DATA/COMMANDS"]) for (const f of fs.readdirSync(find(OUT, dir))) {
+      const p = path.join(find(OUT, dir), f), t = rd(p), u = t.replace(new RegExp(`(data[\\\\/]subai[\\\\/])${base}_zgr\\.vs`, "gi"), `$1${s}`);
+      if (u !== t) wr(p, u);
+    }
+    done.push(`${base}: ${z} -> ${s}`);
+  }
+  console.log(`the 1.8's copies that Secuter's replace: ${done.join("; ") || "none"}`);
+}
+
 // 4. the shared tables: only what the mod ADDS and the clones need. The new formation (Fila) is a patch; the rest of FORMATIONS.XML (descriptions of the game's), CONST.INI (RushDamage,
 // DefensePerEpicArmorLevel, RankPoints10 are values the game has), SKILLS.INI, UNIT_SPECIALS.INI (stamina_cost of a special the game has) and ITEMS.XML are global: left out (NOTES.md)
 const { xmlAdded } = require("./lib/ported-patch.js");
@@ -307,7 +354,16 @@ if (GRECIA) {
   const { tagCollisions, ownNames, tagNames } = require("./lib/ported-patch.js");
   const G = path.join(ROOT, "originals", "game-data");
   const sibling = d => d === "secuter-fun-mod-rules" || (!GRECIA && d === "secuter-fun-mod-grecia");
-  const ports = fs.readdirSync(path.join(ROOT, "ported")).filter(d => d !== ID && !sibling(d) && find(path.join(ROOT, "ported", d), "DATA/CLASSES")).map(d => path.join(ROOT, "ported", d));
+  // The other ports: the main checkout's ported/ and this tree's, by name (the main checkout's wins; the plain pack, which the Greece one looks at, is always this tree's: it is built here).
+  // The ports that exist in the main checkout today MUST be there, or the build would tag fewer names than one that sees them: it stops (SECUTER_NO_OTHERS=1 builds without them).
+  const BASES = [path.join(MAIN, "ported"), path.join(ROOT, "ported")].filter((p, i, a) => fs.existsSync(p) && a.indexOf(p) === i);
+  const KNOWN = ["mci", "mediterranevm-alpha", "imperivm-legacy", "imperivm1-legacy", "cgwar", "greek-mod-1-8", "greek-civilization-mod"];
+  const where = d => (d === "secuter-fun-mod" ? [path.join(ROOT, "ported")] : BASES).map(b => path.join(b, d)).find(p => fs.existsSync(p));
+  const missing = KNOWN.filter(d => !where(d));
+  if (missing.length && !process.env.SECUTER_NO_OTHERS) { console.error(`these ports are not in ${BASES.join(" or ")}: ${missing.join(", ")}.\nThe names this port shares with them would NOT be renamed and the build would differ from one that has them. Build them in the main checkout (extras/<id>/NOTES.md, Rebuild), or set SECUTER_NO_OTHERS=1 to build without them.`); process.exit(1); }
+  const portNames = [...new Set(BASES.flatMap(b => fs.readdirSync(b)))].sort();
+  const ports = portNames.filter(d => d !== ID && !sibling(d) && where(d) && fs.statSync(where(d)).isDirectory() && find(where(d), "DATA/CLASSES")).map(where);
+  console.log(`names compared with ${ports.length} ports (${BASES.length === 2 ? "the main checkout's ported/ and this tree's" : "ported/ of " + path.dirname(BASES[0])}): ${ports.map(p => path.basename(p)).join(", ")}`);
   for (let pass = 1; pass <= 6; pass++) {
     const r = tagCollisions({ OUT, tag: TAG, others: [...ports, G, path.join(G, "paks")].filter(fs.existsSync), mapLabel: "Secuter", gameDirs: [path.join(G, "paks")] });
     console.log(`own names (${TAG}), pass ${pass}: ${r.classes.length} classes (${r.classes.slice(0, 6).join(", ")}...), ${r.folders.length} art folders, ${r.maps.length} maps, ${r.files.length} files${r.files.length ? " (" + r.files.slice(0, 8).join(", ") + ")" : ""}${r.unlabeled.length ? "; names not written: " + r.unlabeled.slice(0, 4).join(" | ") : ""}`);
@@ -326,7 +382,10 @@ if (GRECIA) {
   const rm = find(OUT, "RANDOMMAP"), moved = new Set();
   if (rm) for (const d of fs.readdirSync(rm)) {
     const dir = path.join(rm, d); if (!fs.statSync(dir).isDirectory()) continue;
-    for (const f of fs.readdirSync(dir)) { const m = f.match(new RegExp(`^(\\d+)_${TAG}(\\.bmp)$`, "i")); if (m) { const nd = path.join(rm, `${d}_${TAG}`); fs.mkdirSync(nd, { recursive: true }); fs.renameSync(path.join(dir, f), path.join(nd, m[1] + m[2])); moved.add(d); } }
+    // a folder where tagCollisions renamed some bitmaps (the ones another port has with other bytes) moves whole: the ones it left (same bytes as another port's, not a collision) go with them,
+    // or the template would find only part of its bitmaps in the new folder
+    const tagged = new RegExp(`^(\\d+)_${TAG}(\\.bmp)$`, "i");
+    if (fs.readdirSync(dir).some(f => tagged.test(f))) for (const f of fs.readdirSync(dir)) { const m = f.match(tagged), nd = path.join(rm, `${d}_${TAG}`); fs.mkdirSync(nd, { recursive: true }); fs.renameSync(path.join(dir, f), path.join(nd, m ? m[1] + m[2] : f)); moved.add(d); }
   }
   const rmx = find(OUT, "DATA/RANDOMMAP");
   if (rmx) for (const f of fs.readdirSync(rmx).filter(f => new RegExp(`\\.rm_${TAG}\\.xml$`, "i").test(f))) {
@@ -396,7 +455,7 @@ if (fs.existsSync(EXTRAS)) for (const f of walk(EXTRAS)) { if (f === "NOTES.md")
   // or of this port and that exactly one clone class stands for is written as that class (only the arguments of the functions that look a class up). Two or more clones: left, the check reports it.
   {
     const heirOf = new Map();
-    for (const c of CIVS) for (const [o, n] of Object.entries(JSON.parse(fs.readFileSync(path.join(OUT, "civs", `${c.id}.json`), "utf8")).alias.classes || {})) (heirOf.get(o.toLowerCase()) || heirOf.set(o.toLowerCase(), []).get(o.toLowerCase())).push(n);
+    for (const c of CIVS) for (const [o, n] of Object.entries(readJson(path.join(OUT, "civs", `${c.id}.json`)).alias.classes || {})) (heirOf.get(o.toLowerCase()) || heirOf.set(o.toLowerCase(), []).get(o.toLowerCase())).push(n);
     let fixed = 0;
     for (const dir of ["SUBAI", "ITEMSCRIPTS"]) {
       const d = find(OUT, `DATA/${dir}`); if (!d) continue;
@@ -426,8 +485,30 @@ if (fs.existsSync(EXTRAS)) for (const f of walk(EXTRAS)) { if (f === "NOTES.md")
   if (problems.length) { console.error(`SCRIPT CHECKS FAILED (${problems.length}):\n  ` + [...new Set(problems)].slice(0, 80).join("\n  ")); process.exit(1); }
 }
 
+// 10. Two names that differ only by case cannot live together on Windows or in a zip: none in a folder of the port. (Found in the first Greece build: MILITARY_ONDIE_sez.VS and
+// military_ondie_sez.vs, two different scripts.) Names are compared in lower case.
+{
+  const seen = new Map(), dup = [];
+  for (const f of walk(OUT)) { const k = f.toLowerCase(); if (seen.has(k)) dup.push(`${seen.get(k)} / ${f}`); else seen.set(k, f); }
+  if (dup.length) { console.error(`NAMES THAT DIFFER ONLY BY CASE (${dup.length}):\n  ${dup.slice(0, 40).join("\n  ")}`); process.exit(1); }
+  console.log(`file names: ${seen.size} files, none that differs from another only by case`);
+}
+// 11. The names the scripts use (tools/secuter-names.js, the check of tools/lib/greek-2x-names.js): a script that names an identifier or a script the game does not know stops with
+// "No matching function with name X" and nothing but the game compiles it. Findings that come from the 1.8 and are not new are allowed by name, and printed.
+{
+  const { checkNames } = require("./secuter-names.js");
+  const r = checkNames({ OUT, HD, SDK: process.env.SDK });
+  const INHERITED = [/centaur_isresearched_verify\.vs/];   // the 1.8's Priest order centaur_summoning names a verifier the 1.8 never shipped (and the script it starts); its GREEK18.XML has the same
+  const inherited = r.errors.filter(e => INHERITED.some(re => re.test(e))), real = r.errors.filter(e => !inherited.includes(e));
+  console.log(r.notes.join("\n"));
+  if (inherited.length) console.log(`names inherited from the 1.8, not new (${inherited.length}): ${inherited.join("; ")}`);
+  if (real.length) { console.error(`NAME CHECKS FAILED (${real.length}):\n  ${real.join("\n  ")}`); process.exit(1); }
+}
+
 // folders the steps above left empty
 const prune = d => { for (const e of fs.readdirSync(d, { withFileTypes: true })) if (e.isDirectory()) { prune(path.join(d, e.name)); if (!fs.readdirSync(path.join(d, e.name)).length) fs.rmdirSync(path.join(d, e.name)); } };
 prune(OUT);
 if (report.length) console.log(`to check:\n  ${report.join("\n  ")}`);
+// the extractions of the build (the zip, the port-140 output, the merged copy, the classes kept apart) are not needed any more: they were hard-linked and big
+if (!process.env.SECUTER_KEEP_SCRATCH) for (const d of [SRC, P140, PRISTINE, MERGED]) fs.rmSync(d, { recursive: true, force: true });
 console.log("done");
