@@ -35,15 +35,38 @@ G="$HOME/.local/share/Steam/steamapps/common/Imperivm - Great Battles of Rome HD
 
 ## Independence check (AGENTS.md)
 
-`node tools/shared-paths.js secuter-fun-mod` → `no collisions` (against HD, every port of this tree including the three Greek mods, and the Greece version). Class ids, entity folders and files outside `patches/` shared with another port: none. Names another port already had with other bytes were renamed by `tagCollisions` (tag `ses`): the classes `MediumRanged` and `ShortestRanged` (`_ses`) and one picture (`STRONGHOLD DEFENSE3_ses.BMP`, the other port is in this tree; the references were checked after the rename: 0 had to be put back). **The build order matters**: the plain pack does not look at the Greece one (the Greece one looks at both), so that the same build gives the same files whatever is in `ported/`; the rules pack is not looked at either.
+`node tools/shared-paths.js secuter-fun-mod` → `no collisions` (against HD and every port: the 12 with classes that the build sees, listed in its output, from the main checkout's `ported/` and this tree's: Mediterranevm, the MCI, both Imperivm Legacy builds, CGWAR, the 1.8 and the 4.2, and four map/adventure ports that carry classes; the Greece version is never looked at by this pack). Class ids, entity folders and files outside `patches/` shared with another port: none.
+
+**What the build renamed (tag `ses`) because another port has it with other bytes** — this is the result of the cross-check of the first review, which found two Legacy hits and one MCI hit that the first build (made from a worktree that did not see those ports) had not renamed:
+- classes `MediumRanged` and `ShortestRanged` (`_ses`);
+- pictures `STRONGHOLD DEFENSE3_ses.BMP` and `UI/CMDBAR/STATES/ALAS DEL INFIERNO FORM_ses.bmp` (the MCI has a picture of that name with other bytes; it is renamed here, not left to the merge order; the MCI's other three formation pictures are byte for byte the same and stay shared);
+- the script `DRUID_HIDE_VERIFY_ses.VS` (Imperivm Legacy has `druid_hide_verify.vs` with other bytes);
+- the random-map template `AFRICA.RM_ses.XML` and its bitmaps in `RANDOMMAP/AFRICA_ses/` (the MCI has `AFRICA.RM.XML` and `RANDOMMAP/AFRICA/`);
+- 10 orders (`form-alasdelinfierno (ses)`, `form-cucaracha (ses)`, `form-hilera (ses)`, `form-ranged (ses)`, `form-retaguardia (ses)` and their `-menu`: the MCI defines orders with the same names).
+The references were checked after the renames (0 had to be put back). Not checked by `ownNames`: names of formations (`Fila`…) — none is in the MCI, Mediterranevm, Legacy, CGWAR or the Greek mods (grep).
+
+**Determinism** (review fix). The build reads the other ports from the main checkout (the parent of the git common dir) **and** from this tree, so that a worktree under `.wt/` renames the same names as the main checkout. If a port that exists in the main checkout today (`mci`, `mediterranevm-alpha`, `imperivm-legacy`, `imperivm1-legacy`, `cgwar`, `greek-mod-1-8`, `greek-civilization-mod`) is not found, the build **stops** with a message; `SECUTER_NO_OTHERS=1` builds without them (different bytes). The plain pack does not look at the Greece one (the Greece one looks at both), and neither looks at the rules pack. The SDK is found next to the main checkout too. The scratch extractions are deleted at the end (`SECUTER_KEEP_SCRATCH=1` keeps them). Proof: see the PR body.
+
 
 ## Pictures, sounds and entities: references checked
 
 After `tagCollisions` (which rewrites a renamed file's references by file name alone) every picture, sound entity and `entity=` of the port's classes, commands and patches is resolved against the port and the game's packs (`tools/secuter-fun-mod.js`, step 6b/8; the build stops on one that does not resolve). 6 references do not resolve and did not before: HD's own `queueicon="gameres/icons/upgrades/wbreast.bmp"` (named in HD's `BLACKSMITH.XML`; left alone as asked). The entities of the mod's animation objects are not in the zip: see *Left out*.
 
+## Deviations from the original
+
+- **`LOAD_PAESANTS_VERIFY.VS`** (the mod's own script, the game has none; the verifier of the order that loads peasants on the ships next to a port): line 28 read `if (!bld.IsEnemy(u) && ship.UnitsCount<ship.UnitsMax)` in a loop whose variable is `ship`, with no `u` declared anywhere. The game's compiler stops the script ("Cannot run script" in game; `tools/secuter-names.js` finds it: `"u" is no variable...`). Fixed in the copy as `!bld.IsEnemy(ship)`: the loop counts the free places of the ships of `ShipBattle` around the port that are not the enemy's, `Obj::IsEnemy(Obj, Obj)` (`sdk/game-functions.txt`) takes the ship, and HD's `EBLACKSMITH_CHARMS_VERIFY.VS` has the same shape (`!bld.IsEnemy(u)`, `u` the unit of its loop). The intent is read from the loop, not from the author. Not tried in game.
+
 ## Random-map templates
 
-`AFRICA.RM.XML` and `RIVER.RM.XML` (+ `RANDOMMAP/AFRICA/010.BMP…070.BMP`, `RIVER/010.BMP…060.BMP`) are additive and keep their names here. The Greece version ships the same two templates; there they are renamed by `tagCollisions` (`AFRICA.RM_sez.XML`, bitmaps in `RANDOMMAP/AFRICA_sez/`): see its NOTES. **The templates are used by the map `conquista-africana-secuter` (row 314) through `requires secuter-fun-mod`; rewriting that map to the clones' classes is #8, not this task.**
+`AFRICA` ("Mappe Conquista Africana") and `RIVER` ( bitmaps `010.BMP…070.BMP`, `010.BMP…060.BMP`). The MCI has an `AFRICA` template too, so `tagCollisions` renamed this pack's: **`AFRICA.RM_ses.XML` is kept as renamed** (as asked), with its bitmaps in `RANDOMMAP/AFRICA_ses/` (the tool puts them back under their numeric names and moves the whole folder: they are named after what they are for, the SDK's `010.bmp … 120.bmp`, and the template names the folder). `RIVER.RM.XML` keeps its name. The Greece version ships both and renames both (`_sez`): see its NOTES. 
+## Dependents, broken until #8
+
+- **`conquista-africana-secuter` (row 314)** `requires secuter-fun-mod`. Its conquest (`africamod.BFHP`, checked with `tools/hpfs.js`) places the game's classes (`CMaceman`, `CJavelinThrower`, `COutpost`, `ROutpost`…, `Chest`, `LionThrone`) and **the mod's camps `CTent` (20) and `NTent` (6)**, which no pack of this port ships (they are not in the rules pack either: its NOTES). Its players are the game's races, not the clones. So it does not load as it did and its map needs rewriting to the clones' classes and the set: #8. The old text of its description ("if you do not have the mod it crashes") is now true in a new way. Not touched.
+- **`mini-avventura-grecia` (row 320)** `requires secuter-fun-mod-grecia` (and the Greek Mod 4.2 per its row). Its adventure (`GRECIA.BFHP`) places the 1.8-era classes `HHoplite` (66), `HHypaspista` (81), `HMyrmidon_Javelin` (106), `HChariot` (45), `HToxotes` (140), `HPriest`, `HVillage`, `HTemple`…, `Hhouse1-3` and the walls `MWalls*`/`MGate*`: Greece in this pack is `ZgrHoplite`… so **it is broken** (the classes do not exist) until #8. Not touched.
+
+Both maps belong to #8; this pack does not fix them.
+
+**The templates `AFRICA`/`RIVER` are also used by row 314 (`requires secuter-fun-mod`)**: with the template renamed, #8 has to point the map to `AFRICA.RM_ses.XML`.
 
 ## Left out because it is global
 
