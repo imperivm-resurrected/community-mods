@@ -1,4 +1,5 @@
 163 scripts, 16 hero bases, 239 class names and 103 GetConst keys checked
+names: 230 scripts read, 0 problems; 26 scripts that nothing points to were not read (BDRUID_HIDE_CLOSE_ALLIES_w23.VS, START_CCAMEL_VERIFY_w23.VS, START_CHORSEMAN_VERIFY_w23.VS, START_CRIDER_VERIFY_w23.VS, ...)
 
 0 errors
 

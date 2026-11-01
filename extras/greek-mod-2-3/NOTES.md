@@ -123,6 +123,12 @@ All the rows above are **ours** (the rename broke them: the unsuffixed name reso
 
 **`DATA/CLASSES/WINTER/THERMAE.SC_w23.XML` is an open question.** Its name no longer ends in `.sc.xml`, and the class loader is a different one from the random-map list: the AsvrMod test does not cover it. Not claimed to work; not checked in game. If the winter Thermae is not read, the summer class still exists (`ThermaeWinter` only sets the winter sprite of the ruin).
 
+## Names the scripts use (checked offline, added after the 2.6.1's first test)
+
+The 2.6.1's first in-game test (maintainer, 2026-11-01, only this set, installed from the build) loaded and showed three compilation errors that the build had not caught (script checks: 0 errors). `tools/lib/greek-2x-names.js` (run by `tools/lib/greek-2x-checks.js`, so by every build) now reads the port's scripts and the game's scripts that a class or command of the port points to, and **stops the build** on: a bare name or a call that is no variable, member, game function or constant (`sdk/game-functions.txt`), special, AI name, strategy or class; a script file named by a `vs=` / `verify=` or an `AIRun("X.vs")` that is in neither the port nor the game; an order (`AddCommand`, `SetCommand`, `ExecCmd`, `GetCmdStaminaCost`...) that no command or method of the port or the game has. Scripts that nothing points to are not read (counted in the note). What it **cannot** see: the type of an expression and the signature of a call (`x.nme`, a typo after a dot, passes); `Mod_*` names (any passes); a name a string builds at run time; code under `if (false)`; whether a script does what it should. It is calibrated on the game's own live scripts, so it can miss a name that only the game's dead scripts define.
+
+What it found in this version: `GRW23_TS_HGreeceTactic.vs` ran `AIRun("GRW23_TS_AttackAtWill.vs")` twice, a script this port does not ship (the mod's 2.3 has no own `TS_AttackAtWill`; the renaming of the tactics wrote the prefix into the call anyway): it is the game's `TS_AttackAtWill.vs` now. **The Greek AI's tactic would have failed at that call**; not seen in game (the 2.3's tests had no long game against the Roman AIs).
+
 ## Maps that `require` this mod
 
 None: `requires` on `greek-mod-2-3` in `docs/MODS.md`: none (the 2.3 has no maps of its own). Out of scope (#8).
