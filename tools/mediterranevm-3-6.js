@@ -319,6 +319,17 @@ const report = [], patches = [];
   // the mod's CONQUESTGAME.INI points [BackImage] at UI/Interface/MenuMod.bmp, a picture that is in none of the three archives or in the game (the mod's own bug): that key is not shipped, the conquest screen keeps the game's CurrentLang/MenuBackground.bmp (= the skin's)
   { const pp = find(OUT, "patches/DATA/INTERFACE/MENU/CONQUESTGAME.INI");
     if (pp) { const t = rd(pp), n = t.replace(/\[BackImage\]\r?\nImage = UI\/Interface\/MenuMod\.bmp\r?\n/i, ""); if (n !== t) { wr(pp, n); left.push("DATA/INTERFACE/MENU/CONQUESTGAME.INI [BackImage] Image = UI/Interface/MenuMod.bmp (key not shipped: the picture exists nowhere, the mod's own bug)"); console.log("CONQUESTGAME.INI: the [BackImage] key that names the missing MenuMod.bmp is not shipped"); } } }
+  // WHERE THE ENGINE LOOKS FOR EACH MENU INI (evidence: the game log of 2026-11-01 23:34, and src/mods/vfs.cpp + patch.cpp of the engine). A patch is matched by the exact path the game OPENS, and the game opens the
+  // screens as `menuini/<name>.ini` (mainmenu, menuback, mpgamemenu, paused, creditsmenu, gameoptions...; the engine's own built-in patch of the main menu is `menuini/mainmenu.ini`), not as
+  // `data/interface/menu/<name>.ini`. Only the template was seen opened as `data/interface/menu/template.ini` ("patch: (mediterranevm-3-6) data/interface/menu/template.ini applied"; it is also named
+  // `Menuini/template.ini` by every screen's TmplIni). So: the 12 screens go to patches/menuini/, and the template to BOTH paths (same keys; each read gets them).
+  { const from = find(OUT, "patches/DATA/INTERFACE/MENU"), to = path.join(OUT, "patches", "menuini"); let moved = 0, both = 0;
+    for (const f of from ? fs.readdirSync(from).sort() : []) {
+      const t = rd(path.join(from, f)); wr(path.join(to, f), t); moved++;
+      if (/^template\.ini$/i.test(f)) both++; else fs.rmSync(path.join(from, f));
+    }
+    if (from && !fs.readdirSync(from).length) fs.rmSync(from, { recursive: true });
+    console.log(`menu skin: ${moved} patches placed at patches/menuini/ (the path the game opens), the template also at patches/DATA/INTERFACE/MENU/`); }
   // GLOBAL, reason 2: the rest of DATA/INTERFACE is not the menu skin: the in-game command bars and info bar of the game's own civilizations (the engine reads them by path) and the editor's unit combo. They would change the game's own civilizations.
   for (const f of walk(OUT)) if (/^DATA\/INTERFACE\/(CMDBAR|INFOBAR|EDITOR)\//i.test(f)) { fs.rmSync(path.join(OUT, f)); left.push(f + " (global, reason 2: in-game bar / editor INI the engine reads by path; not the menu skin)"); }
   for (const f of walk(OUT)) {
