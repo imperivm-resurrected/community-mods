@@ -70,6 +70,14 @@ Letters and indices are unique across all the ports (the SDK allows indices 10-9
 | (engine) | `aiberia` | `Aib` (derived) | Iberia | AsvrMod VII | `tools/asvrmod-vii.js` |
 | (engine) | `aegypt` | `Aeg` (derived) | Egypt | AsvrMod VII | `tools/asvrmod-vii.js` |
 | (engine) | `agermany` | `Age` (derived) | Germany | AsvrMod VII | `tools/asvrmod-vii.js` |
+| (engine) | `igaul` | `Iga` (derived) | Gaul | MCI 9.0 | `tools/mci.js` |
+| (engine) | `irome` | `Iro` (derived) | RepublicanRome | MCI 9.0 | `tools/mci.js` |
+| (engine) | `iimperial` | `Iim` (derived) | ImperialRome | MCI 9.0 | `tools/mci.js` |
+| (engine) | `icarthage` | `Ica` (derived) | Carthage | MCI 9.0 | `tools/mci.js` |
+| (engine) | `ibritain` | `Ibr` (derived) | Britain | MCI 9.0 | `tools/mci.js` |
+| (engine) | `iiberia` | `Iib` (derived) | Iberia | MCI 9.0 | `tools/mci.js` |
+| (engine) | `iegypt` | `Ieg` (derived) | Egypt | MCI 9.0 | `tools/mci.js` |
+| (engine) | `igermany` | `Ige` (derived) | Germany | MCI 9.0 | `tools/mci.js` |
 
 A civilization with no `letter` (derived prefix: the first three letters of the `id`, imperivm-resurrected#37) and no `index` (the engine assigns it) reserves nothing in this table; its rows say `(engine)` and are here to spot clashes. **Two ports cannot be active together if they share a derived prefix: the engine ignores the second civilization.** Today GBR Tactics and La Reconquista 2010 clash on `Gau`, `Bri`, `Car`, `Egy`, `Ger`, `Ibe` and `Imp`.
 
