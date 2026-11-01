@@ -2,7 +2,7 @@
 
 Row 386. Three RARs (`MediterranevmMod_3.6_ENG.rar`, `_ES.1.rar`, `_ITA.rar`, ModDB, `originals/moddb/mediterranevm-mod-3-6/files/`): each is a full game install (`Packs/*.pak`, loose files over them, the mod's own `rle.mmp` of 420 MB, `local/<language>.pak`), no `.exe`/`.dll`. The `Packs/*.pak` of the ENG one are HD's (flattened and compared: 14531 files, 0 changed, 0 new). The data is the same in the three; only `Currentlang` (voices, texts, menu pictures) differs.
 
-**Not tried in game.** Built and checked by files and by the checks below; nobody has played it. The maintainer installs and tests. Permission (row 386): `?`, nothing is published.
+**Tried in game once, very briefly (see *In game*, below); almost nothing is tried.** The maintainer installs and tests. Permission (row 386): `?`, nothing is published.
 
 **This port is the mod's changes to the game's eight civilizations as eight civilizations of its own, next to the game's** (AGENTS.md, *Civilizations are independent*), plus the mod's neutral map objects. The 3.6 has no Greece and no branch scripts, so there are eight clones, like the alpha (row 200).
 
@@ -75,6 +75,14 @@ Barracks and town halls are untouched by the mod.
 
 0 class ids and 0 entity folders in common with the game and with `cgwar`, `greek-mod-1-8`, `greek-civilization-mod`, `greek-mod-2-3`, `-2-5-3`, `-2-6-1`, `mediterranevm-alpha`, `imperivm-legacy`. The only path shared with other bytes is `rle.mmp.tail` (above). Not compared here: the ports of the other open pull requests are not built in this branch (they were looked at read-only from their worktrees: see the pull request).
 
+## In game
+
+Maintainer, 2026-11-01 23:16-23:18, the build of PR #51 head `71c164be`, profile with only this set. From his report and `imperivm-mod.log`:
+
+- The set **loaded** (`Mediterranevm 3.6 3.6, 1875 files`) and the **eight civilizations registered** (`gbritain` … `grome`, indexes 10-17). The main menu is the game's own: no menu skin is shipped, as designed.
+- He started a **skirmish with random civilizations** (slots with 3.6 civilizations: 15, 12, 17, 14); it ran about **13 seconds on screen**. The session ended cleanly (130 s): **0 errors, 0 compilation errors**; the 6 warnings are a `winmm` export note and room slots whose saved civilization no longer exists. His words: "no hubo mayor problema".
+- That is: **it loads, starts a match, and shows no script errors in that very short session.** Nothing more.
+
 ## Not tried
 
-In game: nothing. Not tried: the sprites through the tail (offsets), the voices of the clones in the three languages, the `_TEUTON_g36` profile in the lobby, the units and orders the clones changed, two civilization mods active together, a long AI game.
+The test above does **not** show: a long game; the AI playing the 3.6 civilizations for minutes (the log opened only 2 `data/ai` patch lines); heroes; the voices in the three languages; icons; the sprites through the `rle.mmp.tail` (offsets); the new units and orders (`RThermae`, `RAstatus`, `RTriarius`); the `_TEUTON_g36` profile in the lobby; the units and orders the clones changed; two civilization mods active together.
