@@ -417,16 +417,32 @@ const ALL = [CONST, ...CIVS.map(c => c.id[0].toUpperCase() + c.id.slice(1))], NO
     wr(ini, rd(ini).split(/\r?\n/).filter(l => !new RegExp(`${V.ai}${n}\\b`).test(l)).join("\r\n"));
     report.push(`AI ${n}: the mod's edit is not ported (the game picks its group strategy by name)`);
   }
-  // 6b. a call to a script of the port's own AI that the port does not ship: the game answers "No matching function" / the script is not found and the AI player stops
-  // (found by tools/lib/greek-2x-names.js in the 2.3: the Greek tactic ran GRW23_TS_AttackAtWill.vs, a copy the 2.3 never had; the renaming of the tactics wrote the prefix
-  // into the call anyway). It is the game's own script then.
+  // 6b. names the AI scripts of the port use that point to nothing (the game answers "No matching function with name X" and the AI player stops; found by
+  // tools/lib/greek-2x-names.js): a call to <prefix>X.vs that the port does not ship becomes the game's X.vs (the 2.3's TS_AttackAtWill); a script that the mod ships,
+  // that is in neither the game nor the port and that the port's AI calls by name is shipped as its own copy (the 2.5.3's ESH_BuildCarthaginianArmy)
   {
-    const AIDIR = find(OUT, "DATA/AI"), HDAI = find(HD, "DATA/AI"), esc = x => x.replace(/[.*+?^${}()|[\]\\]/g, "\\$&"), pre = esc(V.ai), notes = [];
-    const ci = (d, n) => fs.readdirSync(d).find(x => x.toLowerCase() === n.toLowerCase()), inPort = n => !!ci(AIDIR, n), inHD = n => !!ci(HDAI, n);
-    for (const f of fs.readdirSync(AIDIR).filter(x => x.toLowerCase().startsWith(V.ai.toLowerCase()) && /\.vs$/i.test(x))) {
-      const p = path.join(AIDIR, f), s = rd(p);
-      const t = s.replace(new RegExp(`(["'])${pre}([\\w ]+)\\.vs\\1`, "gi"), (m, q, n) => { if (inPort(`${V.ai}${n}.vs`) || !inHD(`${n}.vs`)) return m; notes.push(`${f}: ${V.ai}${n}.vs -> ${n}.vs (the game's)`); return `${q}${n}.vs${q}`; });
-      if (t !== s) wr(p, t);
+    const AIDIR = find(OUT, "DATA/AI"), HDAI = find(HD, "DATA/AI"), ini = path.join(OUT, "patches", "DATA", "AI", "AI.INI"), modIni = fs.existsSync(path.join(SRC, "AI.INI")) ? rd(path.join(SRC, "AI.INI")) : "";
+    const ci = (d, n) => fs.readdirSync(d).find(x => x.toLowerCase() === n.toLowerCase()), inPort = n => !!ci(AIDIR, n), inHD = n => !!ci(HDAI, n), esc = x => x.replace(/[.*+?^${}()|[\]\\]/g, "\\$&"), pre = esc(V.ai);
+    const sigOf = n => (modIni.match(new RegExp(`^${esc(n)}\\.vs\\s*=\\s*(.+?)\\s*$`, "im")) || [])[1];
+    const notes = [], forked = [];
+    for (let again = true; again;) {
+      again = false;
+      for (const f of fs.readdirSync(AIDIR).filter(x => x.toLowerCase().startsWith(V.ai.toLowerCase()) && /\.vs$/i.test(x))) {
+        const p = path.join(AIDIR, f), s = rd(p);
+        const t = s
+          // a call to <prefix>X.vs that is not in the port: the game's own X.vs (the mod ships no X, e.g. TS_AttackAtWill in the 2.3)
+          .replace(new RegExp(`(["'])${pre}([\\w ]+)\\.vs\\1`, "gi"), (m, q, n) => { if (inPort(`${V.ai}${n}.vs`) || !inHD(`${n}.vs`)) return m; notes.push(`${f}: ${V.ai}${n}.vs -> ${n}.vs (the game's)`); return `${q}${n}.vs${q}`; })
+          // a script the mod ships that is in neither the game nor the port, called by name: the port ships it as its own copy
+          .replace(/(AIRun\(\s*["'])([\w ]+)\.vs(["'])/gi, (m, a, n, b) => {
+            if (inPort(`${n}.vs`) || inHD(`${n}.vs`) || n.toLowerCase().startsWith(V.ai.toLowerCase())) return m;
+            const src = ci(SRC, `${n}.vs`), sig = sigOf(n); if (!src || !sig) return m;
+            wr(path.join(AIDIR, `${V.ai}${n}.VS`), rd(path.join(SRC, src)));
+            const t0 = rd(ini); wr(ini, t0.replace(/^\[Scripts\]\s*$/im, `[Scripts]\r\n${V.ai}${n}.vs = ${sig}`));
+            forked.push(n); again = true; notes.push(`${f}: ${n}.vs is the mod's own, in neither the game nor the port: shipped as ${V.ai}${n}.vs`);
+            return `${a}${V.ai}${n}.vs${b}`;
+          });
+        if (t !== s) wr(p, t);
+      }
     }
     console.log(`AI names: ${notes.length} put right${notes.length ? "\n  " + notes.join("\n  ") : ""}`);
   }
