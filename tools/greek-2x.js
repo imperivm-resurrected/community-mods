@@ -66,17 +66,22 @@ const report = [];
   // compile or does not mean what either meant). A script with a conflict and no decision above is the mod's own, whole: it ran as a whole in the mod, and
   // it is only used by the mod's civilizations (the copies `_<tag>`), so HD's later fixes to that script are the price. Listed in raw/<id>-whole-scripts.txt.
   if (V.wholeOnConflict) {
-    const whole = [];
+    const whole = [], commentOnly = [];
     for (const rel of walk(FLAT).filter(f => /^DATA\/(SUBAI|AI|AI HELPERS|ITEMSCRIPTS)\/[^/]+\.vs$/i.test(f))) {
       if (Object.keys(V.resolve || {}).some(k => k.toLowerCase() === rel.toLowerCase()) || !has.has(rel.toLowerCase())) continue;
       const cur = find(HD, rel), base = find(B140, rel), oth = find(FLAT, rel);
       if (!cur || !base) continue;
       const r = cp.spawnSync("git", ["merge-file", "-p", "-L", "cur", "-L", "base", "-L", "oth", cur, base, oth], { encoding: "latin1", maxBuffer: 1 << 26 });
-      if (r.status > 0 && r.status <= 100) { wr(path.join(OUT, rel), rd(oth)); whole.push(rel); }
+      if (r.status > 0 && r.status <= 100) {
+        // a script whose only difference with HD's is in the comments (2.6.1's HEROSKILL DEFAULT.VS: the list of skill scripts) is HD's: nothing of the mod to carry
+        const code = s => s.replace(/\/\*[\s\S]*?\*\//g, "").replace(/\/\/.*$/gm, "").replace(/\s+/g, "");
+        if (V.commentOnlyIsHD && code(rd(oth)) === code(rd(cur))) { wr(path.join(OUT, rel), rd(cur)); commentOnly.push(rel); continue; }
+        wr(path.join(OUT, rel), rd(oth)); whole.push(rel);
+      }
     }
     fs.mkdirSync(path.join(ROOT, "raw"), { recursive: true });
     fs.writeFileSync(path.join(ROOT, "raw", `${V.dir}-whole-scripts.txt`), whole.join("\n") + "\n");
-    console.log(`${whole.length} scripts with a conflict are the mod's own, whole (raw/${V.dir}-whole-scripts.txt)`);
+    console.log(`${whole.length} scripts with a conflict are the mod's own, whole (raw/${V.dir}-whole-scripts.txt); ${commentOnly.length} differ from HD's only in comments and stay HD's${commentOnly.length ? ": " + commentOnly.join(", ") : ""}`);
   }
 }
 
@@ -446,6 +451,13 @@ const ALL = [CONST, ...CIVS.map(c => c.id[0].toUpperCase() + c.id.slice(1))], NO
     }
     console.log(`AI names: ${notes.length} put right${notes.length ? "\n  " + notes.join("\n  ") : ""}`);
   }
+
+  // an AI script the engine calls by name whose text is HD's (a comment-only difference was settled as HD's above): own-ai.js still wrote its block, which would run HD's own
+  // script a second time for the mod's civilizations
+  if (V.commentOnlyIsHD) for (const n of rest.inlined) {
+    const m = find(SRC, `${n}.vs`), h = find(find(HD, "DATA/AI"), `${n}.vs`), p = path.join(OUT, "patches", "DATA", "AI", `${n.toUpperCase()}.VS`);
+    if (m && h && rd(m) === rd(h) && fs.existsSync(p)) { fs.rmSync(p); console.log(`AI ${n}: the mod's script is HD's, no block written`); }
+  }
   fs.rmSync(SRC, { recursive: true, force: true });
 }
 console.log(`menu skin: ${require("./lib/menu-skin.js").skinToPatches({ OUT, HD })} layout files became patches of the keys they changed`);
@@ -572,11 +584,13 @@ for (const f of ["BELT OF SNAKES REMOVE.VS", "FEATHER AMULET REMOVE.VS"]) { cons
     let cursorX = 3000;
     for (let i = text.indexOf("<settlement"); i >= 0; i = text.indexOf("<settlement", i + 1)) {
       const xml = text.slice(i, text.indexOf("</settlement>", i) + 13), name = (/name="([^"]*)"/.exec(xml.slice(0, xml.indexOf(">"))) || [])[1];
-      if (!name || !/^Greek (Town|Village)/.test(name)) continue;
+      // the 2.6.1's gbr.exe gives slot 4 the names of Imperial Rome again ("Greek Town" -> "Imperial Roman Town"), so Greece's towns and villages are "Imperial Roman Town N" there:
+      // told apart from the game's by their classes (Greece's, already renamed to the prefix; the walls and gates are Imperial Rome's M*)
+      if (!name || !/^(Greek|Imperial Roman) (Town|Village)/.test(name) || (name.startsWith("Imperial") && !new RegExp(`class="${PREFIX}[A-Za-z]`).test(xml))) continue;
       const objs = [...xml.matchAll(objRe)].map(m => ({ xml: m[0], x: +/\bx="(-?\d+)"/.exec(m[0])[1], y: +/\by="(-?\d+)"/.exec(m[0])[1] }));
       const minX = Math.min(...objs.map(o => o.x)), maxX = Math.max(...objs.map(o => o.x)), minY = Math.min(...objs.map(o => o.y)), maxY = Math.max(...objs.map(o => o.y));
       const dx = Math.round(cursorX + (maxX - minX) / 2 - (minX + maxX) / 2), dy = Math.round(26000 - (minY + maxY) / 2);
-      const head = xml.slice(0, xml.indexOf(">") + 1).replace(/name="[^"]*"/, `name="${TEMPLATE}${name.slice("Greek".length)}"`);
+      const head = xml.slice(0, xml.indexOf(">") + 1).replace(/name="[^"]*"/, `name="${TEMPLATE}${name.replace(/^(Greek|Imperial Roman)/, "")}"`);
       const body = objs.map((o, k) => "\t" + o.xml.replace(/(\bx=")-?\d+(")/, `$1${o.x + dx}$2`).replace(/(\by=")-?\d+(")/, `$1${o.y + dy}$2`).replace(/(\bnum=")\d+(")/, `$1${k}$2`).trim()).join("\n");
       out.push(`${head}\n${body}\n</settlement>`); cursorX += maxX - minX + 3000;
     }
@@ -698,6 +712,7 @@ fs.rmSync(path.join(OUT, "legacy-left-out.txt"), { force: true });
   const legacy = V.legacyLeft && fs.existsSync(list) ? fs.readFileSync(list, "utf8").split(/\r?\n/).filter(l => l && !l.startsWith("#")) : [];
   // the mod's own package does not have these either (checked: not in its packs nor in HD's, in the 2.3, the 2.5.3 and the 2.6.1)
   const ownBugs = new Map([1, 2, 3, 4, 5].map(i => [`currentlang/voices/tteutonwolf/${i}.wav`, "the mod's VoiceTTTeutonWolf.xml names five voice files that no package of the mod or the game has: the original did not resolve either"]));
+  for (const [e, n] of [["marena", "Arena"], ["mtemple", "Temple"], ["mtownhall", "Townhall"]]) ownBugs.set(`buildings/${e}/${e}_w.ent.xml`, `the 2.6.1's class F${n} (parent M${n}, used by nothing) name a winter entity that no package of the mod or the game has: the original did not resolve either`);
   const r = refs.checkRefs(OUT, HD, V.tag, { legacy, extraRoots: [path.join(G, "local-spanish")], hdClasses: refs.hdSounds(HD), ownBugs });
   console.log(`references: ${r.checked} checked, ${r.problems.length} that do not resolve, ${r.allowed.size} allowed`);
   for (const [k, why] of r.allowed) console.log(`  allowed ${k}: ${why}`);

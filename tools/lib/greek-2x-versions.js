@@ -55,6 +55,6 @@ module.exports = {
   VERSIONS: {
     "2.3": { dir: "greek-mod-2-3", name: "Greek Mod 2.3", version: "2.3", label: "Greek 2.3", tok: "w", tag: "w23", ai: "GRW23_", download: "originals/moddb/greek-mod-2-3/files/Greek23.zip", inner: "Greek23", work: "greek-2-3", resolve: RESOLVE_23 },
     "2.5.3": { dir: "greek-mod-2-5-3", name: "Greek Mod 2.5.3", version: "2.5.3", label: "Greek 2.5.3", tok: "w5", letters: letters("W5"), template: "Greek Mod Two Five Three", tag: "w25", ai: "GRW25_", download: "originals/forum/greek-mod-2-5-3/files/GreekModInstaller.exe", inner: "", work: "greek-2-5-3", legacyLeft: true, wholeOnConflict: true, resolve: RESOLVE_25 },
-    "2.6.1": { dir: "greek-mod-2-6-1", name: "Greek Mod 2.6.1", version: "2.6.1", label: "Greek 2.6.1", tok: "w6", letters: letters("W6"), template: "Greek Mod Two Six One", tag: "w26", ai: "GRW26_", download: "originals/forum/greek-mod-2-6-1/files/Greek261.zip", inner: "Greek261", work: "greek-2-6-1", legacyLeft: true, wholeOnConflict: true, resolve: RESOLVE_26 },
+    "2.6.1": { dir: "greek-mod-2-6-1", name: "Greek Mod 2.6.1", version: "2.6.1", label: "Greek 2.6.1", tok: "w6", letters: letters("W6"), template: "Greek Mod Two Six One", tag: "w26", ai: "GRW26_", download: "originals/forum/greek-mod-2-6-1/files/Greek261.zip", inner: "Greek261", work: "greek-2-6-1", legacyLeft: true, wholeOnConflict: true, commentOnlyIsHD: true, resolve: RESOLVE_26 },
   },
 };
