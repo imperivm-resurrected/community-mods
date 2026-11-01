@@ -142,7 +142,7 @@ mediterranevm-alpha: 1 files in the same path with other bytes, 10 identical, 0 
 7 collisions
 ```
 
-Only the menu skin: cosmetic. Script checks (`raw/greek-mod-2-6-1-script-checks.txt`): 351 scripts, 0 errors, 69 warnings (the kinds of the 2.3 and the 2.5.3).
+Only the menu skin: cosmetic. **The 24 `UI/MENU/*.BMP` of the skin (buttons, frames, arrows, scroll bars) were dropped by the first builds** (the keep filter in `tools/greek-2x.js` had no `i` flag; fixed in the 2.3's layer) and are in the port now; they replace the game's at the game's paths (the approved cosmetic exception; `shared-paths.js` lists them only against HD). Not tried in game. `DATA/INTERFACE/EDITOR/MAPPLACE.INI` and `VIEWCONQUESTMAP.INI` stay out, with their reason in `raw/greek-mod-2-6-1-left-out.txt` (the editor's own INIs, global, not the skin). Script checks (`raw/greek-mod-2-6-1-script-checks.txt`): 351 scripts, 0 errors, 69 warnings (the kinds of the 2.3 and the 2.5.3).
 
 ## Pictures, sounds and references (checked offline)
 
