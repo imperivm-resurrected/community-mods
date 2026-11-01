@@ -28,6 +28,8 @@ node tools/greek-2x.js 2.5.3          # the civilizations (stages in the header 
 
 `work/` is git-ignored (nothing is written under `originals/`). The same result twice (checked: the hash of every file of `ported/greek-mod-2-5-3` is equal). `raw/greek-mod-2-5-3-{left-out,own-scripts,global,whole-scripts,script-checks}` and `raw/port-140/greek-mod-2-5-3.md` are the build's reports.
 
+**What has to be there to get the same bytes** (the build renames what it shares with another port, `_w25`, so the result depends on the ports it sees): the ports the branch tracks; `ported/cgwar`, `ported/greek-civilization-mod`, `ported/greek-mod-1-8` and `ported/mediterranevm-alpha` (git-ignored: build them or link the main checkout's); **`ported/greek-mod-2-3`, built by `tools/greek-2x.js 2.3` of the layer below**; and Imperivm Legacy, `ported/imperivm-legacy`, which the tool looks for in the main checkout (or `LEGACY_PORTED=<ported/ folder>`) and **stops without** (`GREEK2X_NO_LEGACY=1` builds without it on purpose). The SDK is the one next to the main checkout (`SDK=` overrides). Details and the story of the 176 files in `extras/greek-mod-2-3/NOTES.md`.
+
 ## What the mod changed (against the 2.3, the previous version of the line)
 
 Measured on the unpacked folders (`work/greek-2-5-3-raw` against `work/greek-2-3-raw`, by MD5): 62 new files in `data`, 64 in `ui`, 3 in `sounds`, 3 in `currentlang`; changed: 305 in `data` (103 classes, 167 scripts), 88 in `units`, 27 in `ui`, 19 in `buildings`, the `rle.mmp` (not compared). Removed against the 2.3: the 2 conquests (`ConquestRemake`, `mediterranean`) and their 24 map files: **this version has no conquests**, so there is nothing to renumber with `interface`. 4 new classes, 53 new scripts.
