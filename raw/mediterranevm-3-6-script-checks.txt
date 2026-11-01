@@ -1,0 +1,22 @@
+117 scripts, 8 hero bases, 137 class names and 43 GetConst keys checked
+names: 206 scripts read, 0 problems; 6 scripts that nothing points to were not read (BDRUID_HIDE_CLOSE_ALLIES_g36.VS, EAGLE_STAND_POSITION_g36.VS, GROUP_GHOST_g36.VS, NUMIDIAN_CONVERT.VS, ...)
+
+0 errors
+
+16 warnings
+DATA/SUBAI/BEAR_IDLE_g36.VS: "TTent,CTent_g36,Tower,Military" names no class of the port or the game (Place makes nothing, IsHeirOf is false)
+DATA/SUBAI/CTENT_BEHAVIOR_g36.VS: "CSkirmisher" names no class of the port or the game (Place makes nothing, IsHeirOf is false)
+DATA/SUBAI/HOUTPOST_BEHAVIOR_g36.VS: "HHoplite" names no class of the port or the game (Place makes nothing, IsHeirOf is false)
+DATA/SUBAI/NUMIDIAN_CONVERT.VS: "CSkirmisher" names no class of the port or the game (Place makes nothing, IsHeirOf is false)
+DATA/SUBAI/NUMIDIAN_SKIRMISHER_MUTATE_GV_g36.VS: "CSkirmisher" names no class of the port or the game (Place makes nothing, IsHeirOf is false)
+DATA/SUBAI/OUTPOST_IDLE_g36.VS: "HHoplite" names no class of the port or the game (Place makes nothing, IsHeirOf is false)
+DATA/SUBAI/TEUTON_CONVERT_g36.VS: "CSkirmisher" names no class of the port or the game (Place makes nothing, IsHeirOf is false)
+DATA/SUBAI/UNIT_ATTACH_g36.VS: "MPriest" names no class of the port or the game (Place makes nothing, IsHeirOf is false)
+DATA/SUBAI/UNIT_ATTACH_g36.VS: "RTriarius" names no class of the port or the game (Place makes nothing, IsHeirOf is false)
+DATA/SUBAI/UNIT_ATTACH_g36.VS: "REques" names no class of the port or the game (Place makes nothing, IsHeirOf is false)
+DATA/SUBAI/UNIT_ATTACH_g36.VS: "RCretanArcher" names no class of the port or the game (Place makes nothing, IsHeirOf is false)
+DATA/SUBAI/UNIT_ATTACH_g36.VS: "RAstatus" names no class of the port or the game (Place makes nothing, IsHeirOf is false)
+DATA/SUBAI/UNIT_ATTACH_g36.VS: "CSkirmisher" names no class of the port or the game (Place makes nothing, IsHeirOf is false)
+DATA/SUBAI/UNIT_ATTACH_g36.VS: "HHoplite" names no class of the port or the game (Place makes nothing, IsHeirOf is false)
+DATA/SUBAI/UNIT_CAPTURE_g36.VS: "CSkirmisher" names no class of the port or the game (Place makes nothing, IsHeirOf is false)
+DATA/SUBAI/WOLF_LEAD_g36.VS: "TTent,CTent_g36,Tower,Military" names no class of the port or the game (Place makes nothing, IsHeirOf is false)
