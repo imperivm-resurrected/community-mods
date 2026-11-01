@@ -80,7 +80,7 @@ wr(path.join(OUT, "patches", "DATA", "AI", "AI.INI"), ["[EconomyScripts]", ...gr
 // classes with one id; HD's is kept
 for (const r of ["DATA/CLASSES/WILDHORSE.SC.XML", "UNITS/WILDHORSE", "UI/ICONS/WILDHORSE.bmp"]) rm(r);
 for (const r of ["DATA/SUBAI/Technology_of_Rome_Buildings.vs", "DATA/SUBAI/VERIFY_RESEARCH.VS", "DATA/SUBAI/VERIFY_TRAINEX.VS",
-  "Adventures/GreatBattles", "Adventures/GreatChallenges", "DATA/INTERFACE/MENU/CONQUESTGAME.INI",       // the conquest stays (cgwar-independent.js gives it a name of its own); its menu file is a patch by hand in extras/
+  "Adventures/GreatBattles", "Adventures/GreatChallenges", "DATA/INTERFACE/MENU/CONQUESTGAME.INI",       // the conquest stays (cgwar-independent.js gives it a name of its own); its menu file is a patch by hand in extras/ (patches/menuini/)
   "Packs/RandomMapSettlements.bfhp"]) rm(r);
 for (const d of ["Adventures", "Packs"]) { const p = find(OUT, d); if (p && !fs.readdirSync(p).length) fs.rmSync(p, { recursive: true }); }
 
