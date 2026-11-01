@@ -18,6 +18,7 @@ const walk = (d, base = d, out = []) => { if (!fs.existsSync(d)) return out; for
 const TEXT = /\.(xml|vs|ini|txt|json)$/i;
 const classOf = s => (s.match(/<class\b[^>]*?\bid\s*=\s*"([^"]+)"/) || [])[1];
 const lf = s => s.replace(/\r\n/g, "\n"), crlf = s => s.replace(/\r?\n/g, "\r\n");
+const readJson = f => { try { return JSON.parse(fs.readFileSync(f, "utf8")); } catch (e) { console.error(`${f}: ${e.message}`); process.exit(1); } };   // a malformed file stops the build, on purpose
 
 module.exports = function greece({ OUT, B, HD, PRISTINE, ORIG18, MERGED, TAG }) {
   const log = [], res = { files: 0, names: 0, problems: [] };
@@ -45,7 +46,7 @@ module.exports = function greece({ OUT, B, HD, PRISTINE, ORIG18, MERGED, TAG }) 
     const out = new Set();
     for (const m of text.matchAll(/\b(?:Place|Mutate)\(\s*"([A-Za-z0-9_]+)"/g)) out.add(`DATA/CLASSES/${m[1]}.SC.XML`);   // a class a script places (the fisherman of the village)
     for (const m of text.matchAll(/data[\\/]subai[\\/]([^"'\s<>]+?\.vs)/gi)) out.add("DATA/SUBAI/" + m[1]);
-    for (const m of text.matchAll(/data[\\/]itemscripts[\\/]([^"'\s<>]+?\.vs)/gi)) out.add("DATA/ITEMSCRIPTS/" + m[1]);
+    for (const m of text.matchAll(/data[\\/]itemscripts[\\/]([^"'<>]+?\.vs)/gi)) out.add("DATA/ITEMSCRIPTS/" + m[1]);   // (item scripts have spaces in their names: charm of athena removing.vs)
     for (const m of text.matchAll(/["'(]\s*([A-Za-z0-9_]+\.vs)\s*["')]/g)) out.add("DATA/SUBAI/" + m[1]);
     for (const m of text.matchAll(/data[\\/]sound entities[\\/]([^"'<>]+?\.xml)/gi)) out.add("DATA/SOUND ENTITIES/" + m[1]);
     for (const m of text.matchAll(/\b(?:entity\w*|entity_\w+)\s*=\s*"([^"]+)"/gi)) out.add(m[1].replace(/\\/g, "/"));
@@ -84,7 +85,7 @@ module.exports = function greece({ OUT, B, HD, PRISTINE, ORIG18, MERGED, TAG }) 
     .replace(stemRe, (m, pre, stem) => stems.has(stem.toLowerCase()) ? (pre || "") + caseOf(stem, "Zgr") : m)
     .replace(/trainpeasantq(?![A-Za-z0-9])/g, "trainpeasantzgr").replace(/hireheroQ(?![A-Za-z0-9])/g, "hireheroZgr")
     .replace(/\bGreek Rattlesmake\b/g, "Greek Secuter").replace(/\bGreek18\b/g, "Zgreece").replace(/\bgreek18\b/g, "zgreece")
-    .replace(/GREEK_FRAME_g18/gi, "GREEK_FRAME_" + TAG).replace(/_g18(?![A-Za-z0-9])/gi, "_" + TAG).replace(/GREEK18/g, "ZGREECE").replace(/(?<![A-Za-z0-9])GR18_/g, "ZGR_");
+    .replace(/GREEK_FRAME_g18/gi, "GREEK_FRAME_" + TAG).replace(/_g18(?![A-Za-z0-9])/gi, "_zgr").replace(/GREEK18/g, "ZGREECE").replace(/(?<![A-Za-z0-9])GR18_/g, "ZGR_");
   // the 1.8's old names, from the original (H, Imperial Rome's slot), in the 1.8's new letter (Q) so that the original and Secuter's files can be merged with the built classes
   const toQ = s => s.replace(/(?<![A-Za-z0-9])(Hero|train|hirehero|hire hero |Voice|AIV_Max)?([Hh][A-Za-z0-9_]*)(?![A-Za-z0-9])/g, (m, pre, stem) => { const q = "q" + stem.slice(1).toLowerCase(); return stems.has(q) ? (pre || "") + (stem[0] === "h" ? "q" : "Q") + stem.slice(1) : m; });
   res.names = stems.size;
@@ -97,6 +98,7 @@ module.exports = function greece({ OUT, B, HD, PRISTINE, ORIG18, MERGED, TAG }) 
   const outRel = new Map();
   for (const f of sel) {
     if (/^patches\/DATA\/(SUBAI)\//i.test(f) === false && /^patches\//i.test(f) && !/^patches\/(randommapsettlements|DATA\/(CONST\.INI|ITEMS\.XML|INTERFACE))/i.test(f)) continue;
+    if (/^patches\/DATA\/SUBAI\/DRUID_ONDIE\.vs$/i.test(f)) continue;           // written below (no @replace: the 1.8 replaces the same line)
     let to = dest(f);
     if (/^DATA\/AI\/GR18_/i.test(f)) to = to.replace(/^DATA\/AI\/ZGR_/i, "DATA/AI/");   // the AI library takes the mod's own names and puts the prefix back
     if (/^DATA\/COMMANDS\/GREEK18\.XML$/i.test(f)) to = "DATA/COMMANDS/ZGREECE.XML";
@@ -129,7 +131,7 @@ module.exports = function greece({ OUT, B, HD, PRISTINE, ORIG18, MERGED, TAG }) 
     log.push(`${entries.length} ${lang} texts`);
   }
   // ---- 4. the civilization ---------------------------------------------------------------------------------------------------------------
-  const j = JSON.parse(fs.readFileSync(path.join(B, "civs", "greek18.json"), "utf8"));
+  const j = readJson(path.join(B, "civs", "greek18.json"));
   const alias = {};
   for (const [k, v] of Object.entries(j.alias.classes)) if (/^Q/.test(v) && stems.has(v.toLowerCase())) alias[k] = swap(v);
   const civ = { id: "zgreece", base: "ImperialRome", name: { spanish: "Grecia (Secuter)", english: "Greece (Secuter)", italian: "Grecia (Secuter)" }, internalName: "ZGreece", template: "Greek Secuter", ai: true, alias: { classes: alias, commands: {} } };
@@ -147,6 +149,9 @@ module.exports = function greece({ OUT, B, HD, PRISTINE, ORIG18, MERGED, TAG }) 
   for (const f of walk(CL).filter(f => /\.sc\.xml$/i.test(f))) { const p = path.join(CL, f); if (greekId(classOf(rd(p)))) wr(p, fix(rd(p))); }
   // Secuter's changes: base = the 1.8's original class (in the 1.8's letter), ours = the built class, theirs = Secuter's file
   const merged = [], notMerged = [];
+  // tools/merge-secuter-fun.js --greek commented out the <method>s of three scripts that Secuter's zip lacks (`<!-- script missing in Secuter's zip: <method .../> -->`). Two of them
+  // (myrmidon_sword.vs, myrmidon_javelin.vs) are the 1.8's and are in this pack, so the methods come back; centaur_summoning.vs is in no download: that method stays out.
+  const unComment = t => t.replace(/<!-- script missing in Secuter's zip: (<method\b[^>]*\/>) -->/g, (_m, el) => (/centaur_summoning/i.test(el) ? "" : el));
   const ORIGC = path.join(ORIG18, "CLASSES"), SECC = path.join(PRISTINE, "DATA", "CLASSES");
   const ciIn = (d, n) => fs.existsSync(d) && fs.readdirSync(d).find(x => x.toLowerCase() === n.toLowerCase());
   for (const f of walk(CL).filter(f => /\.sc\.xml$/i.test(f))) {
@@ -155,7 +160,7 @@ module.exports = function greece({ OUT, B, HD, PRISTINE, ORIG18, MERGED, TAG }) 
     const oname = /^HeroZgr/.test(id) ? "Hero" + "H" + id.slice(7) : "H" + id.slice(3);
     const bo = ciIn(ORIGC, `${oname}.SC.XML`), so = ciIn(SECC, `${oname}.SC.XML`);
     if (!bo || !so) continue;
-    const base = lf(rd(path.join(ORIGC, bo))), theirs = lf(rd(path.join(SECC, so)));
+    const base = lf(rd(path.join(ORIGC, bo))), theirs = unComment(lf(rd(path.join(SECC, so))));
     if (base === theirs) continue;                                        // Secuter did not change it
     const tmp = fs.mkdtempSync(path.join(os.tmpdir(), "sg-"));
     fs.writeFileSync(path.join(tmp, "o"), lf(ours), "latin1"); fs.writeFileSync(path.join(tmp, "b"), lf(swap(toQ(base))).replace(/race="[^"]*"/g, m => m), "latin1"); fs.writeFileSync(path.join(tmp, "t"), lf(swap(toQ(theirs))), "latin1");
@@ -168,7 +173,7 @@ module.exports = function greece({ OUT, B, HD, PRISTINE, ORIG18, MERGED, TAG }) 
   // his new Greek classes: the chariot hero and the outpost (the camp is a map object: the rules pack's)
   for (const [o, n] of [["HChariotHero", "ZgrChariotHero"], ["HOutpost", "ZgrOutpost"]]) {
     const so = ciIn(SECC, `${o}.SC.XML`); if (!so) { notMerged.push(`${o}: not in Secuter's zip`); continue; }
-    wr(path.join(CL, `${n.toUpperCase()}.SC.XML`), crlf(fix(swap(toQ(lf(rd(path.join(SECC, so))))).replace(new RegExp(`(<class\\b[^>]*?\\bid\\s*=\\s*")${n}"`), `$1${n}"`))));
+    wr(path.join(CL, `${n.toUpperCase()}.SC.XML`), crlf(fix(swap(toQ(unComment(lf(rd(path.join(SECC, so)))))).replace(new RegExp(`(<class\\b[^>]*?\\bid\\s*=\\s*")${n}"`), `$1${n}"`))));
     merged.push(`${n} (new)`);
   }
   res.merged = merged; res.notMerged = notMerged;
@@ -188,7 +193,7 @@ module.exports = function greece({ OUT, B, HD, PRISTINE, ORIG18, MERGED, TAG }) 
   }
   // what Secuter changed in the base classes the Greek classes inherit (Hero, Unit, Melee...), inside each Greek class after the 1.8's own block
   {
-    const bc = JSON.parse(rd(path.join(MERGED, "base-changes.json"))), norm = s => s.replace(/\s+/g, " ").trim();
+    const bc = readJson(path.join(MERGED, "base-changes.json")), norm = s => s.replace(/\s+/g, " ").trim();
     const parent = new Map();
     for (const dir of [path.join(HD, "DATA", "CLASSES"), CL]) for (const f of walk(dir).filter(f => /\.sc\.xml$/i.test(f) && !/[\\/]/.test(f))) { const s = rd(path.join(dir, f)), id = classOf(s); if (id) parent.set(id.toLowerCase(), (s.match(/<class\b[^>]*?\bparent\s*=\s*"([^"]+)"/) || [])[1]); }
     let added = 0;
@@ -209,13 +214,17 @@ module.exports = function greece({ OUT, B, HD, PRISTINE, ORIG18, MERGED, TAG }) 
     const r = require("./lib/greek-ai.js")({ OUT, HD, prefix: "ZGR_", constName: "Zgreece", varRe: /^AIV_(MaxZgr|TimeStrenghtenStrongholdGates)/ });
     log.push(`AI: ${r.names.length} scripts as ZGR_* (${r.names.join(", ")}), main loops ${r.loops.join(", ") || "none"}`);
     // the recruiting helper the engine calls by name from the tactics (not through AIRun): the Greek table of the 1.8 as a patch that only acts for Greek settlements
-    const tsh = hasB("patches/DATA/AI/TSH_RECRUITARMY.vs");
-    if (tsh) {
-      const t = lf(rd(tsh));
-      const greek = t.slice(t.indexOf("if (isGreek == 1)\n{"), t.indexOf("else if (isRome == 1)"));
-      const out = `@top\nStrArray greekBuildName, greekTrainCmd, greekTech;\nint isGreek;\n@replace nBuildType = RUType(class, nRace);\n// Secuter's Fun mod, Greece: the AI of a Greek settlement asks for Greek units; the game's table is the Roman one\nisGreek = 0;\nif (Mod_TrueRace(set.GetCentralBuilding) == Zgreece)\n\tisGreek = 1;\n${greek.trimEnd()}\nelse\n{\n\tnBuildType = RUType(class, nRace);\n}\n@replace cmd = UTrainCmd(nBuildType, nRace);\nif (isGreek == 1)\n\tcmd = greekTrainCmd[nBuildType];\nelse\n\tcmd = UTrainCmd(nBuildType, nRace);\n@replace tech = UTech(nBuildType, nRace);\nif (isGreek == 1)\n\ttech = greekTech[nBuildType];\nelse\n\ttech = UTech(nBuildType, nRace);\n`;
-      wr(path.join(OUT, "patches", "DATA", "AI", "TSH_RECRUITARMY.vs"), crlf(swap(out)));
+    // The 1.8's own patch of this helper (and of DRUID_ONDIE.vs) @replace the same lines of the game's script and declare `greekBuildName`, `isGreek`... with @top; with both mods on, a
+    // second @replace of a line the first already replaced finds the text inside the first one's block, and the declarations would be made twice. These patches therefore touch
+    // no line the 1.8 replaces and declare nothing: TSH_RECRUITARMY gets ONE block before the first `if (num)` (the game's cmd and tech were computed above it; this overrides them for
+    // a Greek settlement of this pack only, with the 1.8's table: Hoplite/Toxotes/Hypaspista/Chariot, anything else asks for the Hoplite's), DRUID_ONDIE gets a block at the bottom.
+    // Lines two mods cannot both patch: none, now. (With the 1.8 on too, its block still sets cmd and tech for ITS Greek settlements; mine acts only when Mod_TrueRace is Zgreece.)
+    if (hasB("patches/DATA/AI/TSH_RECRUITARMY.vs")) {
+      const out = `@before if (num)\n// Secuter's Fun mod, Greece: the AI of a Greek settlement asks for Greek units; the game's table is the Roman one (the 1.8's table, by class)\nif (Mod_TrueRace(set.GetCentralBuilding) == Zgreece)\n{\n\tif (class == "ZgrToxotes")\n\t{\n\t\tcmd = "trainZgrToxotes";\n\t\ttech = "Greek Archers";\n\t}\n\telse if (class == "ZgrHypaspista")\n\t{\n\t\tcmd = "trainZgrHypaspista";\n\t\ttech = "Greek Royal Armor";\n\t}\n\telse if (class == "ZgrChariot")\n\t{\n\t\tcmd = "trainZgrChariot";\n\t\ttech = "Greek Chariot Wheels";\n\t}\n\telse\n\t{\n\t\tcmd = "trainZgrHoplite";\n\t\ttech = "Greek Spears";\n\t}\n}\n`;
+      wr(path.join(OUT, "patches", "DATA", "AI", "TSH_RECRUITARMY.vs"), crlf(out));
     }
+    // the Greek priest also has Restoration (the Gaul druid's, which the game's script gives to `.race == Gaul`): a block of its own at the bottom, no @replace
+    wr(path.join(OUT, "patches", "DATA", "SUBAI", "DRUID_ONDIE.vs"), crlf(`@bottom\n// Secuter's Fun mod, Greece: the Greek priest also has Restoration (as the 1.8's patch, without replacing the game's line)\nif (.class == "ZgrPriest")\nif (EnvReadString(.player, "Restoration") == "researched")\n{\n\tint nZgrRestored = 0;\n\tol = ObjsInCircle(.pos, .sight, "Unit").GetObjList();\n\n\tfor (i = 0; i < ol.count; i += 1)\n\t{\n\t\tu = ol[i].AsUnit();\n\t\tif (!u.IsValid()) continue;\n\t\tif (.IsEnemy(u)) continue;\n\t\tif (u.stamina >= u.maxstamina) continue;\n\t\tu.SetStamina(u.maxstamina);\n\t\tCreateFeedback("StaminaBoost", u);\n\t\tnZgrRestored += 1;\n\t\tif (nZgrRestored >= 5)\n\t\t\tbreak;\n\t}\n}\n`));
   }
   // ---- 7. the exit points (type 2) of the buildings that train or house units ----------------------------------------------------------------
   // Greece's barracks (the 1.8's, byte for byte: the same .PASS as ported/greek-mod-1-8's QBarracks) has ONE exit point, type 2 at (-32,-50) = cell 61,68 of its .PASS, the head of a
