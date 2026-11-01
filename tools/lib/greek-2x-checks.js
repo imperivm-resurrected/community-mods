@@ -10,6 +10,8 @@
 //      Place("X"...), IsHeirOf("X"), ClassPlayerObjs("X"...), ObjsInCircle(..., "X"), GameObj class="X" in the random map lists: X should exist (a warning: the
 //      call does nothing, it does not hang)
 // 3. GetConst("K") names a key the game's CONST.INI or the port's CONST.INI patch has
+// 4. the names the scripts use (tools/lib/greek-2x-names.js): a script that a class, a command or the AI starts, and that calls or compares with a name nothing defines (a
+//    function, constant, special, AI script or strategy, class), or names a script file that is in neither the port nor the game, stops in game with "No matching function"
 // A class the game has that a clone of the port replaces (a key of civs/*.json alias.classes) and that a script of the port names by string is a warning: the
 // script should write the clone's own id (AGENTS.md: class ids written as text are each clone's own), unless it means the game's class on purpose.
 const fs = require("fs"), path = require("path");
@@ -34,7 +36,7 @@ function classTable(roots) {
   return t;
 }
 
-function checkScripts({ OUT, HD, DATA = path.join(path.dirname(HD), "DATA") }) {
+function checkScripts({ OUT, HD, DATA = path.join(path.dirname(HD), "DATA"), SDK = process.env.SDK || path.join(__dirname, "..", "..", "..", "imperivm-resurrected", "sdk") }) {
   const errors = [], warnings = [], notes = [];
   const hdData = ci(HD, "DATA") ? path.join(HD, ci(HD, "DATA")) : HD;
   const mine = ci(OUT, "DATA") ? path.join(OUT, ci(OUT, "DATA")) : null;
@@ -91,6 +93,9 @@ function checkScripts({ OUT, HD, DATA = path.join(path.dirname(HD), "DATA") }) {
   // the random map lists
   for (const f of files(path.join(OUT, "patches", "DATA"), /placeobjects\.xml$/i).concat(mine ? files(mine, /placeobjects\.xml$/i) : [])) for (const m of rd(f).matchAll(/<GameObj\b[^>]*?\bclass\s*=\s*"([^"]+)"/gi)) { counted.cls++; if (!classes.has(m[1].toLowerCase())) warnings.push(`${path.relative(OUT, f).replace(/\\/g, "/")}: GameObj class="${m[1]}": no such class`); }
   notes.push(`${scripts.length} scripts, ${counted.hero} hero bases, ${counted.cls} class names and ${counted.konst} GetConst keys checked`);
+  // 4. the names the scripts use (a call or a constant that nothing defines stops the script in game: tools/lib/greek-2x-names.js)
+  const names = require("./greek-2x-names.js").checkNames({ OUT, HD, SDK });
+  errors.push(...names.errors); notes.push(...names.notes);
   return { errors, warnings, notes };
 }
 module.exports = { checkScripts };

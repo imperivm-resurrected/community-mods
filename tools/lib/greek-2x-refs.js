@@ -118,7 +118,8 @@ function checkRefs(OUT, HD, tag, { legacy = [], extraRoots = [], hdClasses = nul
   const re = new RegExp(`(["'=,\\s>])([^"'<>=,;\\r\\n]*_${tag}(?:\\.[A-Za-z0-9]+)?)(?=["'<>,;\\s)]|$)`, "g");
   for (const p of all.filter(p => /\.(xml|ini|vs|txt|json)$/i.test(p))) {
     const rel = path.relative(OUT, p).replace(/\\/g, "/"); if (/^(loc|local)\//i.test(rel)) continue;
-    for (const m of fs.readFileSync(p, "latin1").matchAll(re)) {
+    const text = fs.readFileSync(p, "latin1"), body = /\.vs$/i.test(p) ? text.replace(/\/\*[\s\S]*?\*\//g, " ").replace(/\/\/[^\n]*/g, " ") : text;   // a comment names nothing
+    for (const m of body.matchAll(re)) {
       const v = m[2].trim().replace(/\\/g, "/"), b = v.split("/").pop().toLowerCase();
       const last = b.split(" ").pop();            // a parameter `SetSet CHorseman_w23` names the class after its verb
       if (!files.has(b) && !dirs.has(b) && !classes.has(b) && !classes.has(last) && !have.has(v.toLowerCase())) problems.push(`${rel}: "${v}" names a file, folder or class that does not exist`);
