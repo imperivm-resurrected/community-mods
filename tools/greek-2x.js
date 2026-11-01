@@ -422,9 +422,8 @@ const ALL = [CONST, ...CIVS.map(c => c.id[0].toUpperCase() + c.id.slice(1))], NO
     wr(ini, rd(ini).split(/\r?\n/).filter(l => !new RegExp(`${V.ai}${n}\\b`).test(l)).join("\r\n"));
     report.push(`AI ${n}: the mod's edit is not ported (the game picks its group strategy by name)`);
   }
-  // 6b. names the AI scripts of the port use that point to nothing (the game answers "No matching function with name X" and the AI player stops; found by
-  // tools/lib/greek-2x-names.js): a call to <prefix>X.vs that the port does not ship becomes the game's X.vs (the 2.3's TS_AttackAtWill); a script that the mod ships,
-  // that is in neither the game nor the port and that the port's AI calls by name is shipped as its own copy (the 2.5.3's ESH_BuildCarthaginianArmy)
+  // 6b. names the AI scripts of the port use that point to nothing (the game answers "No matching function with name X" for a constant and the AI player stops: found
+  // in game with the 2.6.1's GRW26_SquadMonitor, which compared a squad's strategy with GRW26_GS_EnterSettlement after the strategies were left out; tools/lib/greek-2x-names.js)
   {
     const AIDIR = find(OUT, "DATA/AI"), HDAI = find(HD, "DATA/AI"), ini = path.join(OUT, "patches", "DATA", "AI", "AI.INI"), modIni = fs.existsSync(path.join(SRC, "AI.INI")) ? rd(path.join(SRC, "AI.INI")) : "";
     const ci = (d, n) => fs.readdirSync(d).find(x => x.toLowerCase() === n.toLowerCase()), inPort = n => !!ci(AIDIR, n), inHD = n => !!ci(HDAI, n), esc = x => x.replace(/[.*+?^${}()|[\]\\]/g, "\\$&"), pre = esc(V.ai);
@@ -437,6 +436,8 @@ const ALL = [CONST, ...CIVS.map(c => c.id[0].toUpperCase() + c.id.slice(1))], NO
         const t = s
           // a call to <prefix>X.vs that is not in the port: the game's own X.vs (the mod ships no X, e.g. TS_AttackAtWill in the 2.3)
           .replace(new RegExp(`(["'])${pre}([\\w ]+)\\.vs\\1`, "gi"), (m, q, n) => { if (inPort(`${V.ai}${n}.vs`) || !inHD(`${n}.vs`)) return m; notes.push(`${f}: ${V.ai}${n}.vs -> ${n}.vs (the game's)`); return `${q}${n}.vs${q}`; })
+          // a strategy of the game that the port does not ship a copy of: the game's constant
+          .replace(new RegExp(`\\b${pre}(GS_\\w+)\\b(?!\\.vs)`, "g"), (m, n) => { if (inPort(`${V.ai}${n}.vs`)) return m; notes.push(`${f}: ${m} -> ${n} (the game's strategy)`); return n; })
           // a script the mod ships that is in neither the game nor the port, called by name: the port ships it as its own copy
           .replace(/(AIRun\(\s*["'])([\w ]+)\.vs(["'])/gi, (m, a, n, b) => {
             if (inPort(`${n}.vs`) || inHD(`${n}.vs`) || n.toLowerCase().startsWith(V.ai.toLowerCase())) return m;
@@ -451,7 +452,6 @@ const ALL = [CONST, ...CIVS.map(c => c.id[0].toUpperCase() + c.id.slice(1))], NO
     }
     console.log(`AI names: ${notes.length} put right${notes.length ? "\n  " + notes.join("\n  ") : ""}`);
   }
-
   // an AI script the engine calls by name whose text is HD's (a comment-only difference was settled as HD's above): own-ai.js still wrote its block, which would run HD's own
   // script a second time for the mod's civilizations
   if (V.commentOnlyIsHD) for (const n of rest.inlined) {
@@ -501,6 +501,38 @@ console.log(`menu skin: ${require("./lib/menu-skin.js").skinToPatches({ OUT, HD 
   }
   console.log(`scripts of the mod's own for its civilizations: ${r.copied.length} copied (_${V.tag}), ${r.skipped.length} left to the game's (${r.skipped.map(s => s.name).join(", ")})`);
   console.log(`  methods inherited from the game's classes whose script the mod edited: ${r.injected} <method> written inside ${r.touched} classes; behaviors inherited and left the game's: ${(r.behaviorsLeft || []).join("; ") || "none"}`);
+  // The game's scripts that the port's classes point to and that name something nobody defines. HD ships DRUID_REVITALIZE_GROUND.VS with `.HasSpecial(revitalize)`: no
+  // special of that name exists in HD or in the 1.40 (UNIT_SPECIALS.INI has 36 sections in both), so the script does not compile ("(9, 28): No matching function with
+  // name revitalize", found in game with the 2.6.1's priest, whose right-click on the ground runs it). The mod's own DRUID_REVITALIZE.VS, the same order on a unit,
+  // tests `determination` instead ("fake skill to make revitalize work") and the priest has that special: the copy does the same. (Not the rename of the order:
+  // the unrenamed text of the original fails the same way.)
+  const SCRIPT_FIXES = [{ script: "druid_revitalize_ground.vs", from: /\.HasSpecial\(\s*revitalize\s*\)/g, to: ".HasSpecial(determination)" }];
+  for (const x of SCRIPT_FIXES) {
+    const users = ["DATA/CLASSES", "DATA/COMMANDS"].flatMap(d => walk(find(OUT, d) || "").filter(f => /\.xml$/i.test(f)).map(f => path.join(find(OUT, d), f))).filter(f => new RegExp(`data/subai/${x.script.replace(/\./g, "\\.")}`, "i").test(rd(f)));
+    const hd = find(HD, `DATA/SUBAI/${x.script}`);
+    if (!users.length || !hd) continue;
+    const nm = `${x.script.replace(/\.vs$/i, "")}_${V.tag}.vs`, text = rd(hd);
+    if (!x.from.test(text)) { report.push(`${x.script}: the text to fix was not found`); continue; }
+    x.from.lastIndex = 0;
+    wr(path.join(find(OUT, "DATA/SUBAI"), nm), text.replace(x.from, x.to));
+    for (const u of users) wr(u, rd(u).replace(new RegExp(`(data/subai/)${x.script.replace(/\./g, "\\.")}`, "gi"), `$1${nm}`));
+    console.log(`script fix: ${x.script} -> ${nm} (${users.map(u => path.basename(u)).join(", ")})`);
+  }
+  // A command the mod added to one of the game's command files for a base class of the game (2.6.1: VILLAGE.XML, `repair village ai`, src BaseVillage, "used only by AI")
+  // is not carried by the clones (the game's file stays the game's) while the port's AI script (GRW26_ES_Village: `hall.ExecCmd("repair village ai", ...)`) calls it. It
+  // becomes a command of the port's own, `<name> (<tag>)`, offered by the port's classes that derive from that base, and the port's scripts name it so.
+  const ADDED_CMDS = [{ name: "repair village ai", file: "VILLAGE.XML", base: "BaseVillage" }];
+  for (const x of ADDED_CMDS) {
+    const src = find(FLAT, `DATA/COMMANDS/${x.file}`), scripts = ["DATA/AI", "DATA/SUBAI"].flatMap(d => walk(find(OUT, d)).filter(f => /\.vs$/i.test(f)).map(f => path.join(find(OUT, d), f)));
+    const users = scripts.filter(p => rd(p).includes(`"${x.name}"`));
+    const body = src && (rd(src).match(new RegExp(`<cmd\\s+name="${x.name}"[\\s\\S]*?</cmd>`)) || [])[0];
+    if (!users.length || !body) { if (users.length) report.push(`${x.name}: scripts use it and the mod's ${x.file} has no such command`); continue; }
+    const classes = walk(CLASSES).filter(f => /\.sc\.xml$/i.test(f)).map(f => (rd(path.join(CLASSES, f)).match(/<class\b[^>]*?\bid="([^"]+)"[^>]*?\bparent="([^"]+)"/) || []).slice(1)).filter(c => c[1] === x.base).map(c => c[0]);
+    const nm = `${x.name} (${V.tag})`;
+    wr(path.join(find(OUT, "DATA/COMMANDS"), `${PREFIX.toUpperCase()}${x.base.replace(/^Base/, "").toUpperCase()}AI.XML`), `<commands>\r\n${body.replace(`name="${x.name}"`, `name="${nm}"`).replace(/<src\s+obj="[^"]*"\s*\/>/, classes.map(c => `<src obj="${c}"/>`).join("\r\n\t")).replace(/\r?\n/g, "\r\n")}\r\n</commands>\r\n`);
+    for (const p of users) wr(p, rd(p).split(`"${x.name}"`).join(`"${nm}"`));
+    console.log(`added command: "${nm}" for ${classes.length} classes derived from ${x.base} (${users.map(p => path.basename(p)).join(", ")})`);
+  }
   fs.mkdirSync(path.join(ROOT, "raw"), { recursive: true });
   fs.writeFileSync(path.join(ROOT, "raw", `${V.dir}-own-scripts.txt`), r.copied.map(c => `${c.from} -> ${c.to}  (${c.users.slice(0, 4).join(", ")}${c.users.length > 4 ? ", ..." : ""})`).join("\n") + "\n\nnot copied:\n" + r.skipped.map(s => `${s.name}: ${s.why}`).join("\n") + "\n");
 }
