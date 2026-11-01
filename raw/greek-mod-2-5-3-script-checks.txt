@@ -1,0 +1,54 @@
+257 scripts, 16 hero bases, 247 class names and 147 GetConst keys checked
+
+0 errors
+
+49 warnings
+DATA/ITEMSCRIPTS/BCARNYX_w25.VS: "BSwordsman" is the game's class that W5brSwordsman replaces
+DATA/ITEMSCRIPTS/GCARNYX_w25.VS: "GSwordsman" is the game's class that W5gaSwordsman replaces
+DATA/ITEMSCRIPTS/TWARHORN_w25.VS: "TSwordsman" is the game's class that W5geSwordsman replaces
+DATA/SUBAI/BEAR_BOAR_IDLE_w25.VS: "Military,FakeTower" names no class of the port or the game (Place makes nothing, IsHeirOf is false)
+DATA/SUBAI/CTENT_BEHAVIOR_w25.VS: "CNumidianRider" is the game's class that W5caNumidianRider replaces
+DATA/SUBAI/TBarracks_anim_w25.vs: "TBarrackHorse" names no class of the port or the game (Place makes nothing, IsHeirOf is false)
+DATA/SUBAI/TOWNHALL_BUILDINGSBEHAVIOR_B_w25.VS: "TTeutonWolf" is the game's class that W5geTeutonWolf replaces
+DATA/SUBAI/coutpost_behavior_w25.vs: "CMaceman" is the game's class that W5caMaceman replaces
+DATA/SUBAI/create_food_boat_big_w25.vs: "GShipyard3" is the game's class that W5gaShipyard3 replaces
+DATA/SUBAI/create_food_boat_big_w25.vs: "GShipyard4" is the game's class that W5gaShipyard4 replaces
+DATA/SUBAI/create_food_boat_small_w25.vs: "GShipyard3" is the game's class that W5gaShipyard3 replaces
+DATA/SUBAI/create_food_boat_small_w25.vs: "GShipyard4" is the game's class that W5gaShipyard4 replaces
+DATA/SUBAI/create_food_mule_big_w25.vs: "RomanShipyard" names no class of the port or the game (Place makes nothing, IsHeirOf is false)
+DATA/SUBAI/create_food_mule_big_w25.vs: "GaulShipyard" names no class of the port or the game (Place makes nothing, IsHeirOf is false)
+DATA/SUBAI/create_food_mule_small_w25.vs: "RomanShipyard" names no class of the port or the game (Place makes nothing, IsHeirOf is false)
+DATA/SUBAI/create_food_mule_small_w25.vs: "GaulShipyard" names no class of the port or the game (Place makes nothing, IsHeirOf is false)
+DATA/SUBAI/create_gold_boat_big_w25.vs: "GShipyard3" is the game's class that W5gaShipyard3 replaces
+DATA/SUBAI/create_gold_boat_big_w25.vs: "GShipyard4" is the game's class that W5gaShipyard4 replaces
+DATA/SUBAI/create_gold_boat_small_w25.vs: "GShipyard3" is the game's class that W5gaShipyard3 replaces
+DATA/SUBAI/create_gold_boat_small_w25.vs: "GShipyard4" is the game's class that W5gaShipyard4 replaces
+DATA/SUBAI/create_gold_mule_big_w25.vs: "RomanShipyard" names no class of the port or the game (Place makes nothing, IsHeirOf is false)
+DATA/SUBAI/create_gold_mule_big_w25.vs: "GaulShipyard" names no class of the port or the game (Place makes nothing, IsHeirOf is false)
+DATA/SUBAI/create_gold_mule_small_w25.vs: "RomanShipyard" names no class of the port or the game (Place makes nothing, IsHeirOf is false)
+DATA/SUBAI/create_gold_mule_small_w25.vs: "GaulShipyard" names no class of the port or the game (Place makes nothing, IsHeirOf is false)
+DATA/SUBAI/iberian_village_trainIScout_w25.vs: "IScout" is the game's class that W5ibScout replaces
+DATA/SUBAI/iberian_village_trainIScout_w25.vs: "BHorseman" names no class of the port or the game (Place makes nothing, IsHeirOf is false)
+DATA/SUBAI/iberian_village_trainIScout_w25_w5iberia.vs: "BHorseman" names no class of the port or the game (Place makes nothing, IsHeirOf is false)
+DATA/SUBAI/itavern_calltoarms_w25.vs: "IMilitiaman" is the game's class that W5ibMilitiaman replaces
+DATA/SUBAI/onfinish_research_w25.vs: "IEnchantress" is the game's class that W5ibEnchantress replaces
+DATA/SUBAI/onfinish_research_w25_w5britain.vs: "IEnchantress" is the game's class that W5ibEnchantress replaces
+DATA/SUBAI/onfinish_research_w25_w5carthage.vs: "IEnchantress" is the game's class that W5ibEnchantress replaces
+DATA/SUBAI/onfinish_research_w25_w5egypt.vs: "IEnchantress" is the game's class that W5ibEnchantress replaces
+DATA/SUBAI/onfinish_research_w25_w5gaul.vs: "IEnchantress" is the game's class that W5ibEnchantress replaces
+DATA/SUBAI/onfinish_research_w25_w5imperial.vs: "IEnchantress" is the game's class that W5ibEnchantress replaces
+DATA/SUBAI/onfinish_research_w25_w5punic.vs: "IEnchantress" is the game's class that W5ibEnchantress replaces
+DATA/SUBAI/onfinish_research_w25_w5rome.vs: "IEnchantress" is the game's class that W5ibEnchantress replaces
+DATA/SUBAI/outpost_idle_w25.vs: "CMaceman" is the game's class that W5caMaceman replaces
+DATA/SUBAI/outpost_idle_w25_w5britain.vs: "CMaceman" is the game's class that W5caMaceman replaces
+DATA/SUBAI/outpost_idle_w25_w5egypt.vs: "CMaceman" is the game's class that W5caMaceman replaces
+DATA/SUBAI/outpost_idle_w25_w5gaul.vs: "CMaceman" is the game's class that W5caMaceman replaces
+DATA/SUBAI/outpost_idle_w25_w5iberia.vs: "CMaceman" is the game's class that W5caMaceman replaces
+DATA/SUBAI/outpost_idle_w25_w5imperial.vs: "CMaceman" is the game's class that W5caMaceman replaces
+DATA/SUBAI/outpost_idle_w25_w5punic.vs: "CMaceman" is the game's class that W5caMaceman replaces
+DATA/SUBAI/outpost_idle_w25_w5rome.vs: "CMaceman" is the game's class that W5caMaceman replaces
+DATA/SUBAI/teuton_archer_mutate_gv_w25.vs: "TTeutonArcher" is the game's class that W5geTeutonArcher replaces
+DATA/SUBAI/teuton_rider_mutate_gv_w25.vs: "TTeutonRider" is the game's class that W5geTeutonRider replaces
+patches/DATA/AI/EVALRECRUIT.VS: "GTridentWarrior" is the game's class that W5gaTridentWarrior replaces
+patches/DATA/AI/EVALRECRUIT.VS: "BVikingLord" is the game's class that W5brVikingLord replaces
+patches/DATA/AI/EVALRECRUIT.VS: "CWarElephant" is the game's class that W5caWarElephant replaces
