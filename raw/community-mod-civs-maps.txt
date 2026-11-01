@@ -1,0 +1,63 @@
+# maps of ported/ whose mod.json names community-mod; "added" = classes the mod added (HD has no such class, so a map that places one needs the copy), "cloned" = how many of the game's civilization classes it places (they keep working, as the game's own)
+
+1v1-islas (incompatibleWith, 1 map files): added: none; cloned: 46
+arma-definitiva-1v1v1-halcon-2 (incompatibleWith, 1 map files): added: none; cloned: 24
+batalla-en-los-alpes (incompatibleWith, 1 map files): added: none; cloned: 8
+battle-royale (incompatibleWith, 1 map files): added: none; cloned: 137
+cneo-poza (incompatibleWith, 1 map files): added: none; cloned: 115
+cneo-poza-contra-los-galos (incompatibleWith, 1 map files): added: none; cloned: 122
+el-arma-definitiva (incompatibleWith, 1 map files): added: none; cloned: 54
+el-sitio-de-numancia (incompatibleWith, 1 map files): added: none; cloned: 85
+europa-una-mappa-dalla-britannia-all-egitto (incompatibleWith, 1 map files): added: none; cloned: 198
+germanico (requires, 1 map files): added: THero4; cloned: 87
+kalindan-saga (incompatibleWith, 1 map files): added: none; cloned: 44
+l-eroe-d-egitto-parte-1 (incompatibleWith, 1 map files): added: none; cloned: 44
+l-inverno-e-alle-porte-isentieri (incompatibleWith, 3 map files): added: none; cloned: 15
+la-guerra-de-los-heroes (incompatibleWith, 1 map files): added: none; cloned: 168
+la-muralla-de-sko (incompatibleWith, 1 map files): added: none; cloned: 101
+la-primera-guerra-punica (incompatibleWith, 1 map files): added: none; cloned: 101
+la-reconquista-de-segeda (incompatibleWith, 1 map files): added: none; cloned: 58
+la-tierra-media (requires, 1 map files): added: CHero5; cloned: 121
+la-valle-abbandonata (incompatibleWith, 1 map files): added: none; cloned: 51
+mapa-europa (requires, 1 map files): added: BHero4 CHero5 IHero5; cloned: 251
+mini-avventura-grecia (incompatibleWith, 1 map files): added: none; cloned: 59
+nuevo-mapa-marenostrum (incompatibleWith, 1 map files): added: none; cloned: 181
+saga-la-batalla-de-stonehenge (requires, 1 map files): added: MHero4a MHero4b; cloned: 69
+scenario-grecia-iberia (incompatibleWith, 3 map files): added: none; cloned: 41
+the-throne-of-greece (incompatibleWith, 1 map files): added: none; cloned: 112
+
+# added class -> its copy per civilization
+BBronzeSpearman2 -> FbrBronzeSpearman2
+BHero4 -> FbrHero4
+BHero4a -> FbrHero4a
+BHero4b -> FbrHero4b
+BHero4c -> FbrHero4c
+BHighlander2 -> FbrHighlander2
+BShieldBearer2 -> FbrShieldBearer2
+BSwordsman2 -> FbrSwordsman2
+CHero5 -> FcaHero5
+CHero5a -> FcaHero5a
+CHero5b -> FcaHero5b
+EHero4 -> FegHero4
+EHero4a -> FegHero4a
+EHero4b -> FegHero4b
+EHero4c -> FegHero4c
+GHero5a -> FgaHero5a
+GHero5b -> FgaHero5b
+GHero6a -> FgaHero6a
+GHero6b -> FgaHero6b
+GHero7b -> FgaHero7b
+GTridentWarrior2 -> FgaTridentWarrior2
+IHero5 -> FibHero5
+IHero5a -> FibHero5a
+IHero5b -> FibHero5b
+MHero4a -> FimHero4a
+MHero4b -> FimHero4b
+MHero4c -> FimHero4c
+RHero4a -> FroHero4a
+RHero4b -> FroHero4b
+RHero4c -> FroHero4c
+THero4 -> FgeHero4
+THero4a -> FgeHero4a
+THero4b -> FgeHero4b
+THero4c -> FgeHero4c

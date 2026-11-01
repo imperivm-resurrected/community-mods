@@ -44,3 +44,6 @@ ported/antioco-iii-el-grande/
 # AsvrMod VII a0.8.1: rebuilt from the GameBanana rar + extras/asvrmod-vii-civs/ (tools/asvrmod-vii.js: unpacks into .scratch/, runs port-140.js; see its NOTES.md)
 ported/asvrmod-vii-civs/
 .scratch/
+
+# Community Mod 12: rebuilt from the GameBanana rar + extras/community-mod-civs/ (tools/community-mod.js: unpacks into .scratch/; see its NOTES.md)
+ported/community-mod-civs/
