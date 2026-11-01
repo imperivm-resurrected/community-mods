@@ -219,9 +219,11 @@ None known. `Greek_MapsAdventures.zip` is not ported here (#8).
 
 ## In game
 
-**One test so far (maintainer, 2026-11-01 20:43, profile with only this set): it loaded, and the log had three compilation errors** (`GRW26_SquadMonitor.vs` twice and HD's `DRUID_REVITALIZE_GROUND.VS`), described and fixed in *Names the scripts use*. Nothing else was tried; the fixes themselves are **not tried in game**.
+**Two tests so far (maintainer, profile with only this set):**
+1. 2026-11-01 20:43: it loaded, and the log had three compilation errors (`GRW26_SquadMonitor.vs` twice and HD's `DRUID_REVITALIZE_GROUND.VS`), described and fixed in *Names the scripts use*.
+2. 2026-11-01 about 22:01, the build with those fixes (what `ported/` has): **it loads and plays, with no script errors in that session.** The log of the session (about 1.5 minutes) shows the set `Greek Mod 2.6.1` loaded, the AI scripts `GRW26_ESH_UpgradeBarracks` and `GRW26_ESH_BuildCarthaginianArmy` and the `SquadMonitor` opened, 0 compilation errors and 0 `E` lines. **The maintainer did not detail what he exercised**, and 1.5 minutes is not a long AI game.
 
-**NOT tried:** the long game against the Roman AIs, the hero of each arena, the barracks in both Greek town layouts, the 168 script copies (47 whole), the random-map city of Greece (new in this build), the priest's revitalize (both the unit and the ground variant), the icons and attack sounds, the voices, `THERMAE.SC_w26.XML`, the renamed templates, the `gbr.exe` table limits above, two civilization mods together, and the gymnasium, temple and village exits.
+**NOT tried (not told, so not claimed):** the long game against the Roman AIs, the hero of each arena, the barracks in both Greek town layouts, the 168 script copies (47 whole), the random-map city of Greece (new in this build), the priest's revitalize (both the unit and the ground variant), the icons and attack sounds, the voices, `THERMAE.SC_w26.XML`, the renamed templates, the `gbr.exe` table limits above, two civilization mods together, and the gymnasium, temple and village exits.
 
 ## Pending: independence
 
