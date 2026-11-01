@@ -34,7 +34,7 @@ It unpacks the three RARs in a temporary folder (nothing under `originals/`; `bs
 - **Voices are the clones' own** (79 entities of their own, 79 folders copied as `<folder>_g36`: 367 files). Spanish and Italian: only the files that are not the game's own go to `local/<language>/voices` (20 and 25). The 83 voice folders at the root of the ENG archive's `local/spanish.pak` are **HD's own Spanish voices** (388 of 388 files byte-identical to HD's `spanish` voices and to the ES archive's pak), not the mod's: they are not ported.
 - **Texts**: 278 texts in each of `spanish` and `italian`; the texts that change the game's own are left out (25 and 35).
 
-## Menu skin (shipped; **not tried in game**)
+## Menu skin (shipped; seen working by the maintainer on 2026-11-01, the main menu, the multiplayer game screen and the settings)
 
 AGENTS.md, *Civilizations are independent*, the cosmetic exception: only what the skin changes, no text table, an INI as a patch of its changed keys, pictures whole at the game's path (only one skin shows; the content manager lets the player choose "Use the files of ...", per mod and per file; no `incompatibleWith`).
 
@@ -102,10 +102,12 @@ Barracks and town halls are untouched by the mod.
 
 Maintainer, 2026-11-01 23:16-23:18, the build of PR #51 head `71c164be`, profile with only this set. From his report and `imperivm-mod.log`:
 
-- The set **loaded** (`Mediterranevm 3.6 3.6, 1875 files`) and the **eight civilizations registered** (`gbritain` … `grome`, indexes 10-17). The main menu was the game's own **because that build shipped no menu skin**; the skin below is added after this test and is **not tried**.
+- The set **loaded** (`Mediterranevm 3.6 3.6, 1875 files`) and the **eight civilizations registered** (`gbritain` … `grome`, indexes 10-17). The main menu was the game's own **because that build shipped no menu skin**; the skin below was added after this test; it was tried afterwards (next bullet).
 - He started a **skirmish with random civilizations** (slots with 3.6 civilizations: 15, 12, 17, 14); it ran about **13 seconds on screen**. The session ended cleanly (130 s): **0 errors, 0 compilation errors**; the 6 warnings are a `winmm` export note and room slots whose saved civilization no longer exists. His words: "no hubo mayor problema".
 - That is: **it loads, starts a match, and shows no script errors in that very short session.** Nothing more.
 
+- **Second test, the skin (build with the patches at `menuini/`), 2026-11-01 23:52.** The maintainer saw the skin working (new background, version line, logo and frame). The log: `menuini/mainmenu.ini`, `menuini/template.ini`, `data/interface/menu/template.ini`, `menuini/mpgamemenu.ini`, `menuini/settings.ini` applied (`patch: (mediterranevm-3-6) ... applied`). Not seen applied in that session: the other 8 layout patches (their screens were not opened).
+
 ## Not tried
 
-The test above does **not** show: a long game; the AI playing the 3.6 civilizations for minutes (the log opened only 2 `data/ai` patch lines); heroes; the voices in the three languages; icons; the sprites through the `rle.mmp.tail` (offsets); the new units and orders (`RThermae`, `RAstatus`, `RTriarius`); the `_TEUTON_g36` profile in the lobby; the units and orders the clones changed; two civilization mods active together.
+The tests above do **not** show: the 8 layout patches whose screens were not opened (conquest, pre-adventure, profile, select map, chats...), the skin with the game in Spanish or Italian; a long game; the AI playing the 3.6 civilizations for minutes (the log opened only 2 `data/ai` patch lines); heroes; the voices in the three languages; icons; the sprites through the `rle.mmp.tail` (offsets); the new units and orders (`RThermae`, `RAstatus`, `RTriarius`); the `_TEUTON_g36` profile in the lobby; the units and orders the clones changed; two civilization mods active together.
