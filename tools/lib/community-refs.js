@@ -82,8 +82,12 @@ function fixRefs({ OUT, HD, TAG }) {
 function checkRefs({ OUT, HD, TAG, baseline = new Set() }) {
   const { have, ok } = resolver(OUT, HD), problems = [], allowed = new Set(); let n = 0;
   for (const f of dataTexts(OUT)) { /* scanned below through scan() on the port */ }
+  // the review's BSHIELDS case: a reference that names the plain file while the port ships that same path renamed (X.BMP and X_<tag>.BMP) shows the game's picture, not the mod's
+  const twinOf = v => (/\.ent\.xml$/i.test(v) ? v.replace(/\.ent\.xml$/i, `.ent_${TAG}.xml`) : v.replace(/(\.[A-Za-z0-9]+)$/, `_${TAG}$1`)).toLowerCase(), mine = index(OUT);
   for (const r of scan(OUT)) {
-    n++; if (ok(r)) continue;
+    n++;
+    if (r.need && (r.kind === "picture" || r.kind === "entity") && !new RegExp(`_${TAG}\\.`, "i").test(r.need) && mine.has(twinOf(norm(r.need)))) problems.push(`${r.rel}: ${r.kind} "${r.value}" names the plain file and the port ships ${twinOf(norm(r.need))} for the same path`);
+    if (ok(r)) continue;
     if (baseline.has(`${r.kind}|${norm(r.value)}`)) { allowed.add(r.value); continue; }
     // a Currentlang voice the port does not carry is the game's own (not in originals): only a renamed one (_cm) is a problem
     if (r.kind === "soundfile" && r.voice !== undefined) { if (new RegExp(`_${TAG}/`, "i").test(r.voice)) problems.push(`${r.rel}: ${r.value} is not in Local/<language>/VOICES`); continue; }
@@ -117,6 +121,9 @@ if (require.main === module) {
   const base = baselineOf(O, H);
   assert(checkRefs({ OUT: O, HD: H, TAG: "cm", baseline: new Set() }).problems.length >= 3, "the broken references are found");
   const d = fixRefs({ OUT: O, HD: H, TAG: "cm" }); assert.strictEqual(d.length, 4, d.join("\n"));
+  put(O, "UI/CMDBAR/UPGRADES/BSHIELDS_cm.BMP"); put(O, "DATA/COMMANDS/C.XML", '<cmd button="upgrades/BSHIELDS.BMP"/>');
+  assert(checkRefs({ OUT: O, HD: H, TAG: "cm", baseline: base }).problems.some(p => /names the plain file/.test(p)), "a plain reference with a renamed twin of the same path is found");
+  fs.rmSync(path.join(O, "DATA/COMMANDS/C.XML")); fs.rmSync(path.join(O, "UI/CMDBAR/UPGRADES/BSHIELDS_cm.BMP"));
   const c = checkRefs({ OUT: O, HD: H, TAG: "cm", baseline: base }); assert.strictEqual(c.problems.length, 0, c.problems.join("\n") + " (`nothing.bmp` was unresolved in the mod's own text: allowed)");
   put(O, "DATA/COMMANDS/B.XML", '<cmd queueicon="gameres/icons/upgrades/new_missing.bmp"/>'); assert.strictEqual(checkRefs({ OUT: O, HD: H, TAG: "cm", baseline: base }).problems.length, 1, "a new one stops the build");
   assert(/UnitEMaceFight_cm/.test(rdl(path.join(O, "DATA/CLASSES/X.SC.XML"))), "the renamed sound entity is named");
