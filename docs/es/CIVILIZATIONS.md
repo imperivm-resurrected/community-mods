@@ -70,6 +70,16 @@ Las letras y los índices son únicos en todos los ports (el SDK admite índices
 | (motor) | `aiberia` | `Aib` (derivado) | Iberia | AsvrMod VII | `tools/asvrmod-vii.js` |
 | (motor) | `aegypt` | `Aeg` (derivado) | Egypt | AsvrMod VII | `tools/asvrmod-vii.js` |
 | (motor) | `agermany` | `Age` (derivado) | Germany | AsvrMod VII | `tools/asvrmod-vii.js` |
+| (motor) | `kgaul` | `Kga` (derivado) | Gaul | Caesar Mod 1.1.0 | `tools/caesar-mod.js` |
+| (motor) | `kbritain` | `Kbr` (derivado) | Britain | Caesar Mod 1.1.0 | `tools/caesar-mod.js` |
+| (motor) | `kiberia` | `Kib` (derivado) | Iberia | Caesar Mod 1.1.0 | `tools/caesar-mod.js` |
+| (motor) | `kegypt` | `Keg` (derivado) | Egypt | Caesar Mod 1.1.0 | `tools/caesar-mod.js` |
+| (motor) | `kgermany` | `Kge` (derivado) | Germany | Caesar Mod 1.1.0 | `tools/caesar-mod.js` |
+| (motor) | `kcarthage` | `Kca` (derivado) | Carthage | Caesar Mod 1.1.0 | `tools/caesar-mod.js` |
+| (motor) | `krepublic` | `Kre` (derivado) | RepublicanRome | Caesar Mod 1.1.0 | `tools/caesar-mod.js` |
+| (motor) | `kimperial` | `Kim` (derivado) | RepublicanRome | Caesar Mod 1.1.0 | `tools/caesar-mod.js` |
+| (motor) | `kpunic` | `Kpu` (derivado) | RepublicanRome | Caesar Mod 1.1.0 | `tools/caesar-mod.js` |
+| (motor) | `kgreece` | `Kgr` (derivado) | ImperialRome (own race) | Caesar Mod 1.1.0 | `tools/caesar-mod.js` |
 
 Una civilización sin `letter` (prefijo derivado: las 3 primeras letras del `id`, imperivm-resurrected#37) ni `index` (lo asigna el motor) no reserva nada en esta tabla; sus filas dicen `(motor)` y están para detectar choques. **Dos ports no pueden estar activos a la vez si comparten un prefijo derivado: el motor ignora la segunda civilización.** Ahora mismo chocan GBR Tactics y La Reconquista 2010 en `Gau`, `Bri`, `Car`, `Egy`, `Ger`, `Ibe` e `Imp`.
 

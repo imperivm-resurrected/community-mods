@@ -70,6 +70,16 @@ Letters and indices are unique across all the ports (the SDK allows indices 10-9
 | (engine) | `aiberia` | `Aib` (derived) | Iberia | AsvrMod VII | `tools/asvrmod-vii.js` |
 | (engine) | `aegypt` | `Aeg` (derived) | Egypt | AsvrMod VII | `tools/asvrmod-vii.js` |
 | (engine) | `agermany` | `Age` (derived) | Germany | AsvrMod VII | `tools/asvrmod-vii.js` |
+| (engine) | `kgaul` | `Kga` (derived) | Gaul | Caesar Mod 1.1.0 | `tools/caesar-mod.js` |
+| (engine) | `kbritain` | `Kbr` (derived) | Britain | Caesar Mod 1.1.0 | `tools/caesar-mod.js` |
+| (engine) | `kiberia` | `Kib` (derived) | Iberia | Caesar Mod 1.1.0 | `tools/caesar-mod.js` |
+| (engine) | `kegypt` | `Keg` (derived) | Egypt | Caesar Mod 1.1.0 | `tools/caesar-mod.js` |
+| (engine) | `kgermany` | `Kge` (derived) | Germany | Caesar Mod 1.1.0 | `tools/caesar-mod.js` |
+| (engine) | `kcarthage` | `Kca` (derived) | Carthage | Caesar Mod 1.1.0 | `tools/caesar-mod.js` |
+| (engine) | `krepublic` | `Kre` (derived) | RepublicanRome | Caesar Mod 1.1.0 | `tools/caesar-mod.js` |
+| (engine) | `kimperial` | `Kim` (derived) | RepublicanRome | Caesar Mod 1.1.0 | `tools/caesar-mod.js` |
+| (engine) | `kpunic` | `Kpu` (derived) | RepublicanRome | Caesar Mod 1.1.0 | `tools/caesar-mod.js` |
+| (engine) | `kgreece` | `Kgr` (derived) | ImperialRome (own race) | Caesar Mod 1.1.0 | `tools/caesar-mod.js` |
 
 A civilization with no `letter` (derived prefix: the first three letters of the `id`, imperivm-resurrected#37) and no `index` (the engine assigns it) reserves nothing in this table; its rows say `(engine)` and are here to spot clashes. **Two ports cannot be active together if they share a derived prefix: the engine ignores the second civilization.** Today GBR Tactics and La Reconquista 2010 clash on `Gau`, `Bri`, `Car`, `Egy`, `Ger`, `Ibe` and `Imp`.
 

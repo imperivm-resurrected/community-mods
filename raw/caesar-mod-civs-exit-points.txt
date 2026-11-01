@@ -1,0 +1,4 @@
+HBARRACKS_cae point 1 type 2 (-32,-50) cell 61,69: free, 21 steps to leave the footprint's box -> (-16,-50) cell 62,69, 21 steps: the 1.8's and 2.x's barracks (same footprint, same single point): moved as in the 2.5.3, which worked in game
+HGYMNASIUM_cae point 1 type 2 (32,-16) cell 65,66: free, 24 steps to leave the footprint's box
+HTEMPLE_cae point 1 type 2 (35,-134) cell 65,77: BLOCKED, -1 steps to leave the footprint's box -> BLOCKED cell, untested, UNCHANGED
+HVILLAGE_cae point 2 type 2 (90,5) cell 69,64: free, 17 steps to leave the footprint's box
