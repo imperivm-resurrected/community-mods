@@ -549,7 +549,7 @@ for (const f of ["BELT OF SNAKES REMOVE.VS", "FEATHER AMULET REMOVE.VS"]) { cons
   }
 }
 // the mod's own files (extras/<id>/: mod.json, hand patches)
-if (fs.existsSync(EXTRAS)) for (const f of walk(EXTRAS)) { if (f === "NOTES.md" || f === "tactics.json") continue; const dst = path.join(OUT, f); fs.mkdirSync(path.dirname(dst), { recursive: true }); fs.rmSync(dst, { force: true }); fs.copyFileSync(path.join(EXTRAS, f), dst); }
+if (fs.existsSync(EXTRAS)) for (const f of walk(EXTRAS)) { if (f === "NOTES.md" || f === "tactics.json" || f === "legacy-left-out.txt") continue; const dst = path.join(OUT, f); fs.mkdirSync(path.dirname(dst), { recursive: true }); fs.rmSync(dst, { force: true }); fs.copyFileSync(path.join(EXTRAS, f), dst); }
 
 // ---- 10. conquests -----------------------------------------------------------------------------------------------------------------------------
 // A conquest at the path of the game's or of another port's is renamed, whatever the bytes (tools/lib/conquests.js; before tagCollisions). The Greece territory
@@ -587,6 +587,8 @@ const others = () => [G, ...fs.readdirSync(PORTED).filter(d => d !== V.dir && !L
   }
 }
 
+// port-140.js copies extras/<id>/ whole: the Legacy list is a build input, not part of the mod (and tagCollisions would rewrite the names in it)
+fs.rmSync(path.join(OUT, "legacy-left-out.txt"), { force: true });
 // ---- 11. names another port (or the game's adventures) already has with other bytes: this port's are renamed ------------------------------------------------
 {
   const { tagCollisions, ownNames, tagNames } = require("./lib/ported-patch.js");
@@ -625,6 +627,25 @@ const others = () => [G, ...fs.readdirSync(PORTED).filter(d => d !== V.dir && !L
   for (const o of fs.readdirSync(PORTED).filter(d => d !== V.dir && !LATER.includes(d) && fs.existsSync(path.join(PORTED, d, "mod.json")))) { const t = ownNames(path.join(PORTED, o), HD); for (const k of ["cmds", "items"]) for (const n of mine[k]) if ([...t[k]].some(x => x.toLowerCase() === n.toLowerCase())) clash[k].add(n); }
   const nm = new Set([...clash.cmds, ...clash.items]);
   console.log(`names shared with another port: ${clash.cmds.size} orders, ${clash.items.size} items -> "(${V.tag})" in ${tagNames({ OUT, names: nm, tag: V.tag })} files`);
+}
+
+// ---- 11a. what the texts name and the renames may have broken (tools/lib/greek-2x-refs.js): pictures, sounds, entities, renamed files -----------------------------------
+// tagCollisions renames a file by its name alone and rewrites every reference by name, in every folder: a reference to a file that was not the renamed one points to
+// nothing (the blue square of the missing picture). The post-pass puts back what the mod's text said when THAT resolves; the check stops the build for the rest.
+{
+  const refs = require("./lib/greek-2x-refs.js");
+  const fixedPics = [...refs.fixBmpRefs(OUT, HD, V.tag), ...refs.fixSoundRefs(OUT, HD, V.tag)], fixedWords = refs.fixClassWords(OUT, V.tag);
+  console.log(`references: ${fixedPics.length} pictures and sound entities and ${fixedWords.length} order names put back to the name the mod's text had (a rename by file name alone had changed them)`);
+  for (const l of [...fixedPics, ...fixedWords]) console.log("  fixed " + l);
+  const list = path.join(ROOT, "extras", V.dir, "legacy-left-out.txt");
+  const legacy = V.legacyLeft && fs.existsSync(list) ? fs.readFileSync(list, "utf8").split(/\r?\n/).filter(l => l && !l.startsWith("#")) : [];
+  // the mod's own package does not have these either (checked: not in its packs nor in HD's, in the 2.3, the 2.5.3 and the 2.6.1)
+  const ownBugs = new Map([1, 2, 3, 4, 5].map(i => [`currentlang/voices/tteutonwolf/${i}.wav`, "the mod's VoiceTTTeutonWolf.xml names five voice files that no package of the mod or the game has: the original did not resolve either"]));
+  const r = refs.checkRefs(OUT, HD, V.tag, { legacy, extraRoots: [path.join(G, "local-spanish")], hdClasses: refs.hdSounds(HD), ownBugs });
+  console.log(`references: ${r.checked} checked, ${r.problems.length} that do not resolve, ${r.allowed.size} allowed`);
+  for (const [k, why] of r.allowed) console.log(`  allowed ${k}: ${why}`);
+  for (const p of r.patternBroken) report.push(`${p}: renamed to a name that does not end in .sc.xml; whether the class loader reads it was not checked`);
+  if (r.problems.length) { console.error("REFERENCES that do not resolve:\n  " + r.problems.join("\n  ")); process.exitCode = 1; }
 }
 
 // ---- 11b. every script of the port has balanced braces and parentheses (a bad merge of HD's and the mod's edits does not compile: the script stops, and for the AI
