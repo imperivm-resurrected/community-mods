@@ -1,0 +1,28 @@
+<patch>
+  <add select="/commands">
+<cmd
+	name="show"
+	offset="1"
+	button="Actions/Show.bmp"
+	groupverifier="data/subai/stonehenge_show_verify.vs"
+	groupdispatch="data/subai/stonehenge_show_dispatch.vs"
+	coststamina = "20"
+	rollover="Vista di lince"
+	description="Rivela tutte le unit&#224; invisibili ogni 2 secondi. Dura 1 minuto"
+	key="h">
+	<src obj="Stonehenge" sticky="no"/>
+</cmd>
+<cmd
+	name="ghost"
+	offset="1"
+	button="Actions/Ghost.bmp"
+	groupverifier="data/subai/stonehenge_ghost_verify.vs"
+	groupdispatch="data/subai/stonehenge_ghost_dispatch.vs"
+	coststamina = "80"
+	rollover="Manto spettrale"
+	description="Le unit&#224; diventano spiriti quando muoiono. Dura 30 secondi"
+	key="g">
+	<src obj="Stonehenge" sticky="no"/>
+</cmd>
+  </add>
+</patch>

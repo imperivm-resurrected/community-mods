@@ -1,0 +1,3 @@
+<patch>
+  <add select="/class"><properties respawn_item="sGemma dell'energia" respawn_time="1200000"/></add>
+</patch>
