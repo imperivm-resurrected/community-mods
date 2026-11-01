@@ -1,0 +1,19 @@
+{
+  "id": "mediterranevm-3-6",
+  "name": "Mediterranevm 3.6",
+  "version": "3.6",
+  "category": "Gameplay & Balance",
+  "authors": [
+    "MediterranevmTeam",
+    "Villoh (port)"
+  ],
+  "description": {
+    "spanish": "Mediterranevm Mod 3.6, el antecesor de Imperivm Legacy, como ocho civilizaciones propias junto a las del juego (\"Galos (Med 3.6)\", \"Roma rep. (Med 3.6)\"…): unidades, edificios, héroes y órdenes rehechos, con gráficos y voces nuevos, y la tienda númida y la guarnición griega como objetos neutrales del mapa. Las civilizaciones del juego no cambian. Lleva su propio rle.mmp.tail: solo un paquete activo puede tenerlo.",
+    "english": "Mediterranevm Mod 3.6, the ancestor of Imperivm Legacy, as eight civilizations of their own next to the game's (\"Gaul (Med 3.6)\", \"Rep. Rome (Med 3.6)\"…): reworked units, buildings, heroes and orders, with new art and voices, and the Numidian tent and the Greek garrison as neutral map objects. The game's civilizations do not change. It carries its own rle.mmp.tail: only one active pack can have it."
+  },
+  "tags": [],
+  "redistributable": false,
+  "sources": {
+    "page": "https://www.moddb.com/mods/mediterranevm-mod/downloads"
+  }
+}
