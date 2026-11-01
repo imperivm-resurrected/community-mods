@@ -1,0 +1,6 @@
+{
+  "note": "The mod's GetTacticScript (work/greek-2-6-1-flat/DATA/AI/GETTACTICSCRIPT.VS) gives ImperialRome (Greece in the mod's slot) TS_GreekTactic 30% and TS_GreekTactic2 60% of a first roll of 100 in the first 2 seconds, [upTo, script]. The other civilizations' tactics are the game's scripts with other odds (not ported: the clones keep the game's GetTacticScript). The Roman branches keep the game's tactic.",
+  "picks": {
+    "greece": [[30, "TS_GreekTactic"], [90, "TS_GreekTactic2"]]
+  }
+}
