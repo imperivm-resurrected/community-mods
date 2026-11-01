@@ -103,7 +103,11 @@ function checkRefs(OUT, HD, tag, { legacy = [], extraRoots = [], hdClasses = nul
   const entName = new Set([...have].filter(x => x.startsWith("data/sound entities/")).map(x => x.slice(20).replace(/\.xml$/, "")));
   for (const f of walk(path.join(OUT, "DATA", "CLASSES")).filter(p => /\.xml$/i.test(p))) {
     const s = fs.readFileSync(f, "latin1").replace(/<!--[\s\S]*?-->/g, "");
-    for (const m of s.matchAll(/\bentity(?:_winter)?\s*=\s*"([^"]+\.ent\.xml)"/gi)) { n++; if (!have.has(m[1].replace(/\\/g, "/").toLowerCase())) bad(f, `entity="${m[1]}"`, "is not in the port or in the game"); }
+    for (const m of s.matchAll(/\bentity(?:_winter)?\s*=\s*"([^"]+\.ent\.xml)"/gi)) {
+      n++; const k = m[1].replace(/\\/g, "/").toLowerCase(); if (have.has(k)) continue;
+      if (ownBugs.has(k)) { allowed.set(m[1], ownBugs.get(k)); continue; }
+      bad(f, `entity="${m[1]}"`, "is not in the port or in the game");
+    }
     for (const m of s.matchAll(/<sounds\b([^>]*)\/?>/gi)) for (const a of m[1].matchAll(/\b(\w+)\s*=\s*"([^"]+)"/g)) {
       n++; const raw = a[2].replace(/\\/g, "/"), v = raw.replace(/^data\/sound entities\//i, "").replace(/\.xml$/i, "");
       if (/\.wav$/i.test(raw) ? have.has(raw.toLowerCase()) : entName.has(v.toLowerCase())) continue;
