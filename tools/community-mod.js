@@ -33,7 +33,24 @@ const md5 = f => require("crypto").createHash("md5").update(fs.readFileSync(f)).
 const readJson = f => { try { return JSON.parse(fs.readFileSync(f, "utf8")); } catch (e) { console.error(`${f}: ${e.message}`); process.exit(1); } };
 const want = process.argv.slice(2);
 if (!fs.existsSync(RAR)) { console.error("no " + RAR); process.exit(1); }
-if (!process.env.SDK || !fs.existsSync(path.join(process.env.SDK, "tools", "clone-civilization.js"))) { console.error("set SDK to imperivm-resurrected/sdk (branch dev-villoh)"); process.exit(1); }
+// The MAIN checkout is the parent of the git common dir: ROOT may be a worktree under .wt/ (or anywhere), where the ports built only in the main checkout (git-ignored:
+// Mediterranevm alpha, MCI, Imperivm Legacy) do not exist. The other ports are read from the main checkout AND from ROOT/ported (ROOT's wins), so that the same commit gives the
+// same bytes from either place (found by the review of #46: from .wt/ the build did not see Mediterranevm alpha's UI/CMDBAR/UPGRADES/BSHIELDS.BMP and shipped it at the plain path).
+const MAIN = (() => { try { return path.dirname(path.resolve(ROOT, cp.execFileSync("git", ["rev-parse", "--git-common-dir"], { cwd: ROOT, encoding: "utf8", stdio: ["ignore", "pipe", "ignore"] }).trim())); } catch { return ROOT; } })();
+const firstThere = list => list.find(p => p && fs.existsSync(p));
+const SDK = process.env.SDK || firstThere([path.join(ROOT, "..", "imperivm-resurrected", "sdk"), path.join(MAIN, "..", "imperivm-resurrected", "sdk")]);
+if (!SDK || !fs.existsSync(path.join(SDK, "tools", "clone-civilization.js"))) { console.error("set SDK to imperivm-resurrected/sdk (branch dev-villoh)"); process.exit(1); }
+process.env.SDK = SDK;                                                  // clone-civs.js reads it
+// The ports every build compares its names with. Known to exist (some only in the main checkout): the build stops if one is missing, because it would tag other names than from a
+// complete place. CM_NO_OTHERS=1 says "build without them" (the result then differs from a complete build).
+const REQUIRED_PORTS = ["imperivm-legacy", "mci", "mediterranevm-alpha", "cgwar", "greek-mod-1-8", "greek-civilization-mod"];
+const OTHER_PORTS = (() => {
+  const m = new Map();
+  for (const base of [path.join(MAIN, "ported"), path.join(ROOT, "ported")]) for (const d of fs.existsSync(base) ? fs.readdirSync(base) : []) if (d !== ID && find(path.join(base, d), "DATA/CLASSES")) m.set(d, path.join(base, d));
+  const missing = REQUIRED_PORTS.filter(d => !m.has(d));
+  if (missing.length && process.env.CM_NO_OTHERS !== "1") { console.error(`missing ports: ${missing.join(", ")}.\nThey are built in the main checkout (${path.join(MAIN, "ported")}) and git-ignored: build them there (see docs/TOOLS.md) or set CM_NO_OTHERS=1 to build without them (the names tagged will differ).`); process.exit(1); }
+  return [...m].sort((a, b) => a[0] < b[0] ? -1 : 1).map(x => x[1]);
+})();
 
 // the ids start with "f" (the token of this port) and differ in their first three characters: the SDK derives the prefix from them. No index.
 // The mod's own classes of a civilization's race that do not start with its letter are renamed <letter><id> in the clone (clone-civs.js). The mod's hero variants
@@ -267,6 +284,9 @@ const ownTests = (text, obj) => heirTests(raceTests(text, obj));
     tactics: { Fgaul: "TS_GaulTactic", Fiberia: "TS_IberianTactic", Fgermany: "TS_GermanyTactic", Fegypt: "TS_EgyptTactic", Fbritain: "TS_BritishTactic", Fcarthage: "TS_CarthageTactic", Frome: "TS_RRomeTactic", Fimperial: "TS_MRomeTactic" },
     loops: ["ES_Stronghold", "ES_Village"], helpers: ["ESH_Market", "ESH_NeedTech", "ESH_ResearchTraining"], monitors: [], inline: [] });
   console.log(`AI: ${r.forks.length} scripts as CM_* copies (${r.forks.join(", ")}); tactics ${r.tactics.join(", ")}; AI variables declared: ${r.vars.join(", ") || "none"}${r.problems.length ? "\n  to check: " + r.problems.join("; ") : ""}`);
+  // asvr-ai.js also writes patches/DATA/AI/MAIN.VS: it starts the six monitors the game starts, for the eight civilizations, and returns. With no monitor of the mod's (the mod does not
+  // edit SquadMonitor...) that is the game's own Main.vs repeated, an inert patch of a script every AI runs, and it would stop every AI if it ever failed to compile: not shipped
+  fs.rmSync(path.join(OUT, "patches", "DATA", "AI", "MAIN.VS"), { force: true });
   // what the mod's AI folder left at the game's path is now copies or left out
   for (const f of fs.readdirSync(find(OUT, "DATA/AI")).filter(f => !/^CM_/i.test(f))) fs.rmSync(path.join(find(OUT, "DATA/AI"), f), { recursive: true, force: true });
 }
@@ -420,11 +440,15 @@ fs.mkdirSync(path.join(ROOT, "raw"), { recursive: true });
   }
   const { tagCollisions } = require("./lib/ported-patch.js");
   const G = path.join(ROOT, "originals", "game-data");
-  const ports = fs.readdirSync(path.join(ROOT, "ported")).filter(d => d !== ID && find(path.join(ROOT, "ported", d), "DATA/CLASSES")).map(d => path.join(ROOT, "ported", d));
+  const ports = OTHER_PORTS;
+  // paths that another port of the same batch ships with other bytes and that no port in ported/ has yet: a placeholder at each, so that tagCollisions gives this port's the tag too (found with
+  // the built Caesar Mod port, .wt/caesar-mod-civs, 2026-11-01: the only art file in common outside the random map pictures Caesar drops)
+  const RESERVED = path.join(SCRATCH, "cm-reserved"); fs.rmSync(RESERVED, { recursive: true, force: true });
+  for (const f of ["UI/CMDBAR/ACTIONS/HOVER.BMP"]) wr(path.join(RESERVED, f), "reserved by tools/community-mod.js");
   // the conquest first (tools/lib/conquests.js): its .bfhp, picture, folder and both data= are renamed together; tagCollisions below would rename the files one by one and leave it broken
   { const r = require("./lib/conquests.js")({ OUT, others: [G, ...ports].filter(fs.existsSync), tag: TAG, label: "Community" }); console.log(`conquests: ${r.done.map(d => `${d.from} -> ${d.to} (${d.folder})`).join("; ") || "none renamed"}${r.problems.length ? "; problems: " + r.problems.join("; ") : ""}`); }
   for (let pass = 1; pass <= 6; pass++) {
-    const r = tagCollisions({ OUT, tag: TAG, others: [...ports, G, path.join(G, "paks")].filter(fs.existsSync), mapLabel: "Community", gameDirs: [path.join(G, "paks")], skip: /^(currentlang|ui\/interface|ui\/menu|data\/interface\/menu)\// });
+    const r = tagCollisions({ OUT, tag: TAG, others: [...ports, RESERVED, G, path.join(G, "paks")].filter(fs.existsSync), mapLabel: "Community", gameDirs: [path.join(G, "paks")], skip: /^(currentlang|ui\/interface|ui\/menu|data\/interface\/menu)\// });
     console.log(`own names (${TAG}), pass ${pass}: ${r.classes.length} classes (${r.classes.slice(0, 6).join(", ")}...), ${r.folders.length} art folders, ${r.maps.length} maps, ${r.files.length} files${r.unlabeled.length ? "; names not written: " + r.unlabeled.slice(0, 4).join(" | ") : ""}`);
     if (!r.classes.length && !r.folders.length && !r.maps.length && !r.files.length) break;
   }
@@ -442,6 +466,28 @@ fs.mkdirSync(path.join(ROOT, "raw"), { recursive: true });
 const REFS = require("./lib/community-refs.js");
 { const fixed = REFS.fixRefs({ OUT, HD, TAG }); console.log(`references put back to the mod's own name or to the renamed sound entity: ${fixed.length}${fixed.length ? "\n  " + fixed.slice(0, 40).join("\n  ") + (fixed.length > 40 ? `\n  ... (${fixed.length - 40} more)` : "") : ""}`); }
 
+// Two files whose names differ only by case in one folder cannot live together on Windows or in a zip (found by the review of #46: research_cm.vs / RESEARCH_cm.VS, catapult_attack,
+// catapult_autofire). They come from own-scripts.js (the copy the clones name, lower case) and from tagCollisions (the mod's own script at the game's path, renamed): the same
+// name by case. Same bytes: the one with the lower-case extension stays (the clones name it). Other bytes would be said and the copy the clones name kept (the build stops: not seen).
+{
+  const dups = []; let kept = 0;
+  const dirs = new Set(walk(OUT).map(f => path.dirname(f)));
+  for (const d of dirs) {
+    const full = path.join(OUT, d), by = new Map();
+    for (const e of fs.readdirSync(full, { withFileTypes: true })) if (e.isFile()) { const k = e.name.toLowerCase(); (by.get(k) || by.set(k, []).get(k)).push(e.name); }
+    for (const names of by.values()) {
+      if (names.length < 2) continue;
+      names.sort((a, b) => (/\.[a-z0-9]+$/.test(a) ? 0 : 1) - (/\.[a-z0-9]+$/.test(b) ? 0 : 1) || (a < b ? -1 : 1));
+      for (const n of names.slice(1)) {
+        if (md5(path.join(full, n)) !== md5(path.join(full, names[0]))) { console.error(`${d}/${n} and ${names[0]} differ only by case AND have other bytes: decide which one the clones name`); process.exit(1); }
+        fs.rmSync(path.join(full, n)); dups.push(`${d || "."}/${n} (same bytes as ${names[0]})`);
+      }
+      kept++;
+    }
+  }
+  console.log(`names that differed only by case: ${kept} pairs, kept the lower-case extension: ${dups.join("; ") || "none"}`);
+}
+
 // 7. hand fixes of this mod (extras/community-mod-civs/): the final files and mod.json with the credits
 if (fs.existsSync(EXTRAS)) for (const f of walk(EXTRAS)) { if (f === "NOTES.md") continue; const dst = path.join(OUT, f); fs.mkdirSync(path.dirname(dst), { recursive: true }); fs.rmSync(dst, { force: true }); fs.copyFileSync(path.join(EXTRAS, f), dst); }
 // The mod's scripts that nothing of the port names any more (the clones use the copies Name_<id>.vs the clone step made: TempleOfThorChamber.vs -> _fbritain), and that are not the
@@ -457,8 +503,46 @@ if (fs.existsSync(EXTRAS)) for (const f of walk(EXTRAS)) { if (f === "NOTES.md")
     const t = rd(path.join(SUB, f));
     if (!/^\s*\/\//.test(t) && texts.some(([tf, tx]) => /^data\/classes\//i.test(tf) && new RegExp(`<behavior\\b[^>]*${lo.replace(/[.*+?^${}()|[\]\\]/g, "\\$&")}`).test(tx))) { wr(path.join(SUB, f), `// void, Obj This\r\n${t}`); signed.push(f); }
   }
+  // the item scripts: named by an item of patches/DATA/ITEMS.XML (kill_script="file://data/ItemScripts/x.vs") or by another script. The ones of the game's items the mod edited (not ported)
+  // and their helpers are named by nobody once those items are out (BELT OF SNAKES_cm.VS, FEATHER AMULET_cm.VS, ...: renamed by tagCollisions, dead)
+  { const IS = find(OUT, "DATA/ITEMSCRIPTS"), ip = path.join(OUT, "patches", "DATA", "ITEMS.XML"), itemText = fs.existsSync(ip) ? rd(ip).toLowerCase() : "";
+    for (const f of IS ? fs.readdirSync(IS).filter(f => /\.vs$/i.test(f)) : []) { const lo = f.toLowerCase(); if (!itemText.includes(lo) && !texts.some(([tf, t]) => /\.vs$/i.test(tf) && path.basename(tf).toLowerCase() !== lo && t.includes(lo))) { fs.rmSync(path.join(IS, f)); orphans.push("ITEMSCRIPTS/" + f); } } }
   console.log(`scripts of the mod that nothing names, left out: ${orphans.length} (${orphans.join(" ")}); behaviors given the signature line: ${signed.join(" ") || "none"}`);
   fs.writeFileSync(path.join(ROOT, "raw", "community-mod-civs-unnamed-scripts.txt"), orphans.join("\n") + "\n");
+}
+// Germany's queue cap: the mod's verify_trainex.vs and trainex_onaddremove.vs read QueuedBuild/TTeutonRider (and Archer), while train_ex.vs and trainex_onaddremove.vs write
+// QueuedBuild/<class of the order's parameter>, which for the copy is FgeTeutonRider: the keys never met and the queued riders did not count (found by the review of #46). Only the
+// two copies of Germany read the Teuton keys; the other civilizations' orders never take that branch. The mod's own "Build//TTeutonRider" (a double slash nothing writes) is left as it is.
+{
+  const SUB = find(OUT, "DATA/SUBAI"); let n = 0;
+  for (const f of ["verify_trainex_cm_fgermany.vs", "trainex_onaddremove_cm_fgermany.vs"]) {
+    const p = find(SUB, f); if (!p) { console.error(`${f}: not found (queue keys)`); process.exit(1); }
+    const t = rd(p), u = t.replace(/"QueuedBuild\/TTeutonRider"/g, '"QueuedBuild/FgeTeutonRider"').replace(/"QueuedBuild\/TTeutonArcher"/g, '"QueuedBuild/FgeTeutonArcher"');
+    if (u === t) { console.error(`${f}: the queue keys to fix are not there`); process.exit(1); }
+    wr(p, u); n++;
+  }
+  console.log(`Germany's queue keys now match what train_ex writes (QueuedBuild/FgeTeutonRider, FgeTeutonArcher): ${n} scripts`);
+}
+// The outposts of the copies garrison the GAME's classes: clone-civs.js leaves `defender_cls_N="BShieldBearer"` as the mod wrote it, and the engine spawns the class it is told by name, so a
+// copy's outpost would raise the game's defender (HD stats), and the loyalty block of unit_on_kill_cm_<id>.vs, which names the copy's classes (FbrShieldBearer -> FbrOutpost), would never
+// see them (found by the review of #46). Each defender_cls of a copy's class names the copy's own class (alias.classes of its civs/<id>.json). The loyalty block also needs a building:
+// the mod took one for granted (b invalid -> EnvReadInt(b.AsBuilding...)), so `if(!b.IsValid()) return;` goes after the search.
+{
+  const SC = find(OUT, "DATA/CLASSES"); let n = 0, files = 0;
+  for (const c of CIVS) {
+    const letter = c.id.slice(0, 3).replace(/^./, x => x.toUpperCase()), map = new Map(Object.entries(readJson(path.join(OUT, "civs", `${c.id}.json`)).alias.classes).map(([k, v]) => [k.toLowerCase(), v]));
+    for (const f of fs.readdirSync(SC).filter(f => /\.sc\.xml$/i.test(f) && f.toLowerCase().startsWith(letter.toLowerCase()))) {
+      const p = path.join(SC, f), t = rd(p), u = t.replace(/(\bdefender_cls_\d+\s*=\s*")([^"]+)"/g, (m, a, v) => map.has(v.toLowerCase()) ? (n++, `${a}${map.get(v.toLowerCase())}"`) : m);
+      if (u !== t) wr(p, u);
+    }
+  }
+  const SUB = find(OUT, "DATA/SUBAI");
+  for (const f of fs.readdirSync(SUB).filter(f => /^unit_on_kill_cm.*\.vs$/i.test(f))) {
+    const p = path.join(SUB, f), t = rd(p), u = t.replace(/(\r?\n)([ \t]*)(j = EnvReadInt\(b\.AsBuilding)/, "$1$2if(!b.IsValid()) return;$1$2$3");
+    if (u === t) { console.error(`${f}: the loyalty block to guard is not there`); process.exit(1); }
+    wr(p, u); files++;
+  }
+  console.log(`outposts of the copies: ${n} defender_cls now name the copy's own class; ${files} unit_on_kill copies guard the loyalty block against no building`);
 }
 // the patches of the menu skin: a comment at the end of a line is not stripped by the engine's patch (validate-mod.js); the value without it is what the game reads
 {
@@ -609,6 +693,10 @@ if (fs.existsSync(EXTRAS)) for (const f of walk(EXTRAS)) { if (f === "NOTES.md")
       if (/^data\/interface\//.test(f)) bad.push(`${f}: a menu INI at the game's path (it goes as a patch)`);
     }
     problems.push(...bad); }
+  // the names the scripts use (tools/lib/community-names.js, from the Greek chain's): an identifier the game does not know stops THAT script when it first runs. The problems the mod's own
+  // scripts already had in the rar are listed in raw/community-mod-civs-names.txt and do not stop the build; a script of ours with a new one does (after the first run: NAMES_BASELINE)
+  { const r = require("./lib/community-names.js").checkNames({ OUT, HD: path.join(ROOT, "originals", "game-data"), SDK }); fs.writeFileSync(path.join(ROOT, "raw", "community-mod-civs-names.txt"), r.errors.sort().join("\n") + "\n"); console.log(r.notes.join("; ")); // the checker strips a // comment before it reads the strings, so the mod's own typo "Build//TTeutonRider" (a double slash, left alone on purpose) reads as the name Build: known, in both Teuton copies
+    problems.push(...r.errors.filter(e => !/^DATA\/SUBAI\/verify_trainex_cm(_fgermany)?\.vs: "Build" \(1x\)/.test(e))); }
   console.log(`script checks: ${copies} copies/rewrites balanced like the mod's, ${patchesChecked} patches applied to the game's script and balanced, ${strings} class strings resolved, hero bases: ${[...bases].sort().join(" ")}`);
   if (problems.length) { console.error(`SCRIPT CHECKS FAILED (${problems.length}):\n  ` + [...new Set(problems)].slice(0, 80).join("\n  ")); process.exit(1); }
 }
