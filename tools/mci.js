@@ -18,6 +18,12 @@
 const fs = require("fs"), path = require("path"), cp = require("child_process");
 const { net, checkBalance, checkAbsolute, removeStrayBraces, applyPatch, classStrings, classTable, heroBaseProblem, CLASS_CALL } = require("./lib/script-checks.js");
 const ROOT = path.join(__dirname, "..");
+// This tool may run in the main checkout or in a worktree anywhere (next to it, or under its .wt/). The ports it compares its names with are git-ignored and are built in the
+// MAIN checkout (the parent of the git common dir), so they are read from there AND from the ported/ of the worktree, and the build STOPS if the known ones are missing: from a
+// worktree that does not see them it would tag other names than from a clean place (found in review of PR #45; the same fix as tools/lib/greek-2x-versions.js).
+const MAIN = (() => { try { return path.dirname(path.resolve(ROOT, cp.execFileSync("git", ["rev-parse", "--git-common-dir"], { cwd: ROOT, encoding: "utf8", stdio: ["ignore", "pipe", "ignore"] }).trim())); } catch { return ROOT; } })();
+const firstThere = list => list.find(p => p && fs.existsSync(p));
+const SDK = process.env.SDK || firstThere([path.join(ROOT, "..", "imperivm-resurrected", "sdk"), path.join(MAIN, "..", "imperivm-resurrected", "sdk")]) || path.join(ROOT, "..", "imperivm-resurrected", "sdk");
 const ID = "mci", OUT = path.join(ROOT, "ported", ID), EXTRAS = path.join(ROOT, "extras", ID);
 const SCRATCH = path.join(ROOT, ".scratch"), SRC = path.join(SCRATCH, "mci-src"), PRISTINE = path.join(SCRATCH, "mci-pristine"), MERGED = path.join(SCRATCH, "mci-merged");
 const ZIP = path.join(ROOT, "originals", "forum", "t262", "files", "MOD Comunidad Imperivm 9.0.zip");
@@ -30,6 +36,21 @@ const find = (base, rel) => { let p = base; for (const part of rel.split("/")) {
 const md5 = f => require("crypto").createHash("md5").update(fs.readFileSync(f)).digest("hex");
 const readJson = f => { try { return JSON.parse(fs.readFileSync(f, "utf8")); } catch (e) { console.error(`${f}: ${e.message}`); process.exit(1); } };
 const want = process.argv.slice(2);
+// the ports this one is compared with: the main checkout's first (so that a run there and a run in a worktree see the same folders), then the worktree's own; sorted by name
+const KNOWN_PORTS = ["cgwar", "greek-mod-1-8", "greek-civilization-mod", "mediterranevm-alpha", "imperivm-legacy"];
+const OTHER_PORTS = (() => {
+  const m = new Map();
+  for (const root of [...new Set([path.join(MAIN, "ported"), path.join(ROOT, "ported")])].filter(fs.existsSync))
+    for (const d of fs.readdirSync(root).sort()) if (d !== ID && !m.has(d) && find(path.join(root, d), "DATA/CLASSES")) m.set(d, path.join(root, d));
+  return m;
+})();
+{
+  const missing = KNOWN_PORTS.filter(k => !OTHER_PORTS.has(k));
+  if (missing.length && process.env.MCI_NO_OTHERS !== "1") {
+    console.error(`these ports are not built, neither in ${path.join(MAIN, "ported")} nor in ${path.join(ROOT, "ported")}: ${missing.join(", ")}\nThe names of this port are tagged against the ports that exist, so a build without them gives other bytes. Build them first (see their extras/<id>/NOTES.md, Rebuild) or link them from the main checkout into ported/, or run with MCI_NO_OTHERS=1 to build without them anyway.`);
+    process.exit(1);
+  }
+}
 if (!fs.existsSync(ZIP)) { console.error("no " + ZIP + " (node tools/download-forum.js)"); process.exit(1); }
 if (!process.env.G || !fs.existsSync(path.join(process.env.G, "rle.mmp"))) { console.error('set G to the HD game folder (port-140.js compares sprites with it)'); process.exit(1); }
 
@@ -58,7 +79,7 @@ fs.rmSync(SRC, { recursive: true, force: true }); fs.rmSync(PRISTINE, { recursiv
   let r = cp.spawnSync("bsdtar", ["-xf", ZIP, "-C", tmp], { stdio: "inherit" }); if (r.status) process.exit(1);
   fs.renameSync(path.join(tmp, "MOD Comunidad Imperivm 9.0"), SRC); fs.rmSync(tmp, { recursive: true, force: true });
   // the zip holds loose 1.40 files only (DATA, UNITS, UI, SOUNDS, OUTLINES, RANDOMMAP, CURRENTLANG, Adventures, Scenarios, movies, music, a 388 MB rle.mmp): no executable
-  r = cp.spawnSync("node", [path.join(__dirname, "port-140.js"), SRC, PRISTINE, "--id", ID, "--name", "MCI Comunidad 9.0", "--version", "9.0", "--category", "Gameplay & Balance"], { stdio: "inherit", env: { ...process.env, GAME: process.env.G } }); if (r.status) process.exit(1);
+  r = cp.spawnSync("node", [path.join(__dirname, "port-140.js"), SRC, PRISTINE, "--id", ID, "--name", "MCI Comunidad 9.0", "--version", "9.0", "--category", "Gameplay & Balance"], { stdio: "inherit", env: { ...process.env, GAME: process.env.G, SDK } }); if (r.status) process.exit(1);
 }
 // 1. a fresh copy of the pristine port: hard links (every write below removes the file first)
 fs.rmSync(OUT, { recursive: true, force: true });
@@ -390,7 +411,7 @@ for (const f of walk(OUT).filter(f => /^(CURRENTLANG\/[^/]+\.bmp|UI\/MENU\/[^/]+
   }
   const { tagCollisions } = require("./lib/ported-patch.js");
   const G = path.join(ROOT, "originals", "game-data");
-  const ports = fs.readdirSync(path.join(ROOT, "ported")).filter(d => d !== ID && find(path.join(ROOT, "ported", d), "DATA/CLASSES")).map(d => path.join(ROOT, "ported", d));
+  const ports = [...OTHER_PORTS.values()];
   // The mods this one shares its lineage or names with (La Reconquista 2010 is the base the MCI was built on; GBR Tactics shares the Iron Mine and the sentries) are not always
   // built next to this port. The folders their ports are built from stand in for them when the port is absent, so the names are the same whichever ports exist at build time:
   // the loose files of the original (La Reconquista) and the three-way merge of port-140.js (GBR Tactics). Both are under originals/ (git-ignored); a missing one is said.
@@ -540,31 +561,74 @@ if (fs.existsSync(EXTRAS)) for (const f of walk(EXTRAS)) { if (f !== "mod.json")
 {
   const parent = new Map(), beh = new Map(), file = new Map();
   const SC = find(OUT, "DATA/CLASSES");
-  const behs = s => [...s.matchAll(/<behavior\b[^>]*?\bscript\s*=\s*"([^"]+)"[^>]*\/>/gi)].map(m => ({ tag: m[0], script: m[1] }));
+  // XML comments are not behaviors: HD's OUTPOST.SC.XML has one commented out (line 29), which counted as an inherited behavior of every Outpost descendant and made the
+  // build drop three behaviors it did not have to (found by the review of PR #45)
+  const maskComments = t => t.replace(/<!--[\s\S]*?-->/g, m => " ".repeat(m.length));
+  const behs = s => [...maskComments(s).matchAll(/<behavior\b[^>]*?\bscript\s*=\s*"([^"]+)"[^>]*\/>/gi)].map(m => ({ tag: s.slice(m.index, m.index + m[0].length), script: m[1] }));
+  const dropTag = (text, tag) => { const i = maskComments(text).indexOf(tag); return i < 0 ? text : text.slice(0, i) + text.slice(i + tag.length).replace(/^[ \t]*\r?\n/, ""); };
   for (const [dir, own] of [[HD_CLASSES, false], [SC, true]]) for (const f of walk(dir).filter(f => /\.sc\.xml$/i.test(f) && !/[\\/]/.test(f))) {
     const s = rd(path.join(dir, f)), id = classOf(s); if (!id) continue;
     parent.set(id.toLowerCase(), ((s.match(/<class\b[^>]*?\bparent\s*=\s*"([^"]+)"/) || [])[1] || "").toLowerCase());
     beh.set(id.toLowerCase(), behs(s)); if (own) file.set(id.toLowerCase(), path.join(dir, f));
   }
   const stem = v => path.basename(v).toLowerCase().replace(/\.vs$/, "").replace(/_mci(_i[a-z]+)?$/, "");
-  let removed = 0, touched = 0; const twins = {};
-  for (const [id, p] of file) {
+  const depth = id => { let n = 0; for (let c = parent.get(id); c && n < 40; c = parent.get(c)) n++; return n; };
+  let removed = 0, touched = 0; const twins = {}, stuck = [], kept = [];
+  // a parent first, so that a class counts the behaviors its parent keeps (a script path counts once however many classes of the chain list it)
+  for (const [id, p] of [...file].sort((x, y) => depth(x[0]) - depth(y[0]) || (x[0] < y[0] ? -1 : 1))) {
     const inherited = [];
     for (let c = parent.get(id), n = 0; c && n < 30; c = parent.get(c), n++) inherited.push(...(beh.get(c) || []).map(b => ({ ...b, owner: c })));
     let s = rd(p), t = s;
     for (const b of beh.get(id)) {
       const twin = inherited.find(h => stem(h.script) === stem(b.script) && h.script.toLowerCase() !== b.script.toLowerCase());
-      if (twin) { t = t.replace(b.tag, ""); removed++; (twins[twin.owner] ||= new Set()).add(`${stem(b.script)}`); }
+      if (twin) { t = dropTag(t, b.tag); removed++; (twins[twin.owner] ||= new Set()).add(`${stem(b.script)}`); }
     }
     // still over 8 with the game's own behaviors the clone step now keeps (GGuardPost: settlement_behavior_horses, GGuardPost_Sentries): the mod's own go, last first
-    const left = behs(t).map(b => b.tag);
-    for (let over = left.length + inherited.length - 8, i = left.length - 1; over > 0 && i >= 0; i--) {
-      if (/_mci(_i[a-z]+)?\.vs/i.test(left[i])) { t = t.replace(left[i], ""); over--; removed++; (twins["(over 8)"] ||= new Set()).add(`${id}: ${left[i].match(/script="([^"]+)"/)[1]}`); }
+    const total = () => new Set([...behs(t), ...inherited].map(b => b.script.toLowerCase())).size;
+    for (let i = behs(t).length - 1; total() > 8 && i >= 0; i--) {
+      const own = behs(t)[i];
+      if (/_mci(_i[a-z]+)?\.vs/i.test(own.script)) { t = dropTag(t, own.tag); removed++; (twins["(over 8)"] ||= new Set()).add(`${id}: ${own.script}`); }
     }
+    if (total() > 8) stuck.push(`${id}: ${total()} behaviors and none of the mod's own left to drop (${[...new Set([...behs(t), ...inherited].map(b => b.script))].join(", ")})`);
     if (t !== s) { wr(p, t); touched++; }
+    beh.set(id, behs(t));
+    if (total() >= 8) kept.push(id);
   }
-  console.log(`${removed} behaviors of the mod that the game's parent class already has removed from ${touched} classes`);
+  console.log(`${removed} behaviors of the mod removed from ${touched} classes (a twin of the game's parent behavior, or over the engine's 8 per class)`);
   for (const [o, s] of Object.entries(twins)) console.log(`  under ${o}: ${[...s].join(", ")}`);
+  if (stuck.length) { console.error("CLASSES OVER 8 BEHAVIORS:\n  " + stuck.join("\n  ")); process.exit(1); }
+}
+// The Stonehenge's four orders (tormenta, suicidio, estertor, locura) are left out with the game's Stonehenge (global, NOTES.md), but their 12 scripts came with the mod's own
+// files and nothing in the port points to them: they do not ship. Stops if something does point to one.
+{
+  const SUB = find(OUT, "DATA/SUBAI"), gone = [];
+  const texts = walk(OUT).filter(f => /\.(xml|vs|ini|json)$/i.test(f) && !/^(loc|local)\//i.test(f)).map(f => [f, rd(path.join(OUT, f)).toLowerCase()]);
+  for (const f of fs.readdirSync(SUB).filter(f => /^stonehenge_(tormenta|suicidio|estertor|locura)(_dispatch|_verify)?\.vs$/i.test(f))) {
+    const user = texts.find(([tf, t]) => path.basename(tf).toLowerCase() !== f.toLowerCase() && t.includes(f.toLowerCase()));
+    if (user) { console.error(`${f} is named by ${user[0]}: it cannot be dropped as unused`); process.exit(1); }
+    fs.rmSync(path.join(SUB, f)); gone.push(f);
+  }
+  console.log(`${gone.length} scripts of the Stonehenge's orders (left out with the Stonehenge) not shipped: ${gone.join(", ")}`);
+}
+// Two files whose names differ only by case cannot live in one folder on Windows or in a zip. The copies of the scripts (own-scripts.js) are written under the case of the
+// name the mod's class or command used, and the mod used both (`create_food_mule_verify` and `CREATE_FOOD_MULE_VERIFY`). When the bytes are the same, the spelling that more
+// texts use is kept and every reference to the other is written as the kept one; when they differ the build stops (nothing is guessed).
+{
+  const groups = new Map();
+  for (const f of walk(OUT)) { const k = f.toLowerCase(); (groups.get(k) || groups.set(k, []).get(k)).push(f); }
+  const dups = [...groups.values()].filter(g => g.length > 1), report2 = [];
+  const textFiles = () => walk(OUT).filter(f => /\.(xml|vs|ini|json|txt)$/i.test(f) && !/^(loc|local)\//i.test(f));
+  for (const g of dups) {
+    if (new Set(g.map(f => md5(path.join(OUT, f)))).size > 1) { console.error(`case-only duplicates with other bytes, decide which one stays: ${g.join(" | ")}`); process.exit(1); }
+    const count = f => textFiles().reduce((n, t) => n + (rd(path.join(OUT, t)).split(path.basename(f)).length - 1), 0);
+    const ranked = g.map(f => [f, count(f)]).sort((a, b) => b[1] - a[1] || (a[0] < b[0] ? -1 : 1)), keep = ranked[0][0];
+    for (const [f] of ranked.slice(1)) {
+      const from = path.basename(f), to = path.basename(keep); let n = 0;
+      for (const t of textFiles()) { const p = path.join(OUT, t), x = rd(p); if (x.includes(from)) { wr(p, x.split(from).join(to)); n++; } }
+      fs.rmSync(path.join(OUT, f)); report2.push(`${f} -> ${keep} (${n} texts)`);
+    }
+  }
+  console.log(`${dups.length} pairs of files whose names differ only by case: ${report2.join("; ") || "none"}`);
 }
 // 8. Offline checks of every script this build writes (nothing compiles them but the game, and a patch of the game's own that does not compile stops that script for EVERY
 // civilization). The build stops on a problem.
@@ -663,6 +727,8 @@ if (fs.existsSync(EXTRAS)) for (const f of walk(EXTRAS)) { if (f !== "mod.json")
     if (have.some(f => /^ui\/menu\//.test(f))) bad.push("UI/MENU: nothing of it is approved (the bonuses' pictures are left out)");
     problems.push(...bad);
   }
+  // the names the scripts use (tools/lib/mci-names.js): a call or a constant that nothing defines stops that script in game
+  { const r = require("./lib/mci-names.js").checkNames({ OUT, HD, SDK }); problems.push(...r.errors); console.log(r.notes.join("\n")); }
   console.log(`script checks: ${copies} copies/rewrites balanced like the mod's, ${patchesChecked} patches applied to the game's script and balanced, ${strings} class strings resolved, hero bases: ${[...bases].sort().join(" ")}`);
   if (problems.length) { console.error(`SCRIPT CHECKS FAILED (${problems.length}):\n  ` + [...new Set(problems)].slice(0, 80).join("\n  ")); process.exit(1); }
 }
