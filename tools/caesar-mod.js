@@ -15,6 +15,11 @@
 const fs = require("fs"), path = require("path"), cp = require("child_process");
 const { net, checkBalance, checkAbsolute, removeStrayBraces, applyPatch, classStrings, classTable, heroBaseProblem, CLASS_CALL } = require("./lib/script-checks.js");
 const ROOT = path.join(__dirname, "..");
+// A worktree under .wt/ does not see the ports that only the MAIN checkout has built (its ported/ is git-ignored for them): the main checkout is the parent of the git common dir.
+// The other ports are read from there AND from this ported/, and the build STOPS if the known existing ones are missing (below), so the same commit gives the same bytes from the
+// main checkout and from any worktree.
+const MAIN = (() => { try { return path.dirname(path.resolve(ROOT, cp.execFileSync("git", ["rev-parse", "--git-common-dir"], { cwd: ROOT, encoding: "utf8", stdio: ["ignore", "pipe", "ignore"] }).trim())); } catch { return ROOT; } })();
+process.env.SDK = process.env.SDK || [path.join(ROOT, "..", "imperivm-resurrected", "sdk"), path.join(MAIN, "..", "imperivm-resurrected", "sdk")].find(fs.existsSync) || path.join(ROOT, "..", "imperivm-resurrected", "sdk");   // clone-civs.js and port-140.js read it
 const ID = "caesar-mod-civs", TAG = "cae", LABEL = "Caesar", SUFFIX = "Caesar Mod 1.1.0", OUT = path.join(ROOT, "ported", ID), EXTRAS = path.join(ROOT, "extras", ID);
 const SCRATCH = path.join(ROOT, ".scratch"), SRC = path.join(SCRATCH, "caesar-src"), STAGE = path.join(SCRATCH, "caesar-data-in"), DATAOUT = path.join(SCRATCH, "caesar-data-merged"), MERGED = path.join(SCRATCH, "caesar-merged");
 const ZIP = path.join(ROOT, "originals", "gamebanana", "728740", "caesar_mod.zip");
@@ -25,6 +30,8 @@ const classOf = s => (s.match(/<class\b[^>]*?\bid\s*=\s*"([^"]+)"/) || [])[1];
 const walk = (d, base = d, out = []) => { if (!fs.existsSync(d)) return out; for (const e of fs.readdirSync(d, { withFileTypes: true })) { const p = path.join(d, e.name); if (e.isDirectory()) walk(p, base, out); else out.push(path.relative(base, p).replace(/\\/g, "/")); } return out; };
 const find = (base, rel) => { let p = base; for (const part of rel.split("/")) { if (!fs.existsSync(p)) return null; const n = fs.readdirSync(p).find(x => x.toLowerCase() === part.toLowerCase()); if (!n) return null; p = path.join(p, n); } return p; };
 const md5 = f => require("crypto").createHash("md5").update(fs.readFileSync(f)).digest("hex");
+// a malformed file stops the build, on purpose
+const readJson = f => { try { return JSON.parse(fs.readFileSync(f, "utf8")); } catch (e) { console.error(`${f}: ${e.message}`); process.exit(1); } };
 const want = process.argv.slice(2);
 if (!fs.existsSync(ZIP)) { console.error("no " + ZIP + ": download GameBanana 728740 (docs/PORTING.md, step 2)"); process.exit(1); }
 if (!fs.existsSync(path.join(GAME, "rle.mmp"))) { console.error('set G to the HD game folder (port-140.js opens its rle.mmp)'); process.exit(1); }
@@ -241,6 +248,7 @@ console.log(`Greece: ${greekIds.size} classes with race "${GREECE}" (${pieces.si
   console.log(`menu skin: ${n} files not shipped (UI/MENU, DATA/INTERFACE/MENU)`);
 }
 
+const OWN_COPIED = new Set();
 // 6. the mod's versions of the game's behavior scripts (barrack_train.vs, hero_attack.vs...): the port's classes and commands use copies of their own (<name>_cae.vs); the
 // game's scripts stay the game's (tools/lib/own-scripts.js). Rome's branches read the old ChooseXxxRome flags: copies with the flags written in
 {
@@ -249,6 +257,7 @@ console.log(`Greece: ${greekIds.size} classes with race "${GREECE}" (${pieces.si
     inherit: true, modClasses: path.join(SRC, "DATA", "CLASSES"),
     civs: [C("kgaul", ["G"]), C("kbritain", ["B"]), C("kiberia", ["I"]), C("kegypt", ["E"]), C("kgermany", ["T"]), C("kcarthage", ["C"]),
       C("krepublic", ["R", "M"], { flags: { ChooseRepublicanRome: true } }), C("kimperial", ["R", "M"], { flags: { ChooseImperialRome: true } }), C("kpunic", ["R", "M"], { flags: { ChoosePunicRome: true } })] });
+  for (const c of r.copied) OWN_COPIED.add(c.to.toLowerCase());
   console.log(`scripts of the mod's own for its civilizations: ${r.copied.length} copied (_${TAG}), ${r.skipped.length} left to the game's (${r.skipped.map(s => s.name).join(", ")})`);
   console.log(`  methods inherited from the game's classes whose script the mod edited: ${r.injected} <method> written inside ${r.touched} classes; behaviors inherited and left the game's: ${(r.behaviorsLeft || []).join("; ") || "none"}`);
   fs.mkdirSync(path.join(ROOT, "raw"), { recursive: true });
@@ -302,7 +311,9 @@ const idMap = new Map([...greekIds].map(id => [id, gid(id)]));
   const alias = {};
   for (const [id, nid] of idMap) { const m = id.match(/^H(.+)$/); if (m && fs.existsSync(path.join(CLASSES, `${nid.toUpperCase()}.SC.XML`))) alias[`M${m[1]}`] = nid; }
   for (const [m, h] of pieces) if (!m.startsWith("#")) alias[m] = idMap.get(h);
-  const j = { id: GREECE, base: "ImperialRome", name: { spanish: `Grecia (${LABEL})`, english: `Greece (${LABEL})`, italian: `Grecia (${LABEL})` }, template: TEMPLATE, ai: true, alias: { classes: alias, commands: {} } };
+  // `letter` is written: a declaration without it takes its base's prefix (sdk civilizations.md: "Omit it to inherit the base's prefix"), not one derived from the id; the nine
+  // declarations the clone tool writes carry theirs
+  const j = { id: GREECE, base: "ImperialRome", letter: GP, name: { spanish: `Grecia (${LABEL})`, english: `Greece (${LABEL})`, italian: `Grecia (${LABEL})` }, template: TEMPLATE, ai: true, alias: { classes: alias, commands: {} } };
   fs.mkdirSync(path.join(OUT, "civs"), { recursive: true });
   fs.writeFileSync(path.join(OUT, "civs", `${GREECE}.json`), JSON.stringify(j, null, 2) + "\n", "utf8");
 }
@@ -337,7 +348,7 @@ const idMap = new Map([...greekIds].map(id => [id, gid(id)]));
   const hpfs = require("./hpfs.js"); let touched = 0, edits = 0, squeezed = 0; const problems = [];
   const modIds = new Set(fs.readdirSync(path.join(MERGED, "classes")).map(f => (classOf(rd(path.join(MERGED, "classes", f))) || "").toLowerCase()));
   const fresh = new Map();                                    // the mod's own id -> the clone's, for classes the game does not have
-  for (const c of CIVS) for (const [o, n] of Object.entries(JSON.parse(fs.readFileSync(path.join(OUT, "civs", `${c.id}.json`), "utf8")).alias.classes || {})) {
+  for (const c of CIVS) for (const [o, n] of Object.entries(readJson(path.join(OUT, "civs", `${c.id}.json`)).alias.classes || {})) {
     const orig = modIds.has(o.toLowerCase()) ? o : modIds.has(o.slice(1).toLowerCase()) ? o.slice(1) : null;
     if (orig && !hdClass.has(orig.toLowerCase()) && !fresh.has(orig)) fresh.set(orig, n);   // two clones with one id (RVillager_Apollonia): the first; the maps place one
   }
@@ -363,10 +374,61 @@ const idMap = new Map([...greekIds].map(id => [id, gid(id)]));
   report.push(...problems);
 }
 
+// 9b. Orders (commands and researches) that the port's scripts give or ask about by name and that exist nowhere: the mod added them to a command file of the game for a game BASE class
+// (VILLAGE.XML: `repair village ai`, src BaseVillage; BLACKSMITH.XML: `Strengthen Stronghold Defences I/II`, src BaseBlacksmith), and the clones carry only the orders of their own
+// classes (PORTING.md, step 6). Each becomes an order of the port's own, `<name> (cae)`, offered by the port's classes that derive from its sources (the Greek 2.6.1 does the same
+// with `repair village ai (w26)`), and the scripts and the params of the other carried orders name it so. One that the mod does not have either stops the build (step 13). Before tagCollisions on purpose, so the pictures and class ids the orders name follow the renames. A source with no class in the port (the Stonehenge spells: that class is global) is not carried.
+const CARRIED = [];
+{
+  const cmdRe = /<cmd\b[^>]*?\bname\s*=\s*"([^"]*)"[\s\S]*?<\/cmd>/g, mask = t => t.replace(/<!--[\s\S]*?-->/g, m => " ".repeat(m.length));
+  const defs = new Map();
+  for (const f of fs.readdirSync(path.join(MERGED, "commands"))) { const t = rd(path.join(MERGED, "commands", f)); for (const m of mask(t).matchAll(cmdRe)) defs.set(m[1], { text: t.slice(m.index, m.index + m[0].length), srcs: [...m[0].matchAll(/<src\s+obj\s*=\s*"([^"]*)"/g)].map(x => x[1]) }); }
+  const have = new Set();
+  for (const root of [find(HD, "DATA/COMMANDS"), find(OUT, "DATA/COMMANDS"), find(OUT, "patches/DATA/COMMANDS")].filter(Boolean)) for (const f of fs.readdirSync(root).filter(f => /\.xml$/i.test(f))) for (const m of mask(rd(path.join(root, f))).matchAll(cmdRe)) have.add(m[1].toLowerCase());
+  for (const f of walk(OUT).filter(f => /^DATA\/CLASSES\/.*\.xml$/i.test(f))) for (const m of rd(path.join(OUT, f)).matchAll(/<method\b[^>]*?\bsig\s*=\s*"([^"]+)"/gi)) have.add(m[1].toLowerCase());
+  for (const f of walk(HD_CLASSES).filter(f => /\.xml$/i.test(f))) for (const m of rd(path.join(HD_CLASSES, f)).matchAll(/<method\b[^>]*?\bsig\s*=\s*"([^"]+)"/gi)) have.add(m[1].toLowerCase());
+  for (const f of walk(path.join(HD, "DATA")).filter(f => /\.vs$/i.test(f))) for (const m of rd(path.join(HD, "DATA", f)).replace(/\/\/[^\n]*/g, "").matchAll(/\b(?:SetCommand|ExecCmd|AddCommand)\s*\(\s*"([^"]+)"/g)) have.add(m[1].toLowerCase());   // the game's own orders given by name (spells)
+  for (const f of walk(OUT).filter(f => /^DATA\/CLASSES\/.*\.xml$/i.test(f))) for (const m of rd(path.join(OUT, f)).matchAll(/<method\b[^>]*?\bsig\s*=\s*"([^"]+)"/gi)) have.add(m[1].toLowerCase());
+  for (const f of fs.readdirSync(path.join(OUT, "civs"))) for (const k of Object.keys(readJson(path.join(OUT, "civs", f)).alias.commands || {})) have.add(k.toLowerCase());   // the AI names the base's order, the engine translates it
+  const ORDER_CALL = /\b(?:AddCommand|SetCommand|SneakCommand|GetCmdStaminaCost|GetCmdCost|CmdCount|CmdEnable|CmdDisable|SetCmdEnable|GetCmdEnable|ExecCmd|AddDefCmd|Research|CanResearch|CanAfford|IsResearching|IsResearched)\s*\(\s*(?:true\s*,\s*|false\s*,\s*)?(?:[A-Za-z_][\w.]*\s*,\s*)?"([^"]+)"/g;
+  const scripts = walk(OUT).filter(f => /^(DATA\/(SUBAI|AI|AI HELPERS|ITEMSCRIPTS)|patches\/DATA\/(SUBAI|AI))\/[^/]+\.vs$/i.test(f));
+  const want = new Set();
+  for (const f of scripts) for (const m of rd(path.join(OUT, f)).replace(/\/\*[\s\S]*?\*\//g, " ").replace(/\/\/[^\n]*/g, " ").matchAll(ORDER_CALL)) if (!have.has(m[1].toLowerCase()) && defs.has(m[1])) want.add(m[1]);
+  for (let grew = true; grew;) { grew = false; for (const n of [...want]) for (const m of defs.get(n).text.matchAll(/\bparam\s*=\s*"([^"]*)"/g)) for (const tok of m[1].split(",").map(x => x.trim())) if (defs.has(tok) && !have.has(tok.toLowerCase()) && !want.has(tok)) { want.add(tok); grew = true; } }
+  if (want.size) {
+    const parent = new Map();
+    for (const dir of [HD_CLASSES, find(OUT, "DATA/CLASSES")]) for (const f of walk(dir).filter(f => /\.sc\.xml$/i.test(f) && !/[\\/]/.test(f))) { const s = rd(path.join(dir, f)), id = classOf(s); if (id) parent.set(id.toLowerCase(), ((s.match(/<class\b[^>]*?\bparent\s*=\s*"([^"]+)"/) || [])[1] || "").toLowerCase()); }
+    const mine = [...walk(find(OUT, "DATA/CLASSES")).filter(f => /\.sc\.xml$/i.test(f) && !/[\\/]/.test(f)).map(f => classOf(rd(path.join(find(OUT, "DATA/CLASSES"), f))))];
+    const heirs = srcs => mine.filter(id => { for (let c = id.toLowerCase(), n = 0; c && n < 30; c = parent.get(c), n++) if (srcs.some(s => s.toLowerCase() === c)) return true; return false; });
+    const nm = n => `${n} (${TAG})`, out = [];
+    for (const n of want) {
+      const d = defs.get(n), classes = heirs(d.srcs);
+      if (!classes.length) { want.delete(n); continue; }
+      let text = d.text.replace(/\bname\s*=\s*"[^"]*"/, `name="${nm(n)}"`).replace(/\bparam\s*=\s*"([^"]*)"/, (_m, v) => `param="${v.split(",").map(x => (want.has(x.trim()) ? x.replace(x.trim(), nm(x.trim())) : x)).join(",")}"`);
+      text = text.replace(/[ \t]*<src\b[^>]*\/>[ \t]*\r?\n?/g, "").replace(/<\/cmd>\s*$/, `\t${classes.map(c => `<src obj="${c}"/>`).join("\n\t")}\n</cmd>`);
+      out.push(text); CARRIED.push(`${n} -> ${nm(n)} (src ${d.srcs.join(", ")}; ${classes.length} classes of the port)`);
+    }
+    wr(path.join(find(OUT, "DATA/COMMANDS"), `${TAG.toUpperCase()}ORDERS.XML`), `<commands>\n${out.join("\n")}\n</commands>\n`);
+    for (const f of scripts) { const p = path.join(OUT, f), s = rd(p); let t = s; for (const n of want) t = t.split(`"${n}"`).join(`"${nm(n)}"`); if (t !== s) wr(p, t); }
+  }
+  console.log(`orders the scripts name that only the mod's base-class sources had: ${CARRIED.length ? "\n  " + CARRIED.join("\n  ") : "none"}`);
+}
+
 // 10. the mod's conquests: a Conquests/<name>.bfhp or a ConquestMaps/<folder> at the path of the game's or of another port's is renamed, whatever the bytes
 // (tools/lib/conquests.js; before tagCollisions, which renames the files of a folder one by one)
-// every port of the repository that has classes (the three Greek mods, and what else is in ported/): the names are compared with all of them
-const PORTS = fs.readdirSync(path.join(ROOT, "ported")).filter(d => d !== ID && find(path.join(ROOT, "ported", d), "DATA/CLASSES")).sort().map(d => path.join(ROOT, "ported", d));
+// every other port of the repository, from the main checkout and from this one (the names and files are compared with all of them, classes or not: a picture or a map
+// collides too). Not `imperivm-legacy`: the old build is replaced by a new port that renames its own names.
+// The ports that must be there: without them the names tagged differ from a build where they are (a worktree does not have the ones built only in the main checkout).
+// CAESAR_MOD_NO_OTHERS=1 builds with what is found (the bytes then depend on that).
+const REQUIRED_PORTS = ["cgwar", "greek-mod-1-8", "greek-civilization-mod", "mediterranevm-alpha", "mci", "secuter-fun-mod", "secuter-fun-mod-grecia"];
+const PORTS = (() => {
+  const found = new Map();
+  for (const root of [path.join(MAIN, "ported"), path.join(ROOT, "ported")]) if (fs.existsSync(root)) for (const e of fs.readdirSync(root, { withFileTypes: true })) if ((e.isDirectory() || e.isSymbolicLink()) && !found.has(e.name) && fs.existsSync(path.join(root, e.name))) found.set(e.name, path.join(root, e.name));
+  const missing = REQUIRED_PORTS.filter(n => !found.has(n));
+  if (missing.length && process.env.CAESAR_MOD_NO_OTHERS !== "1") { console.error(`the ports ${missing.join(", ")} are not in ${path.join(MAIN, "ported")} or ${path.join(ROOT, "ported")}: build them there first (tools/mediterranevm-alpha.js, tools/port-140.js..., see each NOTES.md), or CAESAR_MOD_NO_OTHERS=1 to build without them (the names tagged differ)`); process.exit(1); }
+  return [...found].filter(([n]) => n !== ID && n !== "imperivm-legacy").sort(([a], [b]) => (a < b ? -1 : 1)).map(([, p]) => p);
+})();
+console.log(`other ports compared: ${PORTS.length} (${REQUIRED_PORTS.filter(n => PORTS.some(p => path.basename(p) === n)).join(", ")} and ${PORTS.length - REQUIRED_PORTS.length} more); main checkout: ${MAIN}`);
 {
   const r = require("./lib/conquests.js")({ OUT, others: [GD, ...PORTS], tag: TAG, label: LABEL });
   for (const c of r.done) console.log(`conquest ${c.from} -> ${c.to} (${c.folder})`);
@@ -416,13 +478,18 @@ const PORTS = fs.readdirSync(path.join(ROOT, "ported")).filter(d => d !== ID && 
       const x = +m[2], y = +m[3], c1 = cell(x, y, 1), c2 = cell(x, y, 1.5), s2 = steps(...c2);
       let nx = x, ny = y, why = "";
       if (/BARRACKS/i.test(d) && md5pass === "0273d53b" && x === -32 && y === -50) { nx = -16; why = "the 1.8's and 2.x's barracks (same footprint, same single point): moved as in the 2.5.3, which worked in game"; }
+      else if ((!free(...c1) || !free(...c2) || s2 < 0) && process.env.CAESAR_TEMPLE_EXIT !== "1") {
+        // a type-2 point on a blocked cell: 12 of the 45 single-point buildings of the game are on one at 1 cell per 16 units in y and work; at 1.5 (which fits the game's points far
+        // better) only 1 is. Nothing proves either way: unchanged. CAESAR_TEMPLE_EXIT=1 computes the nearest free point instead (the build of the first PR did that)
+        why = "BLOCKED cell, untested, UNCHANGED";
+      }
       else if (!free(...c1) || !free(...c2) || s2 < 0) {
         let best = null;
         for (let dx = -96; dx <= 96; dx++) for (let dy = -96; dy <= 96; dy++) { const dd = dx * dx + dy * dy; if ((!best || dd < best[0]) && ok(x + dx, y + dy)) best = [dd, x + dx, y + dy]; }
         if (best) { nx = best[1]; ny = best[2]; why = `the cell was blocked (${c1} at 1.0, ${c2} at 1.5): the nearest point that is free at both scales, leads out of the footprint and has 6 of 9 free cells around it. NOT tried in game`; } else why = "BLOCKED and no free point within 96 units";
       }
       const f = cell(nx, ny, 1.5);
-      lines.push(`${d} point ${m[1]} type 2 (${x},${y}) cell ${c2}: ${free(...c2) ? "free" : "BLOCKED"}, ${s2} steps to leave the footprint's box${why ? ` -> (${nx},${ny}) cell ${f}, ${steps(...f)} steps: ${why}` : ""}`);
+      lines.push(`${d} point ${m[1]} type 2 (${x},${y}) cell ${c2}: ${free(...c2) ? "free" : "BLOCKED"}, ${s2} steps to leave the footprint's box${why ? (nx === x && ny === y ? ` -> ${why}` : ` -> (${nx},${ny}) cell ${f}, ${steps(...f)} steps: ${why}`) : ""}`);
       if (nx !== x || ny !== y) { t = t.replace(m[0], `<point idx="${m[1]}" type="2" x="${nx}" y="${ny}"/>`); changed = true; }
     }
     if (changed) wr(path.join(dir, ent), t);
@@ -485,13 +552,15 @@ for (const f of walk(OUT).filter(f => /(^|\/)(\.fingerprint|desktop\.ini|thumbs\
 // a <method>/<behavior> that names a script neither the mod nor the game has: the game could not run it
 {
   const have = new Set([...walk(OUT), ...walk(HDDATA).map(f => "DATA/" + f)].map(f => f.toLowerCase())), SC = find(OUT, "DATA/CLASSES");
-  let gone = 0;
+  let gone = 0; const dropped = [];
   for (const f of walk(SC).filter(f => /\.sc\.xml$/i.test(f))) {
     const p = path.join(SC, f), s = rd(p);
-    const t = s.replace(/<(?:behavior|method)\b[^>]*?\b(?:script|vs)\s*=\s*"(data\/[^"]+\.vs)"[^>]*\/>[ \t]*/gi, (m, v) => (have.has(v.toLowerCase()) ? m : (gone++, "")));
+    const t = s.replace(/<(?:behavior|method)\b[^>]*?\b(?:script|vs)\s*=\s*"(data\/[^"]+\.vs)"[^>]*\/>[ \t]*/gi, (m, v) => (have.has(v.toLowerCase()) ? m : (gone++, dropped.push(`${f}: ${m.trim()}`), "")));
     if (t !== s) wr(p, t);
   }
-  if (gone) console.log(`${gone} inline method/behavior elements that name a script nobody has removed`);
+  // listed, not silent: a method whose script is missing is a behavior of the mod that the port does not have
+  fs.writeFileSync(path.join(ROOT, "raw", "caesar-mod-civs-dropped-methods.txt"), dropped.join("\n") + "\n");
+  console.log(`${gone} inline method/behavior elements that name a script nobody has removed (raw/caesar-mod-civs-dropped-methods.txt)`);
 }
 // elements AFTER </class>: HD's parser refuses the whole class
 {
@@ -538,7 +607,8 @@ for (const f of walk(OUT).filter(f => /(^|\/)(\.fingerprint|desktop\.ini|thumbs\
 {
   const SUB = find(OUT, "DATA/SUBAI"), texts = walk(OUT).filter(f => /^(DATA|patches\/DATA)\/.*\.(xml|vs|ini)$/i.test(f)).map(f => rd(path.join(OUT, f)).toLowerCase()).join("\n");
   let n = 0;
-  for (const f of fs.readdirSync(SUB).filter(f => new RegExp(`_${TAG}\\.vs$`, "i").test(f))) if (!texts.includes(f.toLowerCase())) { fs.rmSync(path.join(SUB, f)); n++; }
+  // only the copies own-scripts.js made (a script the mod ships that tagCollisions renamed `_cae` is not one of them: watch_eye_no_reveal_cae.vs was removed here by mistake)
+  for (const f of fs.readdirSync(SUB).filter(f => OWN_COPIED.has(f.toLowerCase()))) if (!texts.includes(f.toLowerCase())) { fs.rmSync(path.join(SUB, f)); n++; }
   console.log(`${n} default copies of scripts that only per-civilization copies use removed`);
   // tagCollisions appends _cae to the editor-tree label of a class it renamed ("Roman Thermae_cae"): the label is not a name
   let m = 0;
@@ -546,7 +616,12 @@ for (const f of walk(OUT).filter(f => /(^|\/)(\.fingerprint|desktop\.ini|thumbs\
   console.log(`${m} editor-tree labels cleaned of the suffix`);
   // the same for the editor's lists (a key of the combo is a label, the picture it names is the mod's own), and a winter class file renamed "X.SC_cae.XML" (the game reads <ID>.SC.XML)
   let k = 0;
-  for (const f of walk(OUT).filter(f => /^patches\/DATA\/INTERFACE\/EDITOR\/COMBO\/[^/]+\.INI$/i.test(f))) { const p = path.join(OUT, f), s = rd(p), t = s.replace(/_cae/g, ""); if (t !== s) { wr(p, t); k++; } }
+  // (a key is a label; the picture keeps `_cae` if a file of that name exists, as BHERO5_cae.BMP does: gameres/icons/X is UI/ICONS/X)
+  for (const f of walk(OUT).filter(f => /^patches\/DATA\/INTERFACE\/EDITOR\/COMBO\/[^/]+\.INI$/i.test(f))) {
+    const p = path.join(OUT, f), s = rd(p);
+    const t = s.split("\n").map(l => l.replace(/^([^=\r]*?)(\s*=\s*)([^\r]*)/, (_m, key, eq, val) => `${key.replace(/_cae/g, "")}${eq}${val.replace(/gameres\/icons\/([^\r\n]*)/, (m2, name) => (/_cae/.test(name) && !find(OUT, `UI/ICONS/${name}`) ? m2.replace(/_cae/g, "") : m2))}`)).join("\n");
+    if (t !== s) { wr(p, t); k++; }
+  }
   const wd = find(OUT, "DATA/CLASSES/WINTER");
   for (const f of wd ? fs.readdirSync(wd).filter(f => /\.SC_cae\.XML$/i.test(f)) : []) {
     const to = path.join(wd, f.replace(/\.SC_cae\.XML$/i, "_CAE.SC.XML"));
@@ -560,7 +635,7 @@ for (const f of walk(OUT).filter(f => /(^|\/)(\.fingerprint|desktop\.ini|thumbs\
 {
   const heirOf = new Map(), mod = new Set(fs.readdirSync(path.join(MERGED, "classes")).map(f => (classOf(rd(path.join(MERGED, "classes", f))) || "").toLowerCase()));
   const add = (o, n) => { const l = o.toLowerCase(); if (!heirOf.has(l)) heirOf.set(l, []); if (!heirOf.get(l).includes(n)) heirOf.get(l).push(n); };
-  for (const c of CIVS) for (const [k, v] of Object.entries(JSON.parse(fs.readFileSync(path.join(OUT, "civs", `${c.id}.json`), "utf8")).alias.classes || {})) {
+  for (const c of CIVS) for (const [k, v] of Object.entries(readJson(path.join(OUT, "civs", `${c.id}.json`)).alias.classes || {})) {
     add(k, v); if (k[0] === c.baseLetter && !mod.has(k.toLowerCase()) && mod.has(k.slice(1).toLowerCase())) add(k.slice(1), v);
   }
   for (const [o, n] of idMap) add(o, n);
@@ -590,7 +665,7 @@ for (const f of walk(OUT).filter(f => /(^|\/)(\.fingerprint|desktop\.ini|thumbs\
   const addHeir = (o, n) => { const l = o.toLowerCase(); if (!heirOf.has(l)) heirOf.set(l, []); if (!heirOf.get(l).includes(n)) heirOf.get(l).push(n); };
   const aliasOf = new Map();                                    // civ id -> { staged id -> clone id }
   for (const c of CIVS) {
-    const al = JSON.parse(fs.readFileSync(path.join(OUT, "civs", `${c.id}.json`), "utf8")).alias.classes || {}; aliasOf.set(c.id, al);
+    const al = readJson(path.join(OUT, "civs", `${c.id}.json`)).alias.classes || {}; aliasOf.set(c.id, al);
     for (const [k, v] of Object.entries(al)) { addHeir(k, v); if (k[0] === c.baseLetter && !modIds.has(k.toLowerCase()) && modIds.has(k.slice(1).toLowerCase()) && !hdClass.has(k.toLowerCase())) addHeir(k.slice(1), v); }
   }
   const RECV = String.raw`(\.|(?:[A-Za-z_]\w*(?:\[[^\]]*\])?(?:\(\))?\.)+)`;
@@ -624,6 +699,51 @@ for (const f of walk(OUT).filter(f => /(^|\/)(\.fingerprint|desktop\.ini|thumbs\
     }
   }
   console.log(`scripts only one civilization uses, with that clone's classes: ${single}; ${tests} scripts whose race/class tests also accept the clones`);
+}
+
+// 11b. Branch flags in the AI. The mod's AI asks `IsResearched(set, "ChooseImperialRome")` to know which Rome it plays; here the branch is the civilization, so the test is
+// `Mod_PlayerCiv(set.player) == Kimperial` (false for everybody else, as before). The choice itself (`ChooseRomanRace` is never 1 for a civilization that is not a branch,
+// so the block that picks a Rome with rand(3) and researches it ran at the start of every CAE_ES_Stronghold, with a Sleep(500)) is not ported: the block goes.
+{
+  const BR = { Republican: "Krepublic", Imperial: "Kimperial", Punic: "Kpunic" };
+  const cut = (t, start) => { const i = t.search(start); if (i < 0) return [t, 0]; let j = t.indexOf("{", i), d = 0; for (let k = j; k < t.length; k++) { if (t[k] === "{") d++; else if (t[k] === "}" && --d === 0) { j = k + 1; break; } } return [t.slice(0, i) + t.slice(j), 1]; };
+  let flags = 0, blocks = 0; const files = [];
+  for (const f of walk(OUT).filter(f => /^(DATA\/(AI|AI HELPERS)|patches\/DATA\/AI)\/[^/]+\.vs$/i.test(f))) {
+    const p = path.join(OUT, f); let t = rd(p); const t0 = t;
+    let k; do { [t, k] = cut(t, /if\s*\(\s*EnvReadInt\(\s*set\s*,\s*"ChooseRomanRace"\s*\)\s*!=\s*1\s*\)\s*\{/); blocks += k; } while (k);
+    t = t.split("\n").map(l => (/^@/.test(l) ? l : l.replace(/\bIsResearched\(\s*([\w.()]+?)\s*,\s*"Choose(Republican|Imperial|Punic)Rome"\s*\)/g, (_m, s, b) => { flags++; return `(Mod_PlayerCiv(${s}.player) == ${BR[b]})`; }))).join("\n");
+    if (t !== t0) { wr(p, t); files.push(path.basename(f)); }
+  }
+  console.log(`branch flags in the AI: ${flags} tests of ChooseXxxRome are the civilization now, ${blocks} block that chose a Rome removed (${files.length} scripts)`);
+}
+
+// 11d. The mod added a method to a game class that no clone has (WatchEye: `no_reveal`, watch_eye_no_reveal.vs; the taverns' scout area places a `WatchEyeBig` and gives it that
+// order). WatchEyeBig is a class of the port and derives from the game's WatchEye, which lacks the method: it gets the method and the script ships (its name as tagCollisions left it).
+{
+  const wc = find(OUT, "DATA/CLASSES/WATCHEYEBIG.SC.XML"), SUB = find(OUT, "DATA/SUBAI"), sc = SUB && fs.readdirSync(SUB).find(f => /^watch_eye_no_reveal(_cae)?\.vs$/i.test(f));
+  if (wc && sc) { const s = rd(wc); if (!/sig="no_reveal"/i.test(s)) wr(wc, s.replace(/(<class\b[^>]*>)/, `$1\n\t<method sig="no_reveal" vs="data/subai/${sc}"/>`)); console.log(`WatchEyeBig: method no_reveal -> ${sc}`); }
+  else report.push(`WatchEyeBig / watch_eye_no_reveal.vs not found (${!!wc}, ${!!sc})`);
+}
+
+// 11e. Random-map pictures: a picture in a folder the game has (RandomMap/Mediterranean/) joins the game's own pool for everybody and the game draws from it; the templates
+// of the mod that used them are left out (global). Only the folders the game does not have stay (RandomMap/Competitive/, for the template shipped with it).
+{
+  const hdRM = find(HD, "RANDOMMAP"), rm = find(OUT, "RANDOMMAP"), gone = [];
+  for (const d of rm ? fs.readdirSync(rm, { withFileTypes: true }).filter(e => e.isDirectory()).map(e => e.name) : []) if (hdRM && find(hdRM, d)) { for (const f of walk(path.join(rm, d))) { fs.rmSync(path.join(rm, d, f)); gone.push(`RANDOMMAP/${d}/${f}`); } }
+  fs.writeFileSync(path.join(ROOT, "raw", "caesar-mod-civs-random-map-pictures.txt"), gone.join("\n") + "\n");
+  console.log(`random-map pictures in the game's own folders left out: ${gone.length} (raw/caesar-mod-civs-random-map-pictures.txt)`);
+}
+
+// 11f. Two files whose names differ only by case in one folder cannot live together on Windows or in a zip: the same bytes keep one (the first in name order); other bytes stop the build.
+{
+  const groups = new Map();
+  for (const f of walk(OUT)) { const k = f.toLowerCase(); (groups.get(k) || groups.set(k, []).get(k)).push(f); }
+  let n = 0;
+  for (const g of [...groups.values()].filter(g => g.length > 1).map(g => g.sort())) {
+    if (new Set(g.map(f => md5(path.join(OUT, f)))).size > 1) { console.error(`files that differ only by case, with other bytes: ${g.join(" | ")}`); process.exit(1); }
+    for (const f of g.slice(1)) { fs.rmSync(path.join(OUT, f)); n++; }
+  }
+  console.log(`files that differ only by case (same bytes, one kept): ${n}`);
 }
 
 // 12. offline checks of every script this build writes (nothing compiles them but the game, and a patch of the game's own that does not compile stops that script for EVERY
@@ -676,7 +796,7 @@ for (const f of walk(OUT).filter(f => /(^|\/)(\.fingerprint|desktop\.ini|thumbs\
 // the outposts, ships... It is global and waits for a rules pack (AGENTS.md, "World rules packs"): raw/caesar-mod-civs-global.md
 {
   const cloned = new Set(), parentOf = new Map();
-  for (const f of fs.readdirSync(path.join(OUT, "civs"))) for (const k of Object.keys(JSON.parse(fs.readFileSync(path.join(OUT, "civs", f), "utf8")).alias.classes || {})) cloned.add(k.toLowerCase());
+  for (const f of fs.readdirSync(path.join(OUT, "civs"))) for (const k of Object.keys(readJson(path.join(OUT, "civs", f)).alias.classes || {})) cloned.add(k.toLowerCase());
   for (const [dir, ] of [[HD_CLASSES], [path.join(MERGED, "classes")]]) for (const f of walk(dir).filter(f => /\.sc\.xml$/i.test(f) && !/[\\/]/.test(f))) { const s = rd(path.join(dir, f)), id = classOf(s); if (id) parentOf.set(id.toLowerCase(), ((s.match(/<class\b[^>]*?\bparent\s*=\s*"([^"]+)"/) || [])[1] || "").toLowerCase()); }
   const inherited = new Set();
   for (const c of cloned) for (let p = parentOf.get(c), n = 0; p && n < 30; p = parentOf.get(p), n++) inherited.add(p);
@@ -684,6 +804,14 @@ for (const f of walk(OUT).filter(f => /(^|\/)(\.fingerprint|desktop\.ini|thumbs\
   for (const [id, els] of Object.entries(baseChanges)) { if (cloned.has(id)) continue; (inherited.has(id) ? base : other).push(`${id} (${els.length})`); }
   fs.writeFileSync(path.join(ROOT, "raw", "caesar-mod-civs-global.md"), `# Caesar Mod: what the mod changed in the game's classes and is not in the civilizations pack\n\nFrom the build of tools/caesar-mod.js (elements of the mod's class that the game's class lacks, in parentheses). Waits for a rules pack (AGENTS.md, *World rules packs*).\n\n## Base classes the clones inherit: written inside each clone, ${base.length}\n\n${base.sort().join(", ")}\n\n## Classes no clone took: neutral objects, animals, ships, outposts... ${other.length}\n\n${other.sort().join(", ")}\n`);
   console.log(`global: ${base.length} base classes (inside the clones), ${other.length} classes no clone took -> raw/caesar-mod-civs-global.md`);
+}
+
+// 13. The NAMES the scripts use (tools/lib/caesar-names.js, the Greek 2.x's checker with two fixes): a script, an order, a research or an identifier that exists nowhere stops that
+// script in the game ("No matching function with name X"). A call to something that exists nowhere stops the build.
+{
+  const r = require("./lib/caesar-names.js").checkNames({ OUT, HD, SDK: process.env.SDK });
+  console.log(r.notes.join("\n"));
+  if (r.errors.length) { fs.writeFileSync(path.join(SCRATCH, "caesar-names.txt"), r.errors.join("\n") + "\n"); console.error(`NAME CHECKS FAILED (${r.errors.length}), all in .scratch/caesar-names.txt:\n  ${r.errors.slice(0, 60).join("\n  ")}`); process.exit(1); }
 }
 
 // folders the steps above left empty
