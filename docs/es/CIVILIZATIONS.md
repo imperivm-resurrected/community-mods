@@ -70,6 +70,14 @@ Las letras y los índices son únicos en todos los ports (el SDK admite índices
 | (motor) | `aiberia` | `Aib` (derivado) | Iberia | AsvrMod VII | `tools/asvrmod-vii.js` |
 | (motor) | `aegypt` | `Aeg` (derivado) | Egypt | AsvrMod VII | `tools/asvrmod-vii.js` |
 | (motor) | `agermany` | `Age` (derivado) | Germany | AsvrMod VII | `tools/asvrmod-vii.js` |
+| (motor) | `igaul` | `Iga` (derivado) | Gaul | MCI 9.0 | `tools/mci.js` |
+| (motor) | `irome` | `Iro` (derivado) | RepublicanRome | MCI 9.0 | `tools/mci.js` |
+| (motor) | `iimperial` | `Iim` (derivado) | ImperialRome | MCI 9.0 | `tools/mci.js` |
+| (motor) | `icarthage` | `Ica` (derivado) | Carthage | MCI 9.0 | `tools/mci.js` |
+| (motor) | `ibritain` | `Ibr` (derivado) | Britain | MCI 9.0 | `tools/mci.js` |
+| (motor) | `iiberia` | `Iib` (derivado) | Iberia | MCI 9.0 | `tools/mci.js` |
+| (motor) | `iegypt` | `Ieg` (derivado) | Egypt | MCI 9.0 | `tools/mci.js` |
+| (motor) | `igermany` | `Ige` (derivado) | Germany | MCI 9.0 | `tools/mci.js` |
 
 Una civilización sin `letter` (prefijo derivado: las 3 primeras letras del `id`, imperivm-resurrected#37) ni `index` (lo asigna el motor) no reserva nada en esta tabla; sus filas dicen `(motor)` y están para detectar choques. **Dos ports no pueden estar activos a la vez si comparten un prefijo derivado: el motor ignora la segunda civilización.** Ahora mismo chocan GBR Tactics y La Reconquista 2010 en `Gau`, `Bri`, `Car`, `Egy`, `Ger`, `Ibe` e `Imp`.
 
