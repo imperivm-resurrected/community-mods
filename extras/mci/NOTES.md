@@ -2,7 +2,7 @@
 
 Row 7, issue #18 (revisit with imperivm-resurrected#37 and #38). `MOD Comunidad Imperivm 9.0.zip` (366 MB, forum t262, `originals/forum/t262/files/`; the same download has `MLR + MCI v8.0.zip`, 71 MB, an older release that is not used). 1,104 loose files for a 1.40 install (`DATA`, `UNITS`, `UI`, `SOUNDS`, `OUTLINES`, `RANDOMMAP`, `CURRENTLANG`, `Adventures`, `Scenarios`, `movies`, `music`, a 388 MB `rle.mmp`) and **no executable**. It is built on JVLIVS CAESAR's La Reconquista (row 8, `extras/la-reconquista-2010/`).
 
-**Permission and licence: not settled, nothing assumed.** The *Permission* column of `docs/MODS.md` row 7 is ❔ (no answer on record). The zip has no licence file; its `DATA/COPYRIGHTS.TXT` has the same bytes as the game's, so it says nothing about the mod. `authors` in `mod.json` is the credits list of the forum post plus `Villoh (port)`. Questions for the maintainer are at the end.
+**Permission:** the authors' permission was granted to the maintainer, per the maintainer, 2026-11-02. That is the maintainer's statement (no name, date of the answer or link was given); there is no document to quote. The *Permission* column of `docs/MODS.md` row 7 says so. **Licence:** the zip has no licence file and its `DATA/COPYRIGHTS.TXT` has the same bytes as the game's, so it says nothing about the mod; **no licence name is recorded** and none is invented. `redistributable` stays `true`. `authors` in `mod.json` is the credits list of the forum post plus `Villoh (port)`. Rows of `docs/AUTHORS.md` (the contact table, filled by hand) exist for Camarada, Poliko, JVLIVS CAESAR, moonson, Frodo45127, frikypani, JNXF and El Jüsticiero Misteryoso; none for Comunidad Imperivm or zeloslaw as MCI authors (zeloslaw has a row for GBR Tactics). They were not edited: their *Contacted* / *Answer* columns record contacts with each author, and the permission is the maintainer's statement, not an author's answer.
 
 **This port is the mod's balance as eight civilizations of its own, next to the game's** (AGENTS.md, *Civilizations are independent*; decided in #15: copies + room set). The game's eight are not touched and the mod is not an exclusive ruleset. The reserved token is `i`: every id starts with it.
 
@@ -185,7 +185,7 @@ The menu skin is the approved cosmetic exception (*The menu skin*). **`ui/cmdbar
 
 ## Questions for the maintainer
 
-1. **Permission and licence** (row 7 ❔): nothing on record.
+1. **Licence:** none is recorded for the MCI (see the top); say if one should be.
 2. **`loc/spanish.loc.xml`:** ship the 81 keys HD lacks (as the 1.8 does, written again for the clones' orders) and leave out the 10 that change HD's text? Without them the new content shows keys.
 3. **The three videos and `ITEMICONS.INI`** are out; the maps `haenor-rescate-de-viriato` and `italia` break until #8.
 4. **Behaviors over 8:** worth a script that merges `BURN_BEHAVIOR` and `VILLAGE_AUTO_CALL_PEASANTS` into one, or accept the loss?
