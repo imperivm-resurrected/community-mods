@@ -434,6 +434,10 @@ for (const f of ["BELT OF SNAKES REMOVE.VS", "FEATHER AMULET REMOVE.VS"]) { cons
   }
   console.log(`rules: ${tops.length} civilian classes of its own protected (rules/game.json), ${sentries} sentry classes not selectable`);
 }
+// The skin brings back the main menu's Help button and HD's English pack has no help.xml (the 4.2's package has none in any language): Local/english/HELP.XML, the
+// canonical English help of extras/english-help/ (a model translation of HD's Spanish help, UNREVIEWED). It adds a file HD's English lacks, replaces nothing, and is
+// never for Spanish or Italian, which keep HD's own (issue #54; tools/lib/english-help.js checks the pack and the file, and stops the build otherwise).
+{ const r = require("./lib/english-help.js").ship(OUT); console.log(`English help: ${r.topics} topics, ${r.entries} entries, ${r.links} links, ${r.pictures} picture names -> Local/english/HELP.XML (HD's English pack has none)`); }
 // the engine writes .fingerprint in an installed mod's folder (and Windows leaves desktop.ini): never part of the port
 for (const f of walk(OUT).filter(f => /(^|\/)(\.fingerprint|desktop\.ini|thumbs\.db)$/i.test(f))) fs.rmSync(path.join(OUT, f));
 {
