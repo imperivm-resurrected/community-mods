@@ -582,6 +582,31 @@ if (fs.existsSync(EXTRAS)) for (const f of walk(EXTRAS)) { if (f === "NOTES.md")
   for (const f of dir ? fs.readdirSync(dir) : []) { const p = path.join(dir, f), s = rd(p), t = s.replace(/%MenuRes%\/(B(?:10|[1-9])F\.bmp)/gi, (_m, b) => { pg++; return `CurrentLang/UI/MENU/${b}`; }); if (t !== s) wr(p, t); }
   console.log(`menu skin patches: end-of-line comments cut in ${n} files; ${pg} page images point to CurrentLang/UI/MENU/`);
 }
+// EXPERIMENT A (one revertable commit): the lobby information pages in the MAIN MENU. The engine's new lobby replaces the classic MPChat screen where the mod put them, so they never show.
+// How the pages work (imperivm-iii-research, CUIButton: OnMouse 00661150, Draw 00661070, ContainsPoint 00661600, SetImage 00661440): every B<n>CM is a button of its own, with no Id and no
+// script. Its image 5790x1572 is cut into 3 columns by the letters of ImageType "ABCC" (normal, hover, pressed: frames of 1930 wide) and 2 rows (Rows = 2: 786 high). A click (release) with the
+// style TRISTATE goes to the next row, (row + 1) % rows: row 0 is a 34x36 icon at the top of the frame (the ten icons sit side by side), row 1 is the page (1279x651, with the strip of icons
+// painted in it). The hit test reads the pixel of the current row (the colour at 0,0 of the picture, green, is transparent), so only the icon, or the page, answers. Nothing of that is in the
+// dialog: it works in any dialog that has the buttons. The strip of icons is the "closed" state (the least intrusive): the page opens over the picture when its icon is clicked and closes with
+// another click on it. The pages are drawn from the same place as the mod drew them in the lobby, 100 pixels to the left (x 223) so that the strip (x 315..711, y 158..194) ends before the
+// mod's sash picture (x 725..1197) and the page, when open, covers the buttons' column only while it is open. The buttons are the last of [MainMenu Objects] (on top).
+{
+  const PDm = find(OUT, "patches/DATA/INTERFACE/MENU"), mp = PDm && find(PDm, "MPCHAT.INI"), mm = PDm && find(PDm, "MAINMENU.INI");
+  if (!mp || !mm) { console.error("main menu pages: MPCHAT.INI or MAINMENU.INI is not a patch"); process.exit(1); }
+  const blocks = [...rd(mp).replace(/\r/g, "").matchAll(/^\[(B(?:10|[1-9])CM)\]\n([\s\S]*?)(?=^\[|\s*$(?![\s\S]))/gm)].map(m => ({ name: m[1], body: m[2].trimEnd() }));
+  if (blocks.length !== 10) { console.error(`main menu pages: ${blocks.length} B<n>CM sections in the MPCHAT patch, 10 expected`); process.exit(1); }
+  let t = rd(mm).replace(/\r/g, "").trimEnd();
+  if (/^\[B\d+CM\]/m.test(t)) { console.error("main menu pages: MAINMENU.INI already has B<n>CM"); process.exit(1); }
+  const list = /(^\[MainMenu Objects\]\n(?:[^\[\n][^\n]*\n?)*)/m.exec(t + "\n");
+  if (!list) { console.error("main menu pages: no [MainMenu Objects] list in the MAINMENU patch"); process.exit(1); }
+  t = (t + "\n").replace(list[1], list[1].replace(/\n*$/, "\n") + blocks.map(b => "+" + b.name).join("\n") + "\n").trimEnd();
+  for (const b of blocks) {
+    if (!/^RectWH = 323, 130, 1920,1080$/m.test(b.body)) { console.error(`main menu pages: ${b.name} has not the RectWH the mod gave it`); process.exit(1); }
+    t += `\n[${b.name}]\n${b.body.replace(/^RectWH = 323, 130, 1920,1080$/m, "RectWH = 223, 130, 1920, 1080")}`;
+  }
+  wr(mm, t.replace(/\n/g, "\r\n") + "\r\n");
+  console.log("main menu pages (experiment): B1CM..B10CM added to the MAINMENU patch, closed (a strip of ten icons) until one is clicked");
+}
 // WHERE MENU PATCHES GO. The engine applies a patch only if its path is exactly the one the game opens (src/mods/patch.cpp PatchApply(rel); the key is the lower-case path under patches/),
 // and the game opens the menu INIs as menuini/<name>.ini (seen in the maintainer's game log of Mediterranevm 3.6: "menuini/mainmenu.ini, mpgamemenu.ini, settings.ini applied"), not as
 // data/interface/menu/<name>.ini: a patch at patches/DATA/INTERFACE/MENU/ was never applied except template.ini, which the engine opens, and patches, under both names. Every skin patch goes to
