@@ -236,7 +236,10 @@ const KNOWN = classTable([HD_CLASSES, find(OUT, "DATA/CLASSES")]);     // every 
     for (const [k, v] of Object.entries(j.alias.classes)) for (const o of new Set([k, k[0] === c.baseLetter && !mod.has(k) && mod.has(k.slice(1)) && !hdClass.has(k.toLowerCase()) ? k.slice(1) : k])) { const l = o.toLowerCase(); if (!heirOf.has(l)) heirOf.set(l, []); if (!heirOf.get(l).includes(v)) heirOf.get(l).push(v); }
   }
 }
-const RECV = String.raw`(\.|(?:[A-Za-z_]\w*(?:\[[^\]]*\])?(?:\(\))?\.)+)`;
+// The receiver of IsHeirOf: a chain of names (`Units[i].`, `owner.AsUnit.`) WITH the leading dot of a receiver-less chain (`.Units[i].IsHeirOf`), or the bare dot (`.IsHeirOf`). The leading dot has to be
+// inside the match: a match that started after it (the first version) wrote `.(Units[i].IsHeirOf("CMacemen") || ...)`, the dot outside the parenthesis, which does not compile ("Identifier expected after .",
+// found in game 2026-11-02, outpost_idle_cm.vs line 86). The lookbehind keeps a match from starting in the middle of a name.
+const RECV = String.raw`(?<![\w\]])(\.?(?:[A-Za-z_]\w*(?:\[[^\]]*\])?(?:\(\))?\.)+|\.)`;
 const heirTests = text => text
   .replace(new RegExp(`${RECV}IsHeirOf\\("(\\w+)"\\)`, "g"), (m, r, id) => {
     const c = heirOf.get(id.toLowerCase()); if (!c) return m;
@@ -717,6 +720,10 @@ if (fs.existsSync(EXTRAS)) for (const f of walk(EXTRAS)) { if (f === "NOTES.md")
       patchesChecked++;
     }
   }
+  // (d) the damage a text rewrite can do (tools/lib/community-dots.js): a `.` that is not followed by a name, and every changed line of a copy compared with the line of the mod's script it came from
+  { const r = require("./lib/community-dots.js").scan({ OUT, HD: HDDATA, applyPatch, pristineFor, added: [/^\s*if\(!b\.IsValid\(\)\) return;\s*$/] });
+    console.log(`rewrite damage: ${r.scanned} scripts scanned for a dot not followed by a name: ${r.dots.length} hits; ${r.compared} copies compared line by line with their source: ${r.changed} changed lines, ${r.problems.length} problems; ${r.notAligned.length} not aligned (another number of lines: only the dot scan)${r.notAligned.length ? "\n  not aligned: " + r.notAligned.join("; ") : ""}`);
+    problems.push(...r.dots.map(d => "a dot not followed by a name: " + d), ...r.problems); }
   // (c) over what is generated: the port's scripts and the patches
   const sources = [];
   for (const dir of ["SUBAI", "ITEMSCRIPTS", "ESPECIALIDADES", "RANGOS", "AI"]) { const d = find(OUT, `DATA/${dir}`); if (d) for (const f of fs.readdirSync(d).filter(vs)) sources.push([`DATA/${dir}/${f}`, rd(path.join(d, f))]); }
