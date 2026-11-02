@@ -878,6 +878,15 @@ for (const f of walk(OUT).filter(f => /(^|\/)(\.fingerprint|desktop\.ini|thumbs\
   console.log(`global: ${base.length} base classes (inside the clones), ${other.length} classes no clone took -> raw/caesar-mod-civs-global.md`);
 }
 
+// 12b. Scopes: a local declared in a block and used after it closes stops the script in the game (tools/lib/caesar-scopes.js; HD's own 585 scripts have none). The build stops.
+{
+  const { scopeProblems } = require("./lib/caesar-scopes.js"), vocab = require("./lib/caesar-names.js").gameVocabulary(process.env.SDK);
+  const bad = []; let n = 0;
+  for (const f of walk(path.join(OUT, "DATA")).filter(f => /\.vs$/i.test(f) && !/^TUTORIALS\//i.test(f))) { n++; for (const p of scopeProblems(rd(path.join(OUT, "DATA", f)), vocab ? vocab.types : new Set())) bad.push(`DATA/${f}: "${p.name}" used at line ${p.line}, declared (line ${p.declaredAt}) in a block that is closed`); }
+  console.log(`scopes: ${n} scripts of the port read, ${bad.length} locals used outside the block that declares them${vocab ? "" : " (sdk/game-functions.txt not found: the types are the basic ones)"}`);
+  if (bad.length) { console.error(`SCOPE CHECKS FAILED (${bad.length}):\n  ${bad.slice(0, 40).join("\n  ")}`); process.exit(1); }
+}
+
 // 13. The NAMES the scripts use (tools/lib/caesar-names.js, the Greek 2.x's checker with two fixes): a script, an order, a research or an identifier that exists nowhere stops that
 // script in the game ("No matching function with name X"). A call to something that exists nowhere stops the build.
 {
