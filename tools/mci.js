@@ -29,6 +29,7 @@ const SCRATCH = path.join(ROOT, ".scratch"), SRC = path.join(SCRATCH, "mci-src")
 const ZIP = path.join(ROOT, "originals", "forum", "t262", "files", "MOD Comunidad Imperivm 9.0.zip");
 const HD = path.join(ROOT, "originals", "game-data", "paks"), HDDATA = path.join(ROOT, "originals", "game-data", "DATA");
 const TAG = "mci";
+const decodeText = b => { const u = b.toString("utf8"); return u.includes("\ufffd") ? b.toString("latin1") : u; };
 const rd = f => fs.readFileSync(f, "latin1"), wr = (f, s) => { fs.mkdirSync(path.dirname(f), { recursive: true }); fs.rmSync(f, { force: true }); fs.writeFileSync(f, s, "latin1"); };
 const classOf = s => (s.match(/<class\b[^>]*?\bid\s*=\s*"([^"]+)"/) || [])[1];
 const walk = (d, base = d, out = []) => { if (!fs.existsSync(d)) return out; for (const e of fs.readdirSync(d, { withFileTypes: true })) { const p = path.join(d, e.name); if (e.isDirectory()) walk(p, base, out); else out.push(path.relative(base, p).replace(/\\/g, "/")); } return out; };
@@ -357,11 +358,11 @@ const report = [], patches = [];
 // Not shipped (NOTES.md says why, and the build writes the list in raw/mci-left-out.txt):
 //  - the game modes (6 Destruccion, 9 Portuacion, 10 Zona teutona) and the starting bonuses (004 Wealth, 005 People) the mod adds: its co-author's code, with numbers the
 //    4.2's modes and bonuses also take, and none belongs to a civilization; the bonuses' lobby list (MPGAMEMENU.INI) and pictures (UI/MENU/BONUSES, FOOD, PEOPLE) go with them
-//  - the mod's Spanish help and tips tables (local/spanish/HELP.XML, TIPS.XML) and its loc/spanish.loc.xml: text tables translate the game for everybody; the maintainer decided
-//    to leave them out (the entries for the mod's own orders and items are counted in NOTES.md)
+//  - the mod's Spanish help and tips tables (local/spanish/HELP.XML, TIPS.XML): the maintainer decided to leave them out. Its loc/spanish.loc.xml is NOT shipped as it is (it changes
+//    10 of the game's own texts for everybody and repeats 20): step 7b ships only the keys the game's table does not have, written again for the clones
 //  - the three videos (movies/), the editor's item combo list (DATA/INTERFACE/COMBO/ITEMICONS.INI, which HD does not read)
 const notShipped = [];
-for (const d of ["DATA/GAMESCRIPTS", "DATA/BONUSSCRIPTS", "DATA/INTERFACE", "movies", "loc", "local"]) { const p = find(OUT, d); if (p) { for (const f of walk(p)) notShipped.push(`${d}/${f}`); fs.rmSync(p, { recursive: true, force: true }); } }
+for (const d of ["DATA/GAMESCRIPTS", "DATA/BONUSSCRIPTS", "DATA/INTERFACE", "movies", "loc", "local"]) { const p = find(OUT, d); if (p) { for (const f of walk(p)) notShipped.push(d === "loc" ? `${d}/${f} (only the keys HD's table lacks are shipped again: step 7b, raw/mci-texts.txt)` : `${d}/${f}`); fs.rmSync(p, { recursive: true, force: true }); } }
 // The menu skin: the three pictures of CURRENTLANG are written back at the end of step 6 (the steps that compare files with the game's would remove them); the top bar's
 // UI/MENU/*.bmp are the bonuses' (above) and the game's names
 for (const f of walk(OUT).filter(f => /^(CURRENTLANG\/[^/]+\.bmp|UI\/MENU\/[^/]+)$/i.test(f))) { if (!/^CURRENTLANG\//i.test(f)) notShipped.push(f + " (menu picture of the bonuses)"); fs.rmSync(path.join(OUT, f)); }
@@ -631,6 +632,60 @@ if (fs.existsSync(EXTRAS)) for (const f of walk(EXTRAS)) { if (f !== "mod.json")
   }
   console.log(`${dups.length} pairs of files whose names differ only by case: ${report2.join("; ") || "none"}`);
 }
+// 7b. The mod's texts (tools/lib/mci-texts.js). The mod's loc/spanish.loc.xml (port-140.js: its entries that differ from HD's table) is shipped only for the keys the game's Spanish table
+// (GAME.LOC.XML and TRANSLATION.LOC.XML) does NOT have, so nothing of the game's own text changes; the 10 that change HD's and the 20 that repeat it are not shipped. Only the Spanish
+// table exists in the mod, and that is what is shipped: English needs no file (the key is the English text), and the 1.8 does not copy its Spanish text into languages the mod has no
+// table for either (it ships an Italian table because the mod has one). An entry whose context is the name of an order or a class the clone step renamed is written again for each
+// clone's (the rule of tools/greek-1-8-civs.js, extended to the class names `<display_name>@<id> class name`). Then every text the port's classes, orders and items name is looked up.
+{
+  const T = require("./lib/mci-texts.js"), HDL = path.join(ROOT, "originals", "game-data", "local-spanish", "CURRENTLANG");
+  const hdKeys = T.tableKeys(["GAME.LOC.XML", "TRANSLATION.LOC.XML"].map(f => path.join(HDL, f)));
+  const srcLoc = path.join(PRISTINE, "loc", "spanish.loc.xml");
+  if (!hdKeys.size || !fs.existsSync(srcLoc)) { console.error("texts: HD's Spanish table (originals/game-data/local-spanish) or the mod's table is missing"); process.exit(1); }
+  const mod = T.entries(decodeText(fs.readFileSync(srcLoc))), parts = T.split(mod, hdKeys);
+  // old name -> the names it became (the final ones: tagNames already ran on civs/*.json), for orders; old id -> new ids, for classes
+  const modIds = new Set(walk(path.join(PRISTINE, "DATA", "CLASSES")).filter(f => /\.sc\.xml$/i.test(f)).map(f => classOf(rd(path.join(PRISTINE, "DATA", "CLASSES", f)))).filter(id => id && !hdClass.has(id.toLowerCase())));
+  const cmdMap = new Map(), clsMap = new Map(), inv = { cmd: new Map(), cls: new Map() }, push = (m, k, v) => { k = k.toLowerCase(); const a = m.get(k) || m.set(k, []).get(k); if (!a.includes(v)) a.push(v); };
+  for (const c of CIVS) {
+    const j = readJson(path.join(OUT, "civs", `${c.id}.json`));
+    for (const [o, n] of Object.entries(j.alias.commands || {})) { for (const k of new Set([o, o.replace(/ \(mci\)$/, "")])) push(cmdMap, k, n); inv.cmd.set(n.toLowerCase(), o.replace(/ \(mci\)$/, "")); }
+    for (const [o, n] of Object.entries(j.alias.classes || {})) {
+      for (const k of new Set([o, o[0] === c.baseLetter && modIds.has(o.slice(1)) && !hdClass.has(o.slice(1).toLowerCase()) ? o.slice(1) : o])) push(clsMap, k, n);
+      inv.cls.set(n.toLowerCase(), o);
+    }
+  }
+  // the orders tagCollisions/tagNames renamed that the clones do not carry (the neutral classes' orders): "<name> (mci)"
+  const sharedFile = path.join(ROOT, "raw", "mci-shared-names.txt");
+  for (const l of fs.existsSync(sharedFile) ? rd(sharedFile).split("\n") : []) { const [k, n] = l.split("\t"); if (k === "order" && n && !cmdMap.has(n.toLowerCase())) push(cmdMap, n, `${n} (${TAG})`); }
+  for (const f of walk(path.join(OUT, "DATA", "CLASSES")).filter(f => /\.sc\.xml$/i.test(f))) { const id = classOf(rd(path.join(OUT, "DATA", "CLASSES", f))); if (id && id.endsWith(`_${TAG}`) && modIds.has(id.slice(0, -TAG.length - 1))) push(clsMap, id.slice(0, -TAG.length - 1), id); }
+  const rw = T.rewrite(parts.fresh, { commands: cmdMap, classes: clsMap });
+  const shipped = new Set(rw.log.flatMap(l => l.to));
+  const inHd = [...shipped].filter(k => hdKeys.has(k));
+  if (inHd.length) { console.error("texts: shipped keys that the game's table already has: " + inHd.slice(0, 5).join(" | ")); process.exit(1); }
+  fs.mkdirSync(path.join(OUT, "loc"), { recursive: true });
+  fs.rmSync(path.join(OUT, "loc", "spanish.loc.xml"), { force: true }); fs.writeFileSync(path.join(OUT, "loc", "spanish.loc.xml"), T.fileText(rw.entries), "utf8");
+  // every text the port names
+  const own = T.scanKeys([path.join(OUT, "DATA"), path.join(OUT, "patches", "DATA")]), have = k => hdKeys.has(k) || shipped.has(k);
+  const baseKey = k => { let m = /^(.*)@(.+?)( class name| class name plural)$/.exec(k); if (m && inv.cls.has(m[2].toLowerCase())) return `${m[1]}@${inv.cls.get(m[2].toLowerCase())}${m[3]}`; m = /^(.*)@([^@]+)$/.exec(k); return m && inv.cmd.has(m[2].toLowerCase()) ? `${m[1]}@${inv.cmd.get(m[2].toLowerCase())}` : null; };
+  const kinds = {}, listed = [];
+  for (const u of own) {
+    const st = have(u.key) ? "resolved" : (() => { const b = baseKey(u.key); return b && (have(b) || hdKeys.has(b)) ? "clone: the table has it under the original name" : "no entry (shows the English)"; })();
+    const k = kinds[u.kind] ||= {}; k[st] = (k[st] || 0) + 1;
+    if (st !== "resolved") listed.push(`${st}\t${u.kind}\t${u.file}\t${u.key}`);
+  }
+  const hdOwn = T.scanKeys([HDDATA]), hdBad = hdOwn.filter(u => !hdKeys.has(u.key)).length;
+  fs.mkdirSync(path.join(ROOT, "raw"), { recursive: true });
+  fs.writeFileSync(path.join(ROOT, "raw", "mci-texts.txt"), [
+    `# the mod's table: ${mod.length} entries that differ from HD's GAME.LOC.XML; against GAME + TRANSLATION: ${parts.fresh.length} keys HD lacks, ${parts.same.length} repeat HD's, ${parts.override.length} change HD's own text`,
+    "# SHIPPED (loc/spanish.loc.xml): before -> after the rewrite for the clones", ...rw.log.map(l => l.why ? `${l.why}\t${l.from}\t->\t${l.to.join(" | ")}` : `as is\t${l.from}`),
+    "# NOT SHIPPED: change the game's own text", ...parts.override.map(e => `${e.key}\t=> ${e.result}`),
+    "# NOT SHIPPED: repeat the game's", ...parts.same.map(e => e.key),
+    "# TEXTS THE PORT NAMES THAT THE TABLES DO NOT RESOLVE (kind, file, key)", ...listed.sort(),
+  ].join("\n") + "\n");
+  const summary = Object.entries(kinds).sort().map(([k, v]) => `${k}: ${Object.entries(v).map(([s2, n]) => `${n} ${s2}`).join(", ")}`).join("; ");
+  console.log(`texts: ${mod.length} entries of the mod differ from HD's; ${parts.fresh.length} keys HD lacks -> ${rw.entries.length} entries shipped (${rw.log.filter(l => l.why).length} rewritten for the clones), ${parts.same.length} repeat HD's and ${parts.override.length} change HD's own text: not shipped; shipped keys that HD's table has: 0`);
+  console.log(`texts the port names (${own.length}): ${summary}; the game's own files against its own table: ${hdOwn.length - hdBad}/${hdOwn.length} resolve`);
+}
 // 8. Offline checks of every script this build writes (nothing compiles them but the game, and a patch of the game's own that does not compile stops that script for EVERY
 // civilization). The build stops on a problem.
 //   (a) each copy / rewritten script has the parens, braces and brackets of the mod's script it comes from (comments and strings out), and no Mod_TrueRace without an object
@@ -718,7 +773,7 @@ if (fs.existsSync(EXTRAS)) for (const f of walk(EXTRAS)) { if (f !== "mod.json")
   {
     const have = walk(OUT).map(f => f.toLowerCase()), bad = [];
     for (const f of have) {
-      if (/^currentlang\/[^/]+\.loc\.xml$/.test(f) || (/^(loc|local)\//.test(f) && /\.xml$/.test(f))) bad.push(`${f}: a text table must not ship`);
+      if (/^currentlang\/[^/]+\.loc\.xml$/.test(f) || (/^local\//.test(f) && /\.xml$/.test(f)) || (/^loc\//.test(f) && f !== "loc/spanish.loc.xml")) bad.push(`${f}: a text table must not ship`);
       if (/^data\/interface\//.test(f)) bad.push(`${f}: no menu INI is approved for this mod`);
       if (/^movies\//.test(f)) bad.push(`${f}: the videos are left out`);
       if (/^(data\/gamescripts|data\/bonusscripts)\//.test(f)) bad.push(`${f}: the game modes and bonuses are left out`);
