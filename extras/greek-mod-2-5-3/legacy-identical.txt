@@ -1,4 +1,4 @@
-# Greek Mod 2.5.3: files new or changed against the 2.3 and byte-identical to a file of Imperivm Legacy 2.4.1 (loose files only: the sprites in rle.mmp were not compared)
+# Greek Mod 2.5.3: files new or changed against the 2.3 and byte-identical to a file of Imperivm Legacy 2.4.1 (loose files only: the sprites in rle.mmp were not compared). They SHIP, by permission (granted to the maintainer by the authors, per the maintainer 2026-11-02: Nicoghiro31 and Gargolus for Legacy's assets, the Greek Team / MediterranevmTeam for the mod). Documentation only: no build reads this list (tools/greek-2x-legacy.js writes it).
 DATA/AI/_TEUTON/AI.INI
 DATA/AI/_TEUTON/ES_OUTPOSTARMY.VS
 DATA/AI/_TEUTON/GETARMYNEED.VS
