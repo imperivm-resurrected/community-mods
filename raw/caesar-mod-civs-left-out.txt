@@ -1882,15 +1882,14 @@ DATA/SUBAI/UNIT_BUILD_CATAPULT.VS: hunk at line 7 left out (it edits the game's 
 DATA/SUBAI/UNIT_BUILD_CATAPULT.VS: hunk at line 9 left out (it edits the game's lines): if (.IsValid)
 DATA/SUBAI/UNIT_BUILD_CATAPULT.VS: hunk at line 12 left out (it edits the game's lines): catap = other.AsCatapult();
 DATA/SUBAI/UNIT_CAPTURE.VS: hunk at line 1 left out (it edits the game's lines): //void, Obj This, Obj target
-DATA/SUBAI/UNIT_CAPTURE.VS: hunk at line 3 left out (it edits the game's lines): if (target.IsValid) {
-DATA/SUBAI/UNIT_CAPTURE.VS: hunk at line 29 left out (it edits the game's lines): this = This.AsUnit();
+DATA/SUBAI/UNIT_CAPTURE.VS: hunk at line 20 left out (not Greek): if (target.IsValid) {
+DATA/SUBAI/UNIT_CAPTURE.VS: hunk at line 22 left out (it edits the game's lines): this = This.AsUnit();
 DATA/SUBAI/UNIT_CAPTURE.VS: hunk at line 45 left out (it edits the game's lines): if (.IsValid)
 DATA/SUBAI/UNIT_CAPTURE.VS: hunk at line 58 left out (not Greek): w = target.AsWagon();
 DATA/SUBAI/UNIT_CAPTURE.VS: hunk at line 60 left out (it edits the game's lines): while (w.IsAlive) {
 DATA/SUBAI/UNIT_CAPTURE.VS: hunk at line 86 left out (it edits the game's lines): else if (target.IsHeirOf("WildHorse"))
-DATA/SUBAI/UNIT_CAPTURE.VS: hunk at line 125 left out (it edits the game's lines): 
-DATA/SUBAI/UNIT_CAPTURE.VS: hunk at line 138 left out (it edits the game's lines): 
-DATA/SUBAI/UNIT_CAPTURE.VS: hunk at line 202 left out (it edits the game's lines): Sleep(30);//prevent possible loops with other commands
+DATA/SUBAI/UNIT_CAPTURE.VS: hunk at line 102 left out (it edits the game's lines): 
+DATA/SUBAI/UNIT_CAPTURE.VS: hunk at line 140 left out (it edits the game's lines): Sleep(30);//prevent possible loops with other commands
 DATA/SUBAI/UNIT_CAPTURE_VERIFY.VS: hunk at line 2 left out (it edits the game's lines): 
 DATA/SUBAI/UNIT_CAPTURE_VERIFY.VS: hunk at line 7 left out (it edits the game's lines): if (.AsUnit().IsValid)
 DATA/SUBAI/UNIT_CAPTURE_VERIFY.VS: hunk at line 13 left out (it edits the game's lines): if (other.IsHeirOf("WildHorse"))

@@ -443,6 +443,18 @@ console.log(`other ports compared: ${PORTS.length} (${REQUIRED_PORTS.filter(n =>
   for (const c of r.done) console.log(`conquest ${c.from} -> ${c.to} (${c.folder})`);
   if (r.problems.length) { console.log("conquests, to check:\n  " + r.problems.join("\n  ")); report.push(...r.problems); }
 }
+// The shields of a conquest are read from ITS folder, by territory id (CConquestMapData::LoadShieldImages: "%s/Shield%s.bmp", and ShieldArrow.bmp: decompiled 00500e50, 006c9220), not
+// from the game's. The mod's Mediterranean folder was only what it changed (3 shields, in the game's own folder they added to the game's); renamed, the folder lacks the others. They are
+// copied from the game's folder (the CGWAR does the same): every Shield<id>.bmp of the territories the conquest declares, and ShieldArrow.bmp.
+{
+  const cmDir = find(OUT, "ConquestMaps"), gm = find(GD, "ConquestMaps/1 - GBR europe"), copied = [];
+  for (const d of cmDir ? fs.readdirSync(cmDir, { withFileTypes: true }).filter(e => e.isDirectory()).map(e => e.name) : []) {
+    const dir = path.join(cmDir, d), tx = find(dir, "territories.xml"); if (!tx || !gm) continue;
+    const ids = [...rd(tx).matchAll(/<territory\s+id="([^"]+)"/g)].map(m => m[1]);
+    for (const n of [...ids.map(i => `Shield${i}.bmp`), "ShieldArrow.bmp"]) { if (find(dir, n)) continue; const g = find(gm, n); if (g) { fs.copyFileSync(g, path.join(dir, n)); copied.push(`${d}/${n}`); } else report.push(`ConquestMaps/${d}: ${n} is not in the folder and the game has none`); }
+  }
+  console.log(`conquest shields copied from the game's folder: ${copied.length}${copied.length ? " (" + copied.join(", ") + ")" : ""}`);
+}
 // names another mod of ours (or the game's own adventures) already has with other bytes: this port's are renamed
 {
   const { tagCollisions } = require("./lib/ported-patch.js");
