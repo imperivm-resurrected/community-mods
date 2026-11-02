@@ -147,6 +147,8 @@ None known: `docs/MODS.md` lists no map that `requires` `greek-mod-2-5-3`. Out o
 
 What the 2.3's test found and this build already carries: the `OUTPOST_IDLE.vs` patch and the other patches are applied to HD's scripts with the engine's algorithm and compared (`tools/lib/ported-patch.js`, `tools/lib/script-patch.js`); every hero base has an entity (`GetRandomHeroClass`); `ARENA_HIREHERO.VS` places a hero for every clone (`tools/lib/own-scripts.js`); the barracks exit point. See the 2.3's *In game*.
 
+**After the permission (2026-11-02), not tried in game:** the 16 files identical to Imperivm Legacy's now ship. Against the folder the maintainer installed before: +12 files (550.3 KB), 9 changed (the commands that name `CARNYX.BMP` and the Chief's icons, which now resolve to the file instead of the placeholder; the renamed `_w25` pictures of the Numidian horseman) and 2 removed (renamed `_w25`). Which pictures and sounds look or sound different in game was not checked.
+
 ## Pending: independence
 
 - `currentlang/*.bmp` menu skin with the other Greek mods: cosmetic.
