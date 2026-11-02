@@ -310,6 +310,8 @@ const report = [], patches = [];
   //  - Currentlang/{MenuBackground,Logo,AdventureDefault}.bmp: whole files at the game's paths (only one skin shows; the content manager lets the player choose). Checked: all three differ from the game's, none is a text table.
   //  - DATA/INTERFACE/MENU/*.ini: a patch of only the keys the mod changed (tools/lib/menu-skin.js, as the 4.2, the 1.8 and the 2.x ports do): the skin moves every menu panel to a 1920x1080 layout, so
   //    all 13 MENU files that differ from the game's are the skin's (MAINMENU.INI and TEMPLATE.INI place the logo, the buttons and the panel; the others follow them). The 13 others are the game's byte for byte (shrink-mod.js dropped them).
+  // the LISTS of bare names (what a menu shows: [MainMenu Objects] Caption, IniBackFrame, ...) are read BEFORE skinToPatches removes the mod's whole file (tools/lib/menu-lists.js; the 3.6 is made from HD's files: 2-way)
+  const MENU_LISTS = require("./lib/menu-lists.js").skinLists({ OUT, HD });
   const nSkin = require("./lib/menu-skin.js").skinToPatches({ OUT, HD });
   console.log(`menu skin: ${nSkin} layout files became patches of the keys they changed; Currentlang/*.bmp stay`);
   // the validator warns (and the SDK says) that the engine does not strip a comment at the end of a key line ("Button12Rect = ... %ButtonHeight% ;Start estrategia"): in the patches the comments are dropped, the values stay
@@ -330,6 +332,9 @@ const report = [], patches = [];
     }
     if (from && !fs.readdirSync(from).length) fs.rmSync(from, { recursive: true });
     console.log(`menu skin: ${moved} patches placed at patches/menuini/ (the path the game opens), the template also at patches/DATA/INTERFACE/MENU/`); }
+  // ... and put into the same patches/menuini/<name>.ini: "-line" for every line of the game's list, "+line" for every line of the mod's, in the mod's order (sdk/patches.md)
+  { const nl = require("./lib/menu-lists.js").addLists({ OUT, lists: MENU_LISTS });
+    console.log(`menu skin: ${nl} menu INIs have a changed list of names: ${[...MENU_LISTS].map(([f, l]) => `${f} [${l.map(x => x.sec).join(", ")}]`).join("; ") || "none"}`); }
   // GLOBAL, reason 2: the rest of DATA/INTERFACE is not the menu skin: the in-game command bars and info bar of the game's own civilizations (the engine reads them by path) and the editor's unit combo. They would change the game's own civilizations.
   for (const f of walk(OUT)) if (/^DATA\/INTERFACE\/(CMDBAR|INFOBAR|EDITOR)\//i.test(f)) { fs.rmSync(path.join(OUT, f)); left.push(f + " (global, reason 2: in-game bar / editor INI the engine reads by path; not the menu skin)"); }
   for (const f of walk(OUT)) {
