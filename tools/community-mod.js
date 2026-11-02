@@ -335,7 +335,7 @@ fs.mkdirSync(path.join(ROOT, "raw"), { recursive: true });
 // The menu skin (AGENTS.md: the one cosmetic exception). Its art stays at the game's paths (UI/INTERFACE/MenuMod*.bmp, UI/MENU/*.bmp, Currentlang/ConquestDefault.bmp...); the INIs
 // that PLACE that art become patches of only the keys they changed (tools/lib/menu-skin.js). The INIs that only move buttons and chat boxes (no art) are left out.
 {
-  const MENU = find(OUT, "DATA/INTERFACE/MENU"), ART = /^(MAINMENU|MENUBACK|TEMPLATE|CONQUESTGAME|CONQUESTMENU|MPGAMEMENU|MPMENU|PREADVENTUREMENU|PROFILE)\.INI$/i, out = [];
+  const MENU = find(OUT, "DATA/INTERFACE/MENU"), ART = /^(MAINMENU|MENUBACK|TEMPLATE|CONQUESTGAME|CONQUESTMENU|MPGAMEMENU|MPMENU|PREADVENTUREMENU|PROFILE|MPCHAT)\.INI$/i, out = [];   // MPCHAT: its buttons B1CM..B10CM show the lobby information pages (Local/<language>/UI/MENU/B1F..B10F.BMP)
   for (const f of MENU ? fs.readdirSync(MENU) : []) if (!ART.test(f)) { fs.rmSync(path.join(MENU, f)); out.push(f); }
   // The patch of each INI: the keys it changed (iniChanged) plus, for every section whose LIST of bare names differs from the game's, -line for every line of the game's list and +line
   // for every line of the mod's, in the mod's order (sdk/patches.md: "+Line adds a bare line if it isn't there", "-Line removes the line that is exactly that text"). The rule of
@@ -570,7 +570,11 @@ if (fs.existsSync(EXTRAS)) for (const f of walk(EXTRAS)) { if (f === "NOTES.md")
 {
   const dir = find(OUT, "patches/DATA/INTERFACE/MENU"); let n = 0;
   for (const f of dir ? fs.readdirSync(dir) : []) { const p = path.join(dir, f), s = rd(p), t = s.replace(/^(\s*[^;=\s\[][^=\r\n]*=[^;\r\n]*?)[ \t]+;[^\r\n]*$/gm, "$1"); if (t !== s) { wr(p, t); n++; } }
-  console.log(`menu skin patches: end-of-line comments cut in ${n} files`);
+  // the lobby information pages: the mod's MPCHAT.INI says `Image = %MenuRes%/B1F.bmp`, the game's UI/MENU. The pages are in each language (the texts are translated), so they go under
+  // Local/<language>/UI/MENU/ (= currentlang/UI/MENU/, the folder of the language the player chose) and the patch names that path (as MENUBACK.INI names CurrentLang/MenuBackground.bmp)
+  let pg = 0;
+  for (const f of dir ? fs.readdirSync(dir) : []) { const p = path.join(dir, f), s = rd(p), t = s.replace(/%MenuRes%\/(B(?:10|[1-9])F\.bmp)/gi, (_m, b) => { pg++; return `CurrentLang/UI/MENU/${b}`; }); if (t !== s) wr(p, t); }
+  console.log(`menu skin patches: end-of-line comments cut in ${n} files; ${pg} page images point to CurrentLang/UI/MENU/`);
 }
 // WHERE MENU PATCHES GO. The engine applies a patch only if its path is exactly the one the game opens (src/mods/patch.cpp PatchApply(rel); the key is the lower-case path under patches/),
 // and the game opens the menu INIs as menuini/<name>.ini (seen in the maintainer's game log of Mediterranevm 3.6: "menuini/mainmenu.ini, mpgamemenu.ini, settings.ini applied"), not as
