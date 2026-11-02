@@ -240,12 +240,12 @@ console.log(`Greece: ${greekIds.size} classes with race "${GREECE}" (${pieces.si
   console.log(`AI: ${newAi.length} helpers the game does not have, declared: ${newAi.join(", ")}`);
 }
 
-// The mod's menu skin (UI/MENU pictures, MENUBACKGROUND, the layout INIs of DATA/INTERFACE/MENU) is not ported: AGENTS.md lets a skin ship only with the maintainer's say, and a
-// layout patch without its pictures (or the other way round) breaks the menus. The editor's lists (DATA/INTERFACE/EDITOR) stay (step 7). A question in the PR.
+// The mod's menu skin (maintainer's decision, 2026-11-02: ship it under the cosmetic exception of AGENTS.md): the INIs become patches at the end (step 10b, from the mod's own files in
+// the zip, not from what port-140.js merged), the pictures of UI/MENU stay at the game's paths. What port-140.js merged of the menu INIs is not used: it goes.
 {
   let n = 0;
-  for (const rel of ["UI/MENU", "DATA/INTERFACE/MENU", "CURRENTLANG"]) { const p = find(OUT, rel); if (p) { n += walk(p).length; fs.rmSync(p, { recursive: true, force: true }); } }
-  console.log(`menu skin: ${n} files not shipped (UI/MENU, DATA/INTERFACE/MENU)`);
+  for (const rel of ["DATA/INTERFACE/MENU", "CURRENTLANG"]) { const p = find(OUT, rel); if (p) { n += walk(p).length; fs.rmSync(p, { recursive: true, force: true }); } }
+  console.log(`menu skin: ${n} merged files of DATA/INTERFACE/MENU left out (the skin is written from the mod's own files, step 10b)`);
 }
 
 const OWN_COPIED = new Set();
@@ -268,7 +268,7 @@ const OWN_COPIED = new Set();
 {
   const GREEK = /Greece|Greek|\bH[A-Z][a-z]|trainH\b|Athena|Aegle|Zeus|Circe|Hecate|Olympic|KAresGuard|Ares/;
   const { gameFilesToPatches } = require("./lib/independent.js");
-  const r = gameFilesToPatches({ OUT, HD, GREEK, keep: /^$/ });
+  const r = gameFilesToPatches({ OUT, HD, GREEK, keep: /^ui\/menu\//i });   // the skin's pictures: whole files at the game's paths, the one cosmetic exception (case-insensitive: the names are UPPERCASE)
   console.log(`game files: ${r.patches.length} became patches, ${r.dropped.length} left out`);
   fs.writeFileSync(path.join(ROOT, "raw", "caesar-mod-civs-left-out.txt"), r.dropped.join("\n") + "\n\n" + r.report.join("\n") + "\n");
 }
@@ -543,6 +543,60 @@ console.log(`other ports compared: ${PORTS.length} (${REQUIRED_PORTS.filter(n =>
   }
   for (const f of ["Local/spanish.pak", "Movies/Intro.avi"]) { const p = find(OUT, f); if (p) fs.rmSync(p); }
   console.log(`Local/: \n  ${lines.join("\n  ")}`);
+}
+
+// 10b. The menu skin. INIs: patches (tools/lib/caesar-menu.js: 3-way against the 1.40 for the keys, the mod's lists, section by section, verified), from the mod's own files (STAGE, the zip's
+// DATA untouched). Pictures: UI/MENU/* of the zip that differ from the game's bytes (the game's own are left out), whole files.
+{
+  const menu = require("./lib/caesar-menu.js"), BASE = path.join(ROOT, "originals", "game-140", "paks");
+  const r = menu.build({ OUT, HD, BASE, MOD: STAGE });
+  console.log(`menu skin: ${r.written.length} INIs as patches at patches/menuini/ (${r.written.join(", ")}; template.ini also at patches/DATA/INTERFACE/MENU/); not written: ${r.skipped.length}`);
+  if (r.problems.length) { console.error(`MENU SKIN PROBLEMS:\n  ${r.problems.join("\n  ")}`); process.exit(1); }
+  fs.writeFileSync(path.join(ROOT, "raw", "caesar-mod-civs-menu-skin.md"), r.report);
+  // pictures
+  const zipUI = find(SRC, "UI/MENU"), hdUI = find(HD, "UI/MENU"), mineUI = find(OUT, "UI/MENU"), same = [], kept = [];
+  for (const f of mineUI ? walk(mineUI) : []) {
+    const h = hdUI && find(hdUI, f);
+    if (h && fs.statSync(h).isFile() && md5(h) === md5(path.join(mineUI, f))) { fs.rmSync(path.join(mineUI, f)); same.push(f); } else kept.push(f);
+  }
+  console.log(`menu skin: ${kept.length} pictures of UI/MENU (the game's bytes left out: ${same.length}; in the zip: ${zipUI ? walk(zipUI).length : 0})`);
+  // every picture the shipped INIs name must be shipped or the game's (a name that resolves nowhere is a blank button)
+  const have = new Set([...walk(OUT), ...walk(HD)].map(f => f.toLowerCase())), missing = [];
+  // pictures the GAME's own menu INIs name and nobody has (MPMENU: `UI/menu/Celtic Kings.bmp`): left alone, as the other broken references of HD
+  const hdOwn = new Set(); for (const f of walk(find(HD, "DATA/INTERFACE/MENU"))) for (const m of rd(path.join(find(HD, "DATA/INTERFACE/MENU"), f)).matchAll(/=\s*((?:UI\/Menu\/|menures\/)[^,\r\n]*?\.bmp)/gi)) hdOwn.add(m[1].replace(/^menures\//i, "UI/MENU/").toLowerCase());
+  for (const f of walk(path.join(OUT, "patches", "menuini"))) for (const m of rd(path.join(OUT, "patches", "menuini", f)).matchAll(/=\s*((?:UI\/Menu\/|menures\/)[^,\r\n]*?\.bmp)/gi)) { const p = m[1].replace(/^menures\//i, "UI/MENU/"); if (!have.has(p.toLowerCase()) && !hdOwn.has(p.toLowerCase())) missing.push(`${f}: ${m[1]}`); }
+  if (missing.length) { console.error(`MENU SKIN: pictures named by its INIs that exist nowhere:\n  ${missing.join("\n  ")}`); process.exit(1); }
+  // each shipped INI applied to the game's: every name a list has is a section, every `Template = %TmplIni%, X` is a section of the template (the game's own dangling ones, MenuTitle and
+  // ThinFrameTitle of the online screens, are the game's and stay)
+  {
+    const hdDir = find(HD, "DATA/INTERFACE/MENU"), hdT = menu.parse(rd(find(hdDir, "TEMPLATE.INI"))), tmpl = menu.parse(menu.apply(rd(find(hdDir, "TEMPLATE.INI")), rd(path.join(OUT, "patches", "menuini", "TEMPLATE.INI"))));
+    const hdDangling = new Set(); for (const f of walk(hdDir)) for (const m of rd(path.join(hdDir, f)).matchAll(/^Template\s*=\s*%TmplIni%,\s*([A-Za-z0-9_]+)/gim)) if (!hdT.has(m[1].toLowerCase())) hdDangling.add(m[1].toLowerCase());
+    const bad = [];
+    for (const f of fs.readdirSync(path.join(OUT, "patches", "menuini"))) {
+      const S = menu.parse(menu.apply(rd(find(hdDir, f)), rd(path.join(OUT, "patches", "menuini", f))));
+      for (const [k, sec] of S) {
+        if (/ objects$/.test(k)) for (const n of sec.list) if (!S.has(n.toLowerCase())) bad.push(`${f} [${sec.name}] names ${n}: no such section`);
+        const t = sec.keys.get("template"), m = t && t.val.match(/^%TmplIni%,\s*([A-Za-z0-9_]+)/);
+        if (m && !tmpl.has(m[1].toLowerCase()) && !hdDangling.has(m[1].toLowerCase())) bad.push(`${f} [${sec.name}] Template ${m[1]}: not in the template`);
+      }
+    }
+    if (bad.length) { console.error(`MENU SKIN: dangling names:\n  ${bad.join("\n  ")}`); process.exit(1); }
+    console.log("menu skin: every list name and template section the patched INIs use exists");
+  }
+  // the conquest screen: where the panel is and what it covers (the maintainer could not select Hellas)
+  const rdI = (d, n) => rd(find(d, `DATA/INTERFACE/MENU/${n}`)), hdI = n => rdI(HD, n), patched = n => menu.apply(hdI(n), rd(path.join(OUT, "patches", "menuini", n)));
+  const MODSKIN = menu.build({ OUT: path.join(SCRATCH, "caesar-menu-asmod"), HD, BASE, MOD: STAGE, conquestPanel: "mod" });
+  const asMod = n => menu.apply(hdI(n), rd(path.join(SCRATCH, "caesar-menu-asmod", "patches", "menuini", n)));
+  const readBmp = p => { const b = fs.readFileSync(p), off = b.readUInt32LE(10), w = b.readInt32LE(18), h = b.readInt32LE(22), H = Math.abs(h), st = Math.ceil(w * 8 / 32) * 4, px = new Map(); for (let y = 0; y < H; y++) { const row = off + (h > 0 ? H - 1 - y : y) * st; for (let x = 0; x < w; x++) { const v = b[row + x]; if (v >= 2 && v <= 9) (px.get(v) || px.set(v, []).get(v)).push([x, y]); } } return px; };
+  const cm = find(OUT, "ConquestMaps");
+  const maps = [["Forge your empire (Caesar)", path.join(cm, find(cm, "1 - GBR Europe (cae)") ? "1 - GBR Europe (cae)" : "", "territories.bmp")], ["Mare Nostrum (Caesar)", path.join(cm, "ConquestRemake (cae)", "territories.bmp")]];
+  const n = menu.conquestNumbers({ readBmp, maps, sizes: [[1920, 1080], [1600, 900], [1366, 768]], layouts: [
+    ["the game's layout (HD)", hdI("CONQUESTGAME.INI"), hdI("TEMPLATE.INI")], ["the mod's layout, as the mod has it", asMod("CONQUESTGAME.INI"), asMod("TEMPLATE.INI")], ["shipped (the mod's, panel moved to the screen's right edge)", patched("CONQUESTGAME.INI"), patched("TEMPLATE.INI")]] });
+  fs.writeFileSync(path.join(ROOT, "raw", "caesar-mod-civs-conquest-layout.md"), `# The conquest screen: what the info panel covers\n\nTerritories are the pixels of each map's territories.bmp (index 9 is Greece); the map control is 1024x768 centered, so it is drawn 1:1. Coverage is the share of the territory's pixels under the frame, the buttons or the shields frame (rectangles evaluated from the INIs by tools/lib/caesar-menu.js).\n\n${n.text}\n`);
+  const g = k => n.cover[k];
+  console.log(`conquest screen, Greek pixels under the panel at 1920x1080 (Forge / Mare Nostrum): game ${g("the game's layout (HD)|Forge your empire (Caesar)|1920x1080")} / ${g("the game's layout (HD)|Mare Nostrum (Caesar)|1920x1080")}, mod's own ${g("the mod's layout, as the mod has it|Forge your empire (Caesar)|1920x1080")} / ${g("the mod's layout, as the mod has it|Mare Nostrum (Caesar)|1920x1080")}, shipped ${g("shipped (the mod's, panel moved to the screen's right edge)|Forge your empire (Caesar)|1920x1080")} / ${g("shipped (the mod's, panel moved to the screen's right edge)|Mare Nostrum (Caesar)|1920x1080")}`);
+  if (MODSKIN.problems.length) console.log("(as-mod build: " + MODSKIN.problems.length + " problems)");
+  fs.rmSync(path.join(SCRATCH, "caesar-menu-asmod"), { recursive: true, force: true });
 }
 
 // 11. hand fixes of this mod (extras/caesar-mod-civs/): mod.json with the credits, the license files
