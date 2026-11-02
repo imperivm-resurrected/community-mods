@@ -14,6 +14,7 @@
 | [`download-discord.js`](../tools/download-discord.js) | Discord attachments → `originals/discord/<channel>/<slug>/` (URLs expire after ~24 h) |
 | [`download-forum.js`](../tools/download-forum.js) | Files behind the live links of rows with no local copy → `originals/forum/<key>/files/`. Mega needs `megadl`; ModDB a browser on CDP port 9333 (Cloudflare). `--force=<keys>` downloads again |
 | [`download-forum-shots.js`](../tools/download-forum-shots.js) | Screenshots in each forum topic's opening post → `originals/forum/t<id>/screenshots/` |
+| [`check-conquests.js`](../tools/check-conquests.js) `<dir>... \| --self-test` | Checks that the `territories.xml` inside each conquest of a port or of `mods/` is whole (it ends in `</conquestmap>`, no NUL bytes); exit 1 if one is damaged |
 | [`check-links.js`](../tools/check-links.js) `[--all]` | Checks the downloads → `raw/links.json` |
 | **Tables** | |
 | [`build-table.js`](../tools/build-table.js) `--force` | First draft of `MODS.md` + `MISSING.md`. Overwrites manual edits: only in a scratch copy |
@@ -46,4 +47,4 @@
 | [`compare-mods.js`](../tools/compare-mods.js) | the Greek mods side by side, to stdout (`> GREEK-MODS.md`, git-ignored) |
 | [`mod-class-diff.js`](../tools/mod-class-diff.js) | What a 1.40 mod changed in the game's classes, by civilization, against the official 1.40 |
 | [`greek-terrains.js`](../tools/greek-terrains.js) | The Greek Mod's terrain layers 41-55 (from the Caesar Mod zip) → `ported/greek-mod-terrains/`; `wrap-map` makes maps painted with them require it |
-| [`hpfs.js`](../tools/hpfs.js) `<map.bfhp> [outDir]` | Lists or extracts a scenario/adventure `.bfhp` (HPFS); as a module, it also rewrites a file in place (any length within its pages) |
+| [`hpfs.js`](../tools/hpfs.js) `<map.bfhp> [outDir]` | Lists or extracts a scenario/adventure `.bfhp` (HPFS); as a module, it also rewrites a file in place (any length within its pages; it throws instead of losing bytes: `hpfs.pad(buf)` makes the container whole pages first) |
