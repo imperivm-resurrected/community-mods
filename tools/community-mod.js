@@ -604,13 +604,27 @@ if (fs.existsSync(EXTRAS)) for (const f of walk(EXTRAS)) { if (f === "NOTES.md")
   if (/^\[B\d+CM\]/m.test(t)) { console.error("main menu pages: MAINMENU.INI already has B<n>CM"); process.exit(1); }
   const list = /(^\[MainMenu Objects\]\n(?:[^\[\n][^\n]*\n?)*)/m.exec(t + "\n");
   if (!list) { console.error("main menu pages: no [MainMenu Objects] list in the MAINMENU patch"); process.exit(1); }
-  t = (t + "\n").replace(list[1], list[1].replace(/\n*$/, "\n") + blocks.map(b => "+" + b.name).join("\n") + "\n").trimEnd();
-  for (const b of blocks) {
-    if (!/^RectWH = 323, 130, 1920,1080$/m.test(b.body)) { console.error(`main menu pages: ${b.name} has not the RectWH the mod gave it`); process.exit(1); }
-    t += `\n[${b.name}]\n${b.body.replace(/^RectWH = 323, 130, 1920,1080$/m, "RectWH = 223, 130, 1920, 1080")}`;
-  }
+  // EXPERIMENT B (one revertable commit, on top of A): the pages are RADIO buttons of one group, so opening one closes the others, and an 11th radio, with no picture, closes them all.
+  // Evidence (imperivm-iii-research, the decompiled engine; gbr.exe style tables at 0x829f00): CUIMenuDialog::OnMessage 0066d490 sends a click of a button whose id is 0x2xxxx to
+  // SetCheckedRadio 0066d410, which gives the clicked button row 1 (SetFrame(1)) and every other CUIButton of the group (id & 0xffffff00) row 0: row 0 is the icon and row 1 the page in the
+  // pictures, as in HD's own RadioBtn2 (Rows = 2). The main menu's OnMessage 006d8590 falls through to it for ids it does not know. TRISTATE (0x10000000) is a CHECKBOX (it flips row 0/1 on each
+  // click: what experiment A used, so the pages were independent); the pages drop it (Style = TRANSPARENT as RadioBtn2). A checked radio stays checked, so closing needs another member:
+  // PageCloser, Id 0x2000B, no Image (UICreateButton: no Image key = a null image; CUIButton::Draw draws nothing without an image; ContainsPoint answers for the whole rectangle), the whole
+  // screen, listed right after CaptionImp: the engine links a new control at the FRONT of its parent's list (CWindow::CWindow 00632880) and the hit test takes the FIRST child from the front
+  // that contains the point (CWindow::FindChildAtPoint 006320f0, OnMouse 00632350): the last control listed is the topmost, the first the lowest. So the closer is above MenuSash, Caption and
+  // CaptionImp (full-rectangle buttons that would otherwise eat the click: the mod's Caption names a picture that does not exist, the sash has no colour key) and below the menu's buttons and the
+  // ten pages, which keep their clicks. The pages' transparent pixels do not contain the point, so a click on the empty background falls through to the closer.
+  const ID = n => `0x2000${n.toString(16).toUpperCase()}`;
+  const closer = [["Type", "Button"], ["Style", "TRANSPARENT"], ["ImageType", "AAAAA"], ["RectWH", "0, 0, %Larghezza%, %Altezza%"], ["Id", ID(11)]].map(([k, v]) => `${k} = ${v}`).join("\n");
+  if (!/^\+CaptionImp$/m.test(list[1])) { console.error("main menu pages: no +CaptionImp in the MAINMENU list to put the closer after"); process.exit(1); }
+  t = (t + "\n").replace(list[1], list[1].replace(/\n*$/, "\n").replace(/^\+CaptionImp$/m, "+CaptionImp\n+PageCloser") + blocks.map(b => "+" + b.name).join("\n") + "\n").trimEnd();
+  t += `\n[PageCloser]\n${closer}`;
+  blocks.forEach((b, i) => {
+    if (!/^RectWH = 323, 130, 1920,1080$/m.test(b.body) || !/^Style = TRISTATE, TRANSPARENT$/m.test(b.body)) { console.error(`main menu pages: ${b.name} has not the RectWH and Style the mod gave it`); process.exit(1); }
+    t += `\n[${b.name}]\n${b.body.replace(/^RectWH = 323, 130, 1920,1080$/m, "RectWH = 223, 130, 1920, 1080").replace(/^Style = TRISTATE, TRANSPARENT$/m, "Style = TRANSPARENT")}\nId = ${ID(i + 1)}`;
+  });
   wr(mm, t.replace(/\n/g, "\r\n") + "\r\n");
-  console.log("main menu pages (experiment): B1CM..B10CM added to the MAINMENU patch, closed (a strip of ten icons) until one is clicked");
+  console.log("main menu pages (experiments A and B): B1CM..B10CM (radio ids 0x20001..0x2000A) and PageCloser (0x2000B, listed after CaptionImp) added to the MAINMENU patch, closed until one is clicked");
 }
 // WHERE MENU PATCHES GO. The engine applies a patch only if its path is exactly the one the game opens (src/mods/patch.cpp PatchApply(rel); the key is the lower-case path under patches/),
 // and the game opens the menu INIs as menuini/<name>.ini (seen in the maintainer's game log of Mediterranevm 3.6: "menuini/mainmenu.ini, mpgamemenu.ini, settings.ini applied"), not as
