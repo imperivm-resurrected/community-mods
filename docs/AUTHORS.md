@@ -56,7 +56,7 @@ Built from the authors in `MODS.md` and a member search of the *Imperivm III Edi
 | Uijiamusu | 2 | ? | — | [Uijiamusu](https://imperivmgbr.foroactivo.com/u3647) | — | Modelo basico [aporte], Sacerdote [aporte] |  |  |
 | nelsonruz | 2 | ? | — | [nelsonruz](https://imperivmgbr.foroactivo.com/u4239) | — | nuevos centinelas, NRMod Centinelas |  |  |
 | Paulus Ludorum | 1 | ? | [paulus_ludorum](https://discord.com/users/1375222359505768489) | — | — | Caesar Mod 1.1.0 | 2026-10-18 (#chat-mapas, DM 2026-10-19) | 🕐 |
-| Nicoghiro31 | 1 | ? | [nicoghiro](https://discord.com/users/468453125603328011) | — | — | Imperivm Legacy 2.4.1 | 2026-10-18 (#chat-mapas, DM 2026-10-19) | 🕐 |
+| Nicoghiro31 | 1 | ? | [nicoghiro](https://discord.com/users/468453125603328011) | — | — | Imperivm Legacy 2.4.1 | 2026-10-18 (#chat-mapas, DM 2026-10-19) | ✅ granted to the maintainer, per the maintainer 2026-11-02 (not an answer in the server) |
 | Rattlesmake | 1 | ? | — | [Rattlesmake](https://imperivmgbr.foroactivo.com/u4902) | — | Greek Civilization Mod v1.8 (his name is also on the Punic Wars, Hannibal, Invaders and *Mare Nostrum* conquest maps inside it) |  |  |
 | Asvr | 1 | ? | [asvr](https://discord.com/users/470660226492792832) | — | — | AsvrMod VI: Wrath of the Gods | 2026-10-18 (#chat-mapas, DM) | ✅ (OK via Shaul R.) |
 | Marwan | 1 | 2010 | — (not in Editores nor Imperivm GBR, searched 2026-10-21) | — | — | RESISTENCIA BRITANA |  |  |
