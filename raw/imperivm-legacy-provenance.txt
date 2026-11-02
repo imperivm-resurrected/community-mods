@@ -1,0 +1,63 @@
+Where the 56 files of the maintainer's lists are (the union of extras/greek-mod-2-5-3/legacy-left-out.txt, 38 files, and extras/greek-mod-2-6-1/legacy-left-out.txt, 55 files; 37 are in both).
+FACTS ONLY. Legacy = the ENG installation of Imperivm Legacy 2.4.1 (Local/spanish and italian differ only in language packs). Mediterranevm 3.6 = the ENG rar only (its loose files and its UI, data, Sounds and Units packs); the ES and ITA rars were not read.
+The sprites inside the rle.mmp of any of the mods were NOT compared.
+
+path in the Greek list	at that path in Legacy 2.4.1?	at that path in Mediterranevm 3.6 ENG
+DATA/AI/TS_IBERIANTACTIC2.VS	yes	loose file, other bytes than Legacy's
+DATA/AI/_TEUTON/AI.INI	yes	loose file, byte-identical to Legacy's
+DATA/AI/_TEUTON/ES_OUTPOSTARMY.VS	yes	loose file, byte-identical to Legacy's
+DATA/AI/_TEUTON/GETARMYNEED.VS	yes	loose file, byte-identical to Legacy's
+DATA/AI/_TEUTON/GS_CAPTURE.VS	yes	loose file, byte-identical to Legacy's
+DATA/AI/_TEUTON/GS_SIEGE.VS	yes	loose file, byte-identical to Legacy's
+DATA/AI/_TEUTON/TSH_HEROSKILLS.VS	yes	loose file, byte-identical to Legacy's
+DATA/SUBAI/DRUID_REVITALIZE_GROUND.VS	yes	loose file, other bytes than Legacy's
+DATA/SUBAI/HDRUID_ADVANCE.VS	no; the same bytes as DATA/SUBAI/BDRUID_ADVANCE.VS of Legacy (the Greek tool compares at any path)	no file; DATA/SUBAI/BDRUID_ADVANCE.VS in Mediterranevm 3.6 ENG: no file
+SOUNDS/EFFECTS/STAMINA_BOOST.WAV	yes	no file
+SOUNDS/NOTIFICATIONS/TOWNHALL REFRESHMENT.WAV	yes	loose file, byte-identical to Legacy's
+UI/CMDBAR/ACTIONS/HIRE CHORSEMAN.BMP	yes	no file
+UI/CMDBAR/ACTIONS/HIRE HEROM.BMP	yes	loose file, byte-identical to Legacy's
+UI/CMDBAR/ACTIONS/HIRE HEROR.BMP	yes	loose file, byte-identical to Legacy's
+UI/CMDBAR/ACTIONS/HOVER.BMP	yes	loose file, other bytes than Legacy's
+UI/CMDBAR/ACTIONS/IMPERIAL TRAINING.BMP	yes	loose file, byte-identical to Legacy's
+UI/CMDBAR/ACTIONS/INVISIBILITY.BMP	yes	only as a file of its pack that is byte-identical to the game's own file; Legacy's file is not
+UI/CMDBAR/ACTIONS/MILITARY TRAINING FOOD.BMP	yes	no file
+UI/CMDBAR/ACTIONS/NATURE.BMP	no; the same bytes as UI/CMDBAR/ACTIONS/RECONNAISSANCE.BMP of Legacy (the Greek tool compares at any path)	no file; UI/CMDBAR/ACTIONS/RECONNAISSANCE.BMP in Mediterranevm 3.6 ENG: no file
+UI/CMDBAR/ACTIONS/REVITALIZE.BMP	yes	only as a file of its pack that is byte-identical to the game's own file; Legacy's file is not
+UI/CMDBAR/ACTIONS/SOOTHING RAIN.BMP	yes	loose file, other bytes than Legacy's
+UI/CMDBAR/ACTIONS/STOP_CHORSEMAN.BMP	no; the same bytes as UI/CMDBAR/ACTIONS/STOP CSKIRMISHER.BMP of Legacy (the Greek tool compares at any path)	no file; UI/CMDBAR/ACTIONS/STOP CSKIRMISHER.BMP in Mediterranevm 3.6 ENG: loose file, other bytes
+UI/CMDBAR/ACTIONS/TRAIN CHORSEMAN.BMP	yes	loose file, byte-identical to Legacy's
+UI/CMDBAR/ACTIONS/TRAINING.BMP	yes	only as a file of its pack that is byte-identical to the game's own file; Legacy's file is not
+UI/CMDBAR/CMDBARIBERIA.BMP	yes	loose file, byte-identical to Legacy's
+UI/CMDBAR/CMDBARRROME.BMP	yes	loose file, byte-identical to Legacy's
+UI/CMDBAR/RESEARCH/TBATTLESONG.BMP	no; the same bytes as UI/CMDBAR/UPGRADES/TFIGHTS.BMP of Legacy (the Greek tool compares at any path)	no file; UI/CMDBAR/UPGRADES/TFIGHTS.BMP in Mediterranevm 3.6 ENG: loose file, byte-identical
+UI/CMDBAR/RIGHTRROME.BMP	yes	loose file, byte-identical to Legacy's
+UI/CMDBAR/UPGRADES/BFIGHTS.BMP	yes	loose file, byte-identical to Legacy's
+UI/CMDBAR/UPGRADES/BSPEARS.BMP	yes	no file
+UI/CMDBAR/UPGRADES/CPIKES.BMP	yes	loose file, byte-identical to Legacy's
+UI/CMDBAR/UPGRADES/CSHIELDS.BMP	yes	loose file, byte-identical to Legacy's
+UI/CMDBAR/UPGRADES/GAUL_AXE IRON.BMP	no; the same bytes as UI/CMDBAR/UPGRADES/AXE IRON.BMP of Legacy (the Greek tool compares at any path)	no file; UI/CMDBAR/UPGRADES/AXE IRON.BMP in Mediterranevm 3.6 ENG: pack file, other bytes
+UI/CMDBAR/UPGRADES/STOPCPIKES.BMP	yes	loose file, byte-identical to Legacy's
+UI/CMDBAR/UPGRADES/STOPCSHIELDS.BMP	yes	loose file, byte-identical to Legacy's
+UI/ICONS/CHORSEMAN.BMP	yes	loose file, other bytes than Legacy's
+UI/ICONS/HIRE HEROM.BMP	yes	loose file, byte-identical to Legacy's
+UI/ICONS/HIRE HEROR.BMP	yes	loose file, other bytes than Legacy's
+UI/ICONS/ITEMS/CARNYX.BMP	yes	loose file, other bytes than Legacy's
+UI/ICONS/MHERO1.BMP	yes	only as a file of its pack that is byte-identical to the game's own file; Legacy's file is not
+UI/ICONS/MHERO3.BMP	yes	loose file, other bytes than Legacy's
+UI/ICONS/RHERO3.BMP	yes	only as a file of its pack that is byte-identical to the game's own file; Legacy's file is not
+UI/ICONS/TEUTONCHIEFTAIN.BMP	yes	loose file, byte-identical to Legacy's
+UI/ICONS/THERO8.BMP	no; the same bytes as UI/ICONS/THERO2.BMP of Legacy (the Greek tool compares at any path)	no file; UI/ICONS/THERO2.BMP in Mediterranevm 3.6 ENG: pack file, other bytes
+UI/ICONS/UPGRADES/BFIGHTS.BMP	yes	loose file, byte-identical to Legacy's
+UI/ICONS/UPGRADES/BSPEARS.BMP	yes	no file
+UI/ICONS/UPGRADES/CARNYX.BMP	yes	loose file, byte-identical to Legacy's
+UI/ICONS/UPGRADES/GAUL_AXE IRON.BMP	no; the same bytes as UI/ICONS/UPGRADES/AXE IRON.BMP of Legacy (the Greek tool compares at any path)	no file; UI/ICONS/UPGRADES/AXE IRON.BMP in Mediterranevm 3.6 ENG: pack file, other bytes
+UI/INFOBAR/BRITAIN/BUTTON ATTACH.BMP	yes	only as a file of its pack that is byte-identical to the game's own file; Legacy's file is not
+UI/INFOBAR/BRITAIN/BUTTON SKILLS.BMP	yes	only as a file of its pack that is byte-identical to the game's own file; Legacy's file is not
+UI/INFOBAR/BRITAIN/QI_FRAME1.HI.BMP	yes	only as a file of its pack that is byte-identical to the game's own file; Legacy's file is not
+UI/INFOBAR/BRITAIN/QI_FRAME2.HI.BMP	yes	only as a file of its pack that is byte-identical to the game's own file; Legacy's file is not
+UI/INFOBAR/SKILLS/BATTLEKNOWLEDGE.BMP	yes	no file
+UI/INFOBAR/UNIT SPECIALS/DETERMINATION GLOW.BMP	yes	only as a file of its pack that is byte-identical to the game's own file; Legacy's file is not
+UI/INFOBAR/UNIT SPECIALS/DETERMINATION.BMP	yes	only as a file of its pack that is byte-identical to the game's own file; Legacy's file is not
+UNITS/NHERO1/NHERO1.ENT.XML	yes	loose file, byte-identical to Legacy's
+
+Counts: {"loose in Mediterranevm 3.6, other bytes (8)":8,"identical in Mediterranevm 3.6 (24)":24,"not at that path in Legacy (7)":7,"no file at that path in Mediterranevm 3.6 (6)":6,"only the game's own file in Mediterranevm 3.6 (11)":11}
