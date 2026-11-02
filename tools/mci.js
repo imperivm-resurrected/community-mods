@@ -238,7 +238,8 @@ const BASE_CONST = { Gaul: "Igaul", RepublicanRome: "Irome", ImperialRome: "Iimp
 // Only the comparison is matched (never the "(" before it): receiver = a chain of names with optional "()" (`owner.AsUnit`, `u.AsUnit`), or nothing for the bare `.race` of
 // the script's own object (`obj`: its first parameter, `This`). Mod_TrueRace takes the object, so a trailing .AsUnit / .AsBuilding is dropped.
 const RACE_RE = new RegExp(String.raw`(?<![\w.)\]])((?:[A-Za-z_]\w*(?:\(\))?\.)*[A-Za-z_]\w*(?:\(\))?)?\.race\s*(==|!=)\s*(${Object.keys(BASE_CONST).join("|")})\b`, "g");
-const objOf = text => (/^\s*\/\/\s*[\w]+\s*,\s*Obj\s+(\w+)/.exec(text.split("\n")[0]) || [])[1] || "This";
+// (tools/lib/mci-receivers.js: a group verifier has no `This`, its object is the local `this`; found in game in the Community Mod port, "No matching function with name This")
+const objOf = require("./lib/mci-receivers.js").receiverOf;
 const raceTests = (text, obj = objOf(text)) => text.replace(RACE_RE, (m, r, op, b) => {
   const o = (r || obj).replace(/\.As(?:Unit|Building)(?:\(\))?$/, "");
   return op === "==" ? `(${m} || Mod_TrueRace(${o}) == ${BASE_CONST[b]})` : `(${m} && Mod_TrueRace(${o}) != ${BASE_CONST[b]})`;
@@ -729,6 +730,8 @@ if (fs.existsSync(EXTRAS)) for (const f of walk(EXTRAS)) { if (f !== "mod.json")
   }
   // the names the scripts use (tools/lib/mci-names.js): a call or a constant that nothing defines stops that script in game
   { const r = require("./lib/mci-names.js").checkNames({ OUT, HD, SDK }); problems.push(...r.errors); console.log(r.notes.join("\n")); }
+  // every `This` and every object given to Mod_TrueRace / Mod_PlayerCiv is a parameter or a local of its script (the patches: of the game's script they patch)
+  { const r = require("./lib/mci-receivers.js").checkReceivers({ OUT, HD }); problems.push(...r.problems); console.log(`receivers: ${r.scanned} scripts scanned, ${r.problems.length} use This or name an object the script does not declare; ${[...r.uses].map(([k, n]) => `${k} x${n}`).join(", ")}`); }
   console.log(`script checks: ${copies} copies/rewrites balanced like the mod's, ${patchesChecked} patches applied to the game's script and balanced, ${strings} class strings resolved, hero bases: ${[...bases].sort().join(" ")}`);
   if (problems.length) { console.error(`SCRIPT CHECKS FAILED (${problems.length}):\n  ` + [...new Set(problems)].slice(0, 80).join("\n  ")); process.exit(1); }
 }
