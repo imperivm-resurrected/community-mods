@@ -335,24 +335,21 @@ fs.mkdirSync(path.join(ROOT, "raw"), { recursive: true });
 {
   const MENU = find(OUT, "DATA/INTERFACE/MENU"), ART = /^(MAINMENU|MENUBACK|TEMPLATE|CONQUESTGAME|CONQUESTMENU|MPGAMEMENU|MPMENU|PREADVENTUREMENU|PROFILE)\.INI$/i, out = [];
   for (const f of MENU ? fs.readdirSync(MENU) : []) if (!ART.test(f)) { fs.rmSync(path.join(MENU, f)); out.push(f); }
-  // skinToPatches carries `Key = value`; the lists of bare names (`[MainMenu Objects]` gets the mod's `MenuSash`) are `+Line` / `-Line` in an INI patch (sdk/patches.md): added here
-  const bare = t => { const m = new Map(); let sec = ""; for (const l of t.replace(/\r/g, "").split("\n")) { const h = l.match(/^\s*\[([^\]]+)\]/); if (h) { sec = h[1]; if (!m.has(sec)) m.set(sec, []); continue; } const x = l.trim(); if (sec && x && !x.startsWith(";") && !x.includes("=")) m.get(sec).push(x); } return m; };
-  const mine = new Map(MENU ? fs.readdirSync(MENU).map(f => [f.toLowerCase(), rd(path.join(MENU, f))]) : []);
-  const n = require("./lib/menu-skin.js").skinToPatches({ OUT, HD }), lists = [];
-  // skinToPatches of the main checkout writes the patches at patches/menuini/, this worktree's older one at patches/DATA/INTERFACE/MENU/: bring both to the second for the edits below;
-  // where they end up is decided at the end (WHERE MENU PATCHES GO, below)
-  { const mi = find(OUT, "patches/menuini"); if (mi) for (const f of fs.readdirSync(mi)) { const dst = path.join(OUT, "patches", "DATA", "INTERFACE", "MENU", f); fs.mkdirSync(path.dirname(dst), { recursive: true }); fs.copyFileSync(path.join(mi, f), dst); fs.rmSync(path.join(mi, f)); } if (mi) fs.rmSync(mi, { recursive: true, force: true }); }
-  const PD = find(OUT, "patches/DATA/INTERFACE/MENU");
-  for (const f of PD ? fs.readdirSync(PD) : []) {
-    const hp = find(HD, `DATA/INTERFACE/MENU/${f}`), A = bare(rd(hp)), B = bare(mine.get(f.toLowerCase()) || ""), ops = new Map();
-    for (const [sec, ls] of B) { const have = new Set(A.get(sec) || []); for (const l of ls) if (!have.has(l)) (ops.get(sec) || ops.set(sec, []).get(sec)).push("+" + l); }
-    for (const [sec, ls] of A) { const keep = new Set(B.get(sec) || []); if (B.has(sec)) for (const l of ls) if (!keep.has(l)) (ops.get(sec) || ops.set(sec, []).get(sec)).push("-" + l); }
-    if (!ops.size) continue;
-    let t = rd(path.join(PD, f)).replace(/\s+$/, "");
-    for (const [sec, add] of ops) { const head = `[${sec}]`, i = t.indexOf(head); if (i < 0) t += `\r\n${head}\r\n${add.join("\r\n")}`; else { const j = t.indexOf("\n[", i + 1); const end = j < 0 ? t.length : j; t = t.slice(0, end).replace(/\s+$/, "") + `\r\n${add.join("\r\n")}` + t.slice(end); } lists.push(`${f} ${head} ${add.join(" ")}`); }
-    wr(path.join(PD, f), t + "\r\n");
+  // The patch of each INI: the keys it changed (iniChanged) plus, for every section whose LIST of bare names differs from the game's, -line for every line of the game's list and +line
+  // for every line of the mod's, in the mod's order (sdk/patches.md: "+Line adds a bare line if it isn't there", "-Line removes the line that is exactly that text"). The rule of
+  // listChanges/withLists in tools/lib/menu-skin.js on main (a61f84f3), copied here; the shared lib is not touched. Appending only the new names (what this tool did before) put
+  // MenuSash LAST in [MainMenu Objects], where the mod has it FIRST: a full-window picture drawn over the buttons instead of under them.
+  const { iniChanged } = require("./lib/ported-patch.js");
+  const bareLists = text => { const m = new Map(); let sec = null; for (const raw of text.replace(/\r/g, "").split("\n")) { const h = raw.match(/^\s*\[([^\]]+)\]/); if (h) { sec = h[1]; if (!m.has(sec)) m.set(sec, []); continue; } const x = raw.trim(); if (sec && x && !x.startsWith(";") && !x.includes("=")) m.get(sec).push(raw); } return m; };
+  const listChanges = (hdText, modText) => { const A = bareLists(hdText), B = bareLists(modText), o = []; for (const [sec, mod] of B) { const hd = A.get(sec) || []; if (!mod.length || (hd.length === mod.length && hd.every((l, k) => l.trim() === mod[k].trim()))) continue; o.push({ sec, lines: [...hd.map(l => "-" + l.replace(/\s+$/, "")), ...mod.map(l => "+" + l.trim())] }); } return o; };
+  const withLists = (r, lists) => { if (!lists.length) return r; const blocks = []; let cur = null; for (const l of (r ? r.text : "").split(/\r?\n/)) { const h = l.match(/^\[([^\]]+)\]/); if (h) { cur = { sec: h[1], lines: [] }; blocks.push(cur); } else if (l && cur) cur.lines.push(l); } for (const { sec, lines } of lists) { const b = blocks.find(x => x.sec.toLowerCase() === sec.toLowerCase()); if (b) b.lines.push(...lines); else blocks.push({ sec, lines }); } return { text: blocks.map(b => `[${b.sec}]\r\n${b.lines.join("\r\n")}`).join("\r\n") + "\r\n", count: (r ? r.count : 0) + lists.length }; };
+  let n = 0; const lists = [];
+  for (const f of MENU ? fs.readdirSync(MENU) : []) {
+    const hp = find(HD, `DATA/INTERFACE/MENU/${f}`), hdText = rd(hp), modText = rd(path.join(MENU, f)), lc = listChanges(hdText, modText), r = withLists(iniChanged(hdText, modText), lc);
+    if (r) { wr(path.join(OUT, "patches", "DATA", "INTERFACE", "MENU", path.basename(hp)), r.text); n++; for (const c of lc) lists.push(`${f} [${c.sec}] -${c.lines.filter(l => l[0] === "-").length} +${c.lines.filter(l => l[0] === "+").length}`); }
+    fs.rmSync(path.join(MENU, f));
   }
-  console.log(`menu skin: INIs with no art left out: ${out.join(", ")}; ${n} INIs became patches of the keys they changed; list lines (+/-): ${lists.join("; ") || "none"}`);
+  console.log(`menu skin: INIs with no art left out: ${out.join(", ")}; ${n} INIs became patches of the keys they changed; lists rewritten (-game's +mod's, in the mod's order): ${lists.join("; ") || "none"}`);
 }
 // The voices (Local/<language>/VOICES/<UNIT>/N.WAV): the mod re-recorded them at the game's own paths, which would change the game's civilizations too. For each voice entity a
 // clone's class names, the mod's folder becomes <UNIT>_cm and the entity a copy of its own (Voice<Unit>_cm.xml) that the clones' classes point to (as Mediterranevm did). Only
