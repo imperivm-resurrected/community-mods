@@ -232,19 +232,37 @@ Not listed above and also global: the mod's `UNIT_SPECIALS.INI` changes the *tex
 | `DATA/INTERFACE/MENU/MAINMENU.INI` | the rar's, with **two edits for HD** (CRLF as the rar has it): `ButtonXStart = 790` and `ButtonYStart = 20` added in `[MainMenu Params]`, after `TmplIni=Menuini/template.ini` (the green buttons go to the right of the window); `[TipsBackFrame]` `RectWH` `140, 260, 450, 248` -> `25, 25, 450, 248` (the tips panel inside the 1024x768 window) |
 | `DATA/INTERFACE/MENU/MENUBACK.INI` | the rar's, with one edit: `[MenuBack]` `RectWH` `0, 0, 1920, 1080` -> `0, 0, %Larghezza%, %Altezza%` (the size of the screen, whatever it is) |
 | `UI/MENU/*.BMP` (20) | the rar's, byte for byte: the green buttons and frames (they show on every menu screen) |
-| `CURRENTLANG/titulo.bmp`, `CREDITS.bmp`, `TIPS.XML` | byte for byte (`MENUBACK.INI` reads `titulo.bmp` and `CREDITS.bmp`; HD reads `currentlang/tips.xml`) |
+| `CURRENTLANG/titulo.bmp`, `CREDITS.bmp` | byte for byte (`MENUBACK.INI` reads them). **`TIPS.XML` is no longer here** (issue #54): see *Tips and help, by language* below |
 | `CURRENTLANG/MENUBACKGROUND.bmp` (1920x1080) | the mod's `titulo.bmp` (the stone wall) with the first 1024x768 frame of `GENERALS.bmp` pasted at (448, 156), so the window is not green behind the screens that read `MenuBackground.bmp`; 24-bit |
 | `CURRENTLANG/GENERALS.bmp` (8192x768), `titulo3.bmp` (1024x768, pure green 0,255,0 = transparent) | byte for byte: the strip of generals that scrolls, and the title *AsvrMod VII: Ancient Generals* |
 
 The two INIs were checked byte for byte against the files the maintainer tried (they were made from the converted package; these are generated from the rar with the three edits above, and are identical, CRLF included).
 
-**Not shipped, on purpose**: `GAME.LOC.XML` and `TRANSLATION.LOC.XML` (the Spanish text table of the whole game, 755 KB each: it would translate the game for everybody), the other nine menu INIs of the rar, `MENUBACKGROUNDIMPERIVM.bmp`, `CARGAR`, `HELP`, `OPTIONS`, `CONQUESTDEFAULT`, `CREDITS.TXT`, `HELP.XML`, and anything else of `UI/`.
+**Not shipped, on purpose**: `GAME.LOC.XML` and `TRANSLATION.LOC.XML` (the Spanish text table of the whole game, 755 KB each: it would translate the game for everybody), the other nine menu INIs of the rar, `MENUBACKGROUNDIMPERIVM.bmp`, `CARGAR`, `HELP.bmp`, `OPTIONS`, `CONQUESTDEFAULT`, and anything else of `UI/`. (`CREDITS.TXT` and `HELP.XML` are not at `CURRENTLANG/` either; they ship for Spanish only, below.)
+
+### Tips and help, by language (issue #54)
+
+The skin switches the main menu's Tips panel on (HD has it commented out) and its Help button. HD's **English** pack has no `tips.xml` and no `help.xml` (only the Spanish and Italian packs do: `sdk/languages.md`). The mod's `CURRENTLANG/TIPS.XML` (59 tips) and `HELP.XML` (240 topics; HD's Spanish has 208, the 32 more are the mod's units, heroes and buildings) are **Spanish**. The mod has no English and no Italian version of either (checked in the rar).
+
+- **Before this change** the build shipped `CURRENTLANG/TIPS.XML` (a path that applies to every language) *and* `local/spanish/{TIPS,HELP,CREDITS}.XML|TXT` (written by `port-140.js` because they differ from HD's). So: Spanish, the mod's tips and help; **Italian, the mod's Spanish tips instead of HD's Italian ones** (HD's help kept); **English, Spanish tips** and the Help button failing (`currentlang/help.xml -> does not exist`).
+- **Now** `CURRENTLANG/TIPS.XML` is gone (the build stops if `currentlang/tips.xml` or `currentlang/help.xml` ships, or a `tips.xml`/`help.xml` in a `local/` folder other than `spanish`). The only difference with the previous build is that one file (md5 of the whole port compared). Each language sees:
+
+| Language | Tips panel | Help button |
+|---|---|---|
+| Spanish | the mod's 59 tips (`local/spanish/TIPS.XML`, byte for byte the rar's; HD's 46 are replaced for this language, 11 of them are not in the mod's) | the mod's help (`local/spanish/HELP.XML`: the rar's with the picture names the port renamed to `_asv`) |
+| Italian | **HD's own** | **HD's own** |
+| English | **empty** (HD has none, the mod has none in English) | **does nothing** (same) |
+
+- `local/spanish/CREDITS.TXT` is the mod's credits (8 KB) in place of HD's Spanish credits (30 KB) for Spanish players. It was shipped before this change and the older notes said it was not: left as it is, asked in the PR.
+- `HELP.bmp` of the rar is not needed: it is the picture the **rar's** `HELP.INI` reads (`Image = CurrentLang/Help.bmp`), and that INI is not shipped (`DATA/INTERFACE/HELP/` is global); HD's `HELP.INI` does not read it.
+- Pictures named by the shipped Spanish help: 756; 92 are in neither HD's `UI` nor the port (HD's own Spanish help has 74 such names). Not tried in game.
+- **Not tried in game**: any of this. To try: main menu in Spanish (panel with tips, Help opens), Italian (HD's tips and help), English (empty panel, Help does nothing, as before for English).
 
 **Tried in game on 2026-10-31 (the maintainer, a prototype with these files installed in `asvrmod-vii-civs`)**: the main menu looks like the original GameBanana one (green buttons at the right of the window, tips panel, `1.40`, the wall, the scrolling generals, the title) and `imperivm-mod.log` has no errors and no compilation errors. **Not looked at**: the other screens that use the green buttons and frames (conquest, options, multiplayer, lobby, load game).
 
 **What differs from the original menu**:
 - The labels are the game's language: the original showed Spanish ones because of the text tables, which are not shipped.
-- The tip text is Spanish (`TIPS.XML` is the original's).
+- The tip text is Spanish (`TIPS.XML` is the original's) and only the Spanish game shows it: see below.
 - The line at the bottom reads *Haemimont Games, FX Interactive, ImperivmWorld (2021)* (HD's `data/copyrights.txt`) instead of the original's *AsvrMod VII (2014-2017)*: not fixed. `1.40` shows, as in the original.
 - Resurrected's heart and Discord icons are bottom-left.
 - The wall has the first general baked in (the pasted frame), and the strip scrolls over it.
@@ -253,7 +271,7 @@ The two INIs were checked byte for byte against the files the maintainer tried (
 - `DATA/INTERFACE/MENU/MAINMENU.INI`: shipped whole by **Imperivm Legacy** (other bytes). The Greek Mod 1.8 and the 4.2 do not ship it whole in this repository: they patch it (`patches/DATA/INTERFACE/MENU/MAINMENU.INI`, `TEMPLATE.INI`; the 4.2 also `MENUBACK.INI`), so their patches would apply on top of whichever file wins. That combination has not been tried.
 - `DATA/INTERFACE/MENU/MENUBACK.INI`: shipped whole by no other port; patched by the 4.2.
 - `UI/MENU/*`: **the 1.8** has 16 of the same names with other bytes (`BIGGOLD`, `BUTTON`, `BUTTON60`, `CHECKBUTTON`, `DOWNARROW`, `FRAME`, `HERO`, `MMENBUT`, `SCROLLBACK`, `SMALLGOLD`, `TAPAL`, `TAPAR`, `TEAMS`, `UPARROW`, `BONUSES`, `VOLUME_CONTROL`); `BONUSES.BMP` is also shipped by Imperivm Legacy and the MCI, `FOOD.BMP` and `PEOPLE.BMP` by the MCI. The 4.2's pictures have other names.
-- `CURRENTLANG/titulo.bmp`, `CREDITS.bmp`, `TIPS.XML`, `GENERALS.bmp`, `titulo3.bmp`: no other port.
+- `CURRENTLANG/titulo.bmp`, `CREDITS.bmp`, `GENERALS.bmp`, `titulo3.bmp`: no other port. `local/spanish/TIPS.XML`, `HELP.XML`, `CREDITS.TXT`: the MCI ships its own `local/spanish/TIPS.XML` and `HELP.XML` (other bytes; Spanish game only).
 - `CURRENTLANG/MENUBACKGROUND.bmp`: CGWAR, the 4.2, the 1.8, Imperivm Legacy, the MCI and Mediterranevm (other bytes).
 
 ## Not ported, and why

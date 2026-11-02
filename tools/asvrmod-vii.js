@@ -561,8 +561,10 @@ if (fs.existsSync(EXTRAS)) for (const f of walk(EXTRAS)) { if (f === "NOTES.md")
       if (/^data\/interface\/menu\//.test(f) && !/^data\/interface\/menu\/(mainmenu|menuback)\.ini$/.test(f)) bad.push(`${f}: only MAINMENU.INI and MENUBACK.INI of the menu are approved`);
       if (/^ui\//.test(f) && !/^ui\/(menu|cmdbar|help|icons|infobar)\//.test(f)) bad.push(`${f}: unexpected folder of UI/`);
       if (/^currentlang\/menubackgroundimperiv/.test(f)) bad.push(`${f}: not shipped`);
+      if (/^currentlang\/(tips|help)\.xml$/.test(f)) bad.push(`${f}: would replace HD's tips/help for every language (Spanish text: local/spanish/ only)`);
+      if (/^local\/(?!spanish\/)[^/]+\/(tips|help)\.xml$/.test(f)) bad.push(`${f}: Spanish text outside local/spanish/`);
     }
-    for (const must of ["data/interface/menu/mainmenu.ini", "data/interface/menu/menuback.ini", "currentlang/menubackground.bmp", "currentlang/generals.bmp", "currentlang/titulo3.bmp", "currentlang/titulo.bmp", "currentlang/credits.bmp", "currentlang/tips.xml"]) if (!have.includes(must)) bad.push(`${must}: missing`);
+    for (const must of ["data/interface/menu/mainmenu.ini", "data/interface/menu/menuback.ini", "currentlang/menubackground.bmp", "currentlang/generals.bmp", "currentlang/titulo3.bmp", "currentlang/titulo.bmp", "currentlang/credits.bmp", "local/spanish/tips.xml"]) if (!have.includes(must)) bad.push(`${must}: missing`);
     if (have.filter(f => /^ui\/menu\/[^/]+\.bmp$/.test(f)).length !== 20) bad.push("UI/MENU: not 20 pictures");
     const mm = rd(find(OUT, "DATA/INTERFACE/MENU/MAINMENU.INI")), mb = rd(find(OUT, "DATA/INTERFACE/MENU/MENUBACK.INI"));
     if (!/ButtonXStart = 790\r?\nButtonYStart = 20\r?\n/.test(mm) || !/RectWH = 25, 25, 450, 248/.test(mm) || /RectWH = 140, 260, 450, 248/.test(mm)) bad.push("MAINMENU.INI: the HD edits are not there");
