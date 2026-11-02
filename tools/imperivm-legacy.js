@@ -225,7 +225,11 @@ const BASE_CONST = { Gaul: "Lgaul", RepublicanRome: "Lrome", ImperialRome: "Limp
 // Only the comparison is matched (never the "(" before it): receiver = a chain of names with optional "()" (`owner.AsUnit`, `u.AsUnit`), or nothing for the bare `.race` of
 // the script's own object (`obj`: its first parameter, `This`). Mod_TrueRace takes the object, so a trailing .AsUnit / .AsBuilding is dropped.
 const RACE_RE = new RegExp(String.raw`(?<![\w.)\]])((?:[A-Za-z_]\w*(?:\(\))?\.)*[A-Za-z_]\w*(?:\(\))?)?\.race\s*(==|!=)\s*(${Object.keys(BASE_CONST).join("|")})\b`, "g");
-const objOf = text => (/^\s*\/\/\s*[\w]+\s*,\s*Obj\s+(\w+)/.exec(text.split("\n")[0]) || [])[1] || "This";
+// The object a bare `.race` means in a script is its first parameter (`// void, Obj This, ...`: This, or this). A group VERIFIER (`//bool, ObjList objs, str OUT reasonText`: antic,
+// verify_research, verify_isresearched) has no object parameter: it declares the local `Building this;` and assigns `this = objs[0].AsBuilding();`, and `Mod_TrueRace(This)` there does not
+// compile ("No matching function with name This": found in game on the Community port, 2026-11-02, which has the same generator). The local is the receiver then.
+const objOf = text => { const first = text.split("\n")[0].replace(/\r$/, ""), m = /^\s*\/\/\s*[\w]+\s*,\s*Obj\s+(\w+)/.exec(first); if (m) return m[1];
+  return /\b[A-Z]\w*\s+this\s*[;,=]/.test(text) || /^\s*this\s*=/m.test(text) ? "this" : "This"; };
 const raceTests = (text, obj = objOf(text)) => text.replace(RACE_RE, (m, r, op, b) => {
   const o = (r || obj).replace(/\.As(?:Unit|Building)(?:\(\))?$/, "");
   return op === "==" ? `(${m} || Mod_TrueRace(${o}) == ${BASE_CONST[b]})` : `(${m} && Mod_TrueRace(${o}) != ${BASE_CONST[b]})`;
@@ -728,6 +732,24 @@ const scriptFiles = () => ["DATA/SUBAI", "DATA/ITEMSCRIPTS", "DATA/ESPECIALIDADE
 //       descendant with an entity (PickRandomHeroClass draws until it finds one: a base without one hangs the game)
 {
   const problems = [...store.problems], vs = f => /\.vs$/i.test(f), TABLE = classTable([HD_CLASSES, find(OUT, "DATA/CLASSES")]);
+  // Every script that names an object by an identifier must declare it. `Mod_TrueRace(This)` in a verifier with no `This` compiled nowhere ("No matching function with name This") and the
+  // names check did not see it: `This` looks like a known name. For every `This` of every script of the port, and for the first identifier of the argument of every Mod_TrueRace /
+  // Mod_PlayerCiv: it has to be a parameter in the header line, a local declared in the body, or (a patch of the game's script) one of the game's script it is injected into. Only
+  // `AIGetPlayer`, a function of the AI, is not a declaration.
+  { const L = require("./lib/legacy-literals.js"), hdSub = n => { for (const d of ["SUBAI", "AI", "GAMESCRIPTS", "ITEMSCRIPTS", "BONUSSCRIPTS"]) { const f = find(HDDATA, `${d}/${n}`); if (f) return rd(f); } return ""; };
+    const declared = text => { const d = new Set(), h = (text.split("\n")[0].replace(/\r$/, "").match(/^\s*\/\/\s*(.*)$/) || [])[1]; if (h) for (const x of h.split(",").slice(1)) d.add(x.trim().split(/\s+/).pop().replace(/^\*/, ""));
+      for (const m of L.mask(text).matchAll(/(?:^|[;{}(,]|\bfor\s*\()\s*(?:[A-Za-z]\w*)\s*\*?\s*([A-Za-z_]\w*(?:\s*(?:\[[^\]]*\])?\s*(?:=[^;,]*)?\s*,\s*[A-Za-z_]\w*)*)/g)) for (const n of m[1].matchAll(/(?:^|,)\s*([A-Za-z_]\w*)/g)) d.add(n[1]); return d; };
+    let nScripts = 0, nThis = 0, nCalls = 0; const bad = [], seen = new Map();
+    for (const root of ["DATA", "patches/DATA"]) { const dir = find(OUT, root); if (!dir) continue;
+      for (const f of walk(dir).filter(f => /\.vs$/i.test(f))) {
+        const rel = `${root}/${f}`, t = rd(path.join(dir, f)), code = L.mask(t), d = declared(t); nScripts++;
+        if (root.startsWith("patches")) for (const x of declared(hdSub(path.basename(f)))) d.add(x);
+        for (const m of code.matchAll(/\bThis\b/g)) { nThis++; if (!d.has("This")) bad.push(`${rel}:${code.slice(0, m.index).split("\n").length}: \`This\` is not declared in this script (no \`Obj This\` in its header, no local)`); }
+        for (const m of code.matchAll(/\b(Mod_TrueRace|Mod_PlayerCiv)\s*\(\s*([A-Za-z_]\w*)/g)) { nCalls++; const k = `${m[1]}(${m[2]})`; seen.set(k, (seen.get(k) || 0) + 1);
+          if (m[2] !== "AIGetPlayer" && !d.has(m[2])) bad.push(`${rel}:${code.slice(0, m.index).split("\n").length}: ${m[1]}(${m[2]}...): \`${m[2]}\` is not declared in this script`); }
+      } }
+    console.log(`receivers: ${nScripts} scripts, ${nThis} uses of This, ${nCalls} Mod_TrueRace / Mod_PlayerCiv calls (${[...seen].map(([k, n]) => `${k} x${n}`).join(", ")}), ${bad.length} without a declaration`);
+    problems.push(...bad); }
   // the independence of the clones: no game id left where a clone's must be (or both), listed by name if it is the mod's own design; the AI reads no player race; the town hall
   // patches accept a clone's race; two files that differ only in case; a class over the engine's 8 behaviors
   { const L = require("./lib/legacy-literals.js"), all = new Map([...LIT, ...[...AMBIGUOUS].map(([k, v]) => [k, v.join("|")])]), used = new Set();
