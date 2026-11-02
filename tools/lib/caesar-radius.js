@@ -11,8 +11,9 @@
 const fs = require("fs"), path = require("path");
 
 // KgrVillage: the alias key is MVillage, which HD does not have: the game's Imperial Roman villages are built from RVillage (the 4.2 and the 1.8 copied its two lines too)
+// KgrOutpost: the alias key is MOutpost, which HD does not have either; every outpost in HD has 345/350 (ROutpost is the Imperial Roman one) and so have the 4.2's HOutpost and CGWAR's CgrOutpost
 // KgrTower: MTower is in HD and has no radius (no tower has one): nothing to copy
-const COUNTERPART = { KgrVillage: "RVillage" };
+const COUNTERPART = { KgrVillage: "RVillage", KgrOutpost: "ROutpost" };
 
 const walk = (d, out = []) => { if (!fs.existsSync(d)) return out; for (const e of fs.readdirSync(d, { withFileTypes: true })) { const p = path.join(d, e.name); if (e.isDirectory()) walk(p, out); else if (/\.xml$/i.test(e.name)) out.push(p); } return out; };
 

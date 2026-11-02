@@ -1,4 +1,4 @@
-47 classes got the radius / selection_radius of the HD class they come from (the key of their alias; KgrVillage <- RVillage)
+48 classes got the radius / selection_radius of the HD class they come from (the key of their alias; KgrVillage <- RVillage)
 
 KbrOutpost <- BOutpost: 345/350
 KcaOutpost <- COutpost: 333/350
@@ -16,6 +16,7 @@ KgrGate4 <- MGate4: 170/170
 KgrGate5 <- MGate5: 170/170
 KgrGate6 <- MGate6: 170/170
 KgrGate7 <- MGate7: 170/170
+KgrOutpost <- ROutpost: 345/350
 KgrVillage <- RVillage: 245/250 then 230/250
 KgrWallsE <- MWallsE: 110/110
 KgrWallsN <- MWallsN: 110/110
