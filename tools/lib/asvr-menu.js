@@ -5,7 +5,9 @@
 // SRC is the unpacked rar (the folder with DATA, UI, CURRENTLANG), OUT the port. Written, deterministic, nothing under originals/:
 //   DATA/INTERFACE/MENU/MAINMENU.INI, MENUBACK.INI   the rar's, with the edits HD needs (below), CRLF as the rar has them. The other nine menu INIs of the rar are NOT shipped
 //   UI/MENU/*.BMP                                    the 20 pictures of the rar, byte for byte (the green buttons and frames: they show on every menu screen)
-//   CURRENTLANG/titulo.bmp, CREDITS.bmp, TIPS.XML    byte for byte (MENUBACK.INI reads titulo.bmp and CREDITS.bmp; HD reads currentlang/tips.xml)
+//   CURRENTLANG/titulo.bmp, CREDITS.bmp                byte for byte (MENUBACK.INI reads titulo.bmp and CREDITS.bmp)
+//   TIPS.XML is NOT written at CURRENTLANG/ (issue #54): it is Spanish text and there it replaced HD's tips of the Spanish AND Italian games and showed Spanish tips
+//   to English players. The same file, byte for byte, is already at local/spanish/TIPS.XML (port-140.js writes it there), which only the Spanish game reads.
 //   CURRENTLANG/MENUBACKGROUND.bmp                   the mod's titulo.bmp (1920x1080) with the first 1024x768 frame of GENERALS.bmp pasted at (448, 156), so that the window is not
 //                                                    green behind the screens that read MenuBackground.bmp. 24-bit, written here (the pixels are copied; no ImageMagick)
 //   CURRENTLANG/GENERALS.bmp (8192x768, the scrolling strip), titulo3.bmp (1024x768, pure green 0,255,0 = transparent, the title)   byte for byte
@@ -66,7 +68,7 @@ module.exports = function asvrMenu({ SRC, OUT, at = [448, 156], frame = [1024, 7
   if (strip.w < fw || strip.h !== fh || x0 + fw > wall.w || y0 + fh > wall.h) throw new Error(`the frame ${fw}x${fh} does not fit: strip ${strip.w}x${strip.h}, wall ${wall.w}x${wall.h} at ${at}`);
   for (let y = 0; y < fh; y++) strip.px.copy(wall.px, ((y0 + y) * wall.w + x0) * 3, y * strip.w * 3, y * strip.w * 3 + fw * 3);
   put("CURRENTLANG/MENUBACKGROUND.bmp", bmpBytes(wall));
-  for (const n of ["GENERALS.bmp", "titulo3.bmp", "titulo.bmp", "CREDITS.bmp", "TIPS.XML"]) put(`CURRENTLANG/${n}`, fs.readFileSync(need(`CURRENTLANG/${n}`)));
+  for (const n of ["GENERALS.bmp", "titulo3.bmp", "titulo.bmp", "CREDITS.bmp"]) put(`CURRENTLANG/${n}`, fs.readFileSync(need(`CURRENTLANG/${n}`)));
   // the two INIs
   const edits = [];
   for (const [name, fn] of Object.entries(EDITS)) {
