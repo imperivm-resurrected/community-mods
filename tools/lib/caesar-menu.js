@@ -93,6 +93,14 @@ function build({ OUT, HD, BASE, MOD, conquestPanel = "screen-right" }) {
       // buttons do (%ScreenRight%), so the frame ends at the edge and starts to the right of the map. The rest of the mod's layout is untouched.
       const e = d.get("save"); e.lines = e.lines.map(l => { if (!/^RectWH = /i.test(l)) return l; const n = l.replace(/^RectWH = #right\(GameMap\)-328#/i, "RectWH = #%ScreenRight%-305#"); if (n !== l) adjusted.add(n); return n; });
     }
+    if (/^conquestgame\.ini$/i.test(f) && d.get("conquestgame objects")) {
+      // The eighth shield: both conquests of the mod have Greece as an eighth territory and HD's screen has the buttons Shield1..Shield7 only. The same rule as the CGWAR port's
+      // patch (extras/cgwar/patches/menuini/CONQUESTGAME.INI, 2026-11-02): the button after Shield7, same size, empty image, Id 0x1039 (0x1038 is ShieldArrow). Relative to
+      // Shield7 and Shield1, so it follows wherever the skin puts the strip. Written without being in the mod's file: ADJUSTED in the report.
+      d.get("conquestgame objects").list.push("+Shield8");
+      const s8 = ["Type = Button", "ImageType = AAAAA", "Image =", "RectWH = #right(Shield7)-1#, #top(Shield1)#, #width(Shield1)#, #height(Shield1)#", "HAlign = 1, 0, 1", "VAlign = 1, 0, 1", "Id = 0x1039"];
+      d.set("shield8", { name: "Shield8", lines: s8, list: [] }); for (const l of s8) adjusted.add(l);
+    }
     if (!d.size) { skipped.push(`${f}: nothing the mod edited against the 1.40 (${b ? "same as the 1.40's or only re-spaced" : "no 1.40 file"})`); continue; }
     all.set(f, d); ctx.set(f, { h, hdT, baseT, modT, extra, adjusted });
   }
@@ -112,11 +120,11 @@ function build({ OUT, HD, BASE, MOD, conquestPanel = "screen-right" }) {
       const ms = M.get(sk), hs = H.get(sk) || [...H.values()].find(x => x.name.toLowerCase() === e.name.toLowerCase());
       const bs = B.get(sk);
       for (const l of e.lines) {
-        const m = l.match(/^(.*?) = (.*)$/), k = m[1].toLowerCase(), v = m[2];
-        const mk = ms && ms.keys.get(k), isExtra = extra.includes(l) || adjusted.has(l);
+        const m = l.match(/^(.*?) =(?: (.*))?$/), k = m[1].toLowerCase(), v = m[2] || "";
+        const mk = ms && ms.keys.get(k), isExtra = extra.includes(l) || adjusted.has(l) || /^shield8$/i.test(e.name);
         if (!isExtra && !(mk && mk.val === v)) problems.push(`${h} [${e.name}] ${l}: the mod's section [${ms ? ms.name : "-"}] does not have this value`);
         const hk = hs && hs.keys.get(k), bk = bs && bs.keys.get(k);
-        rep.push(`- [${e.name}] \`${m[1]}\`: HD \`${hk ? hk.val : "-"}\` | 1.40 \`${bk ? bk.val : "-"}\` -> \`${v}\`${adjusted.has(l) ? ` (ADJUSTED: the mod has \`${mk.val}\`, see raw/caesar-mod-civs-conquest-layout.txt)` : isExtra ? " (from the mod's template: the sized template ignores its patch)" : ""}${!ms ? " (new section)" : ""}`);
+        rep.push(`- [${e.name}] \`${m[1]}\`: HD \`${hk ? hk.val : "-"}\` | 1.40 \`${bk ? bk.val : "-"}\` -> \`${v}\`${/^shield8$/i.test(e.name) ? " (the eighth shield: not in the mod's file, the CGWAR port's rule)" : adjusted.has(l) ? ` (ADJUSTED: the mod has \`${mk.val}\`, see raw/caesar-mod-civs-conquest-layout.md)` : isExtra ? " (from the mod's template: the sized template ignores its patch)" : ""}${!ms ? " (new section)" : ""}`);
       }
       if (e.list.length) {
         const mods = e.list.filter(l => l[0] === "+").map(l => l.slice(1)), hds = e.list.filter(l => l[0] === "-").map(l => l.slice(1));
@@ -196,7 +204,7 @@ function rects(screenText, templateText, screen, size) {
 // Covered = under a control of the right column (frame, buttons) or the shields frame. -> { text, cover: { "label|map|WxH": Greek pixels covered } }
 function conquestNumbers({ layouts, maps, sizes, readBmp }) {
   const names = { 2: "Egypt", 3: "Iberia", 4: "Britain", 5: "Germany", 6: "Carthage", 7: "Rome", 8: "Gaul", 9: "Greece" }, out = [], cover = {};
-  const BLOCK = /^(DescriptionFrame|Save|Start|Quit|Select|ShieldsFrame)$/i;
+  const BLOCK = /^(DescriptionFrame|Save|Start|Quit|Select|ShieldsFrame|Shield8)$/i;
   for (const [mapName, bmp] of maps) {
     const px = readBmp(bmp);
     for (const [w, h] of sizes) {
