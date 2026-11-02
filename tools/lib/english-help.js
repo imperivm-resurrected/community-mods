@@ -6,7 +6,8 @@
 // from each other. It is a model translation (UNREVIEWED, see extras/english-help/NOTES.md) of HD's own Spanish help (originals/game-data/local-spanish/CURRENTLANG/HELP.XML):
 // the XML is the original's byte for byte (BOM, CRLF, tabs, ids, links, pictures, comments) and only the text inside <entry>...</entry> is English.
 //
-//   const { ship } = require("./lib/english-help.js");  ship(OUT)           copies it to OUT/Local/english/HELP.XML after verify() and the pack check
+//   const { ship, shipTips } = require("./lib/english-help.js");  ship(OUT)   copies it to OUT/Local/english/HELP.XML after verify() and the pack check
+//                                                                  shipTips(OUT, file)   the same for an English TIPS.XML (HD English has none either)
 //   node tools/lib/english-help.js [--game <folder>]                          verify only (exit 1 on any problem)
 //
 // verify() stops on: a missing BOM or a non-CRLF line end, anything but the entry texts that differs from the Spanish file, a topic id list that differs from HD's
@@ -64,18 +65,36 @@ function pictureGaps(files, file = SRC) {
   return want.filter(p => ![p, "ui/" + p, p.replace(/^gameres\//, "ui/")].some(q => have.has(q)));
 }
 
+// OUT/<local>/<english> with the case the port already has (port-140.js writes `local/`, the 4.2 `Local/`): two folders that differ only by case would be one on Windows and two in git
+function englishDir(OUT) {
+  const sub = (d, n) => (fs.existsSync(d) && fs.readdirSync(d).find(x => x.toLowerCase() === n)) || n.replace(/^./, c => (n === "local" ? c.toUpperCase() : c));
+  const l = path.join(OUT, sub(OUT, "local"));
+  return path.join(l, sub(l, "english"));
+}
+// HD's English pack must lack `name` (a file of the pack's own would be replaced, not added to)
+function packLacks(game, name) {
+  const pak = path.join(game, "local", "english.pak");
+  if (!fs.existsSync(pak)) throw new Error(`no ${pak}: set G=<the game's folder>`);
+  if (packNames(pak).has("currentlang/" + name)) throw new Error(`HD's English pack now has its own ${name}: Local/english/${name.toUpperCase()} would replace it, not add to it`);
+}
 // copies the canonical file to OUT/Local/english/HELP.XML if HD's English pack has no help.xml; stops the build otherwise or if verify() finds a problem
 function ship(OUT, { game = gameDir() } = {}) {
   const r = verify();
   if (r.problems.length) throw new Error("extras/english-help/HELP.XML: " + r.problems.join("; "));
-  const pak = path.join(game, "local", "english.pak");
-  if (!fs.existsSync(pak)) throw new Error(`no ${pak}: set G=<the game's folder>`);
-  if (packNames(pak).has("currentlang/help.xml")) throw new Error("HD's English pack now has its own help.xml: Local/english/HELP.XML would replace it, not add to it");
-  const dest = path.join(OUT, "Local", "english", "HELP.XML");
+  packLacks(game, "help.xml");
+  const dest = path.join(englishDir(OUT), "HELP.XML");
   fs.mkdirSync(path.dirname(dest), { recursive: true }); fs.rmSync(dest, { force: true }); fs.copyFileSync(SRC, dest);
   return { dest, ...r };
 }
-module.exports = { ship, verify, packNames, pictureGaps, SRC };
+// the same for the English tips: `from` is the file of the port that has them (the 4.2's Local/english/TIPS.XML, the original English game's tips), copied byte for byte
+function shipTips(OUT, from, { game = gameDir() } = {}) {
+  if (!fs.existsSync(from)) throw new Error(`no ${from}`);
+  packLacks(game, "tips.xml");
+  const dest = path.join(englishDir(OUT), "TIPS.XML");
+  fs.mkdirSync(path.dirname(dest), { recursive: true }); fs.rmSync(dest, { force: true }); fs.copyFileSync(from, dest);
+  return { dest, bytes: fs.statSync(dest).size, tips: (fs.readFileSync(dest, "utf8").match(/<tip\b/g) || []).length };
+}
+module.exports = { ship, shipTips, verify, packNames, pictureGaps, SRC };
 
 if (require.main === module) {
   const i = process.argv.indexOf("--game"), game = i > 0 ? process.argv[i + 1] : gameDir();
