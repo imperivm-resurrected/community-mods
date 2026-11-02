@@ -72,7 +72,9 @@ function scan(text, known, typeNames) {
   return { unknown, strings };
 }
 
-function checkNames({ OUT, HD, SDK }) {
+// merged: [[label, text]]: the game's scripts with the port's patches applied (what the game compiles): read like the port's own scripts. A patch alone is a fragment, and a name it takes from
+// the 1.40 (`aiPlayer`, HD calls it `idPlayer`) is only wrong once it sits in HD's script.
+function checkNames({ OUT, HD, SDK, merged = [] }) {
   const errors = [], notes = [], vocab = gameVocabulary(SDK);
   if (!vocab) return { errors, notes: ["names: sdk/game-functions.txt not found: the names the scripts use were NOT checked"], scanned: 0 };
   const hdData = path.join(HD, ci(HD, "DATA") || "DATA"), mine = ci(OUT, "DATA") ? path.join(OUT, ci(OUT, "DATA")) : null;
@@ -142,20 +144,20 @@ function checkNames({ OUT, HD, SDK }) {
   for (let grew = true; grew;) { grew = false; for (const n of [...reach]) { const f = byName.get(n); if (!f) continue; for (const s of clean(rd(f)).strings) { const m = /^([\w ./\\-]+\.vs)$/i.exec(s.trim()); const k = m && path.basename(m[1].replace(/\\/g, "/")).toLowerCase(); if (k && !reach.has(k)) { reach.add(k); grew = true; } } } }
   const orphans = [...toRead.keys()].filter(f => !reach.has(base(f)));
   for (const f of orphans) toRead.delete(f);
-  for (const [f, why] of toRead) {
-    const rel = f.startsWith(OUT) ? path.relative(OUT, f).replace(/\\/g, "/") : `game: ${path.relative(HD, f).replace(/\\/g, "/")}`;
-    const r = scan(rd(f), known, typeNames);
+  const items = [...toRead].map(([f, why]) => [f.startsWith(OUT) ? path.relative(OUT, f).replace(/\\/g, "/") : `game: ${path.relative(HD, f).replace(/\\/g, "/")}`, rd(f), why]).concat(merged.map(([l, t]) => [l, t, "the game's script with the port's patch applied"]));
+  for (const [rel, text, why] of items) {
+    const r = scan(text, known, typeNames);
     for (const [id, n] of r.unknown) errors.push(`${rel}: "${id}" (${n}x) is no variable, member, game function or constant, special, AI name or class of the port or the game (${why})`);
     // the orders a script gives or asks about by name must exist: a command of the port or the game (a rename of the order, `revitalize` -> `revitalize (w26)`, leaves
     // the old name in the strings of a script that was not renamed with it), or a method of a class (`enter`, `advanceenter`: the engine's own orders)
-    for (const m of nocomment(rd(f)).matchAll(ORDER_CALL))
+    for (const m of nocomment(text).matchAll(ORDER_CALL))
       if (!orders.has(m[1].toLowerCase())) errors.push(`${rel}: an order "${m[1]}" is given or asked about that no command or method of the port or the game has (${why})`);
     for (const s of r.strings) {
       const m = /^([\w ./\\-]+\.vs)$/i.exec(s.trim());
       if (m && !scriptFiles.has(path.basename(m[1].replace(/\\/g, "/")).toLowerCase())) errors.push(`${rel}: names the script "${s}", which is in neither the port nor the game`);
     }
   }
-  notes.push(`names: ${toRead.size} scripts read, ${errors.length} problems; ${orphans.length} scripts that nothing points to were not read (${orphans.slice(0, 4).map(f => path.basename(f)).join(", ")}${orphans.length > 4 ? ", ..." : ""})`);
+  notes.push(`names: ${toRead.size} scripts read and ${merged.length} patched scripts (the patch applied to the game's), ${errors.length} problems; ${orphans.length} scripts that nothing points to were not read (${orphans.slice(0, 4).map(f => path.basename(f)).join(", ")}${orphans.length > 4 ? ", ..." : ""})`);
   return { errors, notes, scanned: toRead.size, orphans: orphans.map(f => path.relative(OUT, f).replace(/\\/g, "/")) };
 }
 

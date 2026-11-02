@@ -249,6 +249,29 @@ console.log(`Greece: ${greekIds.size} classes with race "${GREECE}" (${pieces.si
   console.log(`AI: ${newAi.length} helpers the game does not have, declared: ${newAi.join(", ")}`);
 }
 
+// 5b. The 1.40's names in the patches of the game's scripts. A block of the mod that goes inside HD's script (tools/lib/own-ai.js: CalcGAIKAPriority, GetArmyNeed...) was written for the
+// mod's signature line, and HD renamed parameters since 1.40 (`aiPlayer` is `idPlayer`): found in game, five compilation errors at match creation ("data/ai/CalcGAIKAPriority.vs (19, 28): No
+// matching function with name aiPlayer"), so the AI of the ten civilizations could not run those functions. For every patch of a game script, the parameters of the mod's first line (the
+// zip's own file) are mapped by position to HD's and renamed in the patch's code (not in its @directive lines, which are HD's text). Types and count are checked: a different one stops the build.
+{
+  const sig = t => { const m = /^\s*\/\/\s*(.*)$/.exec((t.replace(/\r/g, "").split("\n").find(l => l.trim()) || "")); return m ? m[1].split(",").map(x => x.trim()) : null; };
+  const names = a => a.slice(1).map(p => p.split(/\s+/).pop().replace(/^\*/, "")), types = a => a.slice(1).map(p => p.split(/\s+/)[0]);
+  const pdir = find(OUT, "patches/DATA"), done = [], same = []; let checked = 0;
+  for (const dir of pdir ? fs.readdirSync(pdir).filter(d => fs.statSync(path.join(pdir, d)).isDirectory() && /^(SUBAI|AI|AI HELPERS|ITEMSCRIPTS|GAMESCRIPTS)$/i.test(d)) : []) for (const fn of fs.readdirSync(path.join(pdir, dir)).filter(x => /\.vs$/i.test(x))) {
+    const hp = find(HDDATA, `${dir}/${fn}`), mp = find(STAGE, `DATA/${dir}/${fn}`); if (!hp || !mp) continue;
+    const hs = sig(rd(hp)), ms = sig(rd(mp)); if (!hs || !ms) continue;
+    checked++;
+    if (names(hs).length !== names(ms).length || types(hs).join() !== types(ms).join() || hs[0] !== ms[0]) { console.error(`${dir}/${fn}: the mod's signature (${ms.join(", ")}) is not HD's (${hs.join(", ")}): the block cannot be written inside HD's script as it is`); process.exit(1); }
+    const map = new Map(names(ms).map((n, i) => [n, names(hs)[i]]).filter(([a, b]) => a !== b));
+    if (!map.size) { same.push(fn); continue; }
+    const pp = path.join(pdir, dir, fn), text = rd(pp), re = new RegExp(`\\b(${[...map.keys()].join("|")})\\b`, "g");
+    let n = 0; const out = text.split("\n").map(l => /^@/.test(l) ? l : l.replace(re, m => (n++, map.get(m)))).join("\n");
+    wr(pp, out); done.push(`${dir}/${fn}: ${[...map].map(([a, b]) => `${a} -> ${b}`).join(", ")} (${n} uses)`);
+  }
+  fs.writeFileSync(path.join(ROOT, "raw", "caesar-mod-civs-renamed-params.txt"), `${checked} patches of game scripts compared with the mod's signature line\n\nrenamed:\n${done.join("\n") || "none"}\n\nsame names:\n${same.join("\n")}\n`);
+  console.log(`patched game scripts: ${checked} compared with the mod's signature, ${done.length} had a parameter HD renamed (${done.map(d => d.split(":")[0]).join(", ")}), ${same.length} the same`);
+}
+
 // The mod's menu skin (maintainer's decision, 2026-11-02: ship it under the cosmetic exception of AGENTS.md): the INIs become patches at the end (step 10b, from the mod's own files in
 // the zip, not from what port-140.js merged), the pictures of UI/MENU stay at the game's paths. What port-140.js merged of the menu INIs is not used: it goes.
 {
@@ -902,7 +925,16 @@ for (const f of walk(OUT).filter(f => /(^|\/)(\.fingerprint|desktop\.ini|thumbs\
 // 13. The NAMES the scripts use (tools/lib/caesar-names.js, the Greek 2.x's checker with two fixes): a script, an order, a research or an identifier that exists nowhere stops that
 // script in the game ("No matching function with name X"). A call to something that exists nowhere stops the build.
 {
-  const r = require("./lib/caesar-names.js").checkNames({ OUT, HD, SDK: process.env.SDK });
+  // every patch of a game script applied to HD's script (the engine's algorithm, tools/lib/script-checks.js): the merged script is what the game compiles
+  const merged = [], pdir = find(OUT, "patches/DATA");
+  for (const dir of pdir ? fs.readdirSync(pdir).filter(d => fs.statSync(path.join(pdir, d)).isDirectory() && /^(SUBAI|AI|AI HELPERS|ITEMSCRIPTS|GAMESCRIPTS)$/i.test(d)) : []) for (const fn of fs.readdirSync(path.join(pdir, dir)).filter(x => /\.vs$/i.test(x))) {
+    const hp = find(HDDATA, `${dir}/${fn}`); if (!hp) continue;
+    const a = applyPatch(rd(hp), rd(path.join(pdir, dir, fn))); if (!a.errors.length) merged.push([`patched ${dir}/${fn}`, a.text]);
+  }
+  { const { scopeProblems } = require("./lib/caesar-scopes.js"), vocab = require("./lib/caesar-names.js").gameVocabulary(process.env.SDK), bad = [];
+    for (const [l, t] of merged) for (const p of scopeProblems(t, vocab ? vocab.types : new Set())) bad.push(`${l}: "${p.name}" used at line ${p.line}, declared (line ${p.declaredAt}) in a block that is closed`);
+    console.log(`scopes: ${merged.length} patched game scripts (the patch applied to HD's), ${bad.length} problems`); if (bad.length) { console.error(`SCOPE CHECKS FAILED (${bad.length}):\n  ${bad.join("\n  ")}`); process.exit(1); } }
+  const r = require("./lib/caesar-names.js").checkNames({ OUT, HD, SDK: process.env.SDK, merged });
   console.log(r.notes.join("\n"));
   if (r.errors.length) { fs.writeFileSync(path.join(SCRATCH, "caesar-names.txt"), r.errors.join("\n") + "\n"); console.error(`NAME CHECKS FAILED (${r.errors.length}), all in .scratch/caesar-names.txt:\n  ${r.errors.slice(0, 60).join("\n  ")}`); process.exit(1); }
 }
