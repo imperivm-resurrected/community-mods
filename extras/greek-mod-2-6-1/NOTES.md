@@ -163,6 +163,8 @@ None known. `Greek_MapsAdventures.zip` is not ported here (#8).
 
 **NOT tried (not told, so not claimed):** the long game against the Roman AIs, the hero of each arena, the barracks in both Greek town layouts, the 168 script copies (47 whole), the random-map city of Greece (new in this build), the priest's revitalize (both the unit and the ground variant), the icons and attack sounds, the voices, `THERMAE.SC_w26.XML`, the renamed templates, the `gbr.exe` table limits above, two civilization mods together, and the gymnasium, temple and village exits.
 
+**After the permission (2026-11-02), not tried in game:** the 29 files identical to Imperivm Legacy's (or its `_w26` copies) now ship. Against the folder the maintainer installed before: +24 files (777.6 KB), 11 changed, 3 removed (renamed `_w26`). Two of them change behavior and are the first to test: the mod's own `HDRUID_ADVANCE.VS` now ships as `HDRUID_ADVANCE_w26.VS` and the Greek priest's `advance` method points to it instead of `peaceful_move_w26.vs`; and `druid_revitalize_ground_w26.vs` is the mod's own (with its `timeStart` / `Sleep(75)` guard) instead of the 2.3's. The two in-game tests of 2026-11-01 (the 3 compilation errors, then "loads and plays") were of the earlier build without them.
+
 ## Pending: independence
 
 - `currentlang/*.bmp` menu skin with the other Greek mods: cosmetic.
