@@ -433,7 +433,9 @@ const ALL = [CONST, ...CIVS.map(c => c.id[0].toUpperCase() + c.id.slice(1))], NO
   fs.rmSync(SRC, { recursive: true, force: true });
 }
 // the LISTS of bare names (what a menu shows: [MainMenu Objects] Caption, IniBackFrame, TipsBackFrame, Version...) are read BEFORE skinToPatches removes the mod's whole file; tools/lib/menu-lists.js
-const MENU_LISTS = require("./lib/menu-lists.js").skinLists({ OUT, HD });
+// This mod is made from the 1.40 files: the mod's own file is the one in the flat folder (port-140 merged only its Key = value lines into HD's, never the lists) and the lists are compared 3-way
+// with the 1.40's, so that what HD itself changed since 1.40 is not taken for the mod's edit.
+const MENU_LISTS = require("./lib/menu-lists.js").skinLists({ OUT, HD, MOD: FLAT, BASE: path.join(ROOT, "originals", "game-140", "paks") });
 console.log(`menu skin: ${require("./lib/menu-skin.js").skinToPatches({ OUT, HD })} layout files became patches of the keys they changed`);
 // WHERE THE ENGINE LOOKS FOR EACH MENU INI. A patch is matched by the exact path the game OPENS (src/mods/patch.cpp PatchApply(rel), called from src/mods/vfs.cpp with the normalized open path; no alias
 // between the folders), and the game opens the screens as `menuini/<name>.ini` (the game log of 2026-11-01: menuini/mainmenu.ini, menuini/mpgamemenu.ini, menuini/settings.ini...; the engine's own patch of the

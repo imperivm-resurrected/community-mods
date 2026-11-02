@@ -3,7 +3,10 @@
 // Version...). A skin that adds a panel to the list lost it: the 4.2 showed "Next" and "More Info" with no Tips panel, no frame behind the buttons and no version text.
 // listChanges() turns a changed list into `-line` for every line of the game's list and `+line` for every line of the mod's, in the mod's order (sdk/patches.md: "+Line adds a bare line if it
 // isn't there", "-Line removes the line that is exactly that text").
-//   listChanges(hdText, modText) -> [{ sec, lines }]       the sections whose list of bare names differs
+//   listChanges(hdText, modText) -> [{ sec, lines }]       the sections whose list of bare names differs (a mod made from the game's HD files)
+//   listChanges(hdText, modText, baseText)                 3-way, for a mod made from the 1.40 files (the 2.x line): only what the MOD edited against the 1.40 (`baseText`) is applied to HD's list
+//                                                          (lines it removed are taken out, lines it added go after the line that precedes them in the mod's list). Without it, the lines HD
+//                                                          itself changed since 1.40 (the Tips panel, "Versionn") would look like the mod's edits and the patch would undo HD's own work.
 //   mergeLists(patchText|null, lists) -> text              the patch with the list lines inside the same section as its Key = value lines (a section that already has -/+ lines is left alone)
 //   skinLists({ OUT, HD }) -> Map(fileName -> lists)       call BEFORE skinToPatches (which removes the mod's whole file): the lists of every menu INI of the port that differs from the game's
 //   addLists({ OUT, lists }) -> number of files            call AFTER the patches are at patches/menuini/: merges the lists into them (template.ini: both places)
@@ -11,12 +14,23 @@ const fs = require("fs"), path = require("path");
 const find = (base, rel) => { let p = base; for (const part of rel.split("/")) { if (!fs.existsSync(p)) return null; const n = fs.readdirSync(p).find(x => x.toLowerCase() === part.toLowerCase()); if (!n) return null; p = path.join(p, n); } return p; };
 // the bare lines (no =, not a comment, not a header) of each section, in order: Map(section -> [raw line without CR])
 const bareLists = text => { const m = new Map(); let sec = null; for (const raw of text.replace(/\r/g, "").split("\n")) { const h = raw.match(/^\s*\[([^\]]+)\]/); if (h) { sec = h[1]; if (!m.has(sec)) m.set(sec, []); continue; } if (sec && raw.trim() && !/^\s*;/.test(raw) && !raw.includes("=")) m.get(sec).push(raw); } return m; };
-function listChanges(hdText, modText) {
-  const A = bareLists(hdText), B = bareLists(modText), out = [];
+function listChanges(hdText, modText, baseText) {
+  const A = bareLists(hdText), B = bareLists(modText), C = baseText == null ? null : bareLists(baseText), out = [], t = l => l.trim();
   for (const [sec, mod] of B) {
-    const hd = A.get(sec) || [], same = hd.length === mod.length && hd.every((l, i) => l.trim() === mod[i].trim());
-    if (!mod.length || same) continue;
-    out.push({ sec, lines: [...hd.map(l => "-" + l.replace(/\s+$/, "")), ...mod.map(l => "+" + l.trim())] });
+    const hd = A.get(sec) || [];
+    let target = mod;
+    if (C) {
+      const base = C.get(sec) || [], inBase = new Set(base.map(t)), inMod = new Set(mod.map(t));
+      target = hd.filter(l => !(inBase.has(t(l)) && !inMod.has(t(l))));                       // what the mod removed from the 1.40's list
+      mod.forEach((l, i) => {                                                                   // what the mod added to it: after the line that precedes it in the mod's list
+        if (inBase.has(t(l)) || target.some(x => t(x) === t(l))) return;
+        let at = 0; for (let j = i - 1; j >= 0; j--) { const k = target.findIndex(x => t(x) === t(mod[j])); if (k >= 0) { at = k + 1; break; } }
+        target = [...target.slice(0, at), l, ...target.slice(at)];
+      });
+    }
+    const same = hd.length === target.length && hd.every((l, i) => t(l) === t(target[i]));
+    if (!target.length || same) continue;
+    out.push({ sec, lines: [...hd.map(l => "-" + l.replace(/\s+$/, "")), ...target.map(l => "+" + t(l))] });
   }
   return out;
 }
@@ -29,13 +43,15 @@ function mergeLists(text, lists) {
   }
   return blocks.map(b => `[${b.sec}]\r\n${b.lines.join("\r\n")}`).join("\r\n") + "\r\n";
 }
-function skinLists({ OUT, HD }) {
-  const mine = find(OUT, "DATA/INTERFACE/MENU"), hd = find(HD, "DATA/INTERFACE/MENU"), res = new Map();
+function skinLists({ OUT, HD, MOD, BASE }) {
+  // MOD: the folder that has the mod's own Data/Interface/Menu (default: the port's, which is only right when a step has not rewritten it); BASE: the 1.40's, for a 1.40-based mod
+  const mine = find(MOD || OUT, "DATA/INTERFACE/MENU"), hd = find(HD, "DATA/INTERFACE/MENU"), base = BASE && find(BASE, "DATA/INTERFACE/MENU"), res = new Map();
   if (!mine || !hd) return res;
-  const hdFiles = new Map(fs.readdirSync(hd).map(f => [f.toLowerCase(), f]));
+  const hdFiles = new Map(fs.readdirSync(hd).map(f => [f.toLowerCase(), f])), baseFiles = new Map(base ? fs.readdirSync(base).map(f => [f.toLowerCase(), f]) : []);
   for (const f of fs.readdirSync(mine).filter(f => /\.ini$/i.test(f))) {
     const h = hdFiles.get(f.toLowerCase()); if (!h) continue;
-    const l = listChanges(fs.readFileSync(path.join(hd, h), "latin1"), fs.readFileSync(path.join(mine, f), "latin1"));
+    const b = baseFiles.get(f.toLowerCase());
+    const l = listChanges(fs.readFileSync(path.join(hd, h), "latin1"), fs.readFileSync(path.join(mine, f), "latin1"), b ? fs.readFileSync(path.join(base, b), "latin1") : null);
     if (l.length) res.set(h, l);
   }
   return res;
