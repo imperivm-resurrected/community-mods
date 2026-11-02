@@ -22,7 +22,7 @@ No `index`. Explicit 4-character letters because the derived prefixes (`W6g` x3)
 ## Rebuild
 
 ```bash
-node tools/greek-2x-source.js 2.6.1   # unpacks the zip into work/, flatten-paks.js, leaves out the Legacy files, port-140.js (HD + the mod)
+node tools/greek-2x-source.js 2.6.1   # unpacks the zip into work/, flatten-paks.js, port-140.js (HD + the mod)
 node tools/greek-2x.js 2.6.1
 ```
 
@@ -43,7 +43,7 @@ Measured by MD5 on the unpacked folders: 86 new files, 297 changed, 10 removed. 
 - **Neutral content** renamed `_w26` (the other ports and Imperivm Legacy have the same ids).
 - **Voices per language**: English pack's takes in `currentlang/voices`, the Spanish and Italian packs' in `local/<language>/voices`; not heard in game.
 - **Greece's barracks**: the type-2 exit point moves from `-32,-50` to `-16,-50` (same entity, `.pass` and points as the 2.3's: checked byte-identical in the 2.6.1 download). Tried in game in the 2.3 and the 2.5.3, **not in this version**.
-- **Three classes used by nothing** (`FArena`, `FTemple`, `FTownhall`, parents the game's `MArena`, `MTemple`, `MTownhall`) come with the mod and are shipped as they are (`FTownhall` renamed `_w26`); they name winter entities that nobody ships (allow-listed below). Whether to leave them out is the maintainer's call.
+- **Three classes used by nothing** (`FArena`, `FTemple`, `FTownhall`, parents the game's `MArena`, `MTemple`, `MTownhall`) come with the mod and are shipped as they are (`FTownhall` renamed `_w26`); they name winter entities that nobody ships (allow-listed below). **Decision (maintainer, 2026-11-02): keep them as they are, respecting the author's work**; the question of leaving them out is closed.
 
 ## `gbr.exe` is patched and cannot be carried
 
@@ -61,65 +61,11 @@ A Resurrected mod carries data only: the game runs the HD `gbr.exe`, so **none o
 
 ## License and permission
 
-The download has no license text. `CURRENTLANG/CREDITS.TXT` lists the team. `mod.json` credits GreekModTeam, MediterranevmTeam and Rattlesmake with "Villoh (port)", names Nicoghiro31 (Imperivm Legacy) and Gargolus for the assets, and `redistributable: false`. The `gbr.exe` was patched by AlexiusItaly (not carried). Permission: not asked (column *Permission* of row 258: `?`).
+The download has no license text. `CURRENTLANG/CREDITS.TXT` lists the team. `mod.json` credits GreekModTeam, MediterranevmTeam and Rattlesmake with "Villoh (port)", and names Nicoghiro31 (Imperivm Legacy) and Gargolus for the assets. The `gbr.exe` was patched by AlexiusItaly (not carried).
 
-**Imperivm Legacy (Nicoghiro31): the license question is NOT closed, and it is the maintainer's to decide, not this port's.** *Question for the maintainer:* may the 55 listed files (and, once compared, the sprites in `rle.mmp`) be published, or must they stay out? Until then they are out and nothing here goes to GameBanana or anywhere else. The files of this version that are new or changed against the **2.3** (the baseline of the line) and byte-identical to a file of Imperivm Legacy 2.4.1 are **not in this port**: 55 files (`extras/greek-mod-2-6-1/legacy-left-out.txt`, made by `tools/greek-2x-legacy.js`): 27 are new and were dropped, 28 exist in the 2.3 and keep the 2.3's version. The comparison covers **loose files only**: the sprites in `rle.mmp` were **not compared**, so Legacy sprites may still be in the port. Files left out:
+**Permission (2026-11-02):** the maintainer holds the permission of the Greek Team / MediterranevmTeam (authors of the 2.3, 2.5.3, 2.6.1 and Mediterranevm 3.6) **and of Nicoghiro31 and Gargolus (Imperivm Legacy's assets)**, and wants this port redistributable: `mod.json` has `redistributable: true`, row 258 of `docs/MODS.md` reads "authors' permission: granted to the maintainer, per the maintainer 2026-11-02", and `docs/AUTHORS.md` says the same on the Nicoghiro31 and GreekModTeam rows. It is the maintainer's statement, recorded as he gave it; no licence name is recorded (the download has none). Before this, the files below were left out and the question was open.
 
-- `DATA/AI/_TEUTON/AI.INI`
-- `DATA/AI/_TEUTON/ES_OUTPOSTARMY.VS`
-- `DATA/AI/_TEUTON/GETARMYNEED.VS`
-- `DATA/AI/_TEUTON/GS_CAPTURE.VS`
-- `DATA/AI/_TEUTON/GS_SIEGE.VS`
-- `DATA/AI/_TEUTON/TSH_HEROSKILLS.VS`
-- `DATA/SUBAI/DRUID_REVITALIZE_GROUND.VS`
-- `DATA/SUBAI/HDRUID_ADVANCE.VS`
-- `SOUNDS/EFFECTS/STAMINA_BOOST.WAV`
-- `SOUNDS/NOTIFICATIONS/TOWNHALL REFRESHMENT.WAV`
-- `UI/CMDBAR/ACTIONS/HIRE CHORSEMAN.BMP`
-- `UI/CMDBAR/ACTIONS/HIRE HEROM.BMP`
-- `UI/CMDBAR/ACTIONS/HIRE HEROR.BMP`
-- `UI/CMDBAR/ACTIONS/HOVER.BMP`
-- `UI/CMDBAR/ACTIONS/IMPERIAL TRAINING.BMP`
-- `UI/CMDBAR/ACTIONS/INVISIBILITY.BMP`
-- `UI/CMDBAR/ACTIONS/MILITARY TRAINING FOOD.BMP`
-- `UI/CMDBAR/ACTIONS/NATURE.BMP`
-- `UI/CMDBAR/ACTIONS/REVITALIZE.BMP`
-- `UI/CMDBAR/ACTIONS/SOOTHING RAIN.BMP`
-- `UI/CMDBAR/ACTIONS/STOP_CHORSEMAN.BMP`
-- `UI/CMDBAR/ACTIONS/TRAIN CHORSEMAN.BMP`
-- `UI/CMDBAR/ACTIONS/TRAINING.BMP`
-- `UI/CMDBAR/CMDBARIBERIA.BMP`
-- `UI/CMDBAR/CMDBARRROME.BMP`
-- `UI/CMDBAR/RESEARCH/TBATTLESONG.BMP`
-- `UI/CMDBAR/RIGHTRROME.BMP`
-- `UI/CMDBAR/UPGRADES/BFIGHTS.BMP`
-- `UI/CMDBAR/UPGRADES/BSPEARS.BMP`
-- `UI/CMDBAR/UPGRADES/CPIKES.BMP`
-- `UI/CMDBAR/UPGRADES/CSHIELDS.BMP`
-- `UI/CMDBAR/UPGRADES/GAUL_AXE IRON.BMP`
-- `UI/CMDBAR/UPGRADES/STOPCPIKES.BMP`
-- `UI/CMDBAR/UPGRADES/STOPCSHIELDS.BMP`
-- `UI/ICONS/CHORSEMAN.BMP`
-- `UI/ICONS/HIRE HEROM.BMP`
-- `UI/ICONS/HIRE HEROR.BMP`
-- `UI/ICONS/ITEMS/CARNYX.BMP`
-- `UI/ICONS/MHERO1.BMP`
-- `UI/ICONS/MHERO3.BMP`
-- `UI/ICONS/RHERO3.BMP`
-- `UI/ICONS/TEUTONCHIEFTAIN.BMP`
-- `UI/ICONS/THERO8.BMP`
-- `UI/ICONS/UPGRADES/BFIGHTS.BMP`
-- `UI/ICONS/UPGRADES/BSPEARS.BMP`
-- `UI/ICONS/UPGRADES/CARNYX.BMP`
-- `UI/ICONS/UPGRADES/GAUL_AXE IRON.BMP`
-- `UI/INFOBAR/BRITAIN/BUTTON ATTACH.BMP`
-- `UI/INFOBAR/BRITAIN/BUTTON SKILLS.BMP`
-- `UI/INFOBAR/BRITAIN/QI_FRAME1.HI.BMP`
-- `UI/INFOBAR/BRITAIN/QI_FRAME2.HI.BMP`
-- `UI/INFOBAR/SKILLS/BATTLEKNOWLEDGE.BMP`
-- `UI/INFOBAR/UNIT SPECIALS/DETERMINATION GLOW.BMP`
-- `UI/INFOBAR/UNIT SPECIALS/DETERMINATION.BMP`
-- `UNITS/NHERO1/NHERO1.ENT.XML`
+**Files identical to Imperivm Legacy that ship, by permission.** The files of this version that are new or changed against the **2.3** (the baseline of the line) and byte-identical to a file of Imperivm Legacy 2.4.1 are **in this port**: 55 are listed in `extras/greek-mod-2-6-1/legacy-identical.txt` (made by `tools/greek-2x-legacy.js`; documentation only, no build reads it). Of them, **29 ship**: 21 at the same path, identical to Legacy's (848.2 KB); 6 renamed `_w26` with their class's folder or name; and 2 scripts (`DRUID_REVITALIZE_GROUND.VS`, `HDRUID_ADVANCE.VS`) as `_w26` copies that the build changed (the `HasSpecial(determination)` fix), so they are no longer Legacy's bytes. **26 are not in the port, by rules that apply to every port and not because of Legacy**: 20 are the game's own files that the mod edited in place (`UI/CMDBAR/CMDBARRROME.BMP`, `UI/ICONS/MHERO1.BMP`, the infobar buttons of Britain, `UI/INFOBAR/UNIT SPECIALS/DETERMINATION*.BMP`, `UNITS/NHERO1/NHERO1.ENT.XML`...), left out as "the game's own file with other bytes: no rule can scope it to the port" (`raw/greek-mod-2-6-1-left-out.txt`), as in the 2.3; and 6 are `DATA/AI/_TEUTON/*` scripts at the game's own path, which the engine calls by name and a clone cannot own. The comparison covers **loose files only**: the sprites in `rle.mmp` were not compared. `shared-paths.js` against `ported/imperivm-legacy`: 113 paths in common with the same bytes, 0 class ids (same-bytes paths are not collisions for the repo; `tagCollisions` renames a path only when the bytes differ or the file is gameplay data), and 4 paths with other bytes, all the menu skin (`currentlang/adventuredefault.bmp`, `logo.bmp`, `menubackground.bmp`, `ui/menu/bonuses.bmp`: the approved cosmetic exception).
 
 ## Validation
 
@@ -167,23 +113,9 @@ Only the menu skin: cosmetic. **The 24 `UI/MENU/*.BMP` of the skin (buttons, fra
 
 All the rows above are **ours** (the rename broke them: the unsuffixed name resolves in the port or in HD). The same pass also put back **7 sound entity names** (`sounds attack="MyrmidonFight"`: `MyrmidonFight` is the mod's entity, renamed `MyrmidonFight_w26.XML` because 1.8 and 4.2 ship the same path; the class named it without `.xml`, so the rewrite never reached it and `W..Javelineer`, `Sentry`, `Velit`, `Huntress`, `Slinger`... lost their attack sound) and 11 **order and text names** that spell a renamed class id (`Gaul Spearman`, `Roman Thermae`...; `Roman Thermae` showed as `Roman Thermae_w26` in the editor and in the translation key).
 
-**Allowed (the original's own bugs, or left out on purpose):**
+**Allowed (the original's own bugs):**
 
-- `gameres/icons/TeutonChieftain.bmp`: left out on purpose: byte-identical to a file of Imperivm Legacy (license not settled); the game draws its placeholder
-- `Upgrades/BFights.bmp`: left out on purpose: byte-identical to a file of Imperivm Legacy (license not settled); the game draws its placeholder
-- `gameres/icons/upgrades/BFights.bmp`: left out on purpose: byte-identical to a file of Imperivm Legacy (license not settled); the game draws its placeholder
-- `gameres/icons/upgrades/BSpears.bmp`: left out on purpose: byte-identical to a file of Imperivm Legacy (license not settled); the game draws its placeholder
-- `upgrades/BSpears.bmp`: left out on purpose: byte-identical to a file of Imperivm Legacy (license not settled); the game draws its placeholder
-- `gameres/icons/upgrades/CARNYX_w26.BMP`: left out on purpose: byte-identical to a file of Imperivm Legacy (license not settled); the game draws its placeholder
 - `gameres/icons/upgrades/WBreast.bmp`: HD's own BLACKSMITH.XML names it too; HD has the picture only under UI/HELP/UPGRADES, not where the queue icon looks (not this port's)
-- `gameres/icons/upgrades/gaul_axe iron.bmp`: left out on purpose: byte-identical to a file of Imperivm Legacy (license not settled); the game draws its placeholder
-- `upgrades/gaul_axe iron.bmp`: left out on purpose: byte-identical to a file of Imperivm Legacy (license not settled); the game draws its placeholder
-- `actions/Military training food.bmp`: left out on purpose: byte-identical to a file of Imperivm Legacy (license not settled); the game draws its placeholder
-- `actions/hire heroM.bmp`: left out on purpose: byte-identical to a file of Imperivm Legacy (license not settled); the game draws its placeholder
-- `gameres/icons/hire heroM.bmp`: left out on purpose: byte-identical to a file of Imperivm Legacy (license not settled); the game draws its placeholder
-- `actions/Imperial training.bmp`: left out on purpose: byte-identical to a file of Imperivm Legacy (license not settled); the game draws its placeholder
-- `gameres/icons/items/CARNYX_w26.BMP`: left out on purpose: byte-identical to a file of Imperivm Legacy (license not settled); the game draws its placeholder
-- `sounds/notifications/townhall refreshment.wav`: left out on purpose: byte-identical to a file of Imperivm Legacy (license not settled)
 - `CurrentLang/voices/TTeutonWolf/1.wav`: the mod's VoiceTTTeutonWolf.xml names five voice files that no package of the mod or the game has: the original did not resolve either
 - `CurrentLang/voices/TTeutonWolf/2.wav`: the mod's VoiceTTTeutonWolf.xml names five voice files that no package of the mod or the game has: the original did not resolve either
 - `CurrentLang/voices/TTeutonWolf/3.wav`: the mod's VoiceTTTeutonWolf.xml names five voice files that no package of the mod or the game has: the original did not resolve either

@@ -1,5 +1,5 @@
-351 scripts, 16 hero bases, 277 class names and 114 GetConst keys checked
-names: 347 scripts read, 0 problems; 79 scripts that nothing points to were not read (BDRUID_HIDE_CLOSE_ALLIES_w26.VS, BDRUID_TENCHANTRESS_ONDIE.VS, BEAR_BOAR_ENGAGE_w26.VS, BEAR_BOAR_IDLE_w26.VS, ...)
+352 scripts, 16 hero bases, 277 class names and 116 GetConst keys checked
+names: 348 scripts read, 0 problems; 79 scripts that nothing points to were not read (BDRUID_HIDE_CLOSE_ALLIES_w26.VS, BDRUID_TENCHANTRESS_ONDIE.VS, BEAR_BOAR_ENGAGE_w26.VS, BEAR_BOAR_IDLE_w26.VS, ...)
 
 0 errors
 

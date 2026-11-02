@@ -172,6 +172,7 @@ Scripts the civilizations of the port use are not here: they are copies of their
 - `DATA/SUBAI/DRUID_LEARN.VS`: 28 lines of the game's changed or removed, 31 added by the mod
 - `DATA/SUBAI/DRUID_ONDIE.VS`: 1 lines of the game's changed or removed, 1 added by the mod
 - `DATA/SUBAI/DRUID_REVITALIZE.VS`: 19 lines of the game's changed or removed, 25 added by the mod
+- `DATA/SUBAI/DRUID_REVITALIZE_GROUND.VS`: 1 lines of the game's changed or removed, 4 added by the mod
 - `DATA/SUBAI/DRUID_REVITALIZE_VERIFY.VS`: 6 lines of the game's changed or removed, 7 added by the mod
 - `DATA/SUBAI/DRUID_WOLF_SUMMONING.VS`: 3 lines of the game's changed or removed, 7 added by the mod
 - `DATA/SUBAI/EAGLE_HOVER.VS`: 21 lines of the game's changed or removed, 14 added by the mod
