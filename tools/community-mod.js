@@ -391,11 +391,15 @@ fs.mkdirSync(path.join(ROOT, "raw"), { recursive: true });
 
 // The lobby information pages (UI/MENU/B1F..B10F.BMP, 5790x1572, three frames of 1930: the mod's "General changes" pages that MPCHAT.INI shows): one set per language in the rar's
 // Local/<language>.pak, byte-identical to the Discord download's. Under Local/<language>/UI/MENU/ so that each player sees the pages of the language he chose.
-{ const r = require("./lib/community-pages.js").pages({ SRC, SDK, SCRATCH, OUT, langs: ["english", "spanish", "italian"], transform: require("./lib/community-chatframe.js").eraseChatFrame }); console.log(`lobby pages: ${r.map(x => `${x.lang} ${x.files} files ${(x.bytes / 1e6).toFixed(1)} MB`).join("; ")}`);
+{ const r = require("./lib/community-pages.js").pages({ SRC, SDK, SCRATCH, OUT, langs: ["english", "spanish", "italian"], transform: require("./lib/community-chatframe.js").eraseChatFrame, after: dir => require("./lib/community-strip.js").eraseOtherTabs(dir) }); console.log(`lobby pages: ${r.map(x => `${x.lang} ${x.files} files ${(x.bytes / 1e6).toFixed(1)} MB`).join("; ")}`);
   // the chat frame the author's screenshot left in the bottom-left of every page is erased (tools/lib/community-chatframe.js): these pictures are NOT byte-identical to the author's by that one rectangle
   const rows = r.flatMap(x => x.stats.map(t => `Local/${x.lang}/UI/MENU/${require("path").basename(t.file)} | ${t.bpp}bpp key ${t.key} | pixels erased ${t.changed} | bbox x${t.bbox[0]}..${t.bbox[2]} y${t.bbox[1]}..${t.bbox[3]} (image coordinates) | changes outside the frame rectangle: ${t.outside}`));
   fs.mkdirSync(path.join(ROOT, "raw"), { recursive: true });
   fs.writeFileSync(path.join(ROOT, "raw", "community-mod-civs-chatframe.txt"), ["# the chat frame erased from each page picture (tools/lib/community-chatframe.js): row 1 of the three columns, x 0..578 x y 575..651 and x 25..578 x y 572..574 of each cell, with the pictures' own transparency key; nothing else changes", ...rows, ""].join("\n"));
+  // the icons of the other nine tabs erased from the strip of each page (tools/lib/community-strip.js): a second rectangle set in which these pictures are not byte-identical to the author's
+  const srows = r.flatMap((x, i) => x.post.map(t => `Local/${x.lang}/UI/MENU/B${t.n}F.BMP | pixels erased ${t.changed} | bbox x${t.bbox[0]}..${t.bbox[2]} y${t.bbox[1]}..${t.bbox[3]} (image coordinates) | changes outside the erased icon cells: ${t.outside}`));
+  fs.writeFileSync(path.join(ROOT, "raw", "community-mod-civs-strip.txt"), ["# the icon cells of the other nine pages erased from the strip of each page picture (tools/lib/community-strip.js): row 1 of the three columns, with the pictures' own transparency key; the page's title, body, border and own icon are untouched", ...srows, ""].join("\n"));
+  console.log(`tab strip: the other nine icons erased in ${srows.length} pictures: ${[...new Set(r.flatMap(x => x.post.map(t => t.changed)))].join(" / ")} pixels per picture`);
   console.log(`chat frame erased from ${rows.length} pictures: ${[...new Set(r.flatMap(x => x.stats.map(t => t.changed)))].join(" / ")} pixels per picture`); }
 // The mod's edits of the scripts of the game's own items (God's Gift...) are global: the items' edits are not ported (above), so the scripts that only they used go too
 {
