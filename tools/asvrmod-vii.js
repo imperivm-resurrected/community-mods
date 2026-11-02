@@ -330,6 +330,9 @@ for (const d of ["DATA/GAMESCRIPTS", "DATA/BONUSSCRIPTS"]) { const p = find(OUT,
 // the main menu is written back, from the rar, at the end of step 6 (tools/lib/asvr-menu.js): it is written AFTER the steps that compare files with the game's, which would remove
 // them (DATA/INTERFACE/ is "global" and UI/MENU/*.bmp are the game's names).
 for (const f of walk(OUT).filter(f => /^(CURRENTLANG\/[^/]+\.bmp|UI\/MENU\/[^/]+)$/i.test(f))) fs.rmSync(path.join(OUT, f));
+// The mod's credits (port-140.js writes them to local/spanish/CREDITS.TXT) would replace HD's Spanish credits for Spanish players: dropped (issue #54, maintainer 2026-11-02).
+// The author is credited in mod.json ("authors"); the rar's HELP.bmp is not shipped either (only the rar's own HELP.INI reads it, and that INI is not shipped).
+for (const f of walk(OUT).filter(f => /^(local\/[^/]+|currentlang)\/(credits\.txt|help\.bmp)$/i.test(f))) fs.rmSync(path.join(OUT, f));
 
 // The mod's edits of the scripts of the game's own items (God's Gift...) are global: the items' edits are not ported (above), so the scripts that only they used go too
 {
@@ -561,6 +564,7 @@ if (fs.existsSync(EXTRAS)) for (const f of walk(EXTRAS)) { if (f === "NOTES.md")
       if (/^data\/interface\/menu\//.test(f) && !/^data\/interface\/menu\/(mainmenu|menuback)\.ini$/.test(f)) bad.push(`${f}: only MAINMENU.INI and MENUBACK.INI of the menu are approved`);
       if (/^ui\//.test(f) && !/^ui\/(menu|cmdbar|help|icons|infobar)\//.test(f)) bad.push(`${f}: unexpected folder of UI/`);
       if (/^currentlang\/menubackgroundimperiv/.test(f)) bad.push(`${f}: not shipped`);
+      if (/^(local\/[^/]+|currentlang)\/(credits\.txt|help\.bmp)$/.test(f)) bad.push(`${f}: not shipped (it would replace HD's credits, or nothing reads it)`);
       if (/^currentlang\/(tips|help)\.xml$/.test(f)) bad.push(`${f}: would replace HD's tips/help for every language (Spanish text: local/spanish/ only)`);
       if (/^local\/(?!spanish\/)[^/]+\/(tips|help)\.xml$/.test(f)) bad.push(`${f}: Spanish text outside local/spanish/`);
     }

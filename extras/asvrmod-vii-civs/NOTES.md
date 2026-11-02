@@ -238,13 +238,13 @@ Not listed above and also global: the mod's `UNIT_SPECIALS.INI` changes the *tex
 
 The two INIs were checked byte for byte against the files the maintainer tried (they were made from the converted package; these are generated from the rar with the three edits above, and are identical, CRLF included).
 
-**Not shipped, on purpose**: `GAME.LOC.XML` and `TRANSLATION.LOC.XML` (the Spanish text table of the whole game, 755 KB each: it would translate the game for everybody), the other nine menu INIs of the rar, `MENUBACKGROUNDIMPERIVM.bmp`, `CARGAR`, `HELP.bmp`, `OPTIONS`, `CONQUESTDEFAULT`, and anything else of `UI/`. (`CREDITS.TXT` and `HELP.XML` are not at `CURRENTLANG/` either; they ship for Spanish only, below.)
+**Not shipped, on purpose**: `GAME.LOC.XML` and `TRANSLATION.LOC.XML` (the Spanish text table of the whole game, 755 KB each: it would translate the game for everybody), the other nine menu INIs of the rar, `MENUBACKGROUNDIMPERIVM.bmp`, `CARGAR`, `HELP.bmp`, `OPTIONS`, `CONQUESTDEFAULT`, `CREDITS.TXT` (the mod's credits: it would replace HD's Spanish credits; the author is credited in `mod.json`), and anything else of `UI/`. (`TIPS.XML` and `HELP.XML` are not at `CURRENTLANG/` either; they ship for Spanish only, below.)
 
 ### Tips and help, by language (issue #54)
 
 The skin switches the main menu's Tips panel on (HD has it commented out) and its Help button. HD's **English** pack has no `tips.xml` and no `help.xml` (only the Spanish and Italian packs do: `sdk/languages.md`). The mod's `CURRENTLANG/TIPS.XML` (59 tips) and `HELP.XML` (240 topics; HD's Spanish has 208, the 32 more are the mod's units, heroes and buildings) are **Spanish**. The mod has no English and no Italian version of either (checked in the rar).
 
-- **Before this change** the build shipped `CURRENTLANG/TIPS.XML` (a path that applies to every language) *and* `local/spanish/{TIPS,HELP,CREDITS}.XML|TXT` (written by `port-140.js` because they differ from HD's). So: Spanish, the mod's tips and help; **Italian, the mod's Spanish tips instead of HD's Italian ones** (HD's help kept); **English, Spanish tips** and the Help button failing (`currentlang/help.xml -> does not exist`).
+- **Before this change** the build shipped `CURRENTLANG/TIPS.XML` (a path that applies to every language) *and* `local/spanish/{TIPS,HELP}.XML` and `CREDITS.TXT` (written by `port-140.js` because they differ from HD's). So: Spanish, the mod's tips and help; **Italian, the mod's Spanish tips instead of HD's Italian ones** (HD's help kept); **English, Spanish tips** and the Help button failing (`currentlang/help.xml -> does not exist`).
 - **Now** `CURRENTLANG/TIPS.XML` is gone (the build stops if `currentlang/tips.xml` or `currentlang/help.xml` ships, or a `tips.xml`/`help.xml` in a `local/` folder other than `spanish`). The only difference with the previous build is that one file (md5 of the whole port compared). Each language sees:
 
 | Language | Tips panel | Help button |
@@ -253,7 +253,7 @@ The skin switches the main menu's Tips panel on (HD has it commented out) and it
 | Italian | **HD's own** | **HD's own** |
 | English | **empty** (HD has none, the mod has none in English) | **does nothing** (same) |
 
-- `local/spanish/CREDITS.TXT` is the mod's credits (8 KB) in place of HD's Spanish credits (30 KB) for Spanish players. It was shipped before this change and the older notes said it was not: left as it is, asked in the PR.
+- **`CREDITS.TXT` is not shipped** (maintainer, 2026-11-02). `port-140.js` wrote the mod's credits (8 KB) to `local/spanish/CREDITS.TXT`, in place of HD's Spanish credits (30 KB) for Spanish players; the older notes said it was not shipped, and it was. `tools/asvrmod-vii.js` now drops it after `port-140.js` (a shared tool, not edited), and the build stops if any `credits.txt` or `help.bmp` is in `local/<lang>/` or `currentlang/`. Nothing else in the port names it (searched). The mod's credits stay in `mod.json` (`authors`: Asvr and `Villoh (port)`). `HELP.bmp` is not shipped either (decided the same day).
 - `HELP.bmp` of the rar is not needed: it is the picture the **rar's** `HELP.INI` reads (`Image = CurrentLang/Help.bmp`), and that INI is not shipped (`DATA/INTERFACE/HELP/` is global); HD's `HELP.INI` does not read it.
 - Pictures named by the shipped Spanish help: 756; 92 are in neither HD's `UI` nor the port (HD's own Spanish help has 74 such names). Not tried in game.
 - **Not tried in game**: any of this. To try: main menu in Spanish (panel with tips, Help opens), Italian (HD's tips and help), English (empty panel, Help does nothing, as before for English).
@@ -271,7 +271,7 @@ The skin switches the main menu's Tips panel on (HD has it commented out) and it
 - `DATA/INTERFACE/MENU/MAINMENU.INI`: shipped whole by **Imperivm Legacy** (other bytes). The Greek Mod 1.8 and the 4.2 do not ship it whole in this repository: they patch it (`patches/DATA/INTERFACE/MENU/MAINMENU.INI`, `TEMPLATE.INI`; the 4.2 also `MENUBACK.INI`), so their patches would apply on top of whichever file wins. That combination has not been tried.
 - `DATA/INTERFACE/MENU/MENUBACK.INI`: shipped whole by no other port; patched by the 4.2.
 - `UI/MENU/*`: **the 1.8** has 16 of the same names with other bytes (`BIGGOLD`, `BUTTON`, `BUTTON60`, `CHECKBUTTON`, `DOWNARROW`, `FRAME`, `HERO`, `MMENBUT`, `SCROLLBACK`, `SMALLGOLD`, `TAPAL`, `TAPAR`, `TEAMS`, `UPARROW`, `BONUSES`, `VOLUME_CONTROL`); `BONUSES.BMP` is also shipped by Imperivm Legacy and the MCI, `FOOD.BMP` and `PEOPLE.BMP` by the MCI. The 4.2's pictures have other names.
-- `CURRENTLANG/titulo.bmp`, `CREDITS.bmp`, `GENERALS.bmp`, `titulo3.bmp`: no other port. `local/spanish/TIPS.XML`, `HELP.XML`, `CREDITS.TXT`: the MCI ships its own `local/spanish/TIPS.XML` and `HELP.XML` (other bytes; Spanish game only).
+- `CURRENTLANG/titulo.bmp`, `CREDITS.bmp`, `GENERALS.bmp`, `titulo3.bmp`: no other port. `local/spanish/TIPS.XML` and `HELP.XML`: the MCI ships its own `local/spanish/TIPS.XML` and `HELP.XML` (other bytes; Spanish game only).
 - `CURRENTLANG/MENUBACKGROUND.bmp`: CGWAR, the 4.2, the 1.8, Imperivm Legacy, the MCI and Mediterranevm (other bytes).
 
 ## Not ported, and why
