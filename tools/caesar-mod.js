@@ -56,7 +56,7 @@ const CIVS = [
   { base: "RepublicanRome", baseLetter: "R", hero: "RepublicanRomanHero", id: "kpunic", skipExtra: /^(ImperialRomanHero|MHero|Caesar$)/, branch: BR("ChoosePunicRome", { cmd: "hireheroRPunic", hero: "PunicRomanHero" }),
     name: { spanish: "Roma púnica", english: "Punic Rome", italian: "Roma punica" } },
 ];
-const GREECE = "kgreece", GP = "Kgr", GCONST = "Kgreece", TEMPLATE = "Greek Caesar";   // Greece's id, prefix, constant in scripts, random map templates ("Greek Caesar Town 1")
+const GREECE = "kgreece", GP = "Kgr", GCONST = "Kgreece", TEMPLATE = "Greek Caesar", GREECE_INDEX = 50;   // 50..59 are Caesar's (docs/CIVILIZATIONS.md): a conquest names its civilization by index, so Greece's is explicit (the others stay automatic)   // Greece's id, prefix, constant in scripts, random map templates ("Greek Caesar Town 1")
 const CONSTS = [GCONST, ...CIVS.map(c => c.id[0].toUpperCase() + c.id.slice(1))];
 
 // 0. the zip, unpacked
@@ -345,7 +345,7 @@ const idMap = new Map([...greekIds].map(id => [id, gid(id)]));
   for (const [m, h] of pieces) if (!m.startsWith("#")) alias[m] = idMap.get(h);
   // `letter` is written: a declaration without it takes its base's prefix (sdk civilizations.md: "Omit it to inherit the base's prefix"), not one derived from the id; the nine
   // declarations the clone tool writes carry theirs
-  const j = { id: GREECE, base: "ImperialRome", letter: GP, name: { spanish: `Grecia (${LABEL})`, english: `Greece (${LABEL})`, italian: `Grecia (${LABEL})` }, template: TEMPLATE, ai: true, alias: { classes: alias, commands: {} } };
+  const j = { id: GREECE, index: GREECE_INDEX, base: "ImperialRome", letter: GP, name: { spanish: `Grecia (${LABEL})`, english: `Greece (${LABEL})`, italian: `Grecia (${LABEL})` }, template: TEMPLATE, ai: true, alias: { classes: alias, commands: {} } };
   fs.mkdirSync(path.join(OUT, "civs"), { recursive: true });
   fs.writeFileSync(path.join(OUT, "civs", `${GREECE}.json`), JSON.stringify(j, null, 2) + "\n", "utf8");
 }
@@ -477,6 +477,24 @@ console.log(`other ports compared: ${PORTS.length} (${REQUIRED_PORTS.filter(n =>
     for (const n of [...ids.map(i => `Shield${i}.bmp`), "ShieldArrow.bmp"]) { if (find(dir, n)) continue; const g = find(gm, n); if (g) { fs.copyFileSync(g, path.join(dir, n)); copied.push(`${d}/${n}`); } else report.push(`ConquestMaps/${d}: ${n} is not in the folder and the game has none`); }
   }
   console.log(`conquest shields copied from the game's folder: ${copied.length}${copied.length ? " (" + copied.join(", ") + ")" : ""}`);
+}
+// The Greece territory of both conquests is the civilization of this port: its `interface` (the race of the player who starts there; the territories.xml INSIDE the .bfhp, read when the
+// territory is chosen: CConquestMapData::SetCurrentTerritory) is Greece's index, 50 (the mod's 4 was the 1.40's ImperialRome: the player started as HD's Imperial Rome), and its name is
+// the one the map art writes, HELLAS (the others' visualname follow their label). The DLL takes any index 10-127 there (imperivm-resurrected#45). The other territories keep the game's races.
+// The written file is read back and must be whole (tools/check-conquests.js): the build stops otherwise.
+{
+  const hpfs = require("./hpfs.js"), cDir = find(OUT, "Conquests"), done = [];
+  for (const file of cDir ? fs.readdirSync(cDir).filter(x => /\.bfhp$/i.test(x)) : []) {
+    const bfhp = path.join(cDir, file), buf = hpfs.pad(fs.readFileSync(bfhp)), e = hpfs(buf).find(x => /^territories\.xml$/i.test(x.path)); if (!e) continue;
+    const text = e.read().toString("latin1"), block = /<territory\b[^>]*\bid="Greece"[^>]*\/>/.exec(text); if (!block) continue;
+    const nb = block[0].replace(/\bvisualname="[^"]*"/, 'visualname="Hellas"').replace(/\binterface="\d+"/, `interface="${GREECE_INDEX}"`);
+    let t = text.replace(block[0], nb); const pages = n => Math.ceil(n / buf.readUInt32LE(4));
+    if (pages(t.length) > pages(text.length)) t = t.replace(/\n[\t ]+/g, "\n");
+    e.write(Buffer.from(t, "latin1")); fs.rmSync(bfhp); fs.writeFileSync(bfhp, buf); done.push(file);
+  }
+  console.log(`Greece territory: interface ${GREECE_INDEX} (${GREECE}), visualname Hellas in ${done.length} conquests (${done.join(", ")})`);
+  const bad = require("./check-conquests.js").scan([OUT]).filter(r => r.bad.length);
+  if (bad.length) { console.error(`CONQUEST CHECKS FAILED:\n  ${bad.map(r => r.f + ": " + r.bad.join("; ")).join("\n  ")}`); process.exit(1); }
 }
 // names another mod of ours (or the game's own adventures) already has with other bytes: this port's are renamed
 {
