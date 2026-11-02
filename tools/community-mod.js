@@ -465,7 +465,27 @@ fs.mkdirSync(path.join(ROOT, "raw"), { recursive: true });
 // and now asks for a file that does not exist (the blue square where an icon should be). The pictures, sounds and entities that do not resolve go back to the mod's own name
 // (tools/lib/community-refs.js, not tagCollisions); the sound entities the port renamed are named by the clones' classes. The check at the end of the build stops on any that is
 // still missing and that the mod's own package resolved: the references that were already broken in the rar (and HD's own: WBreast, Anibal) are left alone and counted.
-const REFS = require("./lib/community-refs.js");
+const REFS = require("./lib/community-refs.js"), ART = require("./lib/community-art.js");
+// The mod's command-bar buttons (UI/CMDBAR): the GameBanana package has 63 of them in another state (no painted hotkey letter, no transparency key) and lacks the other 269 that differ
+// from the game's; the Discord download's UI.pak has all 332 (it is the mod's own full game copy). They are shipped as <name>_cm.BMP, never at HD's path, and the orders of the copies
+// point to them. CM_NO_DISCORD=1 builds without them (the result then differs).
+let ICONS = null;
+if (process.env.CM_NO_DISCORD !== "1") {
+  const DISCORD_RAR = path.join(ROOT, "originals", "discord", "community-mod-v12", "Community Mod v12.rar");
+  const alt = [DISCORD_RAR, path.join(MAIN, "originals", "discord", "community-mod-v12", "Community Mod v12.rar")].find(p => fs.existsSync(p));
+  if (!alt) { console.error("the Discord download is missing (originals/discord/community-mod-v12/Community Mod v12.rar): the mod's command-bar buttons come from it; CM_NO_DISCORD=1 builds without them"); process.exit(1); }
+  const dir = ART.discordCmdbar({ RAR: alt, SDK, SCRATCH });
+  ICONS = ART.shipIcons({ OUT, DISCORD: dir, HD: path.join(ROOT, "originals", "game-data", "paks"), TAG });
+  fs.rmSync(dir, { recursive: true, force: true });
+  console.log(`command-bar buttons from the Discord download: ${ICONS.shipped.length} shipped as <name>_${TAG}.BMP (${ICONS.differ} differ from HD's, ${ICONS.shipped.length - ICONS.differ} are not in HD and a copy's order names them); ${ICONS.same} identical to HD's and ${ICONS.notNamed.length} not in HD and named by no order of the port, not shipped; ${ICONS.replaced.length} files of the GameBanana package replaced; ${ICONS.repointed} references in ${ICONS.files} texts now name the _${TAG} file`);
+  const H = ART.hotkeys({ OUT });
+  fs.writeFileSync(path.join(ROOT, "raw", "community-mod-civs-hotkeys.txt"), [
+    `# the letter painted at the bottom centre of each shipped button against the key= of each copy's order that uses it. ${H.commands} orders with a button, ${H.rows.length} with a shipped button read, ${H.ok} match, ${H.mismatch.length} mismatch, ${H.unreadable.length} unreadable (nearest glyph template more than 10 pixels away; not guessed)`,
+    "# glyph templates: the masks that 3 or more buttons share, named by the key most of their orders have (tools/lib/community-art.js, hotkeys)", "", "## mismatch (order | key= | painted | icon)",
+    ...H.mismatch.map(r => `${r.file.replace(/\.XML$/i, "")} | ${r.name} | key=${r.key} | painted=${r.painted.toUpperCase()} | ${r.icon}`), "", "## unreadable (order | key= | nearest template | distance | icon)",
+    ...H.unreadable.map(r => `${r.file.replace(/\.XML$/i, "")} | ${r.name} | key=${r.key} | ${r.painted.toUpperCase()} | ${r.dist} | ${r.icon}`), "", "## not shipped: not in HD and named by no order", ...ICONS.notNamed, "", "## replaced (the GameBanana package's)", ...ICONS.replaced, ""].join("\n"));
+  console.log(`hotkeys: ${H.ok} orders match the painted letter, ${H.mismatch.length} mismatch (raw/community-mod-civs-hotkeys.txt): ${H.mismatch.map(r => `${r.name} key=${r.key} painted ${r.painted.toUpperCase()}`).join("; ") || "none"}; ${H.unreadable.length} unreadable`);
+}
 { const fixed = REFS.fixRefs({ OUT, HD, TAG }); console.log(`references put back to the mod's own name or to the renamed sound entity: ${fixed.length}${fixed.length ? "\n  " + fixed.slice(0, 40).join("\n  ") + (fixed.length > 40 ? `\n  ... (${fixed.length - 40} more)` : "") : ""}`); }
 
 // Two files whose names differ only by case in one folder cannot live together on Windows or in a zip (found by the review of #46: research_cm.vs / RESEARCH_cm.VS, catapult_attack,
