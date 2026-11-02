@@ -946,6 +946,20 @@ for (const f of walk(OUT).filter(f => /(^|\/)(\.fingerprint|desktop\.ini|thumbs\
   console.log(`global: ${base.length} base classes (inside the clones), ${other.length} classes no clone took -> raw/caesar-mod-civs-global.md`);
 }
 
+// 12a. Radius. The Caesar Mod's class files carry no radius / selection_radius for 47 classes whose HD class has them (walls, gates, villages, outposts, shipyards, Tavern2, Arena2) and the
+// merge kept the mod's deletion. In HD every wall and gate has one; with two Greek settlements (KgrWalls*, KgrGate*, KgrVillage) on a random map the AI map builder met a settlement
+// without a main building and the game crashed (gbr.exe+3fffd, IsStrongholdSettlement <- SeedSettlementGaikas: 7 of 9 games with two kgreece; 0 of 7 once the radii were in, maintainer's
+// overlays V1..V4 of 2026-11-02). Each class gets the radius lines of the HD class it comes from (tools/lib/caesar-radius.js: the key of its alias in civs/*.json; KgrVillage <- RVillage,
+// two lines, the second wins; KgrTower <- MTower has none), then the check runs again and the build STOPS if any class still lacks what its HD class has.
+{
+  const rad = require("./lib/caesar-radius.js"), hdClasses = rad.classesOf(path.join(HD, "DATA", "CLASSES")), cdir = find(OUT, "DATA/CLASSES"), civs = path.join(OUT, "civs");
+  const todo = rad.missing({ portClasses: rad.classesOf(cdir), hdClasses, civsDir: civs }).sort((x, y) => (x.id < y.id ? -1 : 1));
+  const done = rad.fix(todo), left = rad.missing({ portClasses: rad.classesOf(cdir), hdClasses, civsDir: civs });
+  fs.writeFileSync(path.join(ROOT, "raw", "caesar-mod-civs-radius.txt"), `${done.length} classes got the radius / selection_radius of the HD class they come from (the key of their alias; KgrVillage <- RVillage)\n\n${done.join("\n")}\n`);
+  const kinds = {}; for (const p of todo) { const k = /Gate/.test(p.id) ? "gates" : /Walls/.test(p.id) ? "walls" : /Village/.test(p.id) ? "villages" : /Outpost/.test(p.id) ? "outposts" : /Shipyard/.test(p.id) ? "shipyards" : "other"; kinds[k] = (kinds[k] || 0) + 1; }
+  console.log(`radius: ${done.length} classes got the radius of their HD class (${Object.entries(kinds).map(([k, v]) => v + " " + k).join(", ")}) -> raw/caesar-mod-civs-radius.txt; ${left.length} still without`);
+  if (left.length) { console.error(`RADIUS CHECKS FAILED (${left.length}): a class of the port has no radius / selection_radius that its HD class has:\n  ${left.map(p => `${p.id} (${path.relative(OUT, p.file)}) lacks them; HD's ${p.hdId} (${path.basename(p.hdFile)}) has ${p.hd.radius}/${p.hd.selection}`).join("\n  ")}`); process.exit(1); }
+}
 // 12b. Scopes: a local declared in a block and used after it closes stops the script in the game (tools/lib/caesar-scopes.js; HD's own 585 scripts have none). The build stops.
 {
   const { scopeProblems } = require("./lib/caesar-scopes.js"), vocab = require("./lib/caesar-names.js").gameVocabulary(process.env.SDK);
