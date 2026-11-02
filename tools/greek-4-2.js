@@ -272,7 +272,7 @@ console.log(`menu skin: ${require("./lib/menu-skin.js").skinToPatches({ OUT, HD 
   fs.rmSync(path.join(OUT, "hidden.txt"), { force: true });
   const GREEK = /Greece|Greek|\bH[A-Z][a-z]|trainH\b|Athena|Aegle|Zeus|Circe|Hecate|Olympic|KAresGuard|Ares/;
   const { gameFilesToPatches } = require("./lib/independent.js");
-  const r = gameFilesToPatches({ OUT, HD, GREEK, keep: /^(currentlang|ui\/menu)\//, skipFiles: /^DATA\/SUBAI\/(VERIFY_RESEARCH|UNIT_ATTACH_VERIFY)\.VS$/i });
+  const r = gameFilesToPatches({ OUT, HD, GREEK, keep: /^(currentlang|ui\/menu)\//i, skipFiles: /^DATA\/SUBAI\/(VERIFY_RESEARCH|UNIT_ATTACH_VERIFY)\.VS$/i });
   console.log(`game files: ${r.patches.length} became patches, ${r.dropped.length} left out`);
   fs.writeFileSync(path.join(ROOT, "raw", "greek-4-2-left-out.txt"), r.dropped.join("\n") + "\n\n" + r.report.join("\n") + "\n");
 }
