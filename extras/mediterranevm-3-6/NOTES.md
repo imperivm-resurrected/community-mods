@@ -2,7 +2,7 @@
 
 Row 386. Three RARs (`MediterranevmMod_3.6_ENG.rar`, `_ES.1.rar`, `_ITA.rar`, ModDB, `originals/moddb/mediterranevm-mod-3-6/files/`): each is a full game install (`Packs/*.pak`, loose files over them, the mod's own `rle.mmp` of 420 MB, `local/<language>.pak`), no `.exe`/`.dll`. The `Packs/*.pak` of the ENG one are HD's (flattened and compared: 14531 files, 0 changed, 0 new). The data is the same in the three; only `Currentlang` (voices, texts, menu pictures) differs.
 
-**Tried in game once, very briefly (see *In game*, below); almost nothing is tried.** The maintainer installs and tests. Permission (row 386): `?`, nothing is published.
+**Tried in game once, very briefly (see *In game*, below); almost nothing is tried.** The maintainer installs and tests. Permission: see *License and permission* below.
 
 **This port is the mod's changes to the game's eight civilizations as eight civilizations of its own, next to the game's** (AGENTS.md, *Civilizations are independent*), plus the mod's neutral map objects. The 3.6 has no Greece and no branch scripts, so there are eight clones, like the alpha (row 200).
 
@@ -18,6 +18,12 @@ Row 386. Three RARs (`MediterranevmMod_3.6_ENG.rar`, `_ES.1.rar`, `_ITA.rar`, Mo
 | `ggermany` | `Gge` | Germany | Germany (Med 3.6) |
 
 The set is `Mediterranevm 3.6` (17 characters); the longest lobby name is `Rep. Rome (Med 3.6)` (19). The prefixes are derived from the ids (first three characters, all distinct; engine rule in `sdk/prefixes.md`: prefix + uppercase letter, compared case-insensitively), no `index`. Token `g`. Not in `docs/CIVILIZATIONS.md` or `sdk/prefixes.md` (checked, case-insensitive; of 8977 class ids scanned none starts with a prefix + uppercase letter).
+
+## License and permission
+
+The three RARs have no license text. `mod.json` credits MediterranevmTeam and Villoh (port).
+
+**Permission (2026-11-02):** the maintainer holds the permission of the MediterranevmTeam / Greek Team (authors of the 2.3, 2.5.3, 2.6.1 and Mediterranevm 3.6) **and of Nicoghiro31 and Gargolus (Imperivm Legacy's assets, which this mod shares as its ancestor)**, and wants this port redistributable: `mod.json` has `redistributable: true`, row 386 of `docs/MODS.md` reads "authors' permission: granted to the maintainer, per the maintainer 2026-11-02". It is the maintainer's statement, recorded as he gave it; no licence name is recorded. The files identical to Imperivm Legacy's were never left out of this port (they are the 3.6's own); nothing was restored here. `shared-paths.js` against `ported/imperivm-legacy`: 222 paths in common with the same bytes, 0 class ids, and 2 paths with other bytes (`currentlang/menubackground.bmp`, the approved cosmetic exception, and `rle.mmp.tail`, the graphics tail: see *Graphics*). Same-bytes paths are not collisions for the repo (AGENTS.md; `tagCollisions` renames a path only when the bytes differ or the file is gameplay data).
 
 ## Rebuild
 
