@@ -6,7 +6,7 @@
 //   download the file (a .zip, or the Inno Setup installer: run under wine)   inner  the game folder inside it ("" if it is the folder itself)
 //   work    where the sources are laid out in work/   letters  the explicit prefix (up to 4 characters, civilizations.md, *Prefix convention*) of each civilization
 //           when the derived ones (the first 3 characters of the id) would clash: w5gaul, w5germany and w5greece all give "W5g"   template  Greece's random map template
-//           (letters and spaces only)   legacyLeft  the files byte-identical to Imperivm Legacy's are left out (tools/greek-2x-legacy.js)
+//           (letters and spaces only)   legacyList  tools/greek-2x-legacy.js writes extras/<id>/legacy-identical.txt (the files byte-identical to Imperivm Legacy's, which ship by permission; documentation only)
 // Nothing is written under originals/: everything goes to work/ (git-ignored).
 const path = require("path");
 const ROOT = path.join(__dirname, "..", "..");
@@ -54,7 +54,7 @@ module.exports = {
   WORK: process.env.WORK || path.join(ROOT, "work"),
   VERSIONS: {
     "2.3": { dir: "greek-mod-2-3", name: "Greek Mod 2.3", version: "2.3", label: "Greek 2.3", tok: "w", tag: "w23", ai: "GRW23_", download: "originals/moddb/greek-mod-2-3/files/Greek23.zip", inner: "Greek23", work: "greek-2-3", resolve: RESOLVE_23 },
-    "2.5.3": { dir: "greek-mod-2-5-3", name: "Greek Mod 2.5.3", version: "2.5.3", label: "Greek 2.5.3", tok: "w5", letters: letters("W5"), template: "Greek Mod Two Five Three", tag: "w25", ai: "GRW25_", download: "originals/forum/greek-mod-2-5-3/files/GreekModInstaller.exe", inner: "", work: "greek-2-5-3", legacyLeft: true, wholeOnConflict: true, resolve: RESOLVE_25 },
-    "2.6.1": { dir: "greek-mod-2-6-1", name: "Greek Mod 2.6.1", version: "2.6.1", label: "Greek 2.6.1", tok: "w6", letters: letters("W6"), template: "Greek Mod Two Six One", tag: "w26", ai: "GRW26_", download: "originals/forum/greek-mod-2-6-1/files/Greek261.zip", inner: "Greek261", work: "greek-2-6-1", legacyLeft: true, wholeOnConflict: true, resolve: RESOLVE_26 },
+    "2.5.3": { dir: "greek-mod-2-5-3", name: "Greek Mod 2.5.3", version: "2.5.3", label: "Greek 2.5.3", tok: "w5", letters: letters("W5"), template: "Greek Mod Two Five Three", tag: "w25", ai: "GRW25_", download: "originals/forum/greek-mod-2-5-3/files/GreekModInstaller.exe", inner: "", work: "greek-2-5-3", legacyList: true, wholeOnConflict: true, resolve: RESOLVE_25 },
+    "2.6.1": { dir: "greek-mod-2-6-1", name: "Greek Mod 2.6.1", version: "2.6.1", label: "Greek 2.6.1", tok: "w6", letters: letters("W6"), template: "Greek Mod Two Six One", tag: "w26", ai: "GRW26_", download: "originals/forum/greek-mod-2-6-1/files/Greek261.zip", inner: "Greek261", work: "greek-2-6-1", legacyList: true, wholeOnConflict: true, resolve: RESOLVE_26 },
   },
 };

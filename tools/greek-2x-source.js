@@ -5,7 +5,7 @@
 //   work/greek-<v>-full/   the game folder as the download has it (a .zip is unpacked with bsdtar; the 2.5.3 is an Inno Setup installer that innoextract 1.9
 //                          cannot read ("unexpected setup loader revision": it is 6.5): it is run silently under wine in a throwaway prefix)
 //   work/greek-<v>-raw/    tools/flatten-paks.js: the packages in name order (the greater name wins: zGreek.pak over data.pak), the loose files over them
-//   work/greek-<v>-flat/   the same, without the files byte-identical to Imperivm Legacy's (2.5.3 and 2.6.1: extras/<id>/legacy-left-out.txt)
+//   work/greek-<v>-flat/   the same (hard links): what port-140.js reads. The files identical to Imperivm Legacy's ship too (by permission)
 // The executables, DLLs, the launcher and the installer's uninstaller are left out by flatten-paks.js: a mod cannot ship them (NOTES.md says what they did).
 const fs = require("fs"), path = require("path"), cp = require("child_process");
 const { ROOT, WORK, VERSIONS, SDK } = require("./lib/greek-2x-versions.js");
@@ -28,31 +28,14 @@ if (!fs.existsSync(GAME)) {
     fs.rmSync(prefix, { recursive: true, force: true });
   }
 }
-// 2. the flat folder: work/<v>-raw is what the download has; work/<v>-flat is what port-140.js reads. They differ only by the files that are left out because
-// they are byte-identical to Imperivm Legacy's (extras/<id>/legacy-left-out.txt, made by tools/greek-2x-legacy.js): a file the 2.3 has too is replaced by the
-// 2.3's (the earlier version of the same file), one that is new is dropped.
+// 2. the flat folder: work/<v>-raw is what the download has; work/<v>-flat is what port-140.js reads. They are the same files (hard links): the files that are byte-identical to
+// Imperivm Legacy's used to be left out here (extras/<id>/legacy-left-out.txt); the maintainer holds the permission of Legacy's authors (Nicoghiro31, Gargolus) and the Greek
+// Team's/MediterranevmTeam's (2026-11-02), so they ship. tools/greek-2x-legacy.js only lists them (extras/<id>/legacy-identical.txt).
 fs.rmSync(RAW, { recursive: true, force: true }); fs.rmSync(FLAT, { recursive: true, force: true });
 run("node", [path.join(__dirname, "flatten-paks.js"), GAME, RAW]);
 for (const f of ["dxwrapper.ini", "unins000.dat"]) fs.rmSync(path.join(RAW, f), { force: true });
 fs.symlinkSync(path.join(GAME, "rle.mmp"), path.join(RAW, "rle.mmp"));                    // port-140.js reads the mod's sprites from it
-run("cp", ["-al", RAW, FLAT]);                                                              // hard links: the replacements below remove the file first
-{
-  const list = path.join(ROOT, "extras", V.dir, "legacy-left-out.txt");
-  if (V.legacyLeft && fs.existsSync(list)) {
-    const find = (base, rel) => { let p = base; for (const part of rel.split("/")) { const n = fs.existsSync(p) && fs.readdirSync(p).find(x => x.toLowerCase() === part.toLowerCase()); if (!n) return null; p = path.join(p, n); } return p; };
-    const base23 = path.join(WORK, "greek-2-3-raw");
-    // the 2.3 is the baseline: without its raw folder the "replaced by the 2.3's" files would silently be dropped and the build would differ from one that has it
-    if (!fs.existsSync(base23)) { console.error(`no ${base23}: run \`node tools/greek-2x-source.js 2.3\` first and keep work/greek-2-3-raw until the ${VER} is built (the Legacy exclusion puts the 2.3's files back from it)`); process.exit(1); }
-    let dropped = 0, replaced = 0;
-    for (const rel of fs.readFileSync(list, "utf8").split(/\r?\n/).filter(l => l && !l.startsWith("#"))) {
-      const mine = find(FLAT, rel); if (!mine) { console.error(`${rel}: not in ${FLAT}`); process.exit(1); }
-      fs.rmSync(mine);
-      const old = fs.existsSync(base23) && find(base23, rel);
-      if (old) { fs.copyFileSync(old, mine); replaced++; } else dropped++;
-    }
-    console.log(`Legacy: ${dropped} files dropped, ${replaced} replaced by the 2.3's`);
-  }
-}
+run("cp", ["-al", RAW, FLAT]);
 // 2b. the voices of each language pack: flatten-paks.js merges only Local\spanish.pak, so the English and Italian recordings (other takes, 44.1 kHz 16 bit against
 // the Spanish pack's 22 kHz 8 bit) never reached the port. work/<v>-lang/<language>/CURRENTLANG/VOICES is what greek-2x.js reads (czech.pak is not a language of the game).
 {

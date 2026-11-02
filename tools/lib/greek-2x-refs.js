@@ -12,7 +12,7 @@
 //                   entity that is now `MyrmidonFight_w23`: the unit loses its sound. The reference follows the file.
 //   checkRefs       (stops the build) every picture a command, a class or an item names exists in the port or in the game's packs (the engine's rules below); every
 //                   sound file and sound entity a text names exists; every `entity=` exists; no text names a `_<tag>` file, folder or class that is not there. What the mod's own
-//                   package could not resolve either is allowed by name with the reason (ALLOW), and so is what the build left out on purpose (Imperivm Legacy's files).
+//                   package could not resolve either is allowed by name with the reason (ALLOW). (Imperivm Legacy's files are no longer left out: they ship, by permission.)
 //                   Files the engine reads by a name pattern and that the rename broke (a class renamed `X.SC_w23.XML` is not `*.sc.xml`) are returned apart: `patternBroken`.
 // Where the engine looks for a picture (gameres/ is the interface's root): gameres/cmdbar|icons|infobar/X -> UI/CMDBAR|ICONS|INFOBAR/X; a plain `button=` value -> UI/CMDBAR/X.
 const fs = require("fs"), path = require("path");
@@ -74,9 +74,9 @@ function fixClassWords(OUT, tag) {
   return fixed;
 }
 
-// -> { problems, allowed, checked, patternBroken }. `legacy`: relative paths (any case) left out on purpose.
-function checkRefs(OUT, HD, tag, { legacy = [], extraRoots = [], hdClasses = null, ownBugs = new Map() } = {}) {
-  const have = index(OUT, HD, ...extraRoots), problems = [], allowed = new Map(), left = new Set(legacy.map(x => x.replace(/\\/g, "/").toLowerCase())); let n = 0;
+// -> { problems, allowed, checked, patternBroken }.
+function checkRefs(OUT, HD, tag, { extraRoots = [], hdClasses = null, ownBugs = new Map() } = {}) {
+  const have = index(OUT, HD, ...extraRoots), problems = [], allowed = new Map(); let n = 0;
   const bad = (f, what, why) => problems.push(`${path.relative(OUT, f).replace(/\\/g, "/")}: ${what} ${why}`);
   // pictures
   for (const f of textsOf(OUT)) {
@@ -86,7 +86,6 @@ function checkRefs(OUT, HD, tag, { legacy = [], extraRoots = [], hdClasses = nul
       if (have.has(rel.toLowerCase())) continue;
       const v = m[2].replace(/\\/g, "/").toLowerCase();
       if (ALLOW.has(v) || ownBugs.has(v)) { allowed.set(m[2], ALLOW.get(v) || ownBugs.get(v)); continue; }
-      if (left.has(rel.toLowerCase()) || left.has(rel.toLowerCase().replace(new RegExp(`_${tag}(\\.bmp)$`), "$1"))) { allowed.set(m[2], "left out on purpose: byte-identical to a file of Imperivm Legacy (license not settled); the game draws its placeholder"); continue; }
       bad(f, `${m[1]}="${m[2]}"`, `-> ${rel} is not in the port or in the game`);
     }
   }
@@ -95,7 +94,6 @@ function checkRefs(OUT, HD, tag, { legacy = [], extraRoots = [], hdClasses = nul
   for (const f of walk(path.join(OUT, "DATA", "SOUND ENTITIES"))) for (const m of fs.readFileSync(f, "latin1").matchAll(/<sound\b[^>]*?\bfile\s*=\s*"([^"]+)"/gi)) {
     n++; if (soundHave(m[1])) continue;
     const v = m[1].replace(/\\/g, "/"), k = v.toLowerCase();
-    if (left.has(k) || left.has(k.replace(/^currentlang\//, ""))) { allowed.set(v, "left out on purpose: byte-identical to a file of Imperivm Legacy (license not settled)"); continue; }
     if (ownBugs.has(k)) { allowed.set(v, ownBugs.get(k)); continue; }
     if (v.includes("'") && soundHave(v.replace(/'/g, "_"))) { allowed.set(v, "the mod's package names the file with `_` where its own sound entity has `'` (HD's files keep the apostrophe): the original did not resolve either"); continue; }
     bad(f, `file="${m[1]}"`, "is not in the port or in the game");
@@ -148,7 +146,6 @@ if (require.main === module) {
   assert.deepStrictEqual(checkRefs(O, H, "w23").problems, [], "after the fix nothing is missing");
   const a = fs.readFileSync(path.join(O, "DATA/COMMANDS/A.XML"), "latin1"); assert(/icons\/upgrades\/CSHIELDS\.BMP/.test(a) && /button="upgrades\/CSHIELDS_w23\.BMP"/.test(a) && /name="Gaul Spearman"/.test(a) && /SetSet Spearman_w23/.test(a));
   put(O, "DATA/COMMANDS/B.XML", '<cmd queueicon="gameres/icons/upgrades/nothing.bmp"/>'); assert.strictEqual(checkRefs(O, H, "w23").problems.length, 1, "a reference nobody has stops the build");
-  assert.strictEqual(checkRefs(O, H, "w23", { legacy: ["UI/ICONS/UPGRADES/NOTHING.BMP"] }).problems.length, 0, "a Legacy file left out on purpose is allowed");
-  put(O, "DATA/CLASSES/WINTER/X.SC_w23.XML"); assert.strictEqual(checkRefs(O, H, "w23", { legacy: ["UI/ICONS/UPGRADES/NOTHING.BMP"] }).patternBroken.length, 1);
+  put(O, "DATA/CLASSES/WINTER/X.SC_w23.XML"); assert.strictEqual(checkRefs(O, H, "w23").patternBroken.length, 1);
   console.log("greek-2x-refs self-test ok");
 }
