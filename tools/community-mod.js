@@ -74,7 +74,7 @@ fs.rmSync(SRC, { recursive: true, force: true }); fs.rmSync(PRISTINE, { recursiv
   const tmp = path.join(SCRATCH, "cm-unpack"); fs.rmSync(tmp, { recursive: true, force: true }); fs.mkdirSync(tmp);
   const r = cp.spawnSync("bsdtar", ["-xf", RAR, "-C", tmp], { stdio: "inherit" }); if (r.status) process.exit(1);
   fs.renameSync(path.join(tmp, "Community Mod v12", "Community Mod"), SRC); fs.rmSync(tmp, { recursive: true, force: true });
-  // What is not the civilizations' (NOTES.md, "Left out"): the game's language packs (Local/*.pak: 182 MB each, the game's own), the text tables of the whole game
+  // What is not the civilizations' (NOTES.md, "Left out"): Local/*.pak (182 MB each: the 10 B1F..B10F chat-button pictures that only MPCHAT.INI, which is left out, names; see NOTES.md), the text tables of the whole game
   // (Local/<lang>/GAME.LOC.XML, TIPS.XML: they translate the game for everybody), hidden.txt (hides 1932 game files for everyone), patches/data/const.ini (global values),
   // the file list of the author's installer (.fingerprint) and mod.json (extras/ has ours)
   cp.spawnSync("cp", ["-a", SRC, PRISTINE], { stdio: "inherit" });
