@@ -44,3 +44,6 @@ ported/antioco-iii-el-grande/
 # AsvrMod VII a0.8.1: rebuilt from the GameBanana rar + extras/asvrmod-vii-civs/ (tools/asvrmod-vii.js: unpacks into .scratch/, runs port-140.js; see its NOTES.md)
 ported/asvrmod-vii-civs/
 .scratch/
+
+# Caesar Mod 1.1.0 (the civilizations: ten, next to the game's; 1.2 GB with the maps, movies and music): rebuilt from the GameBanana zip (728740) + extras/caesar-mod-civs/ by tools/caesar-mod.js
+ported/caesar-mod-civs/

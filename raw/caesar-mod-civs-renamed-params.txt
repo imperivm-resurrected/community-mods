@@ -1,0 +1,27 @@
+22 patches of game scripts compared with the mod's signature line
+
+renamed:
+AI/CALCGAIKAPRIORITY.VS: aiPlayer -> idPlayer (4 uses)
+AI/CALCMAXTAKE.VS: aiPlayer -> idPlayer (3 uses)
+AI/CHECKMAIKA.VS: aiPlayer -> idPlayer (5 uses)
+AI/GETARMYNEED.VS: aiPlayer -> idPlayer (7 uses)
+AI/GETECONOMYSCRIPT.VS: aiPlayer -> idPlayer (0 uses)
+AI/GETGAIKASTRAT.VS: aiPlayer -> idPlayer (9 uses)
+AI/GETTACTICSCRIPT.VS: aiPlayer -> idPlayer (0 uses)
+
+same names:
+ESH_ARENAUNITS.VS
+ESH_ARMYTECHSEQ.VS
+ESH_BUILDARMY.VS
+ESH_COMBATMAGIC.VS
+ESH_MARKET.VS
+ESH_RESEARCHTRAINING.VS
+EVALRECRUIT.VS
+HEROSKILL DEFAULT.VS
+MAIN.VS
+TSH_ARENARECRUIT.VS
+TSH_HERORECRUIT.VS
+TSH_HEROSKILLS.VS
+TSH_RECRUITARMY.VS
+TSH_RESEARCH.VS
+TSH_TEMPLERECRUIT.VS
