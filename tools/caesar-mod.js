@@ -99,6 +99,15 @@ for (const f of walk(OUT).filter(f => /\.vs$/i.test(f))) {
   for (const f of walk(path.join(OUT, "DATA")).filter(f => /\.vs$/i.test(f))) { const p = path.join(OUT, "DATA", f), r = removeStrayBraces(rd(p)); if (r.removed.length) { wr(p, r.text); stray.push(`DATA/${f} (line ${r.removed.join(", ")})`); } }
   console.log(`stray "}" removed from the mod's own scripts: ${stray.join("; ") || "none"}`);
 }
+// UNIT_CAPTURE.VS: the three-way merge of port-140.js grafted HD's tail onto the mod's script (the mod's has the signature (This, target) and its own horse capture inside the
+// block; HD's is (me, u)): `else if(u.IsHeirOf("WildHorse"))` names `u` and `this`, locals that live in blocks that are closed by then, so the game's compiler stops the whole
+// script ("No matching function with name u", imperivm-mod.log, unit_capture_cae.vs (199, 10)) and no unit of the ten civilizations could capture anything. The tail only runs
+// when `target` is not valid and does what the mod's block above already does (a wild horse, with the research "Tame horses"): it goes.
+{
+  const p = find(OUT, "DATA/SUBAI/UNIT_CAPTURE.VS"), t = p && rd(p), i = t ? t.search(/^else\s+if\s*\(\s*u\.IsHeirOf\("WildHorse"\)/m) : -1;
+  if (i < 0) report.push("UNIT_CAPTURE.VS: HD's tail (else if(u.IsHeirOf(\"WildHorse\"))) is not there: look at it");
+  else { let d = 0, j = t.indexOf("{", i), k = j; for (; k < t.length; k++) { if (t[k] === "{") d++; else if (t[k] === "}" && --d === 0) break; } wr(p, t.slice(0, i) + t.slice(k + 1).replace(/^\s*\r?\n/, "")); console.log(`UNIT_CAPTURE.VS: HD's tail grafted by the merge (u, this out of scope) removed: ${t.slice(i, k + 1).split("\n").length} lines`); }
+}
 const CLASSES = find(OUT, "DATA/CLASSES"), COMMANDS = find(OUT, "DATA/COMMANDS"), HD_CLASSES = find(HD, "DATA/CLASSES");
 // the choice of branch at the town hall is not ported (AGENTS.md, "What a civilization is, it is from the start"): the three researches go, the branches are the civilizations
 fs.rmSync(path.join(COMMANDS, fs.readdirSync(COMMANDS).find(f => /^RTOWNHALL_CHOICE\.XML$/i.test(f)) || "none"), { force: true });
