@@ -516,7 +516,12 @@ console.log(`other ports compared: ${PORTS.length} (${REQUIRED_PORTS.filter(n =>
 
 // Local/<language>/: the mod's files for one language. Shipped: the voices of units the game does not have (the Greek ones, the fisherman...), in the folder the sound entities
 // name, and the texts the game's table lacks (loc/<language>.loc.xml: only keys that are not in the game's own table, so nothing of the game's is translated differently).
-// Not shipped, because each replaces a file of the game for everybody who plays in that language: help.xml, tips.xml, splash.ini (the mod's intro), credits.txt (it is in
+// EXCEPTION, the tips: the skin brings back the main menu's Tips panel (HD has it commented out) and HD's English language pack (local/english.pak) has NO tips.xml (nor help.xml,
+// splash.ini: sdk languages.md), so the panel was empty in English. The mod's English TIPS.XML (80 tips) is shipped as Local/english/TIPS.XML, which the engine maps to currentlang/tips.xml
+// when the language is English (log: "language: caesar-mod-civs brings loose files from english"; "opens currentlang/tips.xml -> does not exist" without it). It adds a file the game lacks:
+// nothing is replaced, checked against the pack's index below. Spanish and Italian have their own (local/spanish.pak, local/italian.pak): the mod's are not shipped and those players keep HD's.
+// Czech is not a language of the game (G/local has english, italian and spanish; the mod declares none): Local/czech/TIPS.XML is the English file byte for byte and would never be read.
+// Not shipped, because each replaces a file of the game for everybody who plays in that language: help.xml, splash.ini (the mod's intro), credits.txt (it is in
 // Licenses/), the whole game.loc.xml (it renames the game's Imperial Rome to Greece, among others), the voices of the game's own units, and spanish.pak.
 {
   const L = find(OUT, "Local"), lines = [];
@@ -532,7 +537,11 @@ console.log(`other ports compared: ${PORTS.length} (${REQUIRED_PORTS.filter(n =>
       if (keep.length) { fs.mkdirSync(path.join(OUT, "loc"), { recursive: true }); fs.rmSync(path.join(OUT, "loc", `${lang}.loc.xml`), { force: true }); fs.writeFileSync(path.join(OUT, "loc", `${lang}.loc.xml`), `<translationtable>\n${keep.map(e => e.line).join("\n")}\n</translationtable>\n`, "utf8"); }
       lines.push(`${lang}: ${keep.length} of ${entries(tbl).length} texts are new (loc/${lang}.loc.xml)`);
     } else lines.push(`${lang}: no game table to compare with: texts not shipped`);
-    for (const n of ["GAME.LOC.XML", "HELP.XML", "TIPS.XML", "SPLASH.INI", "CREDITS.TXT"]) { const p = find(dir, n); if (p) fs.rmSync(p); }
+    // the names inside the game's own pack of this language (HMMSYS PackFile: tools/hpfs-like index of the SDK's extract-data.js)
+    const packNames = file => { if (!fs.existsSync(file)) return null; const d = fs.readFileSync(file), c = d.readUInt32LE(0x20), out = new Set(); let q = 0x28, prev = ""; for (let i = 0; i < c; i++) { const len = d[q], sh = d[q + 1]; q += 2; const nm = prev.slice(0, sh) + d.toString("latin1", q, q + len - sh); q += len - sh + 8; prev = nm; out.add(nm.toLowerCase().replace(/\\/g, "/")); } return out; };
+    const gamePack = packNames(path.join(GAME, "local", `${lang}.pak`)), keepTips = lang === "english" && gamePack && !gamePack.has("currentlang/tips.xml");
+    for (const n of ["GAME.LOC.XML", "HELP.XML", "TIPS.XML", "SPLASH.INI", "CREDITS.TXT"]) { const p = find(dir, n); if (p && !(keepTips && n === "TIPS.XML")) fs.rmSync(p); }
+    lines.push(`${lang}: TIPS.XML ${keepTips ? `shipped (the game's ${lang}.pak has none)` : gamePack ? "left out (the game's pack has its own, or this is not English)" : "left out (not a language of the game)"}`);
     const V = find(dir, "VOICES"); let kept = 0, gone = 0;
     for (const u of V ? fs.readdirSync(V) : []) {
       if (hdUnits.has(u.toLowerCase())) { fs.rmSync(path.join(V, u), { recursive: true }); gone++; continue; }
