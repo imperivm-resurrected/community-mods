@@ -388,7 +388,7 @@ fs.mkdirSync(path.join(ROOT, "raw"), { recursive: true });
 
 // The lobby information pages (UI/MENU/B1F..B10F.BMP, 5790x1572, three frames of 1930: the mod's "General changes" pages that MPCHAT.INI shows): one set per language in the rar's
 // Local/<language>.pak, byte-identical to the Discord download's. Under Local/<language>/UI/MENU/ so that each player sees the pages of the language he chose.
-{ const r = require("./lib/community-pages.js").pages({ SRC, SDK, SCRATCH, OUT, langs: ["english", "spanish"] }); console.log(`lobby pages: ${r.map(x => `${x.lang} ${x.files} files ${(x.bytes / 1e6).toFixed(1)} MB`).join("; ")}`); }
+{ const r = require("./lib/community-pages.js").pages({ SRC, SDK, SCRATCH, OUT, langs: ["english", "spanish", "italian"] }); console.log(`lobby pages: ${r.map(x => `${x.lang} ${x.files} files ${(x.bytes / 1e6).toFixed(1)} MB`).join("; ")}`); }
 // The mod's edits of the scripts of the game's own items (God's Gift...) are global: the items' edits are not ported (above), so the scripts that only they used go too
 {
   const hdIS = find(HDDATA, "ITEMSCRIPTS"), mineIS = find(OUT, "DATA/ITEMSCRIPTS"), ip = path.join(OUT, "patches", "DATA", "ITEMS.XML"), used = fs.existsSync(ip) ? rd(ip).toLowerCase() : "";
