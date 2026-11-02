@@ -503,6 +503,19 @@ if (process.env.CM_NO_DISCORD !== "1") {
 }
 { const fixed = REFS.fixRefs({ OUT, HD, TAG }); console.log(`references put back to the mod's own name or to the renamed sound entity: ${fixed.length}${fixed.length ? "\n  " + fixed.slice(0, 40).join("\n  ") + (fixed.length > 40 ? `\n  ... (${fixed.length - 40} more)` : "") : ""}`); }
 
+// The strategic map's bitmaps that tagCollisions made for the entities it renamed (tools/lib/ported-patch.js, followBitmaps, since #60) follow EVERY entity it renamed, but the references above
+// were then put back to HD's own entity for most of them (fixRefs: the renamed file was never written, the class names HD's, which has its bitmaps). Those copies are named by no class
+// (the engine asks for MINIMAP/ZOOMn/ENTITIES/<entity path without its last 8 characters, "/" as "-"> and OUTLINES/ZOOMn/{BLACK,COLOR}_<same>): not shipped. The ones a class still names stay.
+{
+  const names = new Set(), SC = find(OUT, "DATA/CLASSES");
+  for (const f of walk(SC).filter(f => /\.sc\.xml$/i.test(f))) for (const m of rd(path.join(SC, f)).matchAll(/(?<!\w)entity(?:_winter|_autumn|_spring)?\s*=\s*"([^"]+)"/gi)) if (/^(buildings|mapobjects)[\\/]/i.test(m[1])) names.add(m[1].replace(/\\/g, "/").slice(0, -8).replace(/\//g, "-").toLowerCase());
+  let kept = 0; const gone = [];
+  for (const f of walk(OUT).filter(f => /^(MINIMAP\/ZOOM\d+\/ENTITIES\/|OUTLINES\/ZOOM\d+\/(BLACK|COLOR)_)[^/]+\.BMP$/i.test(f))) {
+    const n = path.basename(f).replace(/\.bmp$/i, "").replace(/^(black|color)_/i, "").toLowerCase();
+    if (names.has(n)) kept++; else { fs.rmSync(path.join(OUT, f)); gone.push(f); }
+  }
+  console.log(`strategic map bitmaps: ${kept} kept (named by a class), ${gone.length} made by tagCollisions for entities whose classes name HD's again, not shipped`);
+}
 // Two files whose names differ only by case in one folder cannot live together on Windows or in a zip (found by the review of #46: research_cm.vs / RESEARCH_cm.VS, catapult_attack,
 // catapult_autofire). They come from own-scripts.js (the copy the clones name, lower case) and from tagCollisions (the mod's own script at the game's path, renamed): the same
 // name by case. Same bytes: the one with the lower-case extension stays (the clones name it). Other bytes would be said and the copy the clones name kept (the build stops: not seen).
