@@ -1,0 +1,5 @@
+Sounds/entities/VoiceBDruid.xml
+Sounds/entities/VoiceGDruid.xml
+Sounds/entities/VoiceIEnchantress.xml
+Sounds/entities/VoiceTEnchantress.xml
+gameres/icons/upgrades/WBreast.bmp

@@ -1,0 +1,24 @@
+{
+  "id": "community-mod-civs",
+  "name": "Community Mod 12",
+  "version": "12",
+  "category": "Civilizations",
+  "authors": [
+    "Ferónidas",
+    "Villoh (port)"
+  ],
+  "description": {
+    "spanish": "Community Mod v12 de Ferónidas como ocho civilizaciones propias junto a las del juego (\"Galos (Community)\", \"Roma rep. (Community)\"…): su equilibrio de unidades, costes, edificios y héroes, las variantes de héroe y la IA ajustada. Las civilizaciones del juego no cambian. No incluye los mapas, los textos ni las reglas globales del mod original.",
+    "english": "Ferónidas' Community Mod v12 as eight civilizations of their own next to the game's (\"Gaul (Community)\", \"Rep. Rome (Community)\"…): its balance of units, costs, buildings and heroes, the hero variants and the tuned AI. The game's civilizations do not change. It does not carry the original mod's maps, texts or global rules.",
+    "italian": "Community Mod v12 di Ferónidas come otto civiltà a sé, accanto a quelle del gioco (\"Galli (Community)\", \"Roma rep. (Community)\"…): il suo bilanciamento di unità, costi, edifici ed eroi, le varianti degli eroi e l'IA regolata. Le civiltà del gioco non cambiano. Non include le mappe, i testi né le regole globali della mod originale."
+  },
+  "license": "CC-BY-NC-ND-4.0",
+  "tags": [
+    "Type: Gameplay & Balance"
+  ],
+  "redistributable": true,
+  "sources": {
+    "page": "https://gamebanana.com/mods/730058",
+    "gamebanana": 730058
+  }
+}

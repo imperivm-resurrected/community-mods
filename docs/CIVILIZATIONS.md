@@ -72,6 +72,14 @@ Letters and indices are unique across all the ports (the SDK allows indices 10-9
 | (engine) | `aiberia` | `Aib` (derived) | Iberia | AsvrMod VII | `tools/asvrmod-vii.js` |
 | (engine) | `aegypt` | `Aeg` (derived) | Egypt | AsvrMod VII | `tools/asvrmod-vii.js` |
 | (engine) | `agermany` | `Age` (derived) | Germany | AsvrMod VII | `tools/asvrmod-vii.js` |
+| (engine) | `fgaul` | `Fga` (derived) | Gaul | Community Mod 12 | `tools/community-mod.js` |
+| (engine) | `frome` | `Fro` (derived) | RepublicanRome | Community Mod 12 | `tools/community-mod.js` |
+| (engine) | `fimperial` | `Fim` (derived) | ImperialRome | Community Mod 12 | `tools/community-mod.js` |
+| (engine) | `fcarthage` | `Fca` (derived) | Carthage | Community Mod 12 | `tools/community-mod.js` |
+| (engine) | `fbritain` | `Fbr` (derived) | Britain | Community Mod 12 | `tools/community-mod.js` |
+| (engine) | `fiberia` | `Fib` (derived) | Iberia | Community Mod 12 | `tools/community-mod.js` |
+| (engine) | `fegypt` | `Feg` (derived) | Egypt | Community Mod 12 | `tools/community-mod.js` |
+| (engine) | `fgermany` | `Fge` (derived) | Germany | Community Mod 12 | `tools/community-mod.js` |
 | (engine) | `kgaul` | `Kga` (derived) | Gaul | Caesar Mod 1.1.0 | `tools/caesar-mod.js` |
 | (engine) | `kbritain` | `Kbr` (derived) | Britain | Caesar Mod 1.1.0 | `tools/caesar-mod.js` |
 | (engine) | `kiberia` | `Kib` (derived) | Iberia | Caesar Mod 1.1.0 | `tools/caesar-mod.js` |
