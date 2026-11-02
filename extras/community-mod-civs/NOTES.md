@@ -72,11 +72,26 @@ What the mod changes that cannot be scoped to a clone (AGENTS.md, *World rules p
 
 ## Not carried, for other reasons
 
-- `Local/<language>/GAME.LOC.XML` and `TIPS.XML` (the text tables of the whole game: they translate it for everybody), `Local/*.pak` (182 MB each, the game's own language packs), the author's `.fingerprint` and `mod.json` (ours is in `extras/`).
+- `Local/<language>/GAME.LOC.XML` and `TIPS.XML` (the text tables of the whole game: they translate it for everybody), `Local/*.pak` (see the next item), the author's `.fingerprint` and `mod.json` (ours is in `extras/`).
+- **`Local/english.pak`, `italian.pak`, `spanish.pak`** (about 182 MB each, in the GameBanana rar): they hold the 10 chat-button pictures `UI/MENU/B1F.BMP`..`B10F.BMP` (5790x1572, 191 MB; checked by unpacking `english.pak`: 10 files, md5 identical to the same 10 in `Packs/UI.pak` of the Discord download). The port does not carry them **because `MPCHAT.INI` is left out** (the file that names them for its buttons `B1CM`..`B10CM`). The earlier version of this note said they were "the game's own language packs": that was wrong, the paks had not been opened. Only `english.pak` was unpacked; `italian.pak` and `spanish.pak` have the same size, so they very probably hold the same pictures (not checked).
 - `DATA/CLASSES/GHERO7A.SC .XML`: the mod's file has a space before the extension and HD's scan for `*.sc.xml` never opens it (class `GHero7a`); left out, nothing names it.
 - 19 scripts of the mod that nothing names any more (the originals of scripts the clone step made per-civilization copies of — `TEMPLEOFTHORCHAMBER.VS` → `_FBRITAIN` — and mod scripts no class, order or script calls: `BOULDER_ITEM`, `DEADTREE_ITEM`, `CHARITY_OF_CERES_BEHAVIOR`, `COPY_BEHAVIOUR`, `VERIFY_GATE`, `CWARELEPHANT_TRAMPLE` and the Stonehenge fatigue scripts): `raw/community-mod-civs-unnamed-scripts.txt`. `TEMPLEOFTHORCHAMBER_FBRITAIN.VS` had no signature line and got `// void, Obj This`.
 - Thumbnails (3) of the game's own adventures whose map is identical to the game's and so not carried.
 - `raw/community-mod-civs-left-out.txt` lists the 161 files of the rar at a game path with other bytes (or identical) that the build removed (135 of them scripts that became copies).
+
+## Compared with the Discord download (read-only, 2026-11-02)
+
+Three downloads of this mod are in `originals/`: (1) `discord/community-mod-v12/Community Mod v12.rar` (225 MB, 2026-10-20: a full game copy with `Packs/*.pak`, `local/*.pak`, adventures, scenarios, a conquest), (2) `gamebanana/730058/community_mod_v12.rar` (the author's own upload, the one ported), (3) `gamebanana/726223/community_mod.zip` (older, 2026-10-18). Compared by path, case-insensitively, with the paks of (1) unpacked and each file checked against HD's own:
+
+- (1) has **12,419** files, (2) **1,737**; 1,309 are in both and 1,244 of those are identical. 10,813 of the 11,110 only in (1) are HD's own files (identical to the game's). Of the rest, **27 are not in HD** (the 10 `B*F` buttons, `UI/CMDBAR/ACTIONS/EMPTY.BMP`, three `local/english/CURRENTLANG` files, 13 `*.PASS.BAK` backups) and **270 differ from HD** (268 command-bar icons, `DATA/CONST.INI`, the Britain Great Battle). 65 files are in both with other bytes (63 command-bar icons, `DATA/COMMANDS/HERO.XML` and `UNIT.XML`, where (1) has two extra placeholder buttons `emptyHero` and `empty` that use `EMPTY.BMP`).
+- **Menu skin: byte-identical** in (1) and (2): the 14 menu INIs the mod changes, `MENUMOD.BMP`, `MENUMOD2.BMP`, `MENUMODSASH.BMP`, `ChatButton1-3.BMP`, `ADVENTUREDEFAULT.BMP`. Neither ships a logo or a main-menu background under `Currentlang`; the only background is `UI/Interface/MenuMod.bmp` (1920x1080, a sword and a helmet in grass), which the port ships. The HD logo is the game's own.
+- **(3) is identical to (2)** in all 1,737 files except `mod.json`.
+- Not compared: sprite pixels (`rle.mmp`), the Spanish and Italian paks of (1) (207 MB each), and the 268 icons pixel by pixel.
+
+**Open items for the maintainer (nothing of this is ported):**
+1. `Adventures/GreatBattles/5_Great_Battles_Britain.BFHP` (11.4 MB, **only in the Discord download**; the game has the map with other bytes): the mod's edited Britain Great Battle. An adventure at the game's path replaces the game's for everybody; it belongs to #8.
+2. The **268 command-bar icons** (`UI/CMDBAR/ACTIONS|RESEARCH|UPGRADES|STATES|EMPTYMENU|SKILLS|FRAMES|SPECIALS`) at 153x52 where HD's are 153x51 (two samples; not compared pixel by pixel, so it is not known whether they are more than a re-export). Not ported: they sit at the game's paths and would replace the game's icons for everybody.
+3. The **`B1F`..`B10F` buttons (191 MB)** and `MPCHAT.INI`: the port leaves `MPCHAT.INI` out (it moves the lobby chat, 115 changed lines) and so the pictures; both downloads carry the pictures.
 
 ## The maps that name the mod (#8 rewrites them, not this task)
 
