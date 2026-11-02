@@ -14,6 +14,7 @@
 | [`download-discord.js`](../../tools/download-discord.js) | Adjuntos de Discord → `originals/discord/<channel>/<slug>/` (las URL caducan a las ~24 h) |
 | [`download-forum.js`](../../tools/download-forum.js) | Archivos tras los enlaces activos de las filas sin copia local → `originals/forum/<key>/files/`. Mega necesita `megadl`; ModDB, un navegador en el puerto CDP 9333 (Cloudflare). `--force=<keys>` vuelve a descargar |
 | [`download-forum-shots.js`](../../tools/download-forum-shots.js) | Capturas del mensaje inicial de cada tema del foro → `originals/forum/t<id>/screenshots/` |
+| [`check-conquests.js`](../../tools/check-conquests.js) `<dir>... \| --self-test` | Comprueba que el `territories.xml` de cada conquista de un port o de `mods/` está entero (acaba en `</conquestmap>`, sin bytes NUL); sale con 1 si alguno está dañado |
 | [`check-links.js`](../../tools/check-links.js) `[--all]` | Comprueba las descargas → `raw/links.json` |
 | **Tablas** | |
 | [`build-table.js`](../../tools/build-table.js) `--force` | Primer borrador de `MODS.md` + `MISSING.md`. Sobrescribe las ediciones manuales: solo en una copia de pruebas |
@@ -47,4 +48,4 @@
 | [`compare-mods.js`](../../tools/compare-mods.js) | Los Greek mods lado a lado, por stdout (`> GREEK-MODS.md`, ignorado por git) |
 | [`mod-class-diff.js`](../../tools/mod-class-diff.js) | Qué cambió un mod de 1.40 en las clases del juego, por civilización, respecto al 1.40 oficial |
 | [`greek-terrains.js`](../../tools/greek-terrains.js) | Las capas de terreno 41-55 del Greek Mod (del zip del Caesar Mod) → `ported/greek-mod-terrains/`; `wrap-map` hace que los mapas pintados con ellas lo requieran |
-| [`hpfs.js`](../../tools/hpfs.js) `<map.bfhp> [outDir]` | Lista o extrae un `.bfhp` de escenario/aventura (HPFS); como módulo, también reescribe un archivo en el sitio (de cualquier longitud dentro de sus páginas) |
+| [`hpfs.js`](../../tools/hpfs.js) `<map.bfhp> [outDir]` | Lista o extrae un `.bfhp` de escenario/aventura (HPFS); como módulo, también reescribe un archivo en el sitio (de cualquier longitud dentro de sus páginas; lanza un error en vez de perder bytes: `hpfs.pad(buf)` deja el contenedor en páginas enteras antes) |
