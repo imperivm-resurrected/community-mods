@@ -8,7 +8,7 @@ Every line of a patch is listed with the game's value (HD), the 1.40's and the m
 
 ## CONQUESTGAME.INI
 
-- [ConquestGame Objects] list: HD 37 lines -> 38 lines; added Shield8; removed none
+- [ConquestGame Objects] list: HD 37 lines -> 37 lines; added none; removed none
 - [BackImage] `Image`: HD `CurrentLang/MenuBackground.bmp` | 1.40 `CurrentLang/MenuBackground.bmp` -> `UI/Menu/MenuBackground.bmp`
 - [Save] `RectWH`: HD `#%Larghezza%/2+138#, #%Altezza%/2+200#, 247, 38` | 1.40 `%Button13Rect%` -> `#%ScreenRight%-305#, #%Altezza%/2+200#, %ButtonWidth%, %ButtonHeight%` (ADJUSTED: the mod has `#right(GameMap)-328#, #%Altezza%/2+200#, %ButtonWidth%, %ButtonHeight%`, see raw/caesar-mod-civs-conquest-layout.md)
 - [Start] `RectWH`: HD `#%Larghezza%/2+138#, #%Altezza%/2+200+44#, 247, 38` | 1.40 `%Button14Rect%` -> `#left(Save)#, #bottom(Save)+6#, %ButtonWidth%, %ButtonHeight%`
@@ -34,13 +34,6 @@ Every line of a patch is listed with the game's value (HD), the 1.40's and the m
 - [DifficultyTypeText] `RectWH`: HD `#left(DescriptionFrame)+20#, #bottom(DescriptionFrame)-35#, 140, 25` | 1.40 `#left(DescriptionFrame)+20#, #bottom(DescriptionFrame)-35#, 140, 25` -> `#left(DescriptionFrame)+30#, #bottom(BonusText)+24#, 100, 25`
 - [DifficultyType] `RectWH`: HD `#right(DescriptionFrame)-20-150+3#, #top(DifficultyTypeText)-2#, 150, 80` | 1.40 `#right(DescriptionFrame)-20-150+3#, #top(DifficultyTypeText)-2#, 150, 80` -> `#right(DifficultyTypeText)+10#, #top(DifficultyTypeText)-2#, 120, 80`
 - [ShieldsFrame] `RectWH`: HD `#%Larghezza%/2-479#, #%Altezza%/2-346#, 592, 90` | 1.40 `%ShildsFrameRect%` -> `#left(GameMap)+30#, #top(DescriptionFrame)#, 582, 90`
-- [Shield8] `Type`: HD `-` | 1.40 `-` -> `Button` (the eighth shield: not in the mod's file, the CGWAR port's rule) (new section)
-- [Shield8] `ImageType`: HD `-` | 1.40 `-` -> `AAAAA` (the eighth shield: not in the mod's file, the CGWAR port's rule) (new section)
-- [Shield8] `Image`: HD `-` | 1.40 `-` -> `` (the eighth shield: not in the mod's file, the CGWAR port's rule) (new section)
-- [Shield8] `RectWH`: HD `-` | 1.40 `-` -> `#right(Shield7)-1#, #top(Shield1)#, #width(Shield1)#, #height(Shield1)#` (the eighth shield: not in the mod's file, the CGWAR port's rule) (new section)
-- [Shield8] `HAlign`: HD `-` | 1.40 `-` -> `1, 0, 1` (the eighth shield: not in the mod's file, the CGWAR port's rule) (new section)
-- [Shield8] `VAlign`: HD `-` | 1.40 `-` -> `1, 0, 1` (the eighth shield: not in the mod's file, the CGWAR port's rule) (new section)
-- [Shield8] `Id`: HD `-` | 1.40 `-` -> `0x1039` (the eighth shield: not in the mod's file, the CGWAR port's rule) (new section)
 
 ## GAMEOPTIONS.INI
 
