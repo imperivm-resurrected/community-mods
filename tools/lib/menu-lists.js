@@ -1,0 +1,56 @@
+// The LISTS of a menu skin (this stack's own copy of the rule the maintainer put in tools/lib/menu-skin.js on main, commit a61f84f3; written here so the stack does not depend on it).
+// iniChanged() (tools/lib/ported-patch.js) only sees `Key = value` lines, but what a menu SHOWS is decided by the lists of bare names ([MainMenu Objects]: Caption, IniBackFrame, TipsBackFrame,
+// Version...). A skin that adds a panel to the list lost it: the 4.2 showed "Next" and "More Info" with no Tips panel, no frame behind the buttons and no version text.
+// listChanges() turns a changed list into `-line` for every line of the game's list and `+line` for every line of the mod's, in the mod's order (sdk/patches.md: "+Line adds a bare line if it
+// isn't there", "-Line removes the line that is exactly that text").
+//   listChanges(hdText, modText) -> [{ sec, lines }]       the sections whose list of bare names differs
+//   mergeLists(patchText|null, lists) -> text              the patch with the list lines inside the same section as its Key = value lines (a section that already has -/+ lines is left alone)
+//   skinLists({ OUT, HD }) -> Map(fileName -> lists)       call BEFORE skinToPatches (which removes the mod's whole file): the lists of every menu INI of the port that differs from the game's
+//   addLists({ OUT, lists }) -> number of files            call AFTER the patches are at patches/menuini/: merges the lists into them (template.ini: both places)
+const fs = require("fs"), path = require("path");
+const find = (base, rel) => { let p = base; for (const part of rel.split("/")) { if (!fs.existsSync(p)) return null; const n = fs.readdirSync(p).find(x => x.toLowerCase() === part.toLowerCase()); if (!n) return null; p = path.join(p, n); } return p; };
+// the bare lines (no =, not a comment, not a header) of each section, in order: Map(section -> [raw line without CR])
+const bareLists = text => { const m = new Map(); let sec = null; for (const raw of text.replace(/\r/g, "").split("\n")) { const h = raw.match(/^\s*\[([^\]]+)\]/); if (h) { sec = h[1]; if (!m.has(sec)) m.set(sec, []); continue; } if (sec && raw.trim() && !/^\s*;/.test(raw) && !raw.includes("=")) m.get(sec).push(raw); } return m; };
+function listChanges(hdText, modText) {
+  const A = bareLists(hdText), B = bareLists(modText), out = [];
+  for (const [sec, mod] of B) {
+    const hd = A.get(sec) || [], same = hd.length === mod.length && hd.every((l, i) => l.trim() === mod[i].trim());
+    if (!mod.length || same) continue;
+    out.push({ sec, lines: [...hd.map(l => "-" + l.replace(/\s+$/, "")), ...mod.map(l => "+" + l.trim())] });
+  }
+  return out;
+}
+function mergeLists(text, lists) {
+  const blocks = []; let cur = null;
+  for (const l of (text || "").split(/\r?\n/)) { const h = l.match(/^\[([^\]]+)\]/); if (h) { cur = { sec: h[1], lines: [] }; blocks.push(cur); } else if (l && cur) cur.lines.push(l); }
+  for (const { sec, lines } of lists) {
+    const b = blocks.find(x => x.sec.toLowerCase() === sec.toLowerCase());
+    if (b) { if (!b.lines.some(l => /^[+-]/.test(l))) b.lines.push(...lines); } else blocks.push({ sec, lines });
+  }
+  return blocks.map(b => `[${b.sec}]\r\n${b.lines.join("\r\n")}`).join("\r\n") + "\r\n";
+}
+function skinLists({ OUT, HD }) {
+  const mine = find(OUT, "DATA/INTERFACE/MENU"), hd = find(HD, "DATA/INTERFACE/MENU"), res = new Map();
+  if (!mine || !hd) return res;
+  const hdFiles = new Map(fs.readdirSync(hd).map(f => [f.toLowerCase(), f]));
+  for (const f of fs.readdirSync(mine).filter(f => /\.ini$/i.test(f))) {
+    const h = hdFiles.get(f.toLowerCase()); if (!h) continue;
+    const l = listChanges(fs.readFileSync(path.join(hd, h), "latin1"), fs.readFileSync(path.join(mine, f), "latin1"));
+    if (l.length) res.set(h, l);
+  }
+  return res;
+}
+function addLists({ OUT, lists }) {
+  let n = 0;
+  for (const [h, l] of lists) {
+    const dirs = [["patches", "menuini"], ...(/^template\.ini$/i.test(h) ? [["patches", "DATA", "INTERFACE", "MENU"]] : [])];
+    for (const d of dirs) {
+      const dst = path.join(OUT, ...d, h), had = fs.existsSync(dst);
+      fs.mkdirSync(path.dirname(dst), { recursive: true });
+      fs.writeFileSync(dst, mergeLists(had ? fs.readFileSync(dst, "latin1") : "", l), "latin1");
+    }
+    n++;
+  }
+  return n;
+}
+module.exports = { listChanges, mergeLists, skinLists, addLists };

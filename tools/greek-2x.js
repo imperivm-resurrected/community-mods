@@ -432,6 +432,8 @@ const ALL = [CONST, ...CIVS.map(c => c.id[0].toUpperCase() + c.id.slice(1))], NO
   }
   fs.rmSync(SRC, { recursive: true, force: true });
 }
+// the LISTS of bare names (what a menu shows: [MainMenu Objects] Caption, IniBackFrame, TipsBackFrame, Version...) are read BEFORE skinToPatches removes the mod's whole file; tools/lib/menu-lists.js
+const MENU_LISTS = require("./lib/menu-lists.js").skinLists({ OUT, HD });
 console.log(`menu skin: ${require("./lib/menu-skin.js").skinToPatches({ OUT, HD })} layout files became patches of the keys they changed`);
 // WHERE THE ENGINE LOOKS FOR EACH MENU INI. A patch is matched by the exact path the game OPENS (src/mods/patch.cpp PatchApply(rel), called from src/mods/vfs.cpp with the normalized open path; no alias
 // between the folders), and the game opens the screens as `menuini/<name>.ini` (the game log of 2026-11-01: menuini/mainmenu.ini, menuini/mpgamemenu.ini, menuini/settings.ini...; the engine's own patch of the
@@ -448,6 +450,11 @@ console.log(`menu skin: ${require("./lib/menu-skin.js").skinToPatches({ OUT, HD 
   }
   if (fs.existsSync(fromDir) && !fs.readdirSync(fromDir).length) fs.rmSync(fromDir, { recursive: true });
   console.log(`menu skin: ${moved} patches placed at patches/menuini/ (the path the game opens), the template also at patches/DATA/INTERFACE/MENU/`);
+}
+// ... and put into the same patches/menuini/<name>.ini, inside the section of its Key = value lines ("-line" for every line of the game's list, "+line" for every line of the mod's, in the mod's order)
+{
+  const nl = require("./lib/menu-lists.js").addLists({ OUT, lists: MENU_LISTS });
+  console.log(`menu skin: ${nl} menu INIs have a changed list of names: ${[...MENU_LISTS].map(([f, l]) => `${f} [${l.map(x => x.sec).join(", ")}]`).join("; ") || "none"}`);
 }
 
 // ---- 7. the mod's versions of the game's behavior scripts: copies of their own (<name>_<tag>.vs) that the classes of the mod's civilizations point to ---------
