@@ -15,7 +15,7 @@
   "tags": [
     "Type: Gameplay & Balance"
   ],
-  "redistributable": true,
+  "redistributable": false,
   "sources": {
     "page": "https://www.moddb.com/mods/imperivm-legacy"
   }
