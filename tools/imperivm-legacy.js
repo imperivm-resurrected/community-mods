@@ -533,7 +533,13 @@ for (const f of walk(OUT).filter(f => SKIN.test(f))) fs.rmSync(path.join(OUT, f)
   for (const f of pics) { const d = path.join(OUT, f.replace(/^currentlang\//i, "CURRENTLANG/")); fs.mkdirSync(path.dirname(d), { recursive: true }); fs.rmSync(d, { force: true }); fs.copyFileSync(path.join(PRISTINE, f), d); }
   for (const f of inis) { const d = path.join(OUT, f); fs.mkdirSync(path.dirname(d), { recursive: true }); fs.rmSync(d, { force: true }); fs.copyFileSync(path.join(PRISTINE, f), d); }
   const n = require("./lib/menu-skin.js").skinToPatches({ OUT, HD });
-  console.log(`menu skin: ${pics.length} pictures whole, ${inis.length} menu INIs of the mod -> ${n} patches (patches/menuini/)`);
+  // the mod's INIs end some lines with a comment (`ButtonSpacing12 = ... ;Exit mainmenu`); the validator says the engine does not strip it from a value, and nothing needs it: it goes
+  let stripped = 0;
+  for (const f of walk(path.join(OUT, "patches")).filter(f => /^(menuini|data\/interface\/menu)\/[^/]+\.ini$/i.test(f))) {
+    const p = path.join(OUT, "patches", f), t = rd(p), u = t.replace(/^(\s*[\w ]+?\s*=[^;\r\n]*?)[ \t]+;[^\r\n]*$/gm, (m, k) => (stripped++, k));
+    if (u !== t) wr(p, u);
+  }
+  console.log(`menu skin: ${pics.length} pictures whole, ${inis.length} menu INIs of the mod -> ${n} patches (patches/menuini/); ${stripped} end-of-line comments dropped from them`);
 }
 
 // What only the tables and templates left out as global used: the mod's terrain textures (TERRAINS.XML / TERRAINMIX.XML, global, not ported) and their mini-map tiles, the
