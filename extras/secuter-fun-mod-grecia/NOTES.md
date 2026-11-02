@@ -59,6 +59,10 @@ Made by `tools/secuter-greece.js` (read its header):
 
 **Not carried from the 1.8**: its other civilizations, its maps/adventures/conquests/videos/music, the menu skin, its edits of the game's scripts that are not Greek (only the Greek patches of `BARRACK_TRAIN`, `TRAIN_EX`, `VERIFY_TRAINEX`, `UNIT_ON_KILL`, `ONFINISH_RESEARCH`, `DRUID_ONDIE` are carried, renamed), the 1.8's formations except those a Greek order names.
 
+## Bug found in game: `Mod_TrueRace(This)` in a group verifier
+
+Same as the plain pack's NOTES: `verify_research_sez.vs` line 194 (a group verifier with no `This`) now says `Mod_TrueRace(this)`. Scan of the whole port (step 9b): 118 scripts, 0 use `This`/`this` without a declaration; the build stops on a hit. Not tried in game.
+
 ## Scripts of the 1.8 that Secuter's replace (review fix)
 
 Two names differed only by case and held different scripts: `military_ondie_sez.vs` (Secuter's) / `MILITARY_ONDIE_sez.VS` (the 1.8's copy), and `unit_attach_verify_sez.vs` / `UNIT_ATTACH_VERIFY_sez.VS`. The Greek classes pointed to the 1.8's, the clones to Secuter's; on Windows or in a zip one would have shadowed the other. The 1.8's copies are now `*_zgr.vs`, and for these two the single script of the pack is Secuter's, because his Greek zip ships the file at that path (what his Greece ran):

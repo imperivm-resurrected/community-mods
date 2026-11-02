@@ -257,7 +257,16 @@ const CLONES = CIVS.map(c => { const letter = c.id.slice(0, 3).replace(/^./, x =
 const BASE_CONST = Object.fromEntries(CIVS.map(c => [c.base, c.id[0].toUpperCase() + c.id.slice(1)]));
 const RACE_RE = new RegExp(String.raw`(?<![\w.)\]])((?:[A-Za-z_]\w*(?:\(\))?\.)*[A-Za-z_]\w*(?:\(\))?)?\.race\s*(==|!=)\s*(${Object.keys(BASE_CONST).join("|")})\b`, "g");
 const NEWONLY = f => /_ses|_sez/i.test(f) || !fs.existsSync(path.join(HD, "DATA", "SUBAI", f));   // the copies and the mod's new scripts, never the game's own scripts the mod edited in place
-const objOf = text => (/^\s*\/\/\s*[\w]+\s*,\s*Obj\s+(\w+)/.exec(text.split("\n")[0]) || [])[1] || "This";
+// The object the omitted receiver of `.race` stands for. A script says it in its header (`// void, Obj This`: the parameter, whatever its spelling: THIS). A GROUP VERIFIER
+// (`//bool, ObjList objs, str OUT reasonText`) has no such parameter: it declares the local `Building this;` and assigns `this = objs[0].AsBuilding();`, and `Mod_TrueRace(This)`
+// there does not compile ("No matching function with name This", found in game in the Community port with the same generator). The first header line that is not blank, then the local.
+const objOf = text => {
+  const head = text.split(/\r?\n/).find(l => l.trim()) || "";
+  const param = /^\s*\/\/\s*[\w]+\s*,\s*(?:[^,]*,\s*)*?(?:Obj|Building|Unit|Hero)\s+\*?(\w+)/.exec(head);
+  if (param) return param[1];
+  if (/^\s*(?:Obj|Building|Unit|Hero)\s+this\s*;/m.test(text) && /^\s*this\s*=/m.test(text)) return "this";
+  return "This";                                              // the scan below stops the build if that is not declared
+};
 const raceTests = (text, obj = objOf(text)) => text.replace(RACE_RE, (m, r, op, b) => {
   const o = (r || obj).replace(/\.As(?:Unit|Building)(?:\(\))?$/, "");
   return op === "==" ? `(${m} || Mod_TrueRace(${o}) == ${BASE_CONST[b]})` : `(${m} && Mod_TrueRace(${o}) != ${BASE_CONST[b]})`;
@@ -483,6 +492,34 @@ if (fs.existsSync(EXTRAS)) for (const f of walk(EXTRAS)) { if (f === "NOTES.md")
   for (const b of bases) { const w = heroBaseProblem(TABLE, b); if (w) problems.push(`GetRandomHeroClass("${b}"): ${w}`); }
   console.log(`script checks: ${copies} copies balanced like the mod's, ${strings} class strings resolved, hero bases: ${[...bases].sort().join(" ") || "none"}`);
   if (problems.length) { console.error(`SCRIPT CHECKS FAILED (${problems.length}):\n  ` + [...new Set(problems)].slice(0, 80).join("\n  ")); process.exit(1); }
+}
+
+// 9b. No script uses `This` without declaring it (the class of error the name checks did not see: `This` is a known name to them, and a script with no `Obj This` parameter fails with
+// "No matching function with name This"). A use is a bare identifier `This` / `THIS` (not a member: `x.This`); it is declared by the header line (`// void, Obj This`), by a local
+// (`Building This;`), or, for a patch of a game script, by the game's script it patches (its header and locals) or by the patch itself. The build stops on a hit.
+{
+  const strip = t => t.replace(/\/\*[\s\S]*?\*\//g, " ").replace(/\/\/[^\n]*/g, " ").replace(/"(?:[^"\\\n]|\\.)*"|'(?:[^'\\\n]|\\.)*'/g, '""');
+  const declared = (full, body) => {
+    const head = full.split(/\r?\n/).find(l => l.trim()) || "", d = new Set();
+    const m = /^\s*\/\/(.*)$/.exec(head);
+    if (m) for (const prm of m[1].split(",").slice(1)) { const n = (prm.trim().split(/\s+/).pop() || "").replace(/^\*/, ""); if (/^\w+$/.test(n)) d.add(n); }
+    for (const x of strip(body).matchAll(/(?<![\w.])[A-Za-z_]\w*\s+\*?(this)\b(?=\s*[;,=)\[])/gi)) d.add(x[1]);
+    return d;
+  };
+  const hits = [];
+  let scanned = 0;
+  for (const f of walk(OUT).filter(f => /\.vs$/i.test(f) && /^(patches\/)?DATA\//i.test(f))) {
+    const text = rd(path.join(OUT, f)), isPatch = /^patches\//i.test(f);
+    let ctx = text;
+    if (isPatch) { const hd = find(path.join(ROOT, "originals", "game-data", "DATA"), f.replace(/^patches\/DATA\//i, "")); if (hd) ctx = rd(hd) + "\n" + text; }
+    const dec = declared(ctx, ctx), body = strip(text);
+    scanned++;
+    for (const m of body.matchAll(/(?<![\w.])this(?![\w])/gi)) {
+      if (!dec.has(m[0])) { hits.push(`${f}: "${m[0]}" is used and not declared (declared: ${[...dec].join(", ") || "none"})`); break; }
+    }
+  }
+  console.log(`This/this declared: ${scanned} scripts scanned (every .vs under DATA/ and patches/DATA/), ${hits.length} used without a declaration`);
+  if (hits.length) { console.error(`THIS SCAN FAILED (${hits.length}):\n  ${hits.slice(0, 60).join("\n  ")}`); process.exit(1); }
 }
 
 // 10. Two names that differ only by case cannot live together on Windows or in a zip: none in a folder of the port. (Found in the first Greece build: MILITARY_ONDIE_sez.VS and
