@@ -441,7 +441,8 @@ for (const f of walk(OUT).filter(f => SKIN.test(f))) fs.rmSync(path.join(OUT, f)
   const G = path.join(ORIG, "game-data");
   // The ports whose names this one avoids. They are git-ignored and each is built in the worktree of the task that owns it, so the list is made the same way from anywhere (the main
   // checkout, a worktree under .wt/, one outside it): the main checkout's ported/, the ported/ of the worktrees under MAIN/.wt/ and of MAIN/../wt-*, then this one's. A name found in
-  // several places is the NEWEST build (the main checkout keeps old ones: its mci and Secuter are the pre-#37 ports). Only ports that have classes count (the maps have none).
+  // several places is the build that has civs/ (the pre-#37 ports of the main checkout and of git do not: a fresh checkout gives their files the newest dates, so a date alone chose them),
+  // then the one of a worktree before the main checkout's and this one's, then the newest. Only ports that have classes count (the maps have none).
   // What was used is written to raw/imperivm-legacy-others.txt (path, files, a fingerprint of the list of files and sizes), and the build STOPS if a known port is missing or was
   // touched in the last 90 seconds (its owner may be rebuilding it: the renames would differ). LEGACY_NO_OTHERS=1 builds with what is found (the bytes then depend on that).
   const REQUIRED_PORTS = ["cgwar", "greek-mod-1-8", "greek-civilization-mod", "mediterranevm-alpha", "mci", "community-mod-civs", "secuter-fun-mod", "secuter-fun-mod-grecia", "caesar-mod-civs",
@@ -454,10 +455,11 @@ for (const f of walk(OUT).filter(f => SKIN.test(f))) fs.rmSync(path.join(OUT, f)
     if (!st.isDirectory() || e === ID || !find(dir, "DATA/CLASSES")) continue;
     if (![path.join(MAIN, "ported"), path.join(ROOT, "ported")].includes(root) && !REQUIRED_PORTS.includes(e)) continue;      // the other worktrees: only the ports of this list (their ported/ also keeps old builds)
     const real = fs.realpathSync(dir), mj = path.join(dir, "mod.json"), t = fs.existsSync(mj) ? fs.statSync(mj).mtimeMs : st.mtimeMs;
+    const civs = fs.existsSync(path.join(dir, "civs")) && fs.readdirSync(path.join(dir, "civs")).some(f => /\.json$/i.test(f)), tier = root === path.join(ROOT, "ported") ? 2 : root === path.join(MAIN, "ported") ? 1 : 0;
     if (!cand.has(e)) cand.set(e, new Map());
-    if (!cand.get(e).has(real)) cand.get(e).set(real, { dir, real, t });
+    if (!cand.get(e).has(real)) cand.get(e).set(real, { dir, real, t, civs, tier });
   }
-  const chosen = [...cand].map(([name, m]) => { const l = [...m.values()].sort((x, y) => y.t - x.t || (x.real < y.real ? -1 : 1)); return { name, ...l[0], others: l.slice(1).map(x => x.real) }; }).sort((x, y) => (x.name < y.name ? -1 : 1));
+  const chosen = [...cand].map(([name, m]) => { const l = [...m.values()].sort((x, y) => (y.civs - x.civs) || (x.tier - y.tier) || (y.t - x.t) || (x.real < y.real ? -1 : 1)); return { name, ...l[0], others: l.slice(1).map(x => x.real) }; }).sort((x, y) => (x.name < y.name ? -1 : 1));
   const missing = REQUIRED_PORTS.filter(n => !chosen.some(c => c.name === n));
   if (missing.length && process.env.LEGACY_NO_OTHERS !== "1") { console.error(`these ports are not built anywhere I looked (${roots.join(", ")}): ${missing.join(", ")}\nThe names of this port are renamed against the ports that exist, so a build without them is another build. Build them first, or LEGACY_NO_OTHERS=1.`); process.exit(1); }
   const log = [`Ports the names of imperivm-legacy were compared with (tools/imperivm-legacy.js, step 6). main checkout: ${MAIN}`, `places looked in: ${roots.join(" | ")}`, "name\tfiles\tlast change\tfingerprint (md5 of the sorted list of 'path<TAB>size')\tpath\t(older builds of the same name that were not used)"];
