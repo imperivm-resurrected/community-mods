@@ -216,7 +216,9 @@ const BASE_CONST = { Gaul: "Fgaul", RepublicanRome: "Frome", ImperialRome: "Fimp
 // Only the comparison is matched (never the "(" before it): receiver = a chain of names with optional "()" (`owner.AsUnit`, `u.AsUnit`), or nothing for the bare `.race` of
 // the script's own object (`obj`: its first parameter, `This`). Mod_TrueRace takes the object, so a trailing .AsUnit / .AsBuilding is dropped.
 const RACE_RE = new RegExp(String.raw`(?<![\w.)\]])((?:[A-Za-z_]\w*(?:\(\))?\.)*[A-Za-z_]\w*(?:\(\))?)?\.race\s*(==|!=)\s*(${Object.keys(BASE_CONST).join("|")})\b`, "g");
-const objOf = text => (/^\s*\/\/\s*[\w]+\s*,\s*Obj\s+(\w+)/.exec(text.split("\n")[0]) || [])[1] || "This";
+// The object a bare `.race` means. A script with an `Obj <name>` parameter: that parameter. A group VERIFIER (`//bool, ObjList objs, str OUT reasonText`) has no `This`: it declares the local
+// `Building this;` and assigns it from objs[0], so the object is that local (`Mod_TrueRace(This)` there does not compile: "No matching function with name This", found in game 2026-11-02).
+const objOf = text => { const h = text.split("\n")[0], p = /^\s*\/\/\s*[\w]+\s*,\s*Obj\s+(\w+)/.exec(h); if (p) return p[1]; return /(^|[;{}\s])(?:Building|Unit|Obj|Hero|Settlement)\s+this\s*[;=,]/.test(text) && !/\bThis\b/.test(h) ? "this" : "This"; };
 const raceTests = (text, obj = objOf(text)) => text.replace(RACE_RE, (m, r, op, b) => {
   const o = (r || obj).replace(/\.As(?:Unit|Building)(?:\(\))?$/, "");
   return op === "==" ? `(${m} || Mod_TrueRace(${o}) == ${BASE_CONST[b]})` : `(${m} && Mod_TrueRace(${o}) != ${BASE_CONST[b]})`;
@@ -717,6 +719,8 @@ if (fs.existsSync(EXTRAS)) for (const f of walk(EXTRAS)) { if (f === "NOTES.md")
   // scripts already had in the rar are listed in raw/community-mod-civs-names.txt and do not stop the build; a script of ours with a new one does (after the first run: NAMES_BASELINE)
   { const r = require("./lib/community-names.js").checkNames({ OUT, HD: path.join(ROOT, "originals", "game-data"), SDK }); fs.writeFileSync(path.join(ROOT, "raw", "community-mod-civs-names.txt"), r.errors.sort().join("\n") + "\n"); console.log(r.notes.join("; ")); // the checker strips a // comment before it reads the strings, so the mod's own typo "Build//TTeutonRider" (a double slash, left alone on purpose) reads as the name Build: known, in both Teuton copies
     problems.push(...r.errors.filter(e => !/^DATA\/SUBAI\/verify_trainex_cm(_fgermany)?\.vs: "Build" \(1x\)/.test(e))); }
+  // `This` (and any object handed to Mod_TrueRace / Mod_PlayerCiv) must be declared by the script: a parameter in its header or a local (tools/lib/community-this.js)
+  { const r = require("./lib/community-this.js").scan({ OUT, HD: HDDATA, applyPatch }); console.log(`undeclared \`This\` / receivers: ${r.scanned} scripts scanned, ${r.hits.length} hits${r.hits.length ? "\n  " + r.hits.join("\n  ") : ""}`); problems.push(...r.hits); }
   console.log(`script checks: ${copies} copies/rewrites balanced like the mod's, ${patchesChecked} patches applied to the game's script and balanced, ${strings} class strings resolved, hero bases: ${[...bases].sort().join(" ")}`);
   if (problems.length) { console.error(`SCRIPT CHECKS FAILED (${problems.length}):\n  ` + [...new Set(problems)].slice(0, 80).join("\n  ")); process.exit(1); }
 }
