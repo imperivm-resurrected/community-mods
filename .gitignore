@@ -47,3 +47,6 @@ ported/asvrmod-vii-civs/
 
 # Community Mod 12: rebuilt from the GameBanana rar + extras/community-mod-civs/ (tools/community-mod.js: unpacks into .scratch/; see its NOTES.md)
 ported/community-mod-civs/
+
+# Caesar Mod 1.1.0 (the civilizations: ten, next to the game's; 1.2 GB with the maps, movies and music): rebuilt from the GameBanana zip (728740) + extras/caesar-mod-civs/ by tools/caesar-mod.js
+ported/caesar-mod-civs/
