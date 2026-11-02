@@ -391,7 +391,12 @@ fs.mkdirSync(path.join(ROOT, "raw"), { recursive: true });
 
 // The lobby information pages (UI/MENU/B1F..B10F.BMP, 5790x1572, three frames of 1930: the mod's "General changes" pages that MPCHAT.INI shows): one set per language in the rar's
 // Local/<language>.pak, byte-identical to the Discord download's. Under Local/<language>/UI/MENU/ so that each player sees the pages of the language he chose.
-{ const r = require("./lib/community-pages.js").pages({ SRC, SDK, SCRATCH, OUT, langs: ["english", "spanish", "italian"] }); console.log(`lobby pages: ${r.map(x => `${x.lang} ${x.files} files ${(x.bytes / 1e6).toFixed(1)} MB`).join("; ")}`); }
+{ const r = require("./lib/community-pages.js").pages({ SRC, SDK, SCRATCH, OUT, langs: ["english", "spanish", "italian"], transform: require("./lib/community-chatframe.js").eraseChatFrame }); console.log(`lobby pages: ${r.map(x => `${x.lang} ${x.files} files ${(x.bytes / 1e6).toFixed(1)} MB`).join("; ")}`);
+  // the chat frame the author's screenshot left in the bottom-left of every page is erased (tools/lib/community-chatframe.js): these pictures are NOT byte-identical to the author's by that one rectangle
+  const rows = r.flatMap(x => x.stats.map(t => `Local/${x.lang}/UI/MENU/${require("path").basename(t.file)} | ${t.bpp}bpp key ${t.key} | pixels erased ${t.changed} | bbox x${t.bbox[0]}..${t.bbox[2]} y${t.bbox[1]}..${t.bbox[3]} (image coordinates) | changes outside the frame rectangle: ${t.outside}`));
+  fs.mkdirSync(path.join(ROOT, "raw"), { recursive: true });
+  fs.writeFileSync(path.join(ROOT, "raw", "community-mod-civs-chatframe.txt"), ["# the chat frame erased from each page picture (tools/lib/community-chatframe.js): row 1 of the three columns, x 0..578 x y 575..651 and x 25..578 x y 572..574 of each cell, with the pictures' own transparency key; nothing else changes", ...rows, ""].join("\n"));
+  console.log(`chat frame erased from ${rows.length} pictures: ${[...new Set(r.flatMap(x => x.stats.map(t => t.changed)))].join(" / ")} pixels per picture`); }
 // The mod's edits of the scripts of the game's own items (God's Gift...) are global: the items' edits are not ported (above), so the scripts that only they used go too
 {
   const hdIS = find(HDDATA, "ITEMSCRIPTS"), mineIS = find(OUT, "DATA/ITEMSCRIPTS"), ip = path.join(OUT, "patches", "DATA", "ITEMS.XML"), used = fs.existsSync(ip) ? rd(ip).toLowerCase() : "";
