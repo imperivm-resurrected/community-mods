@@ -36,7 +36,7 @@ The old port (`tools/port-140.js` alone, no `NOTES.md`) put 355 files at the gam
 G="$HOME/.local/share/Steam/steamapps/common/Imperivm - Great Battles of Rome HD" SDK=<imperivm-resurrected>/sdk node tools/mci.js [id ...]     # no id: all eight
 ```
 
-It unpacks the zip into `.scratch/mci-unpack` (inside the worktree, git-ignored; nothing is written under `originals/`), runs `tools/port-140.js` on it into `.scratch/mci-pristine` (HD + 1.40 + mod, three-way; `raw/port-140/mci.md` lists 0 conflicts to check by hand), copies that into `ported/mci` (git-ignored) and does the rest. `extras/mci/` is the input of `port-140.js` as before: **30 files the mod and HD both changed, merged by hand** (`DATA/CLASSES/UNIT.SC.XML`, the six hero classes, `DATA/COMMANDS/{ARENA,GBARRACKS,VILLAGE}.XML`, the scripts `UNIT_ON_KILL.VS`, `UNIT_ATTACK.VS`, `HERO_MOVE.VS`... that keep the HD guard post, gold selling, kill statistics and sentry guards next to the MCI's tributes, stances and veterans; see `docs/BIG-MODS.md`) and `Adventures/Gartomix.bmp`. They are the **mod's version of the game's classes and scripts that the clones are made from**: none of them is shipped at the game's path. `mod.json` is the only file of `extras/mci/` copied into the port at the end. The same build twice gives the same files (1,346 files, checked with md5; the four lists in `raw/mci-*.txt` too). **The result does not depend on where it is built:** the ports it compares its names with are read from the main checkout (the parent of the git common dir) and from the worktree's own `ported/`, and the build **stops** if `cgwar`, `greek-mod-1-8`, `greek-civilization-mod`, `mediterranevm-alpha` or `imperivm-legacy` is in neither (`MCI_NO_OTHERS=1` builds without them, with other names). Proved by building the same commit in the worktree under `.wt/` and in a clean detached worktree in `/tmp` (its own `ported/` has only the tracked ports): the md5 of all 1,346 files and of the four lists are identical (a run in the main checkout itself was not possible: it would overwrite its old `ported/mci` and it does not have this branch). Libraries: `tools/lib/mci-refs.js` (the picture, sound and path post-pass, below), and `clone-civs.js`, `own-scripts.js`, `asvr-ai.js`, `asvr-inline.js`, `script-checks.js`, `ported-patch.js`, **unchanged**.
+It unpacks the zip into `.scratch/mci-unpack` (inside the worktree, git-ignored; nothing is written under `originals/`), runs `tools/port-140.js` on it into `.scratch/mci-pristine` (HD + 1.40 + mod, three-way; `raw/port-140/mci.md` lists 0 conflicts to check by hand), copies that into `ported/mci` (git-ignored) and does the rest. `extras/mci/` is the input of `port-140.js` as before: **30 files the mod and HD both changed, merged by hand** (`DATA/CLASSES/UNIT.SC.XML`, the six hero classes, `DATA/COMMANDS/{ARENA,GBARRACKS,VILLAGE}.XML`, the scripts `UNIT_ON_KILL.VS`, `UNIT_ATTACK.VS`, `HERO_MOVE.VS`... that keep the HD guard post, gold selling, kill statistics and sentry guards next to the MCI's tributes, stances and veterans; see `docs/BIG-MODS.md`) and `Adventures/Gartomix.bmp`. They are the **mod's version of the game's classes and scripts that the clones are made from**: none of them is shipped at the game's path. `mod.json` is the only file of `extras/mci/` copied into the port at the end. The same build twice gives the same files (1,347 files, checked with md5; the five lists in `raw/mci-*.txt` too). **The result does not depend on where it is built:** the ports it compares its names with are read from the main checkout (the parent of the git common dir) and from the worktree's own `ported/`, and the build **stops** if `cgwar`, `greek-mod-1-8`, `greek-civilization-mod`, `mediterranevm-alpha` or `imperivm-legacy` is in neither (`MCI_NO_OTHERS=1` builds without them, with other names). Proved by building the same commit in the worktree under `.wt/` and in a clean detached worktree in `/tmp` (its own `ported/` has only the tracked ports): the md5 of all 1,352 files and of the four lists are identical (a run in the main checkout itself was not possible: it would overwrite its old `ported/mci` and it does not have this branch). Libraries: `tools/lib/mci-refs.js` (the picture, sound and path post-pass, below), and `clone-civs.js`, `own-scripts.js`, `asvr-ai.js`, `asvr-inline.js`, `script-checks.js`, `ported-patch.js`, **unchanged**.
 
 ## What is a civilization's, what is not
 
@@ -93,7 +93,7 @@ What the mod changes that cannot be scoped to a clone (AGENTS.md, *World rules p
 ## Not shipped on purpose (listed in `raw/mci-left-out.txt`)
 
 - **Game modes `6 Destruccion`, `9 Portuacion`, `10 Zona teutona` and starting bonuses `004 Wealth`, `005 People`** (`DATA/GAMESCRIPTS`, `DATA/BONUSSCRIPTS`), with the lobby list that offers the bonuses (`DATA/INTERFACE/MENU/MPGAMEMENU.INI`) and their pictures (`UI/MENU/BONUSES.BMP`, `FOOD.BMP`, `PEOPLE.BMP`): by El Jüsticiero Misteryoso, a co-author, and the numbers `6`, `9`, `10`, `004`, `005` are the ones the 4.2's modes and bonuses take (decided by the maintainer; same as Asvr).
-- **Text tables:** `local/spanish/HELP.XML`, `TIPS.XML` and `loc/spanish.loc.xml` (decided by the maintainer: a table translates the game for everybody). The last one has 111 entries: 81 are keys HD's table does not have (the names and texts of the mod's new orders, items and classes), 20 repeat HD's, **10 change HD's own text** (`Cover of Mercy`, the main menu's `Multiplayer` and `News`, `Not enough stamina`...). Without the 81, the mod's new content shows its keys in Spanish and English. The 1.8 keeps the additive ones and writes them again for the clones' renamed orders (`tools/greek-1-8-civs.js`); here they are **not** carried: a question below.
+- **Help and tips:** `local/spanish/HELP.XML` and `TIPS.XML` (maintainer's decision). **Of `loc/spanish.loc.xml`** (111 entries that differ from HD's table) 81 ship (*Texts*, below) and 30 do not: the **10 that change HD's own text** (`Cover of Mercy`, the main menu's `Multiplayer` and `News` in three INIs, the editor tree's `Archer` of Iberia and Germany, `Not enough stamina`) and the **20 that repeat HD's**; the list is in `raw/mci-texts.txt`.
 - **The three videos** `movies/intro.avi`, `Creditos.avi`, `Cesar_vs_Mixt.avi` (maintainer's decision).
 - **`DATA/INTERFACE/COMBO/ITEMICONS.INI`:** the editor's item list; HD has no `COMBO` folder.
 - **The old engine's tricks:** the mod has none of the town hall branch choices, no launcher and no `gbr.exe` (checked by grep in `DATA/`: no `Choose*` flag, no `_Enable_Or_Disable_Cmd`, no `rand(776`). It ships no executable or DLL, so there is nothing to say about what an `.exe` did.
@@ -109,6 +109,49 @@ AGENTS.md, *Menu skin*; approved for this mod by the maintainer. Whole files, no
 | `CURRENTLANG/GAMESPYBACKGROUND.BMP` (1024x768, 16-bit, 1.5 MB) | the zip's, byte for byte (the multiplayer screen of the old engine) |
 
 **Shared with:** `MENUBACKGROUND.bmp` and `MENUBACKGROUNDIMPERIVM.bmp` with CGWAR and the 4.2, `MENUBACKGROUND.bmp` with the 1.8, Imperivm Legacy and Mediterranevm (other bytes), and with Asvr (it ships its own `MENUBACKGROUND.bmp`); `GAMESPYBACKGROUND.BMP` has the same bytes in La Reconquista 2010. Only one skin shows at a time; the winner of each file is chosen by the load order or by the player in the content manager (*Use the files of ...*), and there is no `incompatibleWith`. **Not tried:** which of the three pictures HD reads on which screen (HD may read only `MENUBACKGROUND`), the screens the skin touches (conquest, options, multiplayer, lobby), any combination with another skin.
+
+## Texts (`loc/spanish.loc.xml`)
+
+Decided by the maintainer (2026-11-02): ship the keys HD's table does not have, not the ones that change or repeat HD's. `tools/mci.js` step 7b (`tools/lib/mci-texts.js`) takes the mod's table as `port-140.js` leaves it (111 entries that differ from HD's `GAME.LOC.XML`) and compares each key (text + context) with HD's **GAME and TRANSLATION** tables:
+
+| | Entries | Shipped |
+|---|---|---|
+| the key is not in HD's table | 81 | yes, 81 entries in `loc/spanish.loc.xml` |
+| HD has the key with the same result | 20 | no |
+| HD has the key with another result | 10 | no (it would change the game's own text for everybody) |
+
+**Checked by the build, which stops otherwise:** shipped keys that HD's table already has: **0**. The file has 81 entries and 81 different keys, all with a result. Nothing else of the game's text changes: the build is the previous one plus this one file (md5 of all other files unchanged).
+
+**The 81:** 46 names of the editor tree (`Long Bow Archer@editortree/Units/Gaul`, the captains, the guards, the ships, the iron mine, the Main tent...), 5 class names and 5 plurals of the mod's ships, 2 texts of orders (`Allows Liberati to be hired` of `MGladiator Shows`, `Gambler's Day`), 2 of hero skills, and 21 bare texts (the tooltips of the tribute buttons, the ruins' help...).
+
+**Written again for the clones (12 entries, the old one dropped: nothing in the port has the old context):** the rule of `tools/greek-1-8-civs.js` (an entry whose context is the name of an order a civilization cloned is written for each clone's order), extended to class names, because the game builds a class's text as `<display_name>@<class id> class name` and `... class name plural` (`sdk/units.md` shows it with `Veteran@RVeteran class name`) and the clones' ids are not the mod's. Before → after:
+
+```text
+order  Allows Liberati to be hired@MGladiator Shows            -> ...@MGladiator Shows Iimperial
+order  When a warrior kills a more experienced enemy ...@Gambler's Day -> ...@Gambler's Day Ibritain
+class  Gaul Ship@ShipGaul class name (and "Ships@... plural")   -> ...@IgaShipGaul class name
+       likewise ShipIberia -> IibShipIberia, ShipCarthage -> IcaShipCarthage, ShipGermany -> IgeShipGermany, ShipBritain -> IbrShipBritain
+```
+
+The other 69 keep their text: the editor-tree keys and the bare texts name no class id. (The full before/after list is in `raw/mci-texts.txt`.)
+
+**Languages:** only the Spanish table exists in the mod, so only `loc/spanish.loc.xml` ships. English needs no file (the key is the English text, `sdk/languages.md`). The Spanish text is **not** copied into `english` or `italian`: the 1.8 does not do that either (it ships an Italian table because the mod has one), and an Italian player would see Spanish instead of English. A game in any other language shows the English keys. **Overlap with the other ports' tables** (the ones in the main checkout): the 4 Spanish keys also in CGWAR's and the 1.8's `loc/spanish.loc.xml` (the hero-skill and ruins texts) have the same result; the Italian tables of the 1.8 and Asvr's translation are another language. Nothing conflicts. The manager's handling of two mods with the same `loc/spanish.loc.xml` path was **not tried** (`sdk/languages.md` says the first in the load order wins per text).
+
+**Every text the port names, looked up** (`scanKeys`: for classes `display_name@<id> class name`, plural, `<last part of edittree_pos>@editortree/<the rest>`; for orders `rollover@<name>` and `description@<name>`; for items `name` and `description`; the key rules checked against the game's own files first: **1673 of 1716 of HD's own texts resolve in its table**, 97.5 %). Result on 2,052 texts of the port, the list in `raw/mci-texts.txt`:
+
+| | resolved | the table has it under the **original** id or name | no entry (shows the English) |
+|---|---|---|---|
+| class name | 5 | 239 | 94 |
+| class plural | 5 | 160 | 90 |
+| editor tree | 231 | 0 | 41 |
+| order rollover | 0 | 370 | 207 |
+| order description | 0 | 252 | 194 |
+| item name / description | 0 | 0 | 82 / 82 |
+| **total 2,052** | **241** | **1,021** | **790** |
+
+- **"The table has it under the original name" is a real gap and it is not new in this port:** the clones' classes and orders have new ids (`IgaArcher`, `trainGSwordsman Igaul`), so in a Spanish game their names and descriptions (the game's, translated in HD's table under `GArcher class name`, `trainGSwordsman`) have no entry and show in English. I do not know whether the engine falls back to the base's key for a clone (the source I read, `civai.cpp`, does it for the AI only; the SDK's `units.md` says a mod's class needs its own key). **Not done here**, because it is not what was asked and it adds ~1,000 entries of HD's own translations under new contexts: copying HD's entry to each clone's key would not change the game's text, but I need your OK. The 1.8 and the other balance ports have the same gap (their `spanish.loc.xml` files carry only the orders HD overrides). Not tried in game.
+- **No entry (790):** the mod's own content that its table never translated: its 82 items (name and description), the descriptions of its new orders, the classes it adds (the long bowmen, captains, guards...: 94 + 90 plurals), and 41 editor-tree names of the clones' extra heroes and sentries. They show in English (Spanish and English players alike); the mod's table did not have them, so nothing is lost against the original.
+- **Dead keys among the 81:** the two hero-skill texts, the ruins' help and the `Scout` text name things the build left out as global (`SKILLS.INI`, `BaseRuins`); they are harmless (their English differs from HD's, so they match nothing of the game's) and will be live with `mci-rules`.
 
 ## Maps and adventures
 
@@ -150,7 +193,7 @@ The task asked to check that every type-2 exit point of the barracks, gym, templ
 
 ## Independence check
 
-Two runs, both on this build (1,346 files).
+Two runs, both on this build (1,347 files).
 
 **1. The coordinator's cross-check against every port built in the batch** (`/tmp/bx/cross-mci.txt`, the shape of `node tools/shared-paths.js mci`, taken on the build before the review fixes): **0 class ids in common with any of the 11 ports**, **13 paths in the same place with other bytes**:
 
@@ -167,7 +210,7 @@ The menu skin is the approved cosmetic exception (*The menu skin*). **`ui/cmdbar
 
 ## Validation
 
-`validate-mod.js` (`dev-villoh`, `--game` and `--data originals/game-data/DATA`): **1346 files checked, 0 errors, 10 warnings** (the unit art above). The validator ignores what the patches do and does not read the code of script patches.
+`validate-mod.js` (`dev-villoh`, `--game` and `--data originals/game-data/DATA`): **1347 files checked, 0 errors, 10 warnings** (the unit art above). The validator ignores what the patches do and does not read the code of script patches.
 
 ## In game
 
@@ -186,7 +229,7 @@ The menu skin is the approved cosmetic exception (*The menu skin*). **`ui/cmdbar
 ## Questions for the maintainer
 
 1. **Licence:** none is recorded for the MCI (see the top); say if one should be.
-2. **`loc/spanish.loc.xml`:** ship the 81 keys HD lacks (as the 1.8 does, written again for the clones' orders) and leave out the 10 that change HD's text? Without them the new content shows keys.
+2. **Clones' names in Spanish:** copy HD's own translations of the classes and orders to the clones' new ids (about 1,000 entries, *Texts*)? Without them the clones' unit and order names show in English in a Spanish game (the 81 mod keys are shipped).
 3. **The three videos and `ITEMICONS.INI`** are out; the maps `haenor-rescate-de-viriato` and `italia` break until #8.
 4. **Behaviors over 8:** worth a script that merges `BURN_BEHAVIOR` and `VILLAGE_AUTO_CALL_PEASANTS` into one, or accept the loss?
 5. **The three skin pictures:** `MENUBACKGROUNDIMPERIVM` and `GAMESPYBACKGROUND` may not be read by HD; ship them anyway?

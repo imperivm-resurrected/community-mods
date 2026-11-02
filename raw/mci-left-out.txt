@@ -9,7 +9,7 @@ DATA/INTERFACE/MENU/MPGAMEMENU.INI
 UI/MENU/BONUSES.BMP (menu picture of the bonuses)
 UI/MENU/FOOD.BMP (menu picture of the bonuses)
 UI/MENU/PEOPLE.BMP (menu picture of the bonuses)
-loc/spanish.loc.xml
+loc/spanish.loc.xml (only the keys HD's table lacks are shipped again: step 7b, raw/mci-texts.txt)
 local/spanish/HELP.XML
 local/spanish/TIPS.XML
 movies/Cesar_vs_Mixt.avi
