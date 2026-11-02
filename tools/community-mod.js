@@ -501,6 +501,9 @@ if (process.env.CM_NO_DISCORD !== "1") {
     ...H.unreadable.map(r => `${r.file.replace(/\.XML$/i, "")} | ${r.name} | key=${r.key} | ${r.painted.toUpperCase()} | ${r.dist} | ${r.icon}`), "", "## not shipped: not in HD and named by no order", ...ICONS.notNamed, "", "## replaced (the GameBanana package's)", ...ICONS.replaced, ""].join("\n"));
   console.log(`hotkeys: ${H.ok} orders match the painted letter, ${H.mismatch.length} mismatch (raw/community-mod-civs-hotkeys.txt): ${H.mismatch.map(r => `${r.name} key=${r.key} painted ${r.painted.toUpperCase()}`).join("; ") || "none"}; ${H.unreadable.length} unreadable`);
 }
+// The conquest's data folder was renamed with the .bfhp and no longer falls back to the game's: the files the original mod left to the game's folder are copied from it
+// (the game's own files, as caesar-mod.js and the CGWAR do; the mod's global.bmp stays). Checked at the end (tools/lib/community-conquest.js). Seen in game 2026-11-02: no map without them.
+{ const r = require("./lib/community-conquest.js").complete({ OUT, GAME: path.join(ROOT, "originals", "game-data") }); console.log(`conquest data folder completed from the game's: ${r.copied.length} files copied (${r.copied.map(x => x.split("/").pop()).join(", ")}); identical to the game's and kept: ${r.same.length ? r.same.join(", ") : "none (the mod's global.bmp is its own)"}`); }
 { const fixed = REFS.fixRefs({ OUT, HD, TAG }); console.log(`references put back to the mod's own name or to the renamed sound entity: ${fixed.length}${fixed.length ? "\n  " + fixed.slice(0, 40).join("\n  ") + (fixed.length > 40 ? `\n  ... (${fixed.length - 40} more)` : "") : ""}`); }
 
 // The strategic map's bitmaps that tagCollisions made for the entities it renamed (tools/lib/ported-patch.js, followBitmaps, since #60) follow EVERY entity it renamed, but the references above
@@ -817,6 +820,7 @@ if (fs.existsSync(EXTRAS)) for (const f of walk(EXTRAS)) { if (f === "NOTES.md")
   // `This` (and any object handed to Mod_TrueRace / Mod_PlayerCiv) must be declared by the script: a parameter in its header or a local (tools/lib/community-this.js)
   { const r = require("./lib/community-this.js").scan({ OUT, HD: HDDATA, applyPatch }); console.log(`undeclared \`This\` / receivers: ${r.scanned} scripts scanned, ${r.hits.length} hits${r.hits.length ? "\n  " + r.hits.join("\n  ") : ""}`); problems.push(...r.hits); }
   console.log(`script checks: ${copies} copies/rewrites balanced like the mod's, ${patchesChecked} patches applied to the game's script and balanced, ${strings} class strings resolved, hero bases: ${[...bases].sort().join(" ")}`);
+  { const cq = require("./lib/community-conquest.js").check({ OUT }); console.log(`conquest data folders: ${cq.length} problems`); problems.push(...cq); }
   if (problems.length) { console.error(`SCRIPT CHECKS FAILED (${problems.length}):\n  ` + [...new Set(problems)].slice(0, 80).join("\n  ")); process.exit(1); }
 }
 
