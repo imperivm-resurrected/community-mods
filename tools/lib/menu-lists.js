@@ -69,4 +69,83 @@ function addLists({ OUT, lists }) {
   }
   return n;
 }
-module.exports = { listChanges, mergeLists, skinLists, addLists };
+
+// ---- the KEYS of a menu INI, from the mod's own file -----------------------------------------------------------------------------------------------------------------------------
+// tools/port-140.js (shared, not touched) merges a 1.40-based mod's INI into HD's with a "by key" fallback (HD "may have moved a key to another section"): a key whose section HD lacks lands on the
+// LAST section of HD that has a key of that name. In the menu INIs that mixed sections up ([CaptionImp] Type = BmpScroll from the mod's [Back], [InfoList] Style/VAlign from [Back], [Shield7] RectWH
+// from [Shield11], [NickList.*] from the new sections...). modKeys() does it section by section, 3-way, without that fallback:
+//   - a key the mod did not change against the 1.40 stays HD's (HD changed things since 1.40 that the mod never knew);
+//   - a key HD already has with that value is not written;
+//   - a section HD lacks is HD's section with the same `Id` if there is one (HD renamed [Version] to [Versionn]; both are Id 0x1022), else a NEW section, written whole when the mod edited it.
+//   modKeys(hdText, baseText|null, modText) -> text of the patch (Key = value lines, CRLF) or ""
+const trim = v => v.replace(/\s+;.*$/, "").trim();            // the engine does not strip a comment at the end of a line, so the patch must not carry one
+function parseKV(text) {
+  const m = new Map(); let cur = null;
+  for (const raw of text.replace(/\r/g, "").split("\n")) {
+    const h = raw.match(/^\s*\[([^\]]+)\]/); if (h) { const k = h[1].trim().toLowerCase(); if (!m.has(k)) m.set(k, { name: h[1].trim(), keys: new Map() }); cur = m.get(k); continue; }
+    const kv = raw.match(/^\s*([^;=\s][^=]*?)\s*=\s*(.*)$/); if (kv && cur) cur.keys.set(kv[1].trim().toLowerCase(), { key: kv[1].trim(), val: trim(kv[2]) });
+  }
+  return m;
+}
+function modKeys(hdText, baseText, modText) {
+  const H = parseKV(hdText), B = baseText == null ? null : parseKV(baseText), M = parseKV(modText), out = [];
+  const idOf = sec => sec.keys.get("id") && sec.keys.get("id").val.toLowerCase();
+  for (const [sk, ms] of M) {
+    let target = H.get(sk);
+    if (!target && idOf(ms)) target = [...H.values()].find(h => idOf(h) === idOf(ms) && !M.has(h.name.toLowerCase()));      // HD's section for the same Id, under another name
+    const bs = B && B.get(sk), lines = [];
+    const edited = !B || !bs || [...ms.keys].some(([k, e]) => !bs.keys.has(k) || bs.keys.get(k).val !== e.val);           // did the mod change this section against the 1.40?
+    if (!target && !edited) continue;                                                                                     // a section of the 1.40 that HD dropped and the mod left alone
+    for (const [k, e] of ms.keys) {
+      if (target ? target.keys.has(k) && target.keys.get(k).val === e.val : false) continue;                              // HD has it already
+      if (target && B && bs && bs.keys.has(k) && bs.keys.get(k).val === e.val) continue;                                 // the mod did not change it: HD's stays
+      lines.push(`${e.key} = ${e.val}`);
+    }
+    if (lines.length) out.push(`[${target ? target.name : ms.name}]`, ...lines);
+  }
+  return out.length ? out.join("\r\n") + "\r\n" : "";
+}
+// For every menu INI of the mod (MOD/Data/Interface/Menu) that HD has: write patches/menuini/<name>.ini from modKeys() (template.ini also at patches/DATA/INTERFACE/MENU/), replacing what skinToPatches wrote
+// from the merged file; a file with nothing to write has no patch. -> { written: [names], removed: [names] }
+function menuKeyPatches({ OUT, HD, MOD, BASE }) {
+  const mine = find(MOD, "DATA/INTERFACE/MENU"), hd = find(HD, "DATA/INTERFACE/MENU"), base = BASE && find(BASE, "DATA/INTERFACE/MENU"), written = [], removed = [];
+  if (!mine || !hd) return { written, removed };
+  const hdFiles = new Map(fs.readdirSync(hd).map(f => [f.toLowerCase(), f])), baseFiles = new Map(base ? fs.readdirSync(base).map(f => [f.toLowerCase(), f]) : []);
+  for (const f of fs.readdirSync(mine).filter(f => /\.ini$/i.test(f)).sort()) {
+    const h = hdFiles.get(f.toLowerCase()); if (!h) continue;
+    const b = baseFiles.get(f.toLowerCase());
+    const text = modKeys(fs.readFileSync(path.join(hd, h), "latin1"), b ? fs.readFileSync(path.join(base, b), "latin1") : null, fs.readFileSync(path.join(mine, f), "latin1"));
+    const dirs = [["patches", "menuini"], ...(/^template\.ini$/i.test(h) ? [["patches", "DATA", "INTERFACE", "MENU"]] : [])];
+    for (const d of dirs) {
+      const dst = path.join(OUT, ...d, h); fs.rmSync(dst, { force: true });
+      if (text) { fs.mkdirSync(path.dirname(dst), { recursive: true }); fs.writeFileSync(dst, text, "latin1"); }
+    }
+    (text ? written : removed).push(h);
+  }
+  return { written, removed };
+}
+// The engine builds the sized template (template-WxH.ini, the one the menus read when "the menus follow the screen's size") from the game's file WITHOUT the mod's patch (src/mods/vfs.cpp OpenSizedTemplate,
+// and MenuLayoutIsFixed in src/mods/menuart.cpp decides which: a template whose buttons lean on %ScreenRight% & co. follows the screen), so the column of buttons the mod's TEMPLATE.INI sets is lost. What a
+// screen's own [<Screen> Params] sets does apply (seen in game: the 4.2's and the 1.8's columns). So the main menu gets the original template's ButtonSpacing / ButtonXStart / ButtonYStart in its
+// [MainMenu Params] when they differ from HD's and the original's MAINMENU does not set them itself (the template patch stays as it is).
+//   buttonParams({ MOD, HD }) -> [ "ButtonSpacing = 42", ... ]
+function buttonParams({ MOD, HD }) {
+  const m = find(MOD, "DATA/INTERFACE/MENU/TEMPLATE.INI"), h = find(HD, "DATA/INTERFACE/MENU/TEMPLATE.INI"), mm = find(MOD, "DATA/INTERFACE/MENU/MAINMENU.INI");
+  if (!m || !h) return [];
+  const T = parseKV(fs.readFileSync(m, "latin1")).get("params"), H = parseKV(fs.readFileSync(h, "latin1")).get("params"), own = mm && parseKV(fs.readFileSync(mm, "latin1")).get("mainmenu params");
+  if (!T || !H) return [];
+  return ["ButtonSpacing", "ButtonXStart", "ButtonYStart"].filter(k => { const a = T.keys.get(k.toLowerCase()), b = H.keys.get(k.toLowerCase()); return a && b && a.val !== b.val && !(own && own.keys.has(k.toLowerCase())); }).map(k => `${k} = ${T.keys.get(k.toLowerCase()).val}`);
+}
+// put `lines` under [<section>] of patches/menuini/<file> (the section is created if the patch has none)
+function addToPatch({ OUT, file, section, lines }) {
+  if (!lines.length) return false;
+  const dst = path.join(OUT, "patches", "menuini", file), text = fs.existsSync(dst) ? fs.readFileSync(dst, "latin1") : "";
+  const blocks = []; let cur = null;
+  for (const l of text.split(/\r?\n/)) { const h = l.match(/^\[([^\]]+)\]/); if (h) { cur = { sec: h[1], lines: [] }; blocks.push(cur); } else if (l && cur) cur.lines.push(l); }
+  let b = blocks.find(x => x.sec.toLowerCase() === section.toLowerCase()); if (!b) { b = { sec: section, lines: [] }; blocks.push(b); }
+  b.lines.unshift(...lines.filter(l => !b.lines.some(x => x.toLowerCase().startsWith(l.split("=")[0].trim().toLowerCase() + " ="))));
+  fs.mkdirSync(path.dirname(dst), { recursive: true });
+  fs.writeFileSync(dst, blocks.map(x => `[${x.sec}]\r\n${x.lines.join("\r\n")}`).join("\r\n") + "\r\n", "latin1");
+  return true;
+}
+module.exports = { listChanges, mergeLists, skinLists, addLists, modKeys, menuKeyPatches, buttonParams, addToPatch, parseKV };

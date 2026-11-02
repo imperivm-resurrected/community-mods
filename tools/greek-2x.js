@@ -453,6 +453,15 @@ console.log(`menu skin: ${require("./lib/menu-skin.js").skinToPatches({ OUT, HD 
   if (fs.existsSync(fromDir) && !fs.readdirSync(fromDir).length) fs.rmSync(fromDir, { recursive: true });
   console.log(`menu skin: ${moved} patches placed at patches/menuini/ (the path the game opens), the template also at patches/DATA/INTERFACE/MENU/`);
 }
+// The Key = value lines of the menu patches come from the mod's own file, section by section, 3-way with the 1.40 (tools/lib/menu-lists.js modKeys): port-140's merge assigned a key whose section HD lacks to the
+// LAST section of HD with a key of that name ([CaptionImp] Type = BmpScroll, [InfoList] Style/VAlign, [Shield7] RectWH, [NickList.*]...). And the engine builds the sized template (the one the main menu reads)
+// without the mod's TEMPLATE patch, so the main menu's button column is also written in its own [MainMenu Params] (what the 4.2's and the 1.8's columns do, seen in game); the template patch stays.
+{
+  const ML = require("./lib/menu-lists.js"), r = ML.menuKeyPatches({ OUT, HD, MOD: FLAT, BASE: path.join(ROOT, "originals", "game-140", "paks") });
+  const bp = ML.buttonParams({ MOD: FLAT, HD });
+  ML.addToPatch({ OUT, file: "MAINMENU.INI", section: "MainMenu Params", lines: bp });
+  console.log(`menu skin: key patches written from the mod's own files for ${r.written.length} menu INIs (${r.written.join(", ")}); ${r.removed.length} have nothing the game lacks. [MainMenu Params] gets: ${bp.join(" | ") || "nothing"}`);
+}
 // ... and put into the same patches/menuini/<name>.ini, inside the section of its Key = value lines ("-line" for every line of the game's list, "+line" for every line of the mod's, in the mod's order)
 {
   const nl = require("./lib/menu-lists.js").addLists({ OUT, lists: MENU_LISTS });
