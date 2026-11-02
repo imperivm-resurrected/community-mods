@@ -565,7 +565,11 @@ console.log(`other ports compared: ${PORTS.length} (${REQUIRED_PORTS.filter(n =>
 // when the language is English (log: "language: caesar-mod-civs brings loose files from english"; "opens currentlang/tips.xml -> does not exist" without it). It adds a file the game lacks:
 // nothing is replaced, checked against the pack's index below. Spanish and Italian have their own (local/spanish.pak, local/italian.pak): the mod's are not shipped and those players keep HD's.
 // Czech is not a language of the game (G/local has english, italian and spanish; the mod declares none): Local/czech/TIPS.XML is the English file byte for byte and would never be read.
-// Not shipped, because each replaces a file of the game for everybody who plays in that language: help.xml, splash.ini (the mod's intro), credits.txt (it is in
+// The same for help.xml (the Help button of the main menu; log: "opens currentlang/help.xml -> does not exist"): HD's English has none (its Spanish and Italian packs have one: those players keep it).
+// The mod's English HELP.XML (259 topics, text only, 726 pictures named) is shipped as Local/english/HELP.XML. The renaming of the port's pictures also rewrote names inside it, and some of those
+// pictures were not renamed (the help's own are at UI/Help/... under their old name: "Train HPELTAST_cae.BMP" is Train HPELTAST.BMP there): a name that neither the game's packs nor the port
+// have, and whose twin without (or with) _cae the port has, is put back to the twin. What nobody has stays as it is and is listed.
+// Not shipped, because each replaces a file of the game for everybody who plays in that language: splash.ini (the mod's intro), credits.txt (it is in
 // Licenses/), the whole game.loc.xml (it renames the game's Imperial Rome to Greece, among others), the voices of the game's own units, and spanish.pak.
 {
   const L = find(OUT, "Local"), lines = [];
@@ -583,8 +587,19 @@ console.log(`other ports compared: ${PORTS.length} (${REQUIRED_PORTS.filter(n =>
     } else lines.push(`${lang}: no game table to compare with: texts not shipped`);
     // the names inside the game's own pack of this language (HMMSYS PackFile: tools/hpfs-like index of the SDK's extract-data.js)
     const packNames = file => { if (!fs.existsSync(file)) return null; const d = fs.readFileSync(file), c = d.readUInt32LE(0x20), out = new Set(); let q = 0x28, prev = ""; for (let i = 0; i < c; i++) { const len = d[q], sh = d[q + 1]; q += 2; const nm = prev.slice(0, sh) + d.toString("latin1", q, q + len - sh); q += len - sh + 8; prev = nm; out.add(nm.toLowerCase().replace(/\\/g, "/")); } return out; };
-    const gamePack = packNames(path.join(GAME, "local", `${lang}.pak`)), keepTips = lang === "english" && gamePack && !gamePack.has("currentlang/tips.xml");
-    for (const n of ["GAME.LOC.XML", "HELP.XML", "TIPS.XML", "SPLASH.INI", "CREDITS.TXT"]) { const p = find(dir, n); if (p && !(keepTips && n === "TIPS.XML")) fs.rmSync(p); }
+    const gamePack = packNames(path.join(GAME, "local", `${lang}.pak`)), keepTips = lang === "english" && gamePack && !gamePack.has("currentlang/tips.xml"), keepHelp = lang === "english" && gamePack && !gamePack.has("currentlang/help.xml");
+    for (const n of ["GAME.LOC.XML", "HELP.XML", "TIPS.XML", "SPLASH.INI", "CREDITS.TXT"]) { const p = find(dir, n); if (p && !(keepTips && n === "TIPS.XML") && !(keepHelp && n === "HELP.XML")) fs.rmSync(p); }
+    if (keepHelp) {
+      const hdPics = new Set(fs.readdirSync(path.join(GAME, "Packs")).filter(x => /\.pak$/i.test(x)).flatMap(x => [...packNames(path.join(GAME, "Packs", x))])), mine = new Set(walk(OUT).map(x => x.toLowerCase()));
+      const hp = find(dir, "HELP.XML"), raw = fs.readFileSync(hp, "latin1"); let fixed = 0, left = new Set();
+      const text = raw.replace(/image="([^"]+\.bmp)"/gi, (m, p) => {
+        const q = p.replace(/\\/g, "/").replace(/^\//, ""), has = x => hdPics.has(x.toLowerCase()) || hdPics.has(x.toLowerCase().replace(/^ui\//, "")) || mine.has(x.toLowerCase());
+        if (has(q)) return m; const c = q.replace(/\.bmp$/i, "_cae.bmp");
+        if (has(c)) { fixed++; return `image="${p.replace(/\.bmp$/i, "_cae.bmp")}"`; }
+        const u = q.replace(/_cae\.bmp$/i, ".bmp"); if (u !== q && has(u)) { fixed++; return `image="${p.replace(/_cae\.bmp$/i, ".bmp")}"`; } left.add(p); return m; });
+      fs.writeFileSync(hp, text, "latin1");
+      lines.push(`${lang}: HELP.XML shipped (the game's ${lang}.pak has none): ${(raw.match(/<topic /g) || []).length} topics, ${fixed} picture names put back to the twin the port has, ${left.size} named pictures nobody has (${[...left].slice(0, 3).join(", ")})`);
+    } else lines.push(`${lang}: HELP.XML left out (${gamePack ? "the game's pack has its own, or this is not English" : "not a language of the game"})`);
     lines.push(`${lang}: TIPS.XML ${keepTips ? `shipped (the game's ${lang}.pak has none)` : gamePack ? "left out (the game's pack has its own, or this is not English)" : "left out (not a language of the game)"}`);
     const V = find(dir, "VOICES"); let kept = 0, gone = 0;
     for (const u of V ? fs.readdirSync(V) : []) {
