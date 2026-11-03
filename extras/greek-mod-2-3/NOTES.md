@@ -328,3 +328,18 @@ Neutral objects and classes of no clone (their changed attributes are in the mod
 - WolfSummoned
 
 Not in any list above and global too: the 109 classes of the game the mod re-defined were cloned into the ten civilizations (the clone carries the mod's version); the art of the game's units the mod redrew (`Units/CNumidianRider`, `TTeutonWolf`, `WHorse`, `RHouse01/02`, `RArena`, `RTemple`, `GGuardPost`...: 357 files in `raw/greek-mod-2-3-left-out.txt`) stays the game's for everybody, as in the 1.8 and the 4.2.
+
+## Main merged, the default commands and what is tried (2026-11-02)
+
+**Main merged** (`origin/main`: #56 conquests keep the end of `territories.xml`, #60 `tagCollisions` renames the strategic-map bitmaps with the entity, #55/#57/#58 English help, #46 Community, #49 Caesar; a merge commit, no force-push). Rebuilt once from this commit; `validate-mod.js`: 2611 files, 0 errors, 68 warnings; names check: 230 scripts read, 0 problems; build hash `70248353a979` (same from my worktree and from a clean worktree under `community-mods/.wt/`, bottom layers built first).
+
+- **`tools/check-conquests.js`**: 2 conquests, 0 damaged (before the merge: `mediterranean (w23).BFHP` was damaged, "NUL bytes from 6574; ends in `\t</conques` + 7 NUL bytes"; `ConquestRemake (w23)` was ok).
+- **Conquest folders** (`ConquestMaps/<name> (wNN)`: `global.bmp`, `territories.bmp`, `territories.xml`, `ShieldArrow.bmp` and a `Shield<id>.bmp` for every territory of the xml, `work/conquest-folders.js`): both complete, 12 files each (8 territories: Spain, Britain, Gaul, Greece, Italy, Carthage, Egypt, Germany; `ShieldGreece.bmp` is in the port's folders, the game's own `1 - GBR europe` has no Greece shield).
+- **`tools/check-minimap.js`** (strategic-map bitmaps of every building and map object): before the merge 6 missing (4 renamed + 2 absent), 0 outlines; after 0 missing, 0 outlines. The 4 `rename` ones were this port's own bug (a renamed entity whose bitmaps kept the old name: `HOutpost`, `Numidian_Tent`...); #60 fixes it in `tagCollisions`. The 2 that were `absent` (the original never had them) are not reported by the new check.
+- **Against the folder installed before:** +30 minimap/outline bitmaps and 30 removed (renamed `_w23` with their entities), 2 conquests changed (the `territories.xml` kept whole); classes, scripts and everything else byte-identical.
+
+**Default commands (found in game with the 2.5.3 and 2.6.1, fixed in `tools/greek-2x.js` + `tools/lib/default-cmds.js`).** The 2.3's clones have no `<defaultcmd>` of their own (0 of 186 unit class files), so they inherit HD's whole map and nothing needed fixing; the build now runs the check anyway: **0 unit classes lack a target** (before the check existed: 0). Troops linked to the hero in this version (maintainer: the peltasts did).
+
+**Tried in game (maintainer):** the menus of the 2.3 (as the maintainer reported, 2026-11-02; I have no log of that session); short skirmishes; **the Greek peltasts link to the hero** (right click on the hero turns yellow). Nothing else of this version.
+
+**NOT tried:** capturing wagons and wild horses and boarding ships by right click after the fix; the strategic map with the renamed bitmaps; the conquests after the fix (the 2.3's `mediterranean (w23)` had its `territories.xml` cut before #56: 0 damaged now, but nobody has opened it); the layout patches of the screens the sessions did not open; two civilization mods active together; a long game against the AI.
