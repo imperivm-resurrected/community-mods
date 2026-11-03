@@ -130,6 +130,16 @@ const neutral = new Set();
 // 2. the civilizations of the game, as the mod has them
 require("./lib/clone-civs.js")({ PORT: OUT, MERGED, SUFFIX: "Mediterranevm 3.6", LABEL, CIVS, cloneAllOrders: true, want });   // LABEL: the lobby cuts a name at about 22 characters
 
+// 2b. the default commands (right click): a class with a map of its own shadows its parent's for the targets that are a kind of its keys (tools/lib/default-cmds.js, found in the Greek Mod 2.5.3
+// and 2.6.1: the troops did not link to their hero). The 3.6's unit classes carry only a `CTent` block of their own, which shadows nothing; the two neutral animals (BlackWolfUnit, SnakeUnit) have
+// `Unit` without `Hero`: they are completed (only the classes that have a shadowed target, `all: false`).
+{
+  const DC = require("./lib/default-cmds.js"), o = { OUT, dirs: [find(OUT, "DATA/CLASSES"), path.join(MERGED, "classes"), HD_CLASSES], tag: TAG };
+  const before = DC.check(o), sh = before.filter(x => x.shadowed.length), done = DC.complete({ ...o, all: false }), after = DC.check(o).filter(x => x.shadowed.length);
+  console.log(`default commands: ${before.length} unit classes lack targets of their reference (${sh.length} shadowed by their own keys: ${sh.map(x => x.id + " [" + x.shadowed.join(", ") + "]").join("; ") || "-"}); ${done.blocks} blocks written in ${done.classes} classes; shadowed after: ${after.length}`);
+  fs.writeFileSync(path.join(ROOT, "raw", `${ID}-default-cmds.txt`), [`${before.length} classes lack targets of their reference, ${sh.length} shadowed`, ...sh.map(x => `${x.id} (ref ${x.ref}) lacks ${x.missing.join(", ")}; SHADOWED ${x.shadowed.join(", ")}`), "", `shadowed after: ${after.length}`].join("\n") + "\n");
+}
+
 // 3. the commands of the neutral classes
 {
   const cmds = s => [...s.matchAll(/<cmd\b([^>]*)>([^]*?)<\/cmd>/g)].map(m => ({ text: m[0], name: (m[1].match(/\bname\s*=\s*"([^"]*)"/) || [])[1], src: [...m[2].matchAll(/<src\s+obj\s*=\s*"([^"]*)"/g)].map(x => x[1]) }));
@@ -315,12 +325,13 @@ const report = [], patches = [];
   const nSkin = require("./lib/menu-skin.js").skinToPatches({ OUT, HD });
   console.log(`menu skin: ${nSkin} layout files became patches of the keys they changed; Currentlang/*.bmp stay`);
   // the validator warns (and the SDK says) that the engine does not strip a comment at the end of a key line ("Button12Rect = ... %ButtonHeight% ;Start estrategia"): in the patches the comments are dropped, the values stay
-  { let nc = 0; const dir = find(OUT, "patches/DATA/INTERFACE/MENU");
-    for (const f of dir ? fs.readdirSync(dir) : []) { const pp = path.join(dir, f), t = rd(pp), n = t.replace(/^((?!Text\s*=)[A-Za-z0-9_.]+\s*=\s*[^;\r\n]*?)[ \t]+;[^\r\n]*/gm, (_m, a) => { nc++; return a; }); if (n !== t) wr(pp, n); }
+  // (main's menu-skin.js writes the patches at patches/menuini/ itself, and the template also at patches/DATA/INTERFACE/MENU/: both folders are cleaned)
+  { let nc = 0;
+    for (const dir of ["patches/menuini", "patches/DATA/INTERFACE/MENU"].map(x => find(OUT, x)).filter(Boolean)) for (const f of fs.readdirSync(dir)) { const pp = path.join(dir, f), t = rd(pp), n = t.replace(/^((?!Text\s*=)[A-Za-z0-9_.]+\s*=\s*[^;\r\n]*?)[ \t]+;[^\r\n]*/gm, (_m, a) => { nc++; return a; }); if (n !== t) wr(pp, n); }
     if (nc) console.log(`menu skin: ${nc} comments at the end of a line left out of the patches (the engine does not strip them)`); }
   // the mod's CONQUESTGAME.INI points [BackImage] at UI/Interface/MenuMod.bmp, a picture that is in none of the three archives or in the game (the mod's own bug): that key is not shipped, the conquest screen keeps the game's CurrentLang/MenuBackground.bmp (= the skin's)
-  { const pp = find(OUT, "patches/DATA/INTERFACE/MENU/CONQUESTGAME.INI");
-    if (pp) { const t = rd(pp), n = t.replace(/\[BackImage\]\r?\nImage = UI\/Interface\/MenuMod\.bmp\r?\n/i, ""); if (n !== t) { wr(pp, n); left.push("DATA/INTERFACE/MENU/CONQUESTGAME.INI [BackImage] Image = UI/Interface/MenuMod.bmp (key not shipped: the picture exists nowhere, the mod's own bug)"); console.log("CONQUESTGAME.INI: the [BackImage] key that names the missing MenuMod.bmp is not shipped"); } } }
+  for (const pp of ["patches/menuini/CONQUESTGAME.INI", "patches/DATA/INTERFACE/MENU/CONQUESTGAME.INI"].map(x => find(OUT, x)).filter(Boolean)) {
+    { const t = rd(pp), n = t.replace(/\[BackImage\]\r?\nImage = UI\/Interface\/MenuMod\.bmp\r?\n/i, ""); if (n !== t) { wr(pp, n); left.push("DATA/INTERFACE/MENU/CONQUESTGAME.INI [BackImage] Image = UI/Interface/MenuMod.bmp (key not shipped: the picture exists nowhere, the mod's own bug)"); console.log("CONQUESTGAME.INI: the [BackImage] key that names the missing MenuMod.bmp is not shipped"); } } }
   // WHERE THE ENGINE LOOKS FOR EACH MENU INI (evidence: the game log of 2026-11-01 23:34, and src/mods/vfs.cpp + patch.cpp of the engine). A patch is matched by the exact path the game OPENS, and the game opens the
   // screens as `menuini/<name>.ini` (mainmenu, menuback, mpgamemenu, paused, creditsmenu, gameoptions...; the engine's own built-in patch of the main menu is `menuini/mainmenu.ini`), not as
   // `data/interface/menu/<name>.ini`. Only the template was seen opened as `data/interface/menu/template.ini` ("patch: (mediterranevm-3-6) data/interface/menu/template.ini applied"; it is also named
@@ -424,6 +435,13 @@ for (const pic of walk(OUT).filter(x => /^(outlines|minimap)\/.*MAPOBJECTS-/i.te
 for (const f of walk(OUT).filter(f => /^DATA\/CLASSES\/[^/]+\.SC\.XML$/i.test(f))) {
   const p = path.join(OUT, f), s = rd(p), t = s.replace(new RegExp(`(\\bdisplay_name(?:_plural)?\\s*=\\s*"[^"]*?)_${TAG}(?=")`, "g"), "$1");
   if (t !== s) wr(p, t);
+}
+
+// the default commands, after the renames: the build stops if a unit class has a target that its own keys shadow
+{
+  const after = require("./lib/default-cmds.js").check({ OUT, dirs: [find(OUT, "DATA/CLASSES"), path.join(MERGED, "classes"), HD_CLASSES], tag: TAG }).filter(x => x.shadowed.length);
+  console.log(`default commands (after the renames): ${after.length} unit classes have a shadowed target`);
+  if (after.length) { console.error("DEFAULT COMMANDS shadowed in:\n  " + after.slice(0, 20).map(x => `${x.id} lacks ${x.shadowed.join(", ")}`).join("\n  ")); process.exitCode = 1; }
 }
 
 // 7. hand fixes of this mod (extras/mediterranevm-alpha/): the final files and mod.json with the credits
