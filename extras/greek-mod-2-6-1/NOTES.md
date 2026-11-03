@@ -557,3 +557,18 @@ Neutral objects and classes of no clone (their changed attributes are in the mod
 - WildHorse
 - WolfSummoned
 - WolfUnit
+
+## Main merged, the default commands and what is tried (2026-11-02)
+
+**Main merged** (`origin/main`: #56 conquests keep the end of `territories.xml`, #60 `tagCollisions` renames the strategic-map bitmaps with the entity, #55/#57/#58 English help, #46 Community, #49 Caesar; a merge commit, no force-push). Rebuilt once from this commit; `validate-mod.js`: 2884 files, 0 errors, 59 warnings; names check: 348 scripts read, 0 problems; build hash `2068d3dd0528 (without NOTES.md)` (same from my worktree and from a clean worktree under `community-mods/.wt/`, bottom layers built first).
+
+- **`tools/check-conquests.js`**: the 2.6.1 has no conquests: 0 conquests, 0 damaged (nothing to check).
+- **Conquest folders** (`ConquestMaps/<name> (wNN)`: `global.bmp`, `territories.bmp`, `territories.xml`, `ShieldArrow.bmp` and a `Shield<id>.bmp` for every territory of the xml, `work/conquest-folders.js`): no conquests, nothing to check.
+- **`tools/check-minimap.js`** (strategic-map bitmaps of every building and map object): before the merge 9 missing (4 renamed + 5 absent), 0 outlines; after 3 missing (0 renamed, 3 absent), 0 outlines. The 3 that stay are `FArena`, `FTemple` and `FTownhall`'s winter entities (`buildings-marena-marena_w`...): the original never had those bitmaps (the classes are kept as they are, maintainer's decision).
+- **Against the folder installed before:** +30 minimap/outline bitmaps and 30 removed (renamed with their entities), 181 classes changed (the default commands, which include the two classes the maintainer had patched by hand: `W6grPeltast`, `W6grHoplite`); scripts and everything else byte-identical.
+
+**Default commands (found in game with the 2.5.3 and 2.6.1, fixed in `tools/greek-2x.js` + `tools/lib/default-cmds.js`).** Same cause as in the 2.5.3 (see its NOTES: the engine's right click reads only the acting class's own map for a target that is a kind of one of its keys; the build wrote the mod's changed `Unit`/`WallTarget`/`CTent` blocks into each clone but not `Hero -> attach`). Found in game 2026-11-02 and confirmed with the block added by hand to `W6grPeltast` and `W6grHoplite`. **Fix:** `tools/lib/default-cmds.js` (`tools/greek-2x.js` step 5b). **Before:** 169 unit classes with a map of their own lacked targets, **109 of them shadowed** (Hero, Wagon, WildHorse, ShipBattle, TTent); **written:** 1237 blocks in 181 classes; **after:** 0; the build stops if a unit class lacks one (`raw/greek-mod-2-6-1-default-cmds.txt`). The 51 classes with the same target in two blocks of their own are not changed (whether the engine reaches the second is not known). The 2.6.1's own `unit_attach_verify_w26.vs` (the `modo` race rule) was not the cause and is unchanged.
+
+**Tried in game (maintainer):** the menus of the 2.6.1 (as the maintainer reported, 2026-11-02; I have no log of that session); the first two short sessions of 2026-11-01 (loads and plays, no script errors); **the attach test with the hand overlay:** with the `Hero` block added by hand to `W6grPeltast` and `W6grHoplite` the troops link to the hero (yellow on right click) - that is the diagnosis, not this build. This build was not installed or run.
+
+**NOT tried:** capturing wagons and wild horses and boarding ships by right click after the fix; the strategic map with the renamed bitmaps; the conquests after the fix (the 2.3's `mediterranean (w23)` had its `territories.xml` cut before #56: 0 damaged now, but nobody has opened it); the layout patches of the screens the sessions did not open; two civilization mods active together; a long game against the AI.
