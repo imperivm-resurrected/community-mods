@@ -330,6 +330,9 @@ for (const d of ["DATA/GAMESCRIPTS", "DATA/BONUSSCRIPTS"]) { const p = find(OUT,
 // the main menu is written back, from the rar, at the end of step 6 (tools/lib/asvr-menu.js): it is written AFTER the steps that compare files with the game's, which would remove
 // them (DATA/INTERFACE/ is "global" and UI/MENU/*.bmp are the game's names).
 for (const f of walk(OUT).filter(f => /^(CURRENTLANG\/[^/]+\.bmp|UI\/MENU\/[^/]+)$/i.test(f))) fs.rmSync(path.join(OUT, f));
+// The mod's credits (port-140.js writes them to local/spanish/CREDITS.TXT) would replace HD's Spanish credits for Spanish players: dropped (issue #54, maintainer 2026-11-02).
+// The author is credited in mod.json ("authors"); the rar's HELP.bmp is not shipped either (only the rar's own HELP.INI reads it, and that INI is not shipped).
+for (const f of walk(OUT).filter(f => /^(local\/[^/]+|currentlang)\/(credits\.txt|help\.bmp)$/i.test(f))) fs.rmSync(path.join(OUT, f));
 
 // The mod's edits of the scripts of the game's own items (God's Gift...) are global: the items' edits are not ported (above), so the scripts that only they used go too
 {
@@ -396,6 +399,15 @@ for (const f of walk(OUT).filter(f => /^(CURRENTLANG\/[^/]+\.bmp|UI\/MENU\/[^/]+
 
 // The main menu skin: the one exception to "patches only" the maintainer approved (cosmetic, one skin shows at a time; the 1.8 does the same). After step 6 on purpose.
 { const r = require("./lib/asvr-menu.js")({ SRC, OUT }); console.log(`main menu: ${r.files.length} files (${r.edits.join(", ")} edited from the rar's; ${r.files.filter(f => /^UI\//.test(f)).length} pictures of UI/MENU)`); }
+
+// The skin switches the Tips panel and the Help button on, and HD's English pack has neither tips.xml nor help.xml (the rar's are Spanish, and it has no English ones). English
+// players get the 4.2's English tips (the original English game's tips, byte for byte) and the canonical English help (extras/english-help/, an UNREVIEWED model translation of
+// HD's Spanish help), as Local/english/TIPS.XML and HELP.XML: files HD's English lacks, nothing replaced (tools/lib/english-help.js reads the pack's index). Spanish keeps the mod's
+// (local/spanish/, port-140.js), Italian keeps HD's own. Same bytes as the 4.2's port ships, so the two do not differ (issue #54).
+{
+  const eh = require("./lib/english-help.js"), t = eh.shipTips(OUT, path.join(ROOT, "originals", "greek-4-2-pristine-731819", "Local", "english", "TIPS.XML")), h = eh.ship(OUT);
+  console.log(`English tips: ${t.tips} tips, ${t.bytes} bytes (the 4.2's); English help: ${h.topics} topics, ${h.entries} entries -> Local/english/ (HD's English pack has neither)`);
+}
 
 // 7. hand fixes of this mod (extras/asvrmod-vii-civs/): the final files and mod.json with the credits
 if (fs.existsSync(EXTRAS)) for (const f of walk(EXTRAS)) { if (f === "NOTES.md") continue; const dst = path.join(OUT, f); fs.mkdirSync(path.dirname(dst), { recursive: true }); fs.rmSync(dst, { force: true }); fs.copyFileSync(path.join(EXTRAS, f), dst); }
@@ -561,8 +573,11 @@ if (fs.existsSync(EXTRAS)) for (const f of walk(EXTRAS)) { if (f === "NOTES.md")
       if (/^data\/interface\/menu\//.test(f) && !/^data\/interface\/menu\/(mainmenu|menuback)\.ini$/.test(f)) bad.push(`${f}: only MAINMENU.INI and MENUBACK.INI of the menu are approved`);
       if (/^ui\//.test(f) && !/^ui\/(menu|cmdbar|help|icons|infobar)\//.test(f)) bad.push(`${f}: unexpected folder of UI/`);
       if (/^currentlang\/menubackgroundimperiv/.test(f)) bad.push(`${f}: not shipped`);
+      if (/^(local\/[^/]+|currentlang)\/(credits\.txt|help\.bmp)$/.test(f)) bad.push(`${f}: not shipped (it would replace HD's credits, or nothing reads it)`);
+      if (/^currentlang\/(tips|help)\.xml$/.test(f)) bad.push(`${f}: would replace HD's tips/help for every language (Spanish text: local/spanish/ only)`);
+      if (/^local\/(?!spanish\/|english\/)[^/]+\/(tips|help)\.xml$/.test(f)) bad.push(`${f}: only local/spanish (the mod's) and local/english (HD's English lacks them) may have tips/help`);
     }
-    for (const must of ["data/interface/menu/mainmenu.ini", "data/interface/menu/menuback.ini", "currentlang/menubackground.bmp", "currentlang/generals.bmp", "currentlang/titulo3.bmp", "currentlang/titulo.bmp", "currentlang/credits.bmp", "currentlang/tips.xml"]) if (!have.includes(must)) bad.push(`${must}: missing`);
+    for (const must of ["data/interface/menu/mainmenu.ini", "data/interface/menu/menuback.ini", "currentlang/menubackground.bmp", "currentlang/generals.bmp", "currentlang/titulo3.bmp", "currentlang/titulo.bmp", "currentlang/credits.bmp", "local/spanish/tips.xml", "local/english/tips.xml", "local/english/help.xml"]) if (!have.includes(must)) bad.push(`${must}: missing`);
     if (have.filter(f => /^ui\/menu\/[^/]+\.bmp$/.test(f)).length !== 20) bad.push("UI/MENU: not 20 pictures");
     const mm = rd(find(OUT, "DATA/INTERFACE/MENU/MAINMENU.INI")), mb = rd(find(OUT, "DATA/INTERFACE/MENU/MENUBACK.INI"));
     if (!/ButtonXStart = 790\r?\nButtonYStart = 20\r?\n/.test(mm) || !/RectWH = 25, 25, 450, 248/.test(mm) || /RectWH = 140, 260, 450, 248/.test(mm)) bad.push("MAINMENU.INI: the HD edits are not there");

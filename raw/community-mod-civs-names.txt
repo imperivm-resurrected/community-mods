@@ -1,0 +1,2 @@
+DATA/SUBAI/verify_trainex_cm.vs: "Build" (1x) is no variable, member, game function or constant, special, AI name or class of the port or the game (the port's)
+DATA/SUBAI/verify_trainex_cm_fgermany.vs: "Build" (1x) is no variable, member, game function or constant, special, AI name or class of the port or the game (the port's)

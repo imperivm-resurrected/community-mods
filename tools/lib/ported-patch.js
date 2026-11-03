@@ -114,6 +114,7 @@ function tagFiles(root, rels, tag) {
 //   UNITS|BUILDINGS|MAPOBJECTS/<folder>/...   the folder becomes <folder>_<tag> and every reference to it follows
 //   a .bfhp                     <name> (<tag>).bfhp (nothing refers to a map by its file name)
 //   anything else               <name>_<tag>.<ext> and every reference to the name follows
+// The strategic map's bitmaps of a renamed entity follow it (`followBitmaps`).
 // Returns what it renamed.
 // `gameDirs`: folders of the game's own packs. A file the mod adds inside a folder the game has (a sentry's .ent.xml next to the game's archer art,
 // whose images it names without a path) is renamed alone: renaming the folder would cut it off from the game's art, and the references to the
@@ -127,9 +128,12 @@ function tagCollisions({ OUT, others, tag, skip, dropMapsOf = [], mapLabel, game
   const theirs = new Map();
   for (const o of others) for (const p of walk(o)) { const k = rel(o, p).toLowerCase(); if (!/^(patches|civs|loc|local|mod\.json|notes\.md)/.test(k)) (theirs.get(k) || theirs.set(k, []).get(k)).push(p); }
   for (const p of walk(OUT)) if (/(^|[\\/])(desktop\.ini|thumbs\.db)$/i.test(p)) fs.rmSync(p);   // not part of any mod
+  const entities = entityRefs(OUT, walk);                      // what the classes name, before any rename
   const hits = [];
   for (const p of walk(OUT)) {
     const r = rel(OUT, p); if (/^(patches|civs|loc|local)\//i.test(r) || r === "mod.json" || (skip && skip.test(r))) continue;
+    // the engine names these after the entity, so they cannot be renamed alone (nothing would ask for the new name): they follow their entity, below
+    if (BITMAPS.test(r)) continue;
     // other bytes, or the same bytes in a gameplay file: the mod manager does not compare bytes, and two mods that ship the same gameplay file are
     // "use only one" for it, and a gameplay or map file shared by two mods stops the player from choosing between their cosmetic files (the menu skin)
     // (art, sounds and the like are cosmetic: one of them is used and nothing breaks)
@@ -157,7 +161,8 @@ function tagCollisions({ OUT, others, tag, skip, dropMapsOf = [], mapLabel, game
     for (const nid of ids.values()) { const f = walk(path.join(OUT, "DATA")).find(p => /\.sc\.xml$/i.test(p) && (fs.readFileSync(p, "latin1").match(/<class\b[^>]*?\bid\s*=\s*"([^"]+)"/) || [])[1] === nid); if (f) fs.renameSync(f, path.join(path.dirname(f), `${nid.toUpperCase()}.SC.XML`)); }
   }
   // folders
-  if (folders.size) swap(new RegExp(`(?<=[/\\\\"'])(${[...folders].map(f => esc(f.split("/")[1])).join("|")})(?=[/\\\\])`, "gi"), m => `${m}_${tag}`);
+  const folderRe = folders.size ? new RegExp(`(?<=[/\\\\"'])(${[...folders].map(f => esc(f.split("/")[1])).join("|")})(?=[/\\\\])`, "gi") : null;
+  if (folderRe) swap(folderRe, m => `${m}_${tag}`);
   for (const f of folders) {
     const [top, name] = f.split("/"), dir = fs.readdirSync(path.join(OUT, top)).find(x => x.toLowerCase() === name.toLowerCase()); if (!dir) continue;
     fs.renameSync(path.join(OUT, top, dir), path.join(OUT, top, `${dir}_${tag}`));
@@ -195,8 +200,56 @@ function tagCollisions({ OUT, others, tag, skip, dropMapsOf = [], mapLabel, game
     const ext = path.extname(p), nb = `${path.basename(p, ext)}_${tag}${ext}`;
     fs.renameSync(p, path.join(path.dirname(p), nb)); done.set(base, nb);
   }
-  if (done.size) swap(new RegExp(`(?<![A-Za-z0-9_.-])(${[...done.keys()].map(esc).join("|")})`, "gi"), m => done.get(m.toLowerCase()));
-  return { classes: [...ids.keys()], folders: [...folders], maps, dropped, unlabeled, files: [...done.values()] };
+  const doneRe = done.size ? new RegExp(`(?<![A-Za-z0-9_.-])(${[...done.keys()].map(esc).join("|")})`, "gi") : null;
+  if (doneRe) swap(doneRe, m => done.get(m.toLowerCase()));
+  // the new path of each entity the classes named: what the two rewrites above give it
+  const moved = new Map();
+  for (const e of entities) { let n = e; if (folderRe) n = n.replace(folderRe, m => `${m}_${tag}`); if (doneRe) n = n.replace(doneRe, m => done.get(m.toLowerCase())); if (n !== e) moved.set(e, n); }
+  const bitmaps = followBitmaps(OUT, moved, entityRefs(OUT, walk), [...gameDirs, HD_PAKS], walk);
+  return { classes: [...ids.keys()], folders: [...folders], maps, dropped, unlabeled, files: [...done.values()], bitmaps };
+}
+
+// What the engine draws a building with on the strategic map: the class's entity path without its last 8 characters (".ent.xml", or whatever they are:
+// "X.ent_tag.xml" leaves "X.ent"), "/" as "-": MINIMAP/ZOOM{8,16,32}/ENTITIES/<name>.BMP and OUTLINES/ZOOMn/{BLACK,COLOR}_<name>.BMP. A missing file is
+// not drawn, with no error (NormalizeEntityPath, 0061c6e0 of the engine; tools/check-minimap.js checks the ports for it).
+const BITMAPS = /^(minimap\/zoom\d+\/entities\/|outlines\/zoom\d+\/(black|color)_)/i;
+const HD_PAKS = path.join(__dirname, "..", "..", "originals", "game-data", "paks");
+const bitmapName = e => e.replace(/\\/g, "/").slice(0, -8).replace(/\//g, "-").toLowerCase();
+const bitmapFiles = n => [8, 16, 32].flatMap(z => [`minimap/zoom${z}/entities/${n}.bmp`, `outlines/zoom${z}/black_${n}.bmp`, `outlines/zoom${z}/color_${n}.bmp`]);
+// the entity=, entity_winter=, entity_autumn= and entity_spring= of the port's classes that point at a building or a map object
+function entityRefs(OUT, walk) {
+  const out = new Set();
+  for (const p of walk(OUT)) {
+    if (!/^data[\\/]classes[\\/].*\.xml$/i.test(path.relative(OUT, p))) continue;
+    for (const m of fs.readFileSync(p, "latin1").matchAll(/(?<!\w)entity(?:_winter|_autumn|_spring)?\s*=\s*"([^"]+)"/gi)) if (/^(buildings|mapobjects)[\\/]/i.test(m[1])) out.add(m[1].replace(/\\/g, "/"));
+  }
+  return out;
+}
+
+// `moved`: old entity path -> new path. Its bitmaps and outlines (3 zooms) get the new name: renamed in the port, or, if the port ships none because they
+// are the game's own (shrink-mod.js leaves out what is identical), copied from the game's (`gameSrc`, folders with MINIMAP/ and OUTLINES/). The old-name
+// file is kept only if a class of the port (`used`) still names the old entity. Returns "file -> file" for each one done.
+function followBitmaps(OUT, moved, used, gameSrc, walk) {
+  const ls = new Map(), list = d => ls.get(d) || ls.set(d, fs.existsSync(d) ? fs.readdirSync(d) : []).get(d);
+  const at = (root, segs) => { let p = root; const real = []; for (const s of segs) { const n = list(p).find(x => x.toLowerCase() === s); if (!n) return null; p = path.join(p, n); real.push(n); } return { p, real }; };
+  const own = new Map(walk(OUT).map(p => [path.relative(OUT, p).replace(/\\/g, "/").toLowerCase(), p]));
+  const stillUsed = new Set([...used].map(bitmapName)), out = [];
+  for (const [from, to] of moved) {
+    const a = bitmapName(from), A = bitmapFiles(a), B = bitmapFiles(bitmapName(to));
+    A.forEach((f, i) => {
+      if (own.has(B[i])) return;
+      let src = own.has(f) ? { p: own.get(f), real: path.relative(OUT, own.get(f)).split(path.sep) } : null, keep = stillUsed.has(a);
+      for (const g of gameSrc) if (!src && (src = at(g, f.split("/")))) keep = true;      // the game's stays where it is
+      if (!src) return;
+      const segs = B[i].split("/"), name = segs.pop(); let dir = OUT;               // the folders as the port spells them, else as the file does
+      segs.forEach((s, k) => { dir = path.join(dir, list(dir).find(x => x.toLowerCase() === s) || src.real[k]); });
+      const stem = path.basename(src.p, path.extname(src.p)), file = (/[a-z]/.test(stem) ? name : name.toUpperCase()).replace(/\.bmp$/i, path.extname(src.p));
+      fs.mkdirSync(dir, { recursive: true }); ls.delete(dir);
+      if (keep) fs.copyFileSync(src.p, path.join(dir, file)); else { fs.renameSync(src.p, path.join(dir, file)); ls.delete(path.dirname(src.p)); own.delete(f); }
+      own.set(B[i], path.join(dir, file)); out.push(`${path.basename(src.p)} -> ${file}`);
+    });
+  }
+  return out;
 }
 
 // Names of commands (researches, orders) and items that a port defines and the game does not: what shows up in `<cmd name=` of its own command
