@@ -388,6 +388,18 @@ fs.rmSync(branchCopy, { recursive: true, force: true });
   }
 }
 
+// ---- 5b. the default commands (right click) of the clones: a class with a map of its own shadows its parent's for the targets that are a kind of its keys (tools/lib/default-cmds.js) ----------
+// The mod's changed `Unit`/`WallTarget`/`CTent` blocks were written inside each clone (step 2, clone-civs.js) but not the `Hero -> attach` that the mod did not change: the troops did not link to
+// their hero (found in game, 2026-11-02, confirmed by adding the block by hand). The other targets of the clone's reference (the mod's UNIT.SC.XML, or the HD twin's map) are written after its own
+// blocks; a target the class has keeps its own block. Done before the renames of step 11 (the blocks carry the game's names, which the rename then follows).
+{
+  const DC = require("./lib/default-cmds.js"), dirs = [find(OUT, "DATA/CLASSES"), path.join(MERGED, "classes"), HDCLASS], o = { OUT, dirs, tag: V.tag };
+  const before = DC.check(o), sh = before.filter(x => x.shadowed.length), done = DC.complete(o), after = DC.check(o), dups = DC.duplicates({ OUT, tag: V.tag });
+  console.log(`default commands: ${before.length} unit classes lacked targets of their reference before (${sh.length} shadowed by their own keys: ${[...new Set(sh.flatMap(x => x.shadowed))].join(", ") || "-"}); ${done.blocks} blocks written in ${done.classes} classes; after: ${after.length}`);
+  console.log(`default commands: ${dups.length} classes have the same target in two blocks of their own (the mod's changed base block and the class's own; information, raw/${V.dir}-default-cmds.txt)`);
+  fs.writeFileSync(path.join(ROOT, "raw", `${V.dir}-default-cmds.txt`), [`before: ${before.length} classes lacking, ${sh.length} shadowed`, ...before.map(x => `${x.id} (ref ${x.ref}) lacks ${x.missing.join(", ")}${x.shadowed.length ? "; SHADOWED " + x.shadowed.join(", ") : ""}`), "", `after: ${after.length} lacking`, ...after.map(x => `${x.id} lacks ${x.missing.join(", ")}`), "", `${dups.length} classes with a target in two blocks of their own:`, ...dups.map(x => `${x.id}: ${x.targets.join(", ")}`)].join("\n") + "\n");
+}
+
 // ---- 6. AI ------------------------------------------------------------------------------------------------------------------------------------
 // The mod's settlement scripts that treat Imperial Rome as Greece run only for Greek settlements (tools/lib/greek-ai.js); the monitors, the group
 // strategies and what the engine calls by name (tools/lib/own-ai.js) only for the AI players of the mod's civilizations. The Roman branches read the old
@@ -723,6 +735,13 @@ fs.rmSync(path.join(OUT, "legacy-identical.txt"), { force: true });
   fs.writeFileSync(path.join(ROOT, "raw", `${V.dir}-script-checks.txt`), [...r.notes, "", `${r.errors.length} errors`, ...r.errors, "", `${r.warnings.length} warnings`, ...r.warnings].join("\n") + "\n");
   console.log(`script checks: ${r.notes[0]}; ${r.errors.length} errors, ${r.warnings.length} warnings (raw/${V.dir}-script-checks.txt)`);
   if (r.errors.length) { console.error("SCRIPT CHECKS FAILED:\n  " + r.errors.join("\n  ")); process.exitCode = 1; }
+}
+
+// ---- 11d. the default commands (right click) of the clones, checked after every rename (tools/lib/default-cmds.js): the build stops if a unit class still lacks a target of its reference ----
+{
+  const DC = require("./lib/default-cmds.js"), after = DC.check({ OUT, dirs: [CLASSES, path.join(MERGED, "classes"), HDCLASS], tag: V.tag });
+  console.log(`default commands (after the renames): ${after.length} unit classes lack targets of their reference`);
+  if (after.length) { console.error("DEFAULT COMMANDS missing in:\n  " + after.slice(0, 20).map(x => `${x.id} lacks ${x.missing.join(", ")}`).join("\n  ")); process.exitCode = 1; }
 }
 
 // ---- 12. mod.json and the leftovers -----------------------------------------------------------------------------------------------------------------------
