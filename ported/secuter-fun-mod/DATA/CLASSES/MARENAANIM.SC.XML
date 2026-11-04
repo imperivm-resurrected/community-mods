@@ -1,5 +1,0 @@
-<class id="MArenaAnim" cpp_class="CVXDecor" parent="Object" entity="Buildings/MArena/MArena_Anim.ent.xml">
-
-	<method sig="idle" vs="data/subai/anim.vs"/>
-
-</class>

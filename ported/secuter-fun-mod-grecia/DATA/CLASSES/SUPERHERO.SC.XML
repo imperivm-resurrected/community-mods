@@ -1,6 +1,0 @@
-<class id="SuperHero" cpp_class="CVXHero" parent="Hero" entity="">
-
-	<properties max_army="100"/>
-	<properties inventory_size="5"/>
-    
-</class>

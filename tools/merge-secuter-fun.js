@@ -3,7 +3,7 @@
 // Starts from the port-140 output (everything it merged without a conflict) and replaces the files it left in conflict with a
 // real 3-way merge: HD's changes and Secuter's, both kept. Where both changed the same value the mod wins (it is a balance mod)
 // unless HD's change is a fix. The decisions are in the comments below; raw/port-140/secuter-fun-mod.md lists the conflicts.
-// With --greek, run tools/merge-fun-greek.js on its output afterwards: it merges the files the Greece version shares with the Greek Mod 4.2.
+// With --greek it merges the Greece version's zip the same way (its files are changes over the Greek Mod 1.8's, see tools/secuter-greece.js); tools/secuter-fun-mod.js calls it.
 const fs = require("fs"), path = require("path"), os = require("os"), { spawnSync } = require("child_process");
 const ROOT = path.join(__dirname, "..");
 const [modDir, portDir, outDir] = process.argv.slice(2);

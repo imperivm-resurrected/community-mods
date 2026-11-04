@@ -1,9 +1,0 @@
-<class id="Tombstone" cpp_class="CVXItemHolder" parent="ItemHolder" entity="MapObjects/ItemHolders/Tombstone.ent.xml">
-
-	<properties edittree_pos="Structures/Item holders/Tombstone"/>
-	<properties icon="gameres/icons/Tombstone.bmp"/>
-	<properties radius="38" selection_radius="40"/>
-	<properties display_name="Tombstone"/>
-	<!-- respawn gestito da script: holder_acque_rapide.vs -->
-	<behavior script="data/subai/holder_acque_rapide.vs"/>
-</class>

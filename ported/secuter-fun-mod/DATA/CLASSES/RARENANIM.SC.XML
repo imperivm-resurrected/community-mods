@@ -1,5 +1,0 @@
-<class id="RArenaAnim" cpp_class="CVXDecor" parent="Object" entity="Buildings/RArena/RArena_Anim.ent.xml">
-
-	<method sig="idle" vs="data/subai/anim.vs"/>
-
-</class>

@@ -1,0 +1,9 @@
+<patch>
+  <add select="/class"><properties help="/contents/units/ShipEgypt"/></add>
+  <add select="/class"><properties maxhealth="3000"/></add>
+  <add select="/class"><properties damage="100" armor_slash="15" armor_pierce="15"/></add>
+  <add select="/class"><properties max_units_to_board="60"/></add>
+  <add select="/class"><properties sight="700"/></add>
+  <add select="/class"><properties range="700"/></add>
+  <add select="/class"><properties speed="240"/></add>
+</patch>

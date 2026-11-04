@@ -1,0 +1,9 @@
+<patch>
+  <add select="/class"><properties help="/contents/units/ShipRome"/></add>
+  <add select="/class"><properties maxhealth="3000"/></add>
+  <add select="/class"><properties damage="120" armor_slash="15" armor_pierce="15"/></add>
+  <add select="/class"><properties max_units_to_board="80"/></add>
+  <add select="/class"><properties sight="700"/></add>
+  <add select="/class"><properties range="700"/></add>
+  <add select="/class"><properties speed="280"/></add>
+</patch>
