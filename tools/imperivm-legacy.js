@@ -434,6 +434,24 @@ for (const f of walk(OUT).filter(f => SKIN.test(f))) fs.rmSync(path.join(OUT, f)
   console.log(`game files with other bytes: ${left.length} left out (raw/imperivm-legacy-left-out.txt)`);
 }
 
+// 5b. The default commands (right click) of the clones (tools/lib/default-cmds.js of main, read only; found in game in the Greek 2.x ports: the troops did not link to their hero).
+// A class with a <defaultcmd> map of its own does not read its parent's for a target it has a key for: the base-class blocks this build writes inside each clone (Unit's attack...) gave
+// the clones a map with `Unit` and no `Hero`, `Wagon`, `WildHorse` or `ShipBattle`, so attack/approach answered first. Each unit class with a map of its own gets the targets of its
+// reference (its HD twin if that has a map, else the nearest ancestor's, the mod's version when the mod changed it) that it lacks, after its own blocks. Before the renames: the blocks
+// carry the game's names, which tagCollisions then follows. The build stops at the end (step 8) if a target is still shadowed. Counts per target: raw/imperivm-legacy-default-cmds.txt.
+{
+  const DC = require("./lib/default-cmds.js"), o = { OUT, dirs: [find(OUT, "DATA/CLASSES"), path.join(MERGED, "classes"), HD_CLASSES], tag: TAG };
+  const count = list => { const per = {}; for (const x of list) for (const t of x.missing) per[t] = (per[t] || 0) + 1; return per; };
+  // Two references: (1) the mod's own Unit (the targets the mod kept: Hero, Wagon, Inn, Tower, Gate, Building..., and the ones it renamed: ShipAdmiral, HeroShip, WallTarget, CTent), then (2) HD's
+  // Unit for what the mod's version dropped (WildHorse, ShipBattle, Wall: its Unit has no block for them, so a clone's map with the `Unit` key answered attack before the game's
+  // capture of a wild horse, boarding of a ship and attack of a wall were ever read). The mod's blocks stay (a target the class has is never touched).
+  const o2 = { OUT, dirs: [find(OUT, "DATA/CLASSES"), HD_CLASSES], tag: TAG };
+  const before = DC.check(o), sh = before.filter(x => x.shadowed.length), done = DC.complete(o), mid = DC.check(o2), done2 = DC.complete(o2), after = DC.check(o), after2 = DC.check(o2), dups = DC.duplicates({ OUT, tag: TAG });
+  store.defaultCmds = { before: before.length, shadowedBefore: sh.length, perBefore: count(before), blocks: done.blocks, classes: done.classes, hdBefore: mid.length, hdPerBefore: count(mid), hdBlocks: done2.blocks, hdClasses: done2.classes, after: after.length + after2.length };
+  console.log(`default commands: ${before.length} unit classes lacked targets of their reference (${sh.length} shadowed by their own keys); missing per target before ${JSON.stringify(count(before))}; ${done.blocks} blocks written in ${done.classes} classes; then against HD's Unit: ${mid.length} classes lacked ${JSON.stringify(count(mid))}, ${done2.blocks} blocks written in ${done2.classes}; after: ${after.length} (mod's reference), ${after2.length} (HD's)`);
+  fs.writeFileSync(path.join(ROOT, "raw", "imperivm-legacy-default-cmds.txt"), [`before: ${before.length} unit classes lacking a target of their reference, ${sh.length} shadowed`, `missing per target before: ${JSON.stringify(count(before))}`, ...before.map(x => `${x.id} (ref ${x.ref}) lacks ${x.missing.join(", ")}${x.shadowed.length ? "; SHADOWED " + x.shadowed.join(", ") : ""}`), "", `then against HD's Unit (what the mod's version dropped): ${mid.length} classes lacked ${JSON.stringify(count(mid))}`, ...mid.map(x => `${x.id} (ref ${x.ref}) lacks ${x.missing.join(", ")}`), "", `after: ${after.length} lacking against the mod's reference, ${after2.length} against HD's`, ...[...after, ...after2].map(x => `${x.id} lacks ${x.missing.join(", ")}`), "", `${dups.length} classes have the same target in two blocks of their own (information: the engine joins them in document order)`, ...dups.map(d => typeof d === "string" ? d : JSON.stringify(d))].join("\n") + "\n");
+}
+
 // 6. names another mod of ours (or the game's own adventures) already has with other bytes: this port's are renamed
 {
   // a class file is named after its id (the mod's IronMine is in MINAORO.SC.XML): the collision is found by path
@@ -446,7 +464,7 @@ for (const f of walk(OUT).filter(f => SKIN.test(f))) fs.rmSync(path.join(OUT, f)
   // The ports whose names this one avoids. They are git-ignored and each is built in the worktree of the task that owns it, so the list is made the same way from anywhere (the main
   // checkout, a worktree under .wt/, one outside it): the main checkout's ported/, the ported/ of the worktrees under MAIN/.wt/ and of MAIN/../wt-*, then this one's. A name found in
   // several places is the build that has civs/ (the pre-#37 ports of the main checkout and of git do not: a fresh checkout gives their files the newest dates, so a date alone chose them),
-  // then the one of a worktree before the main checkout's and this one's, then the newest. Only ports that have classes count (the maps have none).
+  // then the main checkout's ported/ (the merged, final builds: since 2026-11-04 every merged port is there) before a sibling worktree's (older or unmerged), then the newest. Only ports that have classes count (the maps have none).
   // What was used is written to raw/imperivm-legacy-others.txt (path, files, a fingerprint of the list of files and sizes), and the build STOPS if a known port is missing or was
   // touched in the last 90 seconds (its owner may be rebuilding it: the renames would differ). LEGACY_NO_OTHERS=1 builds with what is found (the bytes then depend on that).
   const REQUIRED_PORTS = ["cgwar", "greek-mod-1-8", "greek-civilization-mod", "mediterranevm-alpha", "mci", "community-mod-civs", "secuter-fun-mod", "secuter-fun-mod-grecia", "caesar-mod-civs",
@@ -459,7 +477,7 @@ for (const f of walk(OUT).filter(f => SKIN.test(f))) fs.rmSync(path.join(OUT, f)
     if (!st.isDirectory() || e === ID || !find(dir, "DATA/CLASSES")) continue;
     if (![path.join(MAIN, "ported"), path.join(ROOT, "ported")].includes(root) && !REQUIRED_PORTS.includes(e)) continue;      // the other worktrees: only the ports of this list (their ported/ also keeps old builds)
     const real = fs.realpathSync(dir), mj = path.join(dir, "mod.json"), t = fs.existsSync(mj) ? fs.statSync(mj).mtimeMs : st.mtimeMs;
-    const civs = fs.existsSync(path.join(dir, "civs")) && fs.readdirSync(path.join(dir, "civs")).some(f => /\.json$/i.test(f)), tier = root === path.join(ROOT, "ported") ? 2 : root === path.join(MAIN, "ported") ? 1 : 0;
+    const civs = fs.existsSync(path.join(dir, "civs")) && fs.readdirSync(path.join(dir, "civs")).some(f => /\.json$/i.test(f)), tier = root === path.join(MAIN, "ported") ? 0 : root === path.join(ROOT, "ported") ? 1 : 2;      // the main checkout holds the builds of the merged ports (the final ones): a sibling worktree's is an older or unmerged build
     if (!cand.has(e)) cand.set(e, new Map());
     if (!cand.get(e).has(real)) cand.get(e).set(real, { dir, real, t, civs, tier });
   }
@@ -482,19 +500,7 @@ for (const f of walk(OUT).filter(f => SKIN.test(f))) fs.rmSync(path.join(OUT, f)
   const ports = chosen.map(c => c.real);
   for (let pass = 1; pass <= 6; pass++) {
     const r = tagCollisions({ OUT, tag: TAG, others: [...ports, G, path.join(G, "paks")].filter(fs.existsSync), mapLabel: "Legacy", gameDirs: [path.join(G, "paks")], skip: /^(currentlang|ui\/menu|data\/interface\/menu|rle\.mmp\.tail$|outlines\/|minimap\/)/ });
-    // rle.mmp.tail is found by its name; the outline and mini-map pictures are named after their entity's folder: a renamed art folder's follow it below
-    // ("[BLACK_|COLOR_]<top>-<folder>-<name of the entity>.bmp", the name attribute of the .ent.xml, which the rename changed too)
-    for (const f of r.folders) {
-      const [top, name] = f.split("/"), dir = find(OUT, `${top}/${name}_${TAG}`); if (!dir) continue;
-      for (const e of fs.readdirSync(dir).filter(e => /\.ent\.xml$/i.test(e))) {
-        const now = (rd(path.join(dir, e)).match(/<entity\s+name\s*=\s*"([^"]*)"/i) || [])[1]; if (!now) continue;
-        const was = now.replace(new RegExp(`_${TAG}$`), "");
-        for (const pic of walk(OUT).filter(x => /^(outlines|minimap)\//i.test(x))) {
-          const m = path.basename(pic).match(new RegExp(`^((?:BLACK_|COLOR_)?${top}-)${name}-${was}(\\.[^.]+)$`, "i"));
-          if (m) fs.renameSync(path.join(OUT, pic), path.join(OUT, path.dirname(pic), `${m[1]}${name}_${TAG}-${now.toUpperCase()}${m[2]}`));
-        }
-      }
-    }
+    // rle.mmp.tail is found by its name; the outline and mini-map pictures follow their renamed entity inside tagCollisions itself (followBitmaps, #60)
     console.log(`own names (${TAG}), pass ${pass}: ${r.classes.length} classes (${r.classes.slice(0, 6).join(", ")}...), ${r.folders.length} art folders, ${r.maps.length} maps, ${r.files.length} files${r.unlabeled.length ? "; names not written: " + r.unlabeled.slice(0, 4).join(" | ") : ""}`);
     if (!r.classes.length && !r.folders.length && !r.maps.length && !r.files.length) break;
   }
@@ -748,8 +754,40 @@ const scriptFiles = () => ["DATA/SUBAI", "DATA/ITEMSCRIPTS", "DATA/ESPECIALIDADE
         for (const m of code.matchAll(/\b(Mod_TrueRace|Mod_PlayerCiv)\s*\(\s*([A-Za-z_]\w*)/g)) { nCalls++; const k = `${m[1]}(${m[2]})`; seen.set(k, (seen.get(k) || 0) + 1);
           if (m[2] !== "AIGetPlayer" && !d.has(m[2])) bad.push(`${rel}:${code.slice(0, m.index).split("\n").length}: ${m[1]}(${m[2]}...): \`${m[2]}\` is not declared in this script`); }
       } }
+    // the implicit receiver: a member with no object before the dot (`.race`, `.player`, `.AsUnit`) is the script's own object, which must be a parameter or a local called this / This
+    let nDots = 0, nDotScripts = 0;
+    for (const root of ["DATA", "patches/DATA"]) { const dir = find(OUT, root); if (!dir) continue;
+      for (const f of walk(dir).filter(f => /\.vs$/i.test(f))) {
+        const rel = `${root}/${f}`, t = rd(path.join(dir, f)), code = L.mask(t), d = declared(t);
+        if (root.startsWith("patches")) for (const x of declared(hdSub(path.basename(f)))) d.add(x);
+        const dots = [...code.matchAll(/(?<![\w)\]"'.])\s*\.\s*[A-Za-z_]/g)].filter(m => !/^\s*\.\s*\d/.test(m[0]));
+        if (dots.length) { nDotScripts++; nDots += dots.length; if (!d.has("this") && !d.has("This")) bad.push(`${rel}:${code.slice(0, dots[0].index).split("\n").length}: a member with no object before the dot (${dots.length} in the script) and no \`this\` / \`This\` declared`); }
+      } }
+    console.log(`implicit receivers: ${nDots} members with no object before the dot in ${nDotScripts} scripts, each with a this / This declared (the ones without: ${bad.filter(x => /no object before the dot/.test(x)).length})`);
     console.log(`receivers: ${nScripts} scripts, ${nThis} uses of This, ${nCalls} Mod_TrueRace / Mod_PlayerCiv calls (${[...seen].map(([k, n]) => `${k} x${n}`).join(", ")}), ${bad.length} without a declaration`);
     problems.push(...bad); }
+  // The checks the other ports taught (main: tools/lib/default-cmds.js, caesar-radius.js, check-minimap.js, check-conquests.js, lib/conquest-layout.js; read only, none changed).
+  //   (a) default commands: a unit class with a <defaultcmd> map of its own that lacks a target of its reference cannot link to heroes / board ships / capture wagons: none may be left,
+  //       against the mod's Unit and against HD's. (b) radius: a building class lacking a `radius` / `selection_radius` its HD counterpart has (walls, gates, villages, outposts, towers)
+  //       crashed two same-civilization players on a random map in Caesar's pack (gbr.exe+3fffd IsStrongholdSettlement). (c) strategic map: every building entity has its bitmaps and
+  //       outlines under the name the engine builds; "rename" (a bitmap under the old name) and "absent" (never existed) both stop the build unless NO_TWIN names it. (d) conquests: this
+  //       pack ships none, so check-conquests must say nothing is damaged; its CONQUESTGAME.INI patch (the skin's) must not refer to a control created later in the list.
+  { const DC = require("./lib/default-cmds.js"), rad = require("./lib/caesar-radius.js"), CLS = find(OUT, "DATA/CLASSES"), per = (l, k) => { const o = {}; for (const x of l) for (const t of x[k]) o[t] = (o[t] || 0) + 1; return o; };
+    const dcMod = DC.check({ OUT, dirs: [CLS, path.join(MERGED, "classes"), HD_CLASSES], tag: TAG }), dcHd = DC.check({ OUT, dirs: [CLS, HD_CLASSES], tag: TAG });
+    console.log(`default commands (final): ${dcMod.length} unit classes lack a target of the mod's Unit, ${dcHd.length} of HD's; shadowed ${JSON.stringify(per(dcMod, "shadowed"))} / ${JSON.stringify(per(dcHd, "shadowed"))}`);
+    for (const x of [...dcMod, ...dcHd]) problems.push(`default commands: ${x.id} (reference ${x.ref}) lacks ${x.missing.join(", ")}`);
+    const own = rad.classesOf(CLS), rm = rad.missing({ portClasses: own, hdClasses: rad.classesOf(HD_CLASSES), civsDir: path.join(OUT, "civs") });
+    console.log(`radius: ${[...own.values()].filter(c => /<properties\b[^>]*\bradius\s*=/.test(c.block)).length} of ${own.size} classes of the port carry a radius; ${rm.length} lack one that their HD class has`);
+    for (const p of rm) problems.push(`radius: ${p.id} has no radius / selection_radius, HD's ${p.hdId} has ${p.hd.radius}/${p.hd.selection}`);
+    const mm = cp.spawnSync("node", [path.join(__dirname, "check-minimap.js"), "--game", process.env.G, "--detail", OUT], { encoding: "utf8" }), mrows = (mm.stdout || "").split("\n"), mline = mrows.find(l => /^imperivm-legacy/.test(l));
+    console.log(`strategic map: ${(mline || mrows.slice(-2)[0] || "").replace(/\s+/g, " ")}`);
+    const absent = mrows.filter(l => /^\s+\S.*\babsent\s*$/.test(l));      // the detail rows; the header says "(rename/absent)"
+    if (mm.status || absent.length || !mline) problems.push(`strategic map (tools/check-minimap.js): ${(mm.stdout || mm.stderr || "").split("\n").filter(l => /rename|absent|lacks/.test(l)).slice(0, 12).join(" | ") || "no result"}`);
+    const cq = cp.spawnSync("node", [path.join(__dirname, "check-conquests.js"), OUT], { encoding: "utf8" });
+    console.log(`conquests: ${(cq.stdout || "").trim().split("\n").slice(-1)[0]}`);
+    if (cq.status) problems.push(`conquests (tools/check-conquests.js): ${cq.stdout}`);
+    const cg = find(OUT, "patches/menuini/CONQUESTGAME.INI"), hdcg = find(HDDATA, "INTERFACE/MENU/CONQUESTGAME.INI");
+    if (cg && hdcg) { const fw = require("./lib/conquest-layout.js").forwardRefs(rd(hdcg), rd(cg)); console.log(`conquest screen: the skin's patch has ${fw.length} references to a control created later`); for (const x of fw) problems.push(`conquest screen: [${x.sec}] ${x.key} uses ${x.fn}(${x.ref}) (${x.why})`); } }
   // the independence of the clones: no game id left where a clone's must be (or both), listed by name if it is the mod's own design; the AI reads no player race; the town hall
   // patches accept a clone's race; two files that differ only in case; a class over the engine's 8 behaviors
   { const L = require("./lib/legacy-literals.js"), all = new Map([...LIT, ...[...AMBIGUOUS].map(([k, v]) => [k, v.join("|")])]), used = new Set();
