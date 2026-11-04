@@ -1,0 +1,3 @@
+<patch>
+  <set select="/class/properties[@range]" settlement_food="1000" defender_cls_1="GAxeman" defenders_max_1="10" defenders_out_1="6" start_level_1="8" defender_cls_2="GWomanWarrior" defenders_max_2="4" defenders_out_2="2" start_level_2="8" end_level_2="24"/>
+</patch>

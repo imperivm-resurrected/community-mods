@@ -1,0 +1,4 @@
+<patch>
+  <add select="/class"><method sig="show (rules)" vs="data/subai/stonehenge_show.vs"/></add>
+  <add select="/class"><method sig="ghost" vs="data/subai/stonehenge_ghost.vs"/></add>
+</patch>

@@ -1,8 +1,0 @@
-<class id="ZeroDefence" cpp_class="CVXScriptObj" parent="Object" entity="">
-
-	<properties stamina_dec_time = "1000"/>
-	<properties sight = "500"/>
-
-	<behavior script = "data/subai/druid_zero_defence.vs"/>
-	
-</class>

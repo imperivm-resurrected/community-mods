@@ -189,6 +189,17 @@ console.log(`Greece: ${greekIds.size} classes with race "${GREEK_RACE}" (${piece
 
 // the menu skin: images stay, the layout becomes a patch of the keys it changed
 console.log(`menu skin: ${require("./lib/menu-skin.js").skinToPatches({ OUT, HD })} layout files became patches of the keys they changed`);
+// The conquest screen: the skin's own CONQUESTGAME.INI is the 1.40's layout (info frame over Hellas, Hellas' text over "Select starting area", found in game 2026-11-03).
+// It is replaced by the layout-only patch with Caesar Mod's numbers, all absolute (tools/lib/conquest-layout.js: the build stops on a forward reference). Hellas' shield and text stay the mod's.
+{ const r = require("./lib/conquest-layout.js").write({ OUT, HD }); console.log(`conquest screen: patches/menuini/CONQUESTGAME.INI is the layout only (${r.sections} sections; the skin's patch had ${r.from} lines)`); }
+// The default commands (right click): a clone with a <defaultcmd> map of its own and no `Hero` block answers attack/approach before the parent's `Hero -> attach`:
+// the troops do not link to their hero (tools/lib/default-cmds.js). Before the renames: the blocks carry the game's names, which tagCollisions then follows; checked again at the end.
+{
+  const DC = require("./lib/default-cmds.js"), o = { OUT, dirs: [CLASSES, path.join(MERGED, "classes"), HD_CLASSES], tag: "g42" };
+  const before = DC.check(o), sh = before.filter(x => x.shadowed.length), done = DC.complete(o), after = DC.check(o), dups = DC.duplicates({ OUT, tag: "g42" });
+  console.log(`default commands: ${before.length} unit classes lacked targets of their reference (${sh.length} shadowed by their own keys: ${[...new Set(sh.flatMap(x => x.shadowed))].join(", ") || "-"}); ${done.blocks} blocks written in ${done.classes} classes; after: ${after.length}`);
+  fs.writeFileSync(path.join(ROOT, "raw", "greek-4-2-default-cmds.txt"), [`before: ${before.length} classes lacking, ${sh.length} shadowed`, ...before.map(x => `${x.id} (ref ${x.ref}) lacks ${x.missing.join(", ")}${x.shadowed.length ? "; SHADOWED " + x.shadowed.join(", ") : ""}`), "", `after: ${after.length} lacking`, ...after.map(x => `${x.id} lacks ${x.missing.join(", ")}`), "", `${dups.length} classes with a target in two blocks of their own:`, ...dups.map(x => `${x.id}: ${x.targets.join(", ")}`)].join("\n") + "\n");
+}
 
 // 3b. the mod's versions of the game's behavior scripts (barrack_train.vs, hero_attack.vs, druid_learn.vs...): the port's classes and commands use
 // copies of their own (<name>_g42.vs); the game's scripts stay the game's (tools/lib/own-scripts.js). The ones that choose a branch of Rome or Carthage,
@@ -434,6 +445,10 @@ for (const f of ["BELT OF SNAKES REMOVE.VS", "FEATHER AMULET REMOVE.VS"]) { cons
   }
   console.log(`rules: ${tops.length} civilian classes of its own protected (rules/game.json), ${sentries} sentry classes not selectable`);
 }
+// The skin brings back the main menu's Help button and HD's English pack has no help.xml (the 4.2's package has none in any language): Local/english/HELP.XML, the
+// canonical English help of extras/english-help/ (a model translation of HD's Spanish help, UNREVIEWED). It adds a file HD's English lacks, replaces nothing, and is
+// never for Spanish or Italian, which keep HD's own (issue #54; tools/lib/english-help.js checks the pack and the file, and stops the build otherwise).
+{ const r = require("./lib/english-help.js").ship(OUT); console.log(`English help: ${r.topics} topics, ${r.entries} entries, ${r.links} links, ${r.pictures} picture names -> Local/english/HELP.XML (HD's English pack has none)`); }
 // the engine writes .fingerprint in an installed mod's folder (and Windows leaves desktop.ini): never part of the port
 for (const f of walk(OUT).filter(f => /(^|\/)(\.fingerprint|desktop\.ini|thumbs\.db)$/i.test(f))) fs.rmSync(path.join(OUT, f));
 {
@@ -441,5 +456,22 @@ for (const f of walk(OUT).filter(f => /(^|\/)(\.fingerprint|desktop\.ini|thumbs\
   const mp = path.join(OUT, "mod.json"), j = { ...require(mp) };   // a malformed file stops the build here, on purpose
   j.name = "Greek Civilization Mod 4.2";
   delete j.incompatibleWith; fs.rmSync(mp); fs.writeFileSync(mp, JSON.stringify(j, null, 2) + "\n", "utf8");
+}
+// ---- checks that stop the build -------------------------------------------------------------------------------------------------------------------
+{
+  const errors = [], C = require("./lib/greek-4-2-checks.js"), DC = require("./lib/default-cmds.js");
+  // 1. the right click: after every rename, no unit class lacks a target of its reference (Hero, Wagon, WildHorse, ShipBattle are kinds of Unit)
+  const dc = DC.check({ OUT, dirs: [CLASSES, path.join(MERGED, "classes"), HD_CLASSES], tag: "g42" });
+  console.log(`default commands (after the renames): ${dc.length} unit classes lack targets of their reference`);
+  for (const x of dc.slice(0, 20)) errors.push(`default commands: ${x.id} lacks ${x.missing.join(", ")}${x.shadowed.length ? " (SHADOWED: " + x.shadowed.join(", ") + ")" : ""}`);
+  // 2. the conquests: the .bfhp whole, its data folder complete, every territory clickable
+  const cd = C.conquestData(OUT, require(path.join(OUT, "civs", "greek.json")).index);
+  console.log(`conquests: ${cd.list.map(c => `${c.bfhp} -> ${c.data} (${c.territories} territories)`).join("; ")}; ${cd.problems.length} problems`);
+  errors.push(...cd.problems.map(p => "conquest: " + p));
+  // 3. the conquest screen: nothing of Greece under the panel at 1920x1080
+  const cv = C.coverage({ OUT, HD });
+  fs.writeFileSync(path.join(ROOT, "raw", "greek-4-2-conquest-layout.md"), `# The conquest screen: what the panel covers (Greek Civilization Mod 4.2)\n\nTerritories are the pixels of each map's territories.bmp; the map control is 1024x768 centered, drawn 1:1. Rectangles come from HD's CONQUESTGAME.INI / TEMPLATE.INI with the port's patches (tools/lib/greek-4-2-checks.js, evaluator of tools/lib/caesar-menu.js).\n\n${cv.text}\n`);
+  errors.push(...cv.problems.map(p => "conquest screen: " + p));
+  if (errors.length) { console.error("BUILD CHECKS FAILED:\n  " + errors.join("\n  ")); process.exit(1); }
 }
 console.log("done");

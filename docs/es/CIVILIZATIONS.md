@@ -28,6 +28,10 @@ Las letras y los índices son únicos en todos los ports (el SDK admite índices
 | 47 | `romepun42` | `6` | RepublicanRome | 4.2 | Roma Púnica: la rama púnica (héroe romano antiguo) |
 | 48 | `carthnum42` | `7` | Carthage | 4.2 | Cartago Númida |
 | 49 | `carthmau42` | `8` | Carthage | 4.2 | Cartago Mauritana (héroe mauritano) |
+| 50 | `kgreece` | `Kgr` | ImperialRome (own race) | Caesar Mod 1.1.0 | Explícito porque el territorio de Grecia de sus dos conquistas lo nombra (`interface` 50, `tools/caesar-mod.js`); `tools/shared-paths.js` no encuentra ids de clase en común |
+| 51-59 | (reservado) | | | Caesar Mod 1.1.0 | Guardados para las otras nueve civilizaciones del mod por si una conquista debe nombrarlas; hoy toman los números automáticos del motor |
+| 60 | `wgreece` | `Wgr` | ImperialRome (own race) | Greek Mod 2.3 | Explícito porque el territorio de Grecia de sus dos conquistas (`mediterranean (w23)`, `ConquestRemake (w23)`) lo nombra (`interface` 60, `tools/greek-2x.js`, `greeceIndex`). Sin probar en juego: empezar una conquista de la 2.3 como Grecia |
+| 61-63 | (reservado) | | | Greek Mod 2.5.3, 2.6.1, Mediterranevm Mod 3.6 | Guardados para su Grecia (2.5.3, 2.6.1) por si algún día tienen una conquista que deba nombrarla; hoy no llevan conquistas y toman los números automáticos del motor |
 | (motor) | `cgwarimperial` | `Cgw` (derivado) | RepublicanRome | CGWAR | Rama imperial de la Roma del mod, con sus comandos ya dentro (la elección en la Arena no se porta): `tools/cgwar-civs.js` |
 | (motor) | `cgwarrepublic` | `Cgr` | RepublicanRome | CGWAR | Rama republicana de la Roma del mod: `tools/cgwar-civs.js` |
 | (motor) | `gaul_gbrt` | `Gau` (derivado) | Gaul | GBR Tactics | `tools/gbr-tactics.js` |
@@ -70,6 +74,48 @@ Las letras y los índices son únicos en todos los ports (el SDK admite índices
 | (motor) | `aiberia` | `Aib` (derivado) | Iberia | AsvrMod VII | `tools/asvrmod-vii.js` |
 | (motor) | `aegypt` | `Aeg` (derivado) | Egypt | AsvrMod VII | `tools/asvrmod-vii.js` |
 | (motor) | `agermany` | `Age` (derivado) | Germany | AsvrMod VII | `tools/asvrmod-vii.js` |
+| (motor) | `sgaul` | `Sga` (derivado) | Gaul | Secuter Fun 1.5 | `tools/secuter-fun-mod.js` |
+| (motor) | `srome` | `Sro` (derivado) | RepublicanRome | Secuter Fun 1.5 | `tools/secuter-fun-mod.js` |
+| (motor) | `simperial` | `Sim` (derivado) | ImperialRome | Secuter Fun 1.5 | `tools/secuter-fun-mod.js` |
+| (motor) | `scarthage` | `Sca` (derivado) | Carthage | Secuter Fun 1.5 | `tools/secuter-fun-mod.js` |
+| (motor) | `sbritain` | `Sbr` (derivado) | Britain | Secuter Fun 1.5 | `tools/secuter-fun-mod.js` |
+| (motor) | `siberia` | `Sib` (derivado) | Iberia | Secuter Fun 1.5 | `tools/secuter-fun-mod.js` |
+| (motor) | `segypt` | `Seg` (derivado) | Egypt | Secuter Fun 1.5 | `tools/secuter-fun-mod.js` |
+| (motor) | `sgermany` | `Sge` (derivado) | Germany | Secuter Fun 1.5 | `tools/secuter-fun-mod.js` |
+| (motor) | `zgaul` | `Zga` (derivado) | Gaul | Secuter Fun Greece 1.5 | `tools/secuter-fun-mod.js` |
+| (motor) | `zrome` | `Zro` (derivado) | RepublicanRome | Secuter Fun Greece 1.5 | `tools/secuter-fun-mod.js` |
+| (motor) | `zimperial` | `Zim` (derivado) | ImperialRome | Secuter Fun Greece 1.5 | `tools/secuter-fun-mod.js` |
+| (motor) | `zcarthage` | `Zca` (derivado) | Carthage | Secuter Fun Greece 1.5 | `tools/secuter-fun-mod.js` |
+| (motor) | `zbritain` | `Zbr` (derivado) | Britain | Secuter Fun Greece 1.5 | `tools/secuter-fun-mod.js` |
+| (motor) | `ziberia` | `Zib` (derivado) | Iberia | Secuter Fun Greece 1.5 | `tools/secuter-fun-mod.js` |
+| (motor) | `zegypt` | `Zeg` (derivado) | Egypt | Secuter Fun Greece 1.5 | `tools/secuter-fun-mod.js` |
+| (motor) | `zgermany` | `Zge` (derivado) | Germany | Secuter Fun Greece 1.5 | `tools/secuter-fun-mod.js` |
+| (motor) | `zgreece` | `Zgr` (derivado) | ImperialRome (raza propia) | Secuter Fun Greece 1.5 | La Grecia de la 1.8 con los cambios de Secuter, independiente de los tres mods griegos (`tools/secuter-greece.js`) |
+| (motor) | `igaul` | `Iga` (derivado) | Gaul | MCI 9.0 | `tools/mci.js` |
+| (motor) | `irome` | `Iro` (derivado) | RepublicanRome | MCI 9.0 | `tools/mci.js` |
+| (motor) | `iimperial` | `Iim` (derivado) | ImperialRome | MCI 9.0 | `tools/mci.js` |
+| (motor) | `icarthage` | `Ica` (derivado) | Carthage | MCI 9.0 | `tools/mci.js` |
+| (motor) | `ibritain` | `Ibr` (derivado) | Britain | MCI 9.0 | `tools/mci.js` |
+| (motor) | `iiberia` | `Iib` (derivado) | Iberia | MCI 9.0 | `tools/mci.js` |
+| (motor) | `iegypt` | `Ieg` (derivado) | Egypt | MCI 9.0 | `tools/mci.js` |
+| (motor) | `igermany` | `Ige` (derivado) | Germany | MCI 9.0 | `tools/mci.js` |
+| (motor) | `fgaul` | `Fga` (derivado) | Gaul | Community Mod 12 | `tools/community-mod.js` |
+| (motor) | `frome` | `Fro` (derivado) | RepublicanRome | Community Mod 12 | `tools/community-mod.js` |
+| (motor) | `fimperial` | `Fim` (derivado) | ImperialRome | Community Mod 12 | `tools/community-mod.js` |
+| (motor) | `fcarthage` | `Fca` (derivado) | Carthage | Community Mod 12 | `tools/community-mod.js` |
+| (motor) | `fbritain` | `Fbr` (derivado) | Britain | Community Mod 12 | `tools/community-mod.js` |
+| (motor) | `fiberia` | `Fib` (derivado) | Iberia | Community Mod 12 | `tools/community-mod.js` |
+| (motor) | `fegypt` | `Feg` (derivado) | Egypt | Community Mod 12 | `tools/community-mod.js` |
+| (motor) | `fgermany` | `Fge` (derivado) | Germany | Community Mod 12 | `tools/community-mod.js` |
+| (motor) | `kgaul` | `Kga` (derivado) | Gaul | Caesar Mod 1.1.0 | `tools/caesar-mod.js` |
+| (motor) | `kbritain` | `Kbr` (derivado) | Britain | Caesar Mod 1.1.0 | `tools/caesar-mod.js` |
+| (motor) | `kiberia` | `Kib` (derivado) | Iberia | Caesar Mod 1.1.0 | `tools/caesar-mod.js` |
+| (motor) | `kegypt` | `Keg` (derivado) | Egypt | Caesar Mod 1.1.0 | `tools/caesar-mod.js` |
+| (motor) | `kgermany` | `Kge` (derivado) | Germany | Caesar Mod 1.1.0 | `tools/caesar-mod.js` |
+| (motor) | `kcarthage` | `Kca` (derivado) | Carthage | Caesar Mod 1.1.0 | `tools/caesar-mod.js` |
+| (motor) | `krepublic` | `Kre` (derivado) | RepublicanRome | Caesar Mod 1.1.0 | `tools/caesar-mod.js` |
+| (motor) | `kimperial` | `Kim` (derivado) | RepublicanRome | Caesar Mod 1.1.0 | `tools/caesar-mod.js` |
+| (motor) | `kpunic` | `Kpu` (derivado) | RepublicanRome | Caesar Mod 1.1.0 | `tools/caesar-mod.js` |
 | (motor) | `lgaul` | `Lga` (derivado) | Gaul | Imperivm Legacy 2.4.1 | `tools/imperivm-legacy.js` |
 | (motor) | `lrome` | `Lro` (derivado) | RepublicanRome | Imperivm Legacy 2.4.1 | `tools/imperivm-legacy.js` |
 | (motor) | `limperial` | `Lim` (derivado) | ImperialRome | Imperivm Legacy 2.4.1 | `tools/imperivm-legacy.js` |

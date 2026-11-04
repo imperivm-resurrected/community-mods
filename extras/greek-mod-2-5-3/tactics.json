@@ -1,0 +1,6 @@
+{
+  "note": "The mod's GetTacticScript (work/greek-2-5-3-flat/DATA/AI/GETTACTICSCRIPT.VS): a first roll of 100 in the first 2 seconds, [upTo, script]. Only Greece's tactic script is the mod's own (TS_HGreeceTactic); the others are the game's scripts and the mod only moved the odds (not ported: the clones keep the game's GetTacticScript). Iberia's TS_IberianTactic2 of the mod is byte-identical to Imperivm Legacy's and is left out. The Roman branches keep the game's tactic.",
+  "picks": {
+    "greece": [[100, "TS_HGreeceTactic"]]
+  }
+}

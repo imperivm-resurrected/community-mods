@@ -1,0 +1,30 @@
+copied (27):
+buildings-zgragora-zgragora
+buildings-zgrgymnasium-zgrgymnasium
+buildings-zgrbarracks-zgrbarracks
+buildings-zgrblacksmith-zgrblacksmith
+buildings-zgrwalls-gatene-gatene
+buildings-zgrwalls-gaten-gaten
+buildings-zgrwalls-gatenw-gatenw
+buildings-zgrwalls-gatew-gatew
+buildings-zgrwalls-gates-gates
+buildings-zgrwalls-gatese-gatese
+buildings-zgrwalls-gatesw-gatesw
+buildings-zgrwalls-gatee-gatee
+buildings-zgrhouse1-zgrhouse1
+buildings-zgrhouse2-zgrhouse2
+buildings-zgrhouse3-zgrhouse3
+buildings-zgrtemple-zgrtemple
+buildings-zgrwalls-tower-tower
+buildings-zgrtownhall-zgrtownhall
+buildings-zgrvillage-zgrvillage
+buildings-zgrwalls-walle-walle
+buildings-zgrwalls-walln-walln
+buildings-zgrwalls-wallne-wallne
+buildings-zgrwalls-wallnw-wallnw
+buildings-zgrwalls-walls-walls
+buildings-zgrwalls-wallse-wallse
+buildings-zgrwalls-wallsw-wallsw
+buildings-zgrwalls-wallw-wallw
+
+no twin (0):
