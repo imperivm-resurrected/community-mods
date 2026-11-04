@@ -239,6 +239,28 @@ for (const f of fs.existsSync(EXTRAS) ? fs.readdirSync(EXTRAS) : []) if (f !== "
   console.log(`references: ${problems.length} problems`);
   if (problems.length) { console.error(`REFERENCE CHECK FAILED (${problems.length}):\n  ${[...new Set(problems)].join("\n  ")}`); process.exit(1); }
 }
+// 7. The checks the other ports taught, as far as a pack of patches has anything to check: the strategic map (tools/check-minimap.js: the Pyramid's entity), the conquests (none shipped),
+// and `This`/`this` used without a declaration in the pack's scripts (a patch is read with the game's script it patches). The build stops. Default commands and radius: the pack ships no unit
+// class and no building class of its own except the Pyramid (a child of Stonehenge), whose radius it has.
+{
+  const bad = [], out = [];
+  for (const [name, args] of [["strategic map", ["check-minimap.js", "--game", GAME, OUT]], ["conquests", ["check-conquests.js", OUT]]]) {
+    const r = cp.spawnSync("node", [path.join(__dirname, args[0]), ...args.slice(1)], { encoding: "utf8" });
+    out.push(`${name}: ${(r.stdout || "").trim().split("\n").slice(-1)[0].replace(/\s+/g, " ")}`); if (r.status) bad.push(`${name}: ${r.stdout}`);
+  }
+  const strip = t => t.replace(/\/\*[\s\S]*?\*\//g, " ").replace(/\/\/[^\n]*/g, " ").replace(/"(?:[^"\\\n]|\\.)*"/g, '""');
+  let n = 0;
+  for (const f of walk(OUT).filter(f => /\.vs$/i.test(f))) {
+    n++; const t = rd(path.join(OUT, f)), pm = /^patches\/DATA\/(.*)$/i.exec(f), hd = pm && (() => { const parts = pm[1].split("/"), d = ci(HD, parts[0]), f = d && ci(d, parts.slice(1).join("/")); return f; })(), ctx = (pm && hd ? rd(hd) + "\n" : "") + t;
+    const dec = new Set(); const hm = /^\s*\/\/(.*)$/.exec(ctx.split(/\r?\n/).find(l => l.trim()) || "");
+    if (hm) for (const prm of hm[1].split(",").slice(1)) dec.add((prm.trim().split(/\s+/).pop() || "").replace(/^\*/, ""));
+    for (const x of strip(ctx).matchAll(/(?<![\w.])[A-Za-z_]\w*\s+\*?(this)\b(?=\s*[;,=)\[])/gi)) dec.add(x[1]);
+    for (const u of strip(t).matchAll(/(?<![\w.])this(?![\w])/gi)) if (!dec.has(u[0])) { bad.push(`${f}: "${u[0]}" is used and not declared`); break; }
+  }
+  out.push(`This/this declared: ${n} scripts scanned, ${bad.filter(b => /not declared/.test(b)).length} used without a declaration`);
+  console.log(out.join("\n"));
+  if (bad.length) { console.error(`CHECKS FAILED (${bad.length}):\n  ${bad.join("\n  ")}`); process.exit(1); }
+}
 if (!process.env.SECUTER_KEEP_SCRATCH) for (const d of [SRC, P140, M]) fs.rmSync(d, { recursive: true, force: true });
 if (report.length) console.log(`to check:\n  ${report.join("\n  ")}`);
 console.log("done");
