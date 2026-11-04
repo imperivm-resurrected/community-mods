@@ -686,6 +686,22 @@ if (fs.existsSync(EXTRAS)) for (const f of walk(EXTRAS)) { if (f !== "mod.json")
   console.log(`texts: ${mod.length} entries of the mod differ from HD's; ${parts.fresh.length} keys HD lacks -> ${rw.entries.length} entries shipped (${rw.log.filter(l => l.why).length} rewritten for the clones), ${parts.same.length} repeat HD's and ${parts.override.length} change HD's own text: not shipped; shipped keys that HD's table has: 0`);
   console.log(`texts the port names (${own.length}): ${summary}; the game's own files against its own table: ${hdOwn.length - hdBad}/${hdOwn.length} resolve`);
 }
+// 7c. The default commands (right click) of the units: a class with a <defaultcmd> map of its own shadows its parent's for the targets that are a kind of its keys (tools/lib/default-cmds.js
+// of main, found in game in the 2.x ports: the troops did not link to their hero). tools/lib/mci-defaultcmds.js says what this port has: the mod's Gaul mage gets BaseMage's Hero block;
+// the mod's cart and transport ship have HD's Wagon map on purpose. The build stops if another unit class has a shadowed target.
+{
+  const DCM = require("./lib/mci-defaultcmds.js"), o = { OUT, HDC: HD_CLASSES, tag: TAG };
+  const before = require("./lib/default-cmds.js").check({ OUT, dirs: [find(OUT, "DATA/CLASSES"), HD_CLASSES], tag: TAG }), done = DCM.fix(o), left = DCM.stops(o);
+  console.log(`default commands: ${before.length} unit classes lack a target of their reference, ${before.filter(x => x.shadowed.length).length} with a shadowed one; fixed ${done.map(d => `${d.id} (+${d.targets.join(",")})`).join("; ") || "none"}; exempt: ${[...DCM.EXEMPT.keys()].join(", ")}; still shadowed: ${left.length}`);
+  if (left.length) { console.error("DEFAULT COMMANDS SHADOWED: " + left.map(x => `${x.id}: ${x.shadowed.join(",")}`).join("; ")); process.exit(1); }
+}
+// 7d. radius / selection_radius (tools/lib/caesar-radius.js of main, read only): a building class that lacks the radius its HD counterpart has crashed two same-civilization players on a random
+// map in the Caesar pack (gbr.exe+3fffd IsStrongholdSettlement). MCI's classes are HD's copies; the build stops if one lost it.
+{
+  const R = require("./lib/caesar-radius.js"), m = R.missing({ portClasses: R.classesOf(find(OUT, "DATA/CLASSES")), hdClasses: R.classesOf(HD_CLASSES), civsDir: path.join(OUT, "civs") });
+  console.log(`radius: ${m.length} classes lack a radius or selection_radius that their HD counterpart has`);
+  if (m.length) { console.error("RADIUS MISSING: " + m.map(x => `${x.id} <- ${x.hdId}`).join(", ")); process.exit(1); }
+}
 // 8. Offline checks of every script this build writes (nothing compiles them but the game, and a patch of the game's own that does not compile stops that script for EVERY
 // civilization). The build stops on a problem.
 //   (a) each copy / rewritten script has the parens, braces and brackets of the mod's script it comes from (comments and strings out), and no Mod_TrueRace without an object
@@ -785,6 +801,9 @@ if (fs.existsSync(EXTRAS)) for (const f of walk(EXTRAS)) { if (f !== "mod.json")
   }
   // the names the scripts use (tools/lib/mci-names.js): a call or a constant that nothing defines stops that script in game
   { const r = require("./lib/mci-names.js").checkNames({ OUT, HD, SDK }); problems.push(...r.errors); console.log(r.notes.join("\n")); }
+  // the damage a text rewrite can do to a script (tools/lib/community-dots.js of main: a `.(` left by a receiver's dot; every changed line against the script the copy came from)
+  { const r = require("./lib/community-dots.js").scan({ OUT, HD: HDDATA, applyPatch, pristineFor }); problems.push(...r.dots, ...r.problems.map(x => "dots/compare: " + x));
+    console.log(`dots: ${r.scanned} scripts scanned, ${r.dots.length} stray dots; ${r.compared} compared line by line with their source, ${r.changed} changed lines, ${r.problems.length} problems, ${r.notAligned.length} not aligned (not compared)`); if (r.notAligned.length) console.log("  not aligned: " + r.notAligned.slice(0, 6).join(" | ")); }
   // every `This` and every object given to Mod_TrueRace / Mod_PlayerCiv is a parameter or a local of its script (the patches: of the game's script they patch)
   { const r = require("./lib/mci-receivers.js").checkReceivers({ OUT, HD }); problems.push(...r.problems); console.log(`receivers: ${r.scanned} scripts scanned, ${r.problems.length} use This or name an object the script does not declare; ${[...r.uses].map(([k, n]) => `${k} x${n}`).join(", ")}`); }
   console.log(`script checks: ${copies} copies/rewrites balanced like the mod's, ${patchesChecked} patches applied to the game's script and balanced, ${strings} class strings resolved, hero bases: ${[...bases].sort().join(" ")}`);
