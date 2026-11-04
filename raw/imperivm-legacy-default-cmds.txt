@@ -1,0 +1,244 @@
+before: 129 unit classes lacking a target of their reference, 91 shadowed
+missing per target before: {"(ground)":78,"Inn":114,"Wagon":82,"Hero":82,"Tower":80,"Gate":79,"TTent":80,"Building":122,"Teleport":80,"ItemHolder":82,"ShipAdmiral":3,"HeroShip":3,"WallTarget":3,"CTent":3,"ShipBattle":9,"Catapult":14,"Object":1,"ShipS":1,"BaseShipyard":1,"Unit":1}
+LgaGhoul (ref Unit) lacks (ground), Inn, Wagon, Hero, Tower, Gate, TTent, Building, Teleport, ItemHolder; SHADOWED Wagon, Hero
+BlackWolfUnit (ref Unit) lacks Inn, ShipAdmiral, Wagon, HeroShip, Hero, Tower, Gate, WallTarget, CTent, TTent, Building, Teleport, ItemHolder; SHADOWED ShipAdmiral, Wagon, HeroShip, Hero
+HeroShip (ref Hero) lacks Inn, ShipAdmiral, Tower, Gate, WallTarget, CTent, TTent, Building, Teleport, Wagon, Hero, ItemHolder; SHADOWED Inn, ShipAdmiral, Tower, Gate, WallTarget, CTent, TTent, Building, Teleport, Wagon, Hero, ItemHolder
+LbrBowman (ref Unit) lacks (ground), Inn, Wagon, Hero, Tower, Gate, TTent, Building, Teleport, ItemHolder; SHADOWED Wagon, Hero
+LbrBronzeSpearman (ref Unit) lacks (ground), Inn, Wagon, Hero, Tower, Gate, TTent, Building, Teleport, ItemHolder; SHADOWED Wagon, Hero
+LbrCatapultUnit (ref RamUnit) lacks Inn, ShipBattle, Wagon, Hero, Building, ItemHolder; SHADOWED ShipBattle, Wagon, Hero
+LbrDruid (ref BDruid) lacks ShipBattle; SHADOWED ShipBattle
+LbrHighlandar (ref Unit) lacks (ground), Inn, Wagon, Hero, Tower, Gate, TTent, Building, Teleport, ItemHolder; SHADOWED Wagon, Hero
+LbrHighlander (ref Unit) lacks (ground), Inn, Wagon, Hero, Tower, Gate, TTent, Building, Teleport, ItemHolder; SHADOWED Wagon, Hero
+LbrShieldBearer (ref Unit) lacks (ground), Inn, Wagon, Hero, Tower, Gate, TTent, Building, Teleport, ItemHolder; SHADOWED Wagon, Hero
+LbrSwordsman (ref Unit) lacks (ground), Inn, Wagon, Hero, Tower, Gate, TTent, Building, Teleport, ItemHolder; SHADOWED Wagon, Hero
+LbrVikingLord (ref Unit) lacks (ground), Inn, Wagon, Hero, Tower, Gate, TTent, Building, Teleport, ItemHolder; SHADOWED Wagon, Hero
+LbrVillager (ref Peasant) lacks Inn, Catapult, Building
+LbrVillagerAmbient (ref PeasantAmbient) lacks Inn, Building
+LbrWVillagerAmbient (ref PeasantAmbient) lacks Inn, Building
+LcaBerberAssassin (ref Unit) lacks (ground), Inn, Wagon, Hero, Tower, Gate, TTent, Building, Teleport, ItemHolder; SHADOWED Wagon, Hero
+LcaLibyanFootman (ref Unit) lacks (ground), Inn, Wagon, Hero, Tower, Gate, TTent, Building, Teleport, ItemHolder; SHADOWED Wagon, Hero
+LcaMaceman (ref Unit) lacks (ground), Inn, Wagon, Hero, Tower, Gate, TTent, Building, Teleport, ItemHolder; SHADOWED Wagon, Hero
+LcaMacemen (ref Unit) lacks (ground), Inn, Wagon, Hero, Tower, Gate, TTent, Building, Teleport, ItemHolder; SHADOWED Wagon, Hero
+LcaNoble (ref Unit) lacks (ground), Inn, Wagon, Hero, Tower, Gate, TTent, Building, Teleport, ItemHolder; SHADOWED Wagon, Hero
+LcaShaman (ref CShaman) lacks ShipBattle; SHADOWED ShipBattle
+LcaVillager (ref Peasant) lacks Inn, Catapult, Building
+LcaVillagerAmbient (ref PeasantAmbient) lacks Inn, Building
+LcaWarElephant (ref Unit) lacks (ground), Inn, Wagon, Hero, Tower, TTent, Building, Teleport, ItemHolder; SHADOWED Wagon, Hero
+LcaWVillagerAmbient (ref PeasantAmbient) lacks Inn, Building
+LegAnubisWarrior (ref Unit) lacks (ground), Inn, Wagon, Hero, Tower, Gate, TTent, Building, Teleport, ItemHolder; SHADOWED Wagon, Hero
+LegArcher (ref Unit) lacks (ground), Inn, Wagon, Hero, Tower, Gate, TTent, Building, Teleport, ItemHolder; SHADOWED Wagon, Hero
+LegChariot (ref Unit) lacks (ground), Inn, Wagon, Hero, Tower, Gate, TTent, Building, Teleport, ItemHolder; SHADOWED Wagon, Hero
+LegGuardian (ref Unit) lacks (ground), Inn, Wagon, Hero, Tower, Gate, TTent, Building, Teleport, ItemHolder; SHADOWED Wagon, Hero
+LegHorusWarrior (ref Unit) lacks (ground), Inn, Wagon, Hero, Tower, Gate, TTent, Building, Teleport, ItemHolder; SHADOWED Wagon, Hero
+LegPriest (ref EPriest) lacks ShipBattle; SHADOWED ShipBattle
+LegSwordsman (ref Unit) lacks (ground), Inn, Wagon, Hero, Tower, Gate, TTent, Building, Teleport, ItemHolder; SHADOWED Wagon, Hero
+LegVillager (ref Peasant) lacks Inn, Catapult, Building
+LegVillagerAmbient (ref PeasantAmbient) lacks Inn, Building
+LegWVillagerAmbient (ref PeasantAmbient) lacks Inn, Building
+LgaArcher (ref Unit) lacks (ground), Inn, Wagon, Hero, Tower, Gate, TTent, Building, Teleport, ItemHolder; SHADOWED Wagon, Hero
+LgaAxeman (ref Unit) lacks (ground), Inn, Wagon, Hero, Tower, Gate, TTent, Building, Teleport, ItemHolder; SHADOWED Wagon, Hero
+LgaDruid (ref GDruid) lacks ShipBattle; SHADOWED ShipBattle
+LgaGhost (ref Unit) lacks (ground), Inn, Wagon, Hero, Tower, Gate, TTent, Building, Teleport, ItemHolder; SHADOWED Wagon, Hero
+LgaSpearman (ref Unit) lacks (ground), Inn, Wagon, Hero, Tower, Gate, TTent, Building, Teleport, ItemHolder; SHADOWED Wagon, Hero
+LgaSwordsman (ref Unit) lacks (ground), Inn, Wagon, Hero, Tower, Gate, TTent, Building, Teleport, ItemHolder; SHADOWED Wagon, Hero
+LgaTridentWarriar (ref Unit) lacks (ground), Inn, Wagon, Hero, Tower, Gate, TTent, Building, Teleport, ItemHolder; SHADOWED Wagon, Hero
+LgaTridentWarrior (ref Unit) lacks (ground), Inn, Wagon, Hero, Tower, Gate, TTent, Building, Teleport, ItemHolder; SHADOWED Wagon, Hero
+LgaVillager (ref Peasant) lacks Inn, Catapult, Building
+LgaVillagerAmbient (ref PeasantAmbient) lacks Inn, Building
+LgaWomanWarrior (ref Unit) lacks (ground), Inn, Wagon, Hero, Tower, Gate, TTent, Building, Teleport, ItemHolder; SHADOWED Wagon, Hero
+LgaWVillagerAmbient (ref PeasantAmbient) lacks Inn, Building
+LgeArcher (ref Unit) lacks (ground), Inn, Wagon, Hero, Tower, Gate, TTent, Building, Teleport, ItemHolder; SHADOWED Wagon, Hero
+LgeAxeman (ref Unit) lacks (ground), Inn, Wagon, Hero, Tower, Gate, TTent, Building, Teleport, ItemHolder; SHADOWED Wagon, Hero
+LgeCatapultUnit (ref RamUnit) lacks Inn, ShipBattle, Wagon, Hero, Building, ItemHolder; SHADOWED ShipBattle, Wagon, Hero
+LgeEnchantress (ref TEnchantress) lacks ShipBattle; SHADOWED ShipBattle
+LgeMaceman (ref Unit) lacks (ground), Inn, Wagon, Hero, Tower, Gate, TTent, Building, Teleport, ItemHolder; SHADOWED Wagon, Hero
+LgeSwordsman (ref Unit) lacks (ground), Inn, Wagon, Hero, Tower, Gate, TTent, Building, Teleport, ItemHolder; SHADOWED Wagon, Hero
+LgeTeutonArcher (ref Unit) lacks (ground), Inn, Wagon, Hero, Tower, Gate, TTent, Building, Teleport, ItemHolder; SHADOWED Wagon, Hero
+LgeVillager (ref Peasant) lacks Inn, Catapult, Building
+LgeVillagerAmbient (ref PeasantAmbient) lacks Inn, Building
+LgeWVillagerAmbient (ref PeasantAmbient) lacks Inn, Building
+LibArcher (ref Unit) lacks (ground), Inn, Wagon, Hero, Tower, Gate, TTent, Building, Teleport, ItemHolder; SHADOWED Wagon, Hero
+LibDefendar (ref Unit) lacks (ground), Inn, Wagon, Hero, Tower, Gate, TTent, Building, Teleport, ItemHolder; SHADOWED Wagon, Hero
+LibDefender (ref Unit) lacks (ground), Inn, Wagon, Hero, Tower, Gate, TTent, Building, Teleport, ItemHolder; SHADOWED Wagon, Hero
+LibEliteGuard (ref Unit) lacks (ground), Inn, Wagon, Hero, Tower, Gate, TTent, Building, Teleport, ItemHolder; SHADOWED Wagon, Hero
+LibEnchantress (ref IEnchantress) lacks ShipBattle; SHADOWED ShipBattle
+LibMilitiaman (ref Unit) lacks (ground), Inn, Wagon, Hero, Tower, Gate, TTent, Building, Teleport, ItemHolder; SHADOWED Wagon, Hero
+LibMountaineer (ref Unit) lacks (ground), Inn, Wagon, Hero, Tower, Gate, TTent, Building, Teleport, ItemHolder; SHADOWED Wagon, Hero
+LibSlinger (ref Unit) lacks (ground), Inn, Wagon, Hero, Tower, Gate, TTent, Building, Teleport, ItemHolder; SHADOWED Wagon, Hero
+LibVillager (ref Peasant) lacks Inn, Catapult, Building
+LibVillagerAmbient (ref PeasantAmbient) lacks Inn, Building
+LibWVillagerAmbient (ref PeasantAmbient) lacks Inn, Building
+LimRArcher (ref Unit) lacks (ground), Inn, Wagon, Hero, Tower, Gate, TTent, Building, Teleport, ItemHolder; SHADOWED Wagon, Hero
+LimRHastatus (ref Unit) lacks (ground), Inn, Wagon, Hero, Tower, Gate, TTent, Building, Teleport, ItemHolder; SHADOWED Wagon, Hero
+LimRLiberatus (ref Unit) lacks (ground), Inn, Wagon, Hero, Tower, Gate, TTent, Building, Teleport, ItemHolder; SHADOWED Wagon, Hero
+LimRPraetorian (ref Unit) lacks (ground), Inn, Wagon, Hero, Tower, Gate, TTent, Building, Teleport, ItemHolder; SHADOWED Wagon, Hero
+LimRPrinciple (ref Unit) lacks (ground), Inn, Wagon, Hero, Tower, Gate, TTent, Building, Teleport, ItemHolder; SHADOWED Wagon, Hero
+LimVillagerAmbient (ref PeasantAmbient) lacks Inn, Building
+LimWVillagerAmbient (ref PeasantAmbient) lacks Inn, Building
+LroAstatus (ref Unit) lacks (ground), Inn, Wagon, Hero, Tower, Gate, TTent, Building, Teleport, ItemHolder; SHADOWED Wagon, Hero
+LroChariot (ref Unit) lacks (ground), Inn, Wagon, Hero, Tower, Gate, TTent, Building, Teleport, ItemHolder; SHADOWED Wagon, Hero
+LroCretanArcher (ref Unit) lacks (ground), Inn, Wagon, Hero, Tower, Gate, TTent, Building, Teleport, ItemHolder; SHADOWED Wagon, Hero
+LroGladiator (ref Unit) lacks (ground), Inn, Wagon, Hero, Tower, Gate, TTent, Building, Teleport, ItemHolder; SHADOWED Wagon, Hero
+LroLiberatas (ref Unit) lacks (ground), Inn, Wagon, Hero, Tower, Gate, TTent, Building, Teleport, ItemHolder; SHADOWED Wagon, Hero
+LroPriest (ref RPriest) lacks ShipBattle; SHADOWED ShipBattle
+LroTriarius (ref Unit) lacks (ground), Inn, Wagon, Hero, Tower, Gate, TTent, Building, Teleport, ItemHolder; SHADOWED Wagon, Hero
+LroTribune (ref Unit) lacks (ground), Inn, Wagon, Hero, Tower, Gate, TTent, Building, Teleport, ItemHolder; SHADOWED Wagon, Hero
+LroVillager (ref Peasant) lacks Inn, Catapult, Building
+LroVillagerAmbient (ref PeasantAmbient) lacks Inn, Building
+LroWVillagerAmbient (ref PeasantAmbient) lacks Inn, Building
+SnakeUnit (ref Unit) lacks Inn, ShipAdmiral, Wagon, HeroShip, Hero, Tower, Gate, WallTarget, CTent, TTent, Building, Teleport, ItemHolder; SHADOWED ShipAdmiral, Wagon, HeroShip, Hero
+LbritainHero (ref Hero) lacks (ground), Inn, Tower, Gate, TTent, Building, Teleport, Wagon, Hero, ItemHolder; SHADOWED Wagon, Hero
+LbrJavelineer (ref Unit) lacks (ground), Inn, Wagon, Hero, Tower, Gate, TTent, Building, Teleport, ItemHolder; SHADOWED Wagon, Hero
+LbrSentry (ref Sentry) lacks Building
+LbrWVillager (ref Peasant) lacks Inn, Catapult, Building
+LcaJavelinThrower (ref Unit) lacks (ground), Inn, Wagon, Hero, Tower, Gate, TTent, Building, Teleport, ItemHolder; SHADOWED Wagon, Hero
+LcaNumidianRider (ref Unit) lacks (ground), Inn, Wagon, Hero, Tower, Gate, TTent, Building, Teleport, ItemHolder; SHADOWED Wagon, Hero
+LcarthageHero (ref Hero) lacks (ground), Inn, Tower, Gate, TTent, Building, Teleport, Wagon, Hero, ItemHolder; SHADOWED Wagon, Hero
+LcaSentry (ref Sentry) lacks Building
+LcaWVillager (ref Peasant) lacks Inn, Catapult, Building
+LegAxetrower (ref Unit) lacks (ground), Inn, Wagon, Hero, Tower, Gate, TTent, Building, Teleport, ItemHolder; SHADOWED Wagon, Hero
+LegSentry (ref Sentry) lacks Building
+LegWVillager (ref Peasant) lacks Inn, Catapult, Building
+LegyptHero (ref Hero) lacks (ground), Inn, Tower, Gate, TTent, Building, Teleport, Wagon, Hero, ItemHolder; SHADOWED Wagon, Hero
+LgaHeroWoman (ref Hero) lacks (ground), Inn, Tower, Gate, TTent, Building, Teleport, Wagon, Hero, ItemHolder; SHADOWED Wagon, Hero
+LgaHorseman (ref Unit) lacks (ground), Inn, Wagon, Hero, Tower, Gate, TTent, Building, Teleport, ItemHolder; SHADOWED Wagon, Hero
+LgaSentry (ref Sentry) lacks Building
+LgaulHero (ref Hero) lacks (ground), Inn, Tower, Gate, TTent, Building, Teleport, Wagon, Hero, ItemHolder; SHADOWED Wagon, Hero
+LgaWVillager (ref Peasant) lacks Inn, Catapult, Building
+LgeHuntress (ref Unit) lacks (ground), Inn, Wagon, Hero, Tower, Gate, TTent, Building, Teleport, ItemHolder; SHADOWED Wagon, Hero
+LgeNHero1 (ref Hero) lacks (ground), Inn, Tower, Gate, TTent, Building, Teleport, Wagon, Hero, ItemHolder; SHADOWED Wagon, Hero
+LgermanyHero (ref Hero) lacks (ground), Inn, Tower, Gate, TTent, Building, Teleport, Wagon, Hero, ItemHolder; SHADOWED Wagon, Hero
+LgeSentry (ref Sentry) lacks Building
+LgeTeutonRider (ref Unit) lacks (ground), Inn, Wagon, Hero, Tower, Gate, TTent, Building, Teleport, ItemHolder; SHADOWED Wagon, Hero
+LgeTeutonWolf (ref Unit) lacks (ground), Inn, Wagon, Hero, Tower, Gate, TTent, Building, Teleport, ItemHolder; SHADOWED Wagon, Hero
+LgeValkyria (ref Unit) lacks (ground), Inn, Wagon, Hero, Tower, Gate, TTent, Building, Teleport, ItemHolder; SHADOWED Wagon, Hero
+LgeValkyrie (ref Unit) lacks (ground), Inn, Wagon, Hero, Tower, Gate, TTent, Building, Teleport, ItemHolder; SHADOWED Wagon, Hero
+LgeWVillager (ref Peasant) lacks Inn, Catapult, Building
+LibCavalry (ref Unit) lacks (ground), Inn, Wagon, Hero, Tower, Gate, TTent, Building, Teleport, ItemHolder; SHADOWED Wagon, Hero
+LiberiaHero (ref Hero) lacks (ground), Inn, Tower, Gate, TTent, Building, Teleport, Wagon, Hero, ItemHolder; SHADOWED Wagon, Hero
+LibScout (ref Unit) lacks (ground), Inn, Wagon, Hero, Tower, Gate, TTent, Building, Teleport, ItemHolder; SHADOWED Wagon, Hero
+LibSentry (ref Sentry) lacks Building
+LibWVillager (ref Peasant) lacks Inn, Catapult, Building
+LimperialHero (ref Hero) lacks (ground), Inn, Tower, Gate, TTent, Building, Teleport, Wagon, Hero, ItemHolder; SHADOWED Wagon, Hero
+LimRScout (ref Unit) lacks (ground), Inn, Wagon, Hero, Tower, Gate, TTent, Building, Teleport, ItemHolder; SHADOWED Wagon, Hero
+LimRVelit (ref Unit) lacks (ground), Inn, Wagon, Hero, Tower, Gate, TTent, Building, Teleport, ItemHolder; SHADOWED Wagon, Hero
+LimSentry (ref Sentry) lacks Building
+LroEques (ref Unit) lacks (ground), Inn, Wagon, Hero, Tower, Gate, TTent, Building, Teleport, ItemHolder; SHADOWED Wagon, Hero
+LromeHero (ref Hero) lacks (ground), Inn, Tower, Gate, TTent, Building, Teleport, Wagon, Hero, ItemHolder; SHADOWED Wagon, Hero
+LroSentry (ref Sentry) lacks Building
+LroWVillager (ref Peasant) lacks Inn, Catapult, Building
+ShipAdmiral (ref ShipBattle) lacks (ground), Object, HeroShip, ShipS, BaseShipyard, Building, Inn; SHADOWED HeroShip, ShipS
+ShipRam (ref ShipBattle) lacks Unit, Building, Inn; SHADOWED Unit, Building, Inn
+
+then against HD's Unit (what the mod's version dropped): 81 classes lacked {"ShipBattle":81,"WildHorse":69,"Wall":80}
+LgaGhoul (ref Unit) lacks ShipBattle, WildHorse, Wall
+BlackWolfUnit (ref Unit) lacks ShipBattle, WildHorse, Wall
+HeroShip (ref Hero) lacks ShipBattle, Wall
+LbrBowman (ref Unit) lacks ShipBattle, WildHorse, Wall
+LbrBronzeSpearman (ref Unit) lacks ShipBattle, WildHorse, Wall
+LbrHighlandar (ref Unit) lacks ShipBattle, WildHorse, Wall
+LbrHighlander (ref Unit) lacks ShipBattle, WildHorse, Wall
+LbrShieldBearer (ref Unit) lacks ShipBattle, WildHorse, Wall
+LbrSwordsman (ref Unit) lacks ShipBattle, WildHorse, Wall
+LbrVikingLord (ref Unit) lacks ShipBattle, WildHorse, Wall
+LcaBerberAssassin (ref Unit) lacks ShipBattle, WildHorse, Wall
+LcaLibyanFootman (ref Unit) lacks ShipBattle, WildHorse, Wall
+LcaMaceman (ref Unit) lacks ShipBattle, WildHorse, Wall
+LcaMacemen (ref Unit) lacks ShipBattle, WildHorse, Wall
+LcaNoble (ref Unit) lacks ShipBattle, WildHorse, Wall
+LcaWarElephant (ref Unit) lacks ShipBattle, WildHorse, Wall
+LegAnubisWarrior (ref Unit) lacks ShipBattle, WildHorse, Wall
+LegArcher (ref Unit) lacks ShipBattle, WildHorse, Wall
+LegChariot (ref Unit) lacks ShipBattle, WildHorse, Wall
+LegGuardian (ref Unit) lacks ShipBattle, WildHorse, Wall
+LegHorusWarrior (ref Unit) lacks ShipBattle, WildHorse, Wall
+LegSwordsman (ref Unit) lacks ShipBattle, WildHorse, Wall
+LgaArcher (ref Unit) lacks ShipBattle, WildHorse, Wall
+LgaAxeman (ref Unit) lacks ShipBattle, WildHorse, Wall
+LgaGhost (ref Unit) lacks ShipBattle, WildHorse, Wall
+LgaSpearman (ref Unit) lacks ShipBattle, WildHorse, Wall
+LgaSwordsman (ref Unit) lacks ShipBattle, WildHorse, Wall
+LgaTridentWarriar (ref Unit) lacks ShipBattle, WildHorse, Wall
+LgaTridentWarrior (ref Unit) lacks ShipBattle, WildHorse, Wall
+LgaWomanWarrior (ref Unit) lacks ShipBattle, WildHorse, Wall
+LgeArcher (ref Unit) lacks ShipBattle, WildHorse, Wall
+LgeAxeman (ref Unit) lacks ShipBattle, WildHorse, Wall
+LgeMaceman (ref Unit) lacks ShipBattle, WildHorse, Wall
+LgeSwordsman (ref Unit) lacks ShipBattle, WildHorse, Wall
+LgeTeutonArcher (ref Unit) lacks ShipBattle, WildHorse, Wall
+LibArcher (ref Unit) lacks ShipBattle, WildHorse, Wall
+LibDefendar (ref Unit) lacks ShipBattle, WildHorse, Wall
+LibDefender (ref Unit) lacks ShipBattle, WildHorse, Wall
+LibEliteGuard (ref Unit) lacks ShipBattle, WildHorse, Wall
+LibMilitiaman (ref Unit) lacks ShipBattle, WildHorse, Wall
+LibMountaineer (ref Unit) lacks ShipBattle, WildHorse, Wall
+LibSlinger (ref Unit) lacks ShipBattle, WildHorse, Wall
+LimRArcher (ref Unit) lacks ShipBattle, WildHorse, Wall
+LimRHastatus (ref Unit) lacks ShipBattle, WildHorse, Wall
+LimRLiberatus (ref Unit) lacks ShipBattle, WildHorse, Wall
+LimRPraetorian (ref Unit) lacks ShipBattle, WildHorse, Wall
+LimRPrinciple (ref Unit) lacks ShipBattle, WildHorse, Wall
+LroAstatus (ref Unit) lacks ShipBattle, WildHorse, Wall
+LroChariot (ref Unit) lacks ShipBattle, WildHorse, Wall
+LroCretanArcher (ref Unit) lacks ShipBattle, WildHorse, Wall
+LroGladiator (ref Unit) lacks ShipBattle, WildHorse, Wall
+LroLiberatas (ref Unit) lacks ShipBattle, WildHorse, Wall
+LroTriarius (ref Unit) lacks ShipBattle, WildHorse, Wall
+LroTribune (ref Unit) lacks ShipBattle, WildHorse, Wall
+SnakeUnit (ref Unit) lacks ShipBattle, WildHorse, Wall
+LbritainHero (ref Hero) lacks ShipBattle, Wall
+LbrJavelineer (ref Unit) lacks ShipBattle, WildHorse, Wall
+LcaJavelinThrower (ref Unit) lacks ShipBattle, WildHorse, Wall
+LcaNumidianRider (ref Unit) lacks ShipBattle, WildHorse, Wall
+LcarthageHero (ref Hero) lacks ShipBattle, Wall
+LegAxetrower (ref Unit) lacks ShipBattle, WildHorse, Wall
+LegyptHero (ref Hero) lacks ShipBattle, Wall
+LgaHeroWoman (ref Hero) lacks ShipBattle, Wall
+LgaHorseman (ref Unit) lacks ShipBattle, WildHorse, Wall
+LgaulHero (ref Hero) lacks ShipBattle, Wall
+LgeHuntress (ref Unit) lacks ShipBattle, WildHorse, Wall
+LgeNHero1 (ref Hero) lacks ShipBattle, Wall
+LgermanyHero (ref Hero) lacks ShipBattle, Wall
+LgeTeutonRider (ref Unit) lacks ShipBattle, WildHorse, Wall
+LgeTeutonWolf (ref Unit) lacks ShipBattle, WildHorse, Wall
+LgeValkyria (ref Unit) lacks ShipBattle, WildHorse, Wall
+LgeValkyrie (ref Unit) lacks ShipBattle, WildHorse, Wall
+LibCavalry (ref Unit) lacks ShipBattle, WildHorse, Wall
+LiberiaHero (ref Hero) lacks ShipBattle, Wall
+LibScout (ref Unit) lacks ShipBattle, WildHorse, Wall
+LimperialHero (ref Hero) lacks ShipBattle, Wall
+LimRScout (ref Unit) lacks ShipBattle, WildHorse, Wall
+LimRVelit (ref Unit) lacks ShipBattle, WildHorse, Wall
+LroEques (ref Unit) lacks ShipBattle, WildHorse, Wall
+LromeHero (ref Hero) lacks ShipBattle, Wall
+ShipAdmiral (ref ShipBattle) lacks ShipBattle
+
+after: 0 lacking against the mod's reference, 0 against HD's
+
+26 classes have the same target in two blocks of their own (information: the engine joins them in document order)
+{"id":"LbrDruid","targets":["shipadmiral","unit"]}
+{"id":"LbritainHero","targets":["shipadmiral","walltarget"]}
+{"id":"LbrSentry","targets":["unit"]}
+{"id":"LcarthageHero","targets":["shipadmiral","walltarget"]}
+{"id":"LcaSentry","targets":["unit"]}
+{"id":"LcaShaman","targets":["shipadmiral"]}
+{"id":"LegPriest","targets":["shipadmiral"]}
+{"id":"LegSentry","targets":["unit"]}
+{"id":"LegyptHero","targets":["shipadmiral","walltarget"]}
+{"id":"LgaDruid","targets":["shipadmiral","unit"]}
+{"id":"LgaHeroWoman","targets":["shipadmiral","walltarget"]}
+{"id":"LgaSentry","targets":["unit"]}
+{"id":"LgaulHero","targets":["shipadmiral","walltarget"]}
+{"id":"LgeEnchantress","targets":["shipadmiral"]}
+{"id":"LgeNHero1","targets":["shipadmiral","walltarget"]}
+{"id":"LgermanyHero","targets":["shipadmiral","walltarget"]}
+{"id":"LgeSentry","targets":["unit"]}
+{"id":"LibEnchantress","targets":["shipadmiral","unit"]}
+{"id":"LiberiaHero","targets":["shipadmiral","walltarget"]}
+{"id":"LibSentry","targets":["unit"]}
+{"id":"LimperialHero","targets":["shipadmiral","walltarget"]}
+{"id":"LimPriest","targets":["shipadmiral","unit"]}
+{"id":"LimSentry","targets":["unit"]}
+{"id":"LromeHero","targets":["shipadmiral","walltarget"]}
+{"id":"LroPriest","targets":["shipadmiral","unit"]}
+{"id":"LroSentry","targets":["unit"]}
