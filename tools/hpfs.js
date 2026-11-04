@@ -10,12 +10,17 @@ function hpfs(buf) {
   const page = buf.readUInt32LE(4), per = page / 4, entries = [];
   const word = (p, i) => buf.readUInt32LE(p * page + i * 4);
   // read a file, or (data given) write it back in place: any length that fills the same number of pages (the length is
-  // the first word of the file's root page; its data pages stay where they are)
+  // the first word of the file's root page; its data pages stay where they are).
+  // A write NEVER loses bytes silently: a Buffer cannot grow, and a container saved by the game ends inside its last page (HD's own Mediterranean does), so the
+  // last bytes of a file that grew used to fall off the end of the Buffer (a renamed conquest lost the end of its territories.xml: "</conquestmap>" cut to
+  // "</conques", the engine could not finish the last territory). It throws when a page of the file lies past the end of the buffer (pad it first: hpfs.pad)
+  // and when what is read back is not what was written.
   const read = (h, data) => {
     let len = buf.readUInt32LE(h * page);
-    const depth = buf.readUInt16LE(h * page + 4), out = Buffer.alloc(len);
+    const depth = buf.readUInt16LE(h * page + 4), out = Buffer.alloc(len), old = len;
     if (data && Math.ceil(data.length / page) !== Math.ceil(len / page)) throw new Error(`in-place write: ${data.length} bytes don't fit the ${Math.ceil(len / page)} page(s) of ${len}`);
-    if (data) { buf.writeUInt32LE(data.length, h * page); len = data.length; }
+    if (data) len = data.length;
+    const spans = [];
     for (let p = 0; p * page < len; p++) {
       const idx = []; let q = p;
       for (let i = depth; i >= 1; i--) { idx[i] = q % per; q = Math.floor(q / per); }
@@ -24,8 +29,13 @@ function hpfs(buf) {
       for (let l = 0; l < depth; l++) cur = word(cur, idx[l]);
       const from = word(cur, idx[depth]) * page;
       const n = Math.min(page, len - p * page);
-      if (data) data.copy(buf, from, p * page, p * page + n); else buf.copy(out, p * page, from, from + n);
+      if (data && from + n > buf.length) throw new Error(`in-place write: page ${Math.floor(from / page)} of the file ends ${from + n - buf.length} byte(s) past the end of the container (pad it to whole pages first: hpfs.pad(buf))`);
+      spans.push([p * page, from, n]);
     }
+    for (const [at, from, n] of spans) { if (data) data.copy(buf, from, at, at + n); else buf.copy(out, at, from, from + n); }
+    if (!data) return out;
+    buf.writeUInt32LE(data.length, h * page);
+    if (!read(h).equals(data)) { buf.writeUInt32LE(old, h * page); throw new Error("in-place write: what is read back is not what was written"); }
     return out;
   };
   const list = (h, prefix) => {
@@ -53,4 +63,6 @@ if (require.main === module) {
     fs.writeFileSync(to, e.read());
   }
 }
+// The container as whole pages (a file saved by the game ends inside its last page): call it before hpfs() when files will be written back.
+hpfs.pad = buf => { const page = buf.readUInt32LE(4), r = buf.length % page; return r ? Buffer.concat([buf, Buffer.alloc(page - r)]) : buf; };
 module.exports = hpfs;

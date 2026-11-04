@@ -1,0 +1,5 @@
+121 classes lack targets of their reference, 2 shadowed
+BlackWolfUnit (ref Unit) lacks Inn, ShipBattle, Wagon, Hero, Tower, Gate, Wall, TTent, CTent, Building, Teleport, ItemHolder; SHADOWED ShipBattle, Wagon, Hero
+SnakeUnit (ref Unit) lacks Inn, ShipBattle, Wagon, Hero, Tower, Gate, Wall, TTent, CTent, Building, Teleport, ItemHolder; SHADOWED ShipBattle, Wagon, Hero
+
+shadowed after: 0

@@ -1,0 +1,6 @@
+{
+  "note": "The mod's GetTacticScript (work/greek-2-3-flat/DATA/AI/GETTACTICSCRIPT.VS) gives each civilization a tactic by a first roll of 100 in the first 2 seconds. Only Greece's tactic script is the mod's own (TS_HGreeceTactic); the others are the game's scripts, and the mod only moved the odds of Gaul, Iberia, Germany and Carthage (not ported: the clones keep the game's GetTacticScript). The Roman branches keep the game's tactic. [upTo, script]",
+  "picks": {
+    "greece": [[100, "TS_HGreeceTactic"]]
+  }
+}

@@ -1,0 +1,5 @@
+before: 0 classes lacking, 0 shadowed
+
+after: 0 lacking
+
+0 classes with a target in two blocks of their own:
