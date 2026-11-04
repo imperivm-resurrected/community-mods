@@ -1,0 +1,256 @@
+before: 212 classes lacking, 150 shadowed
+1AnubisWarrior (ref Unit) lacks (ground), Inn, ShipBattle, Wagon, WildHorse, Hero, Tower, Gate, Wall, TTent, Building, Teleport, ItemHolder; SHADOWED ShipBattle, Wagon, WildHorse, Hero
+1Archer (ref Unit) lacks (ground), Inn, ShipBattle, Wagon, WildHorse, Hero, Tower, Gate, Wall, TTent, Building, Teleport, ItemHolder; SHADOWED ShipBattle, Wagon, WildHorse, Hero
+1Chariot (ref Unit) lacks (ground), Inn, ShipBattle, Wagon, WildHorse, Hero, Tower, Gate, Wall, TTent, Building, Teleport, ItemHolder; SHADOWED ShipBattle, Wagon, WildHorse, Hero
+1Guardian (ref Unit) lacks (ground), Inn, ShipBattle, Wagon, WildHorse, Hero, Tower, Gate, Wall, TTent, Building, Teleport, ItemHolder; SHADOWED ShipBattle, Wagon, WildHorse, Hero
+1HorusWarrior (ref Unit) lacks (ground), Inn, ShipBattle, Wagon, WildHorse, Hero, Tower, Gate, Wall, TTent, Building, Teleport, ItemHolder; SHADOWED ShipBattle, Wagon, WildHorse, Hero
+1OldManA (ref PeasantAmbient) lacks Inn, Building
+1OldManAAmbient (ref PeasantAmbient) lacks Inn, Building
+1Swordsman (ref Unit) lacks (ground), Inn, ShipBattle, Wagon, WildHorse, Hero, Tower, Gate, Wall, TTent, Building, Teleport, ItemHolder; SHADOWED ShipBattle, Wagon, WildHorse, Hero
+1Villager (ref Peasant) lacks Building
+1VillagerAmbient (ref PeasantAmbient) lacks Inn, Building
+1WVillagerAmbient (ref PeasantAmbient) lacks Inn, Building
+3Archer (ref Unit) lacks (ground), Inn, ShipBattle, Wagon, WildHorse, Hero, Tower, Gate, Wall, TTent, Building, Teleport, ItemHolder; SHADOWED ShipBattle, Wagon, WildHorse, Hero
+3Axeman (ref Unit) lacks (ground), Inn, ShipBattle, Wagon, WildHorse, Hero, Tower, Gate, Wall, TTent, Building, Teleport, ItemHolder; SHADOWED ShipBattle, Wagon, WildHorse, Hero
+3CatapultUnit (ref RamUnit) lacks Inn, ShipBattle, Wagon, Hero, Building, ItemHolder; SHADOWED ShipBattle, Wagon, Hero
+3Maceman (ref Unit) lacks (ground), Inn, ShipBattle, Wagon, WildHorse, Hero, Tower, Gate, Wall, TTent, Building, Teleport, ItemHolder; SHADOWED ShipBattle, Wagon, WildHorse, Hero
+3Swordsman (ref Unit) lacks (ground), Inn, ShipBattle, Wagon, WildHorse, Hero, Tower, Gate, Wall, TTent, Building, Teleport, ItemHolder; SHADOWED ShipBattle, Wagon, WildHorse, Hero
+3TeutonArcher (ref Unit) lacks (ground), Inn, ShipBattle, Wagon, WildHorse, Hero, Tower, Gate, Wall, TTent, Building, Teleport, ItemHolder; SHADOWED ShipBattle, Wagon, WildHorse, Hero
+3Villager (ref Peasant) lacks Building
+3VillagerAmbient (ref PeasantAmbient) lacks Inn, Building
+3WVillagerAmbient (ref PeasantAmbient) lacks Inn, Building
+4Archer (ref Unit) lacks (ground), Inn, ShipBattle, Wagon, WildHorse, Hero, Tower, Gate, Wall, TTent, Building, Teleport, ItemHolder; SHADOWED ShipBattle, Wagon, WildHorse, Hero
+4Astatus (ref Unit) lacks (ground), Inn, ShipBattle, Wagon, WildHorse, Hero, Tower, Gate, Wall, TTent, Building, Teleport, ItemHolder; SHADOWED ShipBattle, Wagon, WildHorse, Hero
+4BalearSlinger (ref Unit) lacks (ground), Inn, ShipBattle, Wagon, WildHorse, Hero, Tower, Gate, Wall, TTent, Building, Teleport, ItemHolder; SHADOWED ShipBattle, Wagon, WildHorse, Hero
+4Centurion (ref Unit) lacks (ground), Inn, ShipBattle, Wagon, WildHorse, Hero, Tower, Gate, Wall, TTent, Building, Teleport, ItemHolder; SHADOWED ShipBattle, Wagon, WildHorse, Hero
+4Chariot (ref Unit) lacks (ground), Inn, ShipBattle, Wagon, WildHorse, Hero, Tower, Gate, Wall, TTent, Building, Teleport, ItemHolder; SHADOWED ShipBattle, Wagon, WildHorse, Hero
+4Gladiator (ref Unit) lacks (ground), Inn, ShipBattle, Wagon, WildHorse, Hero, Tower, Gate, Wall, TTent, Building, Teleport, ItemHolder; SHADOWED ShipBattle, Wagon, WildHorse, Hero
+4Hastatus (ref Unit) lacks (ground), Inn, ShipBattle, Wagon, WildHorse, Hero, Tower, Gate, Wall, TTent, Building, Teleport, ItemHolder; SHADOWED ShipBattle, Wagon, WildHorse, Hero
+4Liberatas (ref Unit) lacks (ground), Inn, ShipBattle, Wagon, WildHorse, Hero, Tower, Gate, Wall, TTent, Building, Teleport, ItemHolder; SHADOWED ShipBattle, Wagon, WildHorse, Hero
+4Liberatus (ref Unit) lacks (ground), Inn, ShipBattle, Wagon, WildHorse, Hero, Tower, Gate, Wall, TTent, Building, Teleport, ItemHolder; SHADOWED ShipBattle, Wagon, WildHorse, Hero
+4Miles (ref Unit) lacks (ground), Inn, ShipBattle, Wagon, WildHorse, Hero, Tower, Gate, Wall, TTent, Building, Teleport, ItemHolder; SHADOWED ShipBattle, Wagon, WildHorse, Hero
+4Toxotai (ref Unit) lacks (ground), Inn, ShipBattle, Wagon, WildHorse, Hero, Tower, Gate, Wall, TTent, Building, Teleport, ItemHolder; SHADOWED ShipBattle, Wagon, WildHorse, Hero
+4Tribune (ref Unit) lacks (ground), Inn, ShipBattle, Wagon, WildHorse, Hero, Tower, Gate, Wall, TTent, Building, Teleport, ItemHolder; SHADOWED ShipBattle, Wagon, WildHorse, Hero
+4Villager (ref Peasant) lacks Building
+4VillagerAmbient (ref PeasantAmbient) lacks Inn, Building
+4Villager_Apollonia (ref Peasant) lacks Building
+4WVillagerAmbient (ref PeasantAmbient) lacks Inn, Building
+5Archer (ref Unit) lacks (ground), Inn, ShipBattle, Wagon, WildHorse, Hero, Tower, Gate, Wall, TTent, Building, Teleport, ItemHolder; SHADOWED ShipBattle, Wagon, WildHorse, Hero
+5Astatus (ref Unit) lacks (ground), Inn, ShipBattle, Wagon, WildHorse, Hero, Tower, Gate, Wall, TTent, Building, Teleport, ItemHolder; SHADOWED ShipBattle, Wagon, WildHorse, Hero
+5BalearSlinger (ref Unit) lacks (ground), Inn, ShipBattle, Wagon, WildHorse, Hero, Tower, Gate, Wall, TTent, Building, Teleport, ItemHolder; SHADOWED ShipBattle, Wagon, WildHorse, Hero
+5Centurion (ref Unit) lacks (ground), Inn, ShipBattle, Wagon, WildHorse, Hero, Tower, Gate, Wall, TTent, Building, Teleport, ItemHolder; SHADOWED ShipBattle, Wagon, WildHorse, Hero
+5Chariot (ref Unit) lacks (ground), Inn, ShipBattle, Wagon, WildHorse, Hero, Tower, Gate, Wall, TTent, Building, Teleport, ItemHolder; SHADOWED ShipBattle, Wagon, WildHorse, Hero
+5Gladiator (ref Unit) lacks (ground), Inn, ShipBattle, Wagon, WildHorse, Hero, Tower, Gate, Wall, TTent, Building, Teleport, ItemHolder; SHADOWED ShipBattle, Wagon, WildHorse, Hero
+5Hastatus (ref Unit) lacks (ground), Inn, ShipBattle, Wagon, WildHorse, Hero, Tower, Gate, Wall, TTent, Building, Teleport, ItemHolder; SHADOWED ShipBattle, Wagon, WildHorse, Hero
+5Liberatas (ref Unit) lacks (ground), Inn, ShipBattle, Wagon, WildHorse, Hero, Tower, Gate, Wall, TTent, Building, Teleport, ItemHolder; SHADOWED ShipBattle, Wagon, WildHorse, Hero
+5Liberatus (ref Unit) lacks (ground), Inn, ShipBattle, Wagon, WildHorse, Hero, Tower, Gate, Wall, TTent, Building, Teleport, ItemHolder; SHADOWED ShipBattle, Wagon, WildHorse, Hero
+5Miles (ref Unit) lacks (ground), Inn, ShipBattle, Wagon, WildHorse, Hero, Tower, Gate, Wall, TTent, Building, Teleport, ItemHolder; SHADOWED ShipBattle, Wagon, WildHorse, Hero
+5Toxotai (ref Unit) lacks (ground), Inn, ShipBattle, Wagon, WildHorse, Hero, Tower, Gate, Wall, TTent, Building, Teleport, ItemHolder; SHADOWED ShipBattle, Wagon, WildHorse, Hero
+5Tribune (ref Unit) lacks (ground), Inn, ShipBattle, Wagon, WildHorse, Hero, Tower, Gate, Wall, TTent, Building, Teleport, ItemHolder; SHADOWED ShipBattle, Wagon, WildHorse, Hero
+5Villager (ref Peasant) lacks Building
+5VillagerAmbient (ref PeasantAmbient) lacks Inn, Building
+5Villager_Apollonia (ref Peasant) lacks Building
+5WVillagerAmbient (ref PeasantAmbient) lacks Inn, Building
+6Archer (ref Unit) lacks (ground), Inn, ShipBattle, Wagon, WildHorse, Hero, Tower, Gate, Wall, TTent, Building, Teleport, ItemHolder; SHADOWED ShipBattle, Wagon, WildHorse, Hero
+6Astatus (ref Unit) lacks (ground), Inn, ShipBattle, Wagon, WildHorse, Hero, Tower, Gate, Wall, TTent, Building, Teleport, ItemHolder; SHADOWED ShipBattle, Wagon, WildHorse, Hero
+6BalearSlinger (ref Unit) lacks (ground), Inn, ShipBattle, Wagon, WildHorse, Hero, Tower, Gate, Wall, TTent, Building, Teleport, ItemHolder; SHADOWED ShipBattle, Wagon, WildHorse, Hero
+6Centurion (ref Unit) lacks (ground), Inn, ShipBattle, Wagon, WildHorse, Hero, Tower, Gate, Wall, TTent, Building, Teleport, ItemHolder; SHADOWED ShipBattle, Wagon, WildHorse, Hero
+6Chariot (ref Unit) lacks (ground), Inn, ShipBattle, Wagon, WildHorse, Hero, Tower, Gate, Wall, TTent, Building, Teleport, ItemHolder; SHADOWED ShipBattle, Wagon, WildHorse, Hero
+6Gladiator (ref Unit) lacks (ground), Inn, ShipBattle, Wagon, WildHorse, Hero, Tower, Gate, Wall, TTent, Building, Teleport, ItemHolder; SHADOWED ShipBattle, Wagon, WildHorse, Hero
+6Hastatus (ref Unit) lacks (ground), Inn, ShipBattle, Wagon, WildHorse, Hero, Tower, Gate, Wall, TTent, Building, Teleport, ItemHolder; SHADOWED ShipBattle, Wagon, WildHorse, Hero
+6Liberatas (ref Unit) lacks (ground), Inn, ShipBattle, Wagon, WildHorse, Hero, Tower, Gate, Wall, TTent, Building, Teleport, ItemHolder; SHADOWED ShipBattle, Wagon, WildHorse, Hero
+6Liberatus (ref Unit) lacks (ground), Inn, ShipBattle, Wagon, WildHorse, Hero, Tower, Gate, Wall, TTent, Building, Teleport, ItemHolder; SHADOWED ShipBattle, Wagon, WildHorse, Hero
+6Miles (ref Unit) lacks (ground), Inn, ShipBattle, Wagon, WildHorse, Hero, Tower, Gate, Wall, TTent, Building, Teleport, ItemHolder; SHADOWED ShipBattle, Wagon, WildHorse, Hero
+6Toxotai (ref Unit) lacks (ground), Inn, ShipBattle, Wagon, WildHorse, Hero, Tower, Gate, Wall, TTent, Building, Teleport, ItemHolder; SHADOWED ShipBattle, Wagon, WildHorse, Hero
+6Tribune (ref Unit) lacks (ground), Inn, ShipBattle, Wagon, WildHorse, Hero, Tower, Gate, Wall, TTent, Building, Teleport, ItemHolder; SHADOWED ShipBattle, Wagon, WildHorse, Hero
+6Villager (ref Peasant) lacks Building
+6VillagerAmbient (ref PeasantAmbient) lacks Inn, Building
+6Villager_Apollonia (ref Peasant) lacks Building
+6WVillagerAmbient (ref PeasantAmbient) lacks Inn, Building
+7AchaemenidWarrior (ref Unit) lacks (ground), Inn, ShipBattle, Wagon, WildHorse, Hero, Tower, Gate, Wall, TTent, Building, Teleport, ItemHolder; SHADOWED ShipBattle, Wagon, WildHorse, Hero
+7BerberAssassin (ref Unit) lacks (ground), Inn, ShipBattle, Wagon, WildHorse, Hero, Tower, Gate, Wall, TTent, Building, Teleport, ItemHolder; SHADOWED ShipBattle, Wagon, WildHorse, Hero
+7Hipatista (ref Unit) lacks (ground), Inn, ShipBattle, Wagon, WildHorse, Hero, Tower, Gate, Wall, TTent, Building, Teleport, ItemHolder; SHADOWED ShipBattle, Wagon, WildHorse, Hero
+7LibyanFootman (ref Unit) lacks (ground), Inn, ShipBattle, Wagon, WildHorse, Hero, Tower, Gate, Wall, TTent, Building, Teleport, ItemHolder; SHADOWED ShipBattle, Wagon, WildHorse, Hero
+7Maceman (ref Unit) lacks (ground), Inn, ShipBattle, Wagon, WildHorse, Hero, Tower, Gate, Wall, TTent, Building, Teleport, ItemHolder; SHADOWED ShipBattle, Wagon, WildHorse, Hero
+7Macemen (ref Unit) lacks (ground), Inn, ShipBattle, Wagon, WildHorse, Hero, Tower, Gate, Wall, TTent, Building, Teleport, ItemHolder; SHADOWED ShipBattle, Wagon, WildHorse, Hero
+7MauritanianWrestler (ref Unit) lacks (ground), Inn, ShipBattle, Wagon, WildHorse, Hero, Tower, Gate, Wall, TTent, Building, Teleport, ItemHolder; SHADOWED ShipBattle, Wagon, WildHorse, Hero
+7MERCENARIO (ref Unit) lacks (ground), Inn, ShipBattle, Wagon, WildHorse, Hero, Tower, Gate, Wall, TTent, Building, Teleport, ItemHolder; SHADOWED ShipBattle, Wagon, WildHorse, Hero
+7Noble (ref Unit) lacks (ground), Inn, ShipBattle, Wagon, WildHorse, Hero, Tower, Gate, Wall, TTent, Building, Teleport, ItemHolder; SHADOWED ShipBattle, Wagon, WildHorse, Hero
+7NSECUAZ (ref Unit) lacks (ground), Inn, ShipBattle, Wagon, WildHorse, Hero, Tower, Gate, Wall, TTent, Building, Teleport, ItemHolder; SHADOWED ShipBattle, Wagon, WildHorse, Hero
+7Villager (ref Peasant) lacks Building
+7VillagerAmbient (ref PeasantAmbient) lacks Inn, Building
+7WarElephant (ref Unit) lacks (ground), Inn, ShipBattle, Wagon, WildHorse, Hero, Tower, Gate, Wall, TTent, Building, Teleport, ItemHolder; SHADOWED ShipBattle, Wagon, WildHorse, Hero
+7WVillagerAmbient (ref PeasantAmbient) lacks Inn, Building
+8AchaemenidWarrior (ref Unit) lacks (ground), Inn, ShipBattle, Wagon, WildHorse, Hero, Tower, Gate, Wall, TTent, Building, Teleport, ItemHolder; SHADOWED ShipBattle, Wagon, WildHorse, Hero
+8BerberAssassin (ref Unit) lacks (ground), Inn, ShipBattle, Wagon, WildHorse, Hero, Tower, Gate, Wall, TTent, Building, Teleport, ItemHolder; SHADOWED ShipBattle, Wagon, WildHorse, Hero
+8Hipatista (ref Unit) lacks (ground), Inn, ShipBattle, Wagon, WildHorse, Hero, Tower, Gate, Wall, TTent, Building, Teleport, ItemHolder; SHADOWED ShipBattle, Wagon, WildHorse, Hero
+8LibyanFootman (ref Unit) lacks (ground), Inn, ShipBattle, Wagon, WildHorse, Hero, Tower, Gate, Wall, TTent, Building, Teleport, ItemHolder; SHADOWED ShipBattle, Wagon, WildHorse, Hero
+8Maceman (ref Unit) lacks (ground), Inn, ShipBattle, Wagon, WildHorse, Hero, Tower, Gate, Wall, TTent, Building, Teleport, ItemHolder; SHADOWED ShipBattle, Wagon, WildHorse, Hero
+8Macemen (ref Unit) lacks (ground), Inn, ShipBattle, Wagon, WildHorse, Hero, Tower, Gate, Wall, TTent, Building, Teleport, ItemHolder; SHADOWED ShipBattle, Wagon, WildHorse, Hero
+8MauritanianWrestler (ref Unit) lacks (ground), Inn, ShipBattle, Wagon, WildHorse, Hero, Tower, Gate, Wall, TTent, Building, Teleport, ItemHolder; SHADOWED ShipBattle, Wagon, WildHorse, Hero
+8MERCENARIO (ref Unit) lacks (ground), Inn, ShipBattle, Wagon, WildHorse, Hero, Tower, Gate, Wall, TTent, Building, Teleport, ItemHolder; SHADOWED ShipBattle, Wagon, WildHorse, Hero
+8Noble (ref Unit) lacks (ground), Inn, ShipBattle, Wagon, WildHorse, Hero, Tower, Gate, Wall, TTent, Building, Teleport, ItemHolder; SHADOWED ShipBattle, Wagon, WildHorse, Hero
+8NSECUAZ (ref Unit) lacks (ground), Inn, ShipBattle, Wagon, WildHorse, Hero, Tower, Gate, Wall, TTent, Building, Teleport, ItemHolder; SHADOWED ShipBattle, Wagon, WildHorse, Hero
+8Villager (ref Peasant) lacks Building
+8VillagerAmbient (ref PeasantAmbient) lacks Inn, Building
+8WarElephant (ref Unit) lacks (ground), Inn, ShipBattle, Wagon, WildHorse, Hero, Tower, Gate, Wall, TTent, Building, Teleport, ItemHolder; SHADOWED ShipBattle, Wagon, WildHorse, Hero
+8WVillagerAmbient (ref PeasantAmbient) lacks Inn, Building
+Britain42Hero (ref Hero) lacks TTent; SHADOWED TTent
+Hero4Praetorian (ref Hero) lacks TTent; SHADOWED TTent
+Hero4Tribune (ref Hero) lacks TTent; SHADOWED TTent
+XArcher (ref Unit) lacks (ground), Inn, ShipBattle, Wagon, WildHorse, Hero, Tower, Gate, Wall, TTent, Building, Teleport, ItemHolder; SHADOWED ShipBattle, Wagon, WildHorse, Hero
+XAxeman (ref Unit) lacks (ground), Inn, ShipBattle, Wagon, WildHorse, Hero, Tower, Gate, Wall, TTent, Building, Teleport, ItemHolder; SHADOWED ShipBattle, Wagon, WildHorse, Hero
+XDLleldoryn (ref BaseMage) lacks Hero; SHADOWED Hero
+XGhost (ref Unit) lacks (ground), Inn, ShipBattle, Wagon, WildHorse, Hero, Tower, Gate, Wall, TTent, Building, Teleport, ItemHolder; SHADOWED ShipBattle, Wagon, WildHorse, Hero
+XOldManE (ref PeasantAmbient) lacks Inn, Building
+XOldManEAmbient (ref PeasantAmbient) lacks Inn, Building
+XSwordsman (ref Unit) lacks (ground), Inn, ShipBattle, Wagon, WildHorse, Hero, Tower, Gate, Wall, TTent, Building, Teleport, ItemHolder; SHADOWED ShipBattle, Wagon, WildHorse, Hero
+XTridentWarriar (ref Unit) lacks (ground), Inn, ShipBattle, Wagon, WildHorse, Hero, Tower, Gate, Wall, TTent, Building, Teleport, ItemHolder; SHADOWED ShipBattle, Wagon, WildHorse, Hero
+XTridentWarrior (ref Unit) lacks (ground), Inn, ShipBattle, Wagon, WildHorse, Hero, Tower, Gate, Wall, TTent, Building, Teleport, ItemHolder; SHADOWED ShipBattle, Wagon, WildHorse, Hero
+XVillager (ref Peasant) lacks Building
+XVillagerAmbient (ref PeasantAmbient) lacks Inn, Building
+XVillager_Apollonia (ref Peasant) lacks Building
+XWomanWarrior (ref Unit) lacks (ground), Inn, ShipBattle, Wagon, WildHorse, Hero, Tower, Gate, Wall, TTent, Building, Teleport, ItemHolder; SHADOWED ShipBattle, Wagon, WildHorse, Hero
+XWVillagerAmbient (ref PeasantAmbient) lacks Inn, Building
+YBowman (ref Unit) lacks (ground), Inn, ShipBattle, Wagon, WildHorse, Hero, Tower, Gate, Wall, TTent, Building, Teleport, ItemHolder; SHADOWED ShipBattle, Wagon, WildHorse, Hero
+YCatapultUnit (ref RamUnit) lacks Inn, ShipBattle, Wagon, Hero, Building, ItemHolder; SHADOWED ShipBattle, Wagon, Hero
+YHighlandar (ref Unit) lacks (ground), Inn, ShipBattle, Wagon, WildHorse, Hero, Tower, Gate, Wall, TTent, Building, Teleport, ItemHolder; SHADOWED ShipBattle, Wagon, WildHorse, Hero
+YHighlander (ref Unit) lacks (ground), Inn, ShipBattle, Wagon, WildHorse, Hero, Tower, Gate, Wall, TTent, Building, Teleport, ItemHolder; SHADOWED ShipBattle, Wagon, WildHorse, Hero
+YNVAEL (ref Unit) lacks (ground), Inn, ShipBattle, Wagon, WildHorse, Hero, Tower, Gate, Wall, TTent, Building, Teleport, ItemHolder; SHADOWED ShipBattle, Wagon, WildHorse, Hero
+YShieldBearer (ref Unit) lacks (ground), Inn, ShipBattle, Wagon, WildHorse, Hero, Tower, Gate, Wall, TTent, Building, Teleport, ItemHolder; SHADOWED ShipBattle, Wagon, WildHorse, Hero
+YSwordsman (ref Unit) lacks (ground), Inn, ShipBattle, Wagon, WildHorse, Hero, Tower, Gate, Wall, TTent, Building, Teleport, ItemHolder; SHADOWED ShipBattle, Wagon, WildHorse, Hero
+YVikingLord (ref Unit) lacks (ground), Inn, ShipBattle, Wagon, WildHorse, Hero, Tower, Gate, Wall, TTent, Building, Teleport, ItemHolder; SHADOWED ShipBattle, Wagon, WildHorse, Hero
+YVillager (ref Peasant) lacks Building
+YVillagerAmbient (ref PeasantAmbient) lacks Inn, Building
+YWVillagerAmbient (ref PeasantAmbient) lacks Inn, Building
+ZArcher (ref Unit) lacks (ground), Inn, ShipBattle, Wagon, WildHorse, Hero, Tower, Gate, Wall, TTent, Building, Teleport, ItemHolder; SHADOWED ShipBattle, Wagon, WildHorse, Hero
+ZDefendar (ref Unit) lacks (ground), Inn, ShipBattle, Wagon, WildHorse, Hero, Tower, Gate, Wall, TTent, Building, Teleport, ItemHolder; SHADOWED ShipBattle, Wagon, WildHorse, Hero
+ZEliteGuard (ref Unit) lacks (ground), Inn, ShipBattle, Wagon, WildHorse, Hero, Tower, Gate, Wall, TTent, Building, Teleport, ItemHolder; SHADOWED ShipBattle, Wagon, WildHorse, Hero
+ZMilitiaman (ref Unit) lacks (ground), Inn, ShipBattle, Wagon, WildHorse, Hero, Tower, Gate, Wall, TTent, Building, Teleport, ItemHolder; SHADOWED ShipBattle, Wagon, WildHorse, Hero
+ZMountaineer (ref Unit) lacks (ground), Inn, ShipBattle, Wagon, WildHorse, Hero, Tower, Gate, Wall, TTent, Building, Teleport, ItemHolder; SHADOWED ShipBattle, Wagon, WildHorse, Hero
+ZSlinger (ref Unit) lacks (ground), Inn, ShipBattle, Wagon, WildHorse, Hero, Tower, Gate, Wall, TTent, Building, Teleport, ItemHolder; SHADOWED ShipBattle, Wagon, WildHorse, Hero
+ZVillager (ref Peasant) lacks Building
+ZVillagerAmbient (ref PeasantAmbient) lacks Inn, Building
+ZWVillagerAmbient (ref PeasantAmbient) lacks Inn, Building
+1Axetrower (ref Unit) lacks (ground), Inn, ShipBattle, Wagon, WildHorse, Hero, Tower, Gate, Wall, TTent, Building, Teleport, ItemHolder; SHADOWED ShipBattle, Wagon, WildHorse, Hero
+1CCamelRider (ref Unit) lacks (ground), Inn, ShipBattle, Wagon, WildHorse, Hero, Tower, Gate, Wall, TTent, Building, Teleport, ItemHolder; SHADOWED ShipBattle, Wagon, WildHorse, Hero
+1Sentry (ref Sentry) lacks Building
+1WVillager (ref Peasant) lacks Building
+3Huntress (ref Unit) lacks (ground), Inn, ShipBattle, Wagon, WildHorse, Hero, Tower, Gate, Wall, TTent, Building, Teleport, ItemHolder; SHADOWED ShipBattle, Wagon, WildHorse, Hero
+3NHero1 (ref Hero) lacks TTent; SHADOWED TTent
+3Sentry (ref Sentry) lacks Building
+3TeutonRider (ref Unit) lacks (ground), Inn, ShipBattle, Wagon, WildHorse, Hero, Tower, Gate, Wall, TTent, Building, Teleport, ItemHolder; SHADOWED ShipBattle, Wagon, WildHorse, Hero
+3TeutonWolf (ref Unit) lacks (ground), Inn, ShipBattle, Wagon, WildHorse, Hero, Tower, Gate, Wall, TTent, Building, Teleport, ItemHolder; SHADOWED ShipBattle, Wagon, WildHorse, Hero
+3Valkyria (ref Unit) lacks (ground), Inn, ShipBattle, Wagon, WildHorse, Hero, Tower, Gate, Wall, TTent, Building, Teleport, ItemHolder; SHADOWED ShipBattle, Wagon, WildHorse, Hero
+3Valkyrie (ref Unit) lacks (ground), Inn, ShipBattle, Wagon, WildHorse, Hero, Tower, Gate, Wall, TTent, Building, Teleport, ItemHolder; SHADOWED ShipBattle, Wagon, WildHorse, Hero
+3WVillager (ref Peasant) lacks Building
+4Cavaliere (ref Unit) lacks (ground), Inn, ShipBattle, Wagon, WildHorse, Hero, Tower, Gate, Wall, TTent, Building, Teleport, ItemHolder; SHADOWED ShipBattle, Wagon, WildHorse, Hero
+4Horseman (ref Unit) lacks (ground), Inn, ShipBattle, Wagon, WildHorse, Hero, Tower, Gate, Wall, TTent, Building, Teleport, ItemHolder; SHADOWED ShipBattle, Wagon, WildHorse, Hero
+4Scout (ref Unit) lacks (ground), Inn, ShipBattle, Wagon, WildHorse, Hero, Tower, Gate, Wall, TTent, Building, Teleport, ItemHolder; SHADOWED ShipBattle, Wagon, WildHorse, Hero
+4Sentry (ref Sentry) lacks Building
+4Tesserarius (ref Unit) lacks (ground), Inn, ShipBattle, Wagon, WildHorse, Hero, Tower, Gate, Wall, TTent, Building, Teleport, ItemHolder; SHADOWED ShipBattle, Wagon, WildHorse, Hero
+4Velit (ref Unit) lacks (ground), Inn, ShipBattle, Wagon, WildHorse, Hero, Tower, Gate, Wall, TTent, Building, Teleport, ItemHolder; SHADOWED ShipBattle, Wagon, WildHorse, Hero
+4WVillager (ref Peasant) lacks Building
+4WVillager_Apollonia (ref Peasant) lacks Building
+5Cavaliere (ref Unit) lacks (ground), Inn, ShipBattle, Wagon, WildHorse, Hero, Tower, Gate, Wall, TTent, Building, Teleport, ItemHolder; SHADOWED ShipBattle, Wagon, WildHorse, Hero
+5Horseman (ref Unit) lacks (ground), Inn, ShipBattle, Wagon, WildHorse, Hero, Tower, Gate, Wall, TTent, Building, Teleport, ItemHolder; SHADOWED ShipBattle, Wagon, WildHorse, Hero
+5ImperialRomanHero (ref Hero) lacks TTent; SHADOWED TTent
+5Scout (ref Unit) lacks (ground), Inn, ShipBattle, Wagon, WildHorse, Hero, Tower, Gate, Wall, TTent, Building, Teleport, ItemHolder; SHADOWED ShipBattle, Wagon, WildHorse, Hero
+5Sentry (ref Sentry) lacks Building
+5Tesserarius (ref Unit) lacks (ground), Inn, ShipBattle, Wagon, WildHorse, Hero, Tower, Gate, Wall, TTent, Building, Teleport, ItemHolder; SHADOWED ShipBattle, Wagon, WildHorse, Hero
+5Velit (ref Unit) lacks (ground), Inn, ShipBattle, Wagon, WildHorse, Hero, Tower, Gate, Wall, TTent, Building, Teleport, ItemHolder; SHADOWED ShipBattle, Wagon, WildHorse, Hero
+5WVillager (ref Peasant) lacks Building
+5WVillager_Apollonia (ref Peasant) lacks Building
+6AncientRomanHero (ref Hero) lacks TTent; SHADOWED TTent
+6Cavaliere (ref Unit) lacks (ground), Inn, ShipBattle, Wagon, WildHorse, Hero, Tower, Gate, Wall, TTent, Building, Teleport, ItemHolder; SHADOWED ShipBattle, Wagon, WildHorse, Hero
+6Horseman (ref Unit) lacks (ground), Inn, ShipBattle, Wagon, WildHorse, Hero, Tower, Gate, Wall, TTent, Building, Teleport, ItemHolder; SHADOWED ShipBattle, Wagon, WildHorse, Hero
+6Scout (ref Unit) lacks (ground), Inn, ShipBattle, Wagon, WildHorse, Hero, Tower, Gate, Wall, TTent, Building, Teleport, ItemHolder; SHADOWED ShipBattle, Wagon, WildHorse, Hero
+6Sentry (ref Sentry) lacks Building
+6Tesserarius (ref Unit) lacks (ground), Inn, ShipBattle, Wagon, WildHorse, Hero, Tower, Gate, Wall, TTent, Building, Teleport, ItemHolder; SHADOWED ShipBattle, Wagon, WildHorse, Hero
+6Velit (ref Unit) lacks (ground), Inn, ShipBattle, Wagon, WildHorse, Hero, Tower, Gate, Wall, TTent, Building, Teleport, ItemHolder; SHADOWED ShipBattle, Wagon, WildHorse, Hero
+6WVillager (ref Peasant) lacks Building
+6WVillager_Apollonia (ref Peasant) lacks Building
+7CamelArcher (ref Unit) lacks (ground), Inn, ShipBattle, Wagon, WildHorse, Hero, Tower, Gate, Wall, TTent, Building, Teleport, ItemHolder; SHADOWED ShipBattle, Wagon, WildHorse, Hero
+7Hero4 (ref Hero) lacks TTent; SHADOWED TTent
+7Horseman (ref Unit) lacks (ground), Inn, ShipBattle, Wagon, WildHorse, Hero, Tower, Gate, Wall, TTent, Building, Teleport, ItemHolder; SHADOWED ShipBattle, Wagon, WildHorse, Hero
+7JavelinThrower (ref Unit) lacks (ground), Inn, ShipBattle, Wagon, WildHorse, Hero, Tower, Gate, Wall, TTent, Building, Teleport, ItemHolder; SHADOWED ShipBattle, Wagon, WildHorse, Hero
+7NumidianRider (ref Unit) lacks (ground), Inn, ShipBattle, Wagon, WildHorse, Hero, Tower, Gate, Wall, TTent, Building, Teleport, ItemHolder; SHADOWED ShipBattle, Wagon, WildHorse, Hero
+7Sentry (ref Sentry) lacks Building
+7WVillager (ref Peasant) lacks Building
+8CamelArcher (ref Unit) lacks (ground), Inn, ShipBattle, Wagon, WildHorse, Hero, Tower, Gate, Wall, TTent, Building, Teleport, ItemHolder; SHADOWED ShipBattle, Wagon, WildHorse, Hero
+8Hero4 (ref Hero) lacks TTent; SHADOWED TTent
+8Horseman (ref Unit) lacks (ground), Inn, ShipBattle, Wagon, WildHorse, Hero, Tower, Gate, Wall, TTent, Building, Teleport, ItemHolder; SHADOWED ShipBattle, Wagon, WildHorse, Hero
+8JavelinThrower (ref Unit) lacks (ground), Inn, ShipBattle, Wagon, WildHorse, Hero, Tower, Gate, Wall, TTent, Building, Teleport, ItemHolder; SHADOWED ShipBattle, Wagon, WildHorse, Hero
+8MauritanianHero (ref Hero) lacks TTent; SHADOWED TTent
+8NumidianRider (ref Unit) lacks (ground), Inn, ShipBattle, Wagon, WildHorse, Hero, Tower, Gate, Wall, TTent, Building, Teleport, ItemHolder; SHADOWED ShipBattle, Wagon, WildHorse, Hero
+8Sentry (ref Sentry) lacks Building
+8WVillager (ref Peasant) lacks Building
+Carthmau42Hero (ref Hero) lacks TTent; SHADOWED TTent
+Carthnum42Hero (ref Hero) lacks TTent; SHADOWED TTent
+Egypt42Hero (ref Hero) lacks TTent; SHADOWED TTent
+Gaul42Hero (ref Hero) lacks TTent; SHADOWED TTent
+Germany42Hero (ref Hero) lacks TTent; SHADOWED TTent
+Iberia42Hero (ref Hero) lacks TTent; SHADOWED TTent
+Romeimp42Hero (ref Hero) lacks TTent; SHADOWED TTent
+Romepun42Hero (ref Hero) lacks TTent; SHADOWED TTent
+Romerep42Hero (ref Hero) lacks TTent; SHADOWED TTent
+XHeroThracian (ref Hero) lacks TTent; SHADOWED TTent
+XHeroWoman (ref Hero) lacks TTent; SHADOWED TTent
+XHorseman (ref Unit) lacks (ground), Inn, ShipBattle, Wagon, WildHorse, Hero, Tower, Gate, Wall, TTent, Building, Teleport, ItemHolder; SHADOWED ShipBattle, Wagon, WildHorse, Hero
+XKeltill (ref Hero) lacks TTent; SHADOWED TTent
+XLarax (ref Hero) lacks TTent; SHADOWED TTent
+XOathsworn (ref Unit) lacks (ground), Inn, ShipBattle, Wagon, WildHorse, Hero, Tower, Gate, Wall, TTent, Building, Teleport, ItemHolder; SHADOWED ShipBattle, Wagon, WildHorse, Hero
+XSentry (ref Sentry) lacks Building
+XWVillager (ref Peasant) lacks Building
+XWVillager_Apollonia (ref Peasant) lacks Building
+YJavelineer (ref Unit) lacks (ground), Inn, ShipBattle, Wagon, WildHorse, Hero, Tower, Gate, Wall, TTent, Building, Teleport, ItemHolder; SHADOWED ShipBattle, Wagon, WildHorse, Hero
+YSentry (ref Sentry) lacks Building
+YWVillager (ref Peasant) lacks Building
+ZCavalry (ref Unit) lacks (ground), Inn, ShipBattle, Wagon, WildHorse, Hero, Tower, Gate, Wall, TTent, Building, Teleport, ItemHolder; SHADOWED ShipBattle, Wagon, WildHorse, Hero
+ZHero4 (ref Hero) lacks TTent; SHADOWED TTent
+ZScout (ref Unit) lacks (ground), Inn, ShipBattle, Wagon, WildHorse, Hero, Tower, Gate, Wall, TTent, Building, Teleport, ItemHolder; SHADOWED ShipBattle, Wagon, WildHorse, Hero
+ZSentry (ref Sentry) lacks Building
+ZWVillager (ref Peasant) lacks Building
+
+after: 0 lacking
+
+39 classes with a target in two blocks of their own:
+1Sentry: unit
+3NHero1: peasant, peasantambient, unit
+3Sentry: unit
+4Priest: unit
+4Sentry: unit
+5ImperialRomanHero: peasant, peasantambient, unit
+5Priest: unit
+5Sentry: unit
+6AncientRomanHero: peasant, peasantambient, unit
+6Priest: unit
+6Sentry: unit
+7Hero4: peasant, peasantambient, unit
+7Sentry: unit
+8Hero4: peasant, peasantambient, unit
+8MauritanianHero: peasant, peasantambient, unit
+8Sentry: unit
+Britain42Hero: peasant, peasantambient, unit
+Carthmau42Hero: peasant, peasantambient, unit
+Carthnum42Hero: peasant, peasantambient, unit
+Egypt42Hero: peasant, peasantambient, unit
+Gaul42Hero: peasant, peasantambient, unit
+Germany42Hero: peasant, peasantambient, unit
+Hero4Praetorian: peasant, peasantambient, unit
+Hero4Tribune: peasant, peasantambient, unit
+Iberia42Hero: peasant, peasantambient, unit
+Romeimp42Hero: peasant, peasantambient, unit
+Romepun42Hero: peasant, peasantambient, unit
+Romerep42Hero: peasant, peasantambient, unit
+XDruid: unit
+XHeroThracian: peasant, peasantambient, unit
+XHeroWoman: peasant, peasantambient, unit
+XKeltill: peasant, peasantambient, unit
+XLarax: peasant, peasantambient, unit
+XSentry: unit
+YDruid: unit
+YSentry: unit
+ZEnchantress: unit
+ZHero4: peasant, peasantambient, unit
+ZSentry: unit
