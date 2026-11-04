@@ -1,0 +1,5 @@
+# orders of the mod whose source is a class of the game that no class of this port inherits from and that no clone carries under its own name (nobody can have them)
+estertor <- Stonehenge
+locura <- Stonehenge
+suicidio <- Stonehenge
+tormenta <- Stonehenge

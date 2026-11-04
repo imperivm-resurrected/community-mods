@@ -1,6 +1,6 @@
 {
   "id": "mci",
-  "name": "Mod Comunidad Imperivm (MCI) 9.0",
+  "name": "MCI Comunidad 9.0",
   "version": "9.0",
   "category": "Gameplay & Balance",
   "authors": [
@@ -17,8 +17,8 @@
     "Villoh (port)"
   ],
   "description": {
-    "spanish": "El primer mod creado por la Comunidad Imperivm (2010-2013), sobre el Mod La Reconquista de JVLIVS CAESAR: unidades nuevas (hipatista, mercenario, carro de hierro, recaudador), acero y tributos entre asentamientos, modos pasivo/defensivo/agresivo/sed de sangre, formaciones, rituales, modos de juego online, mapas aleatorios (España, África, Britania, Italia, Espiral…), 9 mapas y 19 aventuras, música y traducción. Adaptado al juego HD conservando sus correcciones.",
-    "english": "The first mod made by the Imperivm community (2010-2013), on top of JVLIVS CAESAR's La Reconquista: new units, iron and tributes between settlements, unit stances, formations, rituals, online game modes, random maps, 9 maps and 19 adventures, music and a Spanish translation. Adapted to the HD game keeping its fixes."
+    "spanish": "El primer mod creado por la Comunidad Imperivm (2010-2013), sobre el Mod La Reconquista de JVLIVS CAESAR, como ocho civilizaciones propias \"(MCI)\" junto a las del juego, que no se tocan: unidades nuevas (hipatista, mercenario, carro de hierro, recaudador), acero y tributos entre asentamientos, modos pasivo/defensivo/agresivo/sed de sangre, formaciones, rituales, mapas aleatorios (España, África, Britania, Italia, Espiral…), 9 mapas, 10 aventuras y música. Adaptado al juego HD conservando sus correcciones. El anfitrión de la sala elige el conjunto \"MCI Comunidad 9.0\".",
+    "english": "The first mod made by the Imperivm community (2010-2013), on top of JVLIVS CAESAR's La Reconquista, as eight civilizations of its own \"(MCI)\" next to the game's, which are not touched: new units, iron and tributes between settlements, unit stances, formations, rituals, random maps, 9 maps, 10 adventures and music. Adapted to the HD game keeping its fixes. The room host picks the set \"MCI Comunidad 9.0\"."
   },
   "tags": [
     "Type: Scenarios",

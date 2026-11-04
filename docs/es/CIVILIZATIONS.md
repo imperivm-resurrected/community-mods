@@ -74,6 +74,14 @@ Las letras y los índices son únicos en todos los ports (el SDK admite índices
 | (motor) | `aiberia` | `Aib` (derivado) | Iberia | AsvrMod VII | `tools/asvrmod-vii.js` |
 | (motor) | `aegypt` | `Aeg` (derivado) | Egypt | AsvrMod VII | `tools/asvrmod-vii.js` |
 | (motor) | `agermany` | `Age` (derivado) | Germany | AsvrMod VII | `tools/asvrmod-vii.js` |
+| (motor) | `igaul` | `Iga` (derivado) | Gaul | MCI 9.0 | `tools/mci.js` |
+| (motor) | `irome` | `Iro` (derivado) | RepublicanRome | MCI 9.0 | `tools/mci.js` |
+| (motor) | `iimperial` | `Iim` (derivado) | ImperialRome | MCI 9.0 | `tools/mci.js` |
+| (motor) | `icarthage` | `Ica` (derivado) | Carthage | MCI 9.0 | `tools/mci.js` |
+| (motor) | `ibritain` | `Ibr` (derivado) | Britain | MCI 9.0 | `tools/mci.js` |
+| (motor) | `iiberia` | `Iib` (derivado) | Iberia | MCI 9.0 | `tools/mci.js` |
+| (motor) | `iegypt` | `Ieg` (derivado) | Egypt | MCI 9.0 | `tools/mci.js` |
+| (motor) | `igermany` | `Ige` (derivado) | Germany | MCI 9.0 | `tools/mci.js` |
 | (motor) | `fgaul` | `Fga` (derivado) | Gaul | Community Mod 12 | `tools/community-mod.js` |
 | (motor) | `frome` | `Fro` (derivado) | RepublicanRome | Community Mod 12 | `tools/community-mod.js` |
 | (motor) | `fimperial` | `Fim` (derivado) | ImperialRome | Community Mod 12 | `tools/community-mod.js` |
