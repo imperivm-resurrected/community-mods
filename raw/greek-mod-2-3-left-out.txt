@@ -1,0 +1,456 @@
+BUILDINGS/EOUTPOST/EOUTPOST.ENT.XML (the game's own file with other bytes: no rule of this tool can scope it to the port)
+BUILDINGS/GCATAPULT/GCATAPULT.ENT.XML (the game's own file with other bytes: no rule of this tool can scope it to the port)
+BUILDINGS/ICATAPULT/CATAPULT.ENT.XML (the game's own file with other bytes: no rule of this tool can scope it to the port)
+BUILDINGS/RARENA/RARENA_AS.ENT.XML (the game's own file with other bytes: no rule of this tool can scope it to the port)
+BUILDINGS/RARENA/RARENA_W.ENT.XML (the game's own file with other bytes: no rule of this tool can scope it to the port)
+BUILDINGS/RHOUSE01/RHOUSE01_AS.ENT.XML (the game's own file with other bytes: no rule of this tool can scope it to the port)
+BUILDINGS/RHOUSE01/RHOUSE01_W.ENT.XML (the game's own file with other bytes: no rule of this tool can scope it to the port)
+BUILDINGS/RHOUSE02/RHOUSE02_AS.ENT.XML (the game's own file with other bytes: no rule of this tool can scope it to the port)
+BUILDINGS/RHOUSE02/RHOUSE02_W.ENT.XML (the game's own file with other bytes: no rule of this tool can scope it to the port)
+BUILDINGS/RTEMPLE/RTEMPLE_AS.ENT.XML (the game's own file with other bytes: no rule of this tool can scope it to the port)
+BUILDINGS/RTEMPLE/RTEMPLE_W.ENT.XML (the game's own file with other bytes: no rule of this tool can scope it to the port)
+DATA/BONUSSCRIPTS/003 HERO.VS (the game's own file with other bytes: no rule of this tool can scope it to the port)
+DATA/CONST.INI (the game's own file with other bytes: no rule of this tool can scope it to the port)
+DATA/COPYRIGHTS.TXT (the game's own file with other bytes: no rule of this tool can scope it to the port)
+DATA/FORMATIONS.XML (the game's own file with other bytes: no rule of this tool can scope it to the port)
+DATA/GAMESCRIPTS/1 ELIMINATION.VS (the game's own file with other bytes: no rule of this tool can scope it to the port)
+DATA/GAMESCRIPTS/2 SCORE LIMIT.VS (the game's own file with other bytes: no rule of this tool can scope it to the port)
+DATA/GAMESCRIPTS/3 TIME LIMIT (MILITARY RATING).VS
+DATA/GAMESCRIPTS/4 TIME LIMIT (SCORE).VS
+DATA/GAMESCRIPTS/5 ALTERNATIVE.VS (the game's own file with other bytes: no rule of this tool can scope it to the port)
+DATA/INTERFACE/EDITOR/MAPPLACE.INI (global: the editor's own INI with other bytes than the game's; not the menu skin, and it cannot be scoped to the port's civilizations)
+DATA/INTERFACE/EDITOR/VIEWCONQUESTMAP.INI (global: the editor's own INI with other bytes than the game's; not the menu skin, and it cannot be scoped to the port's civilizations)
+DATA/ITEMSCRIPTS/FINGER OF DEATH.VS (the game's own file with other bytes: no rule of this tool can scope it to the port)
+DATA/ITEMSCRIPTS/GEM OF WISDOM.VS (the game's own file with other bytes: no rule of this tool can scope it to the port)
+DATA/RANDOMMAP/COASTAL.RM.XML (the game's own file with other bytes: no rule of this tool can scope it to the port)
+DATA/RANDOMMAP/PLACETREES.XML (the game's own file with other bytes: no rule of this tool can scope it to the port)
+DATA/SOUND ENTITIES/ARENASELECT.XML (the game's own file with other bytes: no rule of this tool can scope it to the port)
+DATA/SOUND ENTITIES/BARRACKSSELECT.XML (the game's own file with other bytes: no rule of this tool can scope it to the port)
+DATA/SOUND ENTITIES/BLACKSMITHSELECT.XML (the game's own file with other bytes: no rule of this tool can scope it to the port)
+DATA/SOUND ENTITIES/CAMELDEATH.XML (the game's own file with other bytes: no rule of this tool can scope it to the port)
+DATA/SOUND ENTITIES/HORSEUNITDEATH.XML (the game's own file with other bytes: no rule of this tool can scope it to the port)
+DATA/SOUND ENTITIES/HORSEWALK.XML (the game's own file with other bytes: no rule of this tool can scope it to the port)
+DATA/SOUND ENTITIES/HOUSESELECT.XML (the game's own file with other bytes: no rule of this tool can scope it to the port)
+DATA/SOUND ENTITIES/TAVERNSELECT.XML (the game's own file with other bytes: no rule of this tool can scope it to the port)
+DATA/SOUND ENTITIES/TEMPLESELECT.XML (the game's own file with other bytes: no rule of this tool can scope it to the port)
+DATA/SOUND ENTITIES/TOWNHALLSELECT.XML (the game's own file with other bytes: no rule of this tool can scope it to the port)
+DATA/SOUND ENTITIES/UNITARROWFIGHT.XML (the game's own file with other bytes: no rule of this tool can scope it to the port)
+DATA/SOUND ENTITIES/UNITDEATH.XML (the game's own file with other bytes: no rule of this tool can scope it to the port)
+DATA/SOUND ENTITIES/UNITMACEFIGHT.XML (the game's own file with other bytes: no rule of this tool can scope it to the port)
+DATA/SOUND ENTITIES/UNITPIKEFIGHT.XML (the game's own file with other bytes: no rule of this tool can scope it to the port)
+DATA/SOUND ENTITIES/UNITSWORDFIGHT.XML (the game's own file with other bytes: no rule of this tool can scope it to the port)
+DATA/SOUND ENTITIES/VILLAGESELECT.XML (the game's own file with other bytes: no rule of this tool can scope it to the port)
+DATA/SOUND ENTITIES/VOICERGLADIATOR.XML (the game's own file with other bytes: no rule of this tool can scope it to the port)
+DATA/SOUND ENTITIES/VOICERHASTATUS.XML (the game's own file with other bytes: no rule of this tool can scope it to the port)
+DATA/SOUND ENTITIES/VOICERPRIEST.XML (the game's own file with other bytes: no rule of this tool can scope it to the port)
+DATA/SOUND ENTITIES/VOICERPRINCIPLE.XML (the game's own file with other bytes: no rule of this tool can scope it to the port)
+DATA/SOUND ENTITIES/VOICERSCOUT.XML (the game's own file with other bytes: no rule of this tool can scope it to the port)
+DATA/SUBAI/ARENA_BEHAVIOR.VS (the game's own file with other bytes: no rule of this tool can scope it to the port)
+DATA/SUBAI/ARENA_HIREHERO.VS (the game's own file with other bytes: no rule of this tool can scope it to the port)
+DATA/SUBAI/ATTACK_INDEPENDENT_VERIFY.VS (the game's own file with other bytes: no rule of this tool can scope it to the port)
+DATA/SUBAI/BARRACK_TRAIN_EX.VS (the game's own file with other bytes: no rule of this tool can scope it to the port)
+DATA/SUBAI/BDRUID_IDLE.VS (the game's own file with other bytes: no rule of this tool can scope it to the port)
+DATA/SUBAI/BDRUID_STAND_POSITION.VS (the game's own file with other bytes: no rule of this tool can scope it to the port)
+DATA/SUBAI/CREATE_BOAT_VERIFY.VS (the game's own file with other bytes: no rule of this tool can scope it to the port)
+DATA/SUBAI/DRUID_HIDE_GROUND.VS (the game's own file with other bytes: no rule of this tool can scope it to the port)
+DATA/SUBAI/DRUID_ONDIE.VS (the game's own file with other bytes: no rule of this tool can scope it to the port)
+DATA/SUBAI/GDRUID_IDLE.VS (the game's own file with other bytes: no rule of this tool can scope it to the port)
+DATA/SUBAI/GDRUID_STAND_POSITION.VS (the game's own file with other bytes: no rule of this tool can scope it to the port)
+DATA/SUBAI/GGUARDPOST_SENTRIES.VS (the game's own file with other bytes: no rule of this tool can scope it to the port)
+DATA/SUBAI/HEROGRAVE_BEHAVIOR.VS (the game's own file with other bytes: no rule of this tool can scope it to the port)
+DATA/SUBAI/HERO_CAPTURE.VS (the game's own file with other bytes: no rule of this tool can scope it to the port)
+DATA/SUBAI/HERO_FORMATION_VERIFY.VS (the game's own file with other bytes: no rule of this tool can scope it to the port)
+DATA/SUBAI/HERO_MOVE.VS (the game's own file with other bytes: no rule of this tool can scope it to the port)
+DATA/SUBAI/HORSE_ENTER.VS (the game's own file with other bytes: no rule of this tool can scope it to the port)
+DATA/SUBAI/HORSE_IDLE.VS (the game's own file with other bytes: no rule of this tool can scope it to the port)
+DATA/SUBAI/IBERIAN_VILLAGE_TRAINISCOUT.VS (the game's own file with other bytes: no rule of this tool can scope it to the port)
+DATA/SUBAI/MILITARY_ONDIE.VS (the game's own file with other bytes: no rule of this tool can scope it to the port)
+DATA/SUBAI/ONFINISH_RESEARCH.VS (the game's own file with other bytes: no rule of this tool can scope it to the port)
+DATA/SUBAI/OUTPOST_BEHAVIOR.VS (the game's own file with other bytes: no rule of this tool can scope it to the port)
+DATA/SUBAI/SETTLEMENT_BEHAVIOR_AMBIENT.VS (the game's own file with other bytes: no rule of this tool can scope it to the port)
+DATA/SUBAI/SHAMAN_ADVANCE.VS (the game's own file with other bytes: no rule of this tool can scope it to the port)
+DATA/SUBAI/SHAMAN_IDLE.VS (the game's own file with other bytes: no rule of this tool can scope it to the port)
+DATA/SUBAI/SHAMAN_STAND_POSITION.VS (the game's own file with other bytes: no rule of this tool can scope it to the port)
+DATA/SUBAI/STONEHENGE_BLOODLUST_DISPATCH.VS (the game's own file with other bytes: no rule of this tool can scope it to the port)
+DATA/SUBAI/TOWNHALL_BEHAVIOR_GUARD.VS (the game's own file with other bytes: no rule of this tool can scope it to the port)
+DATA/SUBAI/TOWNHALL_SENTRIES_CONTROL.VS (the game's own file with other bytes: no rule of this tool can scope it to the port)
+DATA/SUBAI/TRAINEX_ONADDREMOVE.VS (the game's own file with other bytes: no rule of this tool can scope it to the port)
+DATA/SUBAI/TRAIN_EX.VS (the game's own file with other bytes: no rule of this tool can scope it to the port)
+DATA/SUBAI/TTENT_BEHAVIOR.VS (the game's own file with other bytes: no rule of this tool can scope it to the port)
+DATA/SUBAI/UNIT_ATTACH_VERIFY.VS (not Greek: the old trick)
+DATA/SUBAI/UNIT_ATTACK.VS (the game's own file with other bytes: no rule of this tool can scope it to the port)
+DATA/SUBAI/UNIT_CAPTURE.VS (the game's own file with other bytes: no rule of this tool can scope it to the port)
+DATA/SUBAI/UNIT_ENTER_PARRY_MODE.VS (the game's own file with other bytes: no rule of this tool can scope it to the port)
+DATA/SUBAI/UNIT_ENTER_PARRY_MODE_VERIFY.VS (the game's own file with other bytes: no rule of this tool can scope it to the port)
+DATA/SUBAI/UNIT_LEAVE_PARRY_MODE.VS (the game's own file with other bytes: no rule of this tool can scope it to the port)
+DATA/SUBAI/UNIT_LEAVE_PARRY_MODE_VERIFY.VS (the game's own file with other bytes: no rule of this tool can scope it to the port)
+DATA/SUBAI/UNIT_REVEALS.VS (the game's own file with other bytes: no rule of this tool can scope it to the port)
+DATA/SUBAI/UNIT_REVEALS_VERIFY.VS (the game's own file with other bytes: no rule of this tool can scope it to the port)
+DATA/SUBAI/UNIT_TRAIN.VS (the game's own file with other bytes: no rule of this tool can scope it to the port)
+DATA/SUBAI/VERIFY_RESEARCH.VS (not Greek: the old trick)
+DATA/SUBAI/VERIFY_TRAINEX.VS (the game's own file with other bytes: no rule of this tool can scope it to the port)
+DATA/SUBAI/VILLAGE_TRAINPEASANT.VS (the game's own file with other bytes: no rule of this tool can scope it to the port)
+DATA/TERRAINS.XML (the game's own file with other bytes: no rule of this tool can scope it to the port)
+DATA/VXNOTIFICATIONS.XML (the game's own file with other bytes: no rule of this tool can scope it to the port)
+MAPOBJECTS/DECORS/DECORS.INI (the game's own file with other bytes: no rule of this tool can scope it to the port)
+MINIMAP/ZOOM16/TERRAIN/AUTUMN/GRASS3.BMP (the game's own file with other bytes: no rule of this tool can scope it to the port)
+MINIMAP/ZOOM16/TERRAIN/SPRING/GRASS3.BMP (the game's own file with other bytes: no rule of this tool can scope it to the port)
+MINIMAP/ZOOM16/TERRAIN/WINTER/GRASS3.BMP (the game's own file with other bytes: no rule of this tool can scope it to the port)
+MINIMAP/ZOOM32/TERRAIN/AUTUMN/GRASS3.BMP (the game's own file with other bytes: no rule of this tool can scope it to the port)
+MINIMAP/ZOOM32/TERRAIN/SPRING/GRASS3.BMP (the game's own file with other bytes: no rule of this tool can scope it to the port)
+MINIMAP/ZOOM32/TERRAIN/WINTER/GRASS3.BMP (the game's own file with other bytes: no rule of this tool can scope it to the port)
+MINIMAP/ZOOM8/TERRAIN/AUTUMN/GRASS3.BMP (the game's own file with other bytes: no rule of this tool can scope it to the port)
+MINIMAP/ZOOM8/TERRAIN/SPRING/GRASS3.BMP (the game's own file with other bytes: no rule of this tool can scope it to the port)
+MINIMAP/ZOOM8/TERRAIN/WINTER/GRASS3.BMP (the game's own file with other bytes: no rule of this tool can scope it to the port)
+RANDOMMAP/COASTAL/010.BMP (the game's own file with other bytes: no rule of this tool can scope it to the port)
+RANDOMMAP/COASTAL/020.BMP (the game's own file with other bytes: no rule of this tool can scope it to the port)
+RANDOMMAP/COASTAL/030.BMP (the game's own file with other bytes: no rule of this tool can scope it to the port)
+RANDOMMAP/COASTAL/040.BMP (the game's own file with other bytes: no rule of this tool can scope it to the port)
+RANDOMMAP/COASTAL/050.BMP (the game's own file with other bytes: no rule of this tool can scope it to the port)
+RANDOMMAP/COASTAL/060.BMP (the game's own file with other bytes: no rule of this tool can scope it to the port)
+RANDOMMAP/COASTAL/070.BMP (the game's own file with other bytes: no rule of this tool can scope it to the port)
+RANDOMMAP/COASTAL/080.BMP (the game's own file with other bytes: no rule of this tool can scope it to the port)
+RANDOMMAP/COASTAL/090.BMP (the game's own file with other bytes: no rule of this tool can scope it to the port)
+RANDOMMAP/COASTAL/100.BMP (the game's own file with other bytes: no rule of this tool can scope it to the port)
+RANDOMMAP/COASTAL/110.BMP (the game's own file with other bytes: no rule of this tool can scope it to the port)
+RANDOMMAP/COASTAL/120.BMP (the game's own file with other bytes: no rule of this tool can scope it to the port)
+RANDOMMAP/COASTAL/130.BMP (the game's own file with other bytes: no rule of this tool can scope it to the port)
+RANDOMMAP/COASTAL/140.BMP (the game's own file with other bytes: no rule of this tool can scope it to the port)
+RANDOMMAP/COASTAL/150.BMP (the game's own file with other bytes: no rule of this tool can scope it to the port)
+RANDOMMAP/COASTAL/160.BMP (the game's own file with other bytes: no rule of this tool can scope it to the port)
+RANDOMMAP/COASTAL/170.BMP (the game's own file with other bytes: no rule of this tool can scope it to the port)
+SOUNDS/SELECTION/BARAKS/BARRAKS_1.WAV (the game's own file with other bytes: no rule of this tool can scope it to the port)
+SOUNDS/SELECTION/BARAKS/BARRAKS_3.WAV (the game's own file with other bytes: no rule of this tool can scope it to the port)
+SOUNDS/SELECTION/BARAKS/BARRAKS_4.WAV (the game's own file with other bytes: no rule of this tool can scope it to the port)
+SOUNDS/SELECTION/BLACKSMITH/BLACKSMITH_1.WAV (the game's own file with other bytes: no rule of this tool can scope it to the port)
+SOUNDS/SELECTION/BLACKSMITH/BLACKSMITH_2.WAV (the game's own file with other bytes: no rule of this tool can scope it to the port)
+SOUNDS/SELECTION/BLACKSMITH/BLACKSMITH_4.WAV (the game's own file with other bytes: no rule of this tool can scope it to the port)
+SOUNDS/SELECTION/HOUSE/HOUSE_AMBIENT_1.WAV (the game's own file with other bytes: no rule of this tool can scope it to the port)
+SOUNDS/SELECTION/HOUSE/HOUSE_AMBIENT_2.WAV (the game's own file with other bytes: no rule of this tool can scope it to the port)
+SOUNDS/SELECTION/HOUSE/HOUSE_AMBIENT_3.WAV (the game's own file with other bytes: no rule of this tool can scope it to the port)
+SOUNDS/SELECTION/HOUSE/HOUSE_AMBIENT_4.WAV (the game's own file with other bytes: no rule of this tool can scope it to the port)
+SOUNDS/SELECTION/TAVERN/TAVERN_1.WAV (the game's own file with other bytes: no rule of this tool can scope it to the port)
+SOUNDS/SELECTION/TAVERN/TAVERN_2.WAV (the game's own file with other bytes: no rule of this tool can scope it to the port)
+SOUNDS/SELECTION/TAVERN/TAVERN_3.WAV (the game's own file with other bytes: no rule of this tool can scope it to the port)
+SOUNDS/SELECTION/TAVERN/TAVERN_4.WAV (the game's own file with other bytes: no rule of this tool can scope it to the port)
+SOUNDS/SELECTION/TEMPLE/TEMPLE_1.WAV (the game's own file with other bytes: no rule of this tool can scope it to the port)
+SOUNDS/SELECTION/TEMPLE/TEMPLE_2.WAV (the game's own file with other bytes: no rule of this tool can scope it to the port)
+SOUNDS/SELECTION/TEMPLE/TEMPLE_3.WAV (the game's own file with other bytes: no rule of this tool can scope it to the port)
+SOUNDS/SELECTION/TEMPLE/TEMPLE_4.WAV (the game's own file with other bytes: no rule of this tool can scope it to the port)
+SOUNDS/SELECTION/TOWNHALL/TOWNHALL_1.WAV (the game's own file with other bytes: no rule of this tool can scope it to the port)
+SOUNDS/SELECTION/TOWNHALL/TOWNHALL_2.WAV (the game's own file with other bytes: no rule of this tool can scope it to the port)
+SOUNDS/SELECTION/TOWNHALL/TOWNHALL_3.WAV (the game's own file with other bytes: no rule of this tool can scope it to the port)
+SOUNDS/SELECTION/TOWNHALL/TOWNHALL_4.WAV (the game's own file with other bytes: no rule of this tool can scope it to the port)
+SOUNDS/SELECTION/VILLAGE_TOWN_CENTER/VILLAGE_TOWN_CENTER_1.WAV (the game's own file with other bytes: no rule of this tool can scope it to the port)
+SOUNDS/SELECTION/VILLAGE_TOWN_CENTER/VILLAGE_TOWN_CENTER_2.WAV (the game's own file with other bytes: no rule of this tool can scope it to the port)
+SOUNDS/SELECTION/VILLAGE_TOWN_CENTER/VILLAGE_TOWN_CENTER_3.WAV (the game's own file with other bytes: no rule of this tool can scope it to the port)
+SOUNDS/SELECTION/VILLAGE_TOWN_CENTER/VILLAGE_TOWN_CENTER_4.WAV (the game's own file with other bytes: no rule of this tool can scope it to the port)
+SOUNDS/UI/CLICK.WAV (the game's own file with other bytes: no rule of this tool can scope it to the port)
+UI/CMDBAR/ACTIONS/ATTACK.BMP (the game's own file with other bytes: no rule of this tool can scope it to the port)
+UI/CMDBAR/ACTIONS/BUILD CATAPULT.BMP (the game's own file with other bytes: no rule of this tool can scope it to the port)
+UI/CMDBAR/ACTIONS/CANCEL.BMP (the game's own file with other bytes: no rule of this tool can scope it to the port)
+UI/CMDBAR/ACTIONS/CAPTURE.BMP (the game's own file with other bytes: no rule of this tool can scope it to the port)
+UI/CMDBAR/ACTIONS/CATAPULT ATTACK.BMP (the game's own file with other bytes: no rule of this tool can scope it to the port)
+UI/CMDBAR/ACTIONS/COVEROFMERCY.BMP (the game's own file with other bytes: no rule of this tool can scope it to the port)
+UI/CMDBAR/ACTIONS/CRIPPLE.BMP (the game's own file with other bytes: no rule of this tool can scope it to the port)
+UI/CMDBAR/ACTIONS/CURSE.BMP (the game's own file with other bytes: no rule of this tool can scope it to the port)
+UI/CMDBAR/ACTIONS/DESERT CATAPULT.BMP (the game's own file with other bytes: no rule of this tool can scope it to the port)
+UI/CMDBAR/ACTIONS/DETACH.BMP (the game's own file with other bytes: no rule of this tool can scope it to the port)
+UI/CMDBAR/ACTIONS/DISBAND.BMP (the game's own file with other bytes: no rule of this tool can scope it to the port)
+UI/CMDBAR/ACTIONS/EXPLORE.BMP (the game's own file with other bytes: no rule of this tool can scope it to the port)
+UI/CMDBAR/ACTIONS/GHOST.BMP (the game's own file with other bytes: no rule of this tool can scope it to the port)
+UI/CMDBAR/ACTIONS/HEAL.BMP (the game's own file with other bytes: no rule of this tool can scope it to the port)
+UI/CMDBAR/ACTIONS/HIRE CBERBERASSASSIN.BMP (the game's own file with other bytes: no rule of this tool can scope it to the port)
+UI/CMDBAR/ACTIONS/HIRE CJAVELINTHROWER.BMP (the game's own file with other bytes: no rule of this tool can scope it to the port)
+UI/CMDBAR/ACTIONS/HIRE CMACEMAN.BMP (the game's own file with other bytes: no rule of this tool can scope it to the port)
+UI/CMDBAR/ACTIONS/HIRE CNUMIDIANRIDER.BMP (the game's own file with other bytes: no rule of this tool can scope it to the port)
+UI/CMDBAR/ACTIONS/INVISIBILITY.BMP (the game's own file with other bytes: no rule of this tool can scope it to the port)
+UI/CMDBAR/ACTIONS/JUPITER.BMP (the game's own file with other bytes: no rule of this tool can scope it to the port)
+UI/CMDBAR/ACTIONS/LAST SACRIFICE.BMP (the game's own file with other bytes: no rule of this tool can scope it to the port)
+UI/CMDBAR/ACTIONS/LEAVE PARRY MODE.BMP (the game's own file with other bytes: no rule of this tool can scope it to the port)
+UI/CMDBAR/ACTIONS/LOAD FOOD.BMP (the game's own file with other bytes: no rule of this tool can scope it to the port)
+UI/CMDBAR/ACTIONS/LOAD GOLD.BMP (the game's own file with other bytes: no rule of this tool can scope it to the port)
+UI/CMDBAR/ACTIONS/MASS HEALING.BMP (the game's own file with other bytes: no rule of this tool can scope it to the port)
+UI/CMDBAR/ACTIONS/MIST.BMP (the game's own file with other bytes: no rule of this tool can scope it to the port)
+UI/CMDBAR/ACTIONS/MOVE.BMP (the game's own file with other bytes: no rule of this tool can scope it to the port)
+UI/CMDBAR/ACTIONS/PARRY MODE.BMP (the game's own file with other bytes: no rule of this tool can scope it to the port)
+UI/CMDBAR/ACTIONS/PATROL.BMP (the game's own file with other bytes: no rule of this tool can scope it to the port)
+UI/CMDBAR/ACTIONS/RESTORATION.BMP (the game's own file with other bytes: no rule of this tool can scope it to the port)
+UI/CMDBAR/ACTIONS/REVEAL.BMP (the game's own file with other bytes: no rule of this tool can scope it to the port)
+UI/CMDBAR/ACTIONS/REVITALIZE.BMP (the game's own file with other bytes: no rule of this tool can scope it to the port)
+UI/CMDBAR/ACTIONS/SACRIFICE.BMP (the game's own file with other bytes: no rule of this tool can scope it to the port)
+UI/CMDBAR/ACTIONS/SHOW.BMP (the game's own file with other bytes: no rule of this tool can scope it to the port)
+UI/CMDBAR/ACTIONS/STAND GROUND.BMP (the game's own file with other bytes: no rule of this tool can scope it to the port)
+UI/CMDBAR/ACTIONS/TEACH.BMP (the game's own file with other bytes: no rule of this tool can scope it to the port)
+UI/CMDBAR/ACTIONS/TRAIN GSWORDSMAN.BMP (the game's own file with other bytes: no rule of this tool can scope it to the port)
+UI/CMDBAR/ACTIONS/TRAIN RARCHER.BMP (the game's own file with other bytes: no rule of this tool can scope it to the port)
+UI/CMDBAR/ACTIONS/TRAIN RPRINCIPLE.BMP (the game's own file with other bytes: no rule of this tool can scope it to the port)
+UI/CMDBAR/ACTIONS/UNL SHIP.BMP (the game's own file with other bytes: no rule of this tool can scope it to the port)
+UI/CMDBAR/CMDBARCARTHAGE.BMP (the game's own file with other bytes: no rule of this tool can scope it to the port)
+UI/CMDBAR/EMPTYMENU/CHAT.BMP (the game's own file with other bytes: no rule of this tool can scope it to the port)
+UI/CMDBAR/FRAMES/BRITAIN_FRAME.BMP (the game's own file with other bytes: no rule of this tool can scope it to the port)
+UI/CMDBAR/FRAMES/CARTHAGE_FRAME.BMP (the game's own file with other bytes: no rule of this tool can scope it to the port)
+UI/CMDBAR/FRAMES/GAUL_FRAME.BMP (the game's own file with other bytes: no rule of this tool can scope it to the port)
+UI/CMDBAR/FRAMES/GERMAN_FRAME.BMP (the game's own file with other bytes: no rule of this tool can scope it to the port)
+UI/CMDBAR/FRAMES/IBERIAN_FRAME.BMP (the game's own file with other bytes: no rule of this tool can scope it to the port)
+UI/CMDBAR/FRAMES/IR_FRAME.BMP (the game's own file with other bytes: no rule of this tool can scope it to the port)
+UI/CMDBAR/FRAMES/RR_FRAME.BMP (the game's own file with other bytes: no rule of this tool can scope it to the port)
+UI/CMDBAR/RESEARCH/CAPTURE HORSES.BMP (the game's own file with other bytes: no rule of this tool can scope it to the port)
+UI/CMDBAR/RIGHTCARTHAGE.BMP (the game's own file with other bytes: no rule of this tool can scope it to the port)
+UI/CMDBAR/SKILLS/ASSAULT.BMP (the game's own file with other bytes: no rule of this tool can scope it to the port)
+UI/CMDBAR/SKILLS/BATTLECRY.BMP (the game's own file with other bytes: no rule of this tool can scope it to the port)
+UI/CMDBAR/SKILLS/CEASEFIRE.BMP (the game's own file with other bytes: no rule of this tool can scope it to the port)
+UI/CMDBAR/SKILLS/CHARGE.BMP (the game's own file with other bytes: no rule of this tool can scope it to the port)
+UI/CMDBAR/SKILLS/DEFENSIVECRY.BMP (the game's own file with other bytes: no rule of this tool can scope it to the port)
+UI/CMDBAR/SKILLS/DIVINEGRACE.BMP (the game's own file with other bytes: no rule of this tool can scope it to the port)
+UI/CMDBAR/SKILLS/FRENZY.BMP (the game's own file with other bytes: no rule of this tool can scope it to the port)
+UI/CMDBAR/SKILLS/HEALING.BMP (the game's own file with other bytes: no rule of this tool can scope it to the port)
+UI/CMDBAR/SKILLS/RUSH.BMP (the game's own file with other bytes: no rule of this tool can scope it to the port)
+UI/CMDBAR/SPECIALS/ATTACH.BMP (the game's own file with other bytes: no rule of this tool can scope it to the port)
+UI/CMDBAR/SPECIALS/LEAVE ARMY.BMP (the game's own file with other bytes: no rule of this tool can scope it to the port)
+UI/CMDBAR/STATES/BLOCK FORM.BMP (the game's own file with other bytes: no rule of this tool can scope it to the port)
+UI/CMDBAR/STATES/FRONT FORM.BMP (the game's own file with other bytes: no rule of this tool can scope it to the port)
+UI/CMDBAR/STATES/HORSE WING FORM.BMP (the game's own file with other bytes: no rule of this tool can scope it to the port)
+UI/CMDBAR/STATES/LINE FORM.BMP (the game's own file with other bytes: no rule of this tool can scope it to the port)
+UI/CMDBAR/STATES/RANGED WINGS FORM.BMP (the game's own file with other bytes: no rule of this tool can scope it to the port)
+UI/CMDBAR/STATES/SELL FOOD.BMP (the game's own file with other bytes: no rule of this tool can scope it to the port)
+UI/CMDBAR/STATES/SELL GOLD.BMP (the game's own file with other bytes: no rule of this tool can scope it to the port)
+UI/CMDBAR/STATES/START BURN.BMP (the game's own file with other bytes: no rule of this tool can scope it to the port)
+UI/CMDBAR/STATES/STOP BURN.BMP (the game's own file with other bytes: no rule of this tool can scope it to the port)
+UI/CMDBAR/STATES/STOP SELLING FOOD.BMP (the game's own file with other bytes: no rule of this tool can scope it to the port)
+UI/CMDBAR/STATES/STOP SELLING GOLD.BMP (the game's own file with other bytes: no rule of this tool can scope it to the port)
+UI/CMDBAR/STATES/STOP TRADE.BMP (the game's own file with other bytes: no rule of this tool can scope it to the port)
+UI/CMDBAR/STATES/STOP TRIBUTE.BMP (the game's own file with other bytes: no rule of this tool can scope it to the port)
+UI/CMDBAR/STATES/TRADE.BMP (the game's own file with other bytes: no rule of this tool can scope it to the port)
+UI/CMDBAR/STATES/TRIBUTE.BMP (the game's own file with other bytes: no rule of this tool can scope it to the port)
+UI/CMDBAR/UPGRADES/SHIELDS.BMP (the game's own file with other bytes: no rule of this tool can scope it to the port)
+UI/ICONS/BHERO4.BMP (the game's own file with other bytes: no rule of this tool can scope it to the port)
+UI/ICONS/BSHIELDBEARER.BMP (the game's own file with other bytes: no rule of this tool can scope it to the port)
+UI/ICONS/CNUMIDIANRIDER.BMP (the game's own file with other bytes: no rule of this tool can scope it to the port)
+UI/ICONS/GSWORDSMAN.BMP (the game's own file with other bytes: no rule of this tool can scope it to the port)
+UI/ICONS/RARCHER.BMP (the game's own file with other bytes: no rule of this tool can scope it to the port)
+UI/INFOBAR/BRITAIN/PLUS SKILL.BMP (the game's own file with other bytes: no rule of this tool can scope it to the port)
+UI/INFOBAR/CARTHAGE/BACK.BMP (the game's own file with other bytes: no rule of this tool can scope it to the port)
+UI/INFOBAR/CARTHAGE/BACKEMPTY.BMP (the game's own file with other bytes: no rule of this tool can scope it to the port)
+UI/INFOBAR/CARTHAGE/BACKFRAME.BMP (the game's own file with other bytes: no rule of this tool can scope it to the port)
+UI/INFOBAR/CARTHAGE/BUTTON ATTACH.BMP (the game's own file with other bytes: no rule of this tool can scope it to the port)
+UI/INFOBAR/CARTHAGE/BUTTON SKILLS.BMP (the game's own file with other bytes: no rule of this tool can scope it to the port)
+UI/INFOBAR/CARTHAGE/DIVIDER.BMP (the game's own file with other bytes: no rule of this tool can scope it to the port)
+UI/INFOBAR/CARTHAGE/FRAME LEFT.BMP (the game's own file with other bytes: no rule of this tool can scope it to the port)
+UI/INFOBAR/CARTHAGE/PLUS SKILL.BMP (the game's own file with other bytes: no rule of this tool can scope it to the port)
+UI/INFOBAR/CARTHAGE/QI_FRAME1.HI.BMP (the game's own file with other bytes: no rule of this tool can scope it to the port)
+UI/INFOBAR/CARTHAGE/QI_FRAME2.HI.BMP (the game's own file with other bytes: no rule of this tool can scope it to the port)
+UI/INFOBAR/CARTHAGE/SMALL FRAME.BMP (the game's own file with other bytes: no rule of this tool can scope it to the port)
+UI/INFOBAR/CARTHAGE/SPECIALS_FRAME.BMP (the game's own file with other bytes: no rule of this tool can scope it to the port)
+UI/INFOBAR/COMMON/LEVEL ICO.BMP (the game's own file with other bytes: no rule of this tool can scope it to the port)
+UI/INFOBAR/COMMON/POP ICO.BMP (the game's own file with other bytes: no rule of this tool can scope it to the port)
+UI/INFOBAR/COMMON/POP_COST.BMP (the game's own file with other bytes: no rule of this tool can scope it to the port)
+UI/INFOBAR/EGYPT/BUTTON ATTACH.BMP (the game's own file with other bytes: no rule of this tool can scope it to the port)
+UI/INFOBAR/EGYPT/BUTTON SKILLS.BMP (the game's own file with other bytes: no rule of this tool can scope it to the port)
+UI/INFOBAR/EGYPT/PLUS SKILL.BMP (the game's own file with other bytes: no rule of this tool can scope it to the port)
+UI/INFOBAR/GAUL/BUTTON ATTACH.BMP (the game's own file with other bytes: no rule of this tool can scope it to the port)
+UI/INFOBAR/GAUL/BUTTON SKILLS.BMP (the game's own file with other bytes: no rule of this tool can scope it to the port)
+UI/INFOBAR/GAUL/PLUS SKILL.BMP (the game's own file with other bytes: no rule of this tool can scope it to the port)
+UI/INFOBAR/GAUL/QI_FRAME1.HI.BMP (the game's own file with other bytes: no rule of this tool can scope it to the port)
+UI/INFOBAR/GAUL/QI_FRAME2.HI.BMP (the game's own file with other bytes: no rule of this tool can scope it to the port)
+UI/INFOBAR/GAUL/SMALL FRAME.BMP (the game's own file with other bytes: no rule of this tool can scope it to the port)
+UI/INFOBAR/GAUL/SPECIALS_FRAME.BMP (the game's own file with other bytes: no rule of this tool can scope it to the port)
+UI/INFOBAR/GERMAN/BUTTON ATTACH.BMP (the game's own file with other bytes: no rule of this tool can scope it to the port)
+UI/INFOBAR/GERMAN/BUTTON SKILLS.BMP (the game's own file with other bytes: no rule of this tool can scope it to the port)
+UI/INFOBAR/GERMAN/PLUS SKILL.BMP (the game's own file with other bytes: no rule of this tool can scope it to the port)
+UI/INFOBAR/GERMAN/QI_FRAME1.HI.BMP (the game's own file with other bytes: no rule of this tool can scope it to the port)
+UI/INFOBAR/GERMAN/QI_FRAME2.HI.BMP (the game's own file with other bytes: no rule of this tool can scope it to the port)
+UI/INFOBAR/GERMAN/SMALL FRAME.BMP (the game's own file with other bytes: no rule of this tool can scope it to the port)
+UI/INFOBAR/GERMAN/SPECIALS_FRAME.BMP (the game's own file with other bytes: no rule of this tool can scope it to the port)
+UI/INFOBAR/IBERIA/BACK.BMP (the game's own file with other bytes: no rule of this tool can scope it to the port)
+UI/INFOBAR/IBERIA/BACKEMPTY.BMP (the game's own file with other bytes: no rule of this tool can scope it to the port)
+UI/INFOBAR/IBERIA/PLUS SKILL.BMP (the game's own file with other bytes: no rule of this tool can scope it to the port)
+UI/INFOBAR/IBERIA/QI_FRAME1.HI.BMP (the game's own file with other bytes: no rule of this tool can scope it to the port)
+UI/INFOBAR/IBERIA/QI_FRAME2.HI.BMP (the game's own file with other bytes: no rule of this tool can scope it to the port)
+UI/INFOBAR/IBERIA/SMALL FRAME.BMP (the game's own file with other bytes: no rule of this tool can scope it to the port)
+UI/INFOBAR/IBERIA/SPECIALS_FRAME.BMP (the game's own file with other bytes: no rule of this tool can scope it to the port)
+UI/INFOBAR/IROME/BACK.BMP (the game's own file with other bytes: no rule of this tool can scope it to the port)
+UI/INFOBAR/IROME/BACKEMPTY.BMP (the game's own file with other bytes: no rule of this tool can scope it to the port)
+UI/INFOBAR/IROME/BACKFRAME.BMP (the game's own file with other bytes: no rule of this tool can scope it to the port)
+UI/INFOBAR/IROME/BUTTON ATTACH.BMP (the game's own file with other bytes: no rule of this tool can scope it to the port)
+UI/INFOBAR/IROME/BUTTON SKILLS.BMP (the game's own file with other bytes: no rule of this tool can scope it to the port)
+UI/INFOBAR/IROME/DIVIDER.BMP (the game's own file with other bytes: no rule of this tool can scope it to the port)
+UI/INFOBAR/IROME/FRAME LEFT.BMP (the game's own file with other bytes: no rule of this tool can scope it to the port)
+UI/INFOBAR/IROME/FRAME SKILLS.BMP (the game's own file with other bytes: no rule of this tool can scope it to the port)
+UI/INFOBAR/IROME/FRAME UNITS FLASH.BMP (the game's own file with other bytes: no rule of this tool can scope it to the port)
+UI/INFOBAR/IROME/FRAME UNITS TRAINING.BMP (the game's own file with other bytes: no rule of this tool can scope it to the port)
+UI/INFOBAR/IROME/FRAME UNITS.BMP (the game's own file with other bytes: no rule of this tool can scope it to the port)
+UI/INFOBAR/RROME/BUTTON ATTACH.BMP (the game's own file with other bytes: no rule of this tool can scope it to the port)
+UI/INFOBAR/RROME/BUTTON SKILLS.BMP (the game's own file with other bytes: no rule of this tool can scope it to the port)
+UI/INFOBAR/RROME/PLUS SKILL.BMP (the game's own file with other bytes: no rule of this tool can scope it to the port)
+UI/INFOBAR/RROME/QI_FRAME1.HI.BMP (the game's own file with other bytes: no rule of this tool can scope it to the port)
+UI/INFOBAR/RROME/QI_FRAME2.HI.BMP (the game's own file with other bytes: no rule of this tool can scope it to the port)
+UI/INFOBAR/RROME/SMALL FRAME.BMP (the game's own file with other bytes: no rule of this tool can scope it to the port)
+UI/INFOBAR/RROME/SPECIALS_FRAME.BMP (the game's own file with other bytes: no rule of this tool can scope it to the port)
+UI/INFOBAR/UNIT SPECIALS/DETERMINATION GLOW.BMP (the game's own file with other bytes: no rule of this tool can scope it to the port)
+UI/INFOBAR/UNIT SPECIALS/DETERMINATION.BMP (the game's own file with other bytes: no rule of this tool can scope it to the port)
+UNITS/BBOWMAN/BBOWMAN.ENT.XML (the game's own file with other bytes: no rule of this tool can scope it to the port)
+UNITS/BBOWMAN/BSENTRY.ENT.XML (the game's own file with other bytes: no rule of this tool can scope it to the port)
+UNITS/BBOWMAN/BSENTRY1.ENT.XML (the game's own file with other bytes: no rule of this tool can scope it to the port)
+UNITS/BBRONZESPEARMAN/BBRONZESPEARMAN.ENT.XML (the game's own file with other bytes: no rule of this tool can scope it to the port)
+UNITS/BHERO1/BHERO1.ENT.XML (the game's own file with other bytes: no rule of this tool can scope it to the port)
+UNITS/BHIGHLANDER/BHIGHLANDER.ENT.XML (the game's own file with other bytes: no rule of this tool can scope it to the port)
+UNITS/BJAVELINEER/BJAVELINEER.ENT.XML (the game's own file with other bytes: no rule of this tool can scope it to the port)
+UNITS/BSHIELDBEARER/BSHIELDBEARER.ENT.XML (the game's own file with other bytes: no rule of this tool can scope it to the port)
+UNITS/BSWORDSMAN/BSWORDSMAN.ENT.XML (the game's own file with other bytes: no rule of this tool can scope it to the port)
+UNITS/CHERO1/CHERO1.ENT.XML (the game's own file with other bytes: no rule of this tool can scope it to the port)
+UNITS/CHERO2/CHERO2.ENT.XML (the game's own file with other bytes: no rule of this tool can scope it to the port)
+UNITS/CNUMIDIANRIDER/CNUMIDIANRIDER.ENT.XML (the game's own file with other bytes: no rule of this tool can scope it to the port)
+UNITS/EANUBISWARRIOR/EANUBISWARRIOR.ENT.XML (the game's own file with other bytes: no rule of this tool can scope it to the port)
+UNITS/EARCHER/EARCHER.ENT.XML (the game's own file with other bytes: no rule of this tool can scope it to the port)
+UNITS/EARCHER/ESENTRY.ENT.XML (the game's own file with other bytes: no rule of this tool can scope it to the port)
+UNITS/EARCHER/ESENTRY1.ENT.XML (the game's own file with other bytes: no rule of this tool can scope it to the port)
+UNITS/EAXETROWER/EAXETROWER.ENT.XML (the game's own file with other bytes: no rule of this tool can scope it to the port)
+UNITS/ECHARIOT/ECHARIOT.ENT.XML (the game's own file with other bytes: no rule of this tool can scope it to the port)
+UNITS/EGUARDIAN/EGUARDIAN.ENT.XML (the game's own file with other bytes: no rule of this tool can scope it to the port)
+UNITS/EHERO2/EHERO2.ENT.XML (the game's own file with other bytes: no rule of this tool can scope it to the port)
+UNITS/EHERO3/EHERO3.ENT.XML (the game's own file with other bytes: no rule of this tool can scope it to the port)
+UNITS/EHORUSWARRIOR/EHORUSWARRIOR.ENT.XML (the game's own file with other bytes: no rule of this tool can scope it to the port)
+UNITS/ESWORDSMAN/ESWORDSMAN.ENT.XML (the game's own file with other bytes: no rule of this tool can scope it to the port)
+UNITS/GAXEMAN/GAXEMAN.ENT.XML (the game's own file with other bytes: no rule of this tool can scope it to the port)
+UNITS/GSPEARMAN/GSPEARMAN.ENT.XML (the game's own file with other bytes: no rule of this tool can scope it to the port)
+UNITS/GSWORDSMAN/GSWORDSMAN.ENT.XML (the game's own file with other bytes: no rule of this tool can scope it to the port)
+UNITS/GTRIDENTWARRIOR/GTRIDENTWARRIOR.ENT.XML (the game's own file with other bytes: no rule of this tool can scope it to the port)
+UNITS/GWOMANWARRIOR/GWOMANWARRIOR.ENT.XML (the game's own file with other bytes: no rule of this tool can scope it to the port)
+UNITS/RCHARIOT/RCHARIOT.ENT.XML (the game's own file with other bytes: no rule of this tool can scope it to the port)
+UNITS/RHASTATUS/RHASTATUS.ENT.XML (the game's own file with other bytes: no rule of this tool can scope it to the port)
+UNITS/RPRAETORIAN/RPRAETORIAN.ENT.XML (the game's own file with other bytes: no rule of this tool can scope it to the port)
+UNITS/RPRINCIPLE/RPRINCIPLE.ENT.XML (the game's own file with other bytes: no rule of this tool can scope it to the port)
+UNITS/RSCOUT/RSCOUT.ENT.XML (the game's own file with other bytes: no rule of this tool can scope it to the port)
+UNITS/RTRIBUNE/RTRIBUNE.ENT.XML (the game's own file with other bytes: no rule of this tool can scope it to the port)
+UNITS/RVELIT/RVELIT.ENT.XML (the game's own file with other bytes: no rule of this tool can scope it to the port)
+UNITS/TAXEMAN/TAXEMAN.ENT.XML (the game's own file with other bytes: no rule of this tool can scope it to the port)
+UNITS/THUNTRESS/THUNTRESS.ENT.XML (the game's own file with other bytes: no rule of this tool can scope it to the port)
+UNITS/TMACEMAN/TMACEMAN.ENT.XML (the game's own file with other bytes: no rule of this tool can scope it to the port)
+UNITS/TSWORDSMAN/TSWORDSMAN.ENT.XML (the game's own file with other bytes: no rule of this tool can scope it to the port)
+UNITS/TTEUTONRIDER/TTEUTONRIDER.ENT.XML (the game's own file with other bytes: no rule of this tool can scope it to the port)
+UNITS/TTEUTONWOLF/TTEUTONWOLF.ENT.XML (the game's own file with other bytes: no rule of this tool can scope it to the port)
+UNITS/TVALKYRIE/TVALKYRIE.ENT.XML (the game's own file with other bytes: no rule of this tool can scope it to the port)
+
+DATA/ITEMS.XML: item:herb amulet of luck edits the game's element: left out
+DATA/ITEMS.XML: item:snake skin edits the game's element: left out
+DATA/ITEMS.XML: item:belt of snakes edits the game's element: left out
+DATA/ITEMS.XML: item:eagle feather edits the game's element: left out
+DATA/ITEMS.XML: item:--feather amulet-- edits the game's element: left out
+DATA/ITEMS.XML: item:gem of wisdom edits the game's element: left out
+DATA/SUBAI/ARENA_BEHAVIOR.VS: hunk at line 52 left out (not Greek): // New GHorse Tech  implementation
+DATA/SUBAI/ARENA_BEHAVIOR.VS: hunk at line 106 left out (not Greek): // New GHorse Tech  implementation
+DATA/SUBAI/ARENA_HIREHERO.VS: hunk at line 41 left out (not Greek): if(EnvReadString(.settlement, "ChooseRepublicanRome") == "re
+DATA/SUBAI/ARENA_HIREHERO.VS: hunk at line 44 left out (not Greek): if(EnvReadString(.settlement, "ChooseRepublicanRome") == "re
+DATA/SUBAI/ATTACK_INDEPENDENT_VERIFY.VS: hunk at line 12 left out (it edits the game's lines): if (bld.settlement.IsIndependent())
+DATA/SUBAI/BARRACK_TRAIN_EX.VS: hunk at line 31 left out (not Greek): else if (numparam == "myrmidon"){
+DATA/SUBAI/BDRUID_IDLE.VS: hunk at line 21 left out (it edits the game's lines): if (.race == Britain) if (EnvReadString(.player, "Britain Ch
+DATA/SUBAI/BDRUID_IDLE.VS: hunk at line 71 left out (it edits the game's lines): 
+DATA/SUBAI/BDRUID_IDLE.VS: hunk at line 99 left out (it edits the game's lines): .SetLastAttackTime();
+DATA/SUBAI/BDRUID_STAND_POSITION.VS: hunk at line 15 left out (it edits the game's lines): if (.race == Britain) if (EnvReadString(.player, "Britain Ch
+DATA/SUBAI/BDRUID_STAND_POSITION.VS: hunk at line 38 left out (it edits the game's lines): 
+DATA/SUBAI/BDRUID_STAND_POSITION.VS: hunk at line 57 left out (it edits the game's lines): .SetLastAttackTime();
+DATA/SUBAI/CREATE_BOAT_VERIFY.VS: hunk at line 14 left out (it edits the game's lines): if (nRace==RepublicanRome && cmdparam!="ShipRome")
+DATA/SUBAI/CREATE_BOAT_VERIFY.VS: hunk at line 18 left out (it edits the game's lines): if (nRace!=Egypt &&  nRace!=RepublicanRome && cmdparam!="Shi
+DATA/SUBAI/DRUID_HIDE_GROUND.VS: hunk at line 2 left out (not Greek): ObjList ol;
+DATA/SUBAI/DRUID_HIDE_GROUND.VS: hunk at line 5 left out (it edits the game's lines): int  time, retries, i, hide_stamina_cost;
+DATA/SUBAI/DRUID_HIDE_GROUND.VS: hunk at line 6 left out (not Greek): bool bExit = false;
+DATA/SUBAI/DRUID_HIDE_GROUND.VS: hunk at line 15 left out (it edits the game's lines): //timeStart = GetTime();
+DATA/SUBAI/DRUID_HIDE_GROUND.VS: hunk at line 17 left out (it edits the game's lines): 
+DATA/SUBAI/DRUID_HIDE_GROUND.VS: hunk at line 20 left out (it edits the game's lines): if (tgt.IsValid)
+DATA/SUBAI/DRUID_HIDE_GROUND.VS: hunk at line 22 left out (it edits the game's lines): //	tgt = this.AsDruid.FindUnitToHide;
+DATA/SUBAI/DRUID_HIDE_GROUND.VS: hunk at line 26 left out (it edits the game's lines): //while (!tgt.IsValid && retries > 0)
+DATA/SUBAI/DRUID_HIDE_GROUND.VS: hunk at line 29 left out (it edits the game's lines): //	tgt = this.AsDruid.FindUnitToHide;
+DATA/SUBAI/DRUID_ONDIE.VS: hunk at line 34 left out (it edits the game's lines): if (.race == Gaul || .race == ImperialRome)
+DATA/SUBAI/GDRUID_IDLE.VS: hunk at line 29 left out (it edits the game's lines): if (.race == Gaul) if (EnvReadString(.player, "Ritual Chambe
+DATA/SUBAI/GDRUID_STAND_POSITION.VS: hunk at line 21 left out (it edits the game's lines): if (.race == Gaul) if (EnvReadString(.player, "Ritual Chambe
+DATA/SUBAI/GGUARDPOST_SENTRIES.VS: hunk at line 492 left out (it edits the game's lines): if(pRace==RepublicanRome){
+DATA/SUBAI/GGUARDPOST_SENTRIES.VS: hunk at line 500 left out (it edits the game's lines): 
+DATA/SUBAI/HEROGRAVE_BEHAVIOR.VS: hunk at line 22 left out (not Greek): .SetMaxHealth(grave_lifetime+1);
+DATA/SUBAI/HEROGRAVE_BEHAVIOR.VS: hunk at line 97 left out (not Greek): .SetMaxHealth(.maxhealth -1);
+DATA/SUBAI/HERO_CAPTURE.VS: hunk at line 63 left out (not Greek): //modified by GureTaiga for Cessfire
+DATA/SUBAI/HERO_CAPTURE.VS: hunk at line 64 left out (not Greek): //modified by GureTaiga for Cessfire
+DATA/SUBAI/HERO_FORMATION_VERIFY.VS: hunk at line 11 left out (not Greek): if (cmd_name != "form-skirmish-menu")
+DATA/SUBAI/HERO_MOVE.VS: hunk at line 12 left out (not Greek): 
+DATA/SUBAI/HORSE_ENTER.VS: hunk at line 19 left out (it edits the game's lines): if(building.IsHeirOf("IVillage") == false && building.IsHeir
+DATA/SUBAI/HORSE_IDLE.VS: hunk at line 28 left out (it edits the game's lines): 
+DATA/SUBAI/HORSE_IDLE.VS: hunk at line 79 left out (it edits the game's lines): 
+DATA/SUBAI/IBERIAN_VILLAGE_TRAINISCOUT.VS: hunk at line 20 left out (it edits the game's lines): if(.race() != Iberia && .race() != Britain) //Only iberian v
+DATA/SUBAI/IBERIAN_VILLAGE_TRAINISCOUT.VS: hunk at line 33 left out (it edits the game's lines): 
+DATA/SUBAI/IBERIAN_VILLAGE_TRAINISCOUT.VS: hunk at line 37 left out (it edits the game's lines): if(.race() == Iberia){
+DATA/SUBAI/IBERIAN_VILLAGE_TRAINISCOUT.VS: hunk at line 47 left out (it edits the game's lines): //Se Ã¨ stabilita una rotta, l'esploratore si recherÃ  nell'
+DATA/SUBAI/IBERIAN_VILLAGE_TRAINISCOUT.VS: hunk at line 49 left out (not Greek): if( (.settlement().supplied().IsTTent() == false) && (scout.
+DATA/SUBAI/IBERIAN_VILLAGE_TRAINISCOUT.VS: hunk at line 53 left out (it edits the game's lines): 
+DATA/SUBAI/IBERIAN_VILLAGE_TRAINISCOUT.VS: hunk at line 56 left out (not Greek): scout.SetCommand("move", ptDest);
+DATA/SUBAI/MILITARY_ONDIE.VS: hunk at line 7 left out (not Greek): int random;
+DATA/SUBAI/MILITARY_ONDIE.VS: hunk at line 23 left out (not Greek): random = rand(4);
+DATA/SUBAI/MILITARY_ONDIE.VS: hunk at line 29 left out (not Greek): if(random == 1)
+DATA/SUBAI/MILITARY_ONDIE.VS: hunk at line 38 left out (not Greek): */
+DATA/SUBAI/ONFINISH_RESEARCH.VS: hunk at line 85 left out (not Greek): // Supplies implementation
+DATA/SUBAI/ONFINISH_RESEARCH.VS: hunk at line 208 left out (not Greek): }
+DATA/SUBAI/OUTPOST_BEHAVIOR.VS: hunk at line 305 left out (it edits the game's lines): if (.class=="COutpost")
+DATA/SUBAI/OUTPOST_BEHAVIOR.VS: hunk at line 309 left out (not Greek): Unit u1;
+DATA/SUBAI/OUTPOST_IDLE.VS: hunk at line 89 left out (not Greek): 
+DATA/SUBAI/SETTLEMENT_BEHAVIOR_AMBIENT.VS: hunk at line 51 left out (it edits the game's lines): 
+DATA/SUBAI/SETTLEMENT_BEHAVIOR_AMBIENT.VS: hunk at line 296 left out (it edits the game's lines): 
+DATA/SUBAI/SETTLEMENT_BEHAVIOR_AMBIENT.VS: hunk at line 320 left out (it edits the game's lines): 
+DATA/SUBAI/SETTLEMENT_BEHAVIOR_AMBIENT.VS: hunk at line 360 left out (it edits the game's lines): 
+DATA/SUBAI/SHAMAN_ADVANCE.VS: hunk at line 5 left out (it edits the game's lines): int  time, retries, try, j;
+DATA/SUBAI/SHAMAN_ADVANCE.VS: hunk at line 12 left out (it edits the game's lines): //tgt = .GetBestCurseTarget(); //THIS SCRIPT DOESN'T WORK!
+DATA/SUBAI/SHAMAN_ADVANCE.VS: hunk at line 16 left out (it edits the game's lines): //		tgt = .GetBestCurseTarget();
+DATA/SUBAI/SHAMAN_ADVANCE.VS: hunk at line 23 left out (it edits the game's lines): //	tgt = .GetBestCurseTarget();
+DATA/SUBAI/SHAMAN_IDLE.VS: hunk at line 3 left out (it edits the game's lines): 
+DATA/SUBAI/SHAMAN_IDLE.VS: hunk at line 11 left out (it edits the game's lines): int i, j;
+DATA/SUBAI/SHAMAN_IDLE.VS: hunk at line 15 left out (not Greek): ObjList ol;
+DATA/SUBAI/SHAMAN_IDLE.VS: hunk at line 31 left out (it edits the game's lines): if (.race == Germany) if (EnvReadString(.player, "German Cha
+DATA/SUBAI/SHAMAN_IDLE.VS: hunk at line 34 left out (it edits the game's lines): //tgt = .GetBestCurseTarget.AsUnit; // THIS SCRIPT DOESN'T W
+DATA/SUBAI/SHAMAN_IDLE.VS: hunk at line 50 left out (not Greek): if (!.IsVisible)
+DATA/SUBAI/SHAMAN_IDLE.VS: hunk at line 116 left out (it edits the game's lines): Sleep(.TimeToActionMoment());
+DATA/SUBAI/SHAMAN_IDLE.VS: hunk at line 191 left out (it edits the game's lines): if (action == 2){
+DATA/SUBAI/SHAMAN_STAND_POSITION.VS: hunk at line 9 left out (it edits the game's lines): int i, j;
+DATA/SUBAI/SHAMAN_STAND_POSITION.VS: hunk at line 13 left out (not Greek): ObjList ol;
+DATA/SUBAI/SHAMAN_STAND_POSITION.VS: hunk at line 24 left out (it edits the game's lines): if (.race == Germany) if (EnvReadString(.player, "German Cha
+DATA/SUBAI/SHAMAN_STAND_POSITION.VS: hunk at line 30 left out (it edits the game's lines): //tgt = .GetBestCurseTarget.AsUnit; //THIS SCRIPT DOESN'T WO
+DATA/SUBAI/SHAMAN_STAND_POSITION.VS: hunk at line 127 left out (it edits the game's lines): if (action == 2){
+DATA/SUBAI/STONEHENGE_BLOODLUST_DISPATCH.VS: hunk at line 4 left out (it edits the game's lines): int cost, i;
+DATA/SUBAI/STONEHENGE_BLOODLUST_DISPATCH.VS: hunk at line 16 left out (not Greek): //Clean interface
+DATA/SUBAI/TOWNHALL_BEHAVIOR_GUARD.VS: hunk at line 19 left out (not Greek): if(EnvReadInt(this.player,"Race")==0 && this.race>0)
+DATA/SUBAI/TOWNHALL_SENTRIES_CONTROL.VS: hunk at line 30 left out (it edits the game's lines): if (player != .player || .settlement.IsIndependent())
+DATA/SUBAI/TRAINEX_ONADDREMOVE.VS: hunk at line 30 left out (not Greek): else if (numparam == "myrmidon"){
+DATA/SUBAI/TRAIN_EX.VS: hunk at line 31 left out (not Greek): else if (numparam == "myrmidon"){
+DATA/SUBAI/TTENT_BEHAVIOR.VS: hunk at line 403 left out (it edits the game's lines): while (!qEnemies.IsEmpty() && olTeutonsOut.count == 0 && qFr
+DATA/SUBAI/UNIT_ATTACK.VS: hunk at line 15 left out (not Greek): if( (u.IsEnemy(this) == false && .player() != u.player()) ||
+DATA/SUBAI/UNIT_CAPTURE.VS: hunk at line 36 left out (it edits the game's lines): if (!b.IsHeirOf("TTent") && !b.IsHeirOf("CTent")) break;
+DATA/SUBAI/UNIT_CAPTURE.VS: hunk at line 40 left out (it edits the game's lines): int pX, pY, pL;
+DATA/SUBAI/UNIT_CAPTURE.VS: hunk at line 72 left out (not Greek): //modified by GureTaiga for ParryMode
+DATA/SUBAI/UNIT_CAPTURE.VS: hunk at line 80 left out (not Greek): //modified by GureTaiga for ParryMode
+DATA/SUBAI/UNIT_ENTER_PARRY_MODE.VS: hunk at line 4 left out (not Greek): ObjList ol;
+DATA/SUBAI/UNIT_ENTER_PARRY_MODE.VS: hunk at line 7 left out (not Greek): if (me.IsHeirOf("Hero")){
+DATA/SUBAI/UNIT_ENTER_PARRY_MODE_VERIFY.VS: hunk at line 1 left out (it edits the game's lines): //bool, ObjList objs
+DATA/SUBAI/UNIT_ENTER_PARRY_MODE_VERIFY.VS: hunk at line 4 left out (it edits the game's lines): ObjList ol;
+DATA/SUBAI/UNIT_ENTER_PARRY_MODE_VERIFY.VS: hunk at line 6 left out (it edits the game's lines): for(i=0; i<objs.count(); i+=1) {
+DATA/SUBAI/UNIT_ENTER_PARRY_MODE_VERIFY.VS: hunk at line 9 left out (it edits the game's lines): p = 0;
+DATA/SUBAI/UNIT_ENTER_PARRY_MODE_VERIFY.VS: hunk at line 20 left out (not Greek): }
+DATA/SUBAI/UNIT_ENTER_PARRY_MODE_VERIFY.VS: hunk at line 22 left out (it edits the game's lines): 
+DATA/SUBAI/UNIT_ENTER_PARRY_MODE_VERIFY.VS: hunk at line 25 left out (not Greek): 
+DATA/SUBAI/UNIT_LEAVE_PARRY_MODE.VS: hunk at line 4 left out (not Greek): ObjList ol;
+DATA/SUBAI/UNIT_LEAVE_PARRY_MODE.VS: hunk at line 7 left out (not Greek): if (me.IsHeirOf("Hero")){
+DATA/SUBAI/UNIT_LEAVE_PARRY_MODE_VERIFY.VS: hunk at line 1 left out (it edits the game's lines): //bool, ObjList objs
+DATA/SUBAI/UNIT_LEAVE_PARRY_MODE_VERIFY.VS: hunk at line 3 left out (not Greek): ObjList ol;
+DATA/SUBAI/UNIT_LEAVE_PARRY_MODE_VERIFY.VS: hunk at line 5 left out (it edits the game's lines): for(i=0; i<objs.count; i+=1) {
+DATA/SUBAI/UNIT_LEAVE_PARRY_MODE_VERIFY.VS: hunk at line 7 left out (it edits the game's lines): p = 0;
+DATA/SUBAI/UNIT_LEAVE_PARRY_MODE_VERIFY.VS: hunk at line 9 left out (not Greek): if (objs[i].IsHeirOf("Hero")){
+DATA/SUBAI/UNIT_ON_KILL.VS: hunk at line 92 left out (it edits the game's lines): if (.AsUnit().inherentlevel >= 12)
+DATA/SUBAI/UNIT_REVEALS.VS: hunk at line 1 left out (it edits the game's lines): //void, ObjList objs
+DATA/SUBAI/UNIT_REVEALS.VS: hunk at line 4 left out (not Greek): ObjList ol;
+DATA/SUBAI/UNIT_REVEALS.VS: hunk at line 6 left out (it edits the game's lines): for(i=0; i<objs.count(); i+=1){
+DATA/SUBAI/UNIT_REVEALS.VS: hunk at line 9 left out (it edits the game's lines): if(!u.IsVisible){
+DATA/SUBAI/UNIT_REVEALS.VS: hunk at line 25 left out (it edits the game's lines): 
+DATA/SUBAI/UNIT_REVEALS.VS: hunk at line 31 left out (not Greek): 
+DATA/SUBAI/UNIT_REVEALS_VERIFY.VS: hunk at line 1 left out (it edits the game's lines): //bool, ObjList objs
+DATA/SUBAI/UNIT_REVEALS_VERIFY.VS: hunk at line 3 left out (it edits the game's lines): int i, j, p;
+DATA/SUBAI/UNIT_REVEALS_VERIFY.VS: hunk at line 8 left out (it edits the game's lines): for(i=0; i<objs.count; i+=1) {
+DATA/SUBAI/UNIT_TRAIN.VS: hunk at line 41 left out (not Greek): //curaciÃ³n
+DATA/SUBAI/VERIFY_TRAINEX.VS: hunk at line 23 left out (not Greek): 
+DATA/SUBAI/VERIFY_TRAINEX.VS: hunk at line 37 left out (not Greek): }
+DATA/SUBAI/VILLAGE_TRAINPEASANT.VS: hunk at line 16 left out (it edits the game's lines): if (.race == ImperialRome){

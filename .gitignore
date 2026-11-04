@@ -45,6 +45,11 @@ ported/antioco-iii-el-grande/
 ported/asvrmod-vii-civs/
 .scratch/
 
+# Greek Mod 2.3 / 2.5.3 / 2.6.1: rebuilt from the original download + extras/greek-mod-2-*/ (tools/greek-2x-source.js, tools/port-140.js, tools/greek-2x.js; see its NOTES.md)
+ported/greek-mod-2-3/
+ported/greek-mod-2-5-3/
+ported/greek-mod-2-6-1/
+
 # Community Mod 12: rebuilt from the GameBanana rar + extras/community-mod-civs/ (tools/community-mod.js: unpacks into .scratch/; see its NOTES.md)
 ported/community-mod-civs/
 
