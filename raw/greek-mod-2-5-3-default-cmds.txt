@@ -1,0 +1,219 @@
+before: 166 classes lacking, 108 shadowed
+HeroW5roPraetorian (ref Hero) lacks (ground), Inn, ShipBattle, Tower, Gate, TTent, Building, Teleport, Wagon, Hero, ItemHolder; SHADOWED ShipBattle, Wagon, Hero
+HeroW5roTribune (ref Hero) lacks (ground), Inn, ShipBattle, Tower, Gate, TTent, Building, Teleport, Wagon, Hero, ItemHolder; SHADOWED ShipBattle, Wagon, Hero
+W5brBowman (ref Unit) lacks (ground), Inn, ShipBattle, Wagon, WildHorse, Hero, Tower, Gate, TTent, Building, Teleport, ItemHolder; SHADOWED ShipBattle, Wagon, WildHorse, Hero
+W5brCatapultUnit (ref RamUnit) lacks Inn, ShipBattle, Wagon, Hero, Building, ItemHolder; SHADOWED ShipBattle, Wagon, Hero
+W5brHighlandar (ref Unit) lacks (ground), Inn, ShipBattle, Wagon, WildHorse, Hero, Tower, Gate, TTent, Building, Teleport, ItemHolder; SHADOWED ShipBattle, Wagon, WildHorse, Hero
+W5brHighlander (ref Unit) lacks (ground), Inn, ShipBattle, Wagon, WildHorse, Hero, Tower, Gate, TTent, Building, Teleport, ItemHolder; SHADOWED ShipBattle, Wagon, WildHorse, Hero
+W5britainHero (ref Hero) lacks (ground), Inn, ShipBattle, Tower, Gate, TTent, Building, Teleport, Wagon, Hero, ItemHolder; SHADOWED ShipBattle, Wagon, Hero
+W5brShieldBearer (ref Unit) lacks (ground), Inn, ShipBattle, Wagon, WildHorse, Hero, Tower, Gate, TTent, Building, Teleport, ItemHolder; SHADOWED ShipBattle, Wagon, WildHorse, Hero
+W5brSwordsman (ref Unit) lacks (ground), Inn, ShipBattle, Wagon, WildHorse, Hero, Tower, Gate, TTent, Building, Teleport, ItemHolder; SHADOWED ShipBattle, Wagon, WildHorse, Hero
+W5brVikingLord (ref Unit) lacks (ground), Inn, ShipBattle, Wagon, WildHorse, Hero, Tower, Gate, TTent, Building, Teleport, ItemHolder; SHADOWED ShipBattle, Wagon, WildHorse, Hero
+W5brVillager (ref Peasant) lacks Inn, Catapult, Building
+W5brVillagerAmbient (ref PeasantAmbient) lacks Inn, Building
+W5brWVillagerAmbient (ref PeasantAmbient) lacks Inn, Building
+W5caBerberAssassin (ref Unit) lacks (ground), Inn, ShipBattle, Wagon, WildHorse, Hero, Tower, Gate, TTent, Building, Teleport, ItemHolder; SHADOWED ShipBattle, Wagon, WildHorse, Hero
+W5caLibyanFootman (ref Unit) lacks (ground), Inn, ShipBattle, Wagon, WildHorse, Hero, Tower, Gate, TTent, Building, Teleport, ItemHolder; SHADOWED ShipBattle, Wagon, WildHorse, Hero
+W5caMaceman (ref Unit) lacks (ground), Inn, ShipBattle, Wagon, WildHorse, Hero, Tower, Gate, TTent, Building, Teleport, ItemHolder; SHADOWED ShipBattle, Wagon, WildHorse, Hero
+W5caMacemen (ref Unit) lacks (ground), Inn, ShipBattle, Wagon, WildHorse, Hero, Tower, Gate, TTent, Building, Teleport, ItemHolder; SHADOWED ShipBattle, Wagon, WildHorse, Hero
+W5caNoble (ref Unit) lacks (ground), Inn, ShipBattle, Wagon, WildHorse, Hero, Tower, Gate, TTent, Building, Teleport, ItemHolder; SHADOWED ShipBattle, Wagon, WildHorse, Hero
+W5caVillager (ref Peasant) lacks Inn, Catapult, Building
+W5caVillagerAmbient (ref PeasantAmbient) lacks Inn, Building
+W5caWarElephant (ref Unit) lacks (ground), Inn, ShipBattle, Wagon, WildHorse, Hero, Tower, Gate, TTent, Building, Teleport, ItemHolder; SHADOWED ShipBattle, Wagon, WildHorse, Hero
+W5caWVillagerAmbient (ref PeasantAmbient) lacks Inn, Building
+W5egAnubisWarrior (ref Unit) lacks (ground), Inn, ShipBattle, Wagon, WildHorse, Hero, Tower, Gate, TTent, Building, Teleport, ItemHolder; SHADOWED ShipBattle, Wagon, WildHorse, Hero
+W5egArcher (ref Unit) lacks (ground), Inn, ShipBattle, Wagon, WildHorse, Hero, Tower, Gate, TTent, Building, Teleport, ItemHolder; SHADOWED ShipBattle, Wagon, WildHorse, Hero
+W5egChariot (ref Unit) lacks (ground), Inn, ShipBattle, Wagon, WildHorse, Hero, Tower, Gate, TTent, Building, Teleport, ItemHolder; SHADOWED ShipBattle, Wagon, WildHorse, Hero
+W5egGuardian (ref Unit) lacks (ground), Inn, ShipBattle, Wagon, WildHorse, Hero, Tower, Gate, TTent, Building, Teleport, ItemHolder; SHADOWED ShipBattle, Wagon, WildHorse, Hero
+W5egHorusWarrior (ref Unit) lacks (ground), Inn, ShipBattle, Wagon, WildHorse, Hero, Tower, Gate, TTent, Building, Teleport, ItemHolder; SHADOWED ShipBattle, Wagon, WildHorse, Hero
+W5egSwordsman (ref Unit) lacks (ground), Inn, ShipBattle, Wagon, WildHorse, Hero, Tower, Gate, TTent, Building, Teleport, ItemHolder; SHADOWED ShipBattle, Wagon, WildHorse, Hero
+W5egVillager (ref Peasant) lacks Inn, Catapult, Building
+W5egVillagerAmbient (ref PeasantAmbient) lacks Inn, Building
+W5egWVillagerAmbient (ref PeasantAmbient) lacks Inn, Building
+W5gaArcher (ref Unit) lacks (ground), Inn, ShipBattle, Wagon, WildHorse, Hero, Tower, Gate, TTent, Building, Teleport, ItemHolder; SHADOWED ShipBattle, Wagon, WildHorse, Hero
+W5gaAxeman (ref Unit) lacks (ground), Inn, ShipBattle, Wagon, WildHorse, Hero, Tower, Gate, TTent, Building, Teleport, ItemHolder; SHADOWED ShipBattle, Wagon, WildHorse, Hero
+W5gaGhost (ref Unit) lacks (ground), Inn, ShipBattle, Wagon, WildHorse, Hero, Tower, Gate, TTent, Building, Teleport, ItemHolder; SHADOWED ShipBattle, Wagon, WildHorse, Hero
+W5gaSwordsman (ref Unit) lacks (ground), Inn, ShipBattle, Wagon, WildHorse, Hero, Tower, Gate, TTent, Building, Teleport, ItemHolder; SHADOWED ShipBattle, Wagon, WildHorse, Hero
+W5gaTridentWarriar (ref Unit) lacks (ground), Inn, ShipBattle, Wagon, WildHorse, Hero, Tower, Gate, TTent, Building, Teleport, ItemHolder; SHADOWED ShipBattle, Wagon, WildHorse, Hero
+W5gaTridentWarrior (ref Unit) lacks (ground), Inn, ShipBattle, Wagon, WildHorse, Hero, Tower, Gate, TTent, Building, Teleport, ItemHolder; SHADOWED ShipBattle, Wagon, WildHorse, Hero
+W5gaVillager (ref Peasant) lacks Inn, Catapult, Building
+W5gaVillagerAmbient (ref PeasantAmbient) lacks Inn, Building
+W5gaVillager_Apollonia (ref Peasant) lacks Inn, Catapult, Building
+W5gaWomanWarrior (ref Unit) lacks (ground), Inn, ShipBattle, Wagon, WildHorse, Hero, Tower, Gate, TTent, Building, Teleport, ItemHolder; SHADOWED ShipBattle, Wagon, WildHorse, Hero
+W5gaWVillagerAmbient (ref PeasantAmbient) lacks Inn, Building
+W5geArcher (ref Unit) lacks (ground), Inn, ShipBattle, Wagon, WildHorse, Hero, Tower, Gate, TTent, Building, Teleport, ItemHolder; SHADOWED ShipBattle, Wagon, WildHorse, Hero
+W5geAxeman (ref Unit) lacks (ground), Inn, ShipBattle, Wagon, WildHorse, Hero, Tower, Gate, TTent, Building, Teleport, ItemHolder; SHADOWED ShipBattle, Wagon, WildHorse, Hero
+W5geCatapultUnit (ref RamUnit) lacks Inn, ShipBattle, Wagon, Hero, Building, ItemHolder; SHADOWED ShipBattle, Wagon, Hero
+W5geMaceman (ref Unit) lacks (ground), Inn, ShipBattle, Wagon, WildHorse, Hero, Tower, Gate, TTent, Building, Teleport, ItemHolder; SHADOWED ShipBattle, Wagon, WildHorse, Hero
+W5geSwordsman (ref Unit) lacks (ground), Inn, ShipBattle, Wagon, WildHorse, Hero, Tower, Gate, TTent, Building, Teleport, ItemHolder; SHADOWED ShipBattle, Wagon, WildHorse, Hero
+W5geTeutonArcher (ref Unit) lacks (ground), Inn, ShipBattle, Wagon, WildHorse, Hero, Tower, Gate, TTent, Building, Teleport, ItemHolder; SHADOWED ShipBattle, Wagon, WildHorse, Hero
+W5geVillager (ref Peasant) lacks Inn, Catapult, Building
+W5geVillagerAmbient (ref PeasantAmbient) lacks Inn, Building
+W5geWVillagerAmbient (ref PeasantAmbient) lacks Inn, Building
+W5grChariot (ref Unit) lacks (ground), Inn, ShipBattle, Wagon, WildHorse, Hero, Tower, Gate, TTent, Building, Teleport, ItemHolder; SHADOWED ShipBattle, Wagon, WildHorse, Hero
+W5grHypaspista (ref Unit) lacks (ground), Inn, ShipBattle, Wagon, WildHorse, Hero, Tower, Gate, TTent, Building, Teleport, ItemHolder; SHADOWED ShipBattle, Wagon, WildHorse, Hero
+W5grMyrmidon_Javelin (ref Unit) lacks (ground), Inn, ShipBattle, Wagon, WildHorse, Hero, Tower, Gate, TTent, Building, Teleport, ItemHolder; SHADOWED ShipBattle, Wagon, WildHorse, Hero
+W5grPeltast (ref Unit) lacks (ground), Inn, ShipBattle, Wagon, WildHorse, Hero, Tower, Gate, TTent, Building, Teleport, ItemHolder; SHADOWED ShipBattle, Wagon, WildHorse, Hero
+W5grToxotes (ref Unit) lacks (ground), Inn, ShipBattle, Wagon, WildHorse, Hero, Tower, Gate, TTent, Building, Teleport, ItemHolder; SHADOWED ShipBattle, Wagon, WildHorse, Hero
+W5grVillager (ref Peasant) lacks Inn, Catapult, Building
+W5grVillagerAmbient (ref PeasantAmbient) lacks Inn, Building
+W5grWVillagerAmbient (ref PeasantAmbient) lacks Inn, Building
+W5ibArcher (ref Unit) lacks (ground), Inn, ShipBattle, Wagon, WildHorse, Hero, Tower, Gate, TTent, Building, Teleport, ItemHolder; SHADOWED ShipBattle, Wagon, WildHorse, Hero
+W5ibDefendar (ref Unit) lacks (ground), Inn, ShipBattle, Wagon, WildHorse, Hero, Tower, Gate, TTent, Building, Teleport, ItemHolder; SHADOWED ShipBattle, Wagon, WildHorse, Hero
+W5ibEliteGuard (ref Unit) lacks (ground), Inn, ShipBattle, Wagon, WildHorse, Hero, Tower, Gate, TTent, Building, Teleport, ItemHolder; SHADOWED ShipBattle, Wagon, WildHorse, Hero
+W5ibMilitiaman (ref Unit) lacks (ground), Inn, ShipBattle, Wagon, WildHorse, Hero, Tower, Gate, TTent, Building, Teleport, ItemHolder; SHADOWED ShipBattle, Wagon, WildHorse, Hero
+W5ibMountaineer (ref Unit) lacks (ground), Inn, ShipBattle, Wagon, WildHorse, Hero, Tower, Gate, TTent, Building, Teleport, ItemHolder; SHADOWED ShipBattle, Wagon, WildHorse, Hero
+W5ibSlinger (ref Unit) lacks (ground), Inn, ShipBattle, Wagon, WildHorse, Hero, Tower, Gate, TTent, Building, Teleport, ItemHolder; SHADOWED ShipBattle, Wagon, WildHorse, Hero
+W5ibVillager (ref Peasant) lacks Inn, Catapult, Building
+W5ibVillagerAmbient (ref PeasantAmbient) lacks Inn, Building
+W5ibWVillagerAmbient (ref PeasantAmbient) lacks Inn, Building
+W5imArcher (ref Unit) lacks (ground), Inn, ShipBattle, Wagon, WildHorse, Hero, Tower, Gate, TTent, Building, Teleport, ItemHolder; SHADOWED ShipBattle, Wagon, WildHorse, Hero
+W5imAstatus (ref Unit) lacks (ground), Inn, ShipBattle, Wagon, WildHorse, Hero, Tower, Gate, TTent, Building, Teleport, ItemHolder; SHADOWED ShipBattle, Wagon, WildHorse, Hero
+W5imChariot (ref Unit) lacks (ground), Inn, ShipBattle, Wagon, WildHorse, Hero, Tower, Gate, TTent, Building, Teleport, ItemHolder; SHADOWED ShipBattle, Wagon, WildHorse, Hero
+W5imGladiator (ref Unit) lacks (ground), Inn, ShipBattle, Wagon, WildHorse, Hero, Tower, Gate, TTent, Building, Teleport, ItemHolder; SHADOWED ShipBattle, Wagon, WildHorse, Hero
+W5imHastatus (ref Unit) lacks (ground), Inn, ShipBattle, Wagon, WildHorse, Hero, Tower, Gate, TTent, Building, Teleport, ItemHolder; SHADOWED ShipBattle, Wagon, WildHorse, Hero
+W5imLiberatas (ref Unit) lacks (ground), Inn, ShipBattle, Wagon, WildHorse, Hero, Tower, Gate, TTent, Building, Teleport, ItemHolder; SHADOWED ShipBattle, Wagon, WildHorse, Hero
+W5imLiberatus (ref Unit) lacks (ground), Inn, ShipBattle, Wagon, WildHorse, Hero, Tower, Gate, TTent, Building, Teleport, ItemHolder; SHADOWED ShipBattle, Wagon, WildHorse, Hero
+W5imTribune (ref Unit) lacks (ground), Inn, ShipBattle, Wagon, WildHorse, Hero, Tower, Gate, TTent, Building, Teleport, ItemHolder; SHADOWED ShipBattle, Wagon, WildHorse, Hero
+W5imVillager (ref Peasant) lacks Inn, Catapult, Building
+W5imVillagerAmbient (ref PeasantAmbient) lacks Inn, Building
+W5imVillager_Apollonia (ref Peasant) lacks Inn, Catapult, Building
+W5imWVillagerAmbient (ref PeasantAmbient) lacks Inn, Building
+W5puArcher (ref Unit) lacks (ground), Inn, ShipBattle, Wagon, WildHorse, Hero, Tower, Gate, TTent, Building, Teleport, ItemHolder; SHADOWED ShipBattle, Wagon, WildHorse, Hero
+W5puAstatus (ref Unit) lacks (ground), Inn, ShipBattle, Wagon, WildHorse, Hero, Tower, Gate, TTent, Building, Teleport, ItemHolder; SHADOWED ShipBattle, Wagon, WildHorse, Hero
+W5puChariot (ref Unit) lacks (ground), Inn, ShipBattle, Wagon, WildHorse, Hero, Tower, Gate, TTent, Building, Teleport, ItemHolder; SHADOWED ShipBattle, Wagon, WildHorse, Hero
+W5puGladiator (ref Unit) lacks (ground), Inn, ShipBattle, Wagon, WildHorse, Hero, Tower, Gate, TTent, Building, Teleport, ItemHolder; SHADOWED ShipBattle, Wagon, WildHorse, Hero
+W5puHastatus (ref Unit) lacks (ground), Inn, ShipBattle, Wagon, WildHorse, Hero, Tower, Gate, TTent, Building, Teleport, ItemHolder; SHADOWED ShipBattle, Wagon, WildHorse, Hero
+W5puLiberatas (ref Unit) lacks (ground), Inn, ShipBattle, Wagon, WildHorse, Hero, Tower, Gate, TTent, Building, Teleport, ItemHolder; SHADOWED ShipBattle, Wagon, WildHorse, Hero
+W5puLiberatus (ref Unit) lacks (ground), Inn, ShipBattle, Wagon, WildHorse, Hero, Tower, Gate, TTent, Building, Teleport, ItemHolder; SHADOWED ShipBattle, Wagon, WildHorse, Hero
+W5puTribune (ref Unit) lacks (ground), Inn, ShipBattle, Wagon, WildHorse, Hero, Tower, Gate, TTent, Building, Teleport, ItemHolder; SHADOWED ShipBattle, Wagon, WildHorse, Hero
+W5puVillager (ref Peasant) lacks Inn, Catapult, Building
+W5puVillagerAmbient (ref PeasantAmbient) lacks Inn, Building
+W5puVillager_Apollonia (ref Peasant) lacks Inn, Catapult, Building
+W5puWVillagerAmbient (ref PeasantAmbient) lacks Inn, Building
+W5roArcher (ref Unit) lacks (ground), Inn, ShipBattle, Wagon, WildHorse, Hero, Tower, Gate, TTent, Building, Teleport, ItemHolder; SHADOWED ShipBattle, Wagon, WildHorse, Hero
+W5roAstatus (ref Unit) lacks (ground), Inn, ShipBattle, Wagon, WildHorse, Hero, Tower, Gate, TTent, Building, Teleport, ItemHolder; SHADOWED ShipBattle, Wagon, WildHorse, Hero
+W5roChariot (ref Unit) lacks (ground), Inn, ShipBattle, Wagon, WildHorse, Hero, Tower, Gate, TTent, Building, Teleport, ItemHolder; SHADOWED ShipBattle, Wagon, WildHorse, Hero
+W5roGladiator (ref Unit) lacks (ground), Inn, ShipBattle, Wagon, WildHorse, Hero, Tower, Gate, TTent, Building, Teleport, ItemHolder; SHADOWED ShipBattle, Wagon, WildHorse, Hero
+W5roHastatus (ref Unit) lacks (ground), Inn, ShipBattle, Wagon, WildHorse, Hero, Tower, Gate, TTent, Building, Teleport, ItemHolder; SHADOWED ShipBattle, Wagon, WildHorse, Hero
+W5roLiberatas (ref Unit) lacks (ground), Inn, ShipBattle, Wagon, WildHorse, Hero, Tower, Gate, TTent, Building, Teleport, ItemHolder; SHADOWED ShipBattle, Wagon, WildHorse, Hero
+W5roLiberatus (ref Unit) lacks (ground), Inn, ShipBattle, Wagon, WildHorse, Hero, Tower, Gate, TTent, Building, Teleport, ItemHolder; SHADOWED ShipBattle, Wagon, WildHorse, Hero
+W5roTribune (ref Unit) lacks (ground), Inn, ShipBattle, Wagon, WildHorse, Hero, Tower, Gate, TTent, Building, Teleport, ItemHolder; SHADOWED ShipBattle, Wagon, WildHorse, Hero
+W5roVillager (ref Peasant) lacks Inn, Catapult, Building
+W5roVillagerAmbient (ref PeasantAmbient) lacks Inn, Building
+W5roVillager_Apollonia (ref Peasant) lacks Inn, Catapult, Building
+W5roWVillagerAmbient (ref PeasantAmbient) lacks Inn, Building
+W5brJavelineer (ref Unit) lacks (ground), Inn, ShipBattle, Wagon, WildHorse, Hero, Tower, Gate, TTent, Building, Teleport, ItemHolder; SHADOWED ShipBattle, Wagon, WildHorse, Hero
+W5brSentry (ref Sentry) lacks Building
+W5brWVillager (ref Peasant) lacks Inn, Catapult, Building
+W5caHero4 (ref Hero) lacks (ground), Inn, ShipBattle, Tower, Gate, TTent, Building, Teleport, Wagon, Hero, ItemHolder; SHADOWED ShipBattle, Wagon, Hero
+W5caJavelinThrower (ref Unit) lacks (ground), Inn, ShipBattle, Wagon, WildHorse, Hero, Tower, Gate, TTent, Building, Teleport, ItemHolder; SHADOWED ShipBattle, Wagon, WildHorse, Hero
+W5caNumidianRider (ref Unit) lacks (ground), Inn, ShipBattle, Wagon, WildHorse, Hero, Tower, Gate, TTent, Building, Teleport, ItemHolder; SHADOWED ShipBattle, Wagon, WildHorse, Hero
+W5carthageHero (ref Hero) lacks (ground), Inn, ShipBattle, Tower, Gate, TTent, Building, Teleport, Wagon, Hero, ItemHolder; SHADOWED ShipBattle, Wagon, Hero
+W5caSentry (ref Sentry) lacks Building
+W5caWVillager (ref Peasant) lacks Inn, Catapult, Building
+W5egAxetrower (ref Unit) lacks (ground), Inn, ShipBattle, Wagon, WildHorse, Hero, Tower, Gate, TTent, Building, Teleport, ItemHolder; SHADOWED ShipBattle, Wagon, WildHorse, Hero
+W5egSentry (ref Sentry) lacks Building
+W5egWVillager (ref Peasant) lacks Inn, Catapult, Building
+W5egyptHero (ref Hero) lacks (ground), Inn, ShipBattle, Tower, Gate, TTent, Building, Teleport, Wagon, Hero, ItemHolder; SHADOWED ShipBattle, Wagon, Hero
+W5gaHeroThracian (ref Hero) lacks (ground), Inn, ShipBattle, Tower, Gate, TTent, Building, Teleport, Wagon, Hero, ItemHolder; SHADOWED ShipBattle, Wagon, Hero
+W5gaHeroWoman (ref Hero) lacks (ground), Inn, ShipBattle, Tower, Gate, TTent, Building, Teleport, Wagon, Hero, ItemHolder; SHADOWED ShipBattle, Wagon, Hero
+W5gaHorseman (ref Unit) lacks (ground), Inn, ShipBattle, Wagon, WildHorse, Hero, Tower, Gate, TTent, Building, Teleport, ItemHolder; SHADOWED ShipBattle, Wagon, WildHorse, Hero
+W5gaOathsworn (ref Unit) lacks (ground), Inn, ShipBattle, Wagon, WildHorse, Hero, Tower, Gate, TTent, Building, Teleport, ItemHolder; SHADOWED ShipBattle, Wagon, WildHorse, Hero
+W5gaSentry (ref Sentry) lacks Building
+W5gaulHero (ref Hero) lacks (ground), Inn, ShipBattle, Tower, Gate, TTent, Building, Teleport, Wagon, Hero, ItemHolder; SHADOWED ShipBattle, Wagon, Hero
+W5gaWVillager (ref Peasant) lacks Inn, Catapult, Building
+W5gaWVillager_Apollonia (ref Peasant) lacks Inn, Catapult, Building
+W5geHuntress (ref Unit) lacks (ground), Inn, ShipBattle, Wagon, WildHorse, Hero, Tower, Gate, TTent, Building, Teleport, ItemHolder; SHADOWED ShipBattle, Wagon, WildHorse, Hero
+W5geNHero1 (ref Hero) lacks (ground), Inn, ShipBattle, Tower, Gate, TTent, Building, Teleport, Wagon, Hero, ItemHolder; SHADOWED ShipBattle, Wagon, Hero
+W5germanyHero (ref Hero) lacks (ground), Inn, ShipBattle, Tower, Gate, TTent, Building, Teleport, Wagon, Hero, ItemHolder; SHADOWED ShipBattle, Wagon, Hero
+W5geSentry (ref Sentry) lacks Building
+W5geTeutonRider (ref Unit) lacks (ground), Inn, ShipBattle, Wagon, WildHorse, Hero, Tower, Gate, TTent, Building, Teleport, ItemHolder; SHADOWED ShipBattle, Wagon, WildHorse, Hero
+W5geTeutonWolf (ref Unit) lacks (ground), Inn, ShipBattle, Wagon, WildHorse, Hero, Tower, Gate, TTent, Building, Teleport, ItemHolder; SHADOWED ShipBattle, Wagon, WildHorse, Hero
+W5geValkyria (ref Unit) lacks (ground), Inn, ShipBattle, Wagon, WildHorse, Hero, Tower, Gate, TTent, Building, Teleport, ItemHolder; SHADOWED ShipBattle, Wagon, WildHorse, Hero
+W5geValkyrie (ref Unit) lacks (ground), Inn, ShipBattle, Wagon, WildHorse, Hero, Tower, Gate, TTent, Building, Teleport, ItemHolder; SHADOWED ShipBattle, Wagon, WildHorse, Hero
+W5geWVillager (ref Peasant) lacks Inn, Catapult, Building
+W5grCataphract (ref Unit) lacks (ground), Inn, ShipBattle, Wagon, WildHorse, Hero, Tower, Gate, TTent, Building, Teleport, ItemHolder; SHADOWED ShipBattle, Wagon, WildHorse, Hero
+W5grGreekHero (ref Hero) lacks (ground), Inn, ShipBattle, Tower, Gate, TTent, Building, Teleport, Wagon, Hero, ItemHolder; SHADOWED ShipBattle, Wagon, Hero
+W5grHoplite (ref Unit) lacks (ground), Inn, ShipBattle, Wagon, WildHorse, Hero, Tower, Gate, TTent, Building, Teleport, ItemHolder; SHADOWED ShipBattle, Wagon, WildHorse, Hero
+W5grSentry (ref Sentry) lacks Building
+W5grWVillager (ref Peasant) lacks Inn, Catapult, Building
+W5ibCavalry (ref Unit) lacks (ground), Inn, ShipBattle, Wagon, WildHorse, Hero, Tower, Gate, TTent, Building, Teleport, ItemHolder; SHADOWED ShipBattle, Wagon, WildHorse, Hero
+W5iberiaHero (ref Hero) lacks (ground), Inn, ShipBattle, Tower, Gate, TTent, Building, Teleport, Wagon, Hero, ItemHolder; SHADOWED ShipBattle, Wagon, Hero
+W5ibHero4 (ref Hero) lacks (ground), Inn, ShipBattle, Tower, Gate, TTent, Building, Teleport, Wagon, Hero, ItemHolder; SHADOWED ShipBattle, Wagon, Hero
+W5ibScout (ref Unit) lacks (ground), Inn, ShipBattle, Wagon, WildHorse, Hero, Tower, Gate, TTent, Building, Teleport, ItemHolder; SHADOWED ShipBattle, Wagon, WildHorse, Hero
+W5ibSentry (ref Sentry) lacks Building
+W5ibWVillager (ref Peasant) lacks Inn, Catapult, Building
+W5imHorseman (ref Unit) lacks (ground), Inn, ShipBattle, Wagon, WildHorse, Hero, Tower, Gate, TTent, Building, Teleport, ItemHolder; SHADOWED ShipBattle, Wagon, WildHorse, Hero
+W5imImperialRomanHero (ref Hero) lacks (ground), Inn, ShipBattle, Tower, Gate, TTent, Building, Teleport, Wagon, Hero, ItemHolder; SHADOWED ShipBattle, Wagon, Hero
+W5imperialHero (ref Hero) lacks (ground), Inn, ShipBattle, Tower, Gate, TTent, Building, Teleport, Wagon, Hero, ItemHolder; SHADOWED ShipBattle, Wagon, Hero
+W5imScout (ref Unit) lacks (ground), Inn, ShipBattle, Wagon, WildHorse, Hero, Tower, Gate, TTent, Building, Teleport, ItemHolder; SHADOWED ShipBattle, Wagon, WildHorse, Hero
+W5imSentry (ref Sentry) lacks Building
+W5imVelit (ref Unit) lacks (ground), Inn, ShipBattle, Wagon, WildHorse, Hero, Tower, Gate, TTent, Building, Teleport, ItemHolder; SHADOWED ShipBattle, Wagon, WildHorse, Hero
+W5imWVillager (ref Peasant) lacks Inn, Catapult, Building
+W5imWVillager_Apollonia (ref Peasant) lacks Inn, Catapult, Building
+W5puAncientRomanHero (ref Hero) lacks (ground), Inn, ShipBattle, Tower, Gate, TTent, Building, Teleport, Wagon, Hero, ItemHolder; SHADOWED ShipBattle, Wagon, Hero
+W5puHorseman (ref Unit) lacks (ground), Inn, ShipBattle, Wagon, WildHorse, Hero, Tower, Gate, TTent, Building, Teleport, ItemHolder; SHADOWED ShipBattle, Wagon, WildHorse, Hero
+W5punicHero (ref Hero) lacks (ground), Inn, ShipBattle, Tower, Gate, TTent, Building, Teleport, Wagon, Hero, ItemHolder; SHADOWED ShipBattle, Wagon, Hero
+W5puScout (ref Unit) lacks (ground), Inn, ShipBattle, Wagon, WildHorse, Hero, Tower, Gate, TTent, Building, Teleport, ItemHolder; SHADOWED ShipBattle, Wagon, WildHorse, Hero
+W5puSentry (ref Sentry) lacks Building
+W5puWVillager (ref Peasant) lacks Inn, Catapult, Building
+W5puWVillager_Apollonia (ref Peasant) lacks Inn, Catapult, Building
+W5roHorseman (ref Unit) lacks (ground), Inn, ShipBattle, Wagon, WildHorse, Hero, Tower, Gate, TTent, Building, Teleport, ItemHolder; SHADOWED ShipBattle, Wagon, WildHorse, Hero
+W5romeHero (ref Hero) lacks (ground), Inn, ShipBattle, Tower, Gate, TTent, Building, Teleport, Wagon, Hero, ItemHolder; SHADOWED ShipBattle, Wagon, Hero
+W5roScout (ref Unit) lacks (ground), Inn, ShipBattle, Wagon, WildHorse, Hero, Tower, Gate, TTent, Building, Teleport, ItemHolder; SHADOWED ShipBattle, Wagon, WildHorse, Hero
+W5roSentry (ref Sentry) lacks Building
+W5roWVillager (ref Peasant) lacks Inn, Catapult, Building
+W5roWVillager_Apollonia (ref Peasant) lacks Inn, Catapult, Building
+
+after: 0 lacking
+
+48 classes with a target in two blocks of their own:
+HeroW5roPraetorian: walltarget
+HeroW5roTribune: walltarget
+W5brDruid: unit
+W5britainHero: walltarget
+W5brSentry: unit
+W5caHero4: walltarget
+W5carthageHero: walltarget
+W5caSentry: unit
+W5egSentry: unit
+W5egyptHero: walltarget
+W5gaDruid: unit
+W5gaHeroThracian: walltarget
+W5gaHeroWoman: walltarget
+W5gaSentry: unit
+W5gaulHero: walltarget
+W5geNHero1: walltarget
+W5germanyHero: walltarget
+W5geSentry: unit
+W5grGreekHero: walltarget, ctent
+W5grGuardPostSentry: unit
+W5grHero1: walltarget, ctent
+W5grHero1a: walltarget, ctent
+W5grHero1b: walltarget, ctent
+W5grHero1c: walltarget, ctent
+W5grHero2: walltarget, ctent
+W5grHero2a: walltarget, ctent
+W5grHero2b: walltarget, ctent
+W5grHero3: walltarget, ctent
+W5grHero3a: walltarget, ctent
+W5grHero3b: walltarget, ctent
+W5grHero3c: walltarget, ctent
+W5grSentry: unit
+W5grSentry1: unit
+W5ibEnchantress: unit
+W5iberiaHero: walltarget
+W5ibHero4: walltarget
+W5ibSentry: unit
+W5imImperialRomanHero: walltarget
+W5imperialHero: walltarget
+W5imPriest: unit
+W5imSentry: unit
+W5puAncientRomanHero: walltarget
+W5punicHero: walltarget
+W5puPriest: unit
+W5puSentry: unit
+W5romeHero: walltarget
+W5roPriest: unit
+W5roSentry: unit

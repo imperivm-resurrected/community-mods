@@ -5,19 +5,27 @@ const fs = require("fs"), path = require("path"), os = require("os"), cp = requi
 // Line diff of two scripts -> script patch directives (@after/@before/@bottom). Only the pure insertions whose text passes `keep` (the part
 // that belongs to the mod's civilization) are kept; the others go to `report`. An anchor is a line of the original that holds text no
 // earlier line holds; if the line the insertion follows or precedes is not one, it is reported and left out.
+// The patch is then APPLIED to hdText with the engine's algorithm (tools/lib/script-patch.js) and compared, line by line and ignoring indentation and blank
+// lines, with what the kept hunks say the script must be (the game's lines with each kept hunk replaced by the mod's): a difference stops the build (a patch that
+// does not give what it was cut from is wrong, and a script patch is global). PATCH_CHECK=warn only reports it.
 function vsPatch(hdText, modText, keep, label, report) {
+  const { applyScriptPatch } = require("./script-patch.js");
+  const kept = [];                                                          // { at, k, add } the hunks that became directives: for the expected text
   const tmp = fs.mkdtempSync(path.join(os.tmpdir(), "g18-")), a = path.join(tmp, "a"), b = path.join(tmp, "b");
   const A = hdText.replace(/\r/g, "").split("\n"), B = modText.replace(/\r/g, "").split("\n");
   fs.writeFileSync(a, A.join("\n")); fs.writeFileSync(b, B.join("\n"));
   const d = cp.spawnSync("diff", ["-U0", a, b], { encoding: "utf8" }).stdout; fs.rmSync(tmp, { recursive: true });
   const safe = i => i >= 1 && i <= A.length && A[i - 1].trim().length >= 6 && A.findIndex(l => l.includes(A[i - 1].trim())) === i - 1;
-  const out = [];
+  const out = [], hunks = [];
   for (const h of d.split(/^(?=@@ )/m).slice(1)) {
     const m = h.match(/^@@ -(\d+)(?:,(\d+))? \+(\d+)(?:,(\d+))? @@/), at = +m[1];
     const lines = h.split("\n").slice(1).filter(l => l !== "\\ No newline at end of file"), delAll = lines.filter(l => l.startsWith("-")).map(l => l.slice(1).trim());
     const insAll = lines.filter(l => l.startsWith("+")).map(l => l.slice(1));
     // lines the mod only re-indented (or whose end of file changed) are not edits: what is new is the insertion
-    const del = delAll.filter(l => l && !insAll.some(x => x.trim() === l)), ins = insAll.filter(l => !delAll.includes(l.trim()) || !l.trim());
+    // (one copy of a deleted line per deleted line: a line the mod repeats (olLibyansOut.Add(...) twice) is not swallowed by the one it replaces)
+    const del = delAll.filter(l => l && !insAll.some(x => x.trim() === l)), pool = new Map();
+    for (const l of delAll) pool.set(l, (pool.get(l) || 0) + 1);
+    const ins = insAll.filter(l => { const k = l.trim(); if (!k) return true; const n = pool.get(k) || 0; if (!n) return true; pool.set(k, n - 1); return false; });
     const text = ins.join("\n"), first = ins.find(l => l.trim()) || "";
     // a patch that does not compile breaks every script that loads it: braces must balance, and a variable it assigns must be one it declares
     // (or the script declares: the mod declared variables at the top, which is a hunk of its own that is not Greek)
@@ -28,12 +36,31 @@ function vsPatch(hdText, modText, keep, label, report) {
     const undeclared = [...code.matchAll(/^\s*([A-Za-z_]\w*)\s*[-+*]?=[^=]/gm)].map(m => m[1]).filter(n => !declared.has(n));
     if (keep(text) && (open !== close || undeclared.length)) { report.push(`${label}: hunk at line ${at} left out (${open !== close ? "unbalanced braces" : "uses " + [...new Set(undeclared)].join(", ") + " without declaring it"}): ${first.trim().slice(0, 60)}`); continue; }
     if (del.length || !keep(text)) { report.push(`${label}: hunk at line ${at} left out (${del.length ? "it edits the game's lines" : "not Greek"}): ${first.trim().slice(0, 60)}`); continue; }
-    if (at >= A.length) out.push("@bottom", ...ins);
-    else if (safe(at)) out.push(`@after ${A[at - 1].trim()}`, ...ins);
-    else if (safe(at + 1)) out.push(`@before ${A[at].trim()}`, ...ins);
-    else report.push(`${label}: no safe anchor at line ${at}: ${first.trim().slice(0, 60)}`);
+    const k = m[2] === undefined ? 1 : +m[2];
+    let dir;
+    if (at >= A.length) dir = ["@bottom", ...ins];
+    else if (safe(at)) dir = [`@after ${A[at - 1].trim()}`, ...ins];
+    else if (safe(at + 1)) dir = [`@before ${A[at].trim()}`, ...ins];
+    else { report.push(`${label}: no safe anchor at line ${at}: ${first.trim().slice(0, 60)}`); continue; }
+    hunks.push(dir); kept.push({ at, k, add: insAll });
   }
-  return out.length ? out.join("\r\n") + "\r\n" : null;
+  // bottom to top: what an earlier directive inserted never holds the text a later anchor looks for (the engine takes the FIRST line that contains it)
+  for (const dir of hunks.reverse()) out.push(...dir);
+  if (!out.length) return null;
+  const patch = out.join("\r\n") + "\r\n";
+  // what the script must be: the game's lines, each kept hunk replaced by the mod's lines of it (bottom to top, so the line numbers hold)
+  const want = A.slice();
+  for (const h of kept.slice().sort((x, y) => y.at - x.at)) want.splice(h.k === 0 ? h.at : h.at - 1, h.k, ...h.add);
+  const norm = ls => ls.map(l => l.trim()).filter(Boolean);
+  const r = applyScriptPatch(A.join("\n"), patch), got = norm(r.text.split("\n")), exp = norm(want);
+  let bad = r.errors.length ? r.errors[0] : "";
+  if (!bad) for (let i = 0; i < Math.max(got.length, exp.length); i++) if (got[i] !== exp[i]) { bad = `line ${i + 1} of the result: the patch gives ${JSON.stringify(got[i])}, the mod's hunks say ${JSON.stringify(exp[i])}`; break; }
+  if (bad) {
+    const msg = `${label}: the patch applied to the game's script does not give what it was cut from (${bad})`;
+    report.push(msg);
+    if (process.env.PATCH_CHECK !== "warn") throw new Error(msg);
+  }
+  return patch;
 }
 
 // The elements a mod added to an XML file of the game (items, formations...): the XML of a patch that adds them under `root`, or null.
@@ -63,7 +90,7 @@ function iniAdded(hdText, modText) {
 // Gives files of a port names of its own: each `rels` entry (a path inside `root`, any case) becomes <name>_<tag>.<ext>, and the references
 // to its file name in the port's text files (commands, classes, ini, scripts) follow. Returns the old -> new names.
 function tagFiles(root, rels, tag) {
-  const walk = (d, out = []) => { for (const e of fs.readdirSync(d, { withFileTypes: true })) { const p = path.join(d, e.name); e.isDirectory() ? walk(p, out) : out.push(p); } return out; };
+  const walk = (d, out = []) => { for (const e of fs.readdirSync(d, { withFileTypes: true })) { const p = path.join(d, e.name); if (e.isDirectory()) walk(p, out); else out.push(p); } return out; };
   const all = walk(root), want = new Set(rels.map(r => r.toLowerCase())), map = new Map();
   for (const p of all) {
     const rel = path.relative(root, p).replace(/\\/g, "/");
@@ -87,6 +114,7 @@ function tagFiles(root, rels, tag) {
 //   UNITS|BUILDINGS|MAPOBJECTS/<folder>/...   the folder becomes <folder>_<tag> and every reference to it follows
 //   a .bfhp                     <name> (<tag>).bfhp (nothing refers to a map by its file name)
 //   anything else               <name>_<tag>.<ext> and every reference to the name follows
+// The strategic map's bitmaps of a renamed entity follow it (`followBitmaps`).
 // Returns what it renamed.
 // `gameDirs`: folders of the game's own packs. A file the mod adds inside a folder the game has (a sentry's .ent.xml next to the game's archer art,
 // whose images it names without a path) is renamed alone: renaming the folder would cut it off from the game's art, and the references to the
@@ -94,15 +122,18 @@ function tagFiles(root, rels, tag) {
 function tagCollisions({ OUT, others, tag, skip, dropMapsOf = [], mapLabel, gameDirs = [] }) {
   if (skip) skip = new RegExp(skip.source, "i");                // the folders of a port are upper or lower case
   const crypto = require("crypto");
-  const walk = (d, out = []) => { if (!fs.existsSync(d)) return out; for (const e of fs.readdirSync(d, { withFileTypes: true })) { const p = path.join(d, e.name); e.isDirectory() ? walk(p, out) : out.push(p); } return out; };
+  const walk = (d, out = []) => { if (!fs.existsSync(d)) return out; for (const e of fs.readdirSync(d, { withFileTypes: true })) { const p = path.join(d, e.name); if (e.isDirectory()) walk(p, out); else out.push(p); } return out; };
   const md5 = f => crypto.createHash("md5").update(fs.readFileSync(f)).digest("hex");
   const rel = (root, p) => path.relative(root, p).replace(/\\/g, "/");
   const theirs = new Map();
   for (const o of others) for (const p of walk(o)) { const k = rel(o, p).toLowerCase(); if (!/^(patches|civs|loc|local|mod\.json|notes\.md)/.test(k)) (theirs.get(k) || theirs.set(k, []).get(k)).push(p); }
   for (const p of walk(OUT)) if (/(^|[\\/])(desktop\.ini|thumbs\.db)$/i.test(p)) fs.rmSync(p);   // not part of any mod
+  const entities = entityRefs(OUT, walk);                      // what the classes name, before any rename
   const hits = [];
   for (const p of walk(OUT)) {
     const r = rel(OUT, p); if (/^(patches|civs|loc|local)\//i.test(r) || r === "mod.json" || (skip && skip.test(r))) continue;
+    // the engine names these after the entity, so they cannot be renamed alone (nothing would ask for the new name): they follow their entity, below
+    if (BITMAPS.test(r)) continue;
     // other bytes, or the same bytes in a gameplay file: the mod manager does not compare bytes, and two mods that ship the same gameplay file are
     // "use only one" for it, and a gameplay or map file shared by two mods stops the player from choosing between their cosmetic files (the menu skin)
     // (art, sounds and the like are cosmetic: one of them is used and nothing breaks)
@@ -127,10 +158,11 @@ function tagCollisions({ OUT, others, tag, skip, dropMapsOf = [], mapLabel, game
   // classes: the id in the file, and the references to it (not inside a path)
   if (ids.size) {
     swap(new RegExp(`(?<![A-Za-z0-9_/\\\\.])(${[...ids.keys()].map(esc).join("|")})(?![A-Za-z0-9_/\\\\.])`, "g"), m => ids.get(m));
-    for (const [id, nid] of ids) { const f = walk(path.join(OUT, "DATA")).find(p => /\.sc\.xml$/i.test(p) && (fs.readFileSync(p, "latin1").match(/<class\b[^>]*?\bid\s*=\s*"([^"]+)"/) || [])[1] === nid); if (f) fs.renameSync(f, path.join(path.dirname(f), `${nid.toUpperCase()}.SC.XML`)); }
+    for (const nid of ids.values()) { const f = walk(path.join(OUT, "DATA")).find(p => /\.sc\.xml$/i.test(p) && (fs.readFileSync(p, "latin1").match(/<class\b[^>]*?\bid\s*=\s*"([^"]+)"/) || [])[1] === nid); if (f) fs.renameSync(f, path.join(path.dirname(f), `${nid.toUpperCase()}.SC.XML`)); }
   }
   // folders
-  if (folders.size) swap(new RegExp(`(?<=[/\\\\"'])(${[...folders].map(f => esc(f.split("/")[1])).join("|")})(?=[/\\\\])`, "gi"), m => `${m}_${tag}`);
+  const folderRe = folders.size ? new RegExp(`(?<=[/\\\\"'])(${[...folders].map(f => esc(f.split("/")[1])).join("|")})(?=[/\\\\])`, "gi") : null;
+  if (folderRe) swap(folderRe, m => `${m}_${tag}`);
   for (const f of folders) {
     const [top, name] = f.split("/"), dir = fs.readdirSync(path.join(OUT, top)).find(x => x.toLowerCase() === name.toLowerCase()); if (!dir) continue;
     fs.renameSync(path.join(OUT, top, dir), path.join(OUT, top, `${dir}_${tag}`));
@@ -168,14 +200,62 @@ function tagCollisions({ OUT, others, tag, skip, dropMapsOf = [], mapLabel, game
     const ext = path.extname(p), nb = `${path.basename(p, ext)}_${tag}${ext}`;
     fs.renameSync(p, path.join(path.dirname(p), nb)); done.set(base, nb);
   }
-  if (done.size) swap(new RegExp(`(?<![A-Za-z0-9_.-])(${[...done.keys()].map(esc).join("|")})`, "gi"), m => done.get(m.toLowerCase()));
-  return { classes: [...ids.keys()], folders: [...folders], maps, dropped, unlabeled, files: [...done.values()] };
+  const doneRe = done.size ? new RegExp(`(?<![A-Za-z0-9_.-])(${[...done.keys()].map(esc).join("|")})`, "gi") : null;
+  if (doneRe) swap(doneRe, m => done.get(m.toLowerCase()));
+  // the new path of each entity the classes named: what the two rewrites above give it
+  const moved = new Map();
+  for (const e of entities) { let n = e; if (folderRe) n = n.replace(folderRe, m => `${m}_${tag}`); if (doneRe) n = n.replace(doneRe, m => done.get(m.toLowerCase())); if (n !== e) moved.set(e, n); }
+  const bitmaps = followBitmaps(OUT, moved, entityRefs(OUT, walk), [...gameDirs, HD_PAKS], walk);
+  return { classes: [...ids.keys()], folders: [...folders], maps, dropped, unlabeled, files: [...done.values()], bitmaps };
+}
+
+// What the engine draws a building with on the strategic map: the class's entity path without its last 8 characters (".ent.xml", or whatever they are:
+// "X.ent_tag.xml" leaves "X.ent"), "/" as "-": MINIMAP/ZOOM{8,16,32}/ENTITIES/<name>.BMP and OUTLINES/ZOOMn/{BLACK,COLOR}_<name>.BMP. A missing file is
+// not drawn, with no error (NormalizeEntityPath, 0061c6e0 of the engine; tools/check-minimap.js checks the ports for it).
+const BITMAPS = /^(minimap\/zoom\d+\/entities\/|outlines\/zoom\d+\/(black|color)_)/i;
+const HD_PAKS = path.join(__dirname, "..", "..", "originals", "game-data", "paks");
+const bitmapName = e => e.replace(/\\/g, "/").slice(0, -8).replace(/\//g, "-").toLowerCase();
+const bitmapFiles = n => [8, 16, 32].flatMap(z => [`minimap/zoom${z}/entities/${n}.bmp`, `outlines/zoom${z}/black_${n}.bmp`, `outlines/zoom${z}/color_${n}.bmp`]);
+// the entity=, entity_winter=, entity_autumn= and entity_spring= of the port's classes that point at a building or a map object
+function entityRefs(OUT, walk) {
+  const out = new Set();
+  for (const p of walk(OUT)) {
+    if (!/^data[\\/]classes[\\/].*\.xml$/i.test(path.relative(OUT, p))) continue;
+    for (const m of fs.readFileSync(p, "latin1").matchAll(/(?<!\w)entity(?:_winter|_autumn|_spring)?\s*=\s*"([^"]+)"/gi)) if (/^(buildings|mapobjects)[\\/]/i.test(m[1])) out.add(m[1].replace(/\\/g, "/"));
+  }
+  return out;
+}
+
+// `moved`: old entity path -> new path. Its bitmaps and outlines (3 zooms) get the new name: renamed in the port, or, if the port ships none because they
+// are the game's own (shrink-mod.js leaves out what is identical), copied from the game's (`gameSrc`, folders with MINIMAP/ and OUTLINES/). The old-name
+// file is kept only if a class of the port (`used`) still names the old entity. Returns "file -> file" for each one done.
+function followBitmaps(OUT, moved, used, gameSrc, walk) {
+  const ls = new Map(), list = d => ls.get(d) || ls.set(d, fs.existsSync(d) ? fs.readdirSync(d) : []).get(d);
+  const at = (root, segs) => { let p = root; const real = []; for (const s of segs) { const n = list(p).find(x => x.toLowerCase() === s); if (!n) return null; p = path.join(p, n); real.push(n); } return { p, real }; };
+  const own = new Map(walk(OUT).map(p => [path.relative(OUT, p).replace(/\\/g, "/").toLowerCase(), p]));
+  const stillUsed = new Set([...used].map(bitmapName)), out = [];
+  for (const [from, to] of moved) {
+    const a = bitmapName(from), A = bitmapFiles(a), B = bitmapFiles(bitmapName(to));
+    A.forEach((f, i) => {
+      if (own.has(B[i])) return;
+      let src = own.has(f) ? { p: own.get(f), real: path.relative(OUT, own.get(f)).split(path.sep) } : null, keep = stillUsed.has(a);
+      for (const g of gameSrc) if (!src && (src = at(g, f.split("/")))) keep = true;      // the game's stays where it is
+      if (!src) return;
+      const segs = B[i].split("/"), name = segs.pop(); let dir = OUT;               // the folders as the port spells them, else as the file does
+      segs.forEach((s, k) => { dir = path.join(dir, list(dir).find(x => x.toLowerCase() === s) || src.real[k]); });
+      const stem = path.basename(src.p, path.extname(src.p)), file = (/[a-z]/.test(stem) ? name : name.toUpperCase()).replace(/\.bmp$/i, path.extname(src.p));
+      fs.mkdirSync(dir, { recursive: true }); ls.delete(dir);
+      if (keep) fs.copyFileSync(src.p, path.join(dir, file)); else { fs.renameSync(src.p, path.join(dir, file)); ls.delete(path.dirname(src.p)); own.delete(f); }
+      own.set(B[i], path.join(dir, file)); out.push(`${path.basename(src.p)} -> ${file}`);
+    });
+  }
+  return out;
 }
 
 // Names of commands (researches, orders) and items that a port defines and the game does not: what shows up in `<cmd name=` of its own command
 // files and patches, and in `<item id=` of its items.
 function ownNames(root, HD) {
-  const walk = (d, out = []) => { if (!fs.existsSync(d)) return out; for (const e of fs.readdirSync(d, { withFileTypes: true })) { const p = path.join(d, e.name); e.isDirectory() ? walk(p, out) : out.push(p); } return out; };
+  const walk = (d, out = []) => { if (!fs.existsSync(d)) return out; for (const e of fs.readdirSync(d, { withFileTypes: true })) { const p = path.join(d, e.name); if (e.isDirectory()) walk(p, out); else out.push(p); } return out; };
   const hdText = walk(path.join(HD, "DATA")).filter(p => /\.xml$/i.test(p)).map(p => fs.readFileSync(p, "latin1")).join("\n").replace(/<!--[\s\S]*?-->/g, "").toLowerCase();
   const out = { cmds: new Set(), items: new Set() };
   for (const p of walk(root).filter(p => /\.xml$/i.test(p))) {
@@ -193,7 +273,7 @@ function ownNames(root, HD) {
 // the quoted strings of scripts and in the tokens of the parameters that name it ("NameSet, Olympic Games, default"). The names are keys:
 // the state of a research is stored under its name.
 function tagNames({ OUT, names, tag }) {
-  const walk = (d, out = []) => { for (const e of fs.readdirSync(d, { withFileTypes: true })) { const p = path.join(d, e.name); e.isDirectory() ? walk(p, out) : out.push(p); } return out; };
+  const walk = (d, out = []) => { for (const e of fs.readdirSync(d, { withFileTypes: true })) { const p = path.join(d, e.name); if (e.isDirectory()) walk(p, out); else out.push(p); } return out; };
   const list = [...names].sort((a, b) => b.length - a.length), map = new Map(list.map(n => [n.toLowerCase(), `${n} (${tag})`]));
   const esc = x => x.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
   if (!list.length) return 0;
@@ -204,9 +284,9 @@ function tagNames({ OUT, names, tag }) {
     if (/^(loc|local)\//i.test(rel) || /\.bfhp$/i.test(rel)) continue;
     let s0 = fs.readFileSync(p, "latin1"), t = s0;
     // a quoted string that is exactly a name (scripts, attributes: name="X", id="X", button texts are not names and differ)
-    t = t.replace(new RegExp(`(["'])(${alt})\\1`, "gi"), (m, q, nm) => `${q}${map.get(nm.toLowerCase())}${q}`);
+    t = t.replace(new RegExp(`(["'])(${alt})\\1`, "gi"), (_m, q, nm) => `${q}${map.get(nm.toLowerCase())}${q}`);
     // a token of a comma separated parameter
-    t = t.replace(/(\b(?:param|sclass)\s*=\s*")([^"]*)"/g, (m, a, v) => `${a}${v.split(",").map(tok => { const k = tok.trim().toLowerCase(); return map.has(k) ? tok.replace(tok.trim(), map.get(k)) : tok; }).join(",")}"`);
+    t = t.replace(/(\b(?:param|sclass)\s*=\s*")([^"]*)"/g, (_m, a, v) => `${a}${v.split(",").map(tok => { const k = tok.trim().toLowerCase(); return map.has(k) ? tok.replace(tok.trim(), map.get(k)) : tok; }).join(",")}"`);
     if (t !== s0) { fs.rmSync(p); fs.writeFileSync(p, t, "latin1"); n++; }
   }
   return n;

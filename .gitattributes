@@ -1,0 +1,2 @@
+# the canonical English help keeps the original's CRLF line ends and BOM byte for byte (tools/lib/english-help.js checks them)
+extras/english-help/HELP.XML -text

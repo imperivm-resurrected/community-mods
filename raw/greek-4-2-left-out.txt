@@ -559,30 +559,6 @@ UI/INFOBAR/UNIT SPECIALS/DETERMINATION GLOW.BMP
 UI/INFOBAR/UNIT SPECIALS/DETERMINATION.BMP
 UI/INFOBAR/UNIT SPECIALS/REGENERATION GLOW.BMP
 UI/INFOBAR/UNIT SPECIALS/REGENERATION.BMP
-UI/MENU/BIGGOLD.BMP
-UI/MENU/BONUSES.BMP
-UI/MENU/BUTTON.BMP
-UI/MENU/BUTTON2.BMP
-UI/MENU/BUTTON3.BMP
-UI/MENU/BUTTON60.BMP
-UI/MENU/CHECKBUTTON.BMP
-UI/MENU/CLIP.BMP
-UI/MENU/DOWNARROW.BMP
-UI/MENU/FRAME.BMP
-UI/MENU/HERO.BMP
-UI/MENU/LINE_FRAME.BMP
-UI/MENU/MMENBUT.BMP
-UI/MENU/RADIOBUTTON2.BMP
-UI/MENU/SCROLL.BMP
-UI/MENU/SCROLLBACK.BMP
-UI/MENU/SMALLGOLD.BMP
-UI/MENU/SV.BMP
-UI/MENU/TAPAL.BMP
-UI/MENU/TAPAR.BMP
-UI/MENU/TEAMS.BMP
-UI/MENU/THIN_FRAME_S.BMP
-UI/MENU/UPARROW.BMP
-UI/MENU/VOLUME_CONTROL.BMP
 Units/BBOWMAN/BBOWMAN.ENT.XML
 Units/BBOWMAN/BSENTRY.ENT.XML
 Units/BBOWMAN/BSENTRY1.ENT.XML
@@ -1746,7 +1722,7 @@ DATA/SUBAI/UNIT_ON_KILL.VS: hunk at line 88 left out (not Greek):
 DATA/SUBAI/UNIT_ON_KILL.VS: hunk at line 90 left out (it edits the game's lines): if (.AsUnit().inherentlevel >= 12)
 DATA/SUBAI/UNIT_ON_KILL.VS: hunk at line 92 left out (unbalanced braces): // Greece
 DATA/SUBAI/UNIT_ON_KILL.VS: hunk at line 105 left out (not Greek): // Gambler's Day
-DATA/SUBAI/UNIT_ON_KILL.VS: hunk at line 107 left out (unbalanced braces): // Statue of Zeus
+DATA/SUBAI/UNIT_ON_KILL.VS: hunk at line 107 left out (uses scoutPts, ol, j, u, egoismPts, exp, epicArmorPts without declaring it): // Statue of Zeus
 DATA/SUBAI/UNIT_PATROL.VS: hunk at line 1 left out (it edits the game's lines): //void, Obj This, point pt
 DATA/SUBAI/UNIT_PATROL.VS: hunk at line 3 left out (it edits the game's lines): 
 DATA/SUBAI/UNIT_PATROL.VS: hunk at line 5 left out (it edits the game's lines): if (.IsValid)

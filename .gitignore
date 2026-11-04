@@ -48,3 +48,13 @@ ported/asvrmod-vii-civs/
 # Secuter's Fun mod 1.5, plain and Greece version (8 and 9 civilizations of their own, 665 and 1360 files): rebuilt by `G=... node tools/secuter-fun-mod.js plain|grecia` from the forum zips + extras/<id>/ (the Greece version also reads the built ported/greek-mod-1-8, see its NOTES.md)
 ported/secuter-fun-mod/
 ported/secuter-fun-mod-grecia/
+# Greek Mod 2.3 / 2.5.3 / 2.6.1: rebuilt from the original download + extras/greek-mod-2-*/ (tools/greek-2x-source.js, tools/port-140.js, tools/greek-2x.js; see its NOTES.md)
+ported/greek-mod-2-3/
+ported/greek-mod-2-5-3/
+ported/greek-mod-2-6-1/
+
+# Community Mod 12: rebuilt from the GameBanana rar + extras/community-mod-civs/ (tools/community-mod.js: unpacks into .scratch/; see its NOTES.md)
+ported/community-mod-civs/
+
+# Caesar Mod 1.1.0 (the civilizations: ten, next to the game's; 1.2 GB with the maps, movies and music): rebuilt from the GameBanana zip (728740) + extras/caesar-mod-civs/ by tools/caesar-mod.js
+ported/caesar-mod-civs/

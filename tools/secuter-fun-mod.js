@@ -366,7 +366,7 @@ if (GRECIA) {
   // The other ports: the main checkout's ported/ and this tree's, by name (the main checkout's wins; the plain pack, which the Greece one looks at, is always this tree's: it is built here).
   // The ports that exist in the main checkout today MUST be there, or the build would tag fewer names than one that sees them: it stops (SECUTER_NO_OTHERS=1 builds without them).
   const BASES = [path.join(MAIN, "ported"), path.join(ROOT, "ported")].filter((p, i, a) => fs.existsSync(p) && a.indexOf(p) === i);
-  const KNOWN = ["mci", "mediterranevm-alpha", "imperivm-legacy", "imperivm1-legacy", "cgwar", "greek-mod-1-8", "greek-civilization-mod"];
+  const KNOWN = ["mci", "mediterranevm-alpha", "mediterranevm-3-6", "imperivm-legacy", "imperivm1-legacy", "cgwar", "greek-mod-1-8", "greek-civilization-mod", "greek-mod-2-3", "greek-mod-2-5-3", "greek-mod-2-6-1", "asvrmod-vii-civs", "caesar-mod-civs", "community-mod-civs", "nuclear-fazioni-equilibrate"];   // the merged ports, built in the main checkout
   const where = d => (d === "secuter-fun-mod" ? [path.join(ROOT, "ported")] : BASES).map(b => path.join(b, d)).find(p => fs.existsSync(p));
   const missing = KNOWN.filter(d => !where(d));
   if (missing.length && !process.env.SECUTER_NO_OTHERS) { console.error(`these ports are not in ${BASES.join(" or ")}: ${missing.join(", ")}.\nThe names this port shares with them would NOT be renamed and the build would differ from one that has them. Build them in the main checkout (extras/<id>/NOTES.md, Rebuild), or set SECUTER_NO_OTHERS=1 to build without them.`); process.exit(1); }
@@ -540,6 +540,33 @@ if (fs.existsSync(EXTRAS)) for (const f of walk(EXTRAS)) { if (f === "NOTES.md")
   console.log(r.notes.join("\n"));
   if (inherited.length) console.log(`names inherited from the 1.8, not new (${inherited.length}): ${inherited.join("; ")}`);
   if (real.length) { console.error(`NAME CHECKS FAILED (${real.length}):\n  ${real.join("\n  ")}`); process.exit(1); }
+}
+
+// 12. Checks that the other ports taught (nothing is rewritten here: the clones are copies of HD's classes with the mod's, and Greece comes from the 1.8, so they are expected to pass; they stop the build if not).
+//   (a) default commands (right click), tools/lib/default-cmds.js: a unit class with a <defaultcmd> map of its own that lacks a target of its reference (Hero, Wagon, WildHorse, ShipBattle...) cannot
+//       link to heroes: the build stops on any target a class's own key shadows. Counts per target are printed.
+//   (b) radius, tools/lib/caesar-radius.js: a building class lacking a `radius` / `selection_radius` that the HD class it comes from has (walls, gates, villages, outposts: two same-civilization
+//       players on a random map crashed the engine, gbr.exe+3fffd, with Caesar's Greek classes). The build stops.
+//   (c) strategic map, tools/check-minimap.js: the bitmaps of each building entity. "rename" (a bitmap exists under the name before a tag) stops the build; "absent" (the original never had it) is printed.
+//   Conquests: this pack ships none (the maps of conquista-africana-secuter are not its); tools/check-conquests.js is run on it and must say nothing is damaged.
+{
+  const DC = require("./lib/default-cmds.js"), rad = require("./lib/caesar-radius.js");
+  const HDCL = path.join(HD, "DATA", "CLASSES"), CLS = find(OUT, "DATA/CLASSES"), bad = [];
+  const dc = DC.check({ OUT, dirs: [CLS, HDCL], tag: TAG }), per = {}, shd = {};
+  for (const x of dc) { for (const t of x.missing) per[t] = (per[t] || 0) + 1; for (const t of x.shadowed) shd[t] = (shd[t] || 0) + 1; }
+  console.log(`default commands: ${dc.length} unit classes lack a target of their reference; missing per target ${JSON.stringify(per)}; shadowed ${JSON.stringify(shd)}`);
+  for (const x of dc.filter(x => x.shadowed.length)) bad.push(`default commands: ${x.id} (reference ${x.ref}) lacks ${x.shadowed.join(", ")}, shadowed by its own keys`);
+  const rm = rad.missing({ portClasses: rad.classesOf(CLS), hdClasses: rad.classesOf(HDCL), civsDir: path.join(OUT, "civs") });
+  const own = rad.classesOf(CLS);
+  console.log(`radius: ${[...own.values()].filter(c => /<properties\b[^>]*\bradius\s*=/.test(c.block)).length} of ${own.size} classes of the port carry a radius; ${rm.length} lack one their HD class has`);
+  for (const p of rm) bad.push(`radius: ${p.id} has no radius / selection_radius, HD's ${p.hdId} has ${p.hd.radius}/${p.hd.selection}`);
+  const mm = cp.spawnSync("node", [path.join(__dirname, "check-minimap.js"), "--game", process.env.G, OUT], { encoding: "utf8" });
+  console.log(`strategic map: ${(mm.stdout || "").trim().split("\n").slice(-1)[0].replace(/\s+/g, " ")}`);
+  if (mm.status) bad.push(`strategic map (tools/check-minimap.js): bitmaps that a rename left behind:\n${mm.stdout}`);
+  const cq = cp.spawnSync("node", [path.join(__dirname, "check-conquests.js"), OUT], { encoding: "utf8" });
+  console.log(`conquests: ${(cq.stdout || "").trim().split("\n").slice(-1)[0]}`);
+  if (cq.status) bad.push(`conquests (tools/check-conquests.js): ${cq.stdout}`);
+  if (bad.length) { console.error(`CHECKS FAILED (${bad.length}):\n  ${bad.join("\n  ")}`); process.exit(1); }
 }
 
 // folders the steps above left empty

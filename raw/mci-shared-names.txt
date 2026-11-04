@@ -1,0 +1,74 @@
+order	Anular punto de reunion
+order	Buy Sentry
+order	Punto de reunion
+order	auto_feeding_start
+order	auto_feeding_stop
+order	burn
+order	closegateper
+order	createfishboat
+order	createfoodmule3
+order	creategoldmule3
+order	form-alasdelinfierno
+order	form-alasdelinfierno-menu
+order	form-cucaracha
+order	form-cucaracha-menu
+order	form-hilera
+order	form-hilera-menu
+order	form-ranged
+order	form-ranged-menu
+order	form-retaguardia
+order	form-retaguardia-menu
+order	great_charge
+order	improve gate
+order	improve outpost
+order	leader_nominated
+order	opengateper
+order	repair gate fast
+order	repair outpost
+order	repair shipyard
+order	retreat_notai
+order	sneak_aggressive_off
+order	sneak_aggressive_on
+order	stopburn
+order	stoptribute_food
+order	stoptribute_gold
+order	stoptribute_people
+order	tribute_food
+order	tribute_gold
+order	tribute_people
+item	Armoury axes
+item	Armoury bows
+item	Armoury maces
+item	Armoury pikes
+item	Armoury swords
+item	Assassin bow
+item	Assassin sword
+item	Captain
+item	Chieftain
+item	Druids scroll
+item	General
+item	Harp of stamina
+item	HeroFavoriteUnit0
+item	HeroFavoriteUnit1
+item	HeroFavoriteUnit10
+item	HeroFavoriteUnit2
+item	HeroFavoriteUnit3
+item	HeroFavoriteUnit4
+item	HeroFavoriteUnit5
+item	HeroFavoriteUnit6
+item	HeroFavoriteUnit7
+item	HeroFavoriteUnit8
+item	HeroFavoriteUnit9
+item	Leader
+item	Lord
+item	Master
+item	Meat 1
+item	Meat 2
+item	Meat 3
+item	Meat 4
+item	Officer
+item	Pouch Gold
+item	Sign of the hammer
+item	Steel weapon and armor
+item	TTeuton
+item	UnknownFavourite
