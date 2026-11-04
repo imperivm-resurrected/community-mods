@@ -1,0 +1,47 @@
+PlayerColors: id2 = 255, 244, 79
+PlayerColors: id3 = 102, 255, 0
+PlayerColors: id4 = 99, 231, 219
+PlayerColors: id5 = 240, 190, 214
+PlayerColors: id7 = 255, 100, 100
+PlayerColors: id8 = 255, 164, 55
+PlayerColors: id10 = 65, 105, 225
+PlayerColors: id11 = 173, 10, 253
+UIBars: UIShowDelay = 0
+UIBars: UIHideDelay = 0
+GamePlay: ProductionFoodBase   game: 24   mod: 18
+GamePlay: SightPerScoutLevel   game: 100   mod: 0
+GamePlay: DefensePerEpicArmorLevel   game: 2   mod: 0
+GamePlay: DisciplineBonusBase   game: 10   mod: 0
+GamePlay: DisciplineBonusStep   game: 1   mod: 0
+GamePlay: RushDamage   game: 6   mod: 5
+GamePlay: PowerStrikeCost   game: 4   mod: 1
+GamePlay: RageCost   game: 4   mod: 3
+GamePlay: CripplingAttackCost   game: 1   mod: 2
+GamePlay: SpikeArmorCost   game: 1   mod: 2
+GamePlay: LearningCost   game: 1   mod: 0
+GamePlay: FastMetabolismSpeed   game: 5   mod: 5
+GamePlay: HealthInHolderFactor   game: 4   mod: 5
+GamePlay: StaminaInHolderFactor   game: 2   mod: 1
+GamePlay: LoyaltyRadius   game: 1000   mod: 400
+GamePlay: LoyaltyRadiusTownhall   game: 850   mod: 400
+GamePlay: MistDamage   game: 25   mod: 15
+GamePlay: MistToll   game: 20   mod: 7
+GamePlay: CoverOfMercyToll   game: 20   mod: 9
+GamePlay: GhostDamage   game: 10   mod: 12
+GamePlay: GhostToll   game: 5   mod: 3
+GamePlay: HideToll   game: 5   mod: 7
+GamePlay: CatapultMaxUnits   game: 10   mod: 10
+GamePlay: GOutpostFoodSales   game: 20   mod: 40
+GamePlay: GOutpostGoldReturn   game: 10   mod: 20
+GamePlay: IOutpostExpTick   game: 15000   mod: 8000
+GamePlay: ShipRepairInterval   game: 1000   mod: 60000
+GamePlay: StonehengeSoothingTime   game: 30000   mod: 20000
+GamePlay: StonehengeBloodlustTime   game: 60000   mod: 30000
+GamePlay: EliminationTimeout   game: 180   mod: 300
+GamePlay: -TTentCapturedArmy   (removes a key of the game)
+GamePlay: -TTentInitialArmy   (removes a key of the game)
+GamePlay: -MonPopulation   (removes a key of the game)
+GamePlay: -TTentActiveArmy   (removes a key of the game)
+GamePlay: -StonehengeSacrificeDamage   (removes a key of the game)
+GamePlay: -TTentUnitSpawnRate   (removes a key of the game)
+Ranks: RankPoints10 = 250

@@ -1,16 +1,22 @@
 {
   "id": "imperivm-legacy",
-  "name": "Imperivm Legacy",
+  "name": "Imperivm Legacy 2.4.1",
   "version": "2.4.1",
+  "category": "Civilizations",
   "authors": [
     "Nicoghiro31",
     "Villoh (port)"
   ],
   "description": {
-    "english": "A new iteration of the Mediterranevm mod: an expansion of the base game that keeps its concept and adds new content, unpublished ideas and deeper gameplay. Includes new units, buildings, art and sounds, six [LM] scenarios and tutorials.",
-    "spanish": "Una nueva iteración del mod Mediterranevm: una expansión del juego base que conserva su concepto y añade contenido nuevo, ideas inéditas y una jugabilidad más profunda. Incluye nuevas unidades, edificios, gráficos y sonidos, seis escenarios [LM] y tutoriales."
+    "spanish": "Imperivm Legacy 2.4.1, una nueva iteración del mod Mediterranevm, como ocho civilizaciones propias junto a las del juego (\"Galos (Legacy)\", \"Roma rep. (Legacy)\"…): unidades, edificios, héroes y objetos nuevos, vigías, flotas, la tienda númida y la guarnición griega como objetos neutrales del mapa, con gráficos y sonidos nuevos, y una IA propia. Las civilizaciones del juego no cambian.",
+    "english": "Imperivm Legacy 2.4.1, a new iteration of the Mediterranevm mod, as eight civilizations of their own next to the game's (\"Gaul (Legacy)\", \"Rep. Rome (Legacy)\"…): new units, buildings, heroes and items, lookouts, fleets, the Numidian tent and the Greek garrison as neutral map objects, with new art and sounds, and an AI of its own. The game's civilizations do not change.",
+    "italian": "Imperivm Legacy 2.4.1, una nuova iterazione del mod Mediterranevm, come otto civiltà a sé, accanto a quelle del gioco (\"Galli (Legacy)\", \"Roma rep. (Legacy)\"…): nuove unità, edifici, eroi e oggetti, vedette, flotte, la tenda numida e la guarnigione greca come oggetti neutrali della mappa, con nuova grafica e suoni, e un'IA propria. Le civiltà del gioco non cambiano."
   },
-  "category": "Gameplay & Balance",
-  "tags": [],
-  "redistributable": true
+  "tags": [
+    "Type: Gameplay & Balance"
+  ],
+  "redistributable": true,
+  "sources": {
+    "page": "https://www.moddb.com/mods/imperivm-legacy"
+  }
 }
