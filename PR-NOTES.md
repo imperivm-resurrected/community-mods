@@ -119,3 +119,10 @@ Merge commits only (main -> #39 -> #42 -> #43 -> #51); nothing force-pushed. Has
 - **Checks:** `validate-mod` 2611 files, 0 errors, 68 warnings; names 230 scripts, 0 problems; `check-conquests` 2 conquests, 0 damaged, folders complete; `check-minimap` 0; default commands 0; Legacy: 97 same bytes, 4 other, 0 class ids. Hash (without `NOTES.md`) `af6dad9650b9`: my worktree = clean worktree.
 - **NOT tried:** Caesar's layout on the 2.3 (the maintainer installs it next); **starting a 2.3 conquest as Greece**; `ConquestRemake (w23)`. The 2.5.3, 2.6.1 and 3.6 ship their own `CONQUESTGAME.INI` patches (not changed): whether they overlap is unknown.
 
+## Update 2026-11-03 (2): Quit at the corner (0,0) in the 2.3's conquest screen
+
+- **Found in game:** with the layout-only patch, Quit was drawn at (0,0). **Cause:** the engine evaluates `RectWH` formulas in the order of `[ConquestGame Objects]` (HD: BackImage, GameMap, Start, Save, Quit, Select); a control not created yet is 0. Caesar's `#left(Save)#` formulas work there only because its patch reorders the list; mine does not. My mistake.
+- **Fix:** `[Start]`, `[Select]`, `[Quit]` are absolute (`#%ScreenRight%-305#`, `#%Altezza%/2+200+44#` / `+88`). **Build check:** `forwardRefs` in `tools/lib/conquest-layout.js` stops the build if any section of the patched list uses a control created later (rule: *a layout patch must not reference a control created later*). The other 16 sections audited: none.
+- **Other ports (installed, read-only):** Caesar, CGWAR, Community, 4.2, 2.5.3, 2.6.1, 3.6, Legacy: no forward reference; the 1.8 has no patch of this screen.
+- **Checks:** `validate-mod` 2611 files, 0 errors; names 230, 0 problems; `check-conquests` 2, 0 damaged; hash without `NOTES.md` `af7324c71dea` (mine = clean worktree). **NOT tried in game:** this fix.
+

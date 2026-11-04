@@ -8,9 +8,11 @@
 const fs = require("fs"), path = require("path");
 const SECTIONS = [
   ["Save", ["RectWH = #%ScreenRight%-305#, #%Altezza%/2+200#, %ButtonWidth%, %ButtonHeight%"]],
-  ["Start", ["RectWH = #left(Save)#, #bottom(Save)+6#, %ButtonWidth%, %ButtonHeight%"]],
-  ["Select", ["RectWH = #left(Save)#, #bottom(Save)+6#, %ButtonWidth%, %ButtonHeight%"]],
-  ["Quit", ["RectWH = #left(Start)#, #bottom(Start)+6#, %ButtonWidth%, %ButtonHeight%"]],
+  // Start, Select and Quit are ABSOLUTE (Caesar's refer to left(Save)/left(Start)): the engine evaluates the formulas in the order of [ConquestGame Objects] and a control not created yet is 0.
+  // HD's order is BackImage, GameMap, Start, Save, Quit, Select; Caesar's patch works only because it reorders the list (Save first), and this one does not (found in game 2026-11-03: Quit at 0,0).
+  ["Start", ["RectWH = #%ScreenRight%-305#, #%Altezza%/2+200+44#, %ButtonWidth%, %ButtonHeight%"]],
+  ["Select", ["RectWH = #%ScreenRight%-305#, #%Altezza%/2+200+44#, %ButtonWidth%, %ButtonHeight%"]],
+  ["Quit", ["RectWH = #%ScreenRight%-305#, #%Altezza%/2+200+88#, %ButtonWidth%, %ButtonHeight%"]],
   ["DescriptionFrame", ["RectWH = #left(Save)-20#, #%Altezza%/2-346#, 325, 520"]],
   ["DescriptionTitle", ["RectWH = #left(DescriptionFrame)+20#, #top(DescriptionFrame)+14#, 280, 22", "Width = 280"]],
   ["DescriptionText", ["RectWH = #left(DescriptionFrame)+20#, #bottom(DescriptionTitle)+4#, 280, 258", "Width = 280"]],
@@ -35,6 +37,31 @@ function write({ OUT, HD }) {
   const hd = fs.readFileSync(path.join(HD, "DATA", "INTERFACE", "MENU", "CONQUESTGAME.INI"), "latin1"), have = new Set([...hd.matchAll(/^\[([^\]]+)\]/gm)].map(m => m[1].toLowerCase()));
   const bad = SECTIONS.map(([s]) => s).filter(s => !have.has(s.toLowerCase())).concat(["GameMap", "ShieldsFrame"].filter(s => !have.has(s.toLowerCase())));
   if (bad.length) throw new Error(`conquest layout: HD's CONQUESTGAME.INI has no section ${[...new Set(bad)].join(", ")}`);
+  // the RULE: a layout patch must not reference a control created later in the list (its value is 0 then). The patch is checked applied to HD's file and list, in the order of the list
+  const fw = forwardRefs(hd, fs.readFileSync(f, "latin1"));
+  if (fw.length) throw new Error(`conquest layout: forward references (a control used before it is created in [ConquestGame Objects]):\n  ${fw.map(x => `[${x.sec}] ${x.key} uses ${x.fn}(${x.ref}) (${x.why})`).join("\n  ")}`);
   return { sections: SECTIONS.length, from: old };
 }
-module.exports = { write, SECTIONS };
+
+// ---- the check ------------------------------------------------------------------------------------------------------------------------------------------------------
+const parse = t => { const m = new Map(); let cur = null; for (const raw of t.split(/\r?\n/)) { const l = raw.trim(); if (!l || l[0] === ";") continue; const h = /^\[([^\]]+)\]$/.exec(l); if (h) { cur = { name: h[1], keys: new Map(), lines: [] }; m.set(h[1].toLowerCase(), cur); continue; } if (!cur) continue; cur.lines.push(l); const k = /^([^=]+?)\s*=\s*(.*)$/.exec(l); if (k) cur.keys.set(k[1].toLowerCase(), k[2]); } return m; };
+// forwardRefs(hdText, patchText) -> [{ sec, key, fn, ref, why }]: HD's file with the patch applied (the keys of its sections replace HD's; "-name"/"+name" lines of its [ConquestGame Objects] remove from the list / append to it, in order);
+// for every section of the resulting list, every left/right/top/bottom/width/height(X) in its values must name a control that comes BEFORE it in the list.
+function forwardRefs(hdText, patchText) {
+  const H = parse(hdText), P = parse(patchText), key = "conquestgame objects";
+  let list = (H.get(key) || { lines: [] }).lines.filter(l => !l.startsWith(";"));
+  const pl = (P.get(key) || { lines: [] }).lines;
+  for (const l of pl) if (l[0] === "-") list = list.filter(n => n.toLowerCase() !== l.slice(1).trim().toLowerCase());
+  for (const l of pl) if (l[0] === "+") list.push(l.slice(1).trim());
+  const pos = new Map(list.map((n, i) => [n.toLowerCase(), i])), out = [];
+  list.forEach((n, i) => {
+    const keys = new Map([...((H.get(n.toLowerCase()) || { keys: new Map() }).keys), ...((P.get(n.toLowerCase()) || { keys: new Map() }).keys)]);
+    for (const [k, v] of keys) for (const m of v.matchAll(/\b(left|right|top|bottom|width|height)\(\s*([A-Za-z0-9_.]+)\s*\)/gi)) {
+      const j = pos.get(m[2].toLowerCase());
+      if (j === undefined) out.push({ sec: n, key: k, fn: m[1], ref: m[2], why: "not in the list" });
+      else if (j >= i) out.push({ sec: n, key: k, fn: m[1], ref: m[2], why: j === i ? "itself" : `created later: ${j + 1} of ${list.length}, this one is ${i + 1}` });
+    }
+  });
+  return out;
+}
+module.exports = { write, SECTIONS, forwardRefs };
