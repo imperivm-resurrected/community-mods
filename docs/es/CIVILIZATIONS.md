@@ -30,6 +30,8 @@ Las letras y los índices son únicos en todos los ports (el SDK admite índices
 | 49 | `carthmau42` | `8` | Carthage | 4.2 | Cartago Mauritana (héroe mauritano) |
 | 50 | `kgreece` | `Kgr` | ImperialRome (own race) | Caesar Mod 1.1.0 | Explícito porque el territorio de Grecia de sus dos conquistas lo nombra (`interface` 50, `tools/caesar-mod.js`); `tools/shared-paths.js` no encuentra ids de clase en común |
 | 51-59 | (reservado) | | | Caesar Mod 1.1.0 | Guardados para las otras nueve civilizaciones del mod por si una conquista debe nombrarlas; hoy toman los números automáticos del motor |
+| 60 | `wgreece` | `Wgr` | ImperialRome (own race) | Greek Mod 2.3 | Explícito porque el territorio de Grecia de sus dos conquistas (`mediterranean (w23)`, `ConquestRemake (w23)`) lo nombra (`interface` 60, `tools/greek-2x.js`, `greeceIndex`). Sin probar en juego: empezar una conquista de la 2.3 como Grecia |
+| 61-63 | (reservado) | | | Greek Mod 2.5.3, 2.6.1, Mediterranevm Mod 3.6 | Guardados para su Grecia (2.5.3, 2.6.1) por si algún día tienen una conquista que deba nombrarla; hoy no llevan conquistas y toman los números automáticos del motor |
 | (motor) | `cgwarimperial` | `Cgw` (derivado) | RepublicanRome | CGWAR | Rama imperial de la Roma del mod, con sus comandos ya dentro (la elección en la Arena no se porta): `tools/cgwar-civs.js` |
 | (motor) | `cgwarrepublic` | `Cgr` | RepublicanRome | CGWAR | Rama republicana de la Roma del mod: `tools/cgwar-civs.js` |
 | (motor) | `gaul_gbrt` | `Gau` (derivado) | Gaul | GBR Tactics | `tools/gbr-tactics.js` |

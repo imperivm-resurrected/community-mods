@@ -1,5 +1,6 @@
 // The three versions of Rattlesmake's Greek Mod continued by MediterranevmTeam that are ported (rows 385, 257, 258 of docs/MODS.md), for
 // tools/greek-2x-source.js (the standalone game folder -> a flat folder -> tools/port-140.js) and tools/greek-2x.js (the civilizations).
+//   greeceIndex  an explicit `index` for Greece (docs/CIVILIZATIONS.md; only the versions with a conquest, which names it in the Greece territory's interface)   conquestLayout  the conquest screen's patch is the layout only (tools/lib/conquest-layout.js)
 //   dir     the port's folder and mod id           name   the room's set (mod.json `name`: the mod's name WITH its version)
 //   tok     the id token reserved for the line     tag    the suffix of the files that collide with another port, and of the scripts' copies
 //   ai      the prefix of the AI copies            label  what the lobby's names end with: <civ> (<label>), at most ~22 characters
@@ -53,7 +54,7 @@ module.exports = {
   LINE,
   WORK: process.env.WORK || path.join(ROOT, "work"),
   VERSIONS: {
-    "2.3": { dir: "greek-mod-2-3", name: "Greek Mod 2.3", version: "2.3", label: "Greek 2.3", tok: "w", tag: "w23", ai: "GRW23_", download: "originals/moddb/greek-mod-2-3/files/Greek23.zip", inner: "Greek23", work: "greek-2-3", resolve: RESOLVE_23 },
+    "2.3": { dir: "greek-mod-2-3", name: "Greek Mod 2.3", version: "2.3", label: "Greek 2.3", tok: "w", tag: "w23", ai: "GRW23_", greeceIndex: 60, conquestLayout: true, download: "originals/moddb/greek-mod-2-3/files/Greek23.zip", inner: "Greek23", work: "greek-2-3", resolve: RESOLVE_23 },
     "2.5.3": { dir: "greek-mod-2-5-3", name: "Greek Mod 2.5.3", version: "2.5.3", label: "Greek 2.5.3", tok: "w5", letters: letters("W5"), template: "Greek Mod Two Five Three", tag: "w25", ai: "GRW25_", download: "originals/forum/greek-mod-2-5-3/files/GreekModInstaller.exe", inner: "", work: "greek-2-5-3", legacyList: true, wholeOnConflict: true, resolve: RESOLVE_25 },
     "2.6.1": { dir: "greek-mod-2-6-1", name: "Greek Mod 2.6.1", version: "2.6.1", label: "Greek 2.6.1", tok: "w6", letters: letters("W6"), template: "Greek Mod Two Six One", tag: "w26", ai: "GRW26_", download: "originals/forum/greek-mod-2-6-1/files/Greek261.zip", inner: "Greek261", work: "greek-2-6-1", legacyList: true, wholeOnConflict: true, resolve: RESOLVE_26 },
   },

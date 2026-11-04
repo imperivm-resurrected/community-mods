@@ -480,6 +480,9 @@ console.log(`menu skin: ${require("./lib/menu-skin.js").skinToPatches({ OUT, HD 
   console.log(`menu skin: ${nl} menu INIs have a changed list of names: ${[...MENU_LISTS].map(([f, l]) => `${f} [${l.map(x => x.sec).join(", ")}]`).join("; ") || "none"}`);
 }
 
+// The conquest screen: the 1.40 layout of the mod's own file makes the shields strip draw two shields over each other (found in game) and HD's covers Greece: layout-only patch (tools/lib/conquest-layout.js)
+if (V.conquestLayout) { const r = require("./lib/conquest-layout.js").write({ OUT, HD }); console.log(`conquest screen: patches/menuini/CONQUESTGAME.INI is the layout only (${r.sections} sections; the mod's file had ${r.from} lines, Shield8..11 with a repeated id 0x1037 among them)`); }
+
 // ---- 7. the mod's versions of the game's behavior scripts: copies of their own (<name>_<tag>.vs) that the classes of the mod's civilizations point to ---------
 // port-140.js already merged each one with HD (HD + the mod's edits), so the file at the game's path is the copy to make (tools/lib/own-scripts.js).
 {
@@ -573,7 +576,7 @@ for (const f of ["BELT OF SNAKES REMOVE.VS", "FEATHER AMULET REMOVE.VS"]) { cons
   const map = { MTownhall: "Townhall", MBarracks: "Barracks", MBlacksmith: "Blacksmith", MTemple: "Temple", MTavern: "Tavern", MTavern2: "Tavern2", MArena: "Arena", MTower: "Tower", MSentry: "Sentry", MSentry1: "Sentry1", MGuardPostSentry: "GuardPostSentry" };
   for (const g of ["Gate0", "Gate1", "Gate2", "Gate3", "Gate4", "Gate5", "Gate6", "Gate7", "WallsE", "WallsN", "WallsNE", "WallsNW", "WallsS", "WallsSE", "WallsSW", "WallsW"]) map["M" + g] = g;
   for (const [k, v] of Object.entries(map)) if (fs.existsSync(path.join(CLASSES, `${(PREFIX + (v)).toUpperCase()}.SC.XML`))) alias[k] = PREFIX + v;
-  const civ = { id: RACE, base: "ImperialRome", name: Object.fromEntries(Object.entries(GREEK.name).map(([k, v]) => [k, `${v} (${V.label})`])), letter: PREFIX, internalName: INTERNAL, template: TEMPLATE, ai: true, alias: { classes: alias, commands: {} } };
+  const civ = { id: RACE, base: "ImperialRome", name: Object.fromEntries(Object.entries(GREEK.name).map(([k, v]) => [k, `${v} (${V.label})`])), letter: PREFIX, internalName: INTERNAL, template: TEMPLATE, ai: true, ...(V.greeceIndex ? { index: V.greeceIndex } : {}), alias: { classes: alias, commands: {} } };
   wr(path.join(OUT, "civs", `${RACE}.json`), JSON.stringify(civ, null, 2) + "\n");
   fs.rmSync(path.join(OUT, "civs", "greek.json"), { force: true });
 }
@@ -646,13 +649,13 @@ const others = () => [G, ...fs.readdirSync(PORTED).filter(d => d !== V.dir && !L
   }
   problems.push(...r.problems.filter(x => !/no such folder in the port/.test(x)));
   if (problems.length) report.push("conquests: " + problems.join("; "));
-  const ids = [GREEK.id, ...CIVS.map(c => c.id)].sort(), index = 10 + ids.indexOf(GREEK.id);
+  const ids = [GREEK.id, ...CIVS.map(c => c.id)].sort(), index = V.greeceIndex || 10 + ids.indexOf(GREEK.id);   // explicit (civs/<id>.json `index`) where the version has a conquest
   const cDir = find(OUT, "Conquests");
   for (const f of cDir ? fs.readdirSync(cDir).filter(f => /\.bfhp$/i.test(f)) : []) {
     const bfhp = path.join(cDir, f), buf = fs.readFileSync(bfhp), e = hpfs(buf).find(x => /^territories\.xml$/i.test(x.path)), raw = e && e.read().toString("latin1");
     const out = raw && raw.replace(/(<territory\b[^>]*\bid="Greece"[^>]*\binterface=")\d+"/, (_m, a) => `${a}${index}"`);
     if (!out || out === raw) continue;
-    try { e.write(Buffer.from(out, "latin1")); fs.rmSync(bfhp); fs.writeFileSync(bfhp, buf); console.log(`conquest ${f}: Greece plays as ${RACE} (interface ${index}, its index with this set alone)`); }
+    try { e.write(Buffer.from(out, "latin1")); fs.rmSync(bfhp); fs.writeFileSync(bfhp, buf); console.log(`conquest ${f}: Greece plays as ${RACE} (interface ${index}${V.greeceIndex ? ", the explicit index of civs/" + RACE + ".json" : ", its index with this set alone"})`); }
     catch (err) { report.push(`conquest ${f}: Greece interface not set (${err.message})`); }
   }
 }
