@@ -542,6 +542,65 @@ if (fs.existsSync(EXTRAS)) for (const f of walk(EXTRAS)) { if (f === "NOTES.md")
   if (real.length) { console.error(`NAME CHECKS FAILED (${real.length}):\n  ${real.join("\n  ")}`); process.exit(1); }
 }
 
+// 11b. (Greece version) The strategic map (Space). The engine draws a building from its class's entity= path: it drops the last 8 characters, turns "/" into "-" and opens
+// MINIMAP/ZOOM{8,16,32}/ENTITIES/<name>.BMP (and OUTLINES/ZOOMn/{BLACK,COLOR}_<name>.BMP where the game has outlines for that kind). Secuter's Greek zip has no BUILDINGS, MINIMAP or art at
+// all; his Greek city IS the Greek Mod 1.8's, copied by tools/secuter-greece.js under the new names (QAgora -> ZgrAgora...), without the 1.8's MINIMAP/OUTLINES bitmaps: the whole Greek city
+// (27 entities: agora, gymnasium, barracks, blacksmith, temple, town hall, village, 3 houses, the walls, the gates and the tower) was missing on the strategic map (found in game, 2026-11-04).
+// For each building entity of a Greek class that lacks its bitmaps: its TWIN is the 1.8's entity with the same name where "zgr" is "q"; the twin is accepted only if the art is the same
+// (every file of the entity's folder except the .ent.xml is byte for byte the 1.8's, and the .ent.xml is the 1.8's with the names changed; the one other difference allowed is the barracks' exit point moved by secuter-greece.js, (-32,-50) -> (-16,-50), which does not change the picture) and the 1.8 has its bitmaps in the three zooms.
+// Then the 1.8's own bitmaps (and its outlines, where it has them: the town hall and the village) are copied under the Greek name. Nothing is drawn or invented. The outlines of a
+// building the 1.8 has none for, but Secuter's zip does (HBLACKSMITH, his own, orphaned by the rename H -> Zgr), are renamed to the Greek name. What has no twin is listed and must be
+// the `NO_TWIN` list below (empty today); the build stops on an entity that lacks bitmaps and has a twin, so a copy cannot silently regress.
+const NO_TWIN = [];
+if (GRECIA) {
+  const B18 = [path.join(ROOT, "ported", "greek-mod-1-8"), path.join(MAIN, "ported", "greek-mod-1-8")].find(p => fs.existsSync(path.join(p, "civs", "greek18.json")));
+  const nameOf = e => e.replace(/\\/g, "/").slice(0, -8).replace(/\//g, "-").toLowerCase();
+  const exists = (root, rel) => fs.existsSync(path.join(root, ...rel.split("/")));
+  const pick = (root, dir, base) => { const d = find(root, dir); return d && fs.readdirSync(d).find(f => f.toLowerCase() === base.toLowerCase()) ? path.join(d, fs.readdirSync(d).find(f => f.toLowerCase() === base.toLowerCase())) : null; };
+  const done = [], bad = [], twinless = [], seen = new Set();
+  const ents = [];
+  for (const f of walk(path.join(OUT, "DATA", "CLASSES")).filter(f => /\.sc\.xml$/i.test(f)))
+    for (const m of rd(path.join(OUT, "DATA", "CLASSES", f)).replace(/<!--[\s\S]*?-->/g, "").matchAll(/\bentity(?:_\w+)?\s*=\s*"((?:Buildings|MapObjects)\/[^"]+\.ent\.xml)"/gi)) if (/zgr/i.test(m[1])) ents.push(m[1]);
+  for (const e of [...new Set(ents)]) {
+    const n = nameOf(e); if (seen.has(n)) continue; seen.add(n);
+    if (["8", "16", "32"].every(z => pick(OUT, `MINIMAP/ZOOM${z}/ENTITIES`, n + ".bmp"))) continue;     // it has them
+    const tn = n.replace(/zgr/g, "q"), te = e.replace(/zgr/gi, "Q");
+    const ours = find(OUT, path.posix.dirname(e)), theirs = B18 && find(B18, path.posix.dirname(e).replace(/zgr/gi, "Q"));
+    const why = [];
+    if (!theirs) why.push("no folder of that art in the 1.8's build");
+    else {
+      // same art: the files of the folder (but the .ent.xml) byte for byte; the .ent.xml with the names changed
+      const mine = fs.readdirSync(ours).filter(x => !/\.ent\.xml$/i.test(x)), his = fs.readdirSync(theirs).filter(x => !/\.ent\.xml$/i.test(x));
+      const key = x => x.toLowerCase().replace(/zgr/g, "q");
+      if (mine.map(key).sort().join("|") !== his.map(key).sort().join("|")) why.push("the folders hold different files");
+      else for (const x of mine) { const y = his.find(h => key(x) === key(h)); if (md5(path.join(ours, x)) !== md5(path.join(theirs, y))) { why.push(`${x} differs from the 1.8's ${y}`); break; } }
+      const ex = fs.readdirSync(ours).find(x => /\.ent\.xml$/i.test(x) && x.toLowerCase() === path.posix.basename(e).toLowerCase()), ey = fs.readdirSync(theirs).find(x => x.toLowerCase() === path.posix.basename(te).toLowerCase());
+      if (!ex || !ey) why.push("the .ent.xml is not in both");
+      else if (rd(path.join(ours, ex)).replace(/type="2" x="-16" y="-50"/, 'type="2" x="-32" y="-50"').toLowerCase().replace(/zgr/g, "q").replace(/\s+/g, " ") !== rd(path.join(theirs, ey)).toLowerCase().replace(/\s+/g, " ")) why.push("its .ent.xml is not the 1.8's with the names changed");
+    }
+    const src = z => B18 && pick(B18, `MINIMAP/ZOOM${z}/ENTITIES`, tn + ".bmp");
+    if (!why.length && !["8", "16", "32"].every(z => src(z))) why.push("the 1.8 has no bitmaps of it in the three zooms");
+    if (why.length) { twinless.push(`${e}: ${why.join("; ")}`); continue; }
+    for (const z of ["8", "16", "32"]) { const dst = path.join(OUT, "MINIMAP", `ZOOM${z}`, "ENTITIES", n.toUpperCase() + ".BMP"); fs.mkdirSync(path.dirname(dst), { recursive: true }); fs.copyFileSync(src(z), dst); }
+    for (const z of ["8", "16", "32"]) for (const c of ["BLACK", "COLOR"]) {                        // outlines: the 1.8's, where it has them (town hall, village)
+      const o = B18 && pick(B18, `OUTLINES/ZOOM${z}`, `${c}_${tn}.bmp`); if (!o) continue;
+      const dst = path.join(OUT, "OUTLINES", `ZOOM${z}`, `${c}_${n.toUpperCase()}.BMP`); fs.mkdirSync(path.dirname(dst), { recursive: true }); fs.copyFileSync(o, dst);
+    }
+    done.push(n);
+  }
+  // Secuter's own outlines of the Greek blacksmith (BUILDINGS-HBLACKSMITH-HBLACKSMITH): renamed to the Greek name when the entity is Greece's
+  const outl = [];
+  for (const z of ["8", "16", "32"]) for (const c of ["BLACK", "COLOR"]) {
+    const o = pick(OUT, `OUTLINES/ZOOM${z}`, `${c}_BUILDINGS-HBLACKSMITH-HBLACKSMITH.BMP`); if (!o) continue;
+    if (!seen.has("buildings-zgrblacksmith-zgrblacksmith")) break;
+    const dst = path.join(path.dirname(o), `${c}_BUILDINGS-ZGRBLACKSMITH-ZGRBLACKSMITH.BMP`); fs.renameSync(o, dst); outl.push(path.basename(dst));
+  }
+  console.log(`strategic map of Greece: ${done.length} of ${seen.size} Greek building entities got the 1.8's bitmaps of the same art (3 zooms; outlines where the 1.8 has them: ${walk(path.join(OUT, "OUTLINES")).filter(f => /ZGR/i.test(f)).length} files incl. ${outl.length} of Secuter's blacksmith renamed); no twin: ${twinless.length}`);
+  fs.writeFileSync(path.join(ROOT, "raw", `${ID}-minimap-twins.txt`), [`copied (${done.length}):`, ...done, "", `no twin (${twinless.length}):`, ...twinless, ""].join("\n"));
+  for (const t of twinless) if (!NO_TWIN.some(x => t.startsWith(x))) bad.push(`${t} (it has no twin and is not in NO_TWIN)`);
+  if (bad.length) { console.error(`STRATEGIC MAP CHECK FAILED (${bad.length}):\n  ${bad.join("\n  ")}`); process.exit(1); }
+}
+
 // 12. Checks that the other ports taught (nothing is rewritten here: the clones are copies of HD's classes with the mod's, and Greece comes from the 1.8, so they are expected to pass; they stop the build if not).
 //   (a) default commands (right click), tools/lib/default-cmds.js: a unit class with a <defaultcmd> map of its own that lacks a target of its reference (Hero, Wagon, WildHorse, ShipBattle...) cannot
 //       link to heroes: the build stops on any target a class's own key shadows. Counts per target are printed.
