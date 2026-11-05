@@ -174,6 +174,21 @@ let DEFAULT_CMDS;
   console.log(`default commands: ${before.length} unit classes lacked targets of their reference (${before.filter(x => x.shadowed.length).length} shadowed), missing per target ${JSON.stringify(DCX.perTarget(before))}; ${done.blocks} blocks written in ${done.classes} classes; exempt: ${done.exempt.map(x => x.id).join(", ") || "none"}; after: ${after.length} lacking ${JSON.stringify(DCX.perTarget(after))}, ${DCX.stops(o).length} shadowed and not exempt`);
 }
 
+// 3c. The methods of the mod's base classes (tools/lib/caesar-methods.js). The mod's `Unit` declares methods that HD's lacks or names differently (advance_enter / HD advanceenter, advance_alone,
+// advance_aggressive, enter_alone, detach...) and the scripts give them as commands: u.SetCommand("advance_enter", hall). The clone step (tools/lib/clone-civs.js, shared) writes the mod's changes
+// to the base classes inside each civilization's classes, but follows the parent chain only through the game's classes and the civilization's own: a class below a class of the mod's own
+// (MediumRanged, OldMan) stopped there, and Greece (the mod's H* classes, never cloned) got none. A unit given a command its class has no method for does nothing (the engine cancels its
+// commands first): every Greek unit trained at the barracks, temple or gymnasium stayed where it appeared (maintainer, in game, 2026-11-05). Here every unit class of the port gets the
+// <method> elements of the mod's changes to the HD classes of its chain that its shipped chain lacks (not the properties, behaviors or default commands: counted in the report).
+let INHERITED;
+{
+  const ML = require("./lib/caesar-methods.js"), changes = readJson(path.join(MERGED, "base-changes.json"));
+  INHERITED = ML.inherit({ OUT, HDC: HD_CLASSES, changes, exists: rel => !!(find(OUT, rel) || find(HD, rel)) });
+  const fam = {}; for (const d of INHERITED.done) fam[d.family] = (fam[d.family] || 0) + 1;
+  const per = {}; for (const d of INHERITED.done) for (const s of d.sigs) per[s] = (per[s] || 0) + 1;
+  console.log(`methods of the mod's base classes: ${INHERITED.done.length} classes got ${INHERITED.done.reduce((n, d) => n + d.sigs.length, 0)} <method> they lacked; per family ${JSON.stringify(fam)}; top sigs ${Object.entries(per).sort((a, b) => b[1] - a[1]).slice(0, 8).map(([k, v]) => k + " " + v).join(", ")}; ${INHERITED.noScript.length} left out because their script exists nowhere`);
+}
+
 // 4. Greece: its scripts
 {
   // "if (race != ImperialRome) return;" ended at once on a Greek building (Greece has a race of its own), and the engine started the behavior again and again: the game hung
@@ -1012,6 +1027,17 @@ for (const f of walk(OUT).filter(f => /(^|\/)(\.fingerprint|desktop\.ini|thumbs\
   fs.writeFileSync(path.join(ROOT, "raw", "caesar-mod-civs-default-cmds.txt"), [`before: ${before.length} unit classes lacking a target of their reference, ${before.filter(x => x.shadowed.length).length} shadowed; missing per target ${JSON.stringify(DCX.perTarget(before))}`, ...before.map(line), "", `written: ${done.blocks} blocks in ${done.classes} classes`, ...done.list.map(x => `${x.id} <- ${x.ref}: ${x.missing.join(", ")}`), "", `exempt (${ex.length}):`, ...ex.map(x => `${line(x)} -- ${DCX.EXEMPT.get([...DCX.EXEMPT.keys()].find(k => x.id.toLowerCase().startsWith(k.toLowerCase())))}`), "", `final: ${fin.length} lacking, ${bad.length} shadowed and not exempt`, ...fin.map(line), ""].join("\n"));
   console.log(`default commands (final): ${fin.length} unit classes lack a target (${ex.length} exempt: ${ex.map(x => x.id).join(", ")}), ${bad.length} shadowed and not exempt`);
   if (bad.length) { console.error(`DEFAULT COMMAND CHECKS FAILED (${bad.length}):\n  ${bad.map(line).join("\n  ")}`); process.exit(1); }
+}
+
+// 12d. Methods, final: no script of the port may give a command (SetCommand / AddCommand) that a class it runs on has no method or order for, where the class's peers have it
+// (tools/lib/caesar-methods.js). Exempt: none; an entry here needs its reason.
+{
+  const ML = require("./lib/caesar-methods.js"), EXEMPT_METHODS = new Map(), HDCMD = find(HD, "DATA/COMMANDS");
+  const r = ML.scan({ OUT, HDC: HD_CLASSES, HDCMD, exempt: (cls, name) => EXEMPT_METHODS.get(cls + "|" + name) || null });
+  const fam = {}; for (const d of INHERITED.done) fam[d.family] = (fam[d.family] || 0) + 1;
+  fs.writeFileSync(path.join(ROOT, "raw", "caesar-mod-civs-methods.txt"), [`inherited: ${INHERITED.done.length} classes (per family ${JSON.stringify(fam)})`, ...INHERITED.done.map(d => `${d.id} (${d.family}): ${d.sigs.join(", ")}`), "", `not written (properties, behaviors, default commands, values of the base classes whose methods were): ${JSON.stringify(INHERITED.skipped)}`, "", `methods left out because their script exists nowhere: ${INHERITED.noScript.length}`, ...INHERITED.noScript, "", `final check: ${ML.summary(r)}`, ...r.triples.map(t => `${t.script} ${t.name} ${t.cls}`), ""].join("\n"));
+  console.log(`methods (final): ${ML.summary(r)}`);
+  if (r.triples.length) { console.error(`METHOD CHECKS FAILED (${r.triples.length}): a script gives a command that the class has no method for:\n  ${r.triples.slice(0, 40).map(t => `${t.script} ${t.name} -> ${t.cls}`).join("\n  ")}`); process.exit(1); }
 }
 
 // The SDK rule (civilizations.md, units.md): the copies do not carry the original's altid. The 1.1.1 gave six of the mod's classes one (BHighlander altid BHighlandar, CMaceman
