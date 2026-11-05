@@ -1,0 +1,31 @@
+inherited: 24 classes (per family {"Peaceful":2,"Animal":4,"Melee":3,"Ranged":3,"BaseMage":1,"Peasant":1,"PeasantAmbient":2,"Wagon":1,"BearUnit":1,"BoarUnit":1,"HeroMounted":1,"Horse":1,"ShortRanged":1,"Sentry":1,"PeasantFemale":1})
+Fisherman (Peaceful): advance_alone, advance_aggressive, detach, take_nearby_items, walk_and_die, attack_unit_type_exclusive, arrow_helper
+OldMan (Peaceful): advance_alone, advance_aggressive, detach, enter_alone, advance_enter, take_nearby_items, walk_and_die, attack_unit_type_exclusive, arrow_helper
+CrowUnit (Animal): detach, arrow_helper
+DeerUnit (Animal): advance_alone, advance_aggressive, detach, enter_alone, advance_enter, take_nearby_items, walk_and_die, attack_unit_type_exclusive, arrow_helper
+HChariot (Melee): advance_alone, advance_aggressive, detach, enter_alone, advance_enter, take_nearby_items, walk_and_die, attack_unit_type_exclusive, arrow_helper, taunt, guard_enter, guard_advance, guard_patrol, guard_engage
+HenUnit (Animal): advance_alone, advance_aggressive, detach, enter_alone, advance_enter, take_nearby_items, walk_and_die, attack_unit_type_exclusive, arrow_helper
+HHoplite (Melee): advance_alone, advance_aggressive, detach, enter_alone, advance_enter, take_nearby_items, walk_and_die, attack_unit_type_exclusive, arrow_helper, taunt, guard_enter, guard_advance, guard_patrol, guard_engage
+HHypaspista (Melee): advance_alone, advance_aggressive, detach, enter_alone, advance_enter, take_nearby_items, walk_and_die, attack_unit_type_exclusive, arrow_helper, taunt, guard_enter, guard_advance, guard_patrol, guard_engage
+HMyrmidon_Javelin (Ranged): advance_alone, advance_aggressive, detach, enter_alone, advance_enter, take_nearby_items, walk_and_die, attack_unit_type_exclusive, arrow_helper, taunt, guard_enter, guard_advance, guard_patrol, guard_engage
+HPriest (BaseMage): detach, enter_alone, advance_enter, take_nearby_items, walk_and_die, attack_unit_type_exclusive, arrow_helper
+HToxotes (Ranged): advance_alone, advance_aggressive, detach, enter_alone, advance_enter, take_nearby_items, walk_and_die, attack_unit_type_exclusive, arrow_helper, taunt, guard_enter, guard_advance, guard_patrol, guard_engage
+HVillager (Peasant): advance_alone, advance_aggressive, detach, enter_alone, advance_enter, take_nearby_items, walk_and_die, attack_unit_type_exclusive, arrow_helper
+HVillagerAmbient (PeasantAmbient): advance_alone, advance_aggressive, detach, enter_alone, advance_enter, take_nearby_items, walk_and_die, attack_unit_type_exclusive, arrow_helper
+HWVillagerAmbient (PeasantAmbient): advance_alone, advance_aggressive, detach, enter_alone, advance_enter, take_nearby_items, walk_and_die, attack_unit_type_exclusive, arrow_helper
+MediumRanged (Ranged): advance_alone, advance_aggressive, detach, enter_alone, advance_enter, take_nearby_items, walk_and_die, attack_unit_type_exclusive, arrow_helper, taunt, guard_enter, guard_advance, guard_patrol, guard_engage
+Mule (Wagon): advance_alone, advance_aggressive, detach, enter_alone, advance_enter, take_nearby_items, walk_and_die, attack_unit_type_exclusive, arrow_helper
+WildHorseUnit (Animal): advance_alone, advance_aggressive, detach, enter_alone, advance_enter, take_nearby_items, walk_and_die, attack_unit_type_exclusive, arrow_helper
+BearSummoned (BearUnit): advance_alone, advance_aggressive, detach, enter_alone, advance_enter, take_nearby_items, walk_and_die, attack_unit_type_exclusive, arrow_helper
+BoarSummoned (BoarUnit): advance_alone, advance_aggressive, detach, enter_alone, advance_enter, take_nearby_items, walk_and_die, attack_unit_type_exclusive, arrow_helper
+GreekHero (HeroMounted): advance_alone, advance_aggressive, detach, enter_alone, advance_enter, take_nearby_items, walk_and_die, attack_unit_type_exclusive, arrow_helper, guard_enter, guard_advance, guard_patrol, guard_engage, waitarmytrain
+HCataphract (Horse): advance_alone, advance_aggressive, detach, enter_alone, advance_enter, take_nearby_items, walk_and_die, attack_unit_type_exclusive, arrow_helper, taunt, guard_enter, guard_advance, guard_patrol, guard_engage
+HPeltast (ShortRanged): advance_alone, advance_aggressive, detach, enter_alone, advance_enter, take_nearby_items, walk_and_die, attack_unit_type_exclusive, arrow_helper, taunt, guard_enter, guard_advance, guard_patrol, guard_engage
+HSentry (Sentry): advance_alone, advance_aggressive, detach, enter_alone, advance_enter, take_nearby_items, walk_and_die, attack_unit_type_exclusive, arrow_helper, taunt, guard_enter, guard_advance, guard_patrol, guard_engage
+HWVillager (PeasantFemale): advance_alone, advance_aggressive, detach, enter_alone, advance_enter, take_nearby_items, walk_and_die, attack_unit_type_exclusive, arrow_helper
+
+not written (properties, behaviors, default commands, values of the base classes whose methods were): {"object":{"properties":2},"unit":{"properties":2,"behavior":1,"value0":1,"value1":1,"value2":1,"value3":1,"value4":1,"value5":1,"defaultcmd":2},"peaceful":{"properties":1,"value1":1,"defaultcmd":4},"baseanimal":{"properties":4,"defaultcmd":3},"animal":{"properties":1,"value1":1,"defaultcmd":1},"military":{"behavior":1,"defaultcmd":8,"sounds":1},"basemage":{"value1":1,"defaultcmd":1},"peasant":{"defaultcmd":2},"peasantambient":{"properties":3,"nodefcmdinherit":1},"ramunit":{"properties":6,"behavior":1,"nodefcmdinherit":1,"defaultcmd":4,"sounds":1},"wagon":{"properties":4,"defaultcmd":1},"hero":{"properties":6,"behavior":1,"defaultcmd":8},"sentry":{"properties":3,"defaultcmd":2},"shipbattle":{"properties":11,"nodefcmdinherit":1,"defaultcmd":6,"sounds":1}}
+
+methods left out because their script exists nowhere: 0
+
+final check: 0 (script, name, class) triples; names: ; families: ; 0 classes; 580 calls read, 289 on an unknown receiver

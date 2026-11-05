@@ -64,7 +64,7 @@ Every line of a patch is listed with the game's value (HD), the 1.40's and the m
 - [CopyrightShadow] `RectWH`: HD `50, #768-30#, 556, 25` | 1.40 `1, 731, 730, 100` -> `99, #%ScreenBottom%-29#, 556, 25`
 - [Version] `Template`: HD `-` | 1.40 `%TmplIni%, StaticText` -> `%TmplIni%, StaticTextMultiline`
 - [Version] `RectWH`: HD `-` | 1.40 `907, 745, 90, 20` -> `#%ScreenRight%-175#, #%ScreenBottom%-20#, 175, 25`
-- [Version] `Text`: HD `-` | 1.40 `-` -> `Caesar Mod 1.1.0`
+- [Version] `Text`: HD `-` | 1.40 `-` -> `Caesar Mod 1.1.1` (ADJUSTED: the mod has `Caesar Mod 1.1.0`; the author did not update the text in the 1.1.1 zip, the port shows the version of the zip it was built from)
 - [Version] `TextColor`: HD `-` | 1.40 `228,220,140` -> `228, 220, 140`
 - [Version] `Id`: HD `-` | 1.40 `0x1031` -> `0x1022`
 - [TipsBackFrame] `Template`: HD `-` | 1.40 `%TmplIni%, MenuFrame` -> `%TmplIni%, MenuFrame`

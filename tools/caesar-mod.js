@@ -1,6 +1,8 @@
-// Caesar Mod 1.1.0 (Paolo Lamberto and the Greek Mod 1.9 creators, GameBanana 728740, row 2): the civilization part of the mod as civilizations of its own, next to
+// Caesar Mod 1.1.1 (Paolo Lamberto and the Greek Mod 1.9 creators, GameBanana 728740, row 2): the civilization part of the mod as civilizations of its own, next to
 // the game's (AGENTS.md, "Civilizations are independent"; decided in #15: a balance mod is ported as copies, the host chooses the set in the room). Rebuild with
 //   G="$HOME/.local/share/Steam/steamapps/common/Imperivm - Great Battles of Rome HD" node tools/caesar-mod.js [id ...]     (no id: everything)
+// The source is the 1.1.1 zip (originals/gamebanana/728740-111/caesar_mod_111.zip); CAESAR_MOD_VERSION=1.1.0 builds from the 1.1.0 one (728740/caesar_mod.zip, kept in
+// originals): same pipeline, the set and mod.json then say 1.1.0. The zip's root folder ('Caesar Mod/' or 'Caesar Mod 1.1.0/') does not matter: bsdtar strips it.
 // Same pipeline as the Greek Mod 4.2 (tools/greek-4-2.js, tools/lib/*), on the mod's own zip:
 //   0. the zip is unpacked in .scratch/caesar-src (git-ignored; nothing is written under originals/); what is not the mod's civilizations (the engine's old tricks:
 //      civs/, patches/, hidden.txt) goes. DATA/ is ported with tools/port-140.js (three-way: HD, 1.40, mod): the mod's class and script files are written in their own
@@ -20,9 +22,12 @@ const ROOT = path.join(__dirname, "..");
 // main checkout and from any worktree.
 const MAIN = (() => { try { return path.dirname(path.resolve(ROOT, cp.execFileSync("git", ["rev-parse", "--git-common-dir"], { cwd: ROOT, encoding: "utf8", stdio: ["ignore", "pipe", "ignore"] }).trim())); } catch { return ROOT; } })();
 process.env.SDK = process.env.SDK || [path.join(ROOT, "..", "imperivm-resurrected", "sdk"), path.join(MAIN, "..", "imperivm-resurrected", "sdk")].find(fs.existsSync) || path.join(ROOT, "..", "imperivm-resurrected", "sdk");   // clone-civs.js and port-140.js read it
-const ID = "caesar-mod-civs", TAG = "cae", LABEL = "Caesar", SUFFIX = "Caesar Mod 1.1.0", OUT = path.join(ROOT, "ported", ID), EXTRAS = path.join(ROOT, "extras", ID);
+const ZIPS = { "1.1.1": ["728740-111", "caesar_mod_111.zip"], "1.1.0": ["728740", "caesar_mod.zip"] };
+const VERSION = process.env.CAESAR_MOD_VERSION || "1.1.1";
+if (!ZIPS[VERSION]) { console.error(`CAESAR_MOD_VERSION=${VERSION}: known versions are ${Object.keys(ZIPS).join(", ")}`); process.exit(1); }
+const ID = "caesar-mod-civs", TAG = "cae", LABEL = "Caesar", SUFFIX = "Caesar Mod " + VERSION, OUT = path.join(ROOT, "ported", ID), EXTRAS = path.join(ROOT, "extras", ID);
 const SCRATCH = path.join(ROOT, ".scratch"), SRC = path.join(SCRATCH, "caesar-src"), STAGE = path.join(SCRATCH, "caesar-data-in"), DATAOUT = path.join(SCRATCH, "caesar-data-merged"), MERGED = path.join(SCRATCH, "caesar-merged");
-const ZIP = path.join(ROOT, "originals", "gamebanana", "728740", "caesar_mod.zip");
+const ZIP = path.join(ROOT, "originals", "gamebanana", ...ZIPS[VERSION]);
 const HD = path.join(ROOT, "originals", "game-data", "paks"), HDDATA = path.join(ROOT, "originals", "game-data", "DATA"), GD = path.join(ROOT, "originals", "game-data");
 const GAME = process.env.G || path.join(process.env.HOME || "", ".local/share/Steam/steamapps/common/Imperivm - Great Battles of Rome HD");
 const rd = f => fs.readFileSync(f, "latin1"), wr = (f, s) => { fs.mkdirSync(path.dirname(f), { recursive: true }); fs.rmSync(f, { force: true }); fs.writeFileSync(f, s, "latin1"); };
@@ -33,7 +38,7 @@ const md5 = f => require("crypto").createHash("md5").update(fs.readFileSync(f)).
 // a malformed file stops the build, on purpose
 const readJson = f => { try { return JSON.parse(fs.readFileSync(f, "utf8")); } catch (e) { console.error(`${f}: ${e.message}`); process.exit(1); } };
 const want = process.argv.slice(2);
-if (!fs.existsSync(ZIP)) { console.error("no " + ZIP + ": download GameBanana 728740 (docs/PORTING.md, step 2)"); process.exit(1); }
+if (!fs.existsSync(ZIP)) { console.error("no " + ZIP + ": download GameBanana 728740, the file of the " + VERSION + " (docs/PORTING.md, step 2)"); process.exit(1); }
 if (!fs.existsSync(path.join(GAME, "rle.mmp"))) { console.error('set G to the HD game folder (port-140.js opens its rle.mmp)'); process.exit(1); }
 const report = [];
 
@@ -81,7 +86,7 @@ fs.mkdirSync(SRC, { recursive: true });
   // DATA/ three-way (tools/port-140.js: same as HD or 1.40 -> HD's; changed by the mod only -> the mod's; both -> merged). Its report: raw/port-140/<id>.md
   fs.mkdirSync(STAGE, { recursive: true });
   cp.spawnSync("cp", ["-al", path.join(SRC, "DATA"), path.join(STAGE, "DATA")], { stdio: "inherit" });
-  const r = cp.spawnSync("node", [path.join(__dirname, "port-140.js"), STAGE, DATAOUT, "--id", ID, "--name", SUFFIX, "--version", "1.1.0", "--category", "Civilizations"], { stdio: "inherit", env: { ...process.env, GAME } }); if (r.status) process.exit(1);
+  const r = cp.spawnSync("node", [path.join(__dirname, "port-140.js"), STAGE, DATAOUT, "--id", ID, "--name", SUFFIX, "--version", VERSION, "--category", "Civilizations"], { stdio: "inherit", env: { ...process.env, GAME } }); if (r.status) process.exit(1);
   fs.rmSync(path.join(SRC, "DATA"), { recursive: true, force: true });
   fs.renameSync(path.join(DATAOUT, find(DATAOUT, "DATA") ? path.basename(find(DATAOUT, "DATA")) : "DATA"), path.join(SRC, "DATA"));
 }
@@ -156,6 +161,32 @@ require("./lib/clone-civs.js")({ PORT: OUT, MERGED, SUFFIX, LABEL, CIVS, cloneAl
   let n = 0;
   for (const f of fs.readdirSync(SUB).filter(f => /_(ENABLE_OR_DISABLE_CMD|CAPTURED_BY_AI)\.VS$/i.test(f))) if (!refs.has(f.toLowerCase())) { fs.rmSync(path.join(SUB, f)); n++; }
   console.log(`${n} scripts of the branch choice nobody uses left out`);
+}
+
+// 3b. The default commands (right click) of the units (tools/lib/caesar-defaultcmds.js over main's tools/lib/default-cmds.js, read only): a unit class with a <defaultcmd> map of its own
+// that lacks a target of its reference (the HD twin, else the nearest ancestor, the mod's version when it changed it) is completed after its own blocks (the own block wins). Before the
+// renames: the blocks carry the game's names. CrowUnit and Mule are exempt (the reason is in the lib); the build stops at the end (step 12c) if a target is still shadowed.
+let DEFAULT_CMDS;
+{
+  const DCX = require("./lib/caesar-defaultcmds.js"), DC = require("./lib/default-cmds.js"), o = { OUT, dirs: [CLASSES, path.join(MERGED, "classes"), HD_CLASSES], tag: TAG };
+  const before = DC.check(o), done = DCX.complete(o), after = DC.check(o);
+  DEFAULT_CMDS = { before, done, after };
+  console.log(`default commands: ${before.length} unit classes lacked targets of their reference (${before.filter(x => x.shadowed.length).length} shadowed), missing per target ${JSON.stringify(DCX.perTarget(before))}; ${done.blocks} blocks written in ${done.classes} classes; exempt: ${done.exempt.map(x => x.id).join(", ") || "none"}; after: ${after.length} lacking ${JSON.stringify(DCX.perTarget(after))}, ${DCX.stops(o).length} shadowed and not exempt`);
+}
+
+// 3c. The methods of the mod's base classes (tools/lib/caesar-methods.js). The mod's `Unit` declares methods that HD's lacks or names differently (advance_enter / HD advanceenter, advance_alone,
+// advance_aggressive, enter_alone, detach...) and the scripts give them as commands: u.SetCommand("advance_enter", hall). The clone step (tools/lib/clone-civs.js, shared) writes the mod's changes
+// to the base classes inside each civilization's classes, but follows the parent chain only through the game's classes and the civilization's own: a class below a class of the mod's own
+// (MediumRanged, OldMan) stopped there, and Greece (the mod's H* classes, never cloned) got none. A unit given a command its class has no method for does nothing (the engine cancels its
+// commands first): every Greek unit trained at the barracks, temple or gymnasium stayed where it appeared (maintainer, in game, 2026-11-05). Here every unit class of the port gets the
+// <method> elements of the mod's changes to the HD classes of its chain that its shipped chain lacks (not the properties, behaviors or default commands: counted in the report).
+let INHERITED;
+{
+  const ML = require("./lib/caesar-methods.js"), changes = readJson(path.join(MERGED, "base-changes.json"));
+  INHERITED = ML.inherit({ OUT, HDC: HD_CLASSES, changes, exists: rel => !!(find(OUT, rel) || find(HD, rel)) });
+  const fam = {}; for (const d of INHERITED.done) fam[d.family] = (fam[d.family] || 0) + 1;
+  const per = {}; for (const d of INHERITED.done) for (const s of d.sigs) per[s] = (per[s] || 0) + 1;
+  console.log(`methods of the mod's base classes: ${INHERITED.done.length} classes got ${INHERITED.done.reduce((n, d) => n + d.sigs.length, 0)} <method> they lacked; per family ${JSON.stringify(fam)}; top sigs ${Object.entries(per).sort((a, b) => b[1] - a[1]).slice(0, 8).map(([k, v]) => k + " " + v).join(", ")}; ${INHERITED.noScript.length} left out because their script exists nowhere`);
 }
 
 // 4. Greece: its scripts
@@ -635,7 +666,8 @@ console.log(`other ports compared: ${PORTS.length} (${REQUIRED_PORTS.filter(n =>
 // DATA untouched). Pictures: UI/MENU/* of the zip that differ from the game's bytes (the game's own are left out), whole files.
 {
   const menu = require("./lib/caesar-menu.js"), BASE = path.join(ROOT, "originals", "game-140", "paks");
-  const r = menu.build({ OUT, HD, BASE, MOD: STAGE });
+  const r = menu.build({ OUT, HD, BASE, MOD: STAGE, version: VERSION });
+  for (const l of r.report.split("\n").filter(l => /ADJUSTED/.test(l))) console.log("menu skin: " + l.replace(/^- /, ""));
   console.log(`menu skin: ${r.written.length} INIs as patches at patches/menuini/ (${r.written.join(", ")}; template.ini also at patches/DATA/INTERFACE/MENU/); not written: ${r.skipped.length}`);
   if (r.problems.length) { console.error(`MENU SKIN PROBLEMS:\n  ${r.problems.join("\n  ")}`); process.exit(1); }
   fs.writeFileSync(path.join(ROOT, "raw", "caesar-mod-civs-menu-skin.md"), r.report);
@@ -687,6 +719,8 @@ console.log(`other ports compared: ${PORTS.length} (${REQUIRED_PORTS.filter(n =>
 
 // 11. hand fixes of this mod (extras/caesar-mod-civs/): mod.json with the credits, the license files
 if (fs.existsSync(EXTRAS)) for (const f of walk(EXTRAS)) { if (f === "NOTES.md") continue; const dst = path.join(OUT, f); fs.mkdirSync(path.dirname(dst), { recursive: true }); fs.rmSync(dst, { force: true }); fs.copyFileSync(path.join(EXTRAS, f), dst); }
+// extras/mod.json says 1.1.1; a build from the 1.1.0 zip says 1.1.0 (name, version, descriptions)
+if (VERSION !== "1.1.1") { const mj = path.join(OUT, "mod.json"); fs.writeFileSync(mj, fs.readFileSync(mj, "utf8").replace(/1\.1\.1/g, VERSION)); }
 // the engine writes .fingerprint in an installed mod's folder (and Windows leaves desktop.ini): never part of the port
 for (const f of walk(OUT).filter(f => /(^|\/)(\.fingerprint|desktop\.ini|thumbs\.db)$/i.test(f))) fs.rmSync(path.join(OUT, f));
 // a <method>/<behavior> that names a script neither the mod nor the game has: the game could not run it
@@ -984,6 +1018,35 @@ for (const f of walk(OUT).filter(f => /(^|\/)(\.fingerprint|desktop\.ini|thumbs\
   const r = require("./lib/caesar-names.js").checkNames({ OUT, HD, SDK: process.env.SDK, merged });
   console.log(r.notes.join("\n"));
   if (r.errors.length) { fs.writeFileSync(path.join(SCRATCH, "caesar-names.txt"), r.errors.join("\n") + "\n"); console.error(`NAME CHECKS FAILED (${r.errors.length}), all in .scratch/caesar-names.txt:\n  ${r.errors.slice(0, 60).join("\n  ")}`); process.exit(1); }
+}
+
+// 12c. Default commands, final (after the renames and Greece): no unit class may keep a SHADOWED target of its reference unless it is exempt; the counts go to raw/.
+{
+  const DCX = require("./lib/caesar-defaultcmds.js"), DC = require("./lib/default-cmds.js"), o = { OUT, dirs: [CLASSES, path.join(MERGED, "classes"), HD_CLASSES], tag: TAG };
+  const fin = DC.check(o), bad = DCX.stops(o), ex = DCX.exempted(o), { before, done } = DEFAULT_CMDS, line = x => `${x.id} (ref ${x.ref}) lacks ${x.missing.join(", ")}${x.shadowed.length ? "; SHADOWED " + x.shadowed.join(", ") : ""}`;
+  fs.writeFileSync(path.join(ROOT, "raw", "caesar-mod-civs-default-cmds.txt"), [`before: ${before.length} unit classes lacking a target of their reference, ${before.filter(x => x.shadowed.length).length} shadowed; missing per target ${JSON.stringify(DCX.perTarget(before))}`, ...before.map(line), "", `written: ${done.blocks} blocks in ${done.classes} classes`, ...done.list.map(x => `${x.id} <- ${x.ref}: ${x.missing.join(", ")}`), "", `exempt (${ex.length}):`, ...ex.map(x => `${line(x)} -- ${DCX.EXEMPT.get([...DCX.EXEMPT.keys()].find(k => x.id.toLowerCase().startsWith(k.toLowerCase())))}`), "", `final: ${fin.length} lacking, ${bad.length} shadowed and not exempt`, ...fin.map(line), ""].join("\n"));
+  console.log(`default commands (final): ${fin.length} unit classes lack a target (${ex.length} exempt: ${ex.map(x => x.id).join(", ")}), ${bad.length} shadowed and not exempt`);
+  if (bad.length) { console.error(`DEFAULT COMMAND CHECKS FAILED (${bad.length}):\n  ${bad.map(line).join("\n  ")}`); process.exit(1); }
+}
+
+// 12d. Methods, final: no script of the port may give a command (SetCommand / AddCommand) that a class it runs on has no method or order for, where the class's peers have it
+// (tools/lib/caesar-methods.js). Exempt: none; an entry here needs its reason.
+{
+  const ML = require("./lib/caesar-methods.js"), EXEMPT_METHODS = new Map(), HDCMD = find(HD, "DATA/COMMANDS");
+  const r = ML.scan({ OUT, HDC: HD_CLASSES, HDCMD, exempt: (cls, name) => EXEMPT_METHODS.get(cls + "|" + name) || null });
+  const fam = {}; for (const d of INHERITED.done) fam[d.family] = (fam[d.family] || 0) + 1;
+  fs.writeFileSync(path.join(ROOT, "raw", "caesar-mod-civs-methods.txt"), [`inherited: ${INHERITED.done.length} classes (per family ${JSON.stringify(fam)})`, ...INHERITED.done.map(d => `${d.id} (${d.family}): ${d.sigs.join(", ")}`), "", `not written (properties, behaviors, default commands, values of the base classes whose methods were): ${JSON.stringify(INHERITED.skipped)}`, "", `methods left out because their script exists nowhere: ${INHERITED.noScript.length}`, ...INHERITED.noScript, "", `final check: ${ML.summary(r)}`, ...r.triples.map(t => `${t.script} ${t.name} ${t.cls}`), ""].join("\n"));
+  console.log(`methods (final): ${ML.summary(r)}`);
+  if (r.triples.length) { console.error(`METHOD CHECKS FAILED (${r.triples.length}): a script gives a command that the class has no method for:\n  ${r.triples.slice(0, 40).map(t => `${t.script} ${t.name} -> ${t.cls}`).join("\n  ")}`); process.exit(1); }
+}
+
+// The SDK rule (civilizations.md, units.md): the copies do not carry the original's altid. The 1.1.1 gave six of the mod's classes one (BHighlander altid BHighlandar, CMaceman
+// CMacemen, GTridentWarrior GTridentWarriar, IDefender IDefendar, Melee Melef, TValkyrie TValkyria: HD's misspelt ids); clone-civilization.js strips it from every clone and the mod's
+// six are not shipped as such. The build stops if any class of the port has one.
+{
+  const bad = walk(path.join(OUT, "DATA", "CLASSES")).filter(f => /\.sc\.xml$/i.test(f) && /<class\b[^>]*?\baltid\s*=/.test(rd(path.join(OUT, "DATA", "CLASSES", f))));
+  console.log(`altid: ${bad.length} classes of the port carry one`);
+  if (bad.length) { console.error(`ALTID CHECK FAILED (${bad.length}): ${bad.slice(0, 40).join(", ")}`); process.exit(1); }
 }
 
 // folders the steps above left empty
