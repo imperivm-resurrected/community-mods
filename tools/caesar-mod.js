@@ -651,7 +651,8 @@ console.log(`other ports compared: ${PORTS.length} (${REQUIRED_PORTS.filter(n =>
 // DATA untouched). Pictures: UI/MENU/* of the zip that differ from the game's bytes (the game's own are left out), whole files.
 {
   const menu = require("./lib/caesar-menu.js"), BASE = path.join(ROOT, "originals", "game-140", "paks");
-  const r = menu.build({ OUT, HD, BASE, MOD: STAGE });
+  const r = menu.build({ OUT, HD, BASE, MOD: STAGE, version: VERSION });
+  for (const l of r.report.split("\n").filter(l => /ADJUSTED/.test(l))) console.log("menu skin: " + l.replace(/^- /, ""));
   console.log(`menu skin: ${r.written.length} INIs as patches at patches/menuini/ (${r.written.join(", ")}; template.ini also at patches/DATA/INTERFACE/MENU/); not written: ${r.skipped.length}`);
   if (r.problems.length) { console.error(`MENU SKIN PROBLEMS:\n  ${r.problems.join("\n  ")}`); process.exit(1); }
   fs.writeFileSync(path.join(ROOT, "raw", "caesar-mod-civs-menu-skin.md"), r.report);
