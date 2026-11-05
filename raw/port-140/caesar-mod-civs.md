@@ -3398,7 +3398,7 @@ entity_winter="Buildings/Tavern/Tavern_w.ent.xml">
 	<sounds attack="UnitPikeFight" command="data/sound entities/VoiceCMaceman.xml"/>
 	<method sig="ondie" vs="data/subai/CMercenary_ondie.vs"/>
 =======
-<class id="CMaceman" parent="Melee" cpp_class="CVXUnit" entity="Units/CMaceman/CMaceman.ent.xml">
+<class id="CMaceman" altid="CMacemen" parent="Melee" cpp_class="CVXUnit" entity="Units/CMaceman/CMaceman.ent.xml">
 	<properties race="Carthage" />
 	<properties maxhealth="360" />
 	<properties damage="24" armor_slash="6" armor_pierce="6" />
@@ -4553,7 +4553,7 @@ entity_winter="Buildings/Tavern/Tavern_w.ent.xml">
 	<method sig="attack" vs="data/subai/melee_attack.vs" verify="data/subai/melee_attack_verify.vs"/>
 	<sounds attack="UnitSwordFight" die="UnitDeath"/>
 =======
-<class id="Melee" parent="Military" cpp_class="CVXUnit" entity="">
+<class id="Melee" altid="Melef" parent="Military" cpp_class="CVXUnit" entity="">
 	<properties damage_type="slash" />
 	<properties range="40" min_range="0" />
 	<properties speed="80" />

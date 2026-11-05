@@ -1822,7 +1822,7 @@ DATA/SUBAI/TTENT_BEHAVIOR.VS: hunk at line 424 left out (it edits the game's lin
 DATA/SUBAI/TTENT_BEHAVIOR.VS: hunk at line 449 left out (it edits the game's lines): 
 DATA/SUBAI/TTENT_BEHAVIOR.VS: hunk at line 460 left out (it edits the game's lines): 
 DATA/SUBAI/TTENT_BEHAVIOR.VS: hunk at line 472 left out (it edits the game's lines): if (all_defenders.count <= 0) {//handle the capturing (the n
-DATA/SUBAI/TTENT_BEHAVIOR.VS: hunk at line 508 left out (it edits the game's lines): 
+DATA/SUBAI/TTENT_BEHAVIOR.VS: hunk at line 508 left out (it edits the game's lines): }
 DATA/SUBAI/TTENT_BEHAVIOR.VS: hunk at line 512 left out (it edits the game's lines): if (first_time_independent)//spawn some units for the new pl
 DATA/SUBAI/TTENT_BEHAVIOR.VS: hunk at line 519 left out (it edits the game's lines): 
 DATA/SUBAI/TTENT_BEHAVIOR.VS: hunk at line 569 left out (not Greek): Sleep(1000);
@@ -1844,7 +1844,7 @@ DATA/SUBAI/UNIT_AI_KILLALL.VS: hunk at line 1 left out (it edits the game's line
 DATA/SUBAI/UNIT_AI_KILLALL.VS: hunk at line 4 left out (it edits the game's lines): 
 DATA/SUBAI/UNIT_AI_KILLALL.VS: hunk at line 6 left out (it edits the game's lines): this = u.AsUnit();
 DATA/SUBAI/UNIT_AI_KILLALL.VS: hunk at line 22 left out (it edits the game's lines): if (.IsValid)
-DATA/SUBAI/UNIT_AI_KILLALL.VS: hunk at line 34 left out (not Greek): 
+DATA/SUBAI/UNIT_AI_KILLALL.VS: hunk at line 34 left out (not Greek): }
 DATA/SUBAI/UNIT_AI_KILLALL.VS: hunk at line 37 left out (it edits the game's lines): Sleep(30);//prevent possible loops with other commands
 DATA/SUBAI/UNIT_APPROACH.VS: hunk at line 1 left out (it edits the game's lines): //void, Obj This, Obj target
 DATA/SUBAI/UNIT_APPROACH.VS: hunk at line 3 left out (it edits the game's lines): if (target.IsAlive) {
