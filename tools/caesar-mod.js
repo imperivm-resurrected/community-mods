@@ -163,6 +163,17 @@ require("./lib/clone-civs.js")({ PORT: OUT, MERGED, SUFFIX, LABEL, CIVS, cloneAl
   console.log(`${n} scripts of the branch choice nobody uses left out`);
 }
 
+// 3b. The default commands (right click) of the units (tools/lib/caesar-defaultcmds.js over main's tools/lib/default-cmds.js, read only): a unit class with a <defaultcmd> map of its own
+// that lacks a target of its reference (the HD twin, else the nearest ancestor, the mod's version when it changed it) is completed after its own blocks (the own block wins). Before the
+// renames: the blocks carry the game's names. CrowUnit and Mule are exempt (the reason is in the lib); the build stops at the end (step 12c) if a target is still shadowed.
+let DEFAULT_CMDS;
+{
+  const DCX = require("./lib/caesar-defaultcmds.js"), DC = require("./lib/default-cmds.js"), o = { OUT, dirs: [CLASSES, path.join(MERGED, "classes"), HD_CLASSES], tag: TAG };
+  const before = DC.check(o), done = DCX.complete(o), after = DC.check(o);
+  DEFAULT_CMDS = { before, done, after };
+  console.log(`default commands: ${before.length} unit classes lacked targets of their reference (${before.filter(x => x.shadowed.length).length} shadowed), missing per target ${JSON.stringify(DCX.perTarget(before))}; ${done.blocks} blocks written in ${done.classes} classes; exempt: ${done.exempt.map(x => x.id).join(", ") || "none"}; after: ${after.length} lacking ${JSON.stringify(DCX.perTarget(after))}, ${DCX.stops(o).length} shadowed and not exempt`);
+}
+
 // 4. Greece: its scripts
 {
   // "if (race != ImperialRome) return;" ended at once on a Greek building (Greece has a race of its own), and the engine started the behavior again and again: the game hung
@@ -991,6 +1002,15 @@ for (const f of walk(OUT).filter(f => /(^|\/)(\.fingerprint|desktop\.ini|thumbs\
   const r = require("./lib/caesar-names.js").checkNames({ OUT, HD, SDK: process.env.SDK, merged });
   console.log(r.notes.join("\n"));
   if (r.errors.length) { fs.writeFileSync(path.join(SCRATCH, "caesar-names.txt"), r.errors.join("\n") + "\n"); console.error(`NAME CHECKS FAILED (${r.errors.length}), all in .scratch/caesar-names.txt:\n  ${r.errors.slice(0, 60).join("\n  ")}`); process.exit(1); }
+}
+
+// 12c. Default commands, final (after the renames and Greece): no unit class may keep a SHADOWED target of its reference unless it is exempt; the counts go to raw/.
+{
+  const DCX = require("./lib/caesar-defaultcmds.js"), DC = require("./lib/default-cmds.js"), o = { OUT, dirs: [CLASSES, path.join(MERGED, "classes"), HD_CLASSES], tag: TAG };
+  const fin = DC.check(o), bad = DCX.stops(o), ex = DCX.exempted(o), { before, done } = DEFAULT_CMDS, line = x => `${x.id} (ref ${x.ref}) lacks ${x.missing.join(", ")}${x.shadowed.length ? "; SHADOWED " + x.shadowed.join(", ") : ""}`;
+  fs.writeFileSync(path.join(ROOT, "raw", "caesar-mod-civs-default-cmds.txt"), [`before: ${before.length} unit classes lacking a target of their reference, ${before.filter(x => x.shadowed.length).length} shadowed; missing per target ${JSON.stringify(DCX.perTarget(before))}`, ...before.map(line), "", `written: ${done.blocks} blocks in ${done.classes} classes`, ...done.list.map(x => `${x.id} <- ${x.ref}: ${x.missing.join(", ")}`), "", `exempt (${ex.length}):`, ...ex.map(x => `${line(x)} -- ${DCX.EXEMPT.get([...DCX.EXEMPT.keys()].find(k => x.id.toLowerCase().startsWith(k.toLowerCase())))}`), "", `final: ${fin.length} lacking, ${bad.length} shadowed and not exempt`, ...fin.map(line), ""].join("\n"));
+  console.log(`default commands (final): ${fin.length} unit classes lack a target (${ex.length} exempt: ${ex.map(x => x.id).join(", ")}), ${bad.length} shadowed and not exempt`);
+  if (bad.length) { console.error(`DEFAULT COMMAND CHECKS FAILED (${bad.length}):\n  ${bad.map(line).join("\n  ")}`); process.exit(1); }
 }
 
 // The SDK rule (civilizations.md, units.md): the copies do not carry the original's altid. The 1.1.1 gave six of the mod's classes one (BHighlander altid BHighlandar, CMaceman

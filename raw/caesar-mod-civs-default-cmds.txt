@@ -1,0 +1,23 @@
+before: 7 unit classes lacking a target of their reference, 5 shadowed; missing per target {"(ground)":2,"ShipBattle":2,"Military":3,"Object":1,"Sentry":1}
+KgaGhostUnit (ref Unit) lacks (ground)
+Fisherman (ref Peaceful) lacks ShipBattle
+CrowUnit (ref Animal) lacks ShipBattle; SHADOWED ShipBattle
+KcaShaman (ref CShaman) lacks Military; SHADOWED Military
+KegPriest (ref EPriest) lacks Military; SHADOWED Military
+KgeEnchantress (ref TEnchantress) lacks Military; SHADOWED Military
+Mule (ref Wagon) lacks (ground), Object, Sentry; SHADOWED Sentry
+
+written: 5 blocks in 5 classes
+KgaGhostUnit <- Unit: (ground)
+Fisherman <- Peaceful: ShipBattle
+KcaShaman <- CShaman: Military
+KegPriest <- EPriest: Military
+KgeEnchantress <- TEnchantress: Military
+
+exempt (2):
+CrowUnit (ref Animal) lacks ShipBattle; SHADOWED ShipBattle -- the mod's crow (a flier, the druids' summoned crow (druid_crow_summoning.vs; CrowSummoned derives from it), parent Animal): its own map is `ground -> move` and `Object -> approach`, written to replace the mod's Animal map (`ShipBattle -> boardship`); HD has no CrowUnit and HD's Animal/Crow have no ShipBattle at all. A crow that boards a ship is not what the mod meant, and neither reference has `Hero`
+Mule (ref Wagon) lacks (ground), Object, Sentry; SHADOWED Sentry -- the mod's pack mule (parent Wagon, no HD twin): its own map is the mod's (`Unit -> follow`, ShipBattle, Building, Teleport, Inn). What its reference has and it lacks is `ground`, `Object` and HD's Wagon `Sentry -> approach`; the mod's `Unit -> follow` answers first on a sentry, which is the mod's choice (the mod's own Wagon has no Sentry block). Neither Wagon has `Hero`
+
+final: 2 lacking, 0 shadowed and not exempt
+CrowUnit (ref Animal) lacks ShipBattle; SHADOWED ShipBattle
+Mule (ref Wagon) lacks (ground), Object, Sentry; SHADOWED Sentry
