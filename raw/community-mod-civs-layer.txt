@@ -1,0 +1,509 @@
+# rulesets/community-mod/ of community-mod-civs: inventory path | how | file(s) of the layer (tools/lib/community-layer.js)
+DATA/AI/AIOSENDSQUAD.VS | script patch, 1 directives | patches/DATA/AI/AIOSENDSQUAD.VS
+DATA/CLASSES/BEAR.SC.XML | XML patch, 1 operations | patches/DATA/CLASSES/BEAR.SC.XML
+DATA/CLASSES/BEARUNIT.SC.XML | XML patch, 2 operations | patches/DATA/CLASSES/BEARUNIT.SC.XML
+DATA/CLASSES/BOAR.SC.XML | XML patch, 1 operations | patches/DATA/CLASSES/BOAR.SC.XML
+DATA/CLASSES/BOARUNIT.SC.XML | XML patch, 2 operations | patches/DATA/CLASSES/BOARUNIT.SC.XML
+DATA/CLASSES/BOULDER.SC.XML | XML patch, 2 operations | patches/DATA/CLASSES/BOULDER.SC.XML
+DATA/CLASSES/DEADTREE.SC.XML | XML patch, 2 operations | patches/DATA/CLASSES/DEADTREE.SC.XML
+DATA/CLASSES/DEER.SC.XML | XML patch, 2 operations, children of the same tag in the game's order | patches/DATA/CLASSES/DEER.SC.XML
+DATA/CLASSES/EAGLESUMMONED.SC.XML | XML patch, 1 operations | patches/DATA/CLASSES/EAGLESUMMONED.SC.XML
+DATA/CLASSES/FAKETOWER.SC.XML | XML patch, 1 operations | patches/DATA/CLASSES/FAKETOWER.SC.XML
+DATA/CLASSES/HEN2.SC.XML | XML patch, 1 operations | patches/DATA/CLASSES/HEN2.SC.XML
+DATA/CLASSES/LIONF.SC.XML | XML patch, 3 operations | patches/DATA/CLASSES/LIONF.SC.XML
+DATA/CLASSES/LIONFUNIT.SC.XML | XML patch, 2 operations | patches/DATA/CLASSES/LIONFUNIT.SC.XML
+DATA/CLASSES/LIONM.SC.XML | XML patch, 3 operations | patches/DATA/CLASSES/LIONM.SC.XML
+DATA/CLASSES/LIONMUNIT.SC.XML | XML patch, 2 operations | patches/DATA/CLASSES/LIONMUNIT.SC.XML
+DATA/CLASSES/LIONTHRONE.SC.XML | no change against the game's file (whitespace or comments only) | -
+DATA/CLASSES/MPEASANTMULTI.SC.XML | XML patch, 1 operations | patches/DATA/CLASSES/MPEASANTMULTI.SC.XML
+DATA/CLASSES/MULTIONE.SC.XML | XML patch, 2 operations | patches/DATA/CLASSES/MULTIONE.SC.XML
+DATA/CLASSES/MULTIONESHIP.SC.XML | XML patch, 3 operations | patches/DATA/CLASSES/MULTIONESHIP.SC.XML
+DATA/CLASSES/OAKSTUMP.SC.XML | XML patch, 1 operations | patches/DATA/CLASSES/OAKSTUMP.SC.XML
+DATA/CLASSES/SHIPBATTLE.SC.XML | XML patch, 6 operations | patches/DATA/CLASSES/SHIPBATTLE.SC.XML
+DATA/CLASSES/SHIPS.SC.XML | XML patch, 2 operations | patches/DATA/CLASSES/SHIPS.SC.XML
+DATA/CLASSES/SHRINE.SC.XML | XML patch, 1 operations | patches/DATA/CLASSES/SHRINE.SC.XML
+DATA/CLASSES/STONEHENGE.SC.XML | XML patch, 3 operations | patches/DATA/CLASSES/STONEHENGE.SC.XML
+DATA/CLASSES/STONEPILE.SC.XML | XML patch, 1 operations | patches/DATA/CLASSES/STONEPILE.SC.XML
+DATA/CLASSES/TOMBSTONE.SC.XML | XML patch, 1 operations | patches/DATA/CLASSES/TOMBSTONE.SC.XML
+DATA/CLASSES/TOUTPOST.SC.XML | XML patch, 1 operations | patches/DATA/CLASSES/TOUTPOST.SC.XML
+DATA/CLASSES/TREETRUNK.SC.XML | XML patch, 1 operations | patches/DATA/CLASSES/TREETRUNK.SC.XML
+DATA/CLASSES/WAGONFOOD.SC.XML | XML patch, 3 operations | patches/DATA/CLASSES/WAGONFOOD.SC.XML
+DATA/CLASSES/WAGONGOLD.SC.XML | XML patch, 4 operations | patches/DATA/CLASSES/WAGONGOLD.SC.XML
+DATA/CLASSES/WELL2.SC.XML | XML patch, 1 operations | patches/DATA/CLASSES/WELL2.SC.XML
+DATA/CLASSES/WITCH HUT.SC.XML | XML patch, 1 operations | patches/DATA/CLASSES/WITCH HUT.SC.XML
+DATA/CLASSES/WOLF.SC.XML | XML patch, 1 operations | patches/DATA/CLASSES/WOLF.SC.XML
+DATA/CLASSES/WOLFSUMMONED.SC.XML | XML patch, 2 operations | patches/DATA/CLASSES/WOLFSUMMONED.SC.XML
+DATA/CLASSES/WOLFUNIT.SC.XML | XML patch, 4 operations | patches/DATA/CLASSES/WOLFUNIT.SC.XML
+DATA/COMMANDS/CATAPULT.XML | XML patch, 9 operations | patches/DATA/COMMANDS/CATAPULT.XML
+DATA/COMMANDS/CBARRACKS.XML | XML patch, 9 operations | patches/DATA/COMMANDS/CBARRACKS.XML
+DATA/COMMANDS/CTEMPLE.XML | XML patch, 2 operations, children of the same tag in the game's order; the order "Zombify" is not removed: the game still names it | patches/DATA/COMMANDS/CTEMPLE.XML
+DATA/COMMANDS/DRUID.XML | XML patch, 19 operations, children of the same tag in the game's order | patches/DATA/COMMANDS/DRUID.XML
+DATA/COMMANDS/EAGLE.XML | XML patch, 1 operations | patches/DATA/COMMANDS/EAGLE.XML
+DATA/COMMANDS/ETEMPLEOFOSIRIS.XML | XML patch, 6 operations, children of the same tag in the game's order; the order "EZombify" is not removed: the game still names it | patches/DATA/COMMANDS/ETEMPLEOFOSIRIS.XML
+DATA/COMMANDS/GATE.XML | XML patch, 4 operations | patches/DATA/COMMANDS/GATE.XML
+DATA/COMMANDS/HERO.XML | XML patch, 12 operations | patches/DATA/COMMANDS/HERO.XML
+DATA/COMMANDS/SHIP.XML | XML patch, 2 operations | patches/DATA/COMMANDS/SHIP.XML
+DATA/COMMANDS/SHIPYARD.XML | XML patch, 7 operations, children of the same tag in the game's order | patches/DATA/COMMANDS/SHIPYARD.XML
+DATA/COMMANDS/STONEHENGE.XML | XML patch, 2 operations | patches/DATA/COMMANDS/STONEHENGE.XML
+DATA/COMMANDS/TAVERN.XML | XML patch, 39 operations, children of the same tag in the game's order; the order "Gambling" is not removed: the game still names it | patches/DATA/COMMANDS/TAVERN.XML
+DATA/COMMANDS/UNIT.XML | XML patch, 15 operations, children of the same tag in the game's order | patches/DATA/COMMANDS/UNIT.XML
+DATA/COMMANDS/VILLAGE.XML | no change: the mod's only edit is removing the order "buyfoodforgold", which the game's classes or AI still name (kept) | -
+DATA/COMMANDS/WAGON.XML | XML patch, 4 operations | patches/DATA/COMMANDS/WAGON.XML
+DATA/FORMATIONS.XML | XML patch, 2 operations | patches/DATA/FORMATIONS.XML
+DATA/GAMESCRIPTS/1 ELIMINATION.VS | script patch, 4 directives | patches/DATA/GAMESCRIPTS/1 ELIMINATION.VS
+DATA/GAMESCRIPTS/2 [CM] COMPETITIVE CONQUEST.VS | new script under a name of its own, plain file of the layer | DATA/GAMESCRIPTS/2 [CM] COMPETITIVE CONQUEST.VS
+DATA/GAMESCRIPTS/3 [CM] COMPETITIVE TEMPO.VS | new script under a name of its own, plain file of the layer | DATA/GAMESCRIPTS/3 [CM] COMPETITIVE TEMPO.VS
+DATA/GAMESCRIPTS/4 SCORE LIMIT.VS | new script under a name of its own, plain file of the layer | DATA/GAMESCRIPTS/4 SCORE LIMIT.VS
+DATA/GAMESCRIPTS/5 TIME LIMIT (MILITARY RATING).VS | new script under a name of its own, plain file of the layer | DATA/GAMESCRIPTS/5 TIME LIMIT (MILITARY RATING).VS
+DATA/GAMESCRIPTS/6 TIME LIMIT (SCORE).VS | new script under a name of its own, plain file of the layer | DATA/GAMESCRIPTS/6 TIME LIMIT (SCORE).VS
+DATA/INTERFACE/EDITOR/COMBO/ITEMICONS.INI | INI patch, 5 keys | patches/DATA/INTERFACE/EDITOR/COMBO/ITEMICONS.INI
+DATA/INTERFACE/EDITOR/COMBO/UNITICONS.INI | INI patch, 2 keys | patches/DATA/INTERFACE/EDITOR/COMBO/UNITICONS.INI
+DATA/INTERFACE/MENU/GSCHAT.INI | DROPPED-ON-PURPOSE: menu INI that only moves buttons and chat boxes and touches no skin art: AGENTS.md 'Menu skin' (ship only what the skin changes, never a menu INI the skin does not touch); extras/community-mod-civs/NOTES.md 'Menu skin' | -
+DATA/INTERFACE/MENU/INGAMECHAT.INI | DROPPED-ON-PURPOSE: menu INI that only moves buttons and chat boxes and touches no skin art: AGENTS.md 'Menu skin' (ship only what the skin changes, never a menu INI the skin does not touch); extras/community-mod-civs/NOTES.md 'Menu skin' | -
+DATA/INTERFACE/MENU/MAINMENU_SCROLLING.INI | DROPPED-ON-PURPOSE: menu INI that only moves buttons and chat boxes and touches no skin art: AGENTS.md 'Menu skin' (ship only what the skin changes, never a menu INI the skin does not touch); extras/community-mod-civs/NOTES.md 'Menu skin' | -
+DATA/INTERFACE/MENU/SELECTMAP.INI | DROPPED-ON-PURPOSE: menu INI that only moves buttons and chat boxes and touches no skin art: AGENTS.md 'Menu skin' (ship only what the skin changes, never a menu INI the skin does not touch); extras/community-mod-civs/NOTES.md 'Menu skin' | -
+DATA/INTERFACE/MENU/SETTINGS.INI | DROPPED-ON-PURPOSE: menu INI that only moves buttons and chat boxes and touches no skin art: AGENTS.md 'Menu skin' (ship only what the skin changes, never a menu INI the skin does not touch); extras/community-mod-civs/NOTES.md 'Menu skin' | -
+DATA/INTERFACE/MENU/_GUIDE.INI | DROPPED-ON-PURPOSE: menu INI that only moves buttons and chat boxes and touches no skin art: AGENTS.md 'Menu skin' (ship only what the skin changes, never a menu INI the skin does not touch); extras/community-mod-civs/NOTES.md 'Menu skin' | -
+DATA/ITEMS.XML | XML patch, 27 operations, children of the same tag in the game's order | patches/DATA/ITEMS.XML
+DATA/ITEMSCRIPTS/ASH OF DRUID HEART DINAMIC CHARGES.VS | new script under a name of its own, plain file of the layer | DATA/ITEMSCRIPTS/ASH OF DRUID HEART DINAMIC CHARGES.VS
+DATA/ITEMSCRIPTS/ASH OF DRUID HEART.VS | the mod's script whole at the game's path, inside the layer: line 35 "}" is also in an earlier line | DATA/ITEMSCRIPTS/ASH OF DRUID HEART.VS
+DATA/ITEMSCRIPTS/BELT OF SNAKES CONDITION.VS | new script under a name of its own, plain file of the layer | DATA/ITEMSCRIPTS/BELT OF SNAKES CONDITION.VS
+DATA/ITEMSCRIPTS/BELT OF SNAKES.VS | new script under a name of its own, plain file of the layer | DATA/ITEMSCRIPTS/BELT OF SNAKES.VS
+DATA/ITEMSCRIPTS/DROP ITEM.VS | new script under a name of its own, plain file of the layer | DATA/ITEMSCRIPTS/DROP ITEM.VS
+DATA/ITEMSCRIPTS/ELEPHANT TUSK.VS | script patch, 2 directives | patches/DATA/ITEMSCRIPTS/ELEPHANT TUSK.VS
+DATA/ITEMSCRIPTS/FEATHER AMULET CONDITION.VS | new script under a name of its own, plain file of the layer | DATA/ITEMSCRIPTS/FEATHER AMULET CONDITION.VS
+DATA/ITEMSCRIPTS/FEATHER AMULET.VS | new script under a name of its own, plain file of the layer | DATA/ITEMSCRIPTS/FEATHER AMULET.VS
+DATA/ITEMSCRIPTS/FINGER OF DEATH DINAMIC CHARGES.VS | new script under a name of its own, plain file of the layer | DATA/ITEMSCRIPTS/FINGER OF DEATH DINAMIC CHARGES.VS
+DATA/ITEMSCRIPTS/FINGER OF DEATH.VS | the mod's script whole at the game's path, inside the layer: no anchor for an insertion near line 45 | DATA/ITEMSCRIPTS/FINGER OF DEATH.VS
+DATA/ITEMSCRIPTS/FUR GLOVES OF HEALTH.VS | the mod's script whole at the game's path, inside the layer: line 38 "if (u.IsDead()) continue;" is also in an earlier line | DATA/ITEMSCRIPTS/FUR GLOVES OF HEALTH.VS
+DATA/ITEMSCRIPTS/HEALING HERBS FEEDBACK.VS | new script under a name of its own, plain file of the layer | DATA/ITEMSCRIPTS/HEALING HERBS FEEDBACK.VS
+DATA/ITEMSCRIPTS/HEALING WATER FEEDBACK.VS | new script under a name of its own, plain file of the layer | DATA/ITEMSCRIPTS/HEALING WATER FEEDBACK.VS
+DATA/ITEMSCRIPTS/HORN OF VICTORY DINAMIC CHARGES.VS | new script under a name of its own, plain file of the layer | DATA/ITEMSCRIPTS/HORN OF VICTORY DINAMIC CHARGES.VS
+DATA/ITEMSCRIPTS/HORN OF VICTORY.VS | the mod's script whole at the game's path, inside the layer: no anchor for an insertion near line 35 | DATA/ITEMSCRIPTS/HORN OF VICTORY.VS
+DATA/ITEMSCRIPTS/MUSHROOM FEEDBACK.VS | new script under a name of its own, plain file of the layer | DATA/ITEMSCRIPTS/MUSHROOM FEEDBACK.VS
+DATA/ITEMSCRIPTS/MUSHROOM.VS | script patch, 3 directives | patches/DATA/ITEMSCRIPTS/MUSHROOM.VS
+DATA/ITEMSCRIPTS/RYE SPIKES FEEDBACK.VS | new script under a name of its own, plain file of the layer | DATA/ITEMSCRIPTS/RYE SPIKES FEEDBACK.VS
+DATA/RANDOMMAP/PLACEOBJECTS.XML | XML patch, 8 operations, 3 selected by position, children of the same tag in the game's order | patches/DATA/RANDOMMAP/PLACEOBJECTS.XML
+DATA/SCDEBUG.XML | XML patch, 3 operations | patches/DATA/SCDEBUG.XML
+DATA/SKILLS.INI | INI patch, 1 keys | patches/DATA/SKILLS.INI
+DATA/SOUND ENTITIES/HORSEWALK.XML | XML patch, 30 operations | patches/DATA/SOUND ENTITIES/HORSEWALK.XML
+DATA/SOUND ENTITIES/SOUNDSEASPRING.XML | XML patch, 1 operations | patches/DATA/SOUND ENTITIES/SOUNDSEASPRING.XML
+DATA/SOUND ENTITIES/VOICEIENCHANTRESS.XML | XML patch, 2 operations | patches/DATA/SOUND ENTITIES/VOICEIENCHANTRESS.XML
+DATA/SOUND ENTITIES/VOICELARAX.XML | XML patch, 10 operations, 3 selected by position | patches/DATA/SOUND ENTITIES/VOICELARAX.XML
+DATA/SUBAI/ACTIVATE_HERO_SKILL.VS | the mod's script whole at the game's path, inside the layer: the patch applied to the game's script differs from the mod's at line 5: "if(objs.count==1){ //KEEPS DEFENSIVE | DATA/SUBAI/ACTIVATE_HERO_SKILL.VS
+DATA/SUBAI/BOULDER_ITEM.VS | new script under a name of its own, plain file of the layer | DATA/SUBAI/BOULDER_ITEM.VS
+DATA/SUBAI/BUILD_CATAPULT.VS | script patch, 3 directives | patches/DATA/SUBAI/BUILD_CATAPULT.VS
+DATA/SUBAI/BUILD_CATAPULT_VERIFY.VS | script patch, 2 directives | patches/DATA/SUBAI/BUILD_CATAPULT_VERIFY.VS
+DATA/SUBAI/CATAPULT_TOWER_GUARD.VS | script patch, 1 directives | patches/DATA/SUBAI/CATAPULT_TOWER_GUARD.VS
+DATA/SUBAI/COUTPOST_BEHAVIOR.VS | script patch, 5 directives | patches/DATA/SUBAI/COUTPOST_BEHAVIOR.VS
+DATA/SUBAI/CREATE_BOAT_VERIFY.VS | script patch, 2 directives | patches/DATA/SUBAI/CREATE_BOAT_VERIFY.VS
+DATA/SUBAI/CROW_MOVE.VS | the mod's script whole at the game's path, inside the layer: line 111 "if (.IsInAir())" is also in an earlier line | DATA/SUBAI/CROW_MOVE.VS
+DATA/SUBAI/DEADTREE_ITEM.VS | new script under a name of its own, plain file of the layer | DATA/SUBAI/DEADTREE_ITEM.VS
+DATA/SUBAI/DRUID_HEAL.VS | script patch, 2 directives | patches/DATA/SUBAI/DRUID_HEAL.VS
+DATA/SUBAI/GATE_PATROL.VS | script patch, 5 directives | patches/DATA/SUBAI/GATE_PATROL.VS
+DATA/SUBAI/GDRUID_IDLE.VS | the mod's script whole at the game's path, inside the layer: line 196 "if (action == 3) {" is also in an earlier line | DATA/SUBAI/GDRUID_IDLE.VS
+DATA/SUBAI/GDRUID_STAND_POSITION.VS | the mod's script whole at the game's path, inside the layer: line 108 "bCanLearn = true;" is also in an earlier line | DATA/SUBAI/GDRUID_STAND_POSITION.VS
+DATA/SUBAI/GOUTPOST_SELLGOLDFOOD.VS | script patch, 1 directives | patches/DATA/SUBAI/GOUTPOST_SELLGOLDFOOD.VS
+DATA/SUBAI/HEROGRAVE_BEHAVIOR.VS | script patch, 5 directives | patches/DATA/SUBAI/HEROGRAVE_BEHAVIOR.VS
+DATA/SUBAI/ITAVERN_CALLTOARMS.VS | script patch, 4 directives | patches/DATA/SUBAI/ITAVERN_CALLTOARMS.VS
+DATA/SUBAI/MIST_IDLE.VS | script patch, 3 directives | patches/DATA/SUBAI/MIST_IDLE.VS
+DATA/SUBAI/RPRIEST_IDLE.VS | the mod's script whole at the game's path, inside the layer: line 226 "if (action == 3) {" is also in an earlier line | DATA/SUBAI/RPRIEST_IDLE.VS
+DATA/SUBAI/RUIN_BEHAVIOR.VS | script patch, 4 directives | patches/DATA/SUBAI/RUIN_BEHAVIOR.VS
+DATA/SUBAI/SETTLEMENT_BEHAVIOR_AMBIENT.VS | the mod's script whole at the game's path, inside the layer: line 360 "u1.SetFood(2);" is also in an earlier line | DATA/SUBAI/SETTLEMENT_BEHAVIOR_AMBIENT.VS
+DATA/SUBAI/SHIP_BOARD.VS | script patch, 1 directives | patches/DATA/SUBAI/SHIP_BOARD.VS
+DATA/SUBAI/SHIP_BOARD_VERIFY.VS | script patch, 1 directives | patches/DATA/SUBAI/SHIP_BOARD_VERIFY.VS
+DATA/SUBAI/SHRINE_BEHAVIOR.VS | script patch, 1 directives | patches/DATA/SUBAI/SHRINE_BEHAVIOR.VS
+DATA/SUBAI/STAMINA_COUNTER.VS | script patch, 1 directives | patches/DATA/SUBAI/STAMINA_COUNTER.VS
+DATA/SUBAI/START_TARCHER_VERIFY.VS | script patch, 2 directives | patches/DATA/SUBAI/START_TARCHER_VERIFY.VS
+DATA/SUBAI/START_TRIDER_VERIFY.VS | script patch, 2 directives | patches/DATA/SUBAI/START_TRIDER_VERIFY.VS
+DATA/SUBAI/START_TWOLF_VERIFY.VS | script patch, 2 directives | patches/DATA/SUBAI/START_TWOLF_VERIFY.VS
+DATA/SUBAI/STONEHENGE_ABUNDANCIA_DISPATCH.VS | script patch, 2 directives | patches/DATA/SUBAI/STONEHENGE_ABUNDANCIA_DISPATCH.VS
+DATA/SUBAI/STONEHENGE_BLOODLUST_DISPATCH.VS | script patch, 2 directives | patches/DATA/SUBAI/STONEHENGE_BLOODLUST_DISPATCH.VS
+DATA/SUBAI/STONEHENGE_FATIGUE.VS | new script under a name of its own, plain file of the layer | DATA/SUBAI/STONEHENGE_FATIGUE.VS
+DATA/SUBAI/STONEHENGE_FATIGUE_DISPATCH.VS | new script under a name of its own, plain file of the layer | DATA/SUBAI/STONEHENGE_FATIGUE_DISPATCH.VS
+DATA/SUBAI/STONEHENGE_FATIGUE_VERIFY.VS | new script under a name of its own, plain file of the layer | DATA/SUBAI/STONEHENGE_FATIGUE_VERIFY.VS
+DATA/SUBAI/STONEHENGE_SACRIFICE.VS | script patch, 1 directives | patches/DATA/SUBAI/STONEHENGE_SACRIFICE.VS
+DATA/SUBAI/STONEHENGE_SACRIFICE_DISPATCH.VS | script patch, 2 directives | patches/DATA/SUBAI/STONEHENGE_SACRIFICE_DISPATCH.VS
+DATA/SUBAI/STONEHENGE_SOOTHE_DISPATCH.VS | script patch, 2 directives | patches/DATA/SUBAI/STONEHENGE_SOOTHE_DISPATCH.VS
+DATA/SUBAI/STONEHENGE_SOOTHING_DISPATCH.VS | script patch, 2 directives | patches/DATA/SUBAI/STONEHENGE_SOOTHING_DISPATCH.VS
+DATA/SUBAI/STONEHENGE_STARVATION_DISPATCH.VS | script patch, 2 directives | patches/DATA/SUBAI/STONEHENGE_STARVATION_DISPATCH.VS
+DATA/SUBAI/STONEHENGE_WISDOM_DISPATCH.VS | script patch, 2 directives | patches/DATA/SUBAI/STONEHENGE_WISDOM_DISPATCH.VS
+DATA/SUBAI/SUMMONING_BEHAVIOR.VS | the mod's script whole at the game's path, inside the layer: line 31 "if (!This.IsValid || This.IsDead())" is also in an earlier line | DATA/SUBAI/SUMMONING_BEHAVIOR.VS
+DATA/SUBAI/TELEPORT_FORCE_EXIT.VS | script patch, 1 directives | patches/DATA/SUBAI/TELEPORT_FORCE_EXIT.VS
+DATA/SUBAI/TOWNHALL_AUTOTRAIN.VS | the mod's script whole at the game's path, inside the layer: no anchor for an insertion near line 223 | DATA/SUBAI/TOWNHALL_AUTOTRAIN.VS
+DATA/SUBAI/TOWNHALL_NEUTRALARMY.VS | new script under a name of its own, plain file of the layer | DATA/SUBAI/TOWNHALL_NEUTRALARMY.VS
+DATA/SUBAI/TTENT_BEHAVIOR.VS | the mod's script whole at the game's path, inside the layer: line 317 "else {" is also in an earlier line | DATA/SUBAI/TTENT_BEHAVIOR.VS
+DATA/SUBAI/TTENT_TEUTON_PRODUCTION.VS | script patch, 3 directives | patches/DATA/SUBAI/TTENT_TEUTON_PRODUCTION.VS
+DATA/SUBAI/UNIT_ENTER_PARRY_MODE_VERIFY.VS | the mod's script whole at the game's path, inside the layer: line 15 "{" is also in an earlier line | DATA/SUBAI/UNIT_ENTER_PARRY_MODE_VERIFY.VS
+DATA/SUBAI/UNIT_GUARD.VS | script patch, 2 directives | patches/DATA/SUBAI/UNIT_GUARD.VS
+DATA/SUBAI/UNIT_LEAVE_PARRY_MODE_VERIFY.VS | script patch, 4 directives | patches/DATA/SUBAI/UNIT_LEAVE_PARRY_MODE_VERIFY.VS
+DATA/SUBAI/UNIT_REVEALS.VS | the mod's script whole at the game's path, inside the layer: line 26 "u.SetVisible(true);" is also in an earlier line | DATA/SUBAI/UNIT_REVEALS.VS
+DATA/SUBAI/UNIT_REVEALS_VERIFY.VS | script patch, 2 directives | patches/DATA/SUBAI/UNIT_REVEALS_VERIFY.VS
+DATA/SUBAI/UNIT_TRAIN_VERIFY.VS | script patch, 1 directives | patches/DATA/SUBAI/UNIT_TRAIN_VERIFY.VS
+DATA/SUBAI/VERIFY_GATE.VS | new script under a name of its own, plain file of the layer | DATA/SUBAI/VERIFY_GATE.VS
+DATA/SUBAI/VERIFY_HERO_SKILL.VS | the mod's script whole at the game's path, inside the layer: line 28 "{" is also in an earlier line | DATA/SUBAI/VERIFY_HERO_SKILL.VS
+DATA/SUBAI/VILLAGE_REPOPULATE_VERIFY.VS | the mod's script whole at the game's path, inside the layer: line 31 "bBrokenVillage = true;" is also in an earlier line | DATA/SUBAI/VILLAGE_REPOPULATE_VERIFY.VS
+DATA/SUBAI/WAGON_MOVE.VS | script patch, 1 directives | patches/DATA/SUBAI/WAGON_MOVE.VS
+DATA/SUBAI/WALL_PATROL.VS | the mod's script whole at the game's path, inside the layer: no anchor for an insertion near line 264 | DATA/SUBAI/WALL_PATROL.VS
+DATA/UNIT_SPECIALS.INI | INI patch, 8 keys | patches/DATA/UNIT_SPECIALS.INI
+DATA/VXNOTIFICATIONS.XML | XML patch, 6 operations | patches/DATA/VXNOTIFICATIONS.XML
+Local/english/GAME.LOC.XML | texts patch: all 7 keys of the mod's table (the game's English table is not in originals/) | loc/english.loc.xml
+Local/english/VOICES/BBOWMAN/1.WAV | loose file at the path the original gave it | Local/english/VOICES/BBOWMAN/1.WAV
+Local/english/VOICES/BBOWMAN/2.WAV | loose file at the path the original gave it | Local/english/VOICES/BBOWMAN/2.WAV
+Local/english/VOICES/BBOWMAN/3.WAV | loose file at the path the original gave it | Local/english/VOICES/BBOWMAN/3.WAV
+Local/english/VOICES/BBOWMAN/4.WAV | loose file at the path the original gave it | Local/english/VOICES/BBOWMAN/4.WAV
+Local/english/VOICES/BBOWMAN/5.WAV | loose file at the path the original gave it | Local/english/VOICES/BBOWMAN/5.WAV
+Local/english/VOICES/BBRONZESPEARMAN/1.WAV | loose file at the path the original gave it | Local/english/VOICES/BBRONZESPEARMAN/1.WAV
+Local/english/VOICES/BBRONZESPEARMAN/2.WAV | loose file at the path the original gave it | Local/english/VOICES/BBRONZESPEARMAN/2.WAV
+Local/english/VOICES/BBRONZESPEARMAN/3.WAV | loose file at the path the original gave it | Local/english/VOICES/BBRONZESPEARMAN/3.WAV
+Local/english/VOICES/BBRONZESPEARMAN/4.WAV | loose file at the path the original gave it | Local/english/VOICES/BBRONZESPEARMAN/4.WAV
+Local/english/VOICES/BBRONZESPEARMAN/5.WAV | loose file at the path the original gave it | Local/english/VOICES/BBRONZESPEARMAN/5.WAV
+Local/english/VOICES/BDRUID/1.WAV | loose file at the path the original gave it | Local/english/VOICES/BDRUID/1.WAV
+Local/english/VOICES/BDRUID/2.WAV | loose file at the path the original gave it | Local/english/VOICES/BDRUID/2.WAV
+Local/english/VOICES/BDRUID/3.WAV | loose file at the path the original gave it | Local/english/VOICES/BDRUID/3.WAV
+Local/english/VOICES/BDRUID/4.WAV | loose file at the path the original gave it | Local/english/VOICES/BDRUID/4.WAV
+Local/english/VOICES/BDRUID/5.WAV | loose file at the path the original gave it | Local/english/VOICES/BDRUID/5.WAV
+Local/english/VOICES/BFEMALEVILLAGER/1.WAV | loose file at the path the original gave it | Local/english/VOICES/BFEMALEVILLAGER/1.WAV
+Local/english/VOICES/BFEMALEVILLAGER/2.WAV | loose file at the path the original gave it | Local/english/VOICES/BFEMALEVILLAGER/2.WAV
+Local/english/VOICES/BFEMALEVILLAGER/3.WAV | loose file at the path the original gave it | Local/english/VOICES/BFEMALEVILLAGER/3.WAV
+Local/english/VOICES/BHERO/1.WAV | loose file at the path the original gave it | Local/english/VOICES/BHERO/1.WAV
+Local/english/VOICES/BHERO/2.WAV | loose file at the path the original gave it | Local/english/VOICES/BHERO/2.WAV
+Local/english/VOICES/BHERO/3.WAV | loose file at the path the original gave it | Local/english/VOICES/BHERO/3.WAV
+Local/english/VOICES/BHERO/4.WAV | loose file at the path the original gave it | Local/english/VOICES/BHERO/4.WAV
+Local/english/VOICES/BHERO/5.WAV | loose file at the path the original gave it | Local/english/VOICES/BHERO/5.WAV
+Local/english/VOICES/BHIGHLANDER/1.WAV | loose file at the path the original gave it | Local/english/VOICES/BHIGHLANDER/1.WAV
+Local/english/VOICES/BHIGHLANDER/2.WAV | loose file at the path the original gave it | Local/english/VOICES/BHIGHLANDER/2.WAV
+Local/english/VOICES/BHIGHLANDER/3.WAV | loose file at the path the original gave it | Local/english/VOICES/BHIGHLANDER/3.WAV
+Local/english/VOICES/BHIGHLANDER/4.WAV | loose file at the path the original gave it | Local/english/VOICES/BHIGHLANDER/4.WAV
+Local/english/VOICES/BHIGHLANDER/5.WAV | loose file at the path the original gave it | Local/english/VOICES/BHIGHLANDER/5.WAV
+Local/english/VOICES/BJAVELINEER/1.WAV | loose file at the path the original gave it | Local/english/VOICES/BJAVELINEER/1.WAV
+Local/english/VOICES/BJAVELINEER/2.WAV | loose file at the path the original gave it | Local/english/VOICES/BJAVELINEER/2.WAV
+Local/english/VOICES/BJAVELINEER/3.WAV | loose file at the path the original gave it | Local/english/VOICES/BJAVELINEER/3.WAV
+Local/english/VOICES/BJAVELINEER/4.WAV | loose file at the path the original gave it | Local/english/VOICES/BJAVELINEER/4.WAV
+Local/english/VOICES/BJAVELINEER/5.WAV | loose file at the path the original gave it | Local/english/VOICES/BJAVELINEER/5.WAV
+Local/english/VOICES/BSHIELDBEARER/1.WAV | loose file at the path the original gave it | Local/english/VOICES/BSHIELDBEARER/1.WAV
+Local/english/VOICES/BSHIELDBEARER/2.WAV | loose file at the path the original gave it | Local/english/VOICES/BSHIELDBEARER/2.WAV
+Local/english/VOICES/BSHIELDBEARER/3.WAV | loose file at the path the original gave it | Local/english/VOICES/BSHIELDBEARER/3.WAV
+Local/english/VOICES/BSHIELDBEARER/4.WAV | loose file at the path the original gave it | Local/english/VOICES/BSHIELDBEARER/4.WAV
+Local/english/VOICES/BSHIELDBEARER/5.WAV | loose file at the path the original gave it | Local/english/VOICES/BSHIELDBEARER/5.WAV
+Local/english/VOICES/BSWORDSMAN/1.WAV | loose file at the path the original gave it | Local/english/VOICES/BSWORDSMAN/1.WAV
+Local/english/VOICES/BSWORDSMAN/2.WAV | loose file at the path the original gave it | Local/english/VOICES/BSWORDSMAN/2.WAV
+Local/english/VOICES/BSWORDSMAN/3.WAV | loose file at the path the original gave it | Local/english/VOICES/BSWORDSMAN/3.WAV
+Local/english/VOICES/BSWORDSMAN/4.WAV | loose file at the path the original gave it | Local/english/VOICES/BSWORDSMAN/4.WAV
+Local/english/VOICES/BSWORDSMAN/5.WAV | loose file at the path the original gave it | Local/english/VOICES/BSWORDSMAN/5.WAV
+Local/english/VOICES/CFEMALEVILLAGER/1.WAV | loose file at the path the original gave it | Local/english/VOICES/CFEMALEVILLAGER/1.WAV
+Local/english/VOICES/CFEMALEVILLAGER/2.WAV | loose file at the path the original gave it | Local/english/VOICES/CFEMALEVILLAGER/2.WAV
+Local/english/VOICES/CFEMALEVILLAGER/3.WAV | loose file at the path the original gave it | Local/english/VOICES/CFEMALEVILLAGER/3.WAV
+Local/english/VOICES/CMALEVILLAGER/1.WAV | loose file at the path the original gave it | Local/english/VOICES/CMALEVILLAGER/1.WAV
+Local/english/VOICES/CMALEVILLAGER/2.WAV | loose file at the path the original gave it | Local/english/VOICES/CMALEVILLAGER/2.WAV
+Local/english/VOICES/CMALEVILLAGER/3.WAV | loose file at the path the original gave it | Local/english/VOICES/CMALEVILLAGER/3.WAV
+Local/english/VOICES/EANUBISWARRIOR/1.WAV | loose file at the path the original gave it | Local/english/VOICES/EANUBISWARRIOR/1.WAV
+Local/english/VOICES/EANUBISWARRIOR/2.WAV | loose file at the path the original gave it | Local/english/VOICES/EANUBISWARRIOR/2.WAV
+Local/english/VOICES/EANUBISWARRIOR/3.WAV | loose file at the path the original gave it | Local/english/VOICES/EANUBISWARRIOR/3.WAV
+Local/english/VOICES/EANUBISWARRIOR/4.WAV | loose file at the path the original gave it | Local/english/VOICES/EANUBISWARRIOR/4.WAV
+Local/english/VOICES/EANUBISWARRIOR/5.WAV | loose file at the path the original gave it | Local/english/VOICES/EANUBISWARRIOR/5.WAV
+Local/english/VOICES/EARCHER/1.WAV | loose file at the path the original gave it | Local/english/VOICES/EARCHER/1.WAV
+Local/english/VOICES/EARCHER/2.WAV | loose file at the path the original gave it | Local/english/VOICES/EARCHER/2.WAV
+Local/english/VOICES/EARCHER/3.WAV | loose file at the path the original gave it | Local/english/VOICES/EARCHER/3.WAV
+Local/english/VOICES/EARCHER/4.WAV | loose file at the path the original gave it | Local/english/VOICES/EARCHER/4.WAV
+Local/english/VOICES/EARCHER/5.WAV | loose file at the path the original gave it | Local/english/VOICES/EARCHER/5.WAV
+Local/english/VOICES/EAXETROWER/1.WAV | loose file at the path the original gave it | Local/english/VOICES/EAXETROWER/1.WAV
+Local/english/VOICES/EAXETROWER/2.WAV | loose file at the path the original gave it | Local/english/VOICES/EAXETROWER/2.WAV
+Local/english/VOICES/EAXETROWER/3.WAV | loose file at the path the original gave it | Local/english/VOICES/EAXETROWER/3.WAV
+Local/english/VOICES/EAXETROWER/4.WAV | loose file at the path the original gave it | Local/english/VOICES/EAXETROWER/4.WAV
+Local/english/VOICES/EAXETROWER/5.WAV | loose file at the path the original gave it | Local/english/VOICES/EAXETROWER/5.WAV
+Local/english/VOICES/ECHARIOT/1.WAV | loose file at the path the original gave it | Local/english/VOICES/ECHARIOT/1.WAV
+Local/english/VOICES/ECHARIOT/2.WAV | loose file at the path the original gave it | Local/english/VOICES/ECHARIOT/2.WAV
+Local/english/VOICES/ECHARIOT/3.WAV | loose file at the path the original gave it | Local/english/VOICES/ECHARIOT/3.WAV
+Local/english/VOICES/ECHARIOT/4.WAV | loose file at the path the original gave it | Local/english/VOICES/ECHARIOT/4.WAV
+Local/english/VOICES/ECHARIOT/5.WAV | loose file at the path the original gave it | Local/english/VOICES/ECHARIOT/5.WAV
+Local/english/VOICES/EFEMALEVILLAGER/1.WAV | loose file at the path the original gave it | Local/english/VOICES/EFEMALEVILLAGER/1.WAV
+Local/english/VOICES/EFEMALEVILLAGER/2.WAV | loose file at the path the original gave it | Local/english/VOICES/EFEMALEVILLAGER/2.WAV
+Local/english/VOICES/EFEMALEVILLAGER/3.WAV | loose file at the path the original gave it | Local/english/VOICES/EFEMALEVILLAGER/3.WAV
+Local/english/VOICES/EGUARDIAN/1.WAV | loose file at the path the original gave it | Local/english/VOICES/EGUARDIAN/1.WAV
+Local/english/VOICES/EGUARDIAN/2.WAV | loose file at the path the original gave it | Local/english/VOICES/EGUARDIAN/2.WAV
+Local/english/VOICES/EGUARDIAN/3.WAV | loose file at the path the original gave it | Local/english/VOICES/EGUARDIAN/3.WAV
+Local/english/VOICES/EGUARDIAN/4.WAV | loose file at the path the original gave it | Local/english/VOICES/EGUARDIAN/4.WAV
+Local/english/VOICES/EGUARDIAN/5.WAV | loose file at the path the original gave it | Local/english/VOICES/EGUARDIAN/5.WAV
+Local/english/VOICES/EHERO/1.WAV | loose file at the path the original gave it | Local/english/VOICES/EHERO/1.WAV
+Local/english/VOICES/EHERO/2.WAV | loose file at the path the original gave it | Local/english/VOICES/EHERO/2.WAV
+Local/english/VOICES/EHERO/3.WAV | loose file at the path the original gave it | Local/english/VOICES/EHERO/3.WAV
+Local/english/VOICES/EHERO/4.WAV | loose file at the path the original gave it | Local/english/VOICES/EHERO/4.WAV
+Local/english/VOICES/EHERO/5.WAV | loose file at the path the original gave it | Local/english/VOICES/EHERO/5.WAV
+Local/english/VOICES/EHORUSWARRIOR/1.WAV | loose file at the path the original gave it | Local/english/VOICES/EHORUSWARRIOR/1.WAV
+Local/english/VOICES/EHORUSWARRIOR/2.WAV | loose file at the path the original gave it | Local/english/VOICES/EHORUSWARRIOR/2.WAV
+Local/english/VOICES/EHORUSWARRIOR/3.WAV | loose file at the path the original gave it | Local/english/VOICES/EHORUSWARRIOR/3.WAV
+Local/english/VOICES/EHORUSWARRIOR/4.WAV | loose file at the path the original gave it | Local/english/VOICES/EHORUSWARRIOR/4.WAV
+Local/english/VOICES/EHORUSWARRIOR/5.WAV | loose file at the path the original gave it | Local/english/VOICES/EHORUSWARRIOR/5.WAV
+Local/english/VOICES/EHORUSWARRIOR/6.WAV | loose file at the path the original gave it | Local/english/VOICES/EHORUSWARRIOR/6.WAV
+Local/english/VOICES/EMALEVILLAGER/1.WAV | loose file at the path the original gave it | Local/english/VOICES/EMALEVILLAGER/1.WAV
+Local/english/VOICES/EMALEVILLAGER/2.WAV | loose file at the path the original gave it | Local/english/VOICES/EMALEVILLAGER/2.WAV
+Local/english/VOICES/EMALEVILLAGER/3.WAV | loose file at the path the original gave it | Local/english/VOICES/EMALEVILLAGER/3.WAV
+Local/english/VOICES/EPRIEST/1.WAV | loose file at the path the original gave it | Local/english/VOICES/EPRIEST/1.WAV
+Local/english/VOICES/EPRIEST/2.WAV | loose file at the path the original gave it | Local/english/VOICES/EPRIEST/2.WAV
+Local/english/VOICES/EPRIEST/3.WAV | loose file at the path the original gave it | Local/english/VOICES/EPRIEST/3.WAV
+Local/english/VOICES/EPRIEST/4.WAV | loose file at the path the original gave it | Local/english/VOICES/EPRIEST/4.WAV
+Local/english/VOICES/EPRIEST/5.WAV | loose file at the path the original gave it | Local/english/VOICES/EPRIEST/5.WAV
+Local/english/VOICES/ESWORDSMAN/1.WAV | loose file at the path the original gave it | Local/english/VOICES/ESWORDSMAN/1.WAV
+Local/english/VOICES/ESWORDSMAN/2.WAV | loose file at the path the original gave it | Local/english/VOICES/ESWORDSMAN/2.WAV
+Local/english/VOICES/ESWORDSMAN/3.WAV | loose file at the path the original gave it | Local/english/VOICES/ESWORDSMAN/3.WAV
+Local/english/VOICES/ESWORDSMAN/4.WAV | loose file at the path the original gave it | Local/english/VOICES/ESWORDSMAN/4.WAV
+Local/english/VOICES/ESWORDSMAN/5.WAV | loose file at the path the original gave it | Local/english/VOICES/ESWORDSMAN/5.WAV
+Local/english/VOICES/GDRUID/1.WAV | loose file at the path the original gave it | Local/english/VOICES/GDRUID/1.WAV
+Local/english/VOICES/GDRUID/2.WAV | loose file at the path the original gave it | Local/english/VOICES/GDRUID/2.WAV
+Local/english/VOICES/GDRUID/3.WAV | loose file at the path the original gave it | Local/english/VOICES/GDRUID/3.WAV
+Local/english/VOICES/GDRUID/4.WAV | loose file at the path the original gave it | Local/english/VOICES/GDRUID/4.WAV
+Local/english/VOICES/GDRUID/5.WAV | loose file at the path the original gave it | Local/english/VOICES/GDRUID/5.WAV
+Local/english/VOICES/GTRIDENTWARRIOR/1.WAV | loose file at the path the original gave it | Local/english/VOICES/GTRIDENTWARRIOR/1.WAV
+Local/english/VOICES/GTRIDENTWARRIOR/2.WAV | loose file at the path the original gave it | Local/english/VOICES/GTRIDENTWARRIOR/2.WAV
+Local/english/VOICES/GTRIDENTWARRIOR/3.WAV | loose file at the path the original gave it | Local/english/VOICES/GTRIDENTWARRIOR/3.WAV
+Local/english/VOICES/GTRIDENTWARRIOR/4.WAV | loose file at the path the original gave it | Local/english/VOICES/GTRIDENTWARRIOR/4.WAV
+Local/english/VOICES/GTRIDENTWARRIOR/5.WAV | loose file at the path the original gave it | Local/english/VOICES/GTRIDENTWARRIOR/5.WAV
+Local/english/VOICES/IENCHANTRESS/1.WAV | loose file at the path the original gave it | Local/english/VOICES/IENCHANTRESS/1.WAV
+Local/english/VOICES/IENCHANTRESS/2.WAV | loose file at the path the original gave it | Local/english/VOICES/IENCHANTRESS/2.WAV
+Local/english/VOICES/IENCHANTRESS/3.WAV | loose file at the path the original gave it | Local/english/VOICES/IENCHANTRESS/3.WAV
+Local/english/VOICES/IENCHANTRESS/4.WAV | loose file at the path the original gave it | Local/english/VOICES/IENCHANTRESS/4.WAV
+Local/english/VOICES/IENCHANTRESS/5.WAV | loose file at the path the original gave it | Local/english/VOICES/IENCHANTRESS/5.WAV
+Local/english/VOICES/IENCHANTRESS/6.WAV | loose file at the path the original gave it | Local/english/VOICES/IENCHANTRESS/6.WAV
+Local/english/VOICES/IFEMALEVILLAGER/1.WAV | loose file at the path the original gave it | Local/english/VOICES/IFEMALEVILLAGER/1.WAV
+Local/english/VOICES/IFEMALEVILLAGER/2.WAV | loose file at the path the original gave it | Local/english/VOICES/IFEMALEVILLAGER/2.WAV
+Local/english/VOICES/IFEMALEVILLAGER/3.WAV | loose file at the path the original gave it | Local/english/VOICES/IFEMALEVILLAGER/3.WAV
+Local/english/VOICES/IMALEVILLAGER/1.WAV | loose file at the path the original gave it | Local/english/VOICES/IMALEVILLAGER/1.WAV
+Local/english/VOICES/IMALEVILLAGER/2.WAV | loose file at the path the original gave it | Local/english/VOICES/IMALEVILLAGER/2.WAV
+Local/english/VOICES/IMALEVILLAGER/3.WAV | loose file at the path the original gave it | Local/english/VOICES/IMALEVILLAGER/3.WAV
+Local/english/VOICES/RCHARIOT/1.WAV | loose file at the path the original gave it | Local/english/VOICES/RCHARIOT/1.WAV
+Local/english/VOICES/RCHARIOT/2.WAV | loose file at the path the original gave it | Local/english/VOICES/RCHARIOT/2.WAV
+Local/english/VOICES/RCHARIOT/3.WAV | loose file at the path the original gave it | Local/english/VOICES/RCHARIOT/3.WAV
+Local/english/VOICES/RCHARIOT/4.WAV | loose file at the path the original gave it | Local/english/VOICES/RCHARIOT/4.WAV
+Local/english/VOICES/RCHARIOT/5.WAV | loose file at the path the original gave it | Local/english/VOICES/RCHARIOT/5.WAV
+Local/english/VOICES/RIMPERIALHERO/1.WAV | loose file at the path the original gave it | Local/english/VOICES/RIMPERIALHERO/1.WAV
+Local/english/VOICES/RIMPERIALHERO/2.WAV | loose file at the path the original gave it | Local/english/VOICES/RIMPERIALHERO/2.WAV
+Local/english/VOICES/RIMPERIALHERO/3.WAV | loose file at the path the original gave it | Local/english/VOICES/RIMPERIALHERO/3.WAV
+Local/english/VOICES/RIMPERIALHERO/4.WAV | loose file at the path the original gave it | Local/english/VOICES/RIMPERIALHERO/4.WAV
+Local/english/VOICES/RIMPERIALHERO/5.WAV | loose file at the path the original gave it | Local/english/VOICES/RIMPERIALHERO/5.WAV
+Local/english/VOICES/RTRIBUNE/1.WAV | loose file at the path the original gave it | Local/english/VOICES/RTRIBUNE/1.WAV
+Local/english/VOICES/RTRIBUNE/2.WAV | loose file at the path the original gave it | Local/english/VOICES/RTRIBUNE/2.WAV
+Local/english/VOICES/RTRIBUNE/3.WAV | loose file at the path the original gave it | Local/english/VOICES/RTRIBUNE/3.WAV
+Local/english/VOICES/RTRIBUNE/4.WAV | loose file at the path the original gave it | Local/english/VOICES/RTRIBUNE/4.WAV
+Local/english/VOICES/RTRIBUNE/5.WAV | loose file at the path the original gave it | Local/english/VOICES/RTRIBUNE/5.WAV
+Local/english/VOICES/RVELIT/1.WAV | loose file at the path the original gave it | Local/english/VOICES/RVELIT/1.WAV
+Local/english/VOICES/RVELIT/2.WAV | loose file at the path the original gave it | Local/english/VOICES/RVELIT/2.WAV
+Local/english/VOICES/RVELIT/3.WAV | loose file at the path the original gave it | Local/english/VOICES/RVELIT/3.WAV
+Local/english/VOICES/RVELIT/4.WAV | loose file at the path the original gave it | Local/english/VOICES/RVELIT/4.WAV
+Local/english/VOICES/RVELIT/5.WAV | loose file at the path the original gave it | Local/english/VOICES/RVELIT/5.WAV
+Local/english/VOICES/TARCHER/1.WAV | loose file at the path the original gave it | Local/english/VOICES/TARCHER/1.WAV
+Local/english/VOICES/TARCHER/2.WAV | loose file at the path the original gave it | Local/english/VOICES/TARCHER/2.WAV
+Local/english/VOICES/TARCHER/3.WAV | loose file at the path the original gave it | Local/english/VOICES/TARCHER/3.WAV
+Local/english/VOICES/TARCHER/4.WAV | loose file at the path the original gave it | Local/english/VOICES/TARCHER/4.WAV
+Local/english/VOICES/TARCHER/5.WAV | loose file at the path the original gave it | Local/english/VOICES/TARCHER/5.WAV
+Local/english/VOICES/TAXEMAN/1.WAV | loose file at the path the original gave it | Local/english/VOICES/TAXEMAN/1.WAV
+Local/english/VOICES/TAXEMAN/2.WAV | loose file at the path the original gave it | Local/english/VOICES/TAXEMAN/2.WAV
+Local/english/VOICES/TAXEMAN/3.WAV | loose file at the path the original gave it | Local/english/VOICES/TAXEMAN/3.WAV
+Local/english/VOICES/TAXEMAN/4.WAV | loose file at the path the original gave it | Local/english/VOICES/TAXEMAN/4.WAV
+Local/english/VOICES/TAXEMAN/5.WAV | loose file at the path the original gave it | Local/english/VOICES/TAXEMAN/5.WAV
+Local/english/VOICES/TENCHANTRESS/1.WAV | loose file at the path the original gave it | Local/english/VOICES/TENCHANTRESS/1.WAV
+Local/english/VOICES/TENCHANTRESS/2.WAV | loose file at the path the original gave it | Local/english/VOICES/TENCHANTRESS/2.WAV
+Local/english/VOICES/TENCHANTRESS/3.WAV | loose file at the path the original gave it | Local/english/VOICES/TENCHANTRESS/3.WAV
+Local/english/VOICES/TENCHANTRESS/4.WAV | loose file at the path the original gave it | Local/english/VOICES/TENCHANTRESS/4.WAV
+Local/english/VOICES/TENCHANTRESS/5.WAV | loose file at the path the original gave it | Local/english/VOICES/TENCHANTRESS/5.WAV
+Local/english/VOICES/TFEMALEVILLAGER/1.WAV | loose file at the path the original gave it | Local/english/VOICES/TFEMALEVILLAGER/1.WAV
+Local/english/VOICES/TFEMALEVILLAGER/2.WAV | loose file at the path the original gave it | Local/english/VOICES/TFEMALEVILLAGER/2.WAV
+Local/english/VOICES/TFEMALEVILLAGER/3.WAV | loose file at the path the original gave it | Local/english/VOICES/TFEMALEVILLAGER/3.WAV
+Local/english/VOICES/THERO/1.WAV | loose file at the path the original gave it | Local/english/VOICES/THERO/1.WAV
+Local/english/VOICES/THERO/2.WAV | loose file at the path the original gave it | Local/english/VOICES/THERO/2.WAV
+Local/english/VOICES/THERO/3.WAV | loose file at the path the original gave it | Local/english/VOICES/THERO/3.WAV
+Local/english/VOICES/THERO/4.WAV | loose file at the path the original gave it | Local/english/VOICES/THERO/4.WAV
+Local/english/VOICES/THERO/5.WAV | loose file at the path the original gave it | Local/english/VOICES/THERO/5.WAV
+Local/english/VOICES/THUNTRESS/1.WAV | loose file at the path the original gave it | Local/english/VOICES/THUNTRESS/1.WAV
+Local/english/VOICES/THUNTRESS/2.WAV | loose file at the path the original gave it | Local/english/VOICES/THUNTRESS/2.WAV
+Local/english/VOICES/THUNTRESS/3.WAV | loose file at the path the original gave it | Local/english/VOICES/THUNTRESS/3.WAV
+Local/english/VOICES/THUNTRESS/4.WAV | loose file at the path the original gave it | Local/english/VOICES/THUNTRESS/4.WAV
+Local/english/VOICES/THUNTRESS/5.WAV | loose file at the path the original gave it | Local/english/VOICES/THUNTRESS/5.WAV
+Local/english/VOICES/TMACEMAN/1.WAV | loose file at the path the original gave it | Local/english/VOICES/TMACEMAN/1.WAV
+Local/english/VOICES/TMACEMAN/2.WAV | loose file at the path the original gave it | Local/english/VOICES/TMACEMAN/2.WAV
+Local/english/VOICES/TMACEMAN/3.WAV | loose file at the path the original gave it | Local/english/VOICES/TMACEMAN/3.WAV
+Local/english/VOICES/TMACEMAN/4.WAV | loose file at the path the original gave it | Local/english/VOICES/TMACEMAN/4.WAV
+Local/english/VOICES/TMACEMAN/5.WAV | loose file at the path the original gave it | Local/english/VOICES/TMACEMAN/5.WAV
+Local/english/VOICES/TMALEVILLAGER/1.WAV | loose file at the path the original gave it | Local/english/VOICES/TMALEVILLAGER/1.WAV
+Local/english/VOICES/TMALEVILLAGER/2.WAV | loose file at the path the original gave it | Local/english/VOICES/TMALEVILLAGER/2.WAV
+Local/english/VOICES/TMALEVILLAGER/3.WAV | loose file at the path the original gave it | Local/english/VOICES/TMALEVILLAGER/3.WAV
+Local/english/VOICES/TSWORDSMAN/1.WAV | loose file at the path the original gave it | Local/english/VOICES/TSWORDSMAN/1.WAV
+Local/english/VOICES/TSWORDSMAN/2.WAV | loose file at the path the original gave it | Local/english/VOICES/TSWORDSMAN/2.WAV
+Local/english/VOICES/TSWORDSMAN/3.WAV | loose file at the path the original gave it | Local/english/VOICES/TSWORDSMAN/3.WAV
+Local/english/VOICES/TSWORDSMAN/4.WAV | loose file at the path the original gave it | Local/english/VOICES/TSWORDSMAN/4.WAV
+Local/english/VOICES/TSWORDSMAN/5.WAV | loose file at the path the original gave it | Local/english/VOICES/TSWORDSMAN/5.WAV
+Local/english/VOICES/TVALKYRIE/1.WAV | loose file at the path the original gave it | Local/english/VOICES/TVALKYRIE/1.WAV
+Local/english/VOICES/TVALKYRIE/2.WAV | loose file at the path the original gave it | Local/english/VOICES/TVALKYRIE/2.WAV
+Local/english/VOICES/TVALKYRIE/3.WAV | loose file at the path the original gave it | Local/english/VOICES/TVALKYRIE/3.WAV
+Local/english/VOICES/TVALKYRIE/4.WAV | loose file at the path the original gave it | Local/english/VOICES/TVALKYRIE/4.WAV
+Local/english/VOICES/TVALKYRIE/5.WAV | loose file at the path the original gave it | Local/english/VOICES/TVALKYRIE/5.WAV
+Local/italian/GAME.LOC.XML | texts patch: 192 keys added, 34 changed; the 95 keys of the game's table the mod lacks are NOT removed | loc/italian.loc.xml
+Local/italian/TIPS.XML | DROPPED-ON-PURPOSE: TIPS.XML of a language where HD has its own (Spanish, Italian): AGENTS.md 'The skin's Tips panel and Help button' (never ship it); class 3, skin | -
+Local/italian/VOICES/CJAVELINTHROWER/1.WAV | loose file at the path the original gave it | Local/italian/VOICES/CJAVELINTHROWER/1.WAV
+Local/italian/VOICES/CJAVELINTHROWER/2.WAV | loose file at the path the original gave it | Local/italian/VOICES/CJAVELINTHROWER/2.WAV
+Local/italian/VOICES/CJAVELINTHROWER/3.WAV | loose file at the path the original gave it | Local/italian/VOICES/CJAVELINTHROWER/3.WAV
+Local/italian/VOICES/CJAVELINTHROWER/4.WAV | loose file at the path the original gave it | Local/italian/VOICES/CJAVELINTHROWER/4.WAV
+Local/italian/VOICES/CJAVELINTHROWER/5.WAV | loose file at the path the original gave it | Local/italian/VOICES/CJAVELINTHROWER/5.WAV
+Local/italian/VOICES/CMACEMAN/1.WAV | loose file at the path the original gave it | Local/italian/VOICES/CMACEMAN/1.WAV
+Local/italian/VOICES/CMACEMAN/2.WAV | loose file at the path the original gave it | Local/italian/VOICES/CMACEMAN/2.WAV
+Local/italian/VOICES/CMACEMAN/3.WAV | loose file at the path the original gave it | Local/italian/VOICES/CMACEMAN/3.WAV
+Local/italian/VOICES/CMACEMAN/4.WAV | loose file at the path the original gave it | Local/italian/VOICES/CMACEMAN/4.WAV
+Local/italian/VOICES/CMACEMAN/5.WAV | loose file at the path the original gave it | Local/italian/VOICES/CMACEMAN/5.WAV
+Local/italian/VOICES/GDRUID/1.WAV | loose file at the path the original gave it | Local/italian/VOICES/GDRUID/1.WAV
+Local/italian/VOICES/GDRUID/2.WAV | loose file at the path the original gave it | Local/italian/VOICES/GDRUID/2.WAV
+Local/italian/VOICES/GDRUID/3.WAV | loose file at the path the original gave it | Local/italian/VOICES/GDRUID/3.WAV
+Local/italian/VOICES/GDRUID/4.WAV | loose file at the path the original gave it | Local/italian/VOICES/GDRUID/4.WAV
+Local/italian/VOICES/GDRUID/5.WAV | loose file at the path the original gave it | Local/italian/VOICES/GDRUID/5.WAV
+Local/italian/VOICES/IENCHANTRESS/1.WAV | loose file at the path the original gave it | Local/italian/VOICES/IENCHANTRESS/1.WAV
+Local/italian/VOICES/IENCHANTRESS/2.WAV | loose file at the path the original gave it | Local/italian/VOICES/IENCHANTRESS/2.WAV
+Local/italian/VOICES/IENCHANTRESS/3.WAV | loose file at the path the original gave it | Local/italian/VOICES/IENCHANTRESS/3.WAV
+Local/italian/VOICES/IENCHANTRESS/4.WAV | loose file at the path the original gave it | Local/italian/VOICES/IENCHANTRESS/4.WAV
+Local/italian/VOICES/IENCHANTRESS/5.WAV | loose file at the path the original gave it | Local/italian/VOICES/IENCHANTRESS/5.WAV
+Local/italian/VOICES/IENCHANTRESS/6.WAV | loose file at the path the original gave it | Local/italian/VOICES/IENCHANTRESS/6.WAV
+Local/spanish.pak::UI/INFOBAR/COMMON/LEVEL ICO.BMP | spanish pak member, at the game's own path UI/INFOBAR/COMMON/LEVEL ICO.BMP for every language (Local/spanish/ would be currentlang/, not ui/) | UI/INFOBAR/COMMON/LEVEL ICO.BMP
+Local/spanish/GAME.LOC.XML | texts patch: 191 keys added, 61 changed; the 91 keys of the game's table the mod lacks are NOT removed | loc/spanish.loc.xml
+Local/spanish/TIPS.XML | DROPPED-ON-PURPOSE: TIPS.XML of a language where HD has its own (Spanish, Italian): AGENTS.md 'The skin's Tips panel and Help button' (never ship it); class 3, skin | -
+Local/spanish/VOICES/CJAVELINTHROWER/1.WAV | loose file at the path the original gave it | Local/spanish/VOICES/CJAVELINTHROWER/1.WAV
+Local/spanish/VOICES/CJAVELINTHROWER/2.WAV | loose file at the path the original gave it | Local/spanish/VOICES/CJAVELINTHROWER/2.WAV
+Local/spanish/VOICES/CJAVELINTHROWER/3.WAV | loose file at the path the original gave it | Local/spanish/VOICES/CJAVELINTHROWER/3.WAV
+Local/spanish/VOICES/CJAVELINTHROWER/4.WAV | loose file at the path the original gave it | Local/spanish/VOICES/CJAVELINTHROWER/4.WAV
+Local/spanish/VOICES/CJAVELINTHROWER/5.WAV | loose file at the path the original gave it | Local/spanish/VOICES/CJAVELINTHROWER/5.WAV
+Local/spanish/VOICES/CMACEMAN/1.WAV | loose file at the path the original gave it | Local/spanish/VOICES/CMACEMAN/1.WAV
+Local/spanish/VOICES/CMACEMAN/2.WAV | loose file at the path the original gave it | Local/spanish/VOICES/CMACEMAN/2.WAV
+Local/spanish/VOICES/CMACEMAN/3.WAV | loose file at the path the original gave it | Local/spanish/VOICES/CMACEMAN/3.WAV
+Local/spanish/VOICES/CMACEMAN/4.WAV | loose file at the path the original gave it | Local/spanish/VOICES/CMACEMAN/4.WAV
+Local/spanish/VOICES/CMACEMAN/5.WAV | loose file at the path the original gave it | Local/spanish/VOICES/CMACEMAN/5.WAV
+Local/spanish/VOICES/GDRUID/1.WAV | loose file at the path the original gave it | Local/spanish/VOICES/GDRUID/1.WAV
+Local/spanish/VOICES/GDRUID/2.WAV | loose file at the path the original gave it | Local/spanish/VOICES/GDRUID/2.WAV
+Local/spanish/VOICES/GDRUID/3.WAV | loose file at the path the original gave it | Local/spanish/VOICES/GDRUID/3.WAV
+Local/spanish/VOICES/GDRUID/4.WAV | loose file at the path the original gave it | Local/spanish/VOICES/GDRUID/4.WAV
+Local/spanish/VOICES/GDRUID/5.WAV | loose file at the path the original gave it | Local/spanish/VOICES/GDRUID/5.WAV
+Local/spanish/VOICES/IENCHANTRESS/1.WAV | loose file at the path the original gave it | Local/spanish/VOICES/IENCHANTRESS/1.WAV
+Local/spanish/VOICES/IENCHANTRESS/2.WAV | loose file at the path the original gave it | Local/spanish/VOICES/IENCHANTRESS/2.WAV
+Local/spanish/VOICES/IENCHANTRESS/3.WAV | loose file at the path the original gave it | Local/spanish/VOICES/IENCHANTRESS/3.WAV
+Local/spanish/VOICES/IENCHANTRESS/4.WAV | loose file at the path the original gave it | Local/spanish/VOICES/IENCHANTRESS/4.WAV
+Local/spanish/VOICES/IENCHANTRESS/5.WAV | loose file at the path the original gave it | Local/spanish/VOICES/IENCHANTRESS/5.WAV
+Local/spanish/VOICES/IENCHANTRESS/6.WAV | loose file at the path the original gave it | Local/spanish/VOICES/IENCHANTRESS/6.WAV
+MAPOBJECTS/DECORS/CORNSMALL/PASS | loose file at the path the original gave it | MAPOBJECTS/DECORS/CORNSMALL/PASS
+MAPOBJECTS/DECORS/GROUNDOBJECTS/BUSHES/BUSH01/BUSH01.PASS | loose file at the path the original gave it | MAPOBJECTS/DECORS/GROUNDOBJECTS/BUSHES/BUSH01/BUSH01.PASS
+MAPOBJECTS/DECORS/GROUNDOBJECTS/BUSHES/BUSH01/BUSH01_S.ENT.XML | loose file at the path the original gave it | MAPOBJECTS/DECORS/GROUNDOBJECTS/BUSHES/BUSH01/BUSH01_S.ENT.XML
+MAPOBJECTS/DECORS/GROUNDOBJECTS/BUSHES/BUSH02/BUSH02_S.ENT.XML | loose file at the path the original gave it | MAPOBJECTS/DECORS/GROUNDOBJECTS/BUSHES/BUSH02/BUSH02_S.ENT.XML
+MAPOBJECTS/DECORS/GROUNDOBJECTS/BUSHES/BUSH03/BUSH03.PASS | loose file at the path the original gave it | MAPOBJECTS/DECORS/GROUNDOBJECTS/BUSHES/BUSH03/BUSH03.PASS
+MAPOBJECTS/DECORS/GROUNDOBJECTS/BUSHES/BUSH03/BUSH03_S.ENT.XML | loose file at the path the original gave it | MAPOBJECTS/DECORS/GROUNDOBJECTS/BUSHES/BUSH03/BUSH03_S.ENT.XML
+MAPOBJECTS/DECORS/GROUNDOBJECTS/BUSHES/BUSH04/BUSH04.PASS | loose file at the path the original gave it | MAPOBJECTS/DECORS/GROUNDOBJECTS/BUSHES/BUSH04/BUSH04.PASS
+MAPOBJECTS/DECORS/GROUNDOBJECTS/BUSHES/BUSH04/BUSH04_S.ENT.XML | loose file at the path the original gave it | MAPOBJECTS/DECORS/GROUNDOBJECTS/BUSHES/BUSH04/BUSH04_S.ENT.XML
+MAPOBJECTS/DECORS/GROUNDOBJECTS/DEADTREES/DEADTREE07/DEADTREE07.PASS | loose file at the path the original gave it | MAPOBJECTS/DECORS/GROUNDOBJECTS/DEADTREES/DEADTREE07/DEADTREE07.PASS
+MAPOBJECTS/DECORS/GROUNDOBJECTS/DEADTREES/DEADTREE08/DEADTREE08.PASS | loose file at the path the original gave it | MAPOBJECTS/DECORS/GROUNDOBJECTS/DEADTREES/DEADTREE08/DEADTREE08.PASS
+MAPOBJECTS/DECORS/GROUNDOBJECTS/DEADTREES/DEADTREE09/DEADTREE09.PASS | loose file at the path the original gave it | MAPOBJECTS/DECORS/GROUNDOBJECTS/DEADTREES/DEADTREE09/DEADTREE09.PASS
+MAPOBJECTS/DECORS/IGLOLIST1/ELHA_S1.ENT.XML | loose file at the path the original gave it | MAPOBJECTS/DECORS/IGLOLIST1/ELHA_S1.ENT.XML
+MAPOBJECTS/DECORS/IGLOLIST1/PASS | loose file at the path the original gave it | MAPOBJECTS/DECORS/IGLOLIST1/PASS
+MAPOBJECTS/DECORS/SHU1/PASS | loose file at the path the original gave it | MAPOBJECTS/DECORS/SHU1/PASS
+MAPOBJECTS/DECORS/SUHHRAST1/SUHHRAST1.ENT.XML | loose file at the path the original gave it | MAPOBJECTS/DECORS/SUHHRAST1/SUHHRAST1.ENT.XML
+MAPOBJECTS/DECORS/SUHHRAST1/SUHHRAST1.PASS | loose file at the path the original gave it | MAPOBJECTS/DECORS/SUHHRAST1/SUHHRAST1.PASS
+MAPOBJECTS/DECORS/SUHHRAST2/SUHHRAST2.ENT.XML | loose file at the path the original gave it | MAPOBJECTS/DECORS/SUHHRAST2/SUHHRAST2.ENT.XML
+MAPOBJECTS/DECORS/SUHHRAST2/SUHHRAST2.PASS | loose file at the path the original gave it | MAPOBJECTS/DECORS/SUHHRAST2/SUHHRAST2.PASS
+MAPOBJECTS/DECORS/TR9/S/PASS | loose file at the path the original gave it | MAPOBJECTS/DECORS/TR9/S/PASS
+MAPOBJECTS/DECORS/TR9/S/TR9_S.ENT.XML | loose file at the path the original gave it | MAPOBJECTS/DECORS/TR9/S/TR9_S.ENT.XML
+MAPOBJECTS/DECORS/TR91/S/PASS | loose file at the path the original gave it | MAPOBJECTS/DECORS/TR91/S/PASS
+MAPOBJECTS/DECORS/TR91/S/TR91_S.ENT.XML | loose file at the path the original gave it | MAPOBJECTS/DECORS/TR91/S/TR91_S.ENT.XML
+MAPOBJECTS/DECORS/TR92/S/PASS | loose file at the path the original gave it | MAPOBJECTS/DECORS/TR92/S/PASS
+MAPOBJECTS/DECORS/TR92/S/TR92_S.ENT.XML | loose file at the path the original gave it | MAPOBJECTS/DECORS/TR92/S/TR92_S.ENT.XML
+MAPOBJECTS/EGYPT/PYRAMIDE2/PYRAMIDE2.PASS | loose file at the path the original gave it | MAPOBJECTS/EGYPT/PYRAMIDE2/PYRAMIDE2.PASS
+MAPOBJECTS/ITEMHOLDERS/DEAD_TREE.ENT.XML | loose file at the path the original gave it | MAPOBJECTS/ITEMHOLDERS/DEAD_TREE.ENT.XML
+MAPOBJECTS/ITEMHOLDERS/FACE_PILLAR.ENT.XML | loose file at the path the original gave it | MAPOBJECTS/ITEMHOLDERS/FACE_PILLAR.ENT.XML
+OUTLINES/ZOOM16/BLACK_MAPOBJECTS-SHRINE-SHRINE.BMP | loose file at the path the original gave it | OUTLINES/ZOOM16/BLACK_MAPOBJECTS-SHRINE-SHRINE.BMP
+OUTLINES/ZOOM16/BLACK_MAPOBJECTS-STONEHENGE-STONEHENGE.BMP | loose file at the path the original gave it | OUTLINES/ZOOM16/BLACK_MAPOBJECTS-STONEHENGE-STONEHENGE.BMP
+OUTLINES/ZOOM16/BLACK_MAPOBJECTS-STONEHENGE2-STONEHENGE2.BMP | loose file at the path the original gave it | OUTLINES/ZOOM16/BLACK_MAPOBJECTS-STONEHENGE2-STONEHENGE2.BMP
+OUTLINES/ZOOM32/BLACK_MAPOBJECTS-SHRINE-SHRINE.BMP | loose file at the path the original gave it | OUTLINES/ZOOM32/BLACK_MAPOBJECTS-SHRINE-SHRINE.BMP
+OUTLINES/ZOOM32/BLACK_MAPOBJECTS-STONEHENGE-STONEHENGE.BMP | loose file at the path the original gave it | OUTLINES/ZOOM32/BLACK_MAPOBJECTS-STONEHENGE-STONEHENGE.BMP
+OUTLINES/ZOOM32/BLACK_MAPOBJECTS-STONEHENGE2-STONEHENGE2.BMP | loose file at the path the original gave it | OUTLINES/ZOOM32/BLACK_MAPOBJECTS-STONEHENGE2-STONEHENGE2.BMP
+OUTLINES/ZOOM8/BLACK_MAPOBJECTS-SHRINE-SHRINE.BMP | loose file at the path the original gave it | OUTLINES/ZOOM8/BLACK_MAPOBJECTS-SHRINE-SHRINE.BMP
+OUTLINES/ZOOM8/BLACK_MAPOBJECTS-STONEHENGE-STONEHENGE.BMP | loose file at the path the original gave it | OUTLINES/ZOOM8/BLACK_MAPOBJECTS-STONEHENGE-STONEHENGE.BMP
+OUTLINES/ZOOM8/BLACK_MAPOBJECTS-STONEHENGE2-STONEHENGE2.BMP | loose file at the path the original gave it | OUTLINES/ZOOM8/BLACK_MAPOBJECTS-STONEHENGE2-STONEHENGE2.BMP
+Packs/RandomMapSettlements.bfhp | loose file at the path the original gave it | Packs/RandomMapSettlements.bfhp
+Packs/RandomMapSettlements.bfhp::Maps/1/Notes.xml | member of RandomMapSettlements.bfhp, carried in the pack file | Packs/RandomMapSettlements.bfhp
+Packs/RandomMapSettlements.bfhp::Maps/1/Sequences/sequences.xml | member of RandomMapSettlements.bfhp, carried in the pack file | Packs/RandomMapSettlements.bfhp
+Packs/RandomMapSettlements.bfhp::Maps/1/Terrain.decor.grid | member of RandomMapSettlements.bfhp, carried in the pack file | Packs/RandomMapSettlements.bfhp
+Packs/RandomMapSettlements.bfhp::Maps/1/Terrain.height.grid | member of RandomMapSettlements.bfhp, carried in the pack file | Packs/RandomMapSettlements.bfhp
+Packs/RandomMapSettlements.bfhp::Maps/1/Terrain.light.grid | member of RandomMapSettlements.bfhp, carried in the pack file | Packs/RandomMapSettlements.bfhp
+Packs/RandomMapSettlements.bfhp::Maps/1/Terrain.pass.grid | member of RandomMapSettlements.bfhp, carried in the pack file | Packs/RandomMapSettlements.bfhp
+Packs/RandomMapSettlements.bfhp::Maps/1/Terrain.terrain.grid | member of RandomMapSettlements.bfhp, carried in the pack file | Packs/RandomMapSettlements.bfhp
+Packs/RandomMapSettlements.bfhp::Maps/1/Terrain.trans.grid | member of RandomMapSettlements.bfhp, carried in the pack file | Packs/RandomMapSettlements.bfhp
+Packs/RandomMapSettlements.bfhp::Maps/1/map.obj.xml | member of RandomMapSettlements.bfhp, carried in the pack file | Packs/RandomMapSettlements.bfhp
+Packs/RandomMapSettlements.bfhp::Maps/1/map.xml | member of RandomMapSettlements.bfhp, carried in the pack file | Packs/RandomMapSettlements.bfhp
+Packs/RandomMapSettlements.bfhp::Maps/1/warehouse.rle | member of RandomMapSettlements.bfhp, carried in the pack file | Packs/RandomMapSettlements.bfhp
+Packs/RandomMapSettlements.bfhp::Notes.xml | member of RandomMapSettlements.bfhp, carried in the pack file | Packs/RandomMapSettlements.bfhp
+Packs/RandomMapSettlements.bfhp::Sequences/sequences.xml | member of RandomMapSettlements.bfhp, carried in the pack file | Packs/RandomMapSettlements.bfhp
+Packs/RandomMapSettlements.bfhp::env.42 | member of RandomMapSettlements.bfhp, carried in the pack file | Packs/RandomMapSettlements.bfhp
+Packs/RandomMapSettlements.bfhp::game.xml | member of RandomMapSettlements.bfhp, carried in the pack file | Packs/RandomMapSettlements.bfhp
+Packs/RandomMapSettlements.bfhp::itemsCustom.xml | member of RandomMapSettlements.bfhp, carried in the pack file | Packs/RandomMapSettlements.bfhp
+Packs/RandomMapSettlements.bfhp::player0.xml | member of RandomMapSettlements.bfhp, carried in the pack file | Packs/RandomMapSettlements.bfhp
+Packs/RandomMapSettlements.bfhp::player1.xml | member of RandomMapSettlements.bfhp, carried in the pack file | Packs/RandomMapSettlements.bfhp
+Packs/RandomMapSettlements.bfhp::player10.xml | member of RandomMapSettlements.bfhp, carried in the pack file | Packs/RandomMapSettlements.bfhp
+Packs/RandomMapSettlements.bfhp::player11.xml | member of RandomMapSettlements.bfhp, carried in the pack file | Packs/RandomMapSettlements.bfhp
+Packs/RandomMapSettlements.bfhp::player12.xml | member of RandomMapSettlements.bfhp, carried in the pack file | Packs/RandomMapSettlements.bfhp
+Packs/RandomMapSettlements.bfhp::player13.xml | member of RandomMapSettlements.bfhp, carried in the pack file | Packs/RandomMapSettlements.bfhp
+Packs/RandomMapSettlements.bfhp::player14.xml | member of RandomMapSettlements.bfhp, carried in the pack file | Packs/RandomMapSettlements.bfhp
+Packs/RandomMapSettlements.bfhp::player15.xml | member of RandomMapSettlements.bfhp, carried in the pack file | Packs/RandomMapSettlements.bfhp
+Packs/RandomMapSettlements.bfhp::player2.xml | member of RandomMapSettlements.bfhp, carried in the pack file | Packs/RandomMapSettlements.bfhp
+Packs/RandomMapSettlements.bfhp::player3.xml | member of RandomMapSettlements.bfhp, carried in the pack file | Packs/RandomMapSettlements.bfhp
+Packs/RandomMapSettlements.bfhp::player4.xml | member of RandomMapSettlements.bfhp, carried in the pack file | Packs/RandomMapSettlements.bfhp
+Packs/RandomMapSettlements.bfhp::player5.xml | member of RandomMapSettlements.bfhp, carried in the pack file | Packs/RandomMapSettlements.bfhp
+Packs/RandomMapSettlements.bfhp::player6.xml | member of RandomMapSettlements.bfhp, carried in the pack file | Packs/RandomMapSettlements.bfhp
+Packs/RandomMapSettlements.bfhp::player7.xml | member of RandomMapSettlements.bfhp, carried in the pack file | Packs/RandomMapSettlements.bfhp
+Packs/RandomMapSettlements.bfhp::player8.xml | member of RandomMapSettlements.bfhp, carried in the pack file | Packs/RandomMapSettlements.bfhp
+Packs/RandomMapSettlements.bfhp::player9.xml | member of RandomMapSettlements.bfhp, carried in the pack file | Packs/RandomMapSettlements.bfhp
+Packs/randommap.BFHP | loose file at the path the original gave it | Packs/randommap.BFHP
+Packs/randommap.BFHP::Maps/1/Notes.xml | member of randommap.BFHP, carried in the pack file | Packs/randommap.BFHP
+Packs/randommap.BFHP::Maps/1/Sequences/sequences.xml | member of randommap.BFHP, carried in the pack file | Packs/randommap.BFHP
+Packs/randommap.BFHP::Maps/1/Terrain.decor.grid | member of randommap.BFHP, carried in the pack file | Packs/randommap.BFHP
+Packs/randommap.BFHP::Maps/1/Terrain.height.grid | member of randommap.BFHP, carried in the pack file | Packs/randommap.BFHP
+Packs/randommap.BFHP::Maps/1/Terrain.light.grid | member of randommap.BFHP, carried in the pack file | Packs/randommap.BFHP
+Packs/randommap.BFHP::Maps/1/Terrain.pass.grid | member of randommap.BFHP, carried in the pack file | Packs/randommap.BFHP
+Packs/randommap.BFHP::Maps/1/Terrain.terrain.grid | member of randommap.BFHP, carried in the pack file | Packs/randommap.BFHP
+Packs/randommap.BFHP::Maps/1/Terrain.trans.grid | member of randommap.BFHP, carried in the pack file | Packs/randommap.BFHP
+Packs/randommap.BFHP::Maps/1/map.obj.xml | member of randommap.BFHP, carried in the pack file | Packs/randommap.BFHP
+Packs/randommap.BFHP::Maps/1/map.xml | member of randommap.BFHP, carried in the pack file | Packs/randommap.BFHP
+Packs/randommap.BFHP::Maps/1/warehouse.rle | member of randommap.BFHP, carried in the pack file | Packs/randommap.BFHP
+Packs/randommap.BFHP::Notes.xml | member of randommap.BFHP, carried in the pack file | Packs/randommap.BFHP
+Packs/randommap.BFHP::Sequences/sequences.xml | member of randommap.BFHP, carried in the pack file | Packs/randommap.BFHP
+Packs/randommap.BFHP::env.42 | member of randommap.BFHP, carried in the pack file | Packs/randommap.BFHP
+Packs/randommap.BFHP::game.xml | member of randommap.BFHP, carried in the pack file | Packs/randommap.BFHP
+Packs/randommap.BFHP::itemsCustom.xml | member of randommap.BFHP, carried in the pack file | Packs/randommap.BFHP
+Packs/randommap.BFHP::player0.xml | member of randommap.BFHP, carried in the pack file | Packs/randommap.BFHP
+Packs/randommap.BFHP::player1.xml | member of randommap.BFHP, carried in the pack file | Packs/randommap.BFHP
+Packs/randommap.BFHP::player10.xml | member of randommap.BFHP, carried in the pack file | Packs/randommap.BFHP
+Packs/randommap.BFHP::player11.xml | member of randommap.BFHP, carried in the pack file | Packs/randommap.BFHP
+Packs/randommap.BFHP::player12.xml | member of randommap.BFHP, carried in the pack file | Packs/randommap.BFHP
+Packs/randommap.BFHP::player13.xml | member of randommap.BFHP, carried in the pack file | Packs/randommap.BFHP
+Packs/randommap.BFHP::player14.xml | member of randommap.BFHP, carried in the pack file | Packs/randommap.BFHP
+Packs/randommap.BFHP::player15.xml | member of randommap.BFHP, carried in the pack file | Packs/randommap.BFHP
+Packs/randommap.BFHP::player2.xml | member of randommap.BFHP, carried in the pack file | Packs/randommap.BFHP
+Packs/randommap.BFHP::player3.xml | member of randommap.BFHP, carried in the pack file | Packs/randommap.BFHP
+Packs/randommap.BFHP::player4.xml | member of randommap.BFHP, carried in the pack file | Packs/randommap.BFHP
+Packs/randommap.BFHP::player5.xml | member of randommap.BFHP, carried in the pack file | Packs/randommap.BFHP
+Packs/randommap.BFHP::player6.xml | member of randommap.BFHP, carried in the pack file | Packs/randommap.BFHP
+Packs/randommap.BFHP::player7.xml | member of randommap.BFHP, carried in the pack file | Packs/randommap.BFHP
+Packs/randommap.BFHP::player8.xml | member of randommap.BFHP, carried in the pack file | Packs/randommap.BFHP
+Packs/randommap.BFHP::player9.xml | member of randommap.BFHP, carried in the pack file | Packs/randommap.BFHP
+RANDOMMAP/COASTAL/030.BMP | loose file at the path the original gave it | RANDOMMAP/COASTAL/030.BMP
+RANDOMMAP/COASTAL/040.BMP | loose file at the path the original gave it | RANDOMMAP/COASTAL/040.BMP
+RANDOMMAP/COASTAL/070.BMP | loose file at the path the original gave it | RANDOMMAP/COASTAL/070.BMP
+RANDOMMAP/CONTINENT/030.BMP | loose file at the path the original gave it | RANDOMMAP/CONTINENT/030.BMP
+RANDOMMAP/CONTINENT/040.BMP | loose file at the path the original gave it | RANDOMMAP/CONTINENT/040.BMP
+RANDOMMAP/CONTINENT/070.BMP | loose file at the path the original gave it | RANDOMMAP/CONTINENT/070.BMP
+RANDOMMAP/ISLAND/030.BMP | loose file at the path the original gave it | RANDOMMAP/ISLAND/030.BMP
+RANDOMMAP/ISLAND/040.BMP | loose file at the path the original gave it | RANDOMMAP/ISLAND/040.BMP
+RANDOMMAP/ISLAND/070.BMP | loose file at the path the original gave it | RANDOMMAP/ISLAND/070.BMP
+RANDOMMAP/LARGE ISLANDS/030.BMP | loose file at the path the original gave it | RANDOMMAP/LARGE ISLANDS/030.BMP
+RANDOMMAP/LARGE ISLANDS/040.BMP | loose file at the path the original gave it | RANDOMMAP/LARGE ISLANDS/040.BMP
+RANDOMMAP/LARGE ISLANDS/070.BMP | loose file at the path the original gave it | RANDOMMAP/LARGE ISLANDS/070.BMP
+RANDOMMAP/SMALL ISLANDS/030.BMP | loose file at the path the original gave it | RANDOMMAP/SMALL ISLANDS/030.BMP
+RANDOMMAP/SMALL ISLANDS/040.BMP | loose file at the path the original gave it | RANDOMMAP/SMALL ISLANDS/040.BMP
+UI/ICONS/GODESS.BMP | loose file at the path the original gave it | UI/ICONS/GODESS.BMP
+UI/ICONS/SENATOR3.BMP | loose file at the path the original gave it | UI/ICONS/SENATOR3.BMP
+UI/ICONS/SENATOR6.BMP | loose file at the path the original gave it | UI/ICONS/SENATOR6.BMP
+UI/INFOBAR/COMMON/POP ICO.BMP | loose file at the path the original gave it | UI/INFOBAR/COMMON/POP ICO.BMP
+UI/INFOBAR/UNIT SPECIALS/DETERMINATION GLOW.BMP | loose file at the path the original gave it | UI/INFOBAR/UNIT SPECIALS/DETERMINATION GLOW.BMP
+hidden.txt | the original's list, 1926 of 1933 entries (7 stay visible, they are still named: raw/community-mod-civs-layer-notes.txt) | hidden.txt
+patches/data/const.ini | INI patch of the mod's constants (19 lines, a comment cut after 5 of them) + 22 Limit entries for the renumbered modes | patches/DATA/CONST.INI

@@ -832,7 +832,7 @@ if (fs.existsSync(EXTRAS)) for (const f of walk(EXTRAS)) { if (f === "NOTES.md")
   const mod = new Set(walk(find(PRISTINE, "DATA/CLASSES")).filter(f => /\.sc\.xml$/i.test(f)).map(f => (classOf(rd(path.join(find(PRISTINE, "DATA/CLASSES"), f))) || "").toLowerCase()));
   for (const c of CIVS) for (const [k, v] of Object.entries(readJson(path.join(OUT, "civs", `${c.id}.json`)).alias.classes)) { alias.set(k.toLowerCase(), v); if (mod.has(k.toLowerCase()) && !hdClass.has(k.toLowerCase())) fresh.set(k.toLowerCase(), [k, v]); }
   const lines = [`# maps of ported/ whose mod.json names community-mod; "added" = classes the mod added (HD has no such class, so a map that places one needs the copy), "cloned" = how many of the game's civilization classes it places (they keep working, as the game's own)`, ""];
-  const mods = fs.readdirSync(path.join(ROOT, "ported")).filter(d => { try { return /"community-mod"/.test(fs.readFileSync(path.join(ROOT, "ported", d, "mod.json"), "utf8")); } catch { return false; } }).sort();
+  const mods = fs.readdirSync(path.join(ROOT, "ported")).filter(d => { if (d === ID) return false; try { return /"community-mod"/.test(fs.readFileSync(path.join(ROOT, "ported", d, "mod.json"), "utf8")); } catch { return false; } }).sort();
   for (const d of mods) {
     const j = readJson(path.join(ROOT, "ported", d, "mod.json")), rel = (j.requires || []).includes("community-mod") ? "requires" : (j.incompatibleWith || []).includes("community-mod") ? "incompatibleWith" : "mentions";
     const added = new Set(); let cloned = new Set(), maps = 0;
@@ -846,6 +846,18 @@ if (fs.existsSync(EXTRAS)) for (const f of walk(EXTRAS)) { if (f === "NOTES.md")
   lines.push("", "# added class -> its copy per civilization", ...[...fresh.values()].sort().map(([k, v]) => `${k} -> ${v}`));
   fs.writeFileSync(path.join(ROOT, "raw", "community-mod-civs-maps.txt"), lines.join("\n") + "\n");
   console.log(`maps that name the mod: ${mods.length}; raw/community-mod-civs-maps.txt`);
+}
+
+// 9. The ruleset layer (rulesets/community-mod/, community-mods#53): everything the inventory calls GLOBAL, built by tools/lib/community-layer.js from the original and the contract in
+// extras/community-mod-civs/inventory-global.csv. The package root keeps the civilizations. The class 2 check: no file of the root replaces the game's (the layer's job).
+// The menu skin (class 3) stays in the root; CM_SKINS=1 routes it to skins/community-mod/ (provisional until the engine's skins, imperivm-resurrected#55).
+{
+  const layer = require("./lib/community-layer-run.js")({ ROOT, SDK }), skin = require("./lib/community-skin.js");
+  const class2 = skin.rootClass2({ OUT, GAME: path.join(ROOT, "originals", "game-data") });
+  console.log(`art in the root: ${skin.skinFiles(OUT).length} class 3 files (menu skin), ${class2.length} class 2 files (they replace the game's)${class2.length ? ": " + class2.slice(0, 6).join(", ") : ""}`);
+  if (class2.length) { console.error("CLASS 2 FILES IN THE ROOT: they belong to the layer"); process.exit(1); }
+  if (process.env.CM_SKINS === "1") { const moved = skin.routeSkin({ OUT, modJson: path.join(OUT, "mod.json") }); console.log(`skin routing (CM_SKINS=1): ${moved.length} files to skins/${skin.SKIN_ID}/`); }
+  console.log(`layer: ${layer.manifest.length} inventory rows carried or dropped with a reason`);
 }
 
 // folders the steps above left empty

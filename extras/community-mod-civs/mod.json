@@ -8,9 +8,9 @@
     "Villoh (port)"
   ],
   "description": {
-    "spanish": "Community Mod v12 de Ferónidas como ocho civilizaciones propias junto a las del juego (\"Galos (Community)\", \"Roma rep. (Community)\"…): su equilibrio de unidades, costes, edificios y héroes, las variantes de héroe y la IA ajustada. Las civilizaciones del juego no cambian. No incluye los mapas, los textos ni las reglas globales del mod original.",
-    "english": "Ferónidas' Community Mod v12 as eight civilizations of their own next to the game's (\"Gaul (Community)\", \"Rep. Rome (Community)\"…): its balance of units, costs, buildings and heroes, the hero variants and the tuned AI. The game's civilizations do not change. It does not carry the original mod's maps, texts or global rules.",
-    "italian": "Community Mod v12 di Ferónidas come otto civiltà a sé, accanto a quelle del gioco (\"Galli (Community)\", \"Roma rep. (Community)\"…): il suo bilanciamento di unità, costi, edifici ed eroi, le varianti degli eroi e l'IA regolata. Le civiltà del gioco non cambiano. Non include le mappe, i testi né le regole globali della mod originale."
+    "spanish": "Community Mod v12 de Ferónidas como ocho civilizaciones propias junto a las del juego (\"Galos (Community)\", \"Roma rep. (Community)\"…): su equilibrio de unidades, costes, edificios y héroes, las variantes de héroe y la IA ajustada. Las civilizaciones del juego no cambian. Las reglas globales del mod original (modos de juego, constantes, objetos, animales y objetos neutrales, voces, textos) van aparte, en el conjunto de reglas «Community Mod» que elige el anfitrión al crear la sala; sin él, el paquete solo añade las civilizaciones. No incluye los mapas del mod original.",
+    "english": "Ferónidas' Community Mod v12 as eight civilizations of their own next to the game's (\"Gaul (Community)\", \"Rep. Rome (Community)\"…): its balance of units, costs, buildings and heroes, the hero variants and the tuned AI. The game's civilizations do not change. The original mod's global rules (game modes, constants, items, neutral animals and objects, voices, texts) are a separate ruleset, \"Community Mod\", that the host picks when creating the room; without it the package only adds the civilizations. It does not carry the original mod's maps.",
+    "italian": "Community Mod v12 di Ferónidas come otto civiltà a sé, accanto a quelle del gioco (\"Galli (Community)\", \"Roma rep. (Community)\"…): il suo bilanciamento di unità, costi, edifici ed eroi, le varianti degli eroi e l'IA regolata. Le civiltà del gioco non cambiano. Le regole globali della mod originale (modalità di gioco, costanti, oggetti, animali e oggetti neutrali, voci, testi) sono un set di regole a parte, «Community Mod», che l'host sceglie creando la stanza; senza di esso il pacchetto aggiunge solo le civiltà. Non include le mappe della mod originale."
   },
   "license": "CC-BY-NC-ND-4.0",
   "tags": [
@@ -20,5 +20,21 @@
   "sources": {
     "page": "https://gamebanana.com/mods/730058",
     "gamebanana": 730058
-  }
+  },
+  "rulesets": [
+    {
+      "id": "community-mod",
+      "name": {
+        "spanish": "Community Mod",
+        "english": "Community Mod",
+        "italian": "Community Mod"
+      },
+      "description": {
+        "spanish": "Las reglas globales de Community Mod v12 de Ferónidas: los modos «Conquista competitiva» y «Tempo competitivo», los límites de los modos de puntos y de tiempo, las constantes y los valores de especiales, los objetos del juego que el mod cambia, los animales y objetos neutrales, los scripts, las voces, los textos y los archivos ocultos del original. Cambia las clases y valores del propio juego para todos los jugadores de la sala; reinicia el juego al elegirlo. Por defecto la sala solo permite las civilizaciones de este paquete.",
+        "english": "The global rules of Ferónidas' Community Mod v12: the \"Competitive Conquest\" and \"Competitive Tempo\" game modes, the limits of the score and time modes, the constants and special values, the game's items the mod changes, the neutral animals and objects, scripts, voices, texts and the original's hidden files. It changes the game's own classes and values for every player in the room; choosing it restarts the game. By default the room only allows this package's civilizations.",
+        "italian": "Le regole globali di Community Mod v12 di Ferónidas: le modalità «Conquista competitiva» e «Tempo competitivo», i limiti delle modalità a punti e a tempo, le costanti e i valori dei poteri speciali, gli oggetti del gioco che la mod cambia, gli animali e gli oggetti neutrali, gli script, le voci, i testi e i file nascosti dell'originale. Cambia le classi e i valori del gioco per tutti i giocatori della stanza; sceglierlo riavvia il gioco. Per impostazione predefinita la stanza permette solo le civiltà di questo pacchetto."
+      },
+      "path": "rulesets/community-mod"
+    }
+  ]
 }
