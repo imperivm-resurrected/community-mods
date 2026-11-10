@@ -26,5 +26,21 @@
     "Players: 2-7",
     "Language: Spanish"
   ],
-  "redistributable": true
+  "redistributable": true,
+  "rulesets": [
+    {
+      "id": "mci",
+      "name": {
+        "spanish": "MCI Comunidad 9.0",
+        "english": "MCI Comunidad 9.0",
+        "italian": "MCI Comunidad 9.0"
+      },
+      "description": {
+        "spanish": "Las reglas globales del mod MCI: valores de CONST.INI, SKILLS.INI y AI.INI, objetos del juego editados, formaciones, objetos de los mapas aleatorios, las clases neutrales del juego (cofres, fuentes, pozos, tiendas...), sus scripts y los sonidos de marcha que cambia. Cambia las clases y valores del propio juego para todos los jugadores de la partida; las civilizaciones del mod siguen siendo las mismas.",
+        "english": "The global rules of the MCI mod: CONST.INI, SKILLS.INI and AI.INI values, edited game items, formations, random-map objects, the game's neutral classes (chests, fountains, wells, tents...), their scripts and the walking sounds it changes. It changes the game's own classes and values for every player in the match; the mod's civilizations stay the same.",
+        "italian": "Le regole globali della mod MCI: valori di CONST.INI, SKILLS.INI e AI.INI, oggetti del gioco modificati, formazioni, oggetti delle mappe casuali, le classi neutrali del gioco (forzieri, fontane, pozzi, tende...), i loro script e i suoni di marcia che cambia. Modifica le classi e i valori del gioco per tutti i giocatori della partita; le civiltà della mod restano le stesse."
+      },
+      "path": "rulesets/mci"
+    }
+  ]
 }

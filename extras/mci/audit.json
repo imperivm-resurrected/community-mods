@@ -1,0 +1,81 @@
+{
+  "original": "originals/forum/t262/files/MOD Comunidad Imperivm 9.0.zip",
+  "tags": [
+    "mci"
+  ],
+  "language": "spanish",
+  "leftOut": [
+    "raw/mci-left-out.txt"
+  ],
+  "rules": [
+    {
+      "match": "^data/subai/stonehenge_(tormenta|suicidio|estertor|locura)",
+      "status": "GLOBAL",
+      "kind": "script-subai",
+      "reason": "script of one of the four orders the mod gives the game's Stonehenge class; no class of the port inherits it and no clone carries it",
+      "cite": "raw/mci-base-orders-left-out.txt"
+    },
+    {
+      "match": "^data/(interface/menu/mpgamemenu\\.ini|bonusscripts/|gamescripts/)|^ui/menu/(bonuses|food|people)\\.bmp$",
+      "status": "DROPPED-ON-PURPOSE",
+      "reason": "game modes 6, 9, 10, starting bonuses 004, 005, the lobby list that offers the bonuses and their pictures: by a co-author, and their numbers are the 4.2's (maintainer's decision)",
+      "cite": "extras/mci/NOTES.md 'Not shipped on purpose'"
+    },
+    {
+      "match": "^currentlang/(help|tips)\\.xml$",
+      "status": "DROPPED-ON-PURPOSE",
+      "reason": "help and tips of the mod (maintainer's decision); they would also replace HD's for every player",
+      "cite": "extras/mci/NOTES.md 'Not shipped on purpose' (Help and tips)"
+    },
+    {
+      "match": "^movies/.*\\.avi$",
+      "status": "DROPPED-ON-PURPOSE",
+      "reason": "the three videos (maintainer's decision)",
+      "cite": "extras/mci/NOTES.md 'Not shipped on purpose'"
+    },
+    {
+      "match": "^data/interface/combo/itemicons\\.ini$",
+      "status": "DROPPED-ON-PURPOSE",
+      "reason": "the editor's item list; HD has no COMBO folder",
+      "cite": "extras/mci/NOTES.md 'Not shipped on purpose'"
+    },
+    {
+      "match": "^data/copyrights\\.txt$",
+      "status": "DROPPED-ON-PURPOSE",
+      "reason": "the La Reconquista credit line (54 bytes, not the game's 53 or the 1.40's 40 as the notes say); the credit is in mod.json authors, and the file would replace the game's credits for everybody",
+      "cite": "extras/mci/mod.json authors; AGENTS.md 'Credits and permissions'"
+    }
+  ],
+  "explain": [
+    {
+      "path": "DATA/COMMANDS/CBARRACKS.XML",
+      "element": "cmd:trainCMaceman",
+      "reason": "the 1.40 name of the order; HD renamed it trainCMacemen and the clone keeps HD's name (trainCMacemen Icarthage)",
+      "cite": "DATA/COMMANDS/ICARTHAGE.XML of the port"
+    },
+    {
+      "path": "DATA/COMMANDS/CBARRACKS.XML",
+      "element": "cmd:trainCMacemanNonSpec",
+      "reason": "the 1.40 name of the order; HD renamed it trainCMacemenNonSpec and the clone keeps HD's name",
+      "cite": "DATA/COMMANDS/ICARTHAGE.XML of the port"
+    },
+    {
+      "path": "DATA/COMMANDS/ARENA.XML",
+      "element": "cmd:Flexibility",
+      "reason": "the order HD calls Standartization III; the Imperial Rome clone carries it under HD's name",
+      "cite": "DATA/COMMANDS/IIMPERIAL.XML of the port"
+    },
+    {
+      "path": "DATA/COMMANDS/HERO.XML",
+      "element": "cmd:moveinfight'",
+      "reason": "the second moveinfight of the mod's file (a duplicate name); the order is written inside the hero classes of the clones",
+      "cite": "DATA/CLASSES/IGAULHERO.SC.XML of the port"
+    },
+    {
+      "path": "DATA/CONST.INI",
+      "element": "resolutions/*",
+      "reason": "the screen resolutions of the 1.40 game (640x480 ... 1600x1200): not rules a room chooses, and HD has its own list (the validator refuses [Resolutions] in a ruleset)",
+      "cite": "sdk/rulesets.md 'Limits'"
+    }
+  ]
+}
