@@ -85,7 +85,7 @@ fs.rmSync(SRC, { recursive: true, force: true }); fs.rmSync(PRISTINE, { recursiv
 // 1. a fresh copy of the pristine port: hard links (every write below removes the file first)
 fs.rmSync(OUT, { recursive: true, force: true });
 cp.spawnSync("cp", ["-al", PRISTINE, OUT], { stdio: "inherit" });
-fs.rmSync(path.join(OUT, "NOTES.md"), { force: true });                // port-140.js copies extras/<id>/ over its output, the notes included: they are not part of the mod
+fs.rmSync(path.join(OUT, "NOTES.md"), { force: true }); fs.rmSync(path.join(OUT, "audit.json"), { force: true });                // port-140.js copies extras/<id>/ over its output, the notes included: they are not part of the mod
 // files the game does not use (validate-mod.js warns): the Windows thumbnail cache and a cursor nothing names
 for (const f of walk(OUT).filter(f => /(^|\/)thumbs[^/]*\.db$|^UI\/CURSORS\/arow2\.cur$/i.test(f))) fs.rmSync(path.join(OUT, f));
 // scripts saved in Latin-1 (accents): the game's compiler wants UTF-8, as for the classes (port-140.js)
@@ -605,7 +605,7 @@ if (fs.existsSync(EXTRAS)) for (const f of walk(EXTRAS)) { if (f !== "mod.json")
 {
   const SUB = find(OUT, "DATA/SUBAI"), gone = [];
   const texts = walk(OUT).filter(f => /\.(xml|vs|ini|json)$/i.test(f) && !/^(loc|local)\//i.test(f)).map(f => [f, rd(path.join(OUT, f)).toLowerCase()]);
-  for (const f of fs.readdirSync(SUB).filter(f => /^stonehenge_(tormenta|suicidio|estertor|locura)(_dispatch|_verify)?\.vs$/i.test(f))) {
+  for (const f of fs.readdirSync(SUB).filter(f => /^stonehenge_(tormenta|suicidio|estertor|locura)(_dispatch|_verify)?(_mci)?\.vs$/i.test(f))) {
     const user = texts.find(([tf, t]) => path.basename(tf).toLowerCase() !== f.toLowerCase() && t.includes(f.toLowerCase()));
     if (user) { console.error(`${f} is named by ${user[0]}: it cannot be dropped as unused`); process.exit(1); }
     fs.rmSync(path.join(SUB, f)); gone.push(f);
@@ -813,5 +813,13 @@ if (fs.existsSync(EXTRAS)) for (const f of walk(EXTRAS)) { if (f !== "mod.json")
 // folders the steps above left empty
 const prune = d => { for (const e of fs.readdirSync(d, { withFileTypes: true })) if (e.isDirectory()) { prune(path.join(d, e.name)); if (!fs.readdirSync(path.join(d, e.name)).length) fs.rmdirSync(path.join(d, e.name)); } };
 prune(OUT);
+
+// 9. The ruleset layer rulesets/mci/ (tools/lib/mci-layer.js, community-mods#53 "Building a mod's layer"): what the mod changes for everybody and no clone can carry, only mounted when the
+// host picks the rules. The audit of tools/audit-completeness.js decides what that is (its GLOBAL rows); the build stops if one is left without its copy in the layer.
+// Skins: the three menu pictures (class 3) stay in the root until the engine has skins (imperivm-resurrected#55, community-mods#66); the audit lists them (column art_class = 3).
+{
+  const r = require("./lib/mci-layer.js")({ OUT, PRISTINE, SRC, ID, HDDATA });
+  if (r.pending.length && process.env.MCI_LAYER_OPEN !== "1") { console.error(`GLOBAL ROWS WITHOUT A COPY IN THE LAYER (${r.pending.length}):\n  ` + r.pending.map(x => `${x.path}: ${x.note.slice(0, 160)}`).join("\n  ")); process.exit(1); }
+}
 if (report.length) console.log(`to check:\n  ${report.join("\n  ")}`);
 console.log("done");
