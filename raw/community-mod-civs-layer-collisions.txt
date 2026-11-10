@@ -1,0 +1,490 @@
+# community-mod-civs: rulesets/community-mod/ against the other ports of ported/ (tools/community-layer-collisions.js). 331 loose files, 99 patches, 3 text patches, 943 hidden paths in the layer.
+# CLASH = the same thing changed twice with other values (or removed and edited); same = the same bytes/value; merge = both patch the file with nothing in common.
+
+# asvrmod-vii-civs: 0 CLASH, 0 same, 7 merge, 0 patched, 0 hidden
+# caesar-mod-civs: 10 CLASH, 1 same, 8 merge, 0 patched, 0 hidden
+# celtic-kings-adventure: 0 CLASH, 0 same, 3 merge, 0 patched, 0 hidden
+# cgwar: 0 CLASH, 0 same, 5 merge, 2 patched, 0 hidden
+# greek-civilization-mod: 13 CLASH, 3 same, 8 merge, 0 patched, 196 hidden, 3 modes with the same name
+# greek-mod-1-8: 0 CLASH, 0 same, 7 merge, 0 patched, 3 hidden
+# greek-mod-2-3: 1 CLASH, 9 same, 8 merge, 0 patched, 3 hidden
+# greek-mod-2-5-3: 1 CLASH, 9 same, 8 merge, 0 patched, 3 hidden
+# greek-mod-2-6-1: 1 CLASH, 9 same, 7 merge, 0 patched, 3 hidden
+# imperivm-legacy: 0 CLASH, 0 same, 7 merge, 1 patched, 1 hidden
+# mci: 0 CLASH, 0 same, 7 merge, 0 patched, 0 hidden
+# mediterranevm-3-6: 0 CLASH, 2 same, 4 merge, 0 patched, 1 hidden
+# mediterranevm-alpha: 201 CLASH, 24 same, 1 merge, 0 patched, 31 hidden
+# nuclear-fazioni-equilibrate: 0 CLASH, 0 same, 3 merge, 0 patched, 0 hidden
+# oggetti-in-tutte-le-strutture: 0 CLASH, 0 same, 1 merge, 0 patched, 0 hidden
+# oggetti-in-tutte-le-strutture-e-forti-bilanciati: 0 CLASH, 0 same, 2 merge, 0 patched, 0 hidden
+# secuter-fun-mod: 0 CLASH, 0 same, 4 merge, 0 patched, 0 hidden
+# secuter-fun-mod-grecia: 0 CLASH, 0 same, 7 merge, 0 patched, 0 hidden
+# secuter-fun-mod-rules: 1 CLASH, 1 same, 4 merge, 0 patched, 0 hidden
+
+## asvrmod-vii-civs
+  merge data/commands/catapult.xml: both patch it, no key in common
+  merge data/commands/ship.xml: both patch it, no key in common
+  merge data/commands/unit.xml: both patch it, no key in common
+  merge data/const.ini: both patch it, no key in common
+  merge data/formations.xml: both patch it, no key in common
+  merge data/items.xml: both patch it, no key in common
+  merge data/randommap/placeobjects.xml: both patch it, no key in common
+
+## caesar-mod-civs
+  CLASH file outlines/zoom16/black_mapobjects-shrine-shrine.bmp: other bytes in the root of caesar-mod-civs
+  CLASH file outlines/zoom16/black_mapobjects-stonehenge-stonehenge.bmp: other bytes in the root of caesar-mod-civs
+  CLASH file outlines/zoom16/black_mapobjects-stonehenge2-stonehenge2.bmp: other bytes in the root of caesar-mod-civs
+  CLASH file outlines/zoom32/black_mapobjects-shrine-shrine.bmp: other bytes in the root of caesar-mod-civs
+  CLASH file outlines/zoom32/black_mapobjects-stonehenge-stonehenge.bmp: other bytes in the root of caesar-mod-civs
+  CLASH file outlines/zoom32/black_mapobjects-stonehenge2-stonehenge2.bmp: other bytes in the root of caesar-mod-civs
+  CLASH file outlines/zoom8/black_mapobjects-shrine-shrine.bmp: other bytes in the root of caesar-mod-civs
+  CLASH file outlines/zoom8/black_mapobjects-stonehenge-stonehenge.bmp: other bytes in the root of caesar-mod-civs
+  CLASH file outlines/zoom8/black_mapobjects-stonehenge2-stonehenge2.bmp: other bytes in the root of caesar-mod-civs
+  CLASH data/interface/editor/combo/uniticons.ini: both set [fillcombo] german hero 4 (gameres/icons/Thero4.bmp / gameres/icons/THERO4_cae.BMP)
+  merge data/commands/catapult.xml: both patch it, no key in common
+  merge data/commands/druid.xml: both patch it, no key in common
+  merge data/commands/ship.xml: both patch it, no key in common
+  merge data/commands/unit.xml: both patch it, no key in common
+  merge data/const.ini: both patch it, no key in common
+  merge data/interface/editor/combo/itemicons.ini: both patch it, no key in common
+  merge data/items.xml: both patch it, no key in common
+  merge data/randommap/placeobjects.xml: both patch it, no key in common
+
+## celtic-kings-adventure
+  merge data/commands/druid.xml: both patch it, no key in common
+  merge data/commands/stonehenge.xml: both patch it, no key in common
+  merge data/items.xml: both patch it, no key in common
+
+## cgwar
+  patched patched data/subai/rpriest_idle.vs: the layer ships it whole, cgwar patches it
+  patched patched data/subai/settlement_behavior_ambient.vs: the layer ships it whole, cgwar patches it
+  merge data/commands/druid.xml: both patch it, no key in common
+  merge data/interface/editor/combo/itemicons.ini: both patch it, no key in common
+  merge data/interface/editor/combo/uniticons.ini: both patch it, no key in common
+  merge data/items.xml: both patch it, no key in common
+  merge data/randommap/placeobjects.xml: both patch it, no key in common
+
+## greek-civilization-mod
+  CLASH file data/itemscripts/belt of snakes.vs: other bytes in the root of greek-civilization-mod
+  CLASH file data/itemscripts/feather amulet.vs: other bytes in the root of greek-civilization-mod
+  CLASH file data/subai/stonehenge_fatigue.vs: other bytes in the root of greek-civilization-mod
+  CLASH file data/subai/stonehenge_fatigue_dispatch.vs: other bytes in the root of greek-civilization-mod
+  CLASH file outlines/zoom16/black_mapobjects-shrine-shrine.bmp: other bytes in the root of greek-civilization-mod
+  CLASH file outlines/zoom16/black_mapobjects-stonehenge-stonehenge.bmp: other bytes in the root of greek-civilization-mod
+  CLASH file outlines/zoom16/black_mapobjects-stonehenge2-stonehenge2.bmp: other bytes in the root of greek-civilization-mod
+  CLASH file outlines/zoom32/black_mapobjects-shrine-shrine.bmp: other bytes in the root of greek-civilization-mod
+  CLASH file outlines/zoom32/black_mapobjects-stonehenge-stonehenge.bmp: other bytes in the root of greek-civilization-mod
+  CLASH file outlines/zoom32/black_mapobjects-stonehenge2-stonehenge2.bmp: other bytes in the root of greek-civilization-mod
+  CLASH file outlines/zoom8/black_mapobjects-shrine-shrine.bmp: other bytes in the root of greek-civilization-mod
+  CLASH file outlines/zoom8/black_mapobjects-stonehenge-stonehenge.bmp: other bytes in the root of greek-civilization-mod
+  CLASH file outlines/zoom8/black_mapobjects-stonehenge2-stonehenge2.bmp: other bytes in the root of greek-civilization-mod
+  merge data/commands/catapult.xml: both patch it, no key in common
+  merge data/commands/ship.xml: both patch it, no key in common
+  merge data/commands/tavern.xml: both patch it, no key in common
+  merge data/commands/unit.xml: both patch it, no key in common
+  merge data/const.ini: both patch it, no key in common
+  merge data/interface/editor/combo/itemicons.ini: both patch it, no key in common
+  merge data/items.xml: both patch it, no key in common
+  merge data/randommap/placeobjects.xml: both patch it, no key in common
+  modes modes: "4 SCORE LIMIT" of the layer and "6 SCORE LIMIT" of greek-civilization-mod are listed under the same name
+  modes modes: "5 TIME LIMIT (MILITARY RATING)" of the layer and "7 TIME LIMIT (MILITARY RATING)" of greek-civilization-mod are listed under the same name
+  modes modes: "6 TIME LIMIT (SCORE)" of the layer and "8 TIME LIMIT (SCORE)" of greek-civilization-mod are listed under the same name
+  hidden hidden currentlang@english/logo.bmp: the layer hides a file that the root of greek-civilization-mod ships
+  hidden hidden currentlang@english/menu_16_9.bmp: the layer hides a file that the root of greek-civilization-mod ships
+  hidden hidden currentlang@english/menu_4_3.bmp: the layer hides a file that the root of greek-civilization-mod ships
+  hidden hidden currentlang@english/voices/bvikinglord/i heal in battle.wav: the layer hides a file that the root of greek-civilization-mod ships
+  hidden hidden currentlang@english/voices/bvikinglord/in the name of odin.wav: the layer hides a file that the root of greek-civilization-mod ships
+  hidden hidden currentlang@english/voices/bvikinglord/lord of the vikings.wav: the layer hides a file that the root of greek-civilization-mod ships
+  hidden hidden currentlang@english/voices/bvikinglord/my home is valhalla.wav: the layer hides a file that the root of greek-civilization-mod ships
+  hidden hidden currentlang@english/voices/bvikinglord/trust my hammer.wav: the layer hides a file that the root of greek-civilization-mod ships
+  hidden hidden currentlang@english/voices/cberberassassin/blood runs in my footsteps.wav: the layer hides a file that the root of greek-civilization-mod ships
+  hidden hidden currentlang@english/voices/cberberassassin/grrrrrrr!.wav: the layer hides a file that the root of greek-civilization-mod ships
+  hidden hidden currentlang@english/voices/cberberassassin/hack and slash!.wav: the layer hides a file that the root of greek-civilization-mod ships
+  hidden hidden currentlang@english/voices/cberberassassin/i'll do that for free.wav: the layer hides a file that the root of greek-civilization-mod ships
+  hidden hidden currentlang@english/voices/cberberassassin/i'm getting maaad!.wav: the layer hides a file that the root of greek-civilization-mod ships
+  hidden hidden currentlang@english/voices/chero/a good omen!.wav: the layer hides a file that the root of greek-civilization-mod ships
+  hidden hidden currentlang@english/voices/chero/an easy task.wav: the layer hides a file that the root of greek-civilization-mod ships
+  hidden hidden currentlang@english/voices/chero/i could never fail!.wav: the layer hides a file that the root of greek-civilization-mod ships
+  hidden hidden currentlang@english/voices/chero/leading the way!.wav: the layer hides a file that the root of greek-civilization-mod ships
+  hidden hidden currentlang@english/voices/chero/lucky you have me.wav: the layer hides a file that the root of greek-civilization-mod ships
+  hidden hidden currentlang@english/voices/cjavelinthrower/anything for money.wav: the layer hides a file that the root of greek-civilization-mod ships
+  hidden hidden currentlang@english/voices/cjavelinthrower/buy me another spear.wav: the layer hides a file that the root of greek-civilization-mod ships
+  hidden hidden currentlang@english/voices/cjavelinthrower/how much gold for this.wav: the layer hides a file that the root of greek-civilization-mod ships
+  hidden hidden currentlang@english/voices/cjavelinthrower/want some shish kebab.wav: the layer hides a file that the root of greek-civilization-mod ships
+  hidden hidden currentlang@english/voices/cjavelinthrower/where's my pay.wav: the layer hides a file that the root of greek-civilization-mod ships
+  hidden hidden currentlang@english/voices/clibyanfootman/doing my job.wav: the layer hides a file that the root of greek-civilization-mod ships
+  hidden hidden currentlang@english/voices/clibyanfootman/earning my pay.wav: the layer hides a file that the root of greek-civilization-mod ships
+  hidden hidden currentlang@english/voices/clibyanfootman/if that's what you want.wav: the layer hides a file that the root of greek-civilization-mod ships
+  hidden hidden currentlang@english/voices/clibyanfootman/like a serpent through the desert.wav: the layer hides a file that the root of greek-civilization-mod ships
+  hidden hidden currentlang@english/voices/clibyanfootman/naam, saidi.wav: the layer hides a file that the root of greek-civilization-mod ships
+  hidden hidden currentlang@english/voices/cmaceman/behold my mace!.wav: the layer hides a file that the root of greek-civilization-mod ships
+  hidden hidden currentlang@english/voices/cmaceman/clash and bash!.wav: the layer hides a file that the root of greek-civilization-mod ships
+  hidden hidden currentlang@english/voices/cmaceman/easily done.wav: the layer hides a file that the root of greek-civilization-mod ships
+  hidden hidden currentlang@english/voices/cmaceman/where do you want me.wav: the layer hides a file that the root of greek-civilization-mod ships
+  hidden hidden currentlang@english/voices/cmaceman/you're the boss.wav: the layer hides a file that the root of greek-civilization-mod ships
+  hidden hidden currentlang@english/voices/cnoble/carthage shall prevail!.wav: the layer hides a file that the root of greek-civilization-mod ships
+  hidden hidden currentlang@english/voices/cnoble/death walks behind me!.wav: the layer hides a file that the root of greek-civilization-mod ships
+  hidden hidden currentlang@english/voices/cnoble/fear no man!.wav: the layer hides a file that the root of greek-civilization-mod ships
+  hidden hidden currentlang@english/voices/cnoble/the gods guide us!.wav: the layer hides a file that the root of greek-civilization-mod ships
+  hidden hidden currentlang@english/voices/cnoble/we're the chosen!.wav: the layer hides a file that the root of greek-civilization-mod ships
+  hidden hidden currentlang@english/voices/cnumidianrider/forward, camel!.wav: the layer hides a file that the root of greek-civilization-mod ships
+  hidden hidden currentlang@english/voices/cnumidianrider/i'm doing this for money.wav: the layer hides a file that the root of greek-civilization-mod ships
+  hidden hidden currentlang@english/voices/cnumidianrider/no gold is worth this.wav: the layer hides a file that the root of greek-civilization-mod ships
+  hidden hidden currentlang@english/voices/cnumidianrider/that would cost you double!.wav: the layer hides a file that the root of greek-civilization-mod ships
+  hidden hidden currentlang@english/voices/cnumidianrider/yallah,yallah!.wav: the layer hides a file that the root of greek-civilization-mod ships
+  hidden hidden currentlang@english/voices/cshaman/a curse upon all!!!.wav: the layer hides a file that the root of greek-civilization-mod ships
+  hidden hidden currentlang@english/voices/cshaman/am i surrounded by idiots.wav: the layer hides a file that the root of greek-civilization-mod ships
+  hidden hidden currentlang@english/voices/cshaman/can't i return to carthage.wav: the layer hides a file that the root of greek-civilization-mod ships
+  hidden hidden currentlang@english/voices/cshaman/there shall be sacrifices!.wav: the layer hides a file that the root of greek-civilization-mod ships
+  hidden hidden currentlang@english/voices/cshaman/why do you send me there.wav: the layer hides a file that the root of greek-civilization-mod ships
+  hidden hidden currentlang@english/voices/cwarelephant/come on, stupid elephant!.wav: the layer hides a file that the root of greek-civilization-mod ships
+
+## greek-mod-1-8
+  merge data/commands/catapult.xml: both patch it, no key in common
+  merge data/commands/druid.xml: both patch it, no key in common
+  merge data/commands/ship.xml: both patch it, no key in common
+  merge data/commands/unit.xml: both patch it, no key in common
+  merge data/const.ini: both patch it, no key in common
+  merge data/formations.xml: both patch it, no key in common
+  merge data/items.xml: both patch it, no key in common
+  hidden hidden currentlang@english/logo.bmp: the layer hides a file that the root of greek-mod-1-8 ships
+  hidden hidden currentlang@english/menu_16_9.bmp: the layer hides a file that the root of greek-mod-1-8 ships
+  hidden hidden currentlang@english/menu_4_3.bmp: the layer hides a file that the root of greek-mod-1-8 ships
+
+## greek-mod-2-3
+  CLASH data/interface/editor/combo/uniticons.ini: both set [fillcombo] german hero 4 (gameres/icons/Thero4.bmp / gameres/icons/THERO4_w23.BMP)
+  merge data/commands/catapult.xml: both patch it, no key in common
+  merge data/commands/druid.xml: both patch it, no key in common
+  merge data/commands/ship.xml: both patch it, no key in common
+  merge data/commands/unit.xml: both patch it, no key in common
+  merge data/const.ini: both patch it, no key in common
+  merge data/interface/editor/combo/itemicons.ini: both patch it, no key in common
+  merge data/items.xml: both patch it, no key in common
+  merge data/randommap/placeobjects.xml: both patch it, no key in common
+  hidden hidden currentlang@english/logo.bmp: the layer hides a file that the root of greek-mod-2-3 ships
+  hidden hidden currentlang@english/menu_16_9.bmp: the layer hides a file that the root of greek-mod-2-3 ships
+  hidden hidden currentlang@english/menu_4_3.bmp: the layer hides a file that the root of greek-mod-2-3 ships
+
+## greek-mod-2-5-3
+  CLASH data/interface/editor/combo/uniticons.ini: both set [fillcombo] german hero 4 (gameres/icons/Thero4.bmp / gameres/icons/THERO4_w25.BMP)
+  merge data/commands/catapult.xml: both patch it, no key in common
+  merge data/commands/druid.xml: both patch it, no key in common
+  merge data/commands/ship.xml: both patch it, no key in common
+  merge data/commands/unit.xml: both patch it, no key in common
+  merge data/const.ini: both patch it, no key in common
+  merge data/interface/editor/combo/itemicons.ini: both patch it, no key in common
+  merge data/items.xml: both patch it, no key in common
+  merge data/randommap/placeobjects.xml: both patch it, no key in common
+  hidden hidden currentlang@english/logo.bmp: the layer hides a file that the root of greek-mod-2-5-3 ships
+  hidden hidden currentlang@english/menu_16_9.bmp: the layer hides a file that the root of greek-mod-2-5-3 ships
+  hidden hidden currentlang@english/menu_4_3.bmp: the layer hides a file that the root of greek-mod-2-5-3 ships
+
+## greek-mod-2-6-1
+  CLASH data/interface/editor/combo/uniticons.ini: both set [fillcombo] german hero 4 (gameres/icons/Thero4.bmp / gameres/icons/THERO4_w26.BMP)
+  merge data/commands/catapult.xml: both patch it, no key in common
+  merge data/commands/ship.xml: both patch it, no key in common
+  merge data/commands/tavern.xml: both patch it, no key in common
+  merge data/commands/unit.xml: both patch it, no key in common
+  merge data/const.ini: both patch it, no key in common
+  merge data/interface/editor/combo/itemicons.ini: both patch it, no key in common
+  merge data/items.xml: both patch it, no key in common
+  hidden hidden currentlang@english/logo.bmp: the layer hides a file that the root of greek-mod-2-6-1 ships
+  hidden hidden currentlang@english/menu_16_9.bmp: the layer hides a file that the root of greek-mod-2-6-1 ships
+  hidden hidden currentlang@english/menu_4_3.bmp: the layer hides a file that the root of greek-mod-2-6-1 ships
+
+## imperivm-legacy
+  patched patched data/subai/townhall_autotrain.vs: the layer ships it whole, imperivm-legacy patches it
+  merge data/commands/catapult.xml: both patch it, no key in common
+  merge data/commands/hero.xml: both patch it, no key in common
+  merge data/commands/ship.xml: both patch it, no key in common
+  merge data/commands/unit.xml: both patch it, no key in common
+  merge data/const.ini: both patch it, no key in common
+  merge data/formations.xml: both patch it, no key in common
+  merge data/items.xml: both patch it, no key in common
+  hidden hidden currentlang@english/logo.bmp: the layer hides a file that the root of imperivm-legacy ships
+
+## mci
+  merge data/commands/catapult.xml: both patch it, no key in common
+  merge data/commands/ship.xml: both patch it, no key in common
+  merge data/commands/unit.xml: both patch it, no key in common
+  merge data/const.ini: both patch it, no key in common
+  merge data/formations.xml: both patch it, no key in common
+  merge data/items.xml: both patch it, no key in common
+  merge data/randommap/placeobjects.xml: both patch it, no key in common
+
+## mediterranevm-3-6
+  merge data/commands/catapult.xml: both patch it, no key in common
+  merge data/commands/ship.xml: both patch it, no key in common
+  merge data/commands/unit.xml: both patch it, no key in common
+  merge data/items.xml: both patch it, no key in common
+  hidden hidden currentlang@english/logo.bmp: the layer hides a file that the root of mediterranevm-3-6 ships
+
+## mediterranevm-alpha
+  CLASH file currentlang@english/voices/bbowman/1.wav: other bytes in the root of mediterranevm-alpha
+  CLASH file currentlang@english/voices/bbowman/2.wav: other bytes in the root of mediterranevm-alpha
+  CLASH file currentlang@english/voices/bbowman/3.wav: other bytes in the root of mediterranevm-alpha
+  CLASH file currentlang@english/voices/bbowman/4.wav: other bytes in the root of mediterranevm-alpha
+  CLASH file currentlang@english/voices/bbowman/5.wav: other bytes in the root of mediterranevm-alpha
+  CLASH file currentlang@english/voices/bbronzespearman/1.wav: other bytes in the root of mediterranevm-alpha
+  CLASH file currentlang@english/voices/bbronzespearman/2.wav: other bytes in the root of mediterranevm-alpha
+  CLASH file currentlang@english/voices/bbronzespearman/3.wav: other bytes in the root of mediterranevm-alpha
+  CLASH file currentlang@english/voices/bbronzespearman/4.wav: other bytes in the root of mediterranevm-alpha
+  CLASH file currentlang@english/voices/bbronzespearman/5.wav: other bytes in the root of mediterranevm-alpha
+  CLASH file currentlang@english/voices/bdruid/1.wav: other bytes in the root of mediterranevm-alpha
+  CLASH file currentlang@english/voices/bdruid/2.wav: other bytes in the root of mediterranevm-alpha
+  CLASH file currentlang@english/voices/bdruid/3.wav: other bytes in the root of mediterranevm-alpha
+  CLASH file currentlang@english/voices/bdruid/4.wav: other bytes in the root of mediterranevm-alpha
+  CLASH file currentlang@english/voices/bdruid/5.wav: other bytes in the root of mediterranevm-alpha
+  CLASH file currentlang@english/voices/bfemalevillager/1.wav: other bytes in the root of mediterranevm-alpha
+  CLASH file currentlang@english/voices/bfemalevillager/2.wav: other bytes in the root of mediterranevm-alpha
+  CLASH file currentlang@english/voices/bfemalevillager/3.wav: other bytes in the root of mediterranevm-alpha
+  CLASH file currentlang@english/voices/bhero/1.wav: other bytes in the root of mediterranevm-alpha
+  CLASH file currentlang@english/voices/bhero/2.wav: other bytes in the root of mediterranevm-alpha
+  CLASH file currentlang@english/voices/bhero/3.wav: other bytes in the root of mediterranevm-alpha
+  CLASH file currentlang@english/voices/bhero/4.wav: other bytes in the root of mediterranevm-alpha
+  CLASH file currentlang@english/voices/bhero/5.wav: other bytes in the root of mediterranevm-alpha
+  CLASH file currentlang@english/voices/bhighlander/1.wav: other bytes in the root of mediterranevm-alpha
+  CLASH file currentlang@english/voices/bhighlander/2.wav: other bytes in the root of mediterranevm-alpha
+  CLASH file currentlang@english/voices/bhighlander/3.wav: other bytes in the root of mediterranevm-alpha
+  CLASH file currentlang@english/voices/bhighlander/4.wav: other bytes in the root of mediterranevm-alpha
+  CLASH file currentlang@english/voices/bhighlander/5.wav: other bytes in the root of mediterranevm-alpha
+  CLASH file currentlang@english/voices/bjavelineer/1.wav: other bytes in the root of mediterranevm-alpha
+  CLASH file currentlang@english/voices/bjavelineer/2.wav: other bytes in the root of mediterranevm-alpha
+  CLASH file currentlang@english/voices/bjavelineer/3.wav: other bytes in the root of mediterranevm-alpha
+  CLASH file currentlang@english/voices/bjavelineer/4.wav: other bytes in the root of mediterranevm-alpha
+  CLASH file currentlang@english/voices/bjavelineer/5.wav: other bytes in the root of mediterranevm-alpha
+  CLASH file currentlang@english/voices/bshieldbearer/1.wav: other bytes in the root of mediterranevm-alpha
+  CLASH file currentlang@english/voices/bshieldbearer/2.wav: other bytes in the root of mediterranevm-alpha
+  CLASH file currentlang@english/voices/bshieldbearer/3.wav: other bytes in the root of mediterranevm-alpha
+  CLASH file currentlang@english/voices/bshieldbearer/4.wav: other bytes in the root of mediterranevm-alpha
+  CLASH file currentlang@english/voices/bshieldbearer/5.wav: other bytes in the root of mediterranevm-alpha
+  CLASH file currentlang@english/voices/bswordsman/1.wav: other bytes in the root of mediterranevm-alpha
+  CLASH file currentlang@english/voices/bswordsman/2.wav: other bytes in the root of mediterranevm-alpha
+  CLASH file currentlang@english/voices/bswordsman/3.wav: other bytes in the root of mediterranevm-alpha
+  CLASH file currentlang@english/voices/bswordsman/4.wav: other bytes in the root of mediterranevm-alpha
+  CLASH file currentlang@english/voices/bswordsman/5.wav: other bytes in the root of mediterranevm-alpha
+  CLASH file currentlang@english/voices/eanubiswarrior/1.wav: other bytes in the root of mediterranevm-alpha
+  CLASH file currentlang@english/voices/eanubiswarrior/2.wav: other bytes in the root of mediterranevm-alpha
+  CLASH file currentlang@english/voices/eanubiswarrior/3.wav: other bytes in the root of mediterranevm-alpha
+  CLASH file currentlang@english/voices/eanubiswarrior/4.wav: other bytes in the root of mediterranevm-alpha
+  CLASH file currentlang@english/voices/eanubiswarrior/5.wav: other bytes in the root of mediterranevm-alpha
+  CLASH file currentlang@english/voices/earcher/1.wav: other bytes in the root of mediterranevm-alpha
+  CLASH file currentlang@english/voices/earcher/2.wav: other bytes in the root of mediterranevm-alpha
+  CLASH file currentlang@english/voices/earcher/3.wav: other bytes in the root of mediterranevm-alpha
+  CLASH file currentlang@english/voices/earcher/4.wav: other bytes in the root of mediterranevm-alpha
+  CLASH file currentlang@english/voices/earcher/5.wav: other bytes in the root of mediterranevm-alpha
+  CLASH file currentlang@english/voices/eaxetrower/1.wav: other bytes in the root of mediterranevm-alpha
+  CLASH file currentlang@english/voices/eaxetrower/2.wav: other bytes in the root of mediterranevm-alpha
+  CLASH file currentlang@english/voices/eaxetrower/3.wav: other bytes in the root of mediterranevm-alpha
+  CLASH file currentlang@english/voices/eaxetrower/4.wav: other bytes in the root of mediterranevm-alpha
+  CLASH file currentlang@english/voices/eaxetrower/5.wav: other bytes in the root of mediterranevm-alpha
+  CLASH file currentlang@english/voices/echariot/1.wav: other bytes in the root of mediterranevm-alpha
+  CLASH file currentlang@english/voices/echariot/2.wav: other bytes in the root of mediterranevm-alpha
+  CLASH file currentlang@english/voices/echariot/3.wav: other bytes in the root of mediterranevm-alpha
+  CLASH file currentlang@english/voices/echariot/4.wav: other bytes in the root of mediterranevm-alpha
+  CLASH file currentlang@english/voices/echariot/5.wav: other bytes in the root of mediterranevm-alpha
+  CLASH file currentlang@english/voices/eguardian/1.wav: other bytes in the root of mediterranevm-alpha
+  CLASH file currentlang@english/voices/eguardian/2.wav: other bytes in the root of mediterranevm-alpha
+  CLASH file currentlang@english/voices/eguardian/3.wav: other bytes in the root of mediterranevm-alpha
+  CLASH file currentlang@english/voices/eguardian/4.wav: other bytes in the root of mediterranevm-alpha
+  CLASH file currentlang@english/voices/eguardian/5.wav: other bytes in the root of mediterranevm-alpha
+  CLASH file currentlang@english/voices/ehero/1.wav: other bytes in the root of mediterranevm-alpha
+  CLASH file currentlang@english/voices/ehero/2.wav: other bytes in the root of mediterranevm-alpha
+  CLASH file currentlang@english/voices/ehero/3.wav: other bytes in the root of mediterranevm-alpha
+  CLASH file currentlang@english/voices/ehero/4.wav: other bytes in the root of mediterranevm-alpha
+  CLASH file currentlang@english/voices/ehero/5.wav: other bytes in the root of mediterranevm-alpha
+  CLASH file currentlang@english/voices/ehoruswarrior/1.wav: other bytes in the root of mediterranevm-alpha
+  CLASH file currentlang@english/voices/ehoruswarrior/2.wav: other bytes in the root of mediterranevm-alpha
+  CLASH file currentlang@english/voices/ehoruswarrior/3.wav: other bytes in the root of mediterranevm-alpha
+  CLASH file currentlang@english/voices/ehoruswarrior/4.wav: other bytes in the root of mediterranevm-alpha
+  CLASH file currentlang@english/voices/ehoruswarrior/5.wav: other bytes in the root of mediterranevm-alpha
+  CLASH file currentlang@english/voices/epriest/1.wav: other bytes in the root of mediterranevm-alpha
+  CLASH file currentlang@english/voices/epriest/2.wav: other bytes in the root of mediterranevm-alpha
+  CLASH file currentlang@english/voices/epriest/3.wav: other bytes in the root of mediterranevm-alpha
+  CLASH file currentlang@english/voices/epriest/4.wav: other bytes in the root of mediterranevm-alpha
+  CLASH file currentlang@english/voices/epriest/5.wav: other bytes in the root of mediterranevm-alpha
+  CLASH file currentlang@english/voices/eswordsman/1.wav: other bytes in the root of mediterranevm-alpha
+  CLASH file currentlang@english/voices/eswordsman/2.wav: other bytes in the root of mediterranevm-alpha
+  CLASH file currentlang@english/voices/eswordsman/3.wav: other bytes in the root of mediterranevm-alpha
+  CLASH file currentlang@english/voices/eswordsman/4.wav: other bytes in the root of mediterranevm-alpha
+  CLASH file currentlang@english/voices/eswordsman/5.wav: other bytes in the root of mediterranevm-alpha
+  CLASH file currentlang@english/voices/gdruid/1.wav: other bytes in the root of mediterranevm-alpha
+  CLASH file currentlang@english/voices/gdruid/2.wav: other bytes in the root of mediterranevm-alpha
+  CLASH file currentlang@english/voices/gdruid/3.wav: other bytes in the root of mediterranevm-alpha
+  CLASH file currentlang@english/voices/gdruid/4.wav: other bytes in the root of mediterranevm-alpha
+  CLASH file currentlang@english/voices/gdruid/5.wav: other bytes in the root of mediterranevm-alpha
+  CLASH file currentlang@english/voices/gtridentwarrior/1.wav: other bytes in the root of mediterranevm-alpha
+  CLASH file currentlang@english/voices/gtridentwarrior/2.wav: other bytes in the root of mediterranevm-alpha
+  CLASH file currentlang@english/voices/gtridentwarrior/3.wav: other bytes in the root of mediterranevm-alpha
+  CLASH file currentlang@english/voices/gtridentwarrior/4.wav: other bytes in the root of mediterranevm-alpha
+  CLASH file currentlang@english/voices/gtridentwarrior/5.wav: other bytes in the root of mediterranevm-alpha
+  CLASH file currentlang@english/voices/ienchantress/1.wav: other bytes in the root of mediterranevm-alpha
+  CLASH file currentlang@english/voices/ienchantress/2.wav: other bytes in the root of mediterranevm-alpha
+  CLASH file currentlang@english/voices/ienchantress/3.wav: other bytes in the root of mediterranevm-alpha
+  CLASH file currentlang@english/voices/ienchantress/4.wav: other bytes in the root of mediterranevm-alpha
+  CLASH file currentlang@english/voices/ienchantress/5.wav: other bytes in the root of mediterranevm-alpha
+  CLASH file currentlang@english/voices/ienchantress/6.wav: other bytes in the root of mediterranevm-alpha
+  CLASH file currentlang@english/voices/rimperialhero/1.wav: other bytes in the root of mediterranevm-alpha
+  CLASH file currentlang@english/voices/rimperialhero/2.wav: other bytes in the root of mediterranevm-alpha
+  CLASH file currentlang@english/voices/rimperialhero/3.wav: other bytes in the root of mediterranevm-alpha
+  CLASH file currentlang@english/voices/rimperialhero/4.wav: other bytes in the root of mediterranevm-alpha
+  CLASH file currentlang@english/voices/rimperialhero/5.wav: other bytes in the root of mediterranevm-alpha
+  CLASH file currentlang@english/voices/tarcher/1.wav: other bytes in the root of mediterranevm-alpha
+  CLASH file currentlang@english/voices/tarcher/2.wav: other bytes in the root of mediterranevm-alpha
+  CLASH file currentlang@english/voices/tarcher/3.wav: other bytes in the root of mediterranevm-alpha
+  CLASH file currentlang@english/voices/tarcher/4.wav: other bytes in the root of mediterranevm-alpha
+  CLASH file currentlang@english/voices/tarcher/5.wav: other bytes in the root of mediterranevm-alpha
+  CLASH file currentlang@english/voices/taxeman/1.wav: other bytes in the root of mediterranevm-alpha
+  CLASH file currentlang@english/voices/taxeman/2.wav: other bytes in the root of mediterranevm-alpha
+  CLASH file currentlang@english/voices/taxeman/3.wav: other bytes in the root of mediterranevm-alpha
+  CLASH file currentlang@english/voices/taxeman/4.wav: other bytes in the root of mediterranevm-alpha
+  CLASH file currentlang@english/voices/taxeman/5.wav: other bytes in the root of mediterranevm-alpha
+  CLASH file currentlang@english/voices/tenchantress/1.wav: other bytes in the root of mediterranevm-alpha
+  CLASH file currentlang@english/voices/tenchantress/2.wav: other bytes in the root of mediterranevm-alpha
+  CLASH file currentlang@english/voices/tenchantress/3.wav: other bytes in the root of mediterranevm-alpha
+  CLASH file currentlang@english/voices/tenchantress/4.wav: other bytes in the root of mediterranevm-alpha
+  CLASH file currentlang@english/voices/tenchantress/5.wav: other bytes in the root of mediterranevm-alpha
+  CLASH file currentlang@english/voices/thero/1.wav: other bytes in the root of mediterranevm-alpha
+  CLASH file currentlang@english/voices/thero/2.wav: other bytes in the root of mediterranevm-alpha
+  CLASH file currentlang@english/voices/thero/3.wav: other bytes in the root of mediterranevm-alpha
+  CLASH file currentlang@english/voices/thero/4.wav: other bytes in the root of mediterranevm-alpha
+  CLASH file currentlang@english/voices/thero/5.wav: other bytes in the root of mediterranevm-alpha
+  CLASH file currentlang@english/voices/thuntress/1.wav: other bytes in the root of mediterranevm-alpha
+  CLASH file currentlang@english/voices/thuntress/2.wav: other bytes in the root of mediterranevm-alpha
+  CLASH file currentlang@english/voices/thuntress/3.wav: other bytes in the root of mediterranevm-alpha
+  CLASH file currentlang@english/voices/thuntress/4.wav: other bytes in the root of mediterranevm-alpha
+  CLASH file currentlang@english/voices/thuntress/5.wav: other bytes in the root of mediterranevm-alpha
+  CLASH file currentlang@english/voices/tmaceman/1.wav: other bytes in the root of mediterranevm-alpha
+  CLASH file currentlang@english/voices/tmaceman/2.wav: other bytes in the root of mediterranevm-alpha
+  CLASH file currentlang@english/voices/tmaceman/3.wav: other bytes in the root of mediterranevm-alpha
+  CLASH file currentlang@english/voices/tmaceman/4.wav: other bytes in the root of mediterranevm-alpha
+  CLASH file currentlang@english/voices/tmaceman/5.wav: other bytes in the root of mediterranevm-alpha
+  CLASH file currentlang@english/voices/tswordsman/1.wav: other bytes in the root of mediterranevm-alpha
+  CLASH file currentlang@english/voices/tswordsman/2.wav: other bytes in the root of mediterranevm-alpha
+  CLASH file currentlang@english/voices/tswordsman/3.wav: other bytes in the root of mediterranevm-alpha
+  CLASH file currentlang@english/voices/tswordsman/4.wav: other bytes in the root of mediterranevm-alpha
+  CLASH file currentlang@english/voices/tswordsman/5.wav: other bytes in the root of mediterranevm-alpha
+  CLASH file currentlang@english/voices/tvalkyrie/1.wav: other bytes in the root of mediterranevm-alpha
+  CLASH file currentlang@english/voices/tvalkyrie/2.wav: other bytes in the root of mediterranevm-alpha
+  CLASH file currentlang@english/voices/tvalkyrie/3.wav: other bytes in the root of mediterranevm-alpha
+  CLASH file currentlang@english/voices/tvalkyrie/4.wav: other bytes in the root of mediterranevm-alpha
+  CLASH file currentlang@english/voices/tvalkyrie/5.wav: other bytes in the root of mediterranevm-alpha
+  CLASH file currentlang@italian/voices/cjavelinthrower/1.wav: other bytes in the root of mediterranevm-alpha
+  CLASH file currentlang@italian/voices/cjavelinthrower/2.wav: other bytes in the root of mediterranevm-alpha
+  CLASH file currentlang@italian/voices/cjavelinthrower/3.wav: other bytes in the root of mediterranevm-alpha
+  CLASH file currentlang@italian/voices/cjavelinthrower/4.wav: other bytes in the root of mediterranevm-alpha
+  CLASH file currentlang@italian/voices/cjavelinthrower/5.wav: other bytes in the root of mediterranevm-alpha
+  CLASH file currentlang@italian/voices/cmaceman/1.wav: other bytes in the root of mediterranevm-alpha
+  CLASH file currentlang@italian/voices/cmaceman/2.wav: other bytes in the root of mediterranevm-alpha
+  CLASH file currentlang@italian/voices/cmaceman/3.wav: other bytes in the root of mediterranevm-alpha
+  CLASH file currentlang@italian/voices/cmaceman/4.wav: other bytes in the root of mediterranevm-alpha
+  CLASH file currentlang@italian/voices/cmaceman/5.wav: other bytes in the root of mediterranevm-alpha
+  CLASH file currentlang@italian/voices/gdruid/1.wav: other bytes in the root of mediterranevm-alpha
+  CLASH file currentlang@italian/voices/gdruid/2.wav: other bytes in the root of mediterranevm-alpha
+  CLASH file currentlang@italian/voices/gdruid/3.wav: other bytes in the root of mediterranevm-alpha
+  CLASH file currentlang@italian/voices/gdruid/4.wav: other bytes in the root of mediterranevm-alpha
+  CLASH file currentlang@italian/voices/gdruid/5.wav: other bytes in the root of mediterranevm-alpha
+  CLASH file currentlang@italian/voices/ienchantress/1.wav: other bytes in the root of mediterranevm-alpha
+  CLASH file currentlang@italian/voices/ienchantress/2.wav: other bytes in the root of mediterranevm-alpha
+  CLASH file currentlang@italian/voices/ienchantress/3.wav: other bytes in the root of mediterranevm-alpha
+  CLASH file currentlang@italian/voices/ienchantress/4.wav: other bytes in the root of mediterranevm-alpha
+  CLASH file currentlang@italian/voices/ienchantress/5.wav: other bytes in the root of mediterranevm-alpha
+  CLASH file currentlang@italian/voices/ienchantress/6.wav: other bytes in the root of mediterranevm-alpha
+  CLASH file currentlang@spanish/voices/cjavelinthrower/1.wav: other bytes in the root of mediterranevm-alpha
+  CLASH file currentlang@spanish/voices/cjavelinthrower/2.wav: other bytes in the root of mediterranevm-alpha
+  CLASH file currentlang@spanish/voices/cjavelinthrower/3.wav: other bytes in the root of mediterranevm-alpha
+  CLASH file currentlang@spanish/voices/cjavelinthrower/4.wav: other bytes in the root of mediterranevm-alpha
+  CLASH file currentlang@spanish/voices/cjavelinthrower/5.wav: other bytes in the root of mediterranevm-alpha
+  CLASH file currentlang@spanish/voices/cmaceman/1.wav: other bytes in the root of mediterranevm-alpha
+  CLASH file currentlang@spanish/voices/cmaceman/2.wav: other bytes in the root of mediterranevm-alpha
+  CLASH file currentlang@spanish/voices/cmaceman/3.wav: other bytes in the root of mediterranevm-alpha
+  CLASH file currentlang@spanish/voices/cmaceman/4.wav: other bytes in the root of mediterranevm-alpha
+  CLASH file currentlang@spanish/voices/cmaceman/5.wav: other bytes in the root of mediterranevm-alpha
+  CLASH file currentlang@spanish/voices/gdruid/1.wav: other bytes in the root of mediterranevm-alpha
+  CLASH file currentlang@spanish/voices/gdruid/2.wav: other bytes in the root of mediterranevm-alpha
+  CLASH file currentlang@spanish/voices/gdruid/3.wav: other bytes in the root of mediterranevm-alpha
+  CLASH file currentlang@spanish/voices/gdruid/4.wav: other bytes in the root of mediterranevm-alpha
+  CLASH file currentlang@spanish/voices/gdruid/5.wav: other bytes in the root of mediterranevm-alpha
+  CLASH file currentlang@spanish/voices/ienchantress/1.wav: other bytes in the root of mediterranevm-alpha
+  CLASH file currentlang@spanish/voices/ienchantress/2.wav: other bytes in the root of mediterranevm-alpha
+  CLASH file currentlang@spanish/voices/ienchantress/3.wav: other bytes in the root of mediterranevm-alpha
+  CLASH file currentlang@spanish/voices/ienchantress/4.wav: other bytes in the root of mediterranevm-alpha
+  CLASH file currentlang@spanish/voices/ienchantress/5.wav: other bytes in the root of mediterranevm-alpha
+  CLASH file currentlang@spanish/voices/ienchantress/6.wav: other bytes in the root of mediterranevm-alpha
+  CLASH file data/classes/shrine.sc.xml: the layer patches it, mediterranevm-alpha ships it whole in its root
+  CLASH file data/classes/stonehenge.sc.xml: the layer patches it, mediterranevm-alpha ships it whole in its root
+  CLASH file data/commands/cbarracks.xml: the layer patches it, mediterranevm-alpha ships it whole in its root
+  CLASH file data/commands/ctemple.xml: the layer patches it, mediterranevm-alpha ships it whole in its root
+  CLASH file data/commands/etempleofosiris.xml: the layer patches it, mediterranevm-alpha ships it whole in its root
+  CLASH file data/commands/stonehenge.xml: the layer patches it, mediterranevm-alpha ships it whole in its root
+  CLASH file data/commands/tavern.xml: the layer patches it, mediterranevm-alpha ships it whole in its root
+  CLASH file data/items.xml: the layer patches it, mediterranevm-alpha ships it whole in its root
+  CLASH file data/randommap/placeobjects.xml: the layer patches it, mediterranevm-alpha ships it whole in its root
+  CLASH file data/unit_specials.ini: the layer patches it, mediterranevm-alpha ships it whole in its root
+  merge data/const.ini: both patch it, no key in common
+  hidden hidden currentlang@english/voices/chero/a good omen!.wav: the layer hides a file that the root of mediterranevm-alpha ships
+  hidden hidden currentlang@english/voices/chero/an easy task.wav: the layer hides a file that the root of mediterranevm-alpha ships
+  hidden hidden currentlang@english/voices/chero/i could never fail!.wav: the layer hides a file that the root of mediterranevm-alpha ships
+  hidden hidden currentlang@english/voices/chero/leading the way!.wav: the layer hides a file that the root of mediterranevm-alpha ships
+  hidden hidden currentlang@english/voices/chero/lucky you have me.wav: the layer hides a file that the root of mediterranevm-alpha ships
+  hidden hidden currentlang@english/voices/rarcher/archers here.wav: the layer hides a file that the root of mediterranevm-alpha ships
+  hidden hidden currentlang@english/voices/rarcher/bows ready.wav: the layer hides a file that the root of mediterranevm-alpha ships
+  hidden hidden currentlang@english/voices/rarcher/i miss my home.wav: the layer hides a file that the root of mediterranevm-alpha ships
+  hidden hidden currentlang@english/voices/rarcher/i'm tired of this.wav: the layer hides a file that the root of mediterranevm-alpha ships
+  hidden hidden currentlang@english/voices/rarcher/what are we doing.wav: the layer hides a file that the root of mediterranevm-alpha ships
+  hidden hidden currentlang@english/voices/rfemalevillager/aha.wav: the layer hides a file that the root of mediterranevm-alpha ships
+  hidden hidden currentlang@english/voices/rfemalevillager/yes1.wav: the layer hides a file that the root of mediterranevm-alpha ships
+  hidden hidden currentlang@english/voices/rfemalevillager/yes2.wav: the layer hides a file that the root of mediterranevm-alpha ships
+  hidden hidden currentlang@english/voices/rgladiator/there's no weapon like mine.wav: the layer hides a file that the root of mediterranevm-alpha ships
+  hidden hidden currentlang@english/voices/rgladiator/we fight to the death.wav: the layer hides a file that the root of mediterranevm-alpha ships
+  hidden hidden currentlang@english/voices/rgladiator/we live to win.wav: the layer hides a file that the root of mediterranevm-alpha ships
+  hidden hidden currentlang@english/voices/rgladiator/we mortals salute you.wav: the layer hides a file that the root of mediterranevm-alpha ships
+  hidden hidden currentlang@english/voices/rgladiator/we win to live.wav: the layer hides a file that the root of mediterranevm-alpha ships
+  hidden hidden currentlang@english/voices/rhastatus/following your orders.wav: the layer hides a file that the root of mediterranevm-alpha ships
+  hidden hidden currentlang@english/voices/rhastatus/look out for danger.wav: the layer hides a file that the root of mediterranevm-alpha ships
+  hidden hidden currentlang@english/voices/rhastatus/ready as always.wav: the layer hides a file that the root of mediterranevm-alpha ships
+  hidden hidden currentlang@english/voices/rhastatus/shields in front.wav: the layer hides a file that the root of mediterranevm-alpha ships
+  hidden hidden currentlang@english/voices/rhastatus/swords ready.wav: the layer hides a file that the root of mediterranevm-alpha ships
+  hidden hidden currentlang@english/voices/rliberatus/an eye for an eye.wav: the layer hides a file that the root of mediterranevm-alpha ships
+  hidden hidden currentlang@english/voices/rliberatus/don't order me.wav: the layer hides a file that the root of mediterranevm-alpha ships
+  hidden hidden currentlang@english/voices/rliberatus/for mars.wav: the layer hides a file that the root of mediterranevm-alpha ships
+  hidden hidden currentlang@english/voices/rliberatus/i smell blood.wav: the layer hides a file that the root of mediterranevm-alpha ships
+  hidden hidden currentlang@english/voices/rliberatus/i'm no slave.wav: the layer hides a file that the root of mediterranevm-alpha ships
+  hidden hidden currentlang@english/voices/rmalevillager/aha.wav: the layer hides a file that the root of mediterranevm-alpha ships
+  hidden hidden currentlang@english/voices/rmalevillager/uhum.wav: the layer hides a file that the root of mediterranevm-alpha ships
+  hidden hidden currentlang@english/voices/rmalevillager/yes.wav: the layer hides a file that the root of mediterranevm-alpha ships
+
+## nuclear-fazioni-equilibrate
+  merge data/commands/catapult.xml: both patch it, no key in common
+  merge data/commands/ship.xml: both patch it, no key in common
+  merge data/commands/unit.xml: both patch it, no key in common
+
+## oggetti-in-tutte-le-strutture
+  merge data/items.xml: both patch it, no key in common
+
+## oggetti-in-tutte-le-strutture-e-forti-bilanciati
+  merge data/classes/toutpost.sc.xml: both patch it, no key in common
+  merge data/items.xml: both patch it, no key in common
+
+## secuter-fun-mod
+  merge data/commands/catapult.xml: both patch it, no key in common
+  merge data/commands/ship.xml: both patch it, no key in common
+  merge data/commands/unit.xml: both patch it, no key in common
+  merge data/formations.xml: both patch it, no key in common
+
+## secuter-fun-mod-grecia
+  merge data/commands/catapult.xml: both patch it, no key in common
+  merge data/commands/druid.xml: both patch it, no key in common
+  merge data/commands/ship.xml: both patch it, no key in common
+  merge data/commands/unit.xml: both patch it, no key in common
+  merge data/const.ini: both patch it, no key in common
+  merge data/formations.xml: both patch it, no key in common
+  merge data/items.xml: both patch it, no key in common
+
+## secuter-fun-mod-rules
+  CLASH data/unit_specials.ini: both set [disease attack] stamina_cost (2 / 4)
+  merge data/classes/stonehenge.sc.xml: both patch it, no key in common
+  merge data/classes/toutpost.sc.xml: both patch it, no key in common
+  merge data/commands/stonehenge.xml: both patch it, no key in common
+  merge data/items.xml: both patch it, no key in common
+

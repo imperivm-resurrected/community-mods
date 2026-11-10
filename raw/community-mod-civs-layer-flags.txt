@@ -1,0 +1,73 @@
+# flags the package's civilizations read: written only by the layer (revived when the ruleset is mounted), and written by nobody (the game's engine may write them: check by hand)
+
+## written only by the layer
+GM_Tempo: read by SUBAI/TOWNHALL_TEMPO.VS; written by DATA/GAMESCRIPTS/3 [CM] COMPETITIVE TEMPO.VS
+GM_CompetitiveConquest: read by SUBAI/hero_capture_cm.vs, SUBAI/unit_capture_cm.vs, SUBAI/unit_capture_cm_fgermany.vs; written by DATA/GAMESCRIPTS/2 [CM] COMPETITIVE CONQUEST.VS, DATA/GAMESCRIPTS/3 [CM] COMPETITIVE TEMPO.VS
+GM_LockedAttachment: read by SUBAI/unit_attach_cm.vs, SUBAI/unit_attach_cm_fcarthage.vs, SUBAI/unit_attach_cm_fgermany.vs, SUBAI/unit_attach_cm_frome.vs; written by DATA/GAMESCRIPTS/2 [CM] COMPETITIVE CONQUEST.VS, DATA/GAMESCRIPTS/3 [CM] COMPETITIVE TEMPO.VS
+
+## written by no script
+Tribute: read by AI/CM_ESH_Market.VS, SUBAI/antic_cm.vs, SUBAI/verify_research_cm.vs
+ReserveFor: read by AI/CM_ESH_Market.VS, AI/CM_ESH_NeedTech.VS
+Britain chamber: read by AI/CM_ESH_NeedTech.VS
+Reserve: read by AI/CM_ESH_NeedTech.VS
+maxtrainlevel: read by AI/CM_ESH_ResearchTraining.VS, AI/CM_TS_AttackAtWill.VS, SUBAI/TRAINING_BOOST.VS, SUBAI/unit_train_cm.vs, SUBAI/unit_train_cm_fgaul.vs
+AIV_NoRepair: read by AI/CM_ES_Stronghold.VS
+StopTacticScript: read by AI/CM_TS_BritishTactic.VS, AI/CM_TS_CarthageTactic.VS, AI/CM_TS_EgyptTactic.VS, AI/CM_TS_GaulTactic.VS, AI/CM_TS_GermanyTactic.VS, AI/CM_TS_IberianTactic.VS, AI/CM_TS_MRomeTactic.VS, AI/CM_TS_RRomeTactic.VS
+Caledonian march: read by SUBAI/BFIGHTS_SWORDSMEN.VS, SUBAI/barrack_train_cm.vs, SUBAI/barrack_train_cm_fbritain.vs
+Foraging: read by SUBAI/FORAGING_BEHAVIOR.VS
+Race: read by SUBAI/GGuardPost_Sentries_cm.vs
+Fbritain chamber: read by SUBAI/TEMPLEOFTHORCHAMBER_FBRITAIN.VS
+Grain Trade: read by SUBAI/TOWNHALL_BUILDINGSBEHAVIOR_FEGYPT.VS
+Religious Feast: read by SUBAI/TOWNHALL_BUILDINGSBEHAVIOR_FEGYPT.VS, SUBAI/TOWNHALL_BUILDINGSBEHAVIOR_T_FGERMANY.VS
+Cult of Anubis: read by SUBAI/antic_cm.vs, SUBAI/verify_research_cm.vs
+Cult of Horus: read by SUBAI/antic_cm.vs, SUBAI/verify_research_cm.vs
+Liberati guild: read by SUBAI/antic_cm.vs
+Legendary Valkyries: read by SUBAI/antic_cm.vs
+Shrine of Thor: read by SUBAI/antic_cm.vs
+Mountain Clan Legacy: read by SUBAI/antic_cm.vs
+BarrackTrainTimeDecrease: read by SUBAI/barrack_train_cm.vs, SUBAI/barrack_train_cm_fbritain.vs, SUBAI/train_ex_cm.vs, SUBAI/train_ex_cm_fiberia.vs
+Caledonian strength: read by SUBAI/barrack_train_cm.vs, SUBAI/barrack_train_cm_fbritain.vs
+Shared Strength: read by SUBAI/barrack_train_cm.vs, SUBAI/barrack_train_cm_fbritain.vs
+Shared Triumph: read by SUBAI/barrack_train_cm.vs, SUBAI/barrack_train_cm_fbritain.vs
+levels/: read by SUBAI/barrack_train_cm.vs, SUBAI/barrack_train_cm_fbritain.vs
+standard_spawn_level: read by SUBAI/barrack_train_cm.vs, SUBAI/barrack_train_cm_fbritain.vs
+items/Bear teeth amulet: read by SUBAI/barrack_train_cm.vs, SUBAI/barrack_train_cm_fbritain.vs
+items/Belt of might: read by SUBAI/barrack_train_cm.vs, SUBAI/barrack_train_cm_fbritain.vs
+items/Herb amulet of luck: read by SUBAI/barrack_train_cm.vs, SUBAI/barrack_train_cm_fbritain.vs
+items/God's Gift: read by SUBAI/barrack_train_cm.vs, SUBAI/barrack_train_cm_fbritain.vs
+items/Veteran Guild: read by SUBAI/barrack_train_cm.vs, SUBAI/barrack_train_cm_fbritain.vs, SUBAI/itavern_calltoarms_cm_fiberia.vs
+Ritual Chamber: read by SUBAI/bdruid_idle_cm.vs, SUBAI/bdruid_stand_position_cm.vs, SUBAI/druid_learn_cm.vs, SUBAI/epriest_idle_cm.vs, SUBAI/epriest_stand_position_cm.vs, SUBAI/rpriest_idle_cm_fgaul.vs, SUBAI/rpriest_idle_cm_frome.vs, SUBAI/rpriest_stand_position_cm.vs, SUBAI/rpriest_stand_position_cm_fgaul.vs, SUBAI/shaman_idle_cm.vs, SUBAI/shaman_idle_cm_fgermany.vs, SUBAI/shaman_stand_position_cm.vs, SUBAI/shaman_stand_position_cm_fgermany.vs
+Mercenary pact: read by SUBAI/cmercenary_ondie_cm.vs
+Altar of Jupiter: read by SUBAI/druid_heal_cm_fgaul.vs, SUBAI/druid_heal_cm_frome.vs, SUBAI/rpriest_idle_cm_fgaul.vs, SUBAI/rpriest_idle_cm_frome.vs, SUBAI/unit_patrol_cm.vs, SUBAI/unit_patrol_cm_fcarthage.vs, SUBAI/unit_patrol_cm_fgaul.vs, SUBAI/unit_patrol_cm_fgermany.vs, SUBAI/unit_patrol_cm_fiberia.vs, SUBAI/unit_patrol_cm_frome.vs
+G_Ritual Chamber: read by SUBAI/druid_heal_cm_fgaul.vs, SUBAI/druid_heal_cm_frome.vs, SUBAI/rpriest_idle_cm_fgaul.vs, SUBAI/rpriest_idle_cm_frome.vs, SUBAI/rpriest_stand_position_cm.vs, SUBAI/rpriest_stand_position_cm_fgaul.vs, SUBAI/unit_patrol_cm.vs, SUBAI/unit_patrol_cm_fcarthage.vs, SUBAI/unit_patrol_cm_fgaul.vs, SUBAI/unit_patrol_cm_fgermany.vs, SUBAI/unit_patrol_cm_fiberia.vs, SUBAI/unit_patrol_cm_frome.vs
+Mass Heal: read by SUBAI/druid_ondie_cm.vs, SUBAI/druid_ondie_cm_fbritain.vs, SUBAI/druid_ondie_cm_fgaul.vs, SUBAI/enchantress_ondie_cm.vs
+Restoration: read by SUBAI/druid_ondie_cm.vs, SUBAI/druid_ondie_cm_fbritain.vs, SUBAI/druid_ondie_cm_fgaul.vs
+Ghoul Summoning: read by SUBAI/druid_ondie_cm.vs, SUBAI/druid_ondie_cm_fbritain.vs, SUBAI/druid_ondie_cm_fgaul.vs, SUBAI/epriest_ondie_cm.vs, SUBAI/shaman_ondie_cm.vs
+Warrior Tales: read by SUBAI/military_ondie_cm.vs, SUBAI/military_ondie_cm_fgaul.vs
+Wrath of Jupiter: read by SUBAI/priest_ondie_cm.vs
+T_Ritual Chamber: read by SUBAI/shaman_curse_cm.vs, SUBAI/shaman_curse_cm_fgermany.vs, SUBAI/shaman_idle_cm.vs, SUBAI/shaman_idle_cm_fgermany.vs, SUBAI/shaman_stand_position_cm.vs, SUBAI/shaman_stand_position_cm_fgermany.vs, SUBAI/unit_patrol_cm.vs, SUBAI/unit_patrol_cm_fcarthage.vs, SUBAI/unit_patrol_cm_fgaul.vs, SUBAI/unit_patrol_cm_fgermany.vs, SUBAI/unit_patrol_cm_fiberia.vs, SUBAI/unit_patrol_cm_frome.vs
+ENV_TProd: read by SUBAI/start_tarcher_verify_cm_fgermany.vs, SUBAI/start_trider_verify_cm_fgermany.vs, SUBAI/start_twolf_verify_cm_fgermany.vs, SUBAI/ttent_behavior_cm_fgermany.vs
+MaxMountaineers: read by SUBAI/train_ex_cm.vs, SUBAI/train_ex_cm_fiberia.vs, SUBAI/trainex_onaddremove_cm.vs, SUBAI/trainex_onaddremove_cm_fgermany.vs, SUBAI/verify_trainex_cm.vs, SUBAI/verify_trainex_cm_fgermany.vs
+QueuedBuild/TTeutonRider: read by SUBAI/trainex_onaddremove_cm.vs, SUBAI/verify_trainex_cm.vs
+QueuedBuild/TTeutonArcher: read by SUBAI/trainex_onaddremove_cm.vs, SUBAI/verify_trainex_cm.vs
+QueuedBuild/FgeTeutonRider: read by SUBAI/trainex_onaddremove_cm_fgermany.vs, SUBAI/verify_trainex_cm_fgermany.vs
+QueuedBuild/FgeTeutonArcher: read by SUBAI/trainex_onaddremove_cm_fgermany.vs, SUBAI/verify_trainex_cm_fgermany.vs
+Path of the dead I: read by SUBAI/unit_on_kill_cm.vs, SUBAI/unit_on_kill_cm_fbritain.vs, SUBAI/unit_on_kill_cm_fcarthage.vs, SUBAI/unit_on_kill_cm_fegypt.vs, SUBAI/unit_on_kill_cm_fgaul.vs, SUBAI/unit_on_kill_cm_fgermany.vs, SUBAI/unit_on_kill_cm_fiberia.vs, SUBAI/unit_on_kill_cm_frome.vs
+Path of the dead III: read by SUBAI/unit_on_kill_cm.vs, SUBAI/unit_on_kill_cm_fbritain.vs, SUBAI/unit_on_kill_cm_fcarthage.vs, SUBAI/unit_on_kill_cm_fegypt.vs, SUBAI/unit_on_kill_cm_fgaul.vs, SUBAI/unit_on_kill_cm_fgermany.vs, SUBAI/unit_on_kill_cm_fiberia.vs, SUBAI/unit_on_kill_cm_frome.vs
+Path of the dead II: read by SUBAI/unit_on_kill_cm.vs, SUBAI/unit_on_kill_cm_fbritain.vs, SUBAI/unit_on_kill_cm_fcarthage.vs, SUBAI/unit_on_kill_cm_fegypt.vs, SUBAI/unit_on_kill_cm_fgaul.vs, SUBAI/unit_on_kill_cm_fgermany.vs, SUBAI/unit_on_kill_cm_fiberia.vs, SUBAI/unit_on_kill_cm_frome.vs
+Gambler's Day: read by SUBAI/unit_on_kill_cm.vs, SUBAI/unit_on_kill_cm_fbritain.vs, SUBAI/unit_on_kill_cm_fcarthage.vs, SUBAI/unit_on_kill_cm_fegypt.vs, SUBAI/unit_on_kill_cm_fgaul.vs, SUBAI/unit_on_kill_cm_fgermany.vs, SUBAI/unit_on_kill_cm_fiberia.vs, SUBAI/unit_on_kill_cm_frome.vs
+GamblersDayChance: read by SUBAI/unit_on_kill_cm.vs, SUBAI/unit_on_kill_cm_fbritain.vs, SUBAI/unit_on_kill_cm_fcarthage.vs, SUBAI/unit_on_kill_cm_fegypt.vs, SUBAI/unit_on_kill_cm_fgaul.vs, SUBAI/unit_on_kill_cm_fgermany.vs, SUBAI/unit_on_kill_cm_fiberia.vs, SUBAI/unit_on_kill_cm_frome.vs
+Noble Offence: read by SUBAI/unit_on_kill_cm.vs, SUBAI/unit_on_kill_cm_fbritain.vs, SUBAI/unit_on_kill_cm_fcarthage.vs, SUBAI/unit_on_kill_cm_fegypt.vs, SUBAI/unit_on_kill_cm_fgaul.vs, SUBAI/unit_on_kill_cm_fgermany.vs, SUBAI/unit_on_kill_cm_fiberia.vs, SUBAI/unit_on_kill_cm_frome.vs
+Noble Defence: read by SUBAI/unit_on_kill_cm.vs, SUBAI/unit_on_kill_cm_fbritain.vs, SUBAI/unit_on_kill_cm_fcarthage.vs, SUBAI/unit_on_kill_cm_fegypt.vs, SUBAI/unit_on_kill_cm_fgaul.vs, SUBAI/unit_on_kill_cm_fgermany.vs, SUBAI/unit_on_kill_cm_fiberia.vs, SUBAI/unit_on_kill_cm_frome.vs
+Spoils of war: read by SUBAI/unit_on_kill_cm.vs, SUBAI/unit_on_kill_cm_fbritain.vs, SUBAI/unit_on_kill_cm_fcarthage.vs, SUBAI/unit_on_kill_cm_fegypt.vs, SUBAI/unit_on_kill_cm_fgaul.vs, SUBAI/unit_on_kill_cm_fgermany.vs, SUBAI/unit_on_kill_cm_fiberia.vs, SUBAI/unit_on_kill_cm_frome.vs
+Veteran Offence: read by SUBAI/unit_on_kill_cm.vs, SUBAI/unit_on_kill_cm_fbritain.vs, SUBAI/unit_on_kill_cm_fcarthage.vs, SUBAI/unit_on_kill_cm_fegypt.vs, SUBAI/unit_on_kill_cm_fgaul.vs, SUBAI/unit_on_kill_cm_fgermany.vs, SUBAI/unit_on_kill_cm_fiberia.vs, SUBAI/unit_on_kill_cm_frome.vs
+Veteran Defence: read by SUBAI/unit_on_kill_cm.vs, SUBAI/unit_on_kill_cm_fbritain.vs, SUBAI/unit_on_kill_cm_fcarthage.vs, SUBAI/unit_on_kill_cm_fegypt.vs, SUBAI/unit_on_kill_cm_fgaul.vs, SUBAI/unit_on_kill_cm_fgermany.vs, SUBAI/unit_on_kill_cm_fiberia.vs, SUBAI/unit_on_kill_cm_frome.vs
+Veteran Health: read by SUBAI/unit_on_kill_cm.vs, SUBAI/unit_on_kill_cm_fbritain.vs, SUBAI/unit_on_kill_cm_fcarthage.vs, SUBAI/unit_on_kill_cm_fegypt.vs, SUBAI/unit_on_kill_cm_fgaul.vs, SUBAI/unit_on_kill_cm_fgermany.vs, SUBAI/unit_on_kill_cm_fiberia.vs, SUBAI/unit_on_kill_cm_frome.vs
+Ancestral Knowledge: read by SUBAI/unit_patrol_cm.vs, SUBAI/unit_patrol_cm_fcarthage.vs, SUBAI/unit_patrol_cm_fgaul.vs, SUBAI/unit_patrol_cm_fgermany.vs, SUBAI/unit_patrol_cm_fiberia.vs, SUBAI/unit_patrol_cm_frome.vs
+HardenedSpears: read by SUBAI/unit_train_cm.vs, SUBAI/unit_train_cm_fgaul.vs
+HardenedAxes: read by SUBAI/unit_train_cm.vs, SUBAI/unit_train_cm_fgaul.vs
+HardenedArmors: read by SUBAI/unit_train_cm.vs, SUBAI/unit_train_cm_fgaul.vs
+Mumification: read by SUBAI/verify_research_cm.vs
+Teuton Master: read by SUBAI/verify_trainex_cm.vs, SUBAI/verify_trainex_cm_fgermany.vs
+Build//TTeutonRider: read by SUBAI/verify_trainex_cm.vs, SUBAI/verify_trainex_cm_fgermany.vs
+Build//TTeutonArcher: read by SUBAI/verify_trainex_cm.vs, SUBAI/verify_trainex_cm_fgermany.vs

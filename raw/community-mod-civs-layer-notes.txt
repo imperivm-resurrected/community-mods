@@ -1,0 +1,30 @@
+  data/classes/iscout.sc.xml (global) named by HD:DATA/COMMANDS/VILLAGE.XML
+  data/classes/melef.sc.xml (global) named by HD:DATA/CLASSES/CMACEMEN.SC.XML
+  data/subai/hero_stay_hidden.vs (global) named by HD:DATA/CLASSES/HERO.SC.XML
+  data/subai/settlement_behavior_horses.vs (global) named by HD:DATA/CLASSES/BASETOWNHALL.SC.XML
+  data/subai/unit_stay_hidden.vs (global) named by HD:DATA/CLASSES/HERO.SC.XML
+  data/subai/verify_scout_train.vs (global) named by HD:DATA/COMMANDS/VILLAGE.XML
+  ui/icons/iscout.bmp (global) named by HD:DATA/COMMANDS/VILLAGE.XML
+DATA/COMMANDS/CTEMPLE.XML: the mod removes the order "Zombify"; kept, the game's classes or AI still name it
+DATA/COMMANDS/ETEMPLEOFOSIRIS.XML: the mod removes the order "EZombify"; kept, the game's classes or AI still name it
+DATA/COMMANDS/TAVERN.XML: the mod removes the order "Gambling"; kept, the game's classes or AI still name it
+DATA/COMMANDS/VILLAGE.XML: the mod removes the order "buyfoodforgold"; kept, the game's classes or AI still name it
+DATA/ITEMSCRIPTS/ASH OF DRUID HEART.VS: whole script in the layer, the directives cannot say it (line 35 "}" is also in an earlier line)
+DATA/ITEMSCRIPTS/FINGER OF DEATH.VS: whole script in the layer, the directives cannot say it (no anchor for an insertion near line 45)
+DATA/ITEMSCRIPTS/FUR GLOVES OF HEALTH.VS: whole script in the layer, the directives cannot say it (line 38 "if (u.IsDead()) continue;" is also in an earlier line)
+DATA/ITEMSCRIPTS/HORN OF VICTORY.VS: whole script in the layer, the directives cannot say it (no anchor for an insertion near line 35)
+DATA/SUBAI/ACTIVATE_HERO_SKILL.VS: whole script in the layer, the directives cannot say it (the patch applied to the game's script differs from the mod's at line 5: "if(objs.count==1){ //KEEPS DEFENSIVE CRY BUG" / "//\treturn;")
+DATA/SUBAI/CROW_MOVE.VS: whole script in the layer, the directives cannot say it (line 111 "if (.IsInAir())" is also in an earlier line)
+DATA/SUBAI/GDRUID_IDLE.VS: whole script in the layer, the directives cannot say it (line 196 "if (action == 3) {" is also in an earlier line)
+DATA/SUBAI/GDRUID_STAND_POSITION.VS: whole script in the layer, the directives cannot say it (line 108 "bCanLearn = true;" is also in an earlier line)
+DATA/SUBAI/RPRIEST_IDLE.VS: whole script in the layer, the directives cannot say it (line 226 "if (action == 3) {" is also in an earlier line)
+DATA/SUBAI/SETTLEMENT_BEHAVIOR_AMBIENT.VS: whole script in the layer, the directives cannot say it (line 360 "u1.SetFood(2);" is also in an earlier line)
+DATA/SUBAI/SUMMONING_BEHAVIOR.VS: whole script in the layer, the directives cannot say it (line 31 "if (!This.IsValid || This.IsDead())" is also in an earlier line)
+DATA/SUBAI/TOWNHALL_AUTOTRAIN.VS: whole script in the layer, the directives cannot say it (no anchor for an insertion near line 223)
+DATA/SUBAI/TTENT_BEHAVIOR.VS: whole script in the layer, the directives cannot say it (line 317 "else {" is also in an earlier line)
+DATA/SUBAI/UNIT_ENTER_PARRY_MODE_VERIFY.VS: whole script in the layer, the directives cannot say it (line 15 "{" is also in an earlier line)
+DATA/SUBAI/UNIT_REVEALS.VS: whole script in the layer, the directives cannot say it (line 26 "u.SetVisible(true);" is also in an earlier line)
+DATA/SUBAI/VERIFY_HERO_SKILL.VS: whole script in the layer, the directives cannot say it (line 28 "{" is also in an earlier line)
+DATA/SUBAI/VILLAGE_REPOPULATE_VERIFY.VS: whole script in the layer, the directives cannot say it (line 31 "bBrokenVillage = true;" is also in an earlier line)
+DATA/SUBAI/WALL_PATROL.VS: whole script in the layer, the directives cannot say it (no anchor for an insertion near line 264)
+hidden.txt: 1933 entries, 1926 carried; kept visible because a file of the game or of the package still names them: 7
